@@ -71,6 +71,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connection.Designer.cs">
+      <DependentUpon>Connection.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGameMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     <Compile Include="frm_PlanUpload.Designer.cs">
       <DependentUpon>frm_PlanUpload.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Register.Designer.cs">
+      <DependentUpon>frm_Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Shrink.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_PlanUpload.resx">
       <DependentUpon>frm_PlanUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Register.resx">
+      <DependentUpon>frm_Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Shrink.resx">
       <DependentUpon>frm_Shrink.cs</DependentUpon>

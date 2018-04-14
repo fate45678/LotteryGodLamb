@@ -56,5 +56,11 @@ namespace WinFormsApp1
             UpdateHistory();
         }
 
+        private void btnViewResult_Click(object sender, EventArgs e)
+        {
+            frm_Register register = new frm_Register();
+            register.Show();
+            return;
+        }
     }
 }

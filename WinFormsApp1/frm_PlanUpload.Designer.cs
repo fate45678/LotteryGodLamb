@@ -173,6 +173,7 @@
             this.btnViewResult.TabIndex = 28;
             this.btnViewResult.Text = "注册";
             this.btnViewResult.UseVisualStyleBackColor = false;
+            this.btnViewResult.Click += new System.EventHandler(this.btnViewResult_Click);
             // 
             // label9
             // 

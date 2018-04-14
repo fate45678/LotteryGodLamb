@@ -285,6 +285,7 @@
             this.lblMenuPlanUpload.TabIndex = 5;
             this.lblMenuPlanUpload.Text = "计划上传";
             this.lblMenuPlanUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMenuPlanUpload.Click += new System.EventHandler(this.lblMenuPlanUpload_Click);
             // 
             // label2
             // 
@@ -312,6 +313,7 @@
             this.lblMenuPlanAgent.TabIndex = 3;
             this.lblMenuPlanAgent.Text = "代理计划";
             this.lblMenuPlanAgent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMenuPlanAgent.Click += new System.EventHandler(this.lblMenuPlanAgent_Click);
             // 
             // label1
             // 

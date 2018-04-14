@@ -20,7 +20,6 @@ namespace WinFormsApp1
         public bool openMessage = false;
         //public static string strHistory;
         //public static string strHistoryCount; 
-        //test
         public static string strHistoryNumberOpen;
         public static JArray jArr;
 
@@ -123,6 +122,9 @@ namespace WinFormsApp1
                 f_Trend.Show();
                 return;
             }
+           
+                
+            
 
             ResetAllMenu(); //重設選單
             //DisposeForm(HD_MenuSelect.Text);
@@ -491,7 +493,7 @@ namespace WinFormsApp1
         
         private void timer_ShowMessage_Tick(object sender, EventArgs e)
         {
-            ShowMessage();
+            //ShowMessage();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
@@ -499,8 +501,15 @@ namespace WinFormsApp1
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
         }
-               
 
-        
+        private void lblMenuPlanUpload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMenuPlanAgent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
