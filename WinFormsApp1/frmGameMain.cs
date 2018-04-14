@@ -20,6 +20,7 @@ namespace WinFormsApp1
         public bool openMessage = false;
         //public static string strHistory;
         //public static string strHistoryCount; 
+        //test
         public static string strHistoryNumberOpen;
         public static JArray jArr;
 
