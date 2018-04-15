@@ -316,6 +316,7 @@
             this.cbGameDirect.Size = new System.Drawing.Size(100, 20);
             this.cbGameDirect.TabIndex = 4;
             this.cbGameDirect.TabStop = false;
+            this.cbGameDirect.SelectedIndexChanged += new System.EventHandler(this.cbGameDirect_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -349,6 +350,7 @@
             this.cbGameKind.Size = new System.Drawing.Size(100, 20);
             this.cbGameKind.TabIndex = 3;
             this.cbGameKind.TabStop = false;
+            this.cbGameKind.SelectedIndexChanged += new System.EventHandler(this.cbGameKind_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -479,6 +481,8 @@
             this.richTextBox2.Size = new System.Drawing.Size(288, 356);
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
             // 
             // panel7
             // 
@@ -504,6 +508,7 @@
             this.button7.TabIndex = 25;
             this.button7.Text = "除错";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -517,6 +522,7 @@
             this.button6.TabIndex = 24;
             this.button6.Text = "清空";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button4
             // 
@@ -530,6 +536,7 @@
             this.button4.TabIndex = 23;
             this.button4.Text = "上传";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label21
             // 
@@ -537,9 +544,9 @@
             this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(232, 3);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(53, 12);
+            this.label21.Size = new System.Drawing.Size(35, 12);
             this.label21.TabIndex = 22;
-            this.label21.Text = "共3700注";
+            this.label21.Text = "共0注";
             // 
             // panel8
             // 

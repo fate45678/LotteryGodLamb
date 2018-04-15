@@ -72,7 +72,12 @@ namespace WinFormsApp1
             }
             if (icn.State == ConnectionState.Open) icn.Close();
         }
-        public int ReadText(string Userid)
+        /// <summary>
+        /// readTxt for User.txt
+        /// </summary>
+        /// <param name="Userid"></param>
+        /// <returns></returns>
+        public int searchUser(string Userid)
         {
             StreamReader str = new StreamReader("User.txt");
             string ReadAll = "";
@@ -84,10 +89,28 @@ namespace WinFormsApp1
             else
                 return 0;
         }
-        public void WriteText(string userid,string pw)
+        /// <summary>
+        /// writeTExt for User.txt
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="pw"></param>
+        public void addUser(string userid,string pw)
         {
             StreamWriter sw = File.AppendText("User.txt");
             string WriteWord = "id:" + userid + ";userpw:"+pw+";userName;";
+            sw.WriteLine(WriteWord);
+            sw.Flush();
+            sw.Close();
+        }
+
+        public void readTxt(string file)
+        {
+
+        }
+        public void addRule(string fileName,string gametype,string rule,string user, string startPeriod,string endPeriod)
+        {
+            StreamWriter sw = File.AppendText(fileName);
+            string WriteWord = "user:"+user+";start:"+startPeriod+";end:"+endPeriod+";gametype:"+gametype+";rule:"+rule+";";
             sw.WriteLine(WriteWord);
             sw.Flush();
             sw.Close();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace WinFormsApp1
         public frm_PlanUpload()
         {
             InitializeComponent();
+            //cbGameKind.SelectedIndex = 0;
+            //cbGamePlan.SelectedIndex = 0;
         }
         //取得歷史開獎
         private void UpdateHistory()
@@ -57,10 +60,20 @@ namespace WinFormsApp1
         {
             UpdateHistory();
             refreshInterface();
-            if(isFirstTime)
+            if (isFirstTime)
+            {
+                if (cbGameKind.SelectedIndex == -1)
+                    cbGameKind.SelectedIndex = 0;
+                if (cbGameDirect.SelectedIndex == -1)
+                    cbGameDirect.SelectedIndex = 0;
                 InitcbItem();//初始化combobox
+
+            }
             filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length-3, 3)));
             label2.Text ="共"+calPeriod()+"期";
+            
+
+
         }
 
         private void btnViewResult_Click(object sender, EventArgs e)
@@ -129,6 +142,66 @@ namespace WinFormsApp1
         {
             var dt_cycle = Items.Where(x => x.Key > (int)cbGamePlan.SelectedValue);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("我也不知道這個要做什麼。");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            richTextBox2.Text = "";
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            string withoutComma = richTextBox2.Text.Replace(",","");
+            if (richTextBox2.TextLength > 4 && withoutComma.Length %5==0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart-1, 1).Equals(","))
+            {
+                richTextBox2.Text += ",";
+                richTextBox2.Select(richTextBox2.MaxLength, 0);
+            }
+            MatchCollection mc;
+            Regex r = new Regex(",");
+            mc = r.Matches(richTextBox2.Text);
+            label21.Text = "共" + mc.Count + "注";
+            }
+
+        private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= '0' && e.KeyChar <= '9') return;
+            if (e.KeyChar == '+' || e.KeyChar == '-') return;
+            if (e.KeyChar == 8) return;
+            e.Handled = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(label4.Text))
+                MessageBox.Show("尚未登入。");
+            else
+            {
+                Connection con = new Connection();
+                con.addRule("rule.txt", label24.Text, richTextBox2.Text, label4.Text,cbGamePlan.Text, cbGameCycle.Text);
+                MessageBox.Show("上傳成功。");
+            }
+            
+        }
+
+        private void cbGameKind_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateLabel24();
+        }
+
+        private void cbGameDirect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateLabel24();
+        }
+
+        private void updateLabel24()
+        {
+            label24.Text = "重庆时时彩  " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
         }
     }
 }
