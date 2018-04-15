@@ -275,6 +275,7 @@
             this.cbGamePlan.Size = new System.Drawing.Size(100, 20);
             this.cbGamePlan.TabIndex = 20;
             this.cbGamePlan.TabStop = false;
+            this.cbGamePlan.SelectionChangeCommitted += new System.EventHandler(this.cbGamePlan_SelectionChangeCommitted);
             // 
             // label5
             // 
@@ -721,10 +722,6 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.ForeColor = System.Drawing.Color.Black;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
             this.comboBox2.Location = new System.Drawing.Point(159, 37);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(100, 20);
@@ -738,10 +735,6 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.ForeColor = System.Drawing.Color.Black;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
             this.comboBox1.Location = new System.Drawing.Point(34, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 20);

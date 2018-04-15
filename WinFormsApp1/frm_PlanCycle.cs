@@ -174,30 +174,30 @@ namespace WinFormsApp1
 
         private void cbGamePlus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cbGamePlus.SelectedItem.ToString().Substring(0, 1))
-            {
-                case "3":
-                    cbGameCycle.Items.Clear();
-                    cbGameCycle.Items.Add("三期一周");
-                    cbGameCycle.Items.Add("二期一周");
-                    cbGameCycle.Items.Add("一期一周");
-                    cbGameCycle.SelectedIndex = 0;
-                    break;
-                case "4":
-                    cbGameCycle.Items.Clear();
-                    cbGameCycle.Items.Add("二期一周");
-                    cbGameCycle.Items.Add("一期一周");
-                    cbGameCycle.SelectedIndex = 0;
-                    break;
-                case "5":
-                    cbGameCycle.Items.Clear();
-                    cbGameCycle.Items.Add("二期一周");
-                    cbGameCycle.Items.Add("一期一周");
-                    cbGameCycle.SelectedIndex = 0;
-                    break;
-                default:
-                    break;
-            }
+            //switch (cbGamePlus.SelectedItem.ToString().Substring(0, 1))
+            //{
+            //    case "3":
+            //        cbGameCycle.Items.Clear();
+            //        cbGameCycle.Items.Add("三期一周");
+            //        cbGameCycle.Items.Add("二期一周");
+            //        cbGameCycle.Items.Add("一期一周");
+            //        cbGameCycle.SelectedIndex = 0;
+            //        break;
+            //    case "4":
+            //        cbGameCycle.Items.Clear();
+            //        cbGameCycle.Items.Add("二期一周");
+            //        cbGameCycle.Items.Add("一期一周");
+            //        cbGameCycle.SelectedIndex = 0;
+            //        break;
+            //    case "5":
+            //        cbGameCycle.Items.Clear();
+            //        cbGameCycle.Items.Add("二期一周");
+            //        cbGameCycle.Items.Add("一期一周");
+            //        cbGameCycle.SelectedIndex = 0;
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
         #endregion
 
