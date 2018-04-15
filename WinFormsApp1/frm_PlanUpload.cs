@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -54,13 +55,25 @@ namespace WinFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             UpdateHistory();
+            refreshInterface();
         }
 
         private void btnViewResult_Click(object sender, EventArgs e)
         {
             frm_Register register = new frm_Register();
+            register.Owner = this;
             register.Show();
             return;
+        }
+        
+        public void refreshInterface()
+        {
+            label4.Text = frmGameMain.globalUserName;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmGameMain.globalUserName = "";
         }
     }
 }

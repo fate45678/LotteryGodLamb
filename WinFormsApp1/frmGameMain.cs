@@ -22,13 +22,14 @@ namespace WinFormsApp1
         //public static string strHistoryCount; 
         public static string strHistoryNumberOpen;
         public static JArray jArr;
+        public static string globalUserName;
+        public static string globalGetCurrentPeriod;
 
         public class NextPeriod
         {
             public string CloseTime { get; set; }
             public string SerialNumber { get; set; }
         }
-
         public frmGameMain()
         {
             InitializeComponent();
@@ -285,6 +286,7 @@ namespace WinFormsApp1
                         else
                         {
                             lblNextPeriod.Text = NextPeriod.SerialNumber;
+                            frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
                             DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
                             DateTime dt2 = DateTime.Now;
                             TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);

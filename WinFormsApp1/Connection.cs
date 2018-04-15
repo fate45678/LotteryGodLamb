@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -71,6 +72,25 @@ namespace WinFormsApp1
             }
             if (icn.State == ConnectionState.Open) icn.Close();
         }
-
+        public int ReadText(string Userid)
+        {
+            StreamReader str = new StreamReader("User.txt");
+            string ReadAll = "";
+            ReadAll = str.ReadToEnd();
+            
+            str.Close();
+            if (ReadAll.IndexOf(Userid)!=-1)
+                return 1;//帳號已經存在
+            else
+                return 0;
+        }
+        public void WriteText(string userid,string pw)
+        {
+            StreamWriter sw = File.AppendText("User.txt");
+            string WriteWord = "id:" + userid + ";userpw:"+pw+";userName;";
+            sw.WriteLine(WriteWord);
+            sw.Flush();
+            sw.Close();
+        }
     }
 }

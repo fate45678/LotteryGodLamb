@@ -41,8 +41,14 @@ namespace WinFormsApp1
                 {
                     //檢查DB是否有重複帳號
                     Connection con = new Connection();
-                    con.SqlInsertUpdateDelete("43.229.154.156", "lottery","select * from userData");
-                    
+                    if (con.ReadText(tbAccount.Text) == 1)
+                        MessageBox.Show("帳號已經存在。");
+                    else
+                    {
+                        con.WriteText(tbAccount.Text, tbPassword.Text);
+                        MessageBox.Show("帳號已經新增。");
+                        frmGameMain.globalUserName = tbUserName.Text;
+                    }
                 }
             }
             else
@@ -52,7 +58,5 @@ namespace WinFormsApp1
         }
 
         #endregion
-
-
     }
 }
