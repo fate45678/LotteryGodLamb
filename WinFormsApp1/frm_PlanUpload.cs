@@ -71,7 +71,8 @@ namespace WinFormsApp1
             }
             filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length-3, 3)));
             label2.Text ="共"+calPeriod()+"期";
-            
+            label23.Text = cbGamePlan.Text +"~"+cbGameCycle.Text+" 共"+ calPeriod() + "期";
+
 
 
         }

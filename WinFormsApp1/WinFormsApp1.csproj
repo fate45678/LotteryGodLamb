@@ -71,11 +71,64 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AP\DB.cs" />
+    <Compile Include="Base\BaseHelper.cs" />
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Connection.Designer.cs">
       <DependentUpon>Connection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart.xaml.cs">
+      <DependentUpon>UcFiveStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart1.xaml.cs">
+      <DependentUpon>UcFiveStart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart2.xaml.cs">
+      <DependentUpon>UcFiveStart2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart3.xaml.cs">
+      <DependentUpon>UcFiveStart3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart4.xaml.cs">
+      <DependentUpon>UcFiveStart4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\FiveStart\UcFiveStart5.xaml.cs">
+      <DependentUpon>UcFiveStart5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart.xaml.cs">
+      <DependentUpon>UcTwoStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart1.xaml.cs">
+      <DependentUpon>UcTwoStart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart2.xaml.cs">
+      <DependentUpon>UcTwoStart2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart3.xaml.cs">
+      <DependentUpon>UcTwoStart3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart4.xaml.cs">
+      <DependentUpon>UcTwoStart4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart5.xaml.cs">
+      <DependentUpon>UcTwoStart5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart6.xaml.cs">
+      <DependentUpon>UcTwoStart6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart7.xaml.cs">
+      <DependentUpon>UcTwoStart7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart8.xaml.cs">
+      <DependentUpon>UcTwoStart8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\TwoStart\UcTwoStart9.xaml.cs">
+      <DependentUpon>UcTwoStart9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\UcNumberFilter.xaml.cs">
+      <DependentUpon>UcNumberFilter.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmGameMain.cs">
       <SubType>Form</SubType>
@@ -132,8 +185,21 @@
       <DependentUpon>frm_Trend.cs</DependentUpon>
     </Compile>
     <Compile Include="Game_Function.cs" />
+    <Compile Include="Model\BaseOptions.cs" />
+    <Compile Include="Model\OptionData.cs" />
+    <Compile Include="Model\Relation.cs" />
+    <Compile Include="ObjectTest\CheckBoxList.xaml.cs">
+      <DependentUpon>CheckBoxList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectTest\PathConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UcKLine.xaml.cs">
+      <DependentUpon>UcKLine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcWaterWindow.xaml.cs">
+      <DependentUpon>UcWaterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
@@ -209,10 +275,99 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Example\FiveStart\UcFiveStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\FiveStart\UcFiveStart1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\FiveStart\UcFiveStart2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\FiveStart\UcFiveStart3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\FiveStart\UcFiveStart4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\FiveStart\UcFiveStart5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\TwoStart\UcTwoStart9.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\UcNumberFilter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ObjectTest\CheckBoxList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UcKLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcWaterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bt_icon\bt_fin.png" />
+    <Content Include="bt_icon\bt_nex.png" />
+    <Content Include="bt_icon\bt_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Example\FourStart\" />
+    <Folder Include="Example\ThreeStart\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

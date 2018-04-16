@@ -281,6 +281,7 @@ namespace WinFormsApp1
                         if (NextPeriod.SerialNumber == null)
                         {
                             lblNextPeriod.Text = "00000000000";
+                            frmGameMain.globalGetCurrentPeriod = "00000000000";
                             lblNextPeriodTime.Text = "-- : -- : --";
                         }
                         else

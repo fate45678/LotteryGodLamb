@@ -1,0 +1,609 @@
+﻿<UserControl x:Class="WinFormsApp1.UcKLine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WinFormsApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid x:Name="gdmain" Background="#528F34">
+        <Grid.Resources>
+            <Style TargetType="{x:Type ToggleButton}" x:Key="trgbtPink">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="3"
+                                    Padding="3,2,2,3">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#99D9EA"/>
+                <Setter Property="Foreground" Value="#4050D0"/>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Background" Value="#F6C1D3"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="{x:Type ToggleButton}" x:Key="trtbRed">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="3"
+                                    Padding="3,2,2,3">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#99D9EA"/>
+                <Setter Property="Foreground" Value="#4050D0"/>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Row="1" Grid.Column="0" Margin="3,10,0,0">
+                <StackPanel>
+                    <ToggleButton Content="二星" DockPanel.Dock="Top" Margin="0,0,0,3" Style="{StaticResource trtbRed}"/>
+                    <ToggleButton Content="三星" DockPanel.Dock="Top" Margin="0,0,0,3" Style="{StaticResource trtbRed}"/>
+                    <ToggleButton Content="四星" DockPanel.Dock="Top" Margin="0,0,0,3" Style="{StaticResource trtbRed}"/>
+                    <ToggleButton Content="五星" DockPanel.Dock="Top" Margin="0,0,0,3" Style="{StaticResource trtbRed}"/>
+                </StackPanel>
+            </DockPanel>
+            <ListView Grid.Row="1" Grid.Column="1" MinWidth="100" MaxHeight="100" Margin="3,0,0,0">
+                <ListViewItem Content="後三"/>
+                <ListViewItem Content="前三"/>
+                <ListViewItem Content="中三"/>
+                <ListViewItem Content="萬千十"/>
+                <ListViewItem Content="萬千個"/>
+                <ListViewItem Content="default"/>
+                <ListViewItem Content="default"/>
+                <ListViewItem Content="default"/>
+                <ListViewItem Content="default"/>
+            </ListView>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="單底" Grid.Row="1" Grid.Column="1" />
+                <Button Content="多底" Grid.Row="1" Grid.Column="2" />
+                <DockPanel Grid.Row="2" Grid.Column="1">
+                    <CheckBox DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                    <Label Content="反集" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                </DockPanel>
+                <Button Content="文本(T)" Grid.Row="2" Grid.Column="2" />
+                <Button Content="刷新(F5)" Grid.Row="3" Grid.Column="1" />
+                <DockPanel Grid.Row="3" Grid.Column="2">
+                    <CheckBox DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                    <Label Content="組選" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                </DockPanel>
+                <ComboBox Grid.Row="4" Grid.Column="1">
+                    <ComboBoxItem Content="更多(T)"/>
+                    <ComboBoxItem Content="更多(T)"/>
+                    <ComboBoxItem Content="更多(T)"/>
+                    <ComboBoxItem Content="更多(T)"/>
+                </ComboBox>
+                <Button Content="號碼(F9)" Grid.Row="4" Grid.Column="2" />
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0" BorderBrush="White" BorderThickness="1" Margin="3,10,0,0" Padding="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="12"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold">
+                        <Run Text="頻"/>
+                        <LineBreak/>
+                        <Run Text="率"/>
+                        <LineBreak/>
+                        <Run Text=" K"/>
+                        <LineBreak/>
+                        <Run Text="線"/>
+                        <LineBreak/>
+                        </TextBlock>
+                        <Border BorderThickness="1" BorderBrush="White" Grid.Row="0" Grid.Column="1" Margin="15,0,0,0" Height="50" VerticalAlignment="Top">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="XX獨數:" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                                <Grid Grid.Row="1" Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="13"/>
+                                        <RowDefinition Height="13"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="13"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox MinWidth="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" TextAlignment="Left" Text="0"/>
+                                    <RepeatButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        5
+                                    </RepeatButton>
+                                    <RepeatButton Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        6
+                                    </RepeatButton>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="0.1" BorderBrush="White" Grid.Row="0" Grid.Column="2" Height="50" VerticalAlignment="Top">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="周期:" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                                <Grid Grid.Row="1" Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="13"/>
+                                        <RowDefinition Height="13"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="13"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox MinWidth="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" TextAlignment="Left" Text="0"/>
+                                    <RepeatButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        5
+                                    </RepeatButton>
+                                    <RepeatButton Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        6
+                                    </RepeatButton>
+                                </Grid>
+                                <TextBlock Text="週期:" FontWeight="Bold" Grid.Row="0" Grid.Column="1" />
+                                <Grid Grid.Row="1" Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="13"/>
+                                        <RowDefinition Height="13"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="13"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox MinWidth="50" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" TextAlignment="Left" Text="0"/>
+                                    <RepeatButton Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        5
+                                    </RepeatButton>
+                                    <RepeatButton Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="13" FontSize="8" FontFamily="Marlett">
+                                        6
+                                    </RepeatButton>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <TextBlock Text="頁" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+                        <DockPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="15,0,0,0" Width="75">
+                            <Button DockPanel.Dock="Left" Background="Transparent" Width="25" Height="25" BorderBrush="Transparent">
+                                <Button.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock Text="上一頁" />
+                                    </StackPanel>
+                                </Button.ToolTip>
+                                <StackPanel>
+                                    <Image Source="C:\Users\Leo\Desktop\lottery\WinFormsApp1\bt_icon\bt_up.png"  HorizontalAlignment="Center" Width="20"/>
+                                </StackPanel>
+                            </Button>
+                            <Button DockPanel.Dock="Left" Background="Transparent" Width="25" Height="25" BorderBrush="Transparent">
+                                <Button.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock Text="下一頁" />
+                                    </StackPanel>
+                                </Button.ToolTip>
+                                <StackPanel>
+                                    <Image Source="C:\Users\Leo\Desktop\lottery\WinFormsApp1\bt_icon\bt_nex.png"  HorizontalAlignment="Center" Width="20"/>
+                                </StackPanel>
+                            </Button>
+                            <Button DockPanel.Dock="Left" Background="Transparent" Width="25" Height="25" BorderBrush="Transparent">
+                                <Button.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock Text="最後頁" />
+                                    </StackPanel>
+                                </Button.ToolTip>
+                                <StackPanel>
+                                    <Image Source="C:\Users\Leo\Desktop\lottery\WinFormsApp1\bt_icon\bt_fin.png"  HorizontalAlignment="Center" Width="20"/>
+                                </StackPanel>
+                            </Button>
+                        </DockPanel>
+                        <Button Content="應用(A)" Grid.Row="2" Grid.Column="3" Width="80" HorizontalAlignment="Right" />
+                    </Grid>
+                </Border>
+            </Grid>
+            <TabControl Grid.Row="1" Grid.Column="4" BorderBrush="White" BorderThickness="1" Background="#528F34" Width="430" Height="110" VerticalAlignment="Bottom">
+                <TabItem Header="毒胆" Background="#528F34" BorderBrush="White" BorderThickness="1" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock  Text="類型:" Grid.Row="0" Grid.Column="0" Margin="0,7,0,0"/>
+                        <Border CornerRadius="6" BorderBrush="White" BorderThickness="1" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" Padding="5">
+                            <DockPanel>
+                                <RadioButton DockPanel.Dock="Left" Margin="0,0,5,0"/>
+                                <TextBlock Text="開獎號" DockPanel.Dock="Left"/>
+
+                                <RadioButton DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                                <TextBlock Text="對碼" DockPanel.Dock="Left"/>
+                                <RadioButton DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                                <TextBlock Text="兩碼合" DockPanel.Dock="Left"/>
+                                <RadioButton DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                                <TextBlock Text="兩碼差" DockPanel.Dock="Left"/>
+                                <RadioButton DockPanel.Dock="Left" Margin="5,0,5,0"/>
+                                <TextBlock Text="兩碼跨" DockPanel.Dock="Left"/>
+                            </DockPanel>
+                        </Border>
+                        <TextBlock  Text="?碼:" Grid.Row="1" Grid.Column="0" Margin="0,7,0,0"/>
+                        <DockPanel Grid.Row="1" Grid.Column="1">
+                            <ToggleButton Content="0" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="1" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="2" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="3" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="4" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="5" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="6" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="7" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="8" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="9" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="清" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="毒?同屏" DockPanel.Dock="Left" Margin="3,3,3,0"  Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="對碼同屏" DockPanel.Dock="Left" Margin="0,3,3,0"  Style="{StaticResource trgbtPink}"/>
+                        </DockPanel>
+                        <TextBlock  Text="配碼:" Grid.Row="2" Grid.Column="0" Margin="0,7,0,0"/>
+                        <DockPanel Grid.Row="2" Grid.Column="1">
+                            <ToggleButton Content="0" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="1" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="2" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="3" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="4" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="5" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="6" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="7" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="8" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="9" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="清" DockPanel.Dock="Left" Margin="3,3,3,0" Width="18" Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="?配出圖" DockPanel.Dock="Left" Margin="3,3,3,0"  Style="{StaticResource trgbtPink}"/>
+                            <ToggleButton Content="?配同屏" DockPanel.Dock="Left" Margin="0,3,3,0"  Style="{StaticResource trgbtPink}"/>
+                        </DockPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="黃金分割" Background="#528F34" BorderBrush="White" BorderThickness="1"/>
+                <TabItem Header="隨機王" Background="#528F34" BorderBrush="White" BorderThickness="1"/>
+                <TabItem Header="等概率1" Background="#528F34" BorderBrush="White" BorderThickness="1"/>
+                <TabItem Header="等概率2" Background="#528F34" BorderBrush="White" BorderThickness="1"/>
+                <TabItem Header="等概率3" Background="#528F34" BorderBrush="White" BorderThickness="1"/>
+            </TabControl>
+        </Grid>
+        <Grid Grid.Row="2" x:Name="gdCv" Background="#484848">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ToggleButton Grid.Row="0" Grid.Column="0" Padding="4,4,4,0"  Height="80" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="頻"/>
+                        <LineBreak/>
+                        <Run Text="率"/>
+                        <LineBreak/>
+                        <Run Text=" K"/>
+                        <LineBreak/>
+                        <Run Text="線"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F1"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <ToggleButton Grid.Row="1" Grid.Column="0" Padding="4,4,4,0"  Height="80" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="遺"/>
+                        <LineBreak/>
+                        <Run Text="漏"/>
+                        <LineBreak/>
+                        <Run Text=" K"/>
+                        <LineBreak/>
+                        <Run Text="線"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F2"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <ToggleButton Grid.Row="2" Grid.Column="0" Padding="4,4,4,0" Height="80" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="多"/>
+                        <LineBreak/>
+                        <Run Text="週"/>
+                        <LineBreak/>
+                        <Run Text="期"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F3"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <ToggleButton Grid.Row="3" Grid.Column="0" Padding="4,4,4,0" Height="80" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="遺"/>
+                        <LineBreak/>
+                        <Run Text="漏"/>
+                        <LineBreak/>
+                        <Run Text="圖"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F4"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <ToggleButton Grid.Row="4" Grid.Column="0" Padding="4,4,4,0" Height="80" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="出"/>
+                        <LineBreak/>
+                        <Run Text="次"/>
+                        <LineBreak/>
+                        <Run Text="統"/>
+                        <LineBreak/>
+                        <Run Text="計"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F6"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <ToggleButton Grid.Row="5" Grid.Column="0" Padding="4,4,4,0" Height="100" FontSize="10">
+                <ToggleButton.Style>
+                    <Style TargetType="{x:Type ToggleButton}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border BorderBrush="LightGreen"
+                                                CornerRadius="3"
+                                                Padding="3,2,2,3"
+                                                BorderThickness="1"
+                                                Background="Black">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+                <TextBlock>
+                        <Run Text="多"/>
+                        <LineBreak/>
+                        <Run Text="型"/>
+                        <LineBreak/>
+                        <Run Text="態"/>
+                        <LineBreak/>
+                        <Run Text="同"/>
+                        <LineBreak/>
+                        <Run Text="屏"/>
+                        <LineBreak/>
+                        <Run Text="︵"/>
+                        <LineBreak/>
+                        <Run Text="F8"/>
+                        <LineBreak/>
+                        <Run Text="︶"/>
+                        <LineBreak/>
+                </TextBlock>
+            </ToggleButton>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                <Canvas x:Name="Cv" Background="#484848" Loaded="Cv_Loaded"/>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</UserControl>
