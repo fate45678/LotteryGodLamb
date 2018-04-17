@@ -41,6 +41,7 @@ namespace WinFormsApp1
                 {
                     //檢查DB是否有重複帳號
                     Connection con = new Connection();
+                    var test = con.ExecSQL("43.252.208.201,1433\\SQLEXPRESS", "lottery", "select * from usertb");
                     if (con.searchUser(tbAccount.Text) == 1)
                         MessageBox.Show("帳號已經存在。");
                     else

@@ -87,7 +87,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -99,6 +98,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lsbSent = new System.Windows.Forms.ListBox();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -809,7 +809,7 @@
             // pnlSent
             // 
             this.pnlSent.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pnlSent.Controls.Add(this.richTextBox3);
+            this.pnlSent.Controls.Add(this.lsbSent);
             this.pnlSent.Controls.Add(this.panel6);
             this.pnlSent.Controls.Add(this.panel5);
             this.pnlSent.Dock = System.Windows.Forms.DockStyle.Left;
@@ -818,16 +818,6 @@
             this.pnlSent.Padding = new System.Windows.Forms.Padding(5);
             this.pnlSent.Size = new System.Drawing.Size(275, 510);
             this.pnlSent.TabIndex = 4;
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox3.Location = new System.Drawing.Point(5, 71);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(265, 401);
-            this.richTextBox3.TabIndex = 5;
-            this.richTextBox3.Text = "";
             // 
             // panel6
             // 
@@ -940,6 +930,16 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lsbSent
+            // 
+            this.lsbSent.FormattingEnabled = true;
+            this.lsbSent.ItemHeight = 12;
+            this.lsbSent.Location = new System.Drawing.Point(5, 71);
+            this.lsbSent.Name = "lsbSent";
+            this.lsbSent.Size = new System.Drawing.Size(264, 376);
+            this.lsbSent.TabIndex = 5;
+            this.lsbSent.SelectedIndexChanged += new System.EventHandler(this.lsbSent_SelectedIndexChanged);
+            // 
             // frm_PlanUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1046,7 +1046,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel5;
@@ -1059,6 +1058,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-
+        private System.Windows.Forms.ListBox lsbSent;
     }
 }

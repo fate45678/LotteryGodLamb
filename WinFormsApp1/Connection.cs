@@ -103,10 +103,19 @@ namespace WinFormsApp1
             sw.Close();
         }
 
-        public void readTxt(string file)
+        public string ExecSQL(string serverIP, string DB, string Query)
         {
-
+            using (var con = new SqlConnection("Data Source="+serverIP+";Initial Catalog = "+DB+"; USER ID = sa; Password=sa"))
+            {
+                var cmd = new SqlCommand(Query, con);
+                cmd.CommandType = System.Data.CommandType.Text;
+                con.Open();
+                cmd.ExecuteReader();
+                return "done";
+            }
         }
+        
+
         public void addRule(string fileName,string gametype,string rule,string user, string startPeriod,string endPeriod)
         {
             StreamWriter sw = File.AppendText(fileName);

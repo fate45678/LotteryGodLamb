@@ -184,8 +184,9 @@ namespace WinFormsApp1
             else
             {
                 Connection con = new Connection();
-                con.addRule("rule.txt", label24.Text, richTextBox2.Text, label4.Text,cbGamePlan.Text, cbGameCycle.Text);
+                con.addRule("rule.txt", label24.Text, richTextBox2.Text, label4.Text,cbGamePlan.Text, cbGameCycle.Text);//新增規則到txt(暫時)
                 MessageBox.Show("上傳成功。");
+                UpdatelsbSent("小牛逼計畫");//更新已發送計畫listbox
             }
             
         }
@@ -203,6 +204,18 @@ namespace WinFormsApp1
         private void updateLabel24()
         {
             label24.Text = "重庆时时彩  " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
+        }
+
+        int globalTemp = 0;
+        private void UpdatelsbSent(string ItemName)
+        {
+            
+            lsbSent.Items.Add(ItemName+globalTemp);
+        }
+
+        private void lsbSent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "00000,00100,00002";
         }
     }
 }
