@@ -41,14 +41,18 @@ namespace WinFormsApp1
                 {
                     //檢查DB是否有重複帳號
                     Connection con = new Connection();
-                    var test = con.ExecSQL("43.252.208.201,1433\\SQLEXPRESS", "lottery", "select * from usertb");
-                    if (con.searchUser(tbAccount.Text) == 1)
+                    //var consql = con.ExecSQL("43.252.208.201,1433\\SQLEXPRESS", "lottery", "select * from userData");
+                    var consql = con.ConSQLtoList4cb("43.252.208.201,1433\\SQLEXPRESS", "lottery", "select * from userData where account = '"+tbAccount.Text+"'");
+
+                    if (consql.Count>0)
                         MessageBox.Show("帳號已經存在。");
                     else
                     {
-                        con.addUser(tbAccount.Text, tbPassword.Text);
+                        con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into userData(account,password,name,registerDate) values('"+tbAccount.Text+"','"+tbPassword.Text+"','"+tbUserName.Text+"',getDate())");
+                        //con.addUser(tbAccount.Text, tbPassword.Text);
                         MessageBox.Show("帳號已經新增。");
                         frmGameMain.globalUserName = tbUserName.Text;
+                        frmGameMain.globalUserAccount = tbAccount.Text;
                     }
                 }
             }

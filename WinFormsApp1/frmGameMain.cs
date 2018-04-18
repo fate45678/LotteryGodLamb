@@ -23,6 +23,7 @@ namespace WinFormsApp1
         public static string strHistoryNumberOpen;
         public static JArray jArr;
         public static string globalUserName;
+        public static string globalUserAccount;
         public static string globalGetCurrentPeriod;
 
         public class NextPeriod

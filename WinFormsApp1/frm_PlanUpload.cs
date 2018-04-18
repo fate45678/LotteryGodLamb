@@ -19,6 +19,7 @@ namespace WinFormsApp1
 {
     public partial class frm_PlanUpload : Form
     {
+        Connection con = new Connection();
         public frm_PlanUpload()
         {
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace WinFormsApp1
         }
 
         bool isFirstTime = true;
+        int updateCount=0;
         private void timer1_Tick(object sender, EventArgs e)
         {
             UpdateHistory();
@@ -73,8 +75,17 @@ namespace WinFormsApp1
             label2.Text ="共"+calPeriod()+"期";
             label23.Text = cbGamePlan.Text +"~"+cbGameCycle.Text+" 共"+ calPeriod() + "期";
 
+            if (updateCount % 3 == 0)
+                updatelbSent();
+            updateCount++;
 
 
+        }
+        private void updatelbSent()
+        {
+            lsbSent.DataSource = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name as 'name' from Upplan");
+            lsbSent.DisplayMember = "value";
+            lsbSent.ValueMember = "id";
         }
 
         private void btnViewResult_Click(object sender, EventArgs e)
@@ -183,10 +194,16 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
-                Connection con = new Connection();
-                con.addRule("rule.txt", label24.Text, richTextBox2.Text, label4.Text,cbGamePlan.Text, cbGameCycle.Text);//新增規則到txt(暫時)
+                
+                string planName = label24.Text.Replace("重庆时时彩  ", "");
+                
+                var plancount = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select convert(nvarchar(3),count(*)) as 'name' from Upplan where p_account = '" + frmGameMain.globalUserAccount+"'");
+                string maxNum = plancount.Where(x => !x.value.Equals("")).FirstOrDefault().value.ToString();
+                int planNUmber = int.Parse(maxNum) + 1;
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule) values('" + label4.Text+ planName + planNUmber+"','" + frmGameMain.globalUserAccount + "','"+ cbGamePlan.Text + "','"+ cbGameCycle.Text + "','"+ richTextBox2.Text + "')");
+
                 MessageBox.Show("上傳成功。");
-                UpdatelsbSent("小牛逼計畫");//更新已發送計畫listbox
+                updatelbSent();
             }
             
         }
@@ -206,15 +223,11 @@ namespace WinFormsApp1
             label24.Text = "重庆时时彩  " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
         }
 
-        int globalTemp = 0;
-        private void UpdatelsbSent(string ItemName)
-        {
-            
-            lsbSent.Items.Add(ItemName+globalTemp);
-        }
+    
 
         private void lsbSent_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             richTextBox1.Text = "00000,00100,00002";
         }
     }

@@ -105,7 +105,7 @@ namespace WinFormsApp1
 
         public string ExecSQL(string serverIP, string DB, string Query)
         {
-            using (var con = new SqlConnection("Data Source="+serverIP+";Initial Catalog = "+DB+"; USER ID = sa; Password=sa"))
+            using (var con = new SqlConnection("Data Source="+serverIP+";Initial Catalog = "+DB+ "; USER ID = 4winform; Password=sasa"))
             {
                 var cmd = new SqlCommand(Query, con);
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -113,6 +113,38 @@ namespace WinFormsApp1
                 cmd.ExecuteReader();
                 return "done";
             }
+        }
+        public List<Item> ConSQLtoList4cb(string serverIP, string DB, string Query)
+        {
+            List<Item> temp = new List<Item>();
+            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa"))
+            {
+                int count = 0;
+                var cmd = new SqlCommand(Query, con);
+                cmd.CommandType = System.Data.CommandType.Text;
+                con.Open();
+                using (SqlDataReader objReader = cmd.ExecuteReader())
+                {
+                    if (objReader.HasRows)
+                    {
+                        while (objReader.Read())
+                        {
+                            count++;
+                            temp.Add(new Item
+                            {
+                                id = count,
+                                value = objReader.GetString(objReader.GetOrdinal("name"))
+                            });
+                        }
+                    }
+                }
+            }
+            return temp;
+        }
+        public class Item
+        {
+            public int id { get; set; }
+            public string value { get; set; }
         }
         
 
