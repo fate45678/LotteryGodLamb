@@ -121,8 +121,8 @@
   <data name="picAD1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKAAAABiCAYAAADX79iSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAK/wAA
-        Cv8BNGKaggAAm9ZJREFUeF6tvWWcZMeV7XsgDmRWVVdXMzMzMzMzMzMzqVndLWZuMVlgySCWJdkCgyxb
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAK9wAA
+        CvcBEOiS5wAAm9ZJREFUeF6tvWWcZMeV7XsgDmRWVVdXMzMzMzMzMzMzqVndLWZuMVlgySCWJdkCgyxb
         MsggM8PgHbbH9n7/FVkltX098+bddz/EL6uysjJPnlix9lo7dkQEyfJbLExrWxBnFieVliZlFlW0tYrL
         37Au7/zRat33PYs6T7WweV+LazU3V6uBufptLG3SndeXWxpFFoapufLGlqRlFneeYtGqeywbv9PSipaW
         JPUtrNeCv9WxOOf9x/H80bcs3fpxS9c+YvmMM5Z1HGtxWRNL6raxqFkfS/ots3Tu1Ravf9zcmscsWPeg
@@ -793,8 +793,8 @@
   <data name="picAD2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAVUAAABQCAYAAACptuYpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOrwAA
-        Dq8BcRFD7gAA/3lJREFUeF5s/XV0V9f2/Q9zWzzu7u7urhAPhBCCBwiuwUIIIe4hxIhAgru7O0WL09LS
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOpgAA
+        DqYBh9ypbwAA/3lJREFUeF5s/XV0V9f2/Q9zWzzu7u7urhAPhBCCBwiuwUIIIe4hxIhAgru7O0WL09LS
         Undv8d47xnzmOqH3ez+/8fyxxnm7nLP3a825tc+KSD0UxphiSaQRFoToYl6w9tvQQV6oPhZHGGFJlDGP
         BlgWbYTCOBOsiDdBQbQBKlMssCrDGs2Z1mgcboGKIfoMA9SnmqNxmBXqkk3RmG6FVWkWWD3MAmuybLFu
         nBOPNlg31h7rx9tjc44jDs/3x77ZXjgw1xvHFwfhXGEETiwNwMl8xjJGgT9OLffH9ZpY3KyLV46XyiL5

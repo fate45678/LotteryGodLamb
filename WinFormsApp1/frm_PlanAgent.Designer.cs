@@ -152,7 +152,7 @@
             this.pnlPlanArea.Location = new System.Drawing.Point(3, 3);
             this.pnlPlanArea.Name = "pnlPlanArea";
             this.pnlPlanArea.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.pnlPlanArea.Size = new System.Drawing.Size(1075, 543);
+            this.pnlPlanArea.Size = new System.Drawing.Size(1494, 543);
             this.pnlPlanArea.TabIndex = 2;
             // 
             // pnlPlanRight
@@ -161,9 +161,9 @@
             this.pnlPlanRight.Controls.Add(this.panel11);
             this.pnlPlanRight.Controls.Add(this.pnlRightTop);
             this.pnlPlanRight.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlPlanRight.Location = new System.Drawing.Point(366, 6);
+            this.pnlPlanRight.Location = new System.Drawing.Point(423, 6);
             this.pnlPlanRight.Name = "pnlPlanRight";
-            this.pnlPlanRight.Size = new System.Drawing.Size(704, 537);
+            this.pnlPlanRight.Size = new System.Drawing.Size(1039, 537);
             this.pnlPlanRight.TabIndex = 2;
             // 
             // pnlRightBottom
@@ -174,7 +174,7 @@
             this.pnlRightBottom.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRightBottom.Location = new System.Drawing.Point(0, 412);
             this.pnlRightBottom.Name = "pnlRightBottom";
-            this.pnlRightBottom.Size = new System.Drawing.Size(704, 120);
+            this.pnlRightBottom.Size = new System.Drawing.Size(1039, 120);
             this.pnlRightBottom.TabIndex = 1;
             // 
             // pnlAD3
@@ -183,9 +183,9 @@
             this.pnlAD3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD3.Controls.Add(this.picAD3);
             this.pnlAD3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlAD3.Location = new System.Drawing.Point(420, 0);
+            this.pnlAD3.Location = new System.Drawing.Point(476, 0);
             this.pnlAD3.Name = "pnlAD3";
-            this.pnlAD3.Size = new System.Drawing.Size(283, 120);
+            this.pnlAD3.Size = new System.Drawing.Size(553, 120);
             this.pnlAD3.TabIndex = 0;
             // 
             // picAD3
@@ -197,7 +197,7 @@
             this.picAD3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picAD3.Location = new System.Drawing.Point(0, 0);
             this.picAD3.Name = "picAD3";
-            this.picAD3.Size = new System.Drawing.Size(281, 118);
+            this.picAD3.Size = new System.Drawing.Size(551, 118);
             this.picAD3.TabIndex = 1;
             this.picAD3.TabStop = false;
             this.picAD3.Click += new System.EventHandler(this.picAD3_Click);
@@ -205,9 +205,9 @@
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Location = new System.Drawing.Point(414, 0);
+            this.panel9.Location = new System.Drawing.Point(466, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(6, 120);
+            this.panel9.Size = new System.Drawing.Size(10, 120);
             this.panel9.TabIndex = 7;
             // 
             // pnlMyFavorite
@@ -218,7 +218,7 @@
             this.pnlMyFavorite.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMyFavorite.Location = new System.Drawing.Point(0, 0);
             this.pnlMyFavorite.Name = "pnlMyFavorite";
-            this.pnlMyFavorite.Size = new System.Drawing.Size(414, 120);
+            this.pnlMyFavorite.Size = new System.Drawing.Size(466, 120);
             this.pnlMyFavorite.TabIndex = 1;
             // 
             // panel3
@@ -232,9 +232,9 @@
             this.panel3.Controls.Add(this.button31);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(27, 0);
+            this.panel3.Location = new System.Drawing.Point(79, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(380, 118);
+            this.panel3.Size = new System.Drawing.Size(423, 118);
             this.panel3.TabIndex = 1;
             // 
             // button38
@@ -242,7 +242,7 @@
             this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button38.Location = new System.Drawing.Point(5, 81);
             this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(109, 34);
+            this.button38.Size = new System.Drawing.Size(119, 34);
             this.button38.TabIndex = 9;
             this.button38.Text = "button38";
             this.button38.UseVisualStyleBackColor = true;
@@ -250,9 +250,9 @@
             // button36
             // 
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Location = new System.Drawing.Point(231, 43);
+            this.button36.Location = new System.Drawing.Point(255, 43);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(109, 34);
+            this.button36.Size = new System.Drawing.Size(119, 34);
             this.button36.TabIndex = 7;
             this.button36.Text = "button36";
             this.button36.UseVisualStyleBackColor = true;
@@ -260,9 +260,9 @@
             // button35
             // 
             this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Location = new System.Drawing.Point(118, 43);
+            this.button35.Location = new System.Drawing.Point(131, 43);
             this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(109, 34);
+            this.button35.Size = new System.Drawing.Size(119, 34);
             this.button35.TabIndex = 6;
             this.button35.Text = "button35";
             this.button35.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.Location = new System.Drawing.Point(5, 43);
             this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(109, 34);
+            this.button34.Size = new System.Drawing.Size(119, 34);
             this.button34.TabIndex = 5;
             this.button34.Text = "button34";
             this.button34.UseVisualStyleBackColor = true;
@@ -280,9 +280,9 @@
             // button32
             // 
             this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Location = new System.Drawing.Point(231, 5);
+            this.button32.Location = new System.Drawing.Point(256, 5);
             this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(109, 34);
+            this.button32.Size = new System.Drawing.Size(119, 34);
             this.button32.TabIndex = 3;
             this.button32.Text = "button32";
             this.button32.UseVisualStyleBackColor = true;
@@ -290,9 +290,9 @@
             // button31
             // 
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button31.Location = new System.Drawing.Point(118, 5);
+            this.button31.Location = new System.Drawing.Point(131, 5);
             this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(109, 34);
+            this.button31.Size = new System.Drawing.Size(119, 34);
             this.button31.TabIndex = 2;
             this.button31.Text = "button31";
             this.button31.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(5, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 34);
+            this.button3.Size = new System.Drawing.Size(119, 34);
             this.button3.TabIndex = 1;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
@@ -313,7 +313,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(27, 118);
+            this.panel1.Size = new System.Drawing.Size(79, 118);
             this.panel1.TabIndex = 0;
             // 
             // label8
@@ -325,16 +325,17 @@
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(4, 30, 4, 10);
-            this.label8.Size = new System.Drawing.Size(27, 118);
+            this.label8.Size = new System.Drawing.Size(79, 118);
             this.label8.TabIndex = 0;
             this.label8.Text = "我的收藏";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel11
             // 
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 406);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(704, 6);
+            this.panel11.Size = new System.Drawing.Size(1039, 6);
             this.panel11.TabIndex = 7;
             // 
             // pnlRightTop
@@ -347,7 +348,7 @@
             this.pnlRightTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRightTop.Location = new System.Drawing.Point(0, 0);
             this.pnlRightTop.Name = "pnlRightTop";
-            this.pnlRightTop.Size = new System.Drawing.Size(704, 406);
+            this.pnlRightTop.Size = new System.Drawing.Size(1039, 406);
             this.pnlRightTop.TabIndex = 0;
             // 
             // pnlUserRank
@@ -355,9 +356,9 @@
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlUserRank.Location = new System.Drawing.Point(531, 0);
+            this.pnlUserRank.Location = new System.Drawing.Point(724, 0);
             this.pnlUserRank.Name = "pnlUserRank";
-            this.pnlUserRank.Size = new System.Drawing.Size(173, 406);
+            this.pnlUserRank.Size = new System.Drawing.Size(306, 406);
             this.pnlUserRank.TabIndex = 10;
             // 
             // panel33
@@ -367,7 +368,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(171, 28);
+            this.panel33.Size = new System.Drawing.Size(304, 28);
             this.panel33.TabIndex = 3;
             // 
             // label116
@@ -384,9 +385,9 @@
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(525, 0);
+            this.panel14.Location = new System.Drawing.Point(714, 0);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(6, 406);
+            this.panel14.Size = new System.Drawing.Size(10, 406);
             this.panel14.TabIndex = 11;
             // 
             // pnlHistory
@@ -395,9 +396,9 @@
             this.pnlHistory.Controls.Add(this.rtxtHistory);
             this.pnlHistory.Controls.Add(this.panel32);
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlHistory.Location = new System.Drawing.Point(350, 0);
+            this.pnlHistory.Location = new System.Drawing.Point(406, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(175, 406);
+            this.pnlHistory.Size = new System.Drawing.Size(308, 406);
             this.pnlHistory.TabIndex = 9;
             // 
             // rtxtHistory
@@ -410,7 +411,7 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(159, 370);
+            this.rtxtHistory.Size = new System.Drawing.Size(211, 370);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -421,7 +422,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(173, 28);
+            this.panel32.Size = new System.Drawing.Size(306, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -438,9 +439,9 @@
             // panel10
             // 
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(344, 0);
+            this.panel10.Location = new System.Drawing.Point(396, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(6, 406);
+            this.panel10.Size = new System.Drawing.Size(10, 406);
             this.panel10.TabIndex = 8;
             // 
             // pnlPlanNumber
@@ -453,7 +454,7 @@
             this.pnlPlanNumber.Location = new System.Drawing.Point(0, 0);
             this.pnlPlanNumber.Name = "pnlPlanNumber";
             this.pnlPlanNumber.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlPlanNumber.Size = new System.Drawing.Size(344, 406);
+            this.pnlPlanNumber.Size = new System.Drawing.Size(396, 406);
             this.pnlPlanNumber.TabIndex = 1;
             // 
             // richTextBox1
@@ -462,7 +463,7 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(5, 42);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(332, 357);
+            this.richTextBox1.Size = new System.Drawing.Size(384, 357);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "00001, 00002, 00003, 00005";
             // 
@@ -477,7 +478,7 @@
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(332, 37);
+            this.panel4.Size = new System.Drawing.Size(384, 37);
             this.panel4.TabIndex = 0;
             // 
             // button40
@@ -487,9 +488,9 @@
             this.button40.Dock = System.Windows.Forms.DockStyle.Left;
             this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button40.ForeColor = System.Drawing.Color.White;
-            this.button40.Location = new System.Drawing.Point(271, 5);
+            this.button40.Location = new System.Drawing.Point(326, 5);
             this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(50, 32);
+            this.button40.Size = new System.Drawing.Size(53, 32);
             this.button40.TabIndex = 23;
             this.button40.Text = "复制";
             this.button40.UseVisualStyleBackColor = false;
@@ -501,9 +502,9 @@
             this.button37.Dock = System.Windows.Forms.DockStyle.Left;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button37.ForeColor = System.Drawing.Color.White;
-            this.button37.Location = new System.Drawing.Point(221, 5);
+            this.button37.Location = new System.Drawing.Point(273, 5);
             this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(50, 32);
+            this.button37.Size = new System.Drawing.Size(53, 32);
             this.button37.TabIndex = 22;
             this.button37.Text = "收藏";
             this.button37.UseVisualStyleBackColor = false;
@@ -515,7 +516,7 @@
             this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(107, 5);
+            this.label10.Location = new System.Drawing.Point(159, 5);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.label10.Size = new System.Drawing.Size(114, 26);
@@ -532,7 +533,7 @@
             this.button33.ForeColor = System.Drawing.Color.White;
             this.button33.Location = new System.Drawing.Point(39, 5);
             this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(68, 32);
+            this.button33.Size = new System.Drawing.Size(120, 32);
             this.button33.TabIndex = 20;
             this.button33.Text = "详细计划";
             this.button33.UseVisualStyleBackColor = false;
@@ -555,9 +556,9 @@
             // panel12
             // 
             this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel12.Location = new System.Drawing.Point(360, 6);
+            this.panel12.Location = new System.Drawing.Point(412, 6);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(6, 537);
+            this.panel12.Size = new System.Drawing.Size(11, 537);
             this.panel12.TabIndex = 9;
             // 
             // pnlPlanList
@@ -569,7 +570,7 @@
             this.pnlPlanList.Location = new System.Drawing.Point(0, 6);
             this.pnlPlanList.Name = "pnlPlanList";
             this.pnlPlanList.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.pnlPlanList.Size = new System.Drawing.Size(360, 537);
+            this.pnlPlanList.Size = new System.Drawing.Size(412, 537);
             this.pnlPlanList.TabIndex = 0;
             // 
             // panel13
@@ -581,7 +582,7 @@
             this.panel13.Location = new System.Drawing.Point(3, 469);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(3);
-            this.panel13.Size = new System.Drawing.Size(357, 29);
+            this.panel13.Size = new System.Drawing.Size(409, 29);
             this.panel13.TabIndex = 2;
             // 
             // button43
@@ -590,7 +591,7 @@
             this.button43.Dock = System.Windows.Forms.DockStyle.Right;
             this.button43.FlatAppearance.BorderSize = 0;
             this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button43.Location = new System.Drawing.Point(174, 3);
+            this.button43.Location = new System.Drawing.Point(226, 3);
             this.button43.Margin = new System.Windows.Forms.Padding(0);
             this.button43.Name = "button43";
             this.button43.Size = new System.Drawing.Size(60, 23);
@@ -604,7 +605,7 @@
             this.button42.Dock = System.Windows.Forms.DockStyle.Right;
             this.button42.FlatAppearance.BorderSize = 0;
             this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button42.Location = new System.Drawing.Point(234, 3);
+            this.button42.Location = new System.Drawing.Point(286, 3);
             this.button42.Margin = new System.Windows.Forms.Padding(0);
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(60, 23);
@@ -618,7 +619,7 @@
             this.button41.Dock = System.Windows.Forms.DockStyle.Right;
             this.button41.FlatAppearance.BorderSize = 0;
             this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button41.Location = new System.Drawing.Point(294, 3);
+            this.button41.Location = new System.Drawing.Point(346, 3);
             this.button41.Margin = new System.Windows.Forms.Padding(0);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(60, 23);
@@ -636,7 +637,7 @@
             this.panel5.Location = new System.Drawing.Point(3, 81);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.panel5.Size = new System.Drawing.Size(357, 388);
+            this.panel5.Size = new System.Drawing.Size(409, 388);
             this.panel5.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -644,7 +645,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableLayoutPanel1.Controls.Add(this.button30, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.button29, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.button28, 0, 8);
@@ -685,7 +686,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 364);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 364);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button30
@@ -694,7 +695,7 @@
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.Location = new System.Drawing.Point(233, 323);
             this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(109, 34);
+            this.button30.Size = new System.Drawing.Size(160, 34);
             this.button30.TabIndex = 26;
             this.button30.Text = "button30";
             this.button30.UseVisualStyleBackColor = true;
@@ -727,7 +728,7 @@
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button27.Location = new System.Drawing.Point(233, 283);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(109, 34);
+            this.button27.Size = new System.Drawing.Size(160, 34);
             this.button27.TabIndex = 23;
             this.button27.Text = "button27";
             this.button27.UseVisualStyleBackColor = true;
@@ -760,7 +761,7 @@
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.Location = new System.Drawing.Point(233, 243);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(109, 34);
+            this.button24.Size = new System.Drawing.Size(160, 34);
             this.button24.TabIndex = 20;
             this.button24.Text = "button24";
             this.button24.UseVisualStyleBackColor = true;
@@ -793,7 +794,7 @@
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Location = new System.Drawing.Point(233, 203);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(109, 34);
+            this.button21.Size = new System.Drawing.Size(160, 34);
             this.button21.TabIndex = 17;
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
@@ -826,7 +827,7 @@
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button18.Location = new System.Drawing.Point(233, 163);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(109, 34);
+            this.button18.Size = new System.Drawing.Size(160, 34);
             this.button18.TabIndex = 14;
             this.button18.Text = "button18";
             this.button18.UseVisualStyleBackColor = true;
@@ -859,7 +860,7 @@
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Location = new System.Drawing.Point(233, 123);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(109, 34);
+            this.button15.Size = new System.Drawing.Size(160, 34);
             this.button15.TabIndex = 11;
             this.button15.Text = "button15";
             this.button15.UseVisualStyleBackColor = true;
@@ -892,7 +893,7 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Location = new System.Drawing.Point(233, 83);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(109, 34);
+            this.button12.Size = new System.Drawing.Size(160, 34);
             this.button12.TabIndex = 8;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
@@ -925,7 +926,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Location = new System.Drawing.Point(233, 43);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 34);
+            this.button9.Size = new System.Drawing.Size(160, 34);
             this.button9.TabIndex = 5;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
@@ -958,7 +959,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Location = new System.Drawing.Point(233, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 34);
+            this.button6.Size = new System.Drawing.Size(160, 34);
             this.button6.TabIndex = 2;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
@@ -1003,7 +1004,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(357, 81);
+            this.panel2.Size = new System.Drawing.Size(409, 81);
             this.panel2.TabIndex = 0;
             // 
             // panel8
@@ -1013,7 +1014,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 56);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(357, 28);
+            this.panel8.Size = new System.Drawing.Size(409, 28);
             this.panel8.TabIndex = 2;
             // 
             // button2
@@ -1021,10 +1022,10 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(141, 4);
+            this.button2.Location = new System.Drawing.Point(204, 4);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 21);
+            this.button2.Size = new System.Drawing.Size(167, 21);
             this.button2.TabIndex = 1;
             this.button2.Text = "依最新上传排序";
             this.button2.UseVisualStyleBackColor = true;
@@ -1037,7 +1038,7 @@
             this.button1.Location = new System.Drawing.Point(38, 4);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 21);
+            this.button1.Size = new System.Drawing.Size(149, 21);
             this.button1.TabIndex = 0;
             this.button1.Text = "依中奖率排序";
             this.button1.UseVisualStyleBackColor = true;
@@ -1051,7 +1052,7 @@
             this.panel7.Location = new System.Drawing.Point(0, 28);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(3);
-            this.panel7.Size = new System.Drawing.Size(357, 28);
+            this.panel7.Size = new System.Drawing.Size(409, 28);
             this.panel7.TabIndex = 1;
             // 
             // btnSearchPlan
@@ -1061,9 +1062,9 @@
             this.btnSearchPlan.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSearchPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchPlan.ForeColor = System.Drawing.Color.White;
-            this.btnSearchPlan.Location = new System.Drawing.Point(205, 3);
+            this.btnSearchPlan.Location = new System.Drawing.Point(257, 3);
             this.btnSearchPlan.Name = "btnSearchPlan";
-            this.btnSearchPlan.Size = new System.Drawing.Size(73, 22);
+            this.btnSearchPlan.Size = new System.Drawing.Size(149, 22);
             this.btnSearchPlan.TabIndex = 20;
             this.btnSearchPlan.Text = "搜寻计划";
             this.btnSearchPlan.UseVisualStyleBackColor = false;
@@ -1072,7 +1073,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Location = new System.Drawing.Point(195, 3);
+            this.label5.Location = new System.Drawing.Point(247, 3);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Size = new System.Drawing.Size(10, 12);
@@ -1083,7 +1084,7 @@
             this.txtSearchUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtSearchUser.Location = new System.Drawing.Point(3, 3);
             this.txtSearchUser.Name = "txtSearchUser";
-            this.txtSearchUser.Size = new System.Drawing.Size(192, 22);
+            this.txtSearchUser.Size = new System.Drawing.Size(244, 22);
             this.txtSearchUser.TabIndex = 0;
             // 
             // panel6
@@ -1097,7 +1098,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(3);
-            this.panel6.Size = new System.Drawing.Size(357, 28);
+            this.panel6.Size = new System.Drawing.Size(409, 28);
             this.panel6.TabIndex = 0;
             // 
             // btnView
@@ -1107,9 +1108,9 @@
             this.btnView.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.Location = new System.Drawing.Point(205, 3);
+            this.btnView.Location = new System.Drawing.Point(309, 3);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(73, 22);
+            this.btnView.Size = new System.Drawing.Size(97, 22);
             this.btnView.TabIndex = 19;
             this.btnView.Text = "查看";
             this.btnView.UseVisualStyleBackColor = false;
@@ -1118,7 +1119,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label4.Location = new System.Drawing.Point(195, 3);
+            this.label4.Location = new System.Drawing.Point(299, 3);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Size = new System.Drawing.Size(10, 12);
@@ -1136,9 +1137,9 @@
             "直选复式",
             "直选单式",
             "五星组合"});
-            this.cbGameDirect.Location = new System.Drawing.Point(95, 3);
+            this.cbGameDirect.Location = new System.Drawing.Point(147, 3);
             this.cbGameDirect.Name = "cbGameDirect";
-            this.cbGameDirect.Size = new System.Drawing.Size(100, 20);
+            this.cbGameDirect.Size = new System.Drawing.Size(152, 20);
             this.cbGameDirect.TabIndex = 18;
             this.cbGameDirect.TabStop = false;
             // 
@@ -1146,7 +1147,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(85, 3);
+            this.label7.Location = new System.Drawing.Point(137, 3);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Size = new System.Drawing.Size(10, 12);
@@ -1171,7 +1172,7 @@
             "定位胆"});
             this.cbGameKind.Location = new System.Drawing.Point(3, 3);
             this.cbGameKind.Name = "cbGameKind";
-            this.cbGameKind.Size = new System.Drawing.Size(82, 20);
+            this.cbGameKind.Size = new System.Drawing.Size(134, 20);
             this.cbGameKind.TabIndex = 4;
             this.cbGameKind.TabStop = false;
             this.cbGameKind.SelectionChangeCommitted += new System.EventHandler(this.cbGameKind_SelectionChangeCommitted);
@@ -1187,7 +1188,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1081, 549);
+            this.ClientSize = new System.Drawing.Size(1500, 549);
             this.Controls.Add(this.pnlPlanArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_PlanAgent";
@@ -1260,7 +1261,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button27;
@@ -1316,6 +1316,6 @@
         private System.Windows.Forms.Label label116;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Timer timer1;
-
+        private System.Windows.Forms.Button button30;
     }
 }

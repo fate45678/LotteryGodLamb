@@ -141,6 +141,45 @@ namespace WinFormsApp1
             }
             return temp;
         }
+        public List<string> ConSQLtoLT(string serverIP, string DB, string Query, Dictionary<int, string> GetFieldName)
+        {
+            List<string> temp = new List<string>();
+            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa"))
+            {
+                int count = 0;
+                var cmd = new SqlCommand(Query, con);
+                cmd.CommandType = System.Data.CommandType.Text;
+                con.Open();
+                using (SqlDataReader objReader = cmd.ExecuteReader())
+                {
+                    if (objReader.HasRows)
+                    {
+                        while (objReader.Read())
+                        {
+                            count++;
+                            for (int i = 0; i < GetFieldName.Count; i++)
+                            {
+                                if (GetFieldName.ContainsKey(i))
+                                {
+                                    var dataLocation = objReader.GetOrdinal(GetFieldName[i]);
+                                    if (objReader.GetDataTypeName(dataLocation).Equals("nvarchar") || objReader.GetDataTypeName(dataLocation).Equals("varchar"))
+                                        temp.Add(objReader.GetString(dataLocation));
+                                    else if (objReader.GetDataTypeName(dataLocation).Equals("date"))
+                                        temp.Add(objReader.GetDateTime(dataLocation).ToString());
+                                }
+                            }
+                            //temp.Add(new Item
+                            //{
+                            //    id = count,
+                            //    value = objReader.GetString(objReader.GetOrdinal("name"))
+                            //});
+                        }
+                    }
+                }
+            }
+            return temp;
+        }
+
         public class Item
         {
             public int id { get; set; }

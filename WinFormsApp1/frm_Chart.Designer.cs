@@ -159,12 +159,12 @@
             // lblMenuLast30
             // 
             this.lblMenuLast30.AutoSize = true;
-            this.lblMenuLast30.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblMenuLast30.BackColor = System.Drawing.Color.Gainsboro;
             this.lblMenuLast30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMenuLast30.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuLast30.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuLast30.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuLast30.ForeColor = System.Drawing.Color.White;
+            this.lblMenuLast30.ForeColor = System.Drawing.Color.Black;
             this.lblMenuLast30.Location = new System.Drawing.Point(771, 10);
             this.lblMenuLast30.Name = "lblMenuLast30";
             this.lblMenuLast30.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
@@ -186,12 +186,12 @@
             // lblMenuChart
             // 
             this.lblMenuChart.AutoSize = true;
-            this.lblMenuChart.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblMenuChart.BackColor = System.Drawing.Color.Gainsboro;
             this.lblMenuChart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMenuChart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuChart.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuChart.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuChart.ForeColor = System.Drawing.Color.White;
+            this.lblMenuChart.ForeColor = System.Drawing.Color.Black;
             this.lblMenuChart.Location = new System.Drawing.Point(676, 10);
             this.lblMenuChart.Name = "lblMenuChart";
             this.lblMenuChart.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
@@ -242,12 +242,12 @@
             // lblMenuMiss
             // 
             this.lblMenuMiss.AutoSize = true;
-            this.lblMenuMiss.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblMenuMiss.BackColor = System.Drawing.Color.Gainsboro;
             this.lblMenuMiss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMenuMiss.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuMiss.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuMiss.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuMiss.ForeColor = System.Drawing.Color.White;
+            this.lblMenuMiss.ForeColor = System.Drawing.Color.Black;
             this.lblMenuMiss.Location = new System.Drawing.Point(541, 10);
             this.lblMenuMiss.Name = "lblMenuMiss";
             this.lblMenuMiss.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);

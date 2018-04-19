@@ -137,11 +137,11 @@
             this.pnlGameMenu.Controls.Add(this.label1);
             this.pnlGameMenu.Controls.Add(this.lblMenuPlanCycle);
             this.pnlGameMenu.Controls.Add(this.lblGameName);
-            this.pnlGameMenu.Location = new System.Drawing.Point(5, 0);
+            this.pnlGameMenu.Location = new System.Drawing.Point(8, 0);
             this.pnlGameMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnlGameMenu.Name = "pnlGameMenu";
             this.pnlGameMenu.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
-            this.pnlGameMenu.Size = new System.Drawing.Size(1084, 36);
+            this.pnlGameMenu.Size = new System.Drawing.Size(1468, 36);
             this.pnlGameMenu.TabIndex = 4;
             // 
             // panel1
@@ -153,7 +153,7 @@
             this.panel1.Location = new System.Drawing.Point(761, 10);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(232, 21);
+            this.panel1.Size = new System.Drawing.Size(704, 21);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
@@ -362,9 +362,9 @@
             this.pnlMenuPlanCycle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMenuPlanCycle.AutoSize = true;
             this.pnlMenuPlanCycle.BackColor = System.Drawing.Color.White;
-            this.pnlMenuPlanCycle.Location = new System.Drawing.Point(0, 92);
+            this.pnlMenuPlanCycle.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuPlanCycle.Name = "pnlMenuPlanCycle";
-            this.pnlMenuPlanCycle.Size = new System.Drawing.Size(1082, 545);
+            this.pnlMenuPlanCycle.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuPlanCycle.TabIndex = 5;
             // 
             // timer_ShowMessage
@@ -378,10 +378,10 @@
             this.pnlGameSelect.BackColor = System.Drawing.Color.White;
             this.pnlGameSelect.Controls.Add(this.pnlGameRow);
             this.pnlGameSelect.Controls.Add(this.pnlGameLastNumber);
-            this.pnlGameSelect.Location = new System.Drawing.Point(0, 0);
+            this.pnlGameSelect.Location = new System.Drawing.Point(3, 0);
             this.pnlGameSelect.Name = "pnlGameSelect";
             this.pnlGameSelect.Padding = new System.Windows.Forms.Padding(5, 5, 8, 5);
-            this.pnlGameSelect.Size = new System.Drawing.Size(1084, 92);
+            this.pnlGameSelect.Size = new System.Drawing.Size(1462, 92);
             this.pnlGameSelect.TabIndex = 6;
             // 
             // pnlGameRow
@@ -392,7 +392,7 @@
             this.pnlGameRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGameRow.Location = new System.Drawing.Point(5, 5);
             this.pnlGameRow.Name = "pnlGameRow";
-            this.pnlGameRow.Size = new System.Drawing.Size(735, 82);
+            this.pnlGameRow.Size = new System.Drawing.Size(1113, 82);
             this.pnlGameRow.TabIndex = 0;
             // 
             // pnlGameRow3
@@ -411,7 +411,7 @@
             this.pnlGameRow3.Location = new System.Drawing.Point(0, 54);
             this.pnlGameRow3.Name = "pnlGameRow3";
             this.pnlGameRow3.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow3.Size = new System.Drawing.Size(735, 27);
+            this.pnlGameRow3.Size = new System.Drawing.Size(1113, 27);
             this.pnlGameRow3.TabIndex = 2;
             // 
             // lblGame3_9
@@ -584,7 +584,7 @@
             this.pnlGameRow2.Location = new System.Drawing.Point(0, 27);
             this.pnlGameRow2.Name = "pnlGameRow2";
             this.pnlGameRow2.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow2.Size = new System.Drawing.Size(735, 27);
+            this.pnlGameRow2.Size = new System.Drawing.Size(1113, 27);
             this.pnlGameRow2.TabIndex = 1;
             // 
             // lblGame2_6
@@ -711,7 +711,7 @@
             this.pnlGameRow1.Location = new System.Drawing.Point(0, 0);
             this.pnlGameRow1.Name = "pnlGameRow1";
             this.pnlGameRow1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow1.Size = new System.Drawing.Size(735, 27);
+            this.pnlGameRow1.Size = new System.Drawing.Size(1113, 27);
             this.pnlGameRow1.TabIndex = 0;
             // 
             // lblGame1_8
@@ -871,7 +871,7 @@
             this.pnlGameLastNumber.Controls.Add(this.picNumber2);
             this.pnlGameLastNumber.Controls.Add(this.picNumber1);
             this.pnlGameLastNumber.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlGameLastNumber.Location = new System.Drawing.Point(740, 5);
+            this.pnlGameLastNumber.Location = new System.Drawing.Point(1118, 5);
             this.pnlGameLastNumber.Name = "pnlGameLastNumber";
             this.pnlGameLastNumber.Padding = new System.Windows.Forms.Padding(3);
             this.pnlGameLastNumber.Size = new System.Drawing.Size(336, 82);
@@ -1081,9 +1081,9 @@
             this.panel2.Controls.Add(this.pnlMenuPlanAgent);
             this.panel2.Controls.Add(this.pnlMenuPlanCycle);
             this.panel2.Controls.Add(this.pnlGameSelect);
-            this.panel2.Location = new System.Drawing.Point(5, 38);
+            this.panel2.Location = new System.Drawing.Point(8, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1084, 642);
+            this.panel2.Size = new System.Drawing.Size(1468, 642);
             this.panel2.TabIndex = 7;
             // 
             // pnlMenuChart
@@ -1091,9 +1091,9 @@
             this.pnlMenuChart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMenuChart.AutoSize = true;
             this.pnlMenuChart.BackColor = System.Drawing.Color.White;
-            this.pnlMenuChart.Location = new System.Drawing.Point(0, 92);
+            this.pnlMenuChart.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuChart.Name = "pnlMenuChart";
-            this.pnlMenuChart.Size = new System.Drawing.Size(1082, 545);
+            this.pnlMenuChart.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuChart.TabIndex = 10;
             // 
             // pnlMenuShrink
@@ -1101,9 +1101,9 @@
             this.pnlMenuShrink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMenuShrink.AutoSize = true;
             this.pnlMenuShrink.BackColor = System.Drawing.Color.White;
-            this.pnlMenuShrink.Location = new System.Drawing.Point(0, 92);
+            this.pnlMenuShrink.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuShrink.Name = "pnlMenuShrink";
-            this.pnlMenuShrink.Size = new System.Drawing.Size(1082, 545);
+            this.pnlMenuShrink.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuShrink.TabIndex = 9;
             // 
             // pnlMenuPlanUpload
@@ -1111,9 +1111,9 @@
             this.pnlMenuPlanUpload.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMenuPlanUpload.AutoSize = true;
             this.pnlMenuPlanUpload.BackColor = System.Drawing.Color.White;
-            this.pnlMenuPlanUpload.Location = new System.Drawing.Point(0, 92);
+            this.pnlMenuPlanUpload.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuPlanUpload.Name = "pnlMenuPlanUpload";
-            this.pnlMenuPlanUpload.Size = new System.Drawing.Size(1082, 545);
+            this.pnlMenuPlanUpload.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuPlanUpload.TabIndex = 8;
             // 
             // pnlMenuPlanAgent
@@ -1121,9 +1121,9 @@
             this.pnlMenuPlanAgent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMenuPlanAgent.AutoSize = true;
             this.pnlMenuPlanAgent.BackColor = System.Drawing.Color.White;
-            this.pnlMenuPlanAgent.Location = new System.Drawing.Point(0, 92);
+            this.pnlMenuPlanAgent.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuPlanAgent.Name = "pnlMenuPlanAgent";
-            this.pnlMenuPlanAgent.Size = new System.Drawing.Size(1082, 545);
+            this.pnlMenuPlanAgent.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuPlanAgent.TabIndex = 7;
             // 
             // notifyIcon1
@@ -1140,7 +1140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1094, 683);
+            this.ClientSize = new System.Drawing.Size(1484, 683);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlGameMenu);
             this.ForeColor = System.Drawing.Color.Black;

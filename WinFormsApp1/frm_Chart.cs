@@ -20,10 +20,10 @@ namespace WinFormsApp1
 
         public static string strGameKindSelect = ""; //五星
         public static string strLineSelect = ""; //辅助线
-        public static string strMissSelect = "遗漏"; //遗漏
+        public static string strMissSelect = ""; //遗漏
         public static string strMissBarSelect = ""; //遗漏条
-        public static string strChartSelect = "走势"; //走势
-        public static string strPeriodSelect = "最近30期"; //最近30期
+        public static string strChartSelect = ""; //走势
+        public static string strPeriodSelect = ""; //最近30期
 
         public frm_Chart()
         {
@@ -42,7 +42,6 @@ namespace WinFormsApp1
 
         private void frm_Chart_Load(object sender, EventArgs e)
         {
-
         }
 
         #region Click事件
@@ -220,7 +219,8 @@ namespace WinFormsApp1
         //傳參數
         private void PassToUserControl()
         {
-            userControl11.DrawChart(strGameKindSelect, strLineSelect, strMissSelect, strMissBarSelect, strChartSelect, strPeriodSelect);
+            if (strGameKindSelect != "" && strPeriodSelect != "" )
+                userControl11.DrawChart(strGameKindSelect, strLineSelect, strMissSelect, strMissBarSelect, strChartSelect, strPeriodSelect);
         }
 
 
