@@ -187,7 +187,7 @@
             this.btnViewResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewResult.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnViewResult.ForeColor = System.Drawing.Color.White;
-            this.btnViewResult.Location = new System.Drawing.Point(619, -1);
+            this.btnViewResult.Location = new System.Drawing.Point(704, 1);
             this.btnViewResult.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewResult.Name = "btnViewResult";
             this.btnViewResult.Size = new System.Drawing.Size(132, 27);
@@ -202,7 +202,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(899, 3);
+            this.label1.Location = new System.Drawing.Point(675, 3);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 6, 10, 0);
             this.label1.Size = new System.Drawing.Size(10, 19);
@@ -221,9 +221,9 @@
             "三期一周",
             "二期一周",
             "一期一周"});
-            this.cbGameCycle.Location = new System.Drawing.Point(740, 3);
+            this.cbGameCycle.Location = new System.Drawing.Point(550, 3);
             this.cbGameCycle.Name = "cbGameCycle";
-            this.cbGameCycle.Size = new System.Drawing.Size(159, 23);
+            this.cbGameCycle.Size = new System.Drawing.Size(125, 23);
             this.cbGameCycle.TabIndex = 22;
             this.cbGameCycle.TabStop = false;
             // 
@@ -231,7 +231,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Location = new System.Drawing.Point(730, 3);
+            this.label10.Location = new System.Drawing.Point(540, 3);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Size = new System.Drawing.Size(10, 12);
@@ -250,9 +250,9 @@
             "玉神计划",
             "幻影计划",
             "神灯计划"});
-            this.cbGamePlan.Location = new System.Drawing.Point(517, 3);
+            this.cbGamePlan.Location = new System.Drawing.Point(415, 3);
             this.cbGamePlan.Name = "cbGamePlan";
-            this.cbGamePlan.Size = new System.Drawing.Size(213, 23);
+            this.cbGamePlan.Size = new System.Drawing.Size(125, 23);
             this.cbGamePlan.TabIndex = 20;
             this.cbGamePlan.TabStop = false;
             // 
@@ -260,7 +260,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(507, 3);
+            this.label9.Location = new System.Drawing.Point(405, 3);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Size = new System.Drawing.Size(10, 12);
@@ -279,9 +279,9 @@
             "30000+",
             "40000+",
             "50000+"});
-            this.cbGamePlus.Location = new System.Drawing.Point(348, 3);
+            this.cbGamePlus.Location = new System.Drawing.Point(280, 3);
             this.cbGamePlus.Name = "cbGamePlus";
-            this.cbGamePlus.Size = new System.Drawing.Size(159, 23);
+            this.cbGamePlus.Size = new System.Drawing.Size(125, 23);
             this.cbGamePlus.TabIndex = 18;
             this.cbGamePlus.TabStop = false;
             this.cbGamePlus.SelectedIndexChanged += new System.EventHandler(this.cbGamePlus_SelectedIndexChanged);
@@ -290,7 +290,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label8.Location = new System.Drawing.Point(338, 3);
+            this.label8.Location = new System.Drawing.Point(270, 3);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Size = new System.Drawing.Size(10, 12);
@@ -309,9 +309,9 @@
             "直选复式",
             "直选单式",
             "五星组合"});
-            this.cbGameDirect.Location = new System.Drawing.Point(179, 3);
+            this.cbGameDirect.Location = new System.Drawing.Point(145, 3);
             this.cbGameDirect.Name = "cbGameDirect";
-            this.cbGameDirect.Size = new System.Drawing.Size(159, 23);
+            this.cbGameDirect.Size = new System.Drawing.Size(125, 23);
             this.cbGameDirect.TabIndex = 4;
             this.cbGameDirect.TabStop = false;
             // 
@@ -319,7 +319,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(169, 3);
+            this.label7.Location = new System.Drawing.Point(135, 3);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Size = new System.Drawing.Size(10, 12);
@@ -345,7 +345,7 @@
             "定位胆"});
             this.cbGameKind.Location = new System.Drawing.Point(10, 3);
             this.cbGameKind.Name = "cbGameKind";
-            this.cbGameKind.Size = new System.Drawing.Size(159, 23);
+            this.cbGameKind.Size = new System.Drawing.Size(125, 23);
             this.cbGameKind.TabIndex = 3;
             this.cbGameKind.TabStop = false;
             this.cbGameKind.SelectionChangeCommitted += new System.EventHandler(this.cbGameKind_SelectionChangeCommitted);

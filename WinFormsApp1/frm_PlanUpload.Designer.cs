@@ -92,12 +92,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -350,6 +350,7 @@
             this.cbGameKind.TabIndex = 3;
             this.cbGameKind.TabStop = false;
             this.cbGameKind.SelectedIndexChanged += new System.EventHandler(this.cbGameKind_SelectedIndexChanged);
+            this.cbGameKind.SelectionChangeCommitted += new System.EventHandler(this.cbGameKind_SelectionChangeCommitted);
             // 
             // panel2
             // 
@@ -673,6 +674,7 @@
             this.button3.TabIndex = 20;
             this.button3.Text = "续传计划";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -875,6 +877,34 @@
             this.panel11.Size = new System.Drawing.Size(323, 24);
             this.panel11.TabIndex = 8;
             // 
+            // button10
+            // 
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(182, 2);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(136, 21);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "依中奖率排序";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(46, 2);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(136, 21);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "依最新上传排序";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -911,32 +941,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button10
-            // 
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(182, 2);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(136, 21);
-            this.button10.TabIndex = 8;
-            this.button10.Text = "依中奖率排序";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(46, 2);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(136, 21);
-            this.button11.TabIndex = 9;
-            this.button11.Text = "依最新上传排序";
-            this.button11.UseVisualStyleBackColor = true;
             // 
             // frm_PlanUpload
             // 

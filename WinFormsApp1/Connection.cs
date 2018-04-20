@@ -166,6 +166,8 @@ namespace WinFormsApp1
                                         temp.Add(objReader.GetString(dataLocation));
                                     else if (objReader.GetDataTypeName(dataLocation).Equals("date"))
                                         temp.Add(objReader.GetDateTime(dataLocation).ToString());
+                                    else if (objReader.GetDataTypeName(dataLocation).Equals("int"))
+                                        temp.Add(objReader.GetInt32(dataLocation).ToString());
                                 }
                             }
                             //temp.Add(new Item

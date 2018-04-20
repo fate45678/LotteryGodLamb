@@ -385,7 +385,7 @@ namespace WinFormsApp1
                 int yHeight = SystemInformation.PrimaryMonitorSize.Height;
                 f_Message.Location = new Point(xWidth - 295, yHeight - 305);
 
-                //f_Message.Show();
+                f_Message.Show();
             }
         }
 

@@ -35,8 +35,8 @@ namespace WinFormsApp1
                 {
                     if (i == 120) break; //寫120筆就好
                     {
-                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
-                        //addNCheckHistoryNumber(i);
+                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
+                        addNCheckHistoryNumber(i);
                     }
                     
                 }
@@ -49,7 +49,7 @@ namespace WinFormsApp1
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
                         if (i == 120) break; //寫120筆就好
-                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
                         addNCheckHistoryNumber(i);
                     }
                 }
@@ -190,17 +190,61 @@ namespace WinFormsApp1
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-            string withoutComma = richTextBox2.Text.Replace(",","");
-            if (richTextBox2.TextLength > 4 && withoutComma.Length %5==0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart-1, 1).Equals(","))
+            
+            #region 自動產生，
+            string withoutComma = richTextBox2.Text.Replace(",", "");
+            if (richTextboxRule == 5)
             {
-                richTextBox2.Text += ",";
-                richTextBox2.Select(richTextBox2.MaxLength, 0);
+                if (richTextBox2.TextLength > 4 && withoutComma.Length % 5 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
+                {
+                    richTextBox2.Text += ",";
+                    richTextBox2.Select(richTextBox2.MaxLength, 0);
+                }
+                //if (!Regex.IsMatch(richTextBox2.Text, "^[0-9][0-9][0-9][0-9][0-9],$"))
+                //    HilightRichText(richTextBox2, "1");
+                //else
+                //    CancelHilightRichText(richTextBox2, "1");
             }
+            else if (richTextboxRule == 4)
+            {
+                if (richTextBox2.TextLength > 3 && withoutComma.Length % 4 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
+                {
+                    richTextBox2.Text += ",";
+                    richTextBox2.Select(richTextBox2.MaxLength, 0);
+                }
+            }
+            else if (richTextboxRule == 3)
+            {
+                if (richTextBox2.TextLength > 2 && withoutComma.Length % 3 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
+                {
+                    richTextBox2.Text += ",";
+                    richTextBox2.Select(richTextBox2.MaxLength, 0);
+                }
+            }
+            else if (richTextboxRule == 2)
+            {
+                if (richTextBox2.TextLength > 1 && withoutComma.Length % 2 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
+                {
+                    richTextBox2.Text += ",";
+                    richTextBox2.Select(richTextBox2.MaxLength, 0);
+                }
+            }
+            else if (richTextboxRule == 1)
+            {
+                if (richTextBox2.TextLength > 0 && withoutComma.Length % 1 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
+                {
+                    richTextBox2.Text += ",";
+                    richTextBox2.Select(richTextBox2.MaxLength, 0);
+                }
+            }
+
             MatchCollection mc;
             Regex r = new Regex(",");
             mc = r.Matches(richTextBox2.Text);
             label21.Text = "共" + mc.Count + "注";
-            }
+            #endregion
+        }
+            
 
         private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -222,7 +266,7 @@ namespace WinFormsApp1
                 var plancount = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select convert(nvarchar(3),count(*)) as 'name' from Upplan where p_account = '" + frmGameMain.globalUserAccount+"'");
                 string maxNum = plancount.Where(x => !x.value.Equals("")).FirstOrDefault().value.ToString();
                 int planNUmber = int.Parse(maxNum) + 1;
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule) values('" + label4.Text+ planName + planNUmber+"','" + frmGameMain.globalUserAccount + "','"+ cbGamePlan.Text + "','"+ cbGameCycle.Text + "','"+ richTextBox2.Text + "')");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule) values('" + label4.Text+" "+planName + planNUmber+"','" + frmGameMain.globalUserAccount + "','"+ cbGamePlan.Text + "','"+ cbGameCycle.Text + "','"+ richTextBox2.Text + "')");
 
                 MessageBox.Show("上傳成功。");
                 updatelbSent();
@@ -231,6 +275,44 @@ namespace WinFormsApp1
 
 
         }
+        //private void HilightRichText(RichTextBox control, string hilightString)
+        //{
+        //    int nSelectStart = control.SelectionStart;
+        //    int nSelectLength = control.SelectionLength;
+        //    int nIndex = 0;
+        //    while (nIndex < control.Text.Length)
+        //    {
+        //        nIndex = control.Find(hilightString, nIndex, RichTextBoxFinds.WholeWord);
+        //        if (nIndex < 0)
+        //        {
+        //            break;
+        //        }
+        //        control.Select(nIndex, hilightString.Length);
+        //        control.SelectionColor = Color.Red;
+        //        nIndex += hilightString.Length;
+        //    }
+        //    control.Select(nSelectStart, nSelectLength);
+        //}
+
+        //private void CancelHilightRichText(RichTextBox control, string hilightString)
+        //{
+        //    int nSelectStart = control.SelectionStart;
+        //    int nSelectLength = control.SelectionLength;
+        //    int nIndex = 0;
+        //    while (nIndex < control.Text.Length)
+        //    {
+        //        nIndex = control.Find(hilightString, nIndex, RichTextBoxFinds.WholeWord);
+        //        if (nIndex < 0)
+        //        {
+        //            break;
+        //        }
+        //        control.Select(nIndex, hilightString.Length);
+        //        control.SelectionColor = Color.Blue;
+        //        nIndex += hilightString.Length;
+        //    }
+        //    control.Select(nSelectStart, nSelectLength);
+        //}
+
 
         private void cbGameKind_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -265,6 +347,7 @@ namespace WinFormsApp1
 
             richTextBox1.Text = "";
         }
+
         bool allorwUpdate = true;
         private void lsbSent_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -284,7 +367,7 @@ namespace WinFormsApp1
                 if (i == 0)
                     label16.Text = getData.ElementAt(i);
                 else if (i == 2)
-                    label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i) + "期";
+                    label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i+1) + "期";
                 else if (i == 4)
                 {
                     richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length - 1);
@@ -310,13 +393,14 @@ namespace WinFormsApp1
                     lsbSent.SetSelected(i, true); 
                 }
             }
-            else
+            else if(!checkBox1.Checked)
             {
                 for (int i = 0; i < lsbSent.Items.Count; i++)
                 {
 
                     lsbSent.SetSelected(i, false);
                 }
+                lsbSent.SelectionMode = SelectionMode.One;
             }
         }
 
@@ -346,6 +430,106 @@ namespace WinFormsApp1
             label17.Text = "已上传:";
             label15.Text = "共0注";
             richTextBox1.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string UserName = label16.Text.Substring(0,label16.Text.IndexOf(" "));//取得已上傳計畫 使用者名稱
+            
+            if (string.IsNullOrEmpty(label4.Text))
+            {
+                MessageBox.Show("請先登入。");
+            }
+            else
+            {
+                //取得帳號
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "account");
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from userData where name = '" + UserName + "'", dic);
+                if (getData.Count != 0)
+                {
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name ,p_account ,p_start ,p_end ,p_rule) values('" + label16.Text + "續傳" + "','"+getData.ElementAt(0)+"','"+comboBox1.Text+"','"+ comboBox2.Text + "','"+richTextBox1.Text+","+"')");
+                    updatelbSent();
+                }
+                else
+                {
+                    MessageBox.Show("該計畫帳號不存在。");
+                    //是否使用其他帳號續傳計畫?
+                }
+                
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            lsbSent.DataSource = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name as 'name' from Upplan order by p_id desc");
+            lsbSent.DisplayMember = "value";
+            lsbSent.ValueMember = "id";
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //取得過去所有號碼
+            Dictionary<int, string> dic_history = new Dictionary<int, string>();
+            dic_history.Add(0, "number");
+            var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber", dic_history);
+            //取得上傳計畫 id 號碼
+            Dictionary<int, string> dic_plan = new Dictionary<int, string>();
+            dic_plan.Add(0, "p_name");
+            dic_plan.Add(1, "p_rule");
+            var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan", dic_plan);
+            //把 dic_plan 轉換成比較好操作的格式
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            for (int i = 0; i < getPlan.Count; i=i+2)
+            {
+                dic.Add(getPlan.ElementAt(i), getPlan.ElementAt(i + 1));
+            }
+            //統計擊中次數
+            Dictionary<string, int> hitTimes = new Dictionary<string, int>();
+
+            for (int i = 0; i < getPlan.Count / 2; i++)
+            {
+                int temp = 0;
+                for (int j = 0; j < getHistory.Count; j++)
+                {
+                    if (dic.ElementAt(i).Value.IndexOf(getHistory.ElementAt(j)) != -1)
+                        temp++;
+                }
+                hitTimes.Add(dic.ElementAt(i).Key, temp);
+            }
+
+            //依照擊中次數加入lsbsent
+            Dictionary<string, int> dic1_SortedByKey = hitTimes.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
+            List<Connection.Item> lt = new List<Connection.Item>();
+            for (int i = 0; i < dic1_SortedByKey.Count(); i++)
+            {
+                lt.Add(new Connection.Item
+                {
+                    id = i,
+                    value = dic1_SortedByKey.ElementAt(i).Key.ToString()
+                });
+            }
+
+            lsbSent.DataSource = lt;
+            lsbSent.DisplayMember = "value";
+            lsbSent.ValueMember = "id";
+
+        }
+
+        int richTextboxRule = 5;
+        private void cbGameKind_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            richTextBox2.Text = "";
+            if (cbGameKind.SelectedIndex == 0)
+                richTextboxRule = 5;
+            else if (cbGameKind.SelectedIndex == 1)
+                richTextboxRule = 4;
+            else if (cbGameKind.SelectedIndex == 2 || cbGameKind.SelectedIndex == 3 || cbGameKind.SelectedIndex == 4)
+                richTextboxRule = 3;
+            else if (cbGameKind.SelectedIndex == 5 || cbGameKind.SelectedIndex == 6)
+                richTextboxRule = 2;
+            else 
+                richTextboxRule = 1;
         }
     }
 }
