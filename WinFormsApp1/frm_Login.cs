@@ -37,7 +37,11 @@ namespace WinFormsApp1
                     frmGameMain.globalUserAccount = textBox1.Text;
                     frmGameMain.globalUserName = consql.ElementAt(0);
                     if (dr == DialogResult.OK)
+                    {
                         this.Close();
+                        frm_PlanUpload.loginButtonType = 1;
+                    }
+
                 }
                 else if(consql.Count==0)
                    MessageBox.Show("帳號或密碼錯誤，請重新登入。");

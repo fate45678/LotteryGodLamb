@@ -56,15 +56,25 @@ namespace WinFormsApp1
             
                
         }
-        private void updatelbSent()
+        private void updatecheckboxlist1()
         {
-            lsbSent.DataSource = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name as 'name' from Upplan");
-            lsbSent.DisplayMember = "value";
-            lsbSent.ValueMember = "id";
+            checkedListBox1.Items.Clear();
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0, "p_name");
+            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "'", dic);
+            for (int i = 0; i < dt.Count; i++)
+            {
+                checkedListBox1.Items.Add(dt.ElementAt(i).ToString());
+
+            }
         }
         public void refreshInterface()
         {
             label4.Text = frmGameMain.globalUserName;
+            if (loginButtonType == 0)
+                button1.Text = "登入";
+            else if(loginButtonType ==1)
+                button1.Text = "登出";
         }
 
 
@@ -133,7 +143,7 @@ namespace WinFormsApp1
         private int calPeriod()
         {
             if ((int)cbGamePlan.SelectedValue != 120)
-                return ((int)cbGameCycle.SelectedValue - (int)cbGamePlan.SelectedValue);
+                return ((int)cbGameCycle.SelectedValue - (int)cbGamePlan.SelectedValue) +1;
             else return 0;
         }
        /// <summary>
@@ -190,6 +200,11 @@ namespace WinFormsApp1
             }
         }
         #region UI事件
+        public void a()
+        {
+            button1.Text = "123";
+        }
+        public static int loginButtonType = 0;
         /// <summary>
         /// 登入按鈕事件
         /// </summary>
@@ -197,8 +212,23 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            frm_Login frm_login= new frm_Login();
-            frm_login.Show();
+            if (loginButtonType == 0)
+            {
+                frm_Login frm_login = new frm_Login();
+                frm_login.Show();
+            }
+            else if (loginButtonType == 1)
+            {
+                if (!string.IsNullOrEmpty(label4.Text))
+                {
+                    frmGameMain.globalUserName = "";
+                    frmGameMain.globalUserAccount = "";
+                    label4.Text = "";
+                    MessageBox.Show("登出成功。");
+                    button1.Text = "登入";
+                    loginButtonType = 0;
+                }
+            }
         }
         /// <summary>
         /// 註冊按鈕事件
@@ -247,7 +277,7 @@ namespace WinFormsApp1
             label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
 
             if (updateCount % 3 == 0 && allorwUpdate)
-                updatelbSent();
+                updatecheckboxlist1();
             updateCount++;
 
 
@@ -275,16 +305,15 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
-
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "p_curNum");
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-
-                var plancount = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select convert(nvarchar(3),count(*)) as 'name' from Upplan where p_account = '" + frmGameMain.globalUserAccount + "'");
-                string maxNum = plancount.Where(x => !x.value.Equals("")).FirstOrDefault().value.ToString();
-                int planNUmber = int.Parse(maxNum) + 1;
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule) values('" + label4.Text + " " + planName + planNUmber + "','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "')");
+                var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'",dic);
+                int planNUmber = int.Parse(plancount.ElementAt(0)) + 1;
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum) values('"+label4.Text + "重慶時時彩" + planName + "第"+planNUmber + "週期','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','"+ planNUmber + "')");
 
                 MessageBox.Show("上傳成功。");
-                updatelbSent();
+                updatecheckboxlist1();
             }
             allorwUpdate = true;
         }
@@ -342,6 +371,8 @@ namespace WinFormsApp1
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             #region 自動產生逗號
+
+
             string withoutComma = richTextBox2.Text.Replace(",", "");
             if (richTextboxRule == 5)
             {
@@ -349,6 +380,8 @@ namespace WinFormsApp1
                 {
                     richTextBox2.Text += ",";
                     richTextBox2.Select(richTextBox2.MaxLength, 0);
+
+
                 }
             }
             else if (richTextboxRule == 4)
@@ -411,19 +444,11 @@ namespace WinFormsApp1
             }
             else if (cbGameKind.SelectedIndex == 2 || cbGameKind.SelectedIndex == 3 || cbGameKind.SelectedIndex == 4)//三星
             {
-                if (cbGameKind.SelectedIndex == 2)
-                    richTextboxRule = 30;
-                else if (cbGameKind.SelectedIndex == 3)
-                    richTextboxRule = 31;
-                else if (cbGameKind.SelectedIndex == 4)
-                    richTextboxRule = 32;
+                richTextboxRule = 3;
             }
             else if (cbGameKind.SelectedIndex == 5 || cbGameKind.SelectedIndex == 6)//二星
             {
-                if (cbGameKind.SelectedIndex == 5)
-                    richTextboxRule = 20;
-                else if (cbGameKind.SelectedIndex == 6)
-                    richTextboxRule = 21;
+                richTextboxRule = 2;
             }
             else //一星
             {
@@ -440,7 +465,7 @@ namespace WinFormsApp1
                 Dictionary<int, string> dic_plan = new Dictionary<int, string>();
                 dic_plan.Add(0, "p_name");
                 dic_plan.Add(1, "p_rule");
-                var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan", dic_plan);
+                var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account ='"+frmGameMain.globalUserAccount+"'", dic_plan);
                 //把 dic_plan 轉換成比較好操作的格式
                 Dictionary<string, string> dic = new Dictionary<string, string>();
                 for (int i = 0; i < getPlan.Count; i = i + 2)
@@ -461,31 +486,19 @@ namespace WinFormsApp1
                     hitTimes.Add(dic.ElementAt(i).Key, temp);
                 }
 
-                //依照擊中次數加入lsbsent
+                //依照擊中次數加入checklistbox
                 Dictionary<string, int> dic1_SortedByKey = hitTimes.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
                 List<Connection.Item> lt = new List<Connection.Item>();
+                checkedListBox1.Items.Clear();
                 for (int i = 0; i < dic1_SortedByKey.Count(); i++)
                 {
-                    lt.Add(new Connection.Item
-                    {
-                        id = i,
-                        value = dic1_SortedByKey.ElementAt(i).Key.ToString()
-                    });
+                    checkedListBox1.Items.Add(dic1_SortedByKey.ElementAt(i).Key.ToString());
                 }
-
-                lsbSent.DataSource = lt;
-                lsbSent.DisplayMember = "value";
-                lsbSent.ValueMember = "id";
+           
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(label4.Text))
-            {
-                frmGameMain.globalUserName = "";
-                frmGameMain.globalUserAccount = "";
-                label4.Text = "";
-                MessageBox.Show("登出成功。");
-            }
+           
             
         }
         private void lsbSent_SelectedIndexChanged(object sender, EventArgs e)
@@ -493,78 +506,30 @@ namespace WinFormsApp1
 
             richTextBox1.Text = "";
         }
-        bool allorwUpdate = true;
-        private void lsbSent_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Connection.Item dt = lsbSent.SelectedItem as Connection.Item;
-            string st = dt.value;
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0, "p_name");
-            dic.Add(1, "p_account");
-            dic.Add(2, "p_start");
-            dic.Add(3, "p_end");
-            dic.Add(4, "p_rule");
-            allorwUpdate = false;
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + st + "'", dic);
-            for (int i = 0; i < getData.Count; i++)
-            {
-
-                if (i == 0)
-                    label16.Text = getData.ElementAt(i);
-                else if (i == 2)
-                    label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
-                else if (i == 4)
-                {
-                    richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length - 1);
-                    string strReplace = getData.ElementAt(i).Replace(",", "");
-                    int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
-                    label15.Text = "共" + times + "注";
-
-                }
-
-
-            }
-
-        }
+       
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            lsbSent.SelectionMode = SelectionMode.MultiSimple;
+           
             allorwUpdate = false;
             if (checkBox1.Checked)
             {
-                for (int i = 0; i < lsbSent.Items.Count; i++)
-                {
-                    lsbSent.SetSelected(i, true);
-                }
+                for(int i = 0; i < checkedListBox1.Items.Count; i++)
+                    checkedListBox1.SetItemChecked(i, true);
             }
             else if (!checkBox1.Checked)
             {
-                for (int i = 0; i < lsbSent.Items.Count; i++)
-                {
-
-                    lsbSent.SetSelected(i, false);
-                }
-                lsbSent.SelectionMode = SelectionMode.One;
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    checkedListBox1.SetItemChecked(i, false);
             }
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            List<string> lt = new List<string>();
-            int[] id = new int[lsbSent.SelectedIndices.Count];
-            for (int i = 0; i < lsbSent.SelectedIndices.Count; i++)
+            foreach (object checkedItem in checkedListBox1.CheckedItems)
             {
-                id[i] = (int)lsbSent.SelectedIndices[i];
-            }
-            for (int i = 0; i < id.Length; i++)
-            {
-                if (lsbSent.GetSelected(i))
-                {
-                    Connection.Item dt = lsbSent.Items[i] as Connection.Item;
-                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + dt.value + "'");
-                }
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + checkedItem.ToString() + "'");
             }
             MessageBox.Show("刪除成功。");
-            updatelbSent();
+            updatecheckboxlist1();
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -575,8 +540,6 @@ namespace WinFormsApp1
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            string UserName = label16.Text.Substring(0, label16.Text.IndexOf(" "));//取得已上傳計畫 使用者名稱
-
             if (string.IsNullOrEmpty(label4.Text))
             {
                 MessageBox.Show("請先登入。");
@@ -586,29 +549,70 @@ namespace WinFormsApp1
                 //取得帳號
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "account");
-                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from userData where name = '" + UserName + "'", dic);
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from userData where name = '" + frmGameMain.globalUserAccount + "'", dic);
                 if (getData.Count != 0)
                 {
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name ,p_account ,p_start ,p_end ,p_rule) values('" + label16.Text + "續傳" + "','" + getData.ElementAt(0) + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + richTextBox1.Text + "," + "')");
-                    updatelbSent();
+                    updatecheckboxlist1();
                 }
                 else
-                {
                     MessageBox.Show("該計畫帳號不存在。");
-                    //是否使用其他帳號續傳計畫?
-                }
             }
         }
         private void button11_Click(object sender, EventArgs e)
         {
-            lsbSent.DataSource = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name as 'name' from Upplan order by p_id desc");
-            lsbSent.DisplayMember = "value";
-            lsbSent.ValueMember = "id";
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "p_name");
+            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
+            checkedListBox1.Items.Clear();
+            for (int i = 0; i < dt.Count; i++)
+            {
+                checkedListBox1.Items.Add(dt.ElementAt(i).ToString());
+
+            }
         }
         private void button10_Click(object sender, EventArgs e)
         {
             upodatelsbSentbyHitTimes();
         }
+
+        bool allorwUpdate = true;
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0, "p_name");
+            dic.Add(1, "p_account");
+            dic.Add(2, "p_start");
+            dic.Add(3, "p_end");
+            dic.Add(4, "p_rule");
+            allorwUpdate = false;
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + checkedListBox1.SelectedItem + "'", dic);
+            for (int i = 0; i < getData.Count; i++)
+            {
+
+                if (i == 0)
+                    label16.Text = "重庆时时彩" + getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
+                else if (i == 2)
+                    label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
+                else if (i == 4)
+                {
+                    richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length - 1);
+                    string strReplace = getData.ElementAt(i).Replace(",", "");
+                    int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
+                    label15.Text = "共" + times + "注";
+                }
+            }
+            
+            comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3))), null);
+            comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3))) + 1), null);
+        }
+
         #endregion
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue);
+            comboBox2.DataSource = new BindingSource(dt_cycle, null);
+        }
     }
 }

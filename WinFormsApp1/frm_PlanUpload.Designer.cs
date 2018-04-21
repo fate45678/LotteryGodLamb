@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PlanUpload));
             this.pnlUserSetting = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnViewResult = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -88,7 +87,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.lsbSent = new System.Windows.Forms.ListBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -99,6 +97,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -124,7 +123,6 @@
             // 
             // pnlUserSetting
             // 
-            this.pnlUserSetting.Controls.Add(this.button8);
             this.pnlUserSetting.Controls.Add(this.button1);
             this.pnlUserSetting.Controls.Add(this.btnViewResult);
             this.pnlUserSetting.Controls.Add(this.label9);
@@ -146,21 +144,6 @@
             this.pnlUserSetting.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.pnlUserSetting.Size = new System.Drawing.Size(1494, 30);
             this.pnlUserSetting.TabIndex = 1;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Gray;
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(1022, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(79, 27);
-            this.button8.TabIndex = 32;
-            this.button8.Text = "登出";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button1
             // 
@@ -766,6 +749,7 @@
             this.comboBox1.Size = new System.Drawing.Size(114, 20);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.TabStop = false;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
             // label18
             // 
@@ -828,7 +812,7 @@
             // pnlSent
             // 
             this.pnlSent.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pnlSent.Controls.Add(this.lsbSent);
+            this.pnlSent.Controls.Add(this.checkedListBox1);
             this.pnlSent.Controls.Add(this.panel6);
             this.pnlSent.Controls.Add(this.panel5);
             this.pnlSent.Dock = System.Windows.Forms.DockStyle.Left;
@@ -837,17 +821,6 @@
             this.pnlSent.Padding = new System.Windows.Forms.Padding(5);
             this.pnlSent.Size = new System.Drawing.Size(333, 510);
             this.pnlSent.TabIndex = 4;
-            // 
-            // lsbSent
-            // 
-            this.lsbSent.FormattingEnabled = true;
-            this.lsbSent.ItemHeight = 12;
-            this.lsbSent.Location = new System.Drawing.Point(14, 71);
-            this.lsbSent.Name = "lsbSent";
-            this.lsbSent.Size = new System.Drawing.Size(313, 376);
-            this.lsbSent.TabIndex = 5;
-            this.lsbSent.SelectedIndexChanged += new System.EventHandler(this.lsbSent_SelectedIndexChanged);
-            this.lsbSent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbSent_MouseDoubleClick);
             // 
             // panel6
             // 
@@ -958,6 +931,15 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(5, 70);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(322, 395);
+            this.checkedListBox1.TabIndex = 6;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // frm_PlanUpload
             // 
@@ -1073,10 +1055,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ListBox lsbSent;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox picAD4;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
