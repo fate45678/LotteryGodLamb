@@ -32,10 +32,19 @@ namespace WinFormsApp1
             public string SerialNumber { get; set; }
         }
 
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult drClose = MessageBox.Show("您确认退出吗？", "退出系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (drClose == DialogResult.Cancel)
+                e.Cancel = true;
+
+        }
+
+
         public frmGameMain()
         {
             InitializeComponent();
-
+            
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);
             lblMenuPlanAgent.Click += new System.EventHandler(btnMenu_Click);
             lblMenuPlanUpload.Click += new System.EventHandler(btnMenu_Click);
@@ -409,6 +418,9 @@ namespace WinFormsApp1
 
         }
 
-
+        private void frmGameMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notifyIcon1.Visible = false;
+        }
     }
 }

@@ -1149,6 +1149,7 @@
             this.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "神灯计划";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGameMain_FormClosing);
             this.Load += new System.EventHandler(this.frmGameMain_Load);
             this.pnlGameMenu.ResumeLayout(false);
             this.pnlGameMenu.PerformLayout();

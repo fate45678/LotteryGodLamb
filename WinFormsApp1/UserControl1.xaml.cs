@@ -227,7 +227,7 @@ namespace WinFormsApp1
 
             #region 產生Data
             //一列一列加上去
-            for (int rowData = 120; rowData > 0; rowData--)//120
+            for (int rowData = 3; rowData > 0; rowData--)//120
             {
                 x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
                 //欄位:期號
@@ -245,11 +245,11 @@ namespace WinFormsApp1
                     x_Temp += col2Width - 1;
                 }
                 //step1 記開獎號碼
-                number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(0, 1));
-                number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(2, 1));
-                number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(4, 1));
-                number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(6, 1));
-                number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(8, 1));
+                number[0] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(0, 1));
+                number[1] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(2, 1));
+                number[2] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(4, 1));
+                number[3] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(6, 1));
+                number[4] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(8, 1));
                 //step2 判斷位數
                 for (int i = 0; i < 5; i++)
                 {
