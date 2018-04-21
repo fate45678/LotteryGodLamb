@@ -50,9 +50,12 @@ namespace WinFormsApp1
                     {
                         con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into userData(account,password,name,registerDate) values('"+tbAccount.Text+"','"+tbPassword.Text+"','"+tbUserName.Text+"',getDate())");
                         //con.addUser(tbAccount.Text, tbPassword.Text);
-                        MessageBox.Show("帳號已經新增。");
+                        DialogResult dr = MessageBox.Show("帳號已經新增。");
                         frmGameMain.globalUserName = tbUserName.Text;
                         frmGameMain.globalUserAccount = tbAccount.Text;
+                        this.label4.Text = frmGameMain.globalUserName;
+                        if (dr == DialogResult.OK)
+                            this.Close();
                     }
                 }
             }

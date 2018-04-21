@@ -640,11 +640,11 @@
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(11, 31);
+            this.rtxtHistory.Location = new System.Drawing.Point(30, 177);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(218, 308);
+            this.rtxtHistory.Size = new System.Drawing.Size(199, 162);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 

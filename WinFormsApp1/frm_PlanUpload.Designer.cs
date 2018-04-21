@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PlanUpload));
             this.pnlUserSetting = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnViewResult = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.label115 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pnlAD4 = new System.Windows.Forms.Panel();
-            this.picAD4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlNewPlan = new System.Windows.Forms.Panel();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -98,12 +98,12 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.picAD4 = new System.Windows.Forms.PictureBox();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
             this.pnlAD4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).BeginInit();
             this.pnlNewPlan.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -119,10 +119,12 @@
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUserSetting
             // 
+            this.pnlUserSetting.Controls.Add(this.button8);
             this.pnlUserSetting.Controls.Add(this.button1);
             this.pnlUserSetting.Controls.Add(this.btnViewResult);
             this.pnlUserSetting.Controls.Add(this.label9);
@@ -145,6 +147,21 @@
             this.pnlUserSetting.Size = new System.Drawing.Size(1494, 30);
             this.pnlUserSetting.TabIndex = 1;
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Gray;
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(1022, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(79, 27);
+            this.button8.TabIndex = 32;
+            this.button8.Text = "登出";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Gray;
@@ -152,11 +169,11 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1000, 3);
+            this.button1.Location = new System.Drawing.Point(947, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 27);
+            this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 29;
-            this.button1.Text = "登出";
+            this.button1.Text = "登入";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -167,9 +184,9 @@
             this.btnViewResult.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnViewResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewResult.ForeColor = System.Drawing.Color.White;
-            this.btnViewResult.Location = new System.Drawing.Point(916, 3);
+            this.btnViewResult.Location = new System.Drawing.Point(866, 3);
             this.btnViewResult.Name = "btnViewResult";
-            this.btnViewResult.Size = new System.Drawing.Size(84, 27);
+            this.btnViewResult.Size = new System.Drawing.Size(81, 27);
             this.btnViewResult.TabIndex = 28;
             this.btnViewResult.Text = "注册";
             this.btnViewResult.UseVisualStyleBackColor = false;
@@ -179,7 +196,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(876, 3);
+            this.label9.Location = new System.Drawing.Point(826, 3);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label9.Size = new System.Drawing.Size(40, 12);
@@ -190,7 +207,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(811, 3);
+            this.label4.Location = new System.Drawing.Point(761, 3);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label4.Size = new System.Drawing.Size(65, 17);
@@ -202,7 +219,7 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(779, 3);
+            this.label3.Location = new System.Drawing.Point(729, 3);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label3.Size = new System.Drawing.Size(32, 17);
@@ -213,7 +230,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.Location = new System.Drawing.Point(739, 3);
+            this.label6.Location = new System.Drawing.Point(689, 3);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label6.Size = new System.Drawing.Size(40, 12);
@@ -224,7 +241,7 @@
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(698, 3);
+            this.label2.Location = new System.Drawing.Point(648, 3);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label2.Size = new System.Drawing.Size(41, 17);
@@ -243,9 +260,9 @@
             "三期一周",
             "二期一周",
             "一期一周"});
-            this.cbGameCycle.Location = new System.Drawing.Point(540, 3);
+            this.cbGameCycle.Location = new System.Drawing.Point(515, 3);
             this.cbGameCycle.Name = "cbGameCycle";
-            this.cbGameCycle.Size = new System.Drawing.Size(158, 20);
+            this.cbGameCycle.Size = new System.Drawing.Size(133, 20);
             this.cbGameCycle.TabIndex = 22;
             this.cbGameCycle.TabStop = false;
             // 
@@ -254,7 +271,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(523, 3);
+            this.label1.Location = new System.Drawing.Point(498, 3);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label1.Size = new System.Drawing.Size(17, 17);
@@ -271,7 +288,7 @@
             this.cbGamePlan.FormattingEnabled = true;
             this.cbGamePlan.Location = new System.Drawing.Point(365, 3);
             this.cbGamePlan.Name = "cbGamePlan";
-            this.cbGamePlan.Size = new System.Drawing.Size(158, 20);
+            this.cbGamePlan.Size = new System.Drawing.Size(133, 20);
             this.cbGamePlan.TabIndex = 20;
             this.cbGamePlan.TabStop = false;
             this.cbGamePlan.SelectionChangeCommitted += new System.EventHandler(this.cbGamePlan_SelectionChangeCommitted);
@@ -378,7 +395,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(1102, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(372, 346);
+            this.pnlHistory.Size = new System.Drawing.Size(348, 346);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -387,11 +404,11 @@
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(20, 31);
+            this.rtxtHistory.Location = new System.Drawing.Point(5, 31);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(208, 308);
+            this.rtxtHistory.Size = new System.Drawing.Size(338, 308);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -402,7 +419,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(370, 28);
+            this.panel32.Size = new System.Drawing.Size(346, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -434,20 +451,6 @@
             this.pnlAD4.Name = "pnlAD4";
             this.pnlAD4.Size = new System.Drawing.Size(392, 158);
             this.pnlAD4.TabIndex = 3;
-            // 
-            // picAD4
-            // 
-            this.picAD4.BackColor = System.Drawing.Color.Transparent;
-            this.picAD4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD4.BackgroundImage")));
-            this.picAD4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAD4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picAD4.Location = new System.Drawing.Point(0, 0);
-            this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(390, 156);
-            this.picAD4.TabIndex = 1;
-            this.picAD4.TabStop = false;
-            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
             // 
             // panel4
             // 
@@ -942,6 +945,20 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // picAD4
+            // 
+            this.picAD4.BackColor = System.Drawing.Color.Transparent;
+            this.picAD4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD4.BackgroundImage")));
+            this.picAD4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picAD4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picAD4.Location = new System.Drawing.Point(0, 0);
+            this.picAD4.Name = "picAD4";
+            this.picAD4.Size = new System.Drawing.Size(390, 156);
+            this.picAD4.TabIndex = 1;
+            this.picAD4.TabStop = false;
+            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
+            // 
             // frm_PlanUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -962,7 +979,6 @@
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
             this.pnlAD4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).EndInit();
             this.pnlNewPlan.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -986,6 +1002,7 @@
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1014,7 +1031,6 @@
         private System.Windows.Forms.Panel panel32;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Panel pnlAD4;
-        private System.Windows.Forms.PictureBox picAD4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlSentConti;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -1060,5 +1076,7 @@
         private System.Windows.Forms.ListBox lsbSent;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.PictureBox picAD4;
     }
 }

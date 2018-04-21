@@ -142,6 +142,18 @@
     <Compile Include="frm_Chart.Designer.cs">
       <DependentUpon>frm_Chart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Loading.Designer.cs">
+      <DependentUpon>Frm_Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.Designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Message.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Chart.resx">
       <DependentUpon>frm_Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Loading.resx">
+      <DependentUpon>Frm_Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Message.resx">
       <DependentUpon>frm_Message.cs</DependentUpon>
@@ -364,6 +382,7 @@
     <Content Include="bt_icon\bt_fin.png" />
     <Content Include="bt_icon\bt_nex.png" />
     <Content Include="bt_icon\bt_up.png" />
+    <Content Include="bt_icon\loading_icon.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Example\FourStart\" />
