@@ -98,7 +98,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -115,8 +114,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbGameKind = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.pnlPlanArea.SuspendLayout();
             this.pnlPlanRight.SuspendLayout();
             this.pnlRightBottom.SuspendLayout();
@@ -670,9 +667,6 @@
             this.tableLayoutPanel1.Controls.Add(this.button9, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.button8, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button7, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button6, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
@@ -953,17 +947,6 @@
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 34);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -1092,6 +1075,7 @@
             this.btnView.TabIndex = 19;
             this.btnView.Text = "查看";
             this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // label4
             // 
@@ -1160,28 +1144,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(126, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(125, 34);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(257, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(136, 34);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // frm_PlanAgent
             // 
@@ -1284,7 +1246,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button35;
@@ -1315,7 +1276,5 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
     }
 }

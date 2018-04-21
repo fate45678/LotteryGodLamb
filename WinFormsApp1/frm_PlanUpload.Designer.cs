@@ -54,6 +54,7 @@
             this.label115 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pnlAD4 = new System.Windows.Forms.Panel();
+            this.picAD4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlNewPlan = new System.Windows.Forms.Panel();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -98,12 +99,12 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.picAD4 = new System.Windows.Forms.PictureBox();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
             this.pnlAD4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).BeginInit();
             this.pnlNewPlan.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -119,7 +120,6 @@
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUserSetting
@@ -451,6 +451,20 @@
             this.pnlAD4.Name = "pnlAD4";
             this.pnlAD4.Size = new System.Drawing.Size(392, 158);
             this.pnlAD4.TabIndex = 3;
+            // 
+            // picAD4
+            // 
+            this.picAD4.BackColor = System.Drawing.Color.Transparent;
+            this.picAD4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD4.BackgroundImage")));
+            this.picAD4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picAD4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picAD4.Location = new System.Drawing.Point(0, 0);
+            this.picAD4.Name = "picAD4";
+            this.picAD4.Size = new System.Drawing.Size(390, 156);
+            this.picAD4.TabIndex = 1;
+            this.picAD4.TabStop = false;
+            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
             // 
             // panel4
             // 
@@ -945,20 +959,6 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // picAD4
-            // 
-            this.picAD4.BackColor = System.Drawing.Color.Transparent;
-            this.picAD4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD4.BackgroundImage")));
-            this.picAD4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAD4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picAD4.Location = new System.Drawing.Point(0, 0);
-            this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(390, 156);
-            this.picAD4.TabIndex = 1;
-            this.picAD4.TabStop = false;
-            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
-            // 
             // frm_PlanUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -979,6 +979,7 @@
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
             this.pnlAD4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).EndInit();
             this.pnlNewPlan.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1002,7 +1003,6 @@
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD4)).EndInit();
             this.ResumeLayout(false);
 
         }
