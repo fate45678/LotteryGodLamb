@@ -72,7 +72,8 @@ namespace WinFormsApp1
             int[,] number_streak = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //連擊數 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
             int[,] number_streakMax = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //最大連擊數 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
 
-            int x_Temp = 0; //目前畫到X軸的哪個位置(for 整理欄位)
+            int y_Temp = 0; //目前畫到Y軸的哪個位置
+            int x_Temp = 0; //目前畫到X軸的哪個位置(for 整個欄位)
             int x_TempDig = col1Width + col2Width - 1; //目前畫到X軸的哪個位置(for 0~9位數)
             int[] x_Start = new int[5] { 0, 0, 0, 0, 0 }; int[] y_Start = new int[5] { 0, 0, 0, 0, 0 }; //畫直線的起點
             int[] x_End = new int[5] { 0, 0, 0, 0, 0 }; int[] y_End = new int[5] { 0, 0, 0, 0, 0 }; //畫直線的終點
@@ -223,33 +224,40 @@ namespace WinFormsApp1
             }
             //設定最後Canvas的寬度
             canvas1.Width = x_Temp;
+            y_Temp += rowHeight * 2 - 1;
             #endregion
 
             #region 產生Data
+            //判斷資料數量
+            int initCount = 0;
+            if (frmGameMain.jArr.Count < 120) initCount = frmGameMain.jArr.Count;
+            else initCount = 120;
             //一列一列加上去
-            for (int rowData = 3; rowData > 0; rowData--)//120
+            for (int rowData = initCount; rowData > 0; rowData--)
             {
                 x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
                 //欄位:期號
                 if (rowData <= period)
                 {
                     lbl = new Label(); lbl.Content = frmGameMain.jArr[rowData - 1]["Issue"].ToString(); lbl.Width = col1Width; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 0);
-                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2 - 1) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                    //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2 - 1) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                     x_Temp += col1Width - 1;
                 }
                 //欄位:開獎號碼
                 if (rowData <= period)
                 {
                     lbl = new Label(); lbl.Content = frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", " "); lbl.Width = col2Width; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.Tomato; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 0);
-                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2 - 1) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                    //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2 - 1) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                     x_Temp += col2Width - 1;
                 }
                 //step1 記開獎號碼
-                number[0] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(0, 1));
-                number[1] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(2, 1));
-                number[2] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(4, 1));
-                number[3] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(6, 1));
-                number[4] = Convert.ToInt16(frmGameMain.jArr[1]["Number"].ToString().Substring(8, 1));
+                number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(0, 1));
+                number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(2, 1));
+                number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(4, 1));
+                number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(6, 1));
+                number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(8, 1));
                 //step2 判斷位數
                 for (int i = 0; i < 5; i++)
                 {
@@ -264,7 +272,7 @@ namespace WinFormsApp1
                             else //遺漏
                                 number_miss[matchDig, dig]++;
                         }
-                        //比對開獎號碼 產生圓形&標籤&遺漏
+                        //已進入近30/50/100筆的範圍，開始呈現資料(比對開獎號碼 產生圓形&標籤&遺漏)
                         if (rowData <= period)
                         {
                             for (int dig = 0; dig < 10; dig++)
@@ -274,17 +282,20 @@ namespace WinFormsApp1
                                 {
                                     if (strChartSelect != "") //要顯示走勢
                                     {
-                                        y_Start[i] = y_End[i];
+                                        y_Start[i] = y_End[i] + 5;
                                         x_Start[i] = x_End[i];
-                                        y_End[i] = rowHeight * (2 + (period - rowData)) + 4;
+                                        //y_End[i] = rowHeight * (2 + (period - rowData)) + 4;
+                                        y_End[i] = y_Temp;
                                         x_End[i] = x_TempDig;
                                     }
                                     //開獎號一定顯示
                                     elli = new Ellipse(); elli.Width = digitWidth; elli.Height = digitWidth; elli.Fill = Brushes.Red;
-                                    this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig); Canvas.SetZIndex(elli, 2);
+                                    //this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig); Canvas.SetZIndex(elli, 2);
+                                    this.canvas1.Children.Add(elli); Canvas.SetTop(elli, y_Temp + 4); Canvas.SetLeft(elli, x_TempDig); Canvas.SetZIndex(elli, 2);
 
                                     lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
-                                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 3);
+                                    //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 3);
+                                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 3);
                                     x_TempDig += digitWidth;
                                     number_count[matchDig, dig]++;
                                     //遺漏條起點
@@ -298,14 +309,18 @@ namespace WinFormsApp1
                                     {
                                         lbl.Content = number_miss[matchDig, dig]; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0);
                                     }
-                                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 4);
+                                    //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 4);
+                                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 4);
                                     x_TempDig += digitWidth;
                                     //紀錄遺漏
                                     if (number_miss[matchDig, dig] > number_missMax[matchDig, dig]) //超過最大遺漏就修正
                                         number_missMax[matchDig, dig] = number_miss[matchDig, dig];
                                     //遺漏條起點
                                     if (rec_Start[matchDig, dig] == 0) //有值就不更新
-                                        rec_Start[matchDig, dig] += rowHeight * (2 + (period - rowData));
+                                    {
+                                        //rec_Start[matchDig, dig] += rowHeight * (2 + (period - rowData));
+                                        rec_Start[matchDig, dig] += y_Temp;
+                                    }
                                 }
                                 //最大連擊
                                 if (dig == number[matchDig]) //符合
@@ -322,7 +337,7 @@ namespace WinFormsApp1
                         }
                     }
                 }
-                //已進入近30/50/100筆的範圍，開始呈現資料
+                //已進入近30/50/100筆的範圍，開始呈現資料(號碼分布 組三...等右半部的資料)
                 if (rowData <= period)
                 {
                     string numberTotal = "";
@@ -342,10 +357,12 @@ namespace WinFormsApp1
                             number_count[5, dig]++;
 
                             elli = new Ellipse(); elli.Width = digitWidth; elli.Height = digitWidth; if (dig % 2 == 0) elli.Fill = Brushes.ForestGreen; else elli.Fill = Brushes.Purple;
-                            this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig);
+                            //this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig);
+                            this.canvas1.Children.Add(elli); Canvas.SetTop(elli, y_Temp + 4); Canvas.SetLeft(elli, x_TempDig);
 
                             lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_TempDig);
                             //最大遺漏
                             number_miss[5, dig] = 0;
 
@@ -357,7 +374,8 @@ namespace WinFormsApp1
                         else //不符合
                         {
                             lbl = new Label(); lbl.Content = ""; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_TempDig);
                             //最大遺漏
                             number_miss[5, dig]++;
                             if (number_miss[5, dig] > number_missMax[5, dig]) //超過最大遺漏就修正
@@ -376,7 +394,8 @@ namespace WinFormsApp1
                         {
                             lbl = new Label(); lbl.Width = col4Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.CornflowerBlue; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (k == 2) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
                             lbl.Content = Game_Function.GetNumBigOrSmall(Convert.ToInt16(numberTotal.Substring(k, 1)));
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                             x_Temp += col4Width;
                         }
                         //x_Temp -= 1;
@@ -388,7 +407,8 @@ namespace WinFormsApp1
                         {
                             lbl = new Label(); lbl.Width = col4Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.YellowGreen; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (k == 2) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
                             lbl.Content = Game_Function.GetNumOddOrEven(Convert.ToInt16(numberTotal.Substring(k, 1)));
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                             x_Temp += col4Width;
                         }
                         //x_Temp -= 1;
@@ -400,7 +420,8 @@ namespace WinFormsApp1
                         {
                             lbl = new Label(); lbl.Width = col4Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.CornflowerBlue; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (k == 2) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
                             lbl.Content = Game_Function.GetNumPrimeOrNot(Convert.ToInt16(numberTotal.Substring(k, 1)));
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                             x_Temp += col4Width;
                         }
                         //x_Temp -= 1;
@@ -412,7 +433,8 @@ namespace WinFormsApp1
                         {
                             lbl = new Label(); lbl.Width = col4Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.YellowGreen; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (k == 2) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
                             lbl.Content = Game_Function.GetNum012(Convert.ToInt16(numberTotal.Substring(k, 1)));
-                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                             x_Temp += col4Width;
                         }
                         //x_Temp -= 1;
@@ -422,7 +444,8 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 1, 0); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumIsSame2(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width;
                     }
                     //欄位:组六 
@@ -430,7 +453,8 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 1, 0); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumIsDiff(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width;
                     }
                     //欄位:豹子                        
@@ -438,7 +462,8 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 1, 0); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumAllTheSame(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width - 1;
                     }
                     //欄位:对子
@@ -446,7 +471,8 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 1, 0); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumIsPair(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width - 1;
                     }
                     //欄位:跨度
@@ -454,14 +480,16 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.CornflowerBlue; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 0, 1, 1); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumSubstract(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width - 1;
                     }
                     if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.CornflowerBlue; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 0, 1, 1); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumSubstract(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width - 1;
                     }
                     //欄位:和值
@@ -469,14 +497,16 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Tomato; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 0, 1, 1); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumSum(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width;
                     }
                     if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
                     {
                         lbl = new Label(); lbl.Width = col3Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Tomato; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 0, 1, 1); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumSum(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col3Width;
                     }
                     //欄位:和值尾数
@@ -484,7 +514,8 @@ namespace WinFormsApp1
                     {
                         lbl = new Label(); lbl.Width = col5Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.White; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 1, 0); lbl.Padding = new Thickness(0); ;
                         lbl.Content = Game_Function.GetNumSumTrail(Convert.ToInt16(numberTotal.Substring(0, 1)), Convert.ToInt16(numberTotal.Substring(1, 1)), Convert.ToInt16(numberTotal.Substring(2, 1)));
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (rowHeight * 2) + rowHeight * (period - rowData)); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += col5Width;
                     }
                 }
@@ -502,9 +533,13 @@ namespace WinFormsApp1
                 {
                     if (rowData % 5 == 0)
                     {
-                        ln = new Line(); ln.X1 = 0; ln.Y1 = (rowHeight * 2) + rowHeight * (period - rowData); ln.X2 = x_Temp; ln.Y2 = (rowHeight * 2) + rowHeight * (period - rowData); ln.Stroke = Brushes.Red; ln.StrokeThickness = 1;
+                        ln = new Line(); ln.X1 = 0; ln.Y1 = y_Temp; ln.X2 = x_Temp; ln.Y2 = y_Temp; ln.Stroke = Brushes.Red; ln.StrokeThickness = 1;
                         this.canvas1.Children.Add(ln); Canvas.SetZIndex(ln, 1);
                     }
+                }
+                if (rowData <= period)
+                {
+                    y_Temp += rowHeight;
                 }
             }
             //畫遺漏線 
@@ -520,7 +555,8 @@ namespace WinFormsApp1
                         {
                             if (rec_Start[GetWhichDigit(gamekind, i), dig] != 0) //紀錄遺漏條長度
                             {
-                                rec_Len[GetWhichDigit(gamekind, i), dig] = period * 25 - rec_Start[GetWhichDigit(gamekind, i), dig];
+                                //rec_Len[GetWhichDigit(gamekind, i), dig] = period * 25 - rec_Start[GetWhichDigit(gamekind, i), dig];
+                                rec_Len[GetWhichDigit(gamekind, i), dig] = y_Temp - rec_Start[GetWhichDigit(gamekind, i), dig];
                             }
                             rec = new Rectangle(); rec.Width = digitWidth - 1; rec.Height = rec_Len[GetWhichDigit(gamekind, i), dig]; rec.Opacity = 0.6;
                             if (dig % 2 == 0) rec.Fill = Brushes.Gray; else rec.Fill = Brushes.YellowGreen;
@@ -536,8 +572,9 @@ namespace WinFormsApp1
             x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
             #region 第一列
             //欄位:出现总次数
-            lbl = new Label(); lbl.Content = "出现总次数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight + 1; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+            lbl = new Label(); lbl.Content = "出现总次数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
+            //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col1Width + col2Width - 2;
             //欄位:比對結果
             for (int i = 0; i < 5; i++)
@@ -547,7 +584,8 @@ namespace WinFormsApp1
                     for (int dig = 0; dig < 10; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_count[GetWhichDigit(gamekind, i), dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                        //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += digitWidth;
                     }
                 }
@@ -556,53 +594,55 @@ namespace WinFormsApp1
             for (int dig = 0; dig < 10; dig++)
             {
                 lbl = new Label(); lbl.Content = number_count[5, dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += digitWidth;
             }
             //欄位:顯示空框框
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3") //大小型态 单双型态 质合型态 012型态 组三 组六 豹子 跨度 和值 和值尾数 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col5Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col5Width;
             }
             if (gamekind == "f2" || gamekind == "b2") //對子 跨度 和值 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             #endregion
@@ -610,8 +650,9 @@ namespace WinFormsApp1
             #region 第二列
             //平均遗漏数
             x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
-            lbl = new Label(); lbl.Content = "平均遗漏数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight + 1; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+            y_Temp += rowHeight - 1;
+            lbl = new Label(); lbl.Content = "平均遗漏数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col1Width + col2Width - 2;
             //欄位:比對結果
             for (int i = 0; i < 5; i++)
@@ -625,7 +666,7 @@ namespace WinFormsApp1
                             lbl.Content = "31";
                         else
                             lbl.Content = Math.Ceiling(Convert.ToDecimal((period - number_count[GetWhichDigit(gamekind, i), dig])) / Convert.ToDecimal(number_count[GetWhichDigit(gamekind, i), dig])) + 1;
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += digitWidth;
                     }
                 }
@@ -638,53 +679,53 @@ namespace WinFormsApp1
                     lbl.Content = "31";
                 else
                     lbl.Content = Math.Ceiling(Convert.ToDecimal((period - number_count[5, dig])) / Convert.ToDecimal(number_count[5, dig])) + 1;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += digitWidth;
             }
             //欄位:顯示空框框
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3") //大小型态 单双型态 质合型态 012型态 组三 组六 豹子 跨度 和值 和值尾数 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col5Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col5Width;
             }
             if (gamekind == "f2" || gamekind == "b2") //對子 跨度 和值 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 3) * rowHeight - 2); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             #endregion
@@ -692,8 +733,9 @@ namespace WinFormsApp1
             #region 第三列
             //最大遗漏值
             x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
-            lbl = new Label(); lbl.Content = "最大遗漏值"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight + 1; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+            y_Temp += rowHeight - 1;
+            lbl = new Label(); lbl.Content = "最大遗漏值"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col1Width + col2Width - 2;
             //欄位:比對結果
             for (int i = 0; i < 5; i++)
@@ -703,7 +745,7 @@ namespace WinFormsApp1
                     for (int dig = 0; dig < 10; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_missMax[GetWhichDigit(gamekind, i), dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += digitWidth;
                     }
                 }
@@ -712,53 +754,53 @@ namespace WinFormsApp1
             for (int dig = 0; dig < 10; dig++)
             {
                 lbl = new Label(); lbl.Content = number_missMax[5, dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += digitWidth;
             }
             //欄位:顯示空框框
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3") //大小型态 单双型态 质合型态 012型态 组三 组六 豹子 跨度 和值 和值尾数 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col5Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col5Width;
             }
             if (gamekind == "f2" || gamekind == "b2") //對子 跨度 和值 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 4) * rowHeight - 3); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             #endregion
@@ -766,8 +808,9 @@ namespace WinFormsApp1
             #region 第四列
             //最大连击数
             x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
-            lbl = new Label(); lbl.Content = "最大连击数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight + 1; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+            y_Temp += rowHeight - 1;
+            lbl = new Label(); lbl.Content = "最大连击数"; lbl.Width = col1Width + col2Width; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col1Width + col2Width - 2;
             //欄位:比對結果
             for (int i = 0; i < 5; i++)
@@ -777,7 +820,7 @@ namespace WinFormsApp1
                     for (int dig = 0; dig < 10; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_streakMax[GetWhichDigit(gamekind, i), dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                        this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                         x_Temp += digitWidth;
                     }
                 }
@@ -786,53 +829,53 @@ namespace WinFormsApp1
             for (int dig = 0; dig < 10; dig++)
             {
                 lbl = new Label(); lbl.Content = number_streakMax[5, dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += digitWidth;
             }
             //欄位:顯示空框框
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3") //大小型态 单双型态 质合型态 012型态 组三 组六 豹子 跨度 和值 和值尾数 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col5Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col5Width;
             }
             if (gamekind == "f2" || gamekind == "b2") //對子 跨度 和值 (直接顯示空框框)
             {
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
                 lbl = new Label(); lbl.Content = ""; lbl.Width = col3Width + 1; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1); lbl.Padding = new Thickness(0); ;
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 5) * rowHeight - 4); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             #endregion
@@ -840,12 +883,13 @@ namespace WinFormsApp1
             #region 最末列
             //欄位:期号
             x_Temp = 0; x_TempDig = col1Width + col2Width - 1; //重置
+            y_Temp += rowHeight - 1;
             lbl = new Label(); lbl.Content = "期号"; lbl.Width = col1Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col1Width - 1;
             //欄位:开奖号码
             lbl = new Label(); lbl.Content = "开奖号码"; lbl.Width = col2Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += col2Width - 1;
             //欄位:万位~个位
             for (int i = 0; i < 5; i++)
@@ -882,14 +926,14 @@ namespace WinFormsApp1
                     if (gamekind == "f4") break;
                     else lbl.Content = "个位";
                 }
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 7) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + rowHeight); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += digitWidth * 10;
 
                 //產生0~9
                 for (int footerDig1 = 0; footerDig1 < 10; footerDig1++)
                 {
                     lbl = new Label(); lbl.Content = footerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (footerDig1 == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
-                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 4); Canvas.SetLeft(lbl, x_TempDig);
+                    this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig);
                     x_TempDig += digitWidth;
                 }
             }
@@ -897,92 +941,94 @@ namespace WinFormsApp1
             for (int footerDig1 = 0; footerDig1 < 10; footerDig1++)
             {
                 lbl = new Label(); lbl.Content = footerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 0, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 4); Canvas.SetLeft(lbl, x_TempDig);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig);
                 x_TempDig += digitWidth;
             }
             lbl = new Label(); lbl.Content = "号码分布"; lbl.Width = digitWidth * 10 + 2; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 7) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+            this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + rowHeight); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += digitWidth * 10;
             //欄位:大小型态
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "大小型态"; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
             }
             //欄位:单双型态 
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "单双型态"; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
             }
             //欄位:质合型态 
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "质合型态"; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
             }
             //欄位:012型态 
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "012型态"; lbl.Width = col4Width * 3 + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col4Width * 3;
             }
             //欄位:组三
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "组三"; lbl.Width = col3Width + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
             }
             //欄位:组六 
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "组六"; lbl.Width = col3Width + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
             }
             //欄位:豹子                        
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "豹子"; lbl.Width = col3Width + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
             }
             //欄位:对子
             if (gamekind == "f2" || gamekind == "b2")
             {
                 lbl = new Label(); lbl.Content = "对子"; lbl.Width = col3Width + 1; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width;
             }
             //欄位:跨度
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3" || gamekind == "f2" || gamekind == "b2")
             {
                 lbl = new Label(); lbl.Content = "跨度"; lbl.Width = col3Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             //欄位:和值
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3" || gamekind == "f2" || gamekind == "b2")
             {
                 lbl = new Label(); lbl.Content = "和值"; lbl.Width = col3Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col3Width - 1;
             }
             //欄位:和值尾数
             if (gamekind == "f3" || gamekind == "m3" || gamekind == "b3")
             {
                 lbl = new Label(); lbl.Content = "和值尾数"; lbl.Width = col5Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
-                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 6) * rowHeight - 5); Canvas.SetLeft(lbl, x_Temp);
+                this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
                 x_Temp += col5Width - 1;
             }
+            y_Temp += rowHeight * 2 + 2;
             #endregion
 
             #endregion
+            canvas1.Height = y_Temp;
         }
 
         //判斷應比對哪一個位數，回傳99表示比對中止

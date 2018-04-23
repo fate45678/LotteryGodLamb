@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using Newtonsoft.Json;
@@ -27,6 +28,10 @@ namespace WinFormsApp1
             picAD4.Visible = false;
             pnlAD4.BorderStyle = BorderStyle.None;
         }
+
+
+       
+        List<string> dt_history = new List<string>();
         //取得歷史開獎
         public void UpdateHistory()
         {
@@ -35,22 +40,19 @@ namespace WinFormsApp1
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
                 {
                     if (i == 120) break; //寫120筆就好
-                    {
-                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
-                    }
+                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
+                    dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString()+"     "+frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
                 }
             }
             else //有資料先判斷
             {
+                //導致成是卡住先拿掉
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
                     rtxtHistory.Text = "";
-                    for (int i = 0; i < frmGameMain.jArr.Count; i++)
-                    {
-                        if (i == 120) break; //寫120筆就好
-                        rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
-                        addNCheckHistoryNumber(i);
-                    }
+                    int i = frmGameMain.jArr.Count - 1;
+                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
                 }
             }
             
@@ -579,7 +581,6 @@ namespace WinFormsApp1
         bool allorwUpdate = true;
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             Dictionary<int, string> dic = new Dictionary<int, string>();
             dic.Add(0, "p_name");
             dic.Add(1, "p_account");
@@ -603,9 +604,34 @@ namespace WinFormsApp1
                     label15.Text = "共" + times + "注";
                 }
             }
+            listBox1.Items.Clear();
+            //檢查期數
+            for (int i = 0; i < dt_history.Count; i++)
+            {
+                if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
+                {
+                    if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
+                    {
+                        listBox1.Items.Add(dt_history[i].ToString() + "     中");
+
+                    }
+                    else
+                    {
+                        listBox1.Items.Add(dt_history[i].ToString() + "     掛");
+
+                    }
+                }
+                else
+                {
+                    listBox1.Items.Add(dt_history[i].ToString() + "     停");
+                }
+            }
             
-            comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3))), null);
-            comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3))) + 1), null);
+           
+
+
+            comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
+            comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
         }
 
         #endregion

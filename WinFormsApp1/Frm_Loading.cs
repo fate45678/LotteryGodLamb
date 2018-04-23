@@ -22,7 +22,7 @@ namespace WinFormsApp1
         {
             string path = Directory.GetCurrentDirectory();
             path  = Directory.GetParent(Directory.GetParent(path).ToString()).ToString();
-            this.BackgroundImage = Image.FromFile(path+"\\bt_icon\\loading_icon.gif");
+           // this.BackgroundImage = Image.FromFile(path+"\\bt_icon\\loading_icon.gif");
         }
         public void closeWin()
         {

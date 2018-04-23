@@ -187,7 +187,11 @@ namespace WinFormsApp1
             public int id { get; set; }
             public string value { get; set; }
         }
-        
+        public class nItem
+        {
+            public long id { get; set; }
+            public string value { get; set; }
+        }
 
         public void addRule(string fileName,string gametype,string rule,string user, string startPeriod,string endPeriod)
         {
