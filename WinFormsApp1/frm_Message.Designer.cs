@@ -62,6 +62,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "神灯计划讯息";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_Message_FormClosing);
             this.ResumeLayout(false);
 
         }

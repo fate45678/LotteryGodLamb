@@ -360,6 +360,7 @@ namespace WinFormsApp1
                 f_Message.Location = new Point(xWidth - 295, yHeight - 305);
 
                 f_Message.Show();
+                closeIcon(clsIcon);
             }
         }
 
@@ -389,7 +390,14 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void frmGameMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            notifyIcon1.Visible = false;
+            
+        }
+
+        public static int clsIcon = 0;
+        public void closeIcon(int i)
+        {
+            if(i==0)
+                notifyIcon1.Dispose();
         }
 
     }

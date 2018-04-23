@@ -302,8 +302,38 @@ namespace WinFormsApp1
 
         private void button37_Click(object sender, EventArgs e)
         {
-            con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into favorite(f_name,user_account) values('"+choosePlanName+"','"+ frmGameMain.globalUserAccount + "')");
-            System.Windows.Forms.MessageBox.Show("新增完成。");
+            if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
+            {
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into favorite(f_name,user_account) values('" + choosePlanName + "','" + frmGameMain.globalUserAccount + "')");
+                System.Windows.Forms.MessageBox.Show("新增完成。");
+
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "f_name");
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from favorite where user_account = '" + frmGameMain.globalUserAccount + "'", dic);
+                int x = 0;
+                int y = 0;
+                tableLayoutPanel2.Controls.Clear();
+
+
+                for (int i = 0; i < getData.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = getData.ElementAt(i).ToString();
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.BackColor = Color.Red;
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel2.Controls.Add(control, x, y);
+
+                    calHits();
+
+                }
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
             
         }
     }

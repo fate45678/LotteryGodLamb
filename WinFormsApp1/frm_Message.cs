@@ -21,6 +21,12 @@ namespace WinFormsApp1
             frmGameMain fGameMain = new frmGameMain();
             fGameMain.openMessage = false;
             this.Dispose();
+            this.Close();
+        }
+
+        private void frm_Message_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmGameMain.clsIcon = 0;
         }
     }
 }
