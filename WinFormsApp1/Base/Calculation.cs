@@ -52,10 +52,9 @@ namespace WpfAppTest.Base
         /// <param name="isKeep">定位 or 定位殺</param>
         private static List<BaseOptions> PosNumber(List<BaseOptions> data, string condition, string pos, bool isKeep)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int posindex = 0;
                 bool isexists = false;
@@ -137,10 +136,9 @@ namespace WpfAppTest.Base
         /// <param name="isKeep">是否保留</param>
         private static List<BaseOptions> OddEvenNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int number = 0;
                 string checkvalue = "";
@@ -192,10 +190,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> CheckValueNumber(List<BaseOptions> data, string condition, int type, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int number = 0;
                 string checkvalue = "";
@@ -248,10 +245,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> DivThreeRemainder(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int number = 0;
                 string checkvalue = "";
@@ -302,10 +298,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> PrimeNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 string checkvalue = "";
                 string[] prime = new string[4] { "2", "3", "5", "7" };
@@ -355,10 +350,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> SumNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int number = 0;
 
@@ -407,10 +401,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> SumLastNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 int number = 0;
 
@@ -459,10 +452,9 @@ namespace WpfAppTest.Base
         /// </summary>
         private static List<BaseOptions> CrossNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
-            List<BaseOptions> tmpData = new List<BaseOptions>();
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
             if (!string.IsNullOrEmpty(condition))
             {
-                tmpData = data.ToList();
                 var conArray = condition.Split(',');
                 char[] tmp;
                 int number = 0;
