@@ -9,6 +9,7 @@ using System.Windows;
 using System.Collections;
 using System.Windows.Data;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace WpfAppTest.Base
 {
@@ -39,6 +40,11 @@ namespace WpfAppTest.Base
             return dt;
         }
 
+        /// <summary>
+        /// 是否Runtime
+        /// </summary>
+        public static bool RunTime { get { return !DesignerProperties.GetIsInDesignMode(new DependencyObject()); } }
+
         public static void DataFieldBinding(FrameworkElement container)
         {
             Hashtable ht = new Hashtable();
@@ -58,10 +64,10 @@ namespace WpfAppTest.Base
                     //{
                     //    df.CaptionControl = tmp;
                     //    Help.InitHelpEvents(df.CaptionControl);
-                        TextBlock tb = (TextBlock)tmp;
-                        tb.TextAlignment = TextAlignment.Right;
-                        tb.TextWrapping = TextWrapping.Wrap;
-                        tb.MaxWidth = 100;
+                    TextBlock tb = (TextBlock)tmp;
+                    tb.TextAlignment = TextAlignment.Right;
+                    tb.TextWrapping = TextWrapping.Wrap;
+                    tb.MaxWidth = 100;
                     //    tb.Text = df.Caption;
                     //    if (df.Remark != "")
                     //        tb.ToolTip = df.Remark;
@@ -132,7 +138,7 @@ namespace WpfAppTest.Base
                         //cb.IsEnabled = false;
                     }
                 }
-                
+
                 //if (bi != null && bi.NotifyOnSourceUpdated)
                 //    Binding.AddSourceUpdatedHandler(tmp, Control_SourceUpdated);
             }
@@ -168,6 +174,88 @@ namespace WpfAppTest.Base
             }
             else
                 result.Add(result.Count, objContainer);
+        }
+
+        static T FindFirstChild<T>(FrameworkElement element) where T : FrameworkElement
+        {
+            int childrenCount = System.Windows.Media.VisualTreeHelper.GetChildrenCount(element);
+            var children = new FrameworkElement[childrenCount];
+
+            for (int i = 0; i < childrenCount; i++)
+            {
+                var child = System.Windows.Media.VisualTreeHelper.GetChild(element, i) as FrameworkElement;
+                children[i] = child;
+                if (child is T)
+                    return (T)child;
+            }
+
+            for (int i = 0; i < childrenCount; i++)
+                if (children[i] != null)
+                {
+                    var subChild = FindFirstChild<T>(children[i]);
+                    if (subChild != null)
+                        return subChild;
+                }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 動態繫結公用Method
+        /// </summary>
+        /// <param name="MethodNoumenon">instance</param>
+        /// <param name="MethodName">Method Name</param>
+        /// <param name="MethodVariable">參數</param>
+        /// <param name="MethodTypes">參數類別(參數中有任一個可能為null時必須提供)</param>
+        /// <returns>表示叫用的成員之傳回值的物件</returns>
+        public static object DynamicPublicMethod(object MethodNoumenon, string MethodName, object[] MethodVariable, Type[] MethodTypes = null)
+        {
+            BindingFlags MethodFlag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase;
+            return DynamicExecuteMethod(MethodNoumenon, MethodName, MethodVariable, MethodFlag, MethodTypes);
+        }
+
+        /// <summary>
+        /// 動態繫結非公用Method
+        /// </summary>
+        /// <param name="MethodNoumenon">instance</param>
+        /// <param name="MethodName">Method Name</param>
+        /// <param name="MethodVariable">參數</param>
+        /// <param name="MethodTypes">參數類別(參數中有任一個可能為null時必須提供)</param>
+        /// <returns>表示叫用的成員之傳回值的物件</returns>
+        public static object DynamicNonPublicMethod(object MethodNoumenon, string MethodName, object[] MethodVariable, Type[] MethodTypes = null)
+        {
+            BindingFlags MethodFlag = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase;
+            return DynamicExecuteMethod(MethodNoumenon, MethodName, MethodVariable, MethodFlag, MethodTypes);
+        }
+        /// <summary>
+        /// 動態繫結Method
+        /// </summary>
+        /// <param name="MethodNoumenon">instance</param>
+        /// <param name="MethodName">Method Name</param>
+        /// <param name="MethodVariable">參數</param>
+        /// <param name="MethodFlag">位元遮罩，由一個或多個 BindingFlags 組成，而這些旗標會指定執行搜尋的方式</param>
+        /// <param name="MethodTypes">參數類別(參數中有任一個可能為null時必須提供)</param>
+        /// <returns>表示叫用的成員之傳回值的物件</returns>
+        public static object DynamicExecuteMethod(object MethodNoumenon, string MethodName, object[] MethodVariable, BindingFlags MethodFlag, Type[] MethodTypes = null)
+        {
+            //Type[] MethodTypes = null;
+            if (MethodTypes == null && MethodVariable != null)
+            {
+                int n = MethodVariable.Length;
+                MethodTypes = new Type[n];
+                for (int i = 0; i < n; i++)
+                    MethodTypes[i] = MethodVariable[i].GetType();
+            }
+            Type type = MethodNoumenon.GetType();
+            MethodInfo method;
+            if (MethodTypes == null)
+                method = type.GetMethod(MethodName, MethodFlag);
+            else
+                method = type.GetMethod(MethodName, MethodFlag, null, MethodTypes, null);
+            if (method != null)
+                return method.Invoke(MethodNoumenon, MethodFlag, Type.DefaultBinder, MethodVariable, null);
+            else
+                return null;
         }
     }
 }

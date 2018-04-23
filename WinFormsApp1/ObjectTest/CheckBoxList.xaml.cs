@@ -5,6 +5,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System;
+using WpfAppTest.Base;
+using System.Collections;
+using System.Windows.Media;
 
 namespace WpfAppTest
 {
@@ -39,13 +42,14 @@ namespace WpfAppTest
         {
             InitializeComponent();
             ((INotifyCollectionChanged)this.Items).CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChanged);
+            SetContextMenu();
         }
 
         void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             _ValueLength = 0;
             CheckBoxs = null;
-            //InitCheckBoxs();
+            InitCheckBoxs();
         }
 
         int _MaxLength;
@@ -105,7 +109,37 @@ namespace WpfAppTest
             }
         }
 
-        IEnumerable<CheckBox> CheckBoxs;
+        string _VisibleItems;
+        public string VisibleItems
+        {
+            get { return _VisibleItems; }
+            set
+            {
+                if (_VisibleItems != value)
+                {
+                    _VisibleItems = value;
+                    SetCheckBoxVisible2();
+                }
+            }
+        }
+
+        void SetCheckBoxVisible2()
+        {
+            if (CheckBoxs == null) return;
+            foreach (var cb in CheckBoxs)
+            {
+                int i = int.Parse(cb.Tag.ToString());
+                if (i <= 0 || i > ValueLength)
+                    cb.Visibility = Visibility.Collapsed;
+
+                if (!string.IsNullOrEmpty(VisibleItems) && VisibleItems.Length >= i)
+                    cb.Visibility = (VisibleItems[i - 1] == '0' ? Visibility.Visible : Visibility.Collapsed);
+                else
+                    cb.Visibility = Visibility.Visible;
+            }
+        }
+
+        List<CheckBox> CheckBoxs;
 
         private void root_Loaded(object sender, RoutedEventArgs e)
         {
@@ -119,15 +153,31 @@ namespace WpfAppTest
                 if (this.Items.Count > 0)
                     this.UpdateLayout();        //強制更新,立即執行Binding,避免物件在TabControl的第二頁時,出現未正常Binding狀況
 
-                //CheckBoxs = GetEnumerable<CheckBox>(this);
-                CheckBoxs = null;
-                //if (CheckBoxs.Count<CheckBox>() == 0)
-                //    CheckBoxs = null;
-                //else
-                //{
-                //    SetCheckBoxVisible();
-                //    SetChecked(SelectedValue);
-                //}
+                CheckBoxs = new List<CheckBox>();
+                for (int i = 0; i < this.Items.Count; i++)
+                {
+                    ContentPresenter c = (ContentPresenter)this.ItemContainerGenerator.ContainerFromItem(this.Items[i]);
+                    if (c != null)
+                    {
+                        int childrenCount = VisualTreeHelper.GetChildrenCount(c);
+                        var children = new FrameworkElement[childrenCount];
+
+                        for (int j = 0; j < childrenCount; j++)
+                        {
+                            var child = VisualTreeHelper.GetChild(c, j);
+                            if (child is CheckBox)
+                                CheckBoxs.Add((CheckBox)child);
+                        }
+                    }
+                }
+
+                if (CheckBoxs.Count<CheckBox>() == 0)
+                    CheckBoxs = null;
+                else
+                {
+                    SetCheckBoxVisible();
+                    SetChecked(SelectedValue);
+                }
             }
         }
 
@@ -243,16 +293,31 @@ namespace WpfAppTest
             }
         }
 
+        CheckBox _CheckItem;
+        public CheckBox CheckItem
+        {
+            get
+            {
+                return _CheckItem;
+            }
+        }
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (!isBinding)
+            {
+                _CheckItem = (CheckBox)sender;
                 ChangeValue((CheckBox)sender, true);
+            }
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (!isBinding)
+            {
+                _CheckItem = (CheckBox)sender;
                 ChangeValue((CheckBox)sender, false);
+            }
         }
 
         void ChangeValue(CheckBox cb, bool isChecked)
@@ -282,12 +347,26 @@ namespace WpfAppTest
             }
         }
 
+        bool _IsClear = false;
+        public bool IsClear
+        {
+            get { return _IsClear; }
+        }
+
+        bool _IsSelectAll = false;
+        public bool IsSelectAll
+        {
+            get { return _IsSelectAll; }
+        }
+
         /// <summary>
         /// 清除勾選項目
         /// </summary>
         public void Clear()
         {
-            this.SelectedValue = "";
+            _IsClear = true;
+            SelectedValue = "".PadRight(ValueLength, '0');
+            _IsClear = false;
         }
 
         /// <summary>
@@ -295,17 +374,41 @@ namespace WpfAppTest
         /// </summary>
         public void SelectedAll()
         {
-            this.SelectedValue = "".PadRight(ValueLength, '1');
+            _IsSelectAll = true;
+            SelectedValue = "".PadRight(ValueLength, '1');
+            _IsSelectAll = false;
         }
 
-        //public IEnumerable<CheckBox> GetEnumerable<CheckBox>(DependencyObject objContainer)
-        //{
-        //    //var e = new VisualTreeEnumerator(objContainer);
-        //    //while (e.MoveNext())
-        //    //{
-        //    //    if (e.Current is CheckBox)
-        //    //        yield return (CheckBox)Convert.ChangeType(e.Current, typeof(CheckBox));
-        //    //}
-        //}
+        ContextMenu cm;
+        void SetContextMenu()
+        {
+            if (cm == null)
+            {
+                cm = new ContextMenu();
+
+                MenuItem miSelectAll = new MenuItem() { Header = "全選", Tag = "miSelectAll" };
+                //miSelectAll.Icon = new Image() { Source = ImageCollection.GetGlyph("Toolbar_GoTo16") };
+                miSelectAll.Click += mi_Click;
+                cm.Items.Add(miSelectAll);
+
+                MenuItem miClear = new MenuItem() { Header = "清除", Tag = "miClear" };
+                //miClear.Icon = new Image() { Source = ImageCollection.GetGlyph("Toolbar_Clear16") };
+                miClear.Click += mi_Click;
+                cm.Items.Add(miClear);
+            }
+            this.ContextMenu = cm;
+        }
+
+        void mi_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MenuItem mi = (MenuItem)sender;
+            bool isSelectAll = (mi.Tag != null && mi.Tag.ToString() == "miSelectAll");
+            bool isClear = (mi.Tag != null && mi.Tag.ToString() == "miClear");
+
+            if (isSelectAll)
+                this.SelectedAll();
+            else
+                this.Clear();
+        }
     }
 }

@@ -73,62 +73,72 @@
   <ItemGroup>
     <Compile Include="AP\DB.cs" />
     <Compile Include="Base\BaseHelper.cs" />
+    <Compile Include="Base\Calculation.cs" />
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Connection.Designer.cs">
       <DependentUpon>Connection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart.xaml.cs">
-      <DependentUpon>UcFiveStart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart1.xaml.cs">
-      <DependentUpon>UcFiveStart1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart2.xaml.cs">
-      <DependentUpon>UcFiveStart2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart3.xaml.cs">
-      <DependentUpon>UcFiveStart3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart4.xaml.cs">
-      <DependentUpon>UcFiveStart4.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\FiveStart\UcFiveStart5.xaml.cs">
-      <DependentUpon>UcFiveStart5.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart.xaml.cs">
       <DependentUpon>UcTwoStart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart1.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart1.xaml.cs">
       <DependentUpon>UcTwoStart1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart2.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart2.xaml.cs">
       <DependentUpon>UcTwoStart2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart3.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart3.xaml.cs">
       <DependentUpon>UcTwoStart3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart4.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart4.xaml.cs">
       <DependentUpon>UcTwoStart4.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart5.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart5.xaml.cs">
       <DependentUpon>UcTwoStart5.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart6.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart6.xaml.cs">
       <DependentUpon>UcTwoStart6.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart7.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart7.xaml.cs">
       <DependentUpon>UcTwoStart7.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart8.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart8.xaml.cs">
       <DependentUpon>UcTwoStart8.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\TwoStart\UcTwoStart9.xaml.cs">
+    <Compile Include="Example\1.TwoStart\UcTwoStart9.xaml.cs">
       <DependentUpon>UcTwoStart9.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Example\UcNumberFilter.xaml.cs">
-      <DependentUpon>UcNumberFilter.xaml</DependentUpon>
+    <Compile Include="Example\2.ThreeStart\UcThreeStart.xaml.cs">
+      <DependentUpon>UcThreeStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\2.ThreeStart\UcThreeStart1.xaml.cs">
+      <DependentUpon>UcThreeStart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\3.FourStart\UcFourStart.xaml.cs">
+      <DependentUpon>UcFourStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\3.FourStart\UcFourStart1.xaml.cs">
+      <DependentUpon>UcFourStart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart.xaml.cs">
+      <DependentUpon>UcFiveStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart1.xaml.cs">
+      <DependentUpon>UcFiveStart1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart2.xaml.cs">
+      <DependentUpon>UcFiveStart2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart3.xaml.cs">
+      <DependentUpon>UcFiveStart3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart4.xaml.cs">
+      <DependentUpon>UcFiveStart4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Example\4.FiveStart\UcFiveStart5.xaml.cs">
+      <DependentUpon>UcFiveStart5.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmGameMain.cs">
       <SubType>Form</SubType>
@@ -199,11 +209,13 @@
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\BaseOptions.cs" />
     <Compile Include="Model\OptionData.cs" />
-    <Compile Include="Model\Relation.cs" />
     <Compile Include="ObjectTest\CheckBoxList.xaml.cs">
       <DependentUpon>CheckBoxList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObjectTest\PathConverter.cs" />
+    <Compile Include="ObjectTest\RadioButtonList.xaml.cs">
+      <DependentUpon>RadioButtonList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UcKLine.xaml.cs">
@@ -293,75 +305,91 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Example\FiveStart\UcFiveStart.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\FiveStart\UcFiveStart1.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\FiveStart\UcFiveStart2.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\FiveStart\UcFiveStart3.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\FiveStart\UcFiveStart4.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart4.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\FiveStart\UcFiveStart5.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart5.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart6.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart1.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart7.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart2.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart8.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart3.xaml">
+    <Page Include="Example\1.TwoStart\UcTwoStart9.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart4.xaml">
+    <Page Include="Example\2.ThreeStart\UcThreeStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart5.xaml">
+    <Page Include="Example\2.ThreeStart\UcThreeStart1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart6.xaml">
+    <Page Include="Example\3.FourStart\UcFourStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart7.xaml">
+    <Page Include="Example\3.FourStart\UcFourStart1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart8.xaml">
+    <Page Include="Example\4.FiveStart\UcFiveStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\TwoStart\UcTwoStart9.xaml">
+    <Page Include="Example\4.FiveStart\UcFiveStart1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Example\UcNumberFilter.xaml">
+    <Page Include="Example\4.FiveStart\UcFiveStart2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\4.FiveStart\UcFiveStart3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\4.FiveStart\UcFiveStart4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Example\4.FiveStart\UcFiveStart5.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ObjectTest\CheckBoxList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ObjectTest\RadioButtonList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -385,8 +413,8 @@
     <Content Include="bt_icon\loading_icon.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Example\FourStart\" />
-    <Folder Include="Example\ThreeStart\" />
+    <Folder Include="Example\5.Calculator\" />
+    <Folder Include="Example\6.Varification\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,515 @@
+﻿<UserControl x:Class="WpfAppTest.UcFourStart1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAppTest" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!--左半-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TabControl Grid.Row="0" >
+                <TabItem Header="殺直選號碼">
+                    <DockPanel x:Name="dp1" Margin="5">
+                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="80">
+                            <TextBlock Text="單式號碼" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBlock Text="雙擊清空" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
+                        </DockPanel>
+                        <TextBox Name="teEditor1" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Text="不懂使用请看软件教程"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </DockPanel>
+                </TabItem>
+                
+                <TabItem Header="殺垃圾負式">
+                    <DockPanel x:Name="dp2" Margin="5">
+                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="80">
+                            <TextBlock Text="可多行" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBlock Text="12*34*56*78" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBlock Text="雙擊清空" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
+                        </DockPanel>
+                        <TextBox Name="teEditor2" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Text="不懂使用请看软件教程"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </DockPanel>
+                </TabItem>
+                
+                <TabItem Header="殺兩碼/必出兩碼">
+                    <DockPanel x:Name="dp3" Margin="5">
+                        <DockPanel HorizontalAlignment="Center" >
+                            <TextBlock Text="殺兩碼組合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBox Name="teEditor3_1" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                                <TextBox.Resources>
+                                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                        <VisualBrush.Visual>
+                                            <TextBlock FontStyle="Normal" Text="双击清空"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </TextBox.Resources>
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Center" >
+                            <TextBlock Text="必出兩碼組合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBox Name="teEditor3_2" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                                <TextBox.Resources>
+                                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                        <VisualBrush.Visual>
+                                            <TextBlock FontStyle="Normal" Text="双击清空"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </TextBox.Resources>
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DockPanel>
+                    </DockPanel>
+                </TabItem>
+                
+                <TabItem Header="殺三碼/必出三碼">
+                    <DockPanel x:Name="dp4" Margin="5">
+                        <DockPanel HorizontalAlignment="Center" >
+                            <TextBlock Text="殺三碼組合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBox Name="teEditor4_1" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                                <TextBox.Resources>
+                                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                        <VisualBrush.Visual>
+                                            <TextBlock FontStyle="Normal" Text="双击清空"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </TextBox.Resources>
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Center" >
+                            <TextBlock Text="必出三碼組合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBox Name="teEditor4_2" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                                <TextBox.Resources>
+                                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                        <VisualBrush.Visual>
+                                            <TextBlock FontStyle="Normal" Text="双击清空"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </TextBox.Resources>
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DockPanel>
+                    </DockPanel>
+                </TabItem>
+                
+                <TabItem Header="定位殺號">
+                    <DockPanel x:Name="dp5" Margin="5">
+                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" MinWidth="80">
+                            <TextBlock Text="輸入格式：" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <TextBlock Text="45**" Margin="0,0,0,3" DockPanel.Dock="Top"/>
+                            <!--<TextBlock Text="5*78" Margin="0,0,0,3" DockPanel.Dock="Top"/>-->
+                            <TextBlock Text="一行一注" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
+                        </DockPanel>
+                        <TextBox Name="teEditor5" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Text="按格式举例输入，可杀指定位置的2码组合&#13;或者三码组合&#13;如不懂就请软件使用教程"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </DockPanel>
+                </TabItem>
+            </TabControl>
+
+            <GroupBox Header="定位殺" Margin="0,0,0,3" Grid.Row="1" >
+                <DockPanel Margin="5">
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="千位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblThousands" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="百位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblHundreds" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="十位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblTens" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom" >
+                        <TextBlock Text="個位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblUnits" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Header="和、跨、膽" Margin="0,0,0,3" Grid.Row="2" >
+                <DockPanel Margin="5">
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="殺和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
+                        <TextBlock Text="殺和值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBox x:Name="teSeperateNumber" Width="320" DockPanel.Dock="Left">
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Text="和值輸入以空格分割開，例如：8 9 10 20 30"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="殺跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="殺通碼" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="殺AC值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblType4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Header="膽組" Margin="0,0,0,3" Grid.Row="3" >
+                <DockPanel Margin="5">
+                    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,5">
+                        <CheckBox Content="膽碼計重" DockPanel.Dock="Left" Margin="0,0,5,0" Padding="0,0,0,3"/>
+                        <Button Tag="Remark" Content="膽組說明" DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" Click="Button_Click" Margin="0,0,5,0" Padding="0,0,0,3"/>
+                        <TextBlock Text="膽碼開出個數，記得選一下" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Type1" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select1" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel >
+                            <Button Tag="Unit1" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear1" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Type2" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select2" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Unit2" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear2" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Type3" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0">
+                            <Button Tag="Select3" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel >
+                            <Button Tag="Unit3" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear3" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Type4" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select4" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Unit4" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+
+                    <!--使用CheckBoxList計算值-->
+                    <DockPanel Visibility="Collapsed">
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber1_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                            <local:CheckBoxList x:Name="cblNumber2_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber3_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <local:CheckBoxList x:Name="cblNumber4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber4_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <TextBlock Text="膽組容錯" Margin="0,7,5,0" DockPanel.Dock="Left"/>
+                        <TextBox Text="0" x:Name="teStart" Width="20" TextChanged="te_TextChanged" Margin="0,5,5,0" DockPanel.Dock="Left"/>
+                        <TextBlock Text="至" Margin="0,7,5,0" DockPanel.Dock="Left"/>
+                        <TextBox Text="0" x:Name="teEnd" Width="20" TextChanged="te_TextChanged" Margin="0,5,5,0" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
+                    </DockPanel>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Header="殺特殊形態" Grid.Row="4" >
+                <local:CheckBoxList x:Name="cblSpecial" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+            </GroupBox>
+        </Grid>
+
+        <!--右半-->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="殺大小排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" >
+                <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
+            </GroupBox>
+
+            <GroupBox Header="殺奇偶排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" >
+                <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
+            </GroupBox>
+
+            <GroupBox Header="殺質合排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" >
+                <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
+            </GroupBox>
+
+            <GroupBox Header="殺012排列" Margin="0,0,0,3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <DockPanel Width="550">
+                    <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                </DockPanel>
+            </GroupBox>
+
+            <TextBox x:Name="teNumber" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" MouseDoubleClick="txtEditor_MouseDoubleClick">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Normal" Text="大底號碼 雙擊清空"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HintText}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <!--<DockPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                
+            </DockPanel>-->
+
+            <GroupBox Header="特別排除" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                <local:CheckBoxList x:Name="cblSpecialExcept" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>

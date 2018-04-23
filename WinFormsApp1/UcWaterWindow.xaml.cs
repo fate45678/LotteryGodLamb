@@ -26,7 +26,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
-        
+
         bool IsFirstTime = true;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -42,14 +42,12 @@ namespace WinFormsApp1
         /// </summary>
         void SetListBoxItems()
         {
-            List<BaseOptions> tmp = new List<BaseOptions>();
-            for (int i = 2; i <= 5; i++)
-                lbType.Items.Add(new BaseOptions { ID = i, Name = i.ToString() + "星組號系統", Code = "lbType" + (i - 1).ToString() });
+            lbType.ItemsSource = DB.CreateOption(1, 6, new string[6] { "2星組號系統", "3星組號系統", "4星組號系統", "5星組號系統", "倍投計算器", "大底驗證" });
             if (lbType.Items.Count > 0)
                 lbType.SelectedIndex = 0;
         }
 
-        Dictionary<string, UserControl> form;
+        Dictionary<int, UserControl> form;
 
         /// <summary>
         /// ListBox選取選項事件
@@ -62,22 +60,26 @@ namespace WinFormsApp1
             if (tmp != null)
             {
                 if (form == null)
-                    form = new Dictionary<string, UserControl>();
+                    form = new Dictionary<int, UserControl>();
 
-                if (!form.ContainsKey(tmp.Code))
+                if (!form.ContainsKey(tmp.ID))
                 {
-                    if (tmp.Code == "lbType1")
-                        form.Add(tmp.Code, new UcTwoStart());
-                    else if (tmp.Code == "lbType2")
-                        form.Add(tmp.Code, new UcFiveStart());
-                    else if (tmp.Code == "lbType3")
-                        form.Add(tmp.Code, new UcFiveStart());
-                    else if (tmp.Code == "lbType4")
-                        form.Add(tmp.Code, new UcFiveStart());
+                    if (tmp.ID == 1)
+                        form.Add(tmp.ID, new UcTwoStart());
+                    else if (tmp.ID == 2)
+                        form.Add(tmp.ID, new UcFourStart());
+                    else if (tmp.ID == 3)
+                        form.Add(tmp.ID, new UcFourStart());
+                    else if (tmp.ID == 4)
+                        form.Add(tmp.ID, new UcFiveStart());
+                    else if (tmp.ID == 5)
+                        form.Add(tmp.ID, new UcFiveStart());
+                    else if (tmp.ID == 6)
+                        form.Add(tmp.ID, new UcFiveStart());
                 }
 
                 dpContent.Children.Clear();
-                dpContent.Children.Add(form[tmp.Code]);
+                dpContent.Children.Add(form[tmp.ID]);
             }
         }
     }
