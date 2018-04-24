@@ -118,9 +118,11 @@ namespace WinFormsApp1
         }
         #endregion
 
+
         //取得歷史開獎
         private void UpdateHistory()
         {
+           
             if (rtxtHistory.Text == "") //無資料就全寫入
             {
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
@@ -150,7 +152,52 @@ namespace WinFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             UpdateHistory();
+            updateMyfavorite();
             label10.Text = "欢迎: " + frmGameMain.globalUserName;
+        }
+
+        static bool isFirstTime = true;
+        public static void resetFavoriteFlag()
+        {
+            isFirstTime = true;
+        }
+
+        private void updateMyfavorite()
+        {
+            if (isFirstTime)
+            {
+                if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
+                {
+                    Dictionary<int, string> dic = new Dictionary<int, string>();
+                    dic.Add(0, "f_name");
+                    var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from favorite where user_account = '" + frmGameMain.globalUserAccount + "'", dic);
+                    int x = 0;
+                    int y = 0;
+                    tableLayoutPanel2.Controls.Clear();
+
+                    if (getData.Count > 0)
+                    {
+                        for (int i = 0; i < getData.Count; i++)
+                        {
+                            Control control = new Button();
+                            control.Text = getData.ElementAt(i).ToString();
+                            control.Size = new System.Drawing.Size(140, 30);
+                            control.Name = String.Format("btx{0}y{1}", x, y);
+                            control.BackColor = Color.Red;
+                            control.Padding = new Padding(5);
+                            control.Dock = DockStyle.Fill;
+
+                            control.Click += dynamicBt_Click;
+                            this.tableLayoutPanel2.Controls.Add(control, x, y);
+
+                            calHits();
+
+                        }
+                    }
+                    isFirstTime = false;
+                }
+            }
+           
         }
 
         private static string choosePlanName = "";
@@ -204,22 +251,28 @@ namespace WinFormsApp1
             int y = 0;
             tableLayoutPanel1.Controls.Clear();
 
-
-            for (int i = 0; i < getData.Count; i++)
+            if (getData.Count > 0)
             {
-                Control control = new Button();
-                control.Text = getData.ElementAt(i).ToString();
-                control.Size = new System.Drawing.Size(140, 30);
-                control.Name = String.Format("btx{0}y{1}", x, y);
-                control.BackColor = Color.Red;
-                control.Padding = new Padding(5);
-                control.Dock = DockStyle.Fill;
-        
-                control.Click += dynamicBt_Click;
-                this.tableLayoutPanel1.Controls.Add(control, x, y);
-                calHits();
+                for (int i = 0; i < getData.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = getData.ElementAt(i).ToString();
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.BackColor = Color.Red;
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
 
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel1.Controls.Add(control, x, y);
+                    calHits();
+                }
             }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("查無資料。");
+            }
+            
         }
 
         Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -270,6 +323,7 @@ namespace WinFormsApp1
         private void button40_Click(object sender, EventArgs e)
         {
             System.Windows.Clipboard.SetText(richTextBox1.Text);
+            System.Windows.Forms.MessageBox.Show("複製成功。");
         }
 
         private void btnSearchPlan_Click(object sender, EventArgs e)
@@ -281,23 +335,24 @@ namespace WinFormsApp1
             int y = 0;
             tableLayoutPanel1.Controls.Clear();
 
-
-            for (int i = 0; i < getData.Count; i++)
+            if (getData.Count > 0)
             {
-                Control control = new Button();
-                control.Text = getData.ElementAt(i).ToString();
-                control.Size = new System.Drawing.Size(140, 30);
-                control.Name = String.Format("btx{0}y{1}", x, y);
-                control.BackColor = Color.Red;
-                control.Padding = new Padding(5);
-                control.Dock = DockStyle.Fill;
-
-                control.Click += dynamicBt_Click;
-                this.tableLayoutPanel1.Controls.Add(control, x, y);
-                
-                calHits();
-
+                for (int i = 0; i < getData.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = getData.ElementAt(i).ToString();
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.BackColor = Color.Red;
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel1.Controls.Add(control, x, y);
+                    calHits();
+                }
             }
+            else
+                System.Windows.Forms.MessageBox.Show("查無資料。");
         }
 
         private void button37_Click(object sender, EventArgs e)

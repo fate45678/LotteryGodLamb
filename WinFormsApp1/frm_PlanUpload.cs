@@ -227,6 +227,7 @@ namespace WinFormsApp1
                     frmGameMain.globalUserAccount = "";
                     label4.Text = "";
                     MessageBox.Show("登出成功。");
+                    frm_PlanAgent.resetFavoriteFlag();
                     button1.Text = "登入";
                     loginButtonType = 0;
                 }
@@ -551,7 +552,7 @@ namespace WinFormsApp1
                 //取得帳號
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "account");
-                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from userData where name = '" + frmGameMain.globalUserAccount + "'", dic);
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from userData where account = '" + frmGameMain.globalUserAccount + "'", dic);
                 if (getData.Count != 0)
                 {
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name ,p_account ,p_start ,p_end ,p_rule) values('" + label16.Text + "續傳" + "','" + getData.ElementAt(0) + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + richTextBox1.Text + "," + "')");
@@ -593,12 +594,12 @@ namespace WinFormsApp1
             {
 
                 if (i == 0)
-                    label16.Text = "重庆时时彩" + getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
+                    label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
                 else if (i == 2)
                     label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
                 else if (i == 4)
                 {
-                    richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length - 1);
+                    richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
                     string strReplace = getData.ElementAt(i).Replace(",", "");
                     int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
                     label15.Text = "共" + times + "注";
