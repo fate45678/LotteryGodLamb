@@ -147,6 +147,7 @@ namespace WinFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            updateGod();
             UpdateHistory();
             updateMyfavorite();
             label10.Text = "欢迎: " + frmGameMain.globalUserName;
@@ -295,6 +296,8 @@ namespace WinFormsApp1
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'";
             else if(type == 2)
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + frmGameMain.globalUserName + "%'";
+            else if(type==4)
+                sqlQuery = "select * from Upplan";
 
             Dictionary<int, string> dic_plan = new Dictionary<int, string>();
             dic_plan.Add(0, "p_name");
@@ -422,6 +425,26 @@ namespace WinFormsApp1
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void updateGod()
+        {
+            richTextBox2.Text = "";
+            calHits(4);
+            for (int i = 0; i < hitTimes.Count; i++)
+            {
+                richTextBox2.Text += hitTimes.ElementAt(i).Key + "\r\n";
+            }
         }
     }
 }
