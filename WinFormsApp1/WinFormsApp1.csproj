@@ -74,6 +74,9 @@
     <Compile Include="AP\DB.cs" />
     <Compile Include="Base\BaseHelper.cs" />
     <Compile Include="Base\Calculation.cs" />
+    <Compile Include="bigbuttom.xaml.cs">
+      <DependentUpon>bigbuttom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -209,6 +212,9 @@
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\BaseOptions.cs" />
     <Compile Include="Model\OptionData.cs" />
+    <Compile Include="multiple.xaml.cs">
+      <DependentUpon>multiple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ObjectTest\CheckBoxList.xaml.cs">
       <DependentUpon>CheckBoxList.xaml</DependentUpon>
     </Compile>
@@ -305,6 +311,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="bigbuttom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Example\1.TwoStart\UcTwoStart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -384,6 +394,10 @@
     <Page Include="Example\4.FiveStart\UcFiveStart5.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ObjectTest\CheckBoxList.xaml">
       <Generator>MSBuild:Compile</Generator>
