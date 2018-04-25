@@ -35,28 +35,21 @@ namespace WinFormsApp1
         //取得歷史開獎
         public void UpdateHistory()
         {
-            if (rtxtHistory.Text == "") //無資料就全寫入
+            if (rtxtHistory.Text == "") //無資料就全寫入(第一次載入頁面)
             {
-                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                for (int i = 120; i > 0; i--)
                 {
-                    if (i == 120) break; //寫120筆就好
                     rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
-                    dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString()+"     "+frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
-                }
-            }
-            else //有資料先判斷
-            {
-                //導致成是卡住先拿掉
-                if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
-                {
-                    rtxtHistory.Text = "";
-                    int i = frmGameMain.jArr.Count - 1;
-                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                     dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
+                    //檢查資料庫 沒有就新增
                 }
             }
-            
-               
+            else if(!string.IsNullOrEmpty(rtxtHistory.Text) && dt_history.ElementAt(dt_history.Count()-1).IndexOf(frmGameMain.jArr[0]["Issue"].ToString())==-1)
+            {
+                rtxtHistory.Text += frmGameMain.jArr[0]["Issue"].ToString() + "  " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", "") + "\r\n";
+                dt_history.Add(frmGameMain.jArr[0]["Issue"].ToString() + "     " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", ""));
+                //檢查資料庫 沒有就新增
+            }
         }
         private void updatecheckboxlist1()
         {
@@ -202,10 +195,6 @@ namespace WinFormsApp1
             }
         }
         #region UI事件
-        public void a()
-        {
-            button1.Text = "123";
-        }
         public static int loginButtonType = 0;
         /// <summary>
         /// 登入按鈕事件

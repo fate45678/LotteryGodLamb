@@ -122,25 +122,21 @@ namespace WinFormsApp1
         //取得歷史開獎
         private void UpdateHistory()
         {
-           
-            if (rtxtHistory.Text == "") //無資料就全寫入
+            if (rtxtHistory.Text == "") //無資料就全寫入(第一次載入頁面)
             {
-                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                for (int i = 120; i > 0; i--)
                 {
-                    if (i == 120) break; //寫120筆就好
-                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
                     dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+                        
                 }
             }
-            else //有資料先判斷
+            else if (!string.IsNullOrEmpty(rtxtHistory.Text) && dt_history.ElementAt(dt_history.Count() - 1).IndexOf(frmGameMain.jArr[0]["Issue"].ToString()) == -1)
             {
-                if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
-                {
-                    rtxtHistory.Text = "";
-                    int i = frmGameMain.jArr.Count-1;
-                    rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
-                    dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
-                }
+                rtxtHistory.Text += frmGameMain.jArr[0]["Issue"].ToString() + "  " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", "") + "\r\n";
+                dt_history.Add(frmGameMain.jArr[0]["Issue"].ToString() + "     " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", ""));
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[0]["Issue"].ToString() + "','" + frmGameMain.jArr[0]["Number"].ToString().Replace(",", "") + "'");
             }
         }
 
@@ -186,12 +182,8 @@ namespace WinFormsApp1
                             control.BackColor = Color.Red;
                             control.Padding = new Padding(5);
                             control.Dock = DockStyle.Fill;
-
                             control.Click += dynamicBt_Click;
                             this.tableLayoutPanel2.Controls.Add(control, x, y);
-
-                            calHits();
-
                         }
                     }
                     isFirstTime = false;
@@ -251,21 +243,31 @@ namespace WinFormsApp1
             int y = 0;
             tableLayoutPanel1.Controls.Clear();
 
+            calHits(0);
             if (getData.Count > 0)
             {
-                for (int i = 0; i < getData.Count; i++)
+                for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = getData.ElementAt(i).ToString();
+                    control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", x, y);
-                    control.BackColor = Color.Red;
+                    if (hitTimes.ElementAt(i).Value >= 0.8)
+                        control.ForeColor = Color.Red;
+                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                        control.ForeColor = Color.Blue;
+                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                        control.ForeColor = Color.Gray;
+                    else if (hitTimes.ElementAt(i).Value < 0.5)
+                        control.ForeColor = Color.Gray;
+                    else
+                        control.BackColor = Color.Yellow;
+
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
-
                     control.Click += dynamicBt_Click;
                     this.tableLayoutPanel1.Controls.Add(control, x, y);
-                    calHits();
+
                 }
             }
             else
@@ -275,19 +277,26 @@ namespace WinFormsApp1
             
         }
 
+        Dictionary<string, double> hitTimes = new Dictionary<string, double>();
         Dictionary<string, string> dic = new Dictionary<string, string>();
-        public void calHits()
+        public void calHits(int type)//0 cbSearch 1 text search
         {
             dic.Clear();
             //取得過去所有號碼
             Dictionary<int, string> dic_history = new Dictionary<int, string>();
             dic_history.Add(0, "number");
-            var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber", dic_history);
+            string sqlQuery = "select * from Upplan";
+           var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber", dic_history);
             //取得上傳計畫 id 號碼
+           
+            if (type == 0)
+                sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%'";
+            else if (type == 1)
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'";
             Dictionary<int, string> dic_plan = new Dictionary<int, string>();
             dic_plan.Add(0, "p_name");
             dic_plan.Add(1, "p_rule");
-            var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan", dic_plan);
+            var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", sqlQuery, dic_plan);
             //把 dic_plan 轉換成比較好操作的格式
             
             for (int i = 0; i < getPlan.Count; i = i + 2)
@@ -295,8 +304,7 @@ namespace WinFormsApp1
                 dic.Add(getPlan.ElementAt(i), getPlan.ElementAt(i + 1));
             }
             //統計擊中次數
-            Dictionary<string, double> hitTimes = new Dictionary<string, double>();
-
+            hitTimes.Clear();
             for (int i = 0; i < getPlan.Count / 2; i++)
             {
                 int temp = 0;
@@ -337,18 +345,28 @@ namespace WinFormsApp1
 
             if (getData.Count > 0)
             {
-                for (int i = 0; i < getData.Count; i++)
+                for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = getData.ElementAt(i).ToString();
+                    control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", x, y);
-                    control.BackColor = Color.Red;
+                    if (hitTimes.ElementAt(i).Value >= 0.8)
+                        control.ForeColor = Color.Red;
+                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                        control.ForeColor = Color.Blue;
+                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                        control.ForeColor = Color.Gray;
+                    else if (hitTimes.ElementAt(i).Value < 0.5)
+                        control.ForeColor = Color.Gray;
+                    else
+                        control.BackColor = Color.Yellow;
+
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
                     this.tableLayoutPanel1.Controls.Add(control, x, y);
-                    calHits();
+                    
                 }
             }
             else
@@ -369,21 +387,27 @@ namespace WinFormsApp1
                 int y = 0;
                 tableLayoutPanel2.Controls.Clear();
 
-
-                for (int i = 0; i < getData.Count; i++)
+                for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = getData.ElementAt(i).ToString();
+                    control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", x, y);
-                    control.BackColor = Color.Red;
+                    if (hitTimes.ElementAt(i).Value >= 0.8)
+                        control.ForeColor = Color.Red;
+                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                        control.ForeColor = Color.Blue;
+                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                        control.ForeColor = Color.Gray;
+                    else if (hitTimes.ElementAt(i).Value < 0.5)
+                        control.ForeColor = Color.Gray;
+                    else
+                        control.BackColor = Color.Yellow;
+
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
-
                     control.Click += dynamicBt_Click;
                     this.tableLayoutPanel2.Controls.Add(control, x, y);
-
-                    calHits();
 
                 }
             }
