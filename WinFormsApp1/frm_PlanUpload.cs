@@ -160,40 +160,7 @@ namespace WinFormsApp1
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into HistoryNumber(issue, number) values('"+ st + "','"+ frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "')");
                 }
         }
-        public void checkHistoryOnlyonce()//改用多執行緒去做
-        {
-            //for (int i = 0; i < 120; i++)
-            //{
-
-
-            //    var dt = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select issue as 'name' from HistoryNumber where issue = '" + frmGameMain.jArr[i]["Issue"].ToString() + "'");
-            //    if (dt.Count == 0)//沒找到期數
-            //    {
-            //        con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into HistoryNumber(issue, number) values('" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "')");
-            //    }
-            //}
-            Thread othread = new Thread(updatHistory.Run);
-            othread.Start();
-            othread.Abort();
-
-        }
-        public class updatHistory
-        {
-            public static void Run()
-            {
-                Connection con = new Connection();
-                for (int i = 0; i < 120; i++)
-                {
-
-
-                    var dt = con.ConSQLtoList4cb("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select issue as 'name' from HistoryNumber where issue = '" + frmGameMain.jArr[i]["Issue"].ToString() + "'");
-                    if (dt.Count == 0)//沒找到期數
-                    {
-                        con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into HistoryNumber(issue, number) values('" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "')");
-                    }
-                }
-            }
-        }
+      
         #region UI事件
         public static int loginButtonType = 0;
         /// <summary>
@@ -344,7 +311,42 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("功能尚未開放");
+            string input = richTextBox2.Text;
+            string patten = ",";
+            string[] st = Regex.Split(input, patten);
+            string[] result = st.Distinct().ToArray();
+
+            if (st.Length > 0)
+            {
+                richTextBox2.Text = "";
+                for (int i = 0; i < result.Length; i++)
+                {
+                    int count = 0;
+                    for (int j = 0; j < st.Length; j++)
+                    {
+                        if (st[j] == result[i])
+                            count++;
+                        if (count > 1 && st[j].Equals(result[i]))
+                            st[j] = st[j] + "x";
+                    }
+                }
+                for (int i = 0; i < st.Length; i++)
+                {
+                    if (st[i].IndexOf("x") != -1)
+                        AppendText(richTextBox2, st[i].Replace("x", "") + ",", Color.Red);
+                    else
+                            AppendText(richTextBox2, st[i] + ",", Color.Black);
+                }
+            }
+        }
+
+        private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
         }
         /// <summary>
         /// 續傳區域清除功能

@@ -24,12 +24,6 @@ namespace WinFormsApp1
             path  = Directory.GetParent(Directory.GetParent(path).ToString()).ToString();
            // this.BackgroundImage = Image.FromFile(path+"\\bt_icon\\loading_icon.gif");
         }
-        public void closeWin()
-        {
-            frm_PlanUpload frmUploadPreload = new frm_PlanUpload();
-            frmUploadPreload.checkHistoryOnlyonce();
-            Thread.Sleep(5000);
-            this.Close();
-        }
+        
     }
 }

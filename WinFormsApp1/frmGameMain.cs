@@ -111,10 +111,7 @@ namespace WinFormsApp1
             pnlMenuChart.Visible = false;
             HD_GameSelect.Text = "重庆时时彩";
             #endregion
-            frmLoad.FormBorderStyle = FormBorderStyle.None;
-            frmLoad.TopMost = true;
-            frmLoad.Show();
-            frmLoad.closeWin();
+          
         }
 
         //按下上方選單

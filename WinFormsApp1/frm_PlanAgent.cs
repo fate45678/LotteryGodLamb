@@ -128,8 +128,8 @@ namespace WinFormsApp1
                 {
                     rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
                     dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
-                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
-                        
+                    //改成server端記錄每期開獎?
+                    //con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
                 }
             }
             else if (!string.IsNullOrEmpty(rtxtHistory.Text) && dt_history.ElementAt(dt_history.Count() - 1).IndexOf(frmGameMain.jArr[0]["Issue"].ToString()) == -1)
@@ -179,7 +179,7 @@ namespace WinFormsApp1
                             control.Text = getData.ElementAt(i).ToString();
                             control.Size = new System.Drawing.Size(140, 30);
                             control.Name = String.Format("btx{0}y{1}", x, y);
-                            control.BackColor = Color.Red;
+                            control.ForeColor = Color.Blue;
                             control.Padding = new Padding(5);
                             control.Dock = DockStyle.Fill;
                             control.Click += dynamicBt_Click;
@@ -293,6 +293,9 @@ namespace WinFormsApp1
                 sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%'";
             else if (type == 1)
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'";
+            else if(type == 2)
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + frmGameMain.globalUserName + "%'";
+
             Dictionary<int, string> dic_plan = new Dictionary<int, string>();
             dic_plan.Add(0, "p_name");
             dic_plan.Add(1, "p_rule");
@@ -414,6 +417,11 @@ namespace WinFormsApp1
             else
                 System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
             
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

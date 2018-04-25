@@ -22,7 +22,7 @@ namespace WinFormsApp1
         public bigbuttom()
         {
             InitializeComponent();
-            UpdateProgressBar()
+            UpdateProgressBar();
         }
 
         private void GDMaster_Loaded(object sender, RoutedEventArgs e)
