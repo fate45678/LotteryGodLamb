@@ -43,6 +43,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.pnlRightTop = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -84,7 +85,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbGameKind = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.pnlPlanArea.SuspendLayout();
             this.pnlPlanRight.SuspendLayout();
             this.pnlRightBottom.SuspendLayout();
@@ -192,7 +192,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.76119F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.23881F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
@@ -256,6 +256,14 @@
             this.pnlUserRank.Name = "pnlUserRank";
             this.pnlUserRank.Size = new System.Drawing.Size(306, 406);
             this.pnlUserRank.TabIndex = 10;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(6, 28);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(295, 371);
+            this.richTextBox2.TabIndex = 4;
+            this.richTextBox2.Text = "載入中...";
             // 
             // panel33
             // 
@@ -772,14 +780,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(6, 28);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(295, 371);
-            this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "載入中...";
             // 
             // frm_PlanAgent
             // 

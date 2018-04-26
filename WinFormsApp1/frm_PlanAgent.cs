@@ -118,12 +118,14 @@ namespace WinFormsApp1
         }
         #endregion
 
-
+        checkNupdateData cnd = new checkNupdateData();
         //取得歷史開獎
         private void UpdateHistory()
         {
             if (rtxtHistory.Text == "") //無資料就全寫入(第一次載入頁面)
             {
+                cnd.Start();
+
                 for (int i = 120; i > 0; i--)
                 {
                     rtxtHistory.Text += frmGameMain.jArr[i]["Issue"].ToString() + "  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
@@ -149,7 +151,7 @@ namespace WinFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             timeCount++;
-            if(timeCount%15==0 || timeCount==3)
+            if (timeCount % 15 == 0 || timeCount == 3)
                 updateGod();
             UpdateHistory();
             updateMyfavorite();
@@ -193,7 +195,7 @@ namespace WinFormsApp1
                     isFirstTime = false;
                 }
             }
-           
+
         }
 
         private static string choosePlanName = "";
@@ -235,11 +237,11 @@ namespace WinFormsApp1
 
 
         int searchType = 0;//0 初始值 1 cb search 2 userNmae search
-            /// <summary>
-            /// 查看按鈕功能
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
+        /// <summary>
+        /// 查看按鈕功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnView_Click(object sender, EventArgs e)
         {
             searchType = 1;
@@ -253,7 +255,7 @@ namespace WinFormsApp1
                     Control control = new Button();
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", 0,0);
+                    control.Name = String.Format("btx{0}y{1}", 0, 0);
                     if (hitTimes.ElementAt(i).Value >= 0.8)
                         control.ForeColor = Color.Red;
                     else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
@@ -276,7 +278,7 @@ namespace WinFormsApp1
             {
                 System.Windows.Forms.MessageBox.Show("查無資料。");
             }
-            
+
         }
 
         Dictionary<string, double> hitTimes = new Dictionary<string, double>();
@@ -288,16 +290,16 @@ namespace WinFormsApp1
             Dictionary<int, string> dic_history = new Dictionary<int, string>();
             dic_history.Add(0, "number");
             string sqlQuery = "select * from Upplan";
-           var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber", dic_history);
+            var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber", dic_history);
             //取得上傳計畫 id 號碼
-           
+
             if (type == 0)
                 sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id";
             else if (type == 1)
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'  order by p_id";
-            else if(type == 2)
+            else if (type == 2)
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id ";
-            else if(type==4)
+            else if (type == 4)
                 sqlQuery = "select * from Upplan  order by p_id";
             else if (type == 5)
                 sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
@@ -309,7 +311,7 @@ namespace WinFormsApp1
             dic_plan.Add(1, "p_rule");
             var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", sqlQuery, dic_plan);
             //把 dic_plan 轉換成比較好操作的格式
-            
+
             for (int i = 0; i < getPlan.Count; i = i + 2)
             {
                 dic.Add(getPlan.ElementAt(i), getPlan.ElementAt(i + 1));
@@ -369,7 +371,7 @@ namespace WinFormsApp1
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
                     this.tableLayoutPanel1.Controls.Add(control, 0, 0);
-                    
+
                 }
             }
             else
@@ -397,7 +399,7 @@ namespace WinFormsApp1
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", x, y);
                     control.Tag = hitTimes.ElementAt(i).Key;
-                    
+
                     if (hitTimes.ElementAt(i).Value >= 0.8)
                         control.ForeColor = Color.Red;
                     else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
@@ -418,7 +420,7 @@ namespace WinFormsApp1
             }
             else
                 System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
-            
+
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -457,9 +459,9 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(searchType==1)//cb search
+            if (searchType == 1)//cb search
                 calHits(5);
-            else if(searchType==2) //userName search
+            else if (searchType == 2) //userName search
                 calHits(6);
 
             if (hitTimes.Count > 0)
@@ -488,7 +490,7 @@ namespace WinFormsApp1
                 }
             }
         }
-
+        #region 刷新大神榜資料
         private void updateGod()
         {
             richTextBox2.Text = "";
@@ -498,7 +500,8 @@ namespace WinFormsApp1
                 richTextBox2.Text += hitTimes.ElementAt(i).Key + "\r\n";
             }
         }
-
+        #endregion
+        #region 切換頁相關功能
         int pageIndex = 0;
         private void button43_Click(object sender, EventArgs e)
         {
@@ -525,7 +528,7 @@ namespace WinFormsApp1
                 button42.Enabled = true;
             else
                 button42.Enabled = false;
-            for (int i = pageIndex; i < pageIndex + 27 && i<hitTimes.Count; i++)
+            for (int i = pageIndex; i < pageIndex + 27 && i < hitTimes.Count; i++)
             {
                 Control control = new Button();
                 control.Text = hitTimes.ElementAt(i).Key;
@@ -548,6 +551,28 @@ namespace WinFormsApp1
                 this.tableLayoutPanel1.Controls.Add(control, 0, 0);
 
             }
+        }
+        #endregion
+    }
+
+    class checkNupdateData
+    {
+        BackgroundWorker ww = new BackgroundWorker();
+        Connection con = new Connection();
+        //不帶參數建構子
+        public checkNupdateData()
+        { }
+        public void Start()
+        {
+            ww.DoWork += new DoWorkEventHandler(doWork);
+            ww.RunWorkerAsync();
+            ww.WorkerSupportsCancellation = true;
+        }
+        public void Stop(){ }
+        private void doWork(object sender,DoWorkEventArgs e)
+        {
+            for (int i =0;i<120;i++)
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
         }
     }
 }

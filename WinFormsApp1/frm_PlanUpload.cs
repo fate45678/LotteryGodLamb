@@ -262,14 +262,16 @@ namespace WinFormsApp1
         {
             if (string.IsNullOrEmpty(label4.Text))
                 MessageBox.Show("尚未登入。");
+            else if (errorFlag == true)
+                MessageBox.Show("有重複的號碼，修正並除錯後再嘗試上傳。");
             else
             {
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "p_curNum");
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-                var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'",dic);
+                var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'", dic);
                 int planNUmber = int.Parse(plancount.ElementAt(0)) + 1;
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum) values('"+label4.Text + "重慶時時彩" + planName + "第"+planNUmber + "週期','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','"+ planNUmber + "')");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum) values('" + label4.Text + "重慶時時彩" + planName + "第" + planNUmber + "週期','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','" + planNUmber + "')");
 
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1();
@@ -304,6 +306,9 @@ namespace WinFormsApp1
             var dt_cycle = Items.Where(x => x.Key > (int)cbGamePlan.SelectedValue);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
         }
+
+
+        bool errorFlag = false;
         /// <summary>
         /// 除錯按鈕事件
         /// </summary>
@@ -311,6 +316,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
+            errorFlag = false;
             string input = richTextBox2.Text;
             string patten = ",";
             string[] st = Regex.Split(input, patten);
@@ -330,12 +336,15 @@ namespace WinFormsApp1
                             st[j] = st[j] + "x";
                     }
                 }
-                for (int i = 0; i < st.Length; i++)
+                for (int i = 0; i < st.Length-1; i++)
                 {
                     if (st[i].IndexOf("x") != -1)
+                    {
+                        errorFlag = true;
                         AppendText(richTextBox2, st[i].Replace("x", "") + ",", Color.Red);
+                    }
                     else
-                            AppendText(richTextBox2, st[i] + ",", Color.Black);
+                        AppendText(richTextBox2, st[i] + ",", Color.Black);
                 }
             }
         }
@@ -518,9 +527,7 @@ namespace WinFormsApp1
         private void button5_Click(object sender, EventArgs e)
         {
             foreach (object checkedItem in checkedListBox1.CheckedItems)
-            {
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + checkedItem.ToString() + "'");
-            }
             MessageBox.Show("刪除成功。");
             updatecheckboxlist1();
         }
@@ -534,9 +541,7 @@ namespace WinFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(label4.Text))
-            {
                 MessageBox.Show("請先登入。");
-            }
             else
             {
                 //取得帳號
@@ -559,10 +564,7 @@ namespace WinFormsApp1
             var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
             checkedListBox1.Items.Clear();
             for (int i = 0; i < dt.Count; i++)
-            {
                 checkedListBox1.Items.Add(dt.ElementAt(i).ToString());
-
-            }
         }
         private void button10_Click(object sender, EventArgs e)
         {
@@ -602,25 +604,13 @@ namespace WinFormsApp1
                 if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
                 {
                     if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
-                    {
                         listBox1.Items.Add(dt_history[i].ToString() + "     中");
-
-                    }
                     else
-                    {
                         listBox1.Items.Add(dt_history[i].ToString() + "     掛");
-
-                    }
                 }
                 else
-                {
                     listBox1.Items.Add(dt_history[i].ToString() + "     停");
-                }
             }
-            
-           
-
-
             comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
             comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
         }
