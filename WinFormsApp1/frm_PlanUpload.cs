@@ -482,7 +482,6 @@ namespace WinFormsApp1
 
                 //依照擊中次數加入checklistbox
                 Dictionary<string, int> dic1_SortedByKey = hitTimes.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
-                List<Connection.Item> lt = new List<Connection.Item>();
                 checkedListBox1.Items.Clear();
                 for (int i = 0; i < dic1_SortedByKey.Count(); i++)
                 {

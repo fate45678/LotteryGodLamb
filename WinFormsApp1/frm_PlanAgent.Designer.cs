@@ -504,6 +504,7 @@
             this.button43.TabIndex = 3;
             this.button43.Text = "第一页";
             this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
             // button42
             // 
@@ -518,6 +519,7 @@
             this.button42.TabIndex = 2;
             this.button42.Text = "上一页";
             this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
             // button41
             // 
@@ -532,6 +534,7 @@
             this.button41.TabIndex = 1;
             this.button41.Text = "下一页";
             this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
             // panel5
             // 
@@ -776,7 +779,7 @@
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(295, 371);
             this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "";
+            this.richTextBox2.Text = "載入中...";
             // 
             // frm_PlanAgent
             // 

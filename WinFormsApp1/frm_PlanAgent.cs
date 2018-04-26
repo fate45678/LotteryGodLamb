@@ -145,9 +145,12 @@ namespace WinFormsApp1
             System.Diagnostics.Process.Start("http://www.cwl.gov.cn/");
         }
 
+        int timeCount = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            updateGod();
+            timeCount++;
+            if(timeCount%15==0 || timeCount==3)
+                updateGod();
             UpdateHistory();
             updateMyfavorite();
             label10.Text = "欢迎: " + frmGameMain.globalUserName;
@@ -230,6 +233,8 @@ namespace WinFormsApp1
             }
         }
 
+
+        int searchType = 0;//0 初始值 1 cb search 2 userNmae search
             /// <summary>
             /// 查看按鈕功能
             /// </summary>
@@ -237,22 +242,18 @@ namespace WinFormsApp1
             /// <param name="e"></param>
         private void btnView_Click(object sender, EventArgs e)
         {
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0, "p_name");
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%'", dic);
-            int x = 0;
-            int y = 0;
+            searchType = 1;
+            button42.Enabled = false;
             tableLayoutPanel1.Controls.Clear();
-
             calHits(0);
-            if (getData.Count > 0)
+            if (hitTimes.Count > 0)
             {
                 for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.Name = String.Format("btx{0}y{1}", 0,0);
                     if (hitTimes.ElementAt(i).Value >= 0.8)
                         control.ForeColor = Color.Red;
                     else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
@@ -267,7 +268,7 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
-                    this.tableLayoutPanel1.Controls.Add(control, x, y);
+                    this.tableLayoutPanel1.Controls.Add(control, 0, 0);
 
                 }
             }
@@ -291,13 +292,17 @@ namespace WinFormsApp1
             //取得上傳計畫 id 號碼
            
             if (type == 0)
-                sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%'";
+                sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id";
             else if (type == 1)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'  order by p_id";
             else if(type == 2)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + frmGameMain.globalUserName + "%'";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id ";
             else if(type==4)
-                sqlQuery = "select * from Upplan";
+                sqlQuery = "select * from Upplan  order by p_id";
+            else if (type == 5)
+                sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
+            else if (type == 6)
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%" + txtSearchUser.Text + "%'  order by p_id desc";
 
             Dictionary<int, string> dic_plan = new Dictionary<int, string>();
             dic_plan.Add(0, "p_name");
@@ -328,10 +333,6 @@ namespace WinFormsApp1
                 hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
 
             }
-
-            //依照擊中次數加入lsbsent
-            //Dictionary<string, int> dic1_SortedByKey = hitTimes.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
-
         }
 
         private void button40_Click(object sender, EventArgs e)
@@ -342,21 +343,17 @@ namespace WinFormsApp1
 
         private void btnSearchPlan_Click(object sender, EventArgs e)
         {
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0, "p_name");
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select a.* from Upplan a left join userData b on a.p_account = b.account where b.name like '%"+txtSearchUser.Text+"%'", dic);
-            int x = 0;
-            int y = 0;
+            searchType = 2;
             tableLayoutPanel1.Controls.Clear();
-
-            if (getData.Count > 0)
+            calHits(1);
+            if (hitTimes.Count > 0)
             {
                 for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.Name = String.Format("btx{0}y{1}", 0, 0);
                     if (hitTimes.ElementAt(i).Value >= 0.8)
                         control.ForeColor = Color.Red;
                     else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
@@ -371,7 +368,7 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
-                    this.tableLayoutPanel1.Controls.Add(control, x, y);
+                    this.tableLayoutPanel1.Controls.Add(control, 0, 0);
                     
                 }
             }
@@ -399,6 +396,8 @@ namespace WinFormsApp1
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.Tag = hitTimes.ElementAt(i).Key;
+                    
                     if (hitTimes.ElementAt(i).Value >= 0.8)
                         control.ForeColor = Color.Red;
                     else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
@@ -429,12 +428,65 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (hitTimes.Count > 0)
+            {
+                tableLayoutPanel1.Controls.Clear();
+                for (int i = pageIndex; i < pageIndex + 27 && i < hitTimes.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = hitTimes.ElementAt(i).Key;
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = String.Format("btx{0}y{1}", 0, 0);
+                    if (hitTimes.ElementAt(i).Value >= 0.8)
+                        control.ForeColor = Color.Red;
+                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                        control.ForeColor = Color.Blue;
+                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                        control.ForeColor = Color.Gray;
+                    else if (hitTimes.ElementAt(i).Value < 0.5)
+                        control.ForeColor = Color.Gray;
+                    else
+                        control.BackColor = Color.Yellow;
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel1.Controls.Add(control, i, 0);
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+            if(searchType==1)//cb search
+                calHits(5);
+            else if(searchType==2) //userName search
+                calHits(6);
+
+            if (hitTimes.Count > 0)
+            {
+                tableLayoutPanel1.Controls.Clear();
+                for (int i = pageIndex; i < pageIndex + 27 && i < hitTimes.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = hitTimes.ElementAt(i).Key;
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = String.Format("btx{0}y{1}", 0, 0);
+                    if (hitTimes.ElementAt(i).Value >= 0.8)
+                        control.ForeColor = Color.Red;
+                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                        control.ForeColor = Color.Blue;
+                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                        control.ForeColor = Color.Gray;
+                    else if (hitTimes.ElementAt(i).Value < 0.5)
+                        control.ForeColor = Color.Gray;
+                    else
+                        control.BackColor = Color.Yellow;
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel1.Controls.Add(control, i, 0);
+                }
+            }
         }
 
         private void updateGod()
@@ -444,6 +496,57 @@ namespace WinFormsApp1
             for (int i = 0; i < hitTimes.Count; i++)
             {
                 richTextBox2.Text += hitTimes.ElementAt(i).Key + "\r\n";
+            }
+        }
+
+        int pageIndex = 0;
+        private void button43_Click(object sender, EventArgs e)
+        {
+            pageIndex = 0;
+            button42.Enabled = false;
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            pageIndex -= 27;
+            refreshTBpanel();
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            pageIndex += 27;
+            refreshTBpanel();
+        }
+
+        private void refreshTBpanel()
+        {
+            tableLayoutPanel1.Controls.Clear();
+            if (pageIndex >= 27)
+                button42.Enabled = true;
+            else
+                button42.Enabled = false;
+            for (int i = pageIndex; i < pageIndex + 27 && i<hitTimes.Count; i++)
+            {
+                Control control = new Button();
+                control.Text = hitTimes.ElementAt(i).Key;
+                control.Size = new System.Drawing.Size(140, 30);
+                control.Name = String.Format("btx{0}y{1}", 0, 0);
+                if (hitTimes.ElementAt(i).Value >= 0.8)
+                    control.ForeColor = Color.Red;
+                else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
+                    control.ForeColor = Color.Blue;
+                else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
+                    control.ForeColor = Color.Gray;
+                else if (hitTimes.ElementAt(i).Value < 0.5)
+                    control.ForeColor = Color.Gray;
+                else
+                    control.BackColor = Color.Yellow;
+
+                control.Padding = new Padding(5);
+                control.Dock = DockStyle.Fill;
+                control.Click += dynamicBt_Click;
+                this.tableLayoutPanel1.Controls.Add(control, 0, 0);
+
             }
         }
     }
