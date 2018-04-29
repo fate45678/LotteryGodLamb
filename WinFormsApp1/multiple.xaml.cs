@@ -94,12 +94,18 @@ namespace WinFormsApp1
             List<content> lt = new List<content>();
             if (rbFiexed.IsChecked == true)
             {
-                int multiple = 2;//倍數(不知道邏輯先給2)
+                int multiple = 1;//倍數(不知道邏輯先給2)
                 int issue = int.Parse(cbPlan.Text);//期數
                 int count = int.Parse(cbCount.Text);//注數
                 double oneCost = double.Parse(cbCost.Text);//單注成本
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
+                //tbFiexed
+                while (((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100) < double.Parse(tbFiexed.Text))
+                {
+                    multiple++;
+                }
+
                 for (int i = 0; i < issue; i++)
                 {
                     sumMoneyTemp += (oneCost * count * multiple);
