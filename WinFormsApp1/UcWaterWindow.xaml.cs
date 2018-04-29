@@ -73,9 +73,9 @@ namespace WinFormsApp1
                     else if (tmp.ID == 4)
                         form.Add(tmp.ID, new UcFiveStart());
                     else if (tmp.ID == 5)
-                        form.Add(tmp.ID, new bigbuttom());
-                    else if (tmp.ID == 6)
                         form.Add(tmp.ID, new multiple());
+                    else if (tmp.ID == 6)
+                        form.Add(tmp.ID, new bigbuttom());
                 }
 
                 dpContent.Children.Clear();
