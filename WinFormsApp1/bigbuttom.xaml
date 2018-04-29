@@ -7,142 +7,163 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="選擇-彩種" Grid.Row="0" Grid.Column="0" Padding="5,0,5,0">
-            <RadioButton>
-                重慶時時彩
-            </RadioButton>
-        </GroupBox>
-        <GroupBox Header="選擇-位置" Grid.Row="0" Grid.Column="2" Padding="5,0,5,0">
-            <DockPanel>
-                <CheckBox Padding="5,0,20,0" Margin="10,0,0,0">萬</CheckBox>
-                <CheckBox Padding="5,0,20,0" >千</CheckBox>
-                <CheckBox Padding="5,0,20,0" >百</CheckBox>
-                <CheckBox Padding="5,0,20,0" >十</CheckBox>
-                <CheckBox Padding="5,0,20,0" >個</CheckBox>
-            </DockPanel>
-        </GroupBox>
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="GDMaster" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Loaded="GDMaster_Loaded" />
-            <GroupBox Grid.Row="0" Grid.Column="1" Header="選擇時間  選定日期範圍後需要點擊 '更新開獎' 才會更新開獎數據" Padding="5,10,5,10">
-                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <DockPanel Grid.Row="0" Grid.Column="0">
-                        <ComboBox MinWidth="150">
-                            <ComboBoxItem>
-                                2018年 4月25日
-                            </ComboBoxItem>
-                        </ComboBox>
-                        <Label Content="－" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <ComboBox MinWidth="150">
-                            <ComboBoxItem>
-                                2018年 4月25日
-                            </ComboBoxItem>
-                        </ComboBox>
-                        <Button Content="更新開獎" MinHeight="100"/>
-                        <Button Content="導入" MinHeight="100"/>
-                    </DockPanel>
-                    <Grid Grid.Row="1" Grid.Column="0">
-                        <ProgressBar x:Name="pg" Minimum="0" Maximum="100" MinWidth="100" Foreground="Green" Background="Gray" BorderBrush="Orange" BorderThickness="1" Height="20" />
-                        <Label x:Name="lbpercent" Content="" HorizontalAlignment="Center" FontFamily="微軟正黑體" FontSize="16" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
-                    </Grid>
-                </Grid>
+            <GroupBox Header="選擇-彩種" Grid.Row="0" Grid.Column="0" Padding="5,0,5,0">
+                <RadioButton x:Name="rbChongqingLottery">重慶時時彩</RadioButton>
             </GroupBox>
-            <GroupBox Grid.Row="1" Grid.Column="1" Padding="5,10,5,10">
-                <GroupBox.Header>
-                    <DockPanel>
-                        <TextBlock Text="結果- 驗證" />
-                        <TextBlock Text="   期" />
-                        <TextBlock Text="準確率 : " Foreground="Red" Margin="200,0,200,0" />
-                    </DockPanel>
-                </GroupBox.Header>
+            <GroupBox Header="選擇-位置" Grid.Row="0" Grid.Column="2" Padding="5,0,5,0">
                 <DockPanel>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="正確期數 :" Grid.Row="0" Grid.Column="0" />
-                        <TextBlock Text="           " Grid.Row="0" Grid.Column="1" />
-                        <TextBlock Text="期 :" Grid.Row="0" Grid.Column="2" />
-                        <TextBlock Text="錯誤期數 :" Grid.Row="0" Grid.Column="3" Margin="30,0,0,0" />
-                        <TextBlock Text="           " Grid.Row="0" Grid.Column="4" />
-                        <TextBlock Text="期" Grid.Row="0" Grid.Column="5" />
-
-                        <TextBlock Text="選中期數 :" Grid.Row="2" Grid.Column="0" />
-                        <TextBlock Text="           " Grid.Row="2" Grid.Column="1" />
-                        <TextBlock Text="期 :" Grid.Row="2" Grid.Column="2" />
-                        <TextBlock Text="連錯期數 :" Grid.Row="2" Grid.Column="3" Margin="30,0,0,0" />
-                        <TextBlock Text="           " Grid.Row="2" Grid.Column="4" />
-                        <TextBlock Text="期" Grid.Row="2" Grid.Column="5" />
-
-                        <TextBlock Text="當前遺漏 :" Grid.Row="4" Grid.Column="0" />
-                        <TextBlock Text="           " Grid.Row="4" Grid.Column="1" />
-                        <TextBlock Text="期 :" Grid.Row="4" Grid.Column="2" />
-                    </Grid>
+                    <CheckBox x:Name="CBtenThousand" Padding="5,0,20,0" Margin="10,0,0,0">萬</CheckBox>
+                    <CheckBox x:Name="CBThousand" Padding="5,0,20,0" >千</CheckBox>
+                    <CheckBox x:Name="CBhundred" Padding="5,0,20,0" >百</CheckBox>
+                    <CheckBox x:Name="CBten" Padding="5,0,20,0" >十</CheckBox>
+                    <CheckBox x:Name="CBones" Padding="5,0,20,0" >個</CheckBox>
                 </DockPanel>
             </GroupBox>
-            <TextBlock Grid.Row="2" Grid.Column="1" MinHeight="80"/>
-            <GroupBox Grid.Row="3" Grid.Column="1">
-                <GroupBox.Header>
-                    <DockPanel>
-                        <TextBlock Text="我的號碼 共"/>
-                        <TextBlock Text="10"/>
-                        <TextBlock Text="注"/>
-                    </DockPanel>
-                </GroupBox.Header>
-                <TextBox MinHeight="200" />
-            </GroupBox>
-            <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Content="開始驗證" Padding="8,5,8,5" Margin="30,0,0,0"/>
-                <Button Grid.Row="0" Grid.Column="1" Content="複製號碼" Padding="8,5,8,5" Margin="50,0,0,0"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="黏貼號碼" Padding="8,5,8,5" Margin="50,0,0,0"/>
-                <Button Grid.Row="0" Grid.Column="3" Content="清空號碼" Padding="8,5,8,5" Margin="50,0,0,0"/>
+                <DataGrid x:Name="GDMaster" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" AutoGenerateColumns="False" Loaded="GDMaster_Loaded" >
+                    <DataGrid.Columns>
+                        
+                        <DataGridTextColumn Header="開獎期數" Binding="{Binding issue}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="3,0,3,0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="開獎號碼" Binding="{Binding number}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="3,0,3,0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="結果" Binding="{Binding result}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <GroupBox Grid.Row="0" Grid.Column="1" Header="選擇時間  選定日期範圍後需要點擊 '更新開獎' 才會更新開獎數據" Padding="5,10,5,10">
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Grid.Row="0" Grid.Column="0">
+                            <DatePicker x:Name="dpStart" Loaded="dpStart_Loaded"/>
+                            <Label Content="－" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpEnd" Loaded="dpEnd_Loaded"/>
+                            <Button x:Name="btUpdate" Content="更新開獎" Click="btUpdate_Click"/>
+                            <Button Content="導入" />
+                        </DockPanel>
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <ProgressBar x:Name="pg" Minimum="0" Maximum="100" MinWidth="100" Foreground="Green" Background="Gray" BorderBrush="Orange" BorderThickness="1" Height="20" />
+                            <Label x:Name="lbpercent" Content="" HorizontalAlignment="Center" FontFamily="微軟正黑體" FontSize="16" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="1" Padding="5,10,5,0" >
+                    <GroupBox.Header>
+                        <DockPanel>
+                            <TextBlock Text="結果- 驗證" />
+                            <TextBlock Text="   期" />
+                            <TextBlock Text="準確率 : " Foreground="Red" Margin="200,0,200,0" />
+                        </DockPanel>
+                    </GroupBox.Header>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="正確期數 :" Grid.Row="0" Grid.Column="0" />
+                            <TextBlock Text="           " Grid.Row="0" Grid.Column="1" />
+                            <TextBlock Text="期 :" Grid.Row="0" Grid.Column="2" />
+                            <TextBlock Text="錯誤期數 :" Grid.Row="0" Grid.Column="3" Margin="30,0,0,0" />
+                            <TextBlock Text="           " Grid.Row="0" Grid.Column="4" />
+                            <TextBlock Text="期" Grid.Row="0" Grid.Column="5" />
+
+                            <TextBlock Text="選中期數 :" Grid.Row="1" Grid.Column="0" />
+                            <TextBlock Text="           " Grid.Row="1" Grid.Column="1" />
+                            <TextBlock Text="期 :" Grid.Row="1" Grid.Column="2" />
+                            <TextBlock Text="連錯期數 :" Grid.Row="1" Grid.Column="3" Margin="30,0,0,0" />
+                            <TextBlock Text="           " Grid.Row="1" Grid.Column="4" />
+                            <TextBlock Text="期" Grid.Row="1" Grid.Column="5" />
+
+                            <TextBlock Text="當前遺漏 :" Grid.Row="2" Grid.Column="0" />
+                            <TextBlock Text="           " Grid.Row="2" Grid.Column="1" />
+                            <TextBlock Text="期 :" Grid.Row="2" Grid.Column="2" />
+                        </Grid>
+                    </DockPanel>
+                </GroupBox>
+                <TextBlock Grid.Row="2" Grid.Column="1" MinHeight="80"/>
+                <GroupBox Grid.Row="3" Grid.Column="1">
+                    <GroupBox.Header>
+                        <DockPanel>
+                            <TextBlock Text="我的號碼 共"/>
+                            <TextBlock x:Name="tbCount" Text="0"/>
+                            <TextBlock Text="注"/>
+                        </DockPanel>
+                    </GroupBox.Header>
+                    <TextBox x:Name="tbNum" MinHeight="200" TextChanged="tbNum_TextChanged"/>
+                </GroupBox>
+                <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btStart" Grid.Row="0" Grid.Column="0" Content="開始驗證" Padding="8,5,8,5" Margin="30,0,0,0" Click="btStart_Click"/>
+                    <Button x:Name="btCopy" Grid.Row="0" Grid.Column="1" Content="複製號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btCopy_Click"/>
+                    <Button x:Name="btPaste" Grid.Row="0" Grid.Column="2" Content="黏貼號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btPaste_Click"/>
+                    <Button x:Name="btClear" Grid.Row="0" Grid.Column="3" Content="清空號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btClear_Click"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

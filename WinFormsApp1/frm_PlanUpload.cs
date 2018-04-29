@@ -366,6 +366,8 @@ namespace WinFormsApp1
         {
             richTextBox2.Text = "";
         }
+
+        int beforeCount = 0;
         /// <summary>
         /// 新計畫制定區域textbox輸入內容更改事件
         /// </summary>
@@ -373,9 +375,9 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
+           
+
             #region 自動產生逗號
-
-
             string withoutComma = richTextBox2.Text.Replace(",", "");
             if (richTextboxRule == 5)
             {
@@ -383,8 +385,6 @@ namespace WinFormsApp1
                 {
                     richTextBox2.Text += ",";
                     richTextBox2.Select(richTextBox2.MaxLength, 0);
-
-
                 }
             }
             else if (richTextboxRule == 4)
@@ -419,12 +419,12 @@ namespace WinFormsApp1
                     richTextBox2.Select(richTextBox2.MaxLength, 0);
                 }
             }
-
             MatchCollection mc;
             Regex r = new Regex(",");
             mc = r.Matches(richTextBox2.Text);
             label21.Text = "共" + mc.Count + "注";
             #endregion
+            
         }
 
         int richTextboxRule = 5;
