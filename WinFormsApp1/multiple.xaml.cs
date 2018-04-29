@@ -227,7 +227,10 @@ namespace WinFormsApp1
                             if (multiple > 10000)
                                 haveError = true;
                         }
-                        progress += double.Parse(tbProgressAdd.Text);
+                        if ((oneMoney * multiple) - (oneCost * count * multiple) > progress + double.Parse(tbProgressAdd.Text))
+                            progress = (oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple));
+                        else
+                            progress += double.Parse(tbProgressAdd.Text);
                     }
                     if (haveError)
                     {
