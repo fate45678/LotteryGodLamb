@@ -59,8 +59,6 @@ namespace WinFormsApp1
         }
 
         List<string> dt;
-        private BitmapSource ScreenCapture;
-
         private void btUpdate_Click(object sender, RoutedEventArgs e)
         {
             if (rbChongqingLottery.IsChecked == true)
@@ -78,7 +76,6 @@ namespace WinFormsApp1
                         history.Add(dt.ElementAt(i), dt.ElementAt(i + 1));
                     if (history != null)
                     {
-                        //GDMaster.ItemsSource = history;
                         List<history> ht = new List<history>();
                         for (int i = 0; i < dt.Count; i = i + 2)
                         {
@@ -88,7 +85,6 @@ namespace WinFormsApp1
                                 number = dt.ElementAt(i + 1),
                                 result = ""
                             });
-
                         }
                         GDMaster.ItemsSource = ht;
                     }
