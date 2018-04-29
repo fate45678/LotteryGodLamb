@@ -114,17 +114,44 @@ namespace WinFormsApp1
                         returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
                     });
                 }
-                GDMaster.ItemsSource = lt;
 
             }
             else if (rbPercent.IsChecked == true)
             {
+                int multiple = 1;//倍數(不知道邏輯先給2)
+                int issue = int.Parse(cbPlan.Text);//期數
+                int count = int.Parse(cbCount.Text);//注數
+                double oneCost = double.Parse(cbCost.Text);//單注成本
+                double oneMoney = double.Parse(cbMoney.Text);//單注獎金
+                double sumMoneyTemp = 0;
 
+                for (int i = 0; i < issue; i++)
+                {
+                    while ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100 < double.Parse(cbPercent.Text))
+                    {
+                        multiple++;
+                    }
+                    
+
+
+                    sumMoneyTemp += (oneCost * count * multiple);
+                    lt.Add(new content()
+                    {
+                        issue = i + 1,
+                        multiple = multiple,
+                        currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
+                        sumMoney = sumMoneyTemp,
+                        income = oneMoney * multiple,//收益 = 單注獎金*倍數
+                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
+                        returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
+                    });
+                }
             }
             else if (rbProgress.IsChecked == true)
             {
 
             }
+            GDMaster.ItemsSource = lt;
         }
 
         class content
