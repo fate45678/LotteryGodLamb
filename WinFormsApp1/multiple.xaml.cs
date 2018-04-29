@@ -105,7 +105,7 @@ namespace WinFormsApp1
                 {
                     multiple++;
                 }
-
+                //test
                 for (int i = 0; i < issue; i++)
                 {
                     sumMoneyTemp += (oneCost * count * multiple);
