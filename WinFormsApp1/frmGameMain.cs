@@ -363,7 +363,7 @@ namespace WinFormsApp1
 
         private void timer_ShowMessage_Tick(object sender, EventArgs e)
         {
-            ShowMessage();
+            //ShowMessage();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
