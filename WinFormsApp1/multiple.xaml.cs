@@ -94,7 +94,7 @@ namespace WinFormsApp1
             List<content> lt = new List<content>();
             if (rbFiexed.IsChecked == true)
             {
-                int multiple = 1;//倍數(不知道邏輯先給2)
+                int multiple = 1;//倍數
                 int issue = int.Parse(cbPlan.Text);//期數
                 int count = int.Parse(cbCount.Text);//注數
                 double oneCost = double.Parse(cbCost.Text);//單注成本
@@ -109,7 +109,7 @@ namespace WinFormsApp1
                         while ((oneMoney * multiple) - (oneCost * count * multiple) <= double.Parse(tbFiexed.Text) && !haveError)
                         {
                             multiple++;
-                            if (multiple > 100)
+                            if (multiple > 10000)
                                 haveError = true;
                         }
                     }
@@ -118,7 +118,7 @@ namespace WinFormsApp1
                         while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < double.Parse(tbFiexed.Text))
                         {
                             multiple++;
-                            if (multiple > 100)
+                            if (multiple > 10000)
                                 haveError = true;
                         }
                     }
@@ -151,14 +151,36 @@ namespace WinFormsApp1
                 double oneCost = double.Parse(cbCost.Text);//單注成本
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
+                bool haveError = false;
 
                 for (int i = 0; i < issue; i++)
                 {
-                    while ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100 < double.Parse(cbPercent.Text))
+
+                    if (i == 0)
                     {
-                        multiple++;
+                        while ((((oneMoney * multiple) - (oneCost * count * multiple)) / (oneCost * count * multiple)) * 100 < double.Parse(cbPercent.Text))
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                    }
+                    else
+                    {
+                        while ((((oneMoney * multiple) - (sumMoneyTemp+(oneCost * count * multiple))) / (sumMoneyTemp+(oneCost * count * multiple))) * 100 < double.Parse(cbPercent.Text))
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
                     }
                     
+                   
+                    if (haveError)
+                    {
+                        MessageBox.Show("此計畫不適合倍投。");
+                        break;
+                    }
 
 
                     sumMoneyTemp += (oneCost * count * multiple);
