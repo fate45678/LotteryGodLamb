@@ -89,7 +89,6 @@
             this.pnlCycleList = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -118,6 +117,7 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -535,7 +535,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.pnlHistory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(864, 0);
+            this.panel5.Location = new System.Drawing.Point(825, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(514, 361);
             this.panel5.TabIndex = 2;
@@ -640,11 +640,11 @@
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(30, 177);
+            this.rtxtHistory.Location = new System.Drawing.Point(2, 28);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(199, 162);
+            this.rtxtHistory.Size = new System.Drawing.Size(231, 329);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -672,9 +672,9 @@
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(864, 361);
+            this.panel8.Location = new System.Drawing.Point(825, 361);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(653, 6);
+            this.panel8.Size = new System.Drawing.Size(692, 6);
             this.panel8.TabIndex = 7;
             // 
             // pnlAD2
@@ -683,9 +683,9 @@
             this.pnlAD2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD2.Controls.Add(this.picAD2);
             this.pnlAD2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD2.Location = new System.Drawing.Point(864, 367);
+            this.pnlAD2.Location = new System.Drawing.Point(825, 367);
             this.pnlAD2.Name = "pnlAD2";
-            this.pnlAD2.Size = new System.Drawing.Size(653, 92);
+            this.pnlAD2.Size = new System.Drawing.Size(692, 92);
             this.pnlAD2.TabIndex = 3;
             // 
             // picAD2
@@ -697,7 +697,7 @@
             this.picAD2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picAD2.Location = new System.Drawing.Point(0, 0);
             this.picAD2.Name = "picAD2";
-            this.picAD2.Size = new System.Drawing.Size(651, 90);
+            this.picAD2.Size = new System.Drawing.Size(690, 90);
             this.picAD2.TabIndex = 1;
             this.picAD2.TabStop = false;
             this.picAD2.Click += new System.EventHandler(this.picAD2_Click);
@@ -705,7 +705,7 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(854, 0);
+            this.panel3.Location = new System.Drawing.Point(815, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(10, 459);
             this.panel3.TabIndex = 4;
@@ -720,7 +720,7 @@
             this.pnlCycleSelect.Controls.Add(this.panel30);
             this.pnlCycleSelect.Controls.Add(this.panel29);
             this.pnlCycleSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCycleSelect.Location = new System.Drawing.Point(441, 0);
+            this.pnlCycleSelect.Location = new System.Drawing.Point(402, 0);
             this.pnlCycleSelect.Name = "pnlCycleSelect";
             this.pnlCycleSelect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.pnlCycleSelect.Size = new System.Drawing.Size(413, 459);
@@ -855,7 +855,7 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(430, 0);
+            this.panel1.Location = new System.Drawing.Point(391, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(11, 459);
             this.panel1.TabIndex = 0;
@@ -867,7 +867,7 @@
             this.pnlCycle.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlCycle.Location = new System.Drawing.Point(3, 0);
             this.pnlCycle.Name = "pnlCycle";
-            this.pnlCycle.Size = new System.Drawing.Size(427, 459);
+            this.pnlCycle.Size = new System.Drawing.Size(388, 459);
             this.pnlCycle.TabIndex = 4;
             // 
             // pnlCycleList
@@ -880,7 +880,7 @@
             this.pnlCycleList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCycleList.Location = new System.Drawing.Point(0, 0);
             this.pnlCycleList.Name = "pnlCycleList";
-            this.pnlCycleList.Size = new System.Drawing.Size(427, 410);
+            this.pnlCycleList.Size = new System.Drawing.Size(388, 410);
             this.pnlCycleList.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -893,7 +893,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 23);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(425, 26);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(386, 26);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // label13
@@ -907,29 +907,11 @@
             this.label13.TabIndex = 7;
             this.label13.Text = "第 ?? 周期";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "25689 挂",
-            "57689 中",
-            "99888 停"});
-            this.comboBox1.Location = new System.Drawing.Point(78, 0);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 26);
-            this.comboBox1.TabIndex = 8;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(268, 0);
+            this.label14.Location = new System.Drawing.Point(209, 0);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
             this.label14.Size = new System.Drawing.Size(53, 25);
@@ -941,7 +923,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(327, 0);
+            this.label15.Location = new System.Drawing.Point(268, 0);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
             this.label15.Size = new System.Drawing.Size(60, 25);
@@ -955,7 +937,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(425, 23);
+            this.panel9.Size = new System.Drawing.Size(386, 23);
             this.panel9.TabIndex = 0;
             // 
             // label12
@@ -977,7 +959,7 @@
             this.panel34.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel34.Location = new System.Drawing.Point(0, 410);
             this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(427, 49);
+            this.panel34.Size = new System.Drawing.Size(388, 49);
             this.panel34.TabIndex = 26;
             // 
             // panel36
@@ -992,7 +974,7 @@
             this.panel36.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel36.Location = new System.Drawing.Point(0, 24);
             this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(427, 24);
+            this.panel36.Size = new System.Drawing.Size(388, 24);
             this.panel36.TabIndex = 3;
             // 
             // label130
@@ -1096,7 +1078,7 @@
             this.panel35.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel35.Location = new System.Drawing.Point(0, 0);
             this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(427, 24);
+            this.panel35.Size = new System.Drawing.Size(388, 24);
             this.panel35.TabIndex = 2;
             // 
             // label123
@@ -1277,6 +1259,24 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "25689 挂",
+            "57689 中",
+            "99888 停"});
+            this.comboBox1.Location = new System.Drawing.Point(78, 0);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(128, 26);
+            this.comboBox1.TabIndex = 11;
+            // 
             // frm_PlanCycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1424,9 +1424,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBox1;
 
     }
 }
