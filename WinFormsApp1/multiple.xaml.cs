@@ -101,14 +101,35 @@ namespace WinFormsApp1
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
                 //tbFiexed
-                while (((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100) < double.Parse(tbFiexed.Text))
-                {
-                    multiple++;
-                }
-                //test
+                bool haveError = false;
                 for (int i = 0; i < issue; i++)
                 {
+                    if (i == 0)
+                    {
+                        while ((oneMoney * multiple) - (oneCost * count * multiple) <= double.Parse(tbFiexed.Text) && !haveError)
+                        {
+                            multiple++;
+                            if (multiple > 100)
+                                haveError = true;
+                        }
+                    }
+                    else
+                    {
+                        while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < double.Parse(tbFiexed.Text))
+                        {
+                            multiple++;
+                            if (multiple > 100)
+                                haveError = true;
+                        }
+                    }
+                    if (haveError)
+                    {
+                        MessageBox.Show("此計畫不適合倍投。");
+                        break;
+                    }
+
                     sumMoneyTemp += (oneCost * count * multiple);
+
                     lt.Add(new content()
                     {
                         issue = i+1,
