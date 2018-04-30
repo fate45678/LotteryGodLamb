@@ -229,7 +229,7 @@ namespace WpfAppTest
             tmp = Calculation.OddEvenNumber(tmp, cblData2, false);
             #endregion
 
-            #region group8-殺質合
+            #region group8-殺质合
             tmp = Calculation.PrimeNumber(tmp, cblData3, false);
             #endregion
 

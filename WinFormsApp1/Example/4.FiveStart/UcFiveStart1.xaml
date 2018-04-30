@@ -71,8 +71,8 @@
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
-                        <TextBlock Text="殺和值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left">
+                        <TextBlock Text="殺和值" Width="40" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
+                        <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
                                     <VisualBrush.Visual>
@@ -110,7 +110,7 @@
                 </DockPanel>
             </GroupBox>
 
-            <GroupBox Header="胆组" Margin="0,0,0,3" Grid.Row="3" >
+            <!--<GroupBox Header="胆组" Margin="0,0,0,3" Grid.Row="3" >
                 <DockPanel Margin="5" x:Name="dpAll">
                     <DockPanel DockPanel.Dock="Top" Margin="0,0,0,5">
                         <CheckBox x:Name="btnCountRepeat" Content="胆码计重" DockPanel.Dock="Left" Margin="0,0,5,0" />
@@ -119,26 +119,26 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" x:Name="dpType1">
                         <DockPanel DockPanel.Dock="Left">
-                            <Button Tag="Type1" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type1" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
                             <Button Tag="Select1" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit1" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit1" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit1" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit1" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit1" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear1" Content="清" Click="Button_Click" Width="28"/>
@@ -146,26 +146,26 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" x:Name="dpType2">
                         <DockPanel DockPanel.Dock="Left" >
-                            <Button Tag="Type2" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type2" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
                             <Button Tag="Select2" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit2" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit2" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit2" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit2" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit2" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear2" Content="清" Click="Button_Click" Width="28"/>
@@ -173,26 +173,26 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" x:Name="dpType3">
                         <DockPanel DockPanel.Dock="Left" >
-                            <Button Tag="Type3" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type3" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0">
                             <Button Tag="Select3" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit3" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit3" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit3" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit3" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit3" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear3" Content="清" Click="Button_Click" Width="28"/>
@@ -200,26 +200,26 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" x:Name="dpType4">
                         <DockPanel DockPanel.Dock="Left" >
-                            <Button Tag="Type4" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type4" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
                             <Button Tag="Select4" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit4" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit4" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit4" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit4" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit4" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
@@ -227,26 +227,26 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" x:Name="dpType5">
                         <DockPanel DockPanel.Dock="Left" >
-                            <Button Tag="Type5" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type5" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
                             <Button Tag="Select5" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit5" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit5" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit5" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit5" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit5" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
@@ -254,31 +254,31 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" x:Name="dpType6">
                         <DockPanel DockPanel.Dock="Left" >
-                            <Button Tag="Type6" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="4" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="5" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="6" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="7" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="8" Width="20" Click="Button_Click"/>
-                            <Button Tag="Type6" Content="9" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="4" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="5" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="6" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="7" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="8" Width="15" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="9" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
                             <Button Tag="Select4" Content="全" Click="Button_Click" Width="28"/>
                         </DockPanel>
                         <DockPanel>
-                            <Button Tag="Unit6" Content="0" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit6" Content="1" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit6" Content="2" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit6" Content="3" Width="20" Click="Button_Click"/>
-                            <Button Tag="Unit6" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="0" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="1" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="2" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="3" Width="15" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="4" Width="15" Click="Button_Click"/>
                         </DockPanel>
                         <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
                         </DockPanel>
-                    </DockPanel>
+                    </DockPanel>-->
 
                     <!--使用CheckBoxList計算值-->
                     <DockPanel Visibility="Collapsed">
@@ -307,8 +307,8 @@
                             <local:CheckBoxList x:Name="cblNumber6_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
                         </DockPanel>
                     </DockPanel>
-                </DockPanel>
-            </GroupBox>
+                <!--</DockPanel>
+            </GroupBox>-->
 
             <GroupBox Header="建议新手只输入一行胆码，勿输入多行胆码，胆码开出个数不可选" Foreground="Gray" Grid.Row="4" >
                 <DockPanel Margin="5">

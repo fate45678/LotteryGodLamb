@@ -23,7 +23,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="0"/>
+            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
             
             <StackPanel Grid.Row="1">
                 <Button x:Name="btnFilter" Content="開始縮水" Click="btn_Click" DockPanel.Dock="Top" Margin="0,0,0,3"/>

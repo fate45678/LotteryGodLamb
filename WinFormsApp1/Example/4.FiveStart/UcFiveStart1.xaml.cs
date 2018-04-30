@@ -42,7 +42,7 @@ namespace WpfAppTest
         {
             cblData1.ItemsSource = DB.ZeroOneCombination(5, '大', '小').OrderByDescending(x => x.Code).ToList();
             cblData2.ItemsSource = DB.ZeroOneCombination(5, '奇', '偶').OrderByDescending(x => x.Code).ToList();
-            cblData3.ItemsSource = DB.ZeroOneCombination(5, '質', '合').OrderByDescending(x => x.Code).ToList();
+            cblData3.ItemsSource = DB.ZeroOneCombination(5, '质', '合').OrderByDescending(x => x.Code).ToList();
 
             var Data = DB.CreateContinueNumber().OrderBy(x => x.ID).ToList();
             cblTenThousands.ItemsSource = Data;
@@ -203,7 +203,7 @@ namespace WpfAppTest
             //殺奇偶
             tmp = Calculation.OddEvenNumber(tmp, cblData2, false);
 
-            //殺質合
+            //殺质合
             tmp = Calculation.PrimeNumber(tmp, cblData3, false);
 
             
