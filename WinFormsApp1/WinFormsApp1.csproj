@@ -211,7 +211,6 @@
     </Compile>
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\BaseOptions.cs" />
-    <Compile Include="Model\OptionData.cs" />
     <Compile Include="multiple.xaml.cs">
       <DependentUpon>multiple.xaml</DependentUpon>
     </Compile>

@@ -67,6 +67,20 @@ namespace WpfAppTest
         }
 
         /// <summary>
+        /// doubleclick清除文字
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Type_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var te = (sender as TextBox);
+            if (te != null)
+            {
+                te.Text = "";
+            }
+        }
+
+        /// <summary>
         /// TextBox是否可啟用
         /// </summary>
         /// <param name="i"></param>
@@ -93,13 +107,45 @@ namespace WpfAppTest
             }
         }
 
-        private void Type_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        #region 外部呼叫函式
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        public void SetDefaultValue()
         {
-            var te = (sender as TextBox);
-            if (te != null)
-            {
-                te.Text = "";
-            }
+            /*TextBox*/
+            teType1.Text = "";
+            teType2.Text = "";
+            teType3.Text = "";
+            teType4.Text = "";
+            teType5.Text = "";
+            teType6.Text = "";
+            teType7.Text = "";
+            teType8.Text = "";
         }
+
+        /// <summary>
+        /// 過濾數字
+        /// </summary>
+        public List<BaseOptions> Filter(List<BaseOptions> tmp)
+        {
+            ////殺垃圾復式
+            //tmp = Calculation.PosNumber(tmp, tePos1.Text, 1, false);
+
+            //殺兩碼
+
+            //殺三碼
+
+            //殺四碼
+
+            //必出兩碼
+
+            //必出四碼
+
+            //組合定位殺
+
+            return tmp;
+        }
+        #endregion
     }
 }

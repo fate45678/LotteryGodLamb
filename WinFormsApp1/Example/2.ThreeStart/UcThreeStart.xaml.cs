@@ -52,7 +52,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
-
+            AllConbination = DB.CombinationNumber(3, 0, 1);
         }
 
         /// <summary>
@@ -89,12 +89,6 @@ namespace WpfAppTest
                 {
                     /*清空條件*/
                     ucThree1.SetDefaultValue();
-
-                    //此頁面
-                    teText.Text = "";
-                    teResult.Text = "";
-                    teStart.Text = "";
-                    teEnd.Text = "";
                 }
             }
         }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Windows.Media;
 using System.Drawing;
 using Form = System.Windows.Forms;
+using WpfAppTest.Base;
 
 namespace WpfAppTest
 {
@@ -94,6 +95,11 @@ namespace WpfAppTest
             }
         }
 
+        /// <summary>
+        /// doubleclick清除文字
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Type_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var te = (sender as Control.TextBox);
@@ -150,5 +156,28 @@ namespace WpfAppTest
                 }
             }
         }
+
+        #region 外部呼叫
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        public void SetDefaultValue()
+        {
+            /*TextBox*/
+            teNumber.Text = "";
+        }
+
+        /// <summary>
+        /// 過濾數字
+        /// </summary>
+        public List<BaseOptions> Filter(List<BaseOptions> tmp)
+        {
+            //大底號碼
+            var n = teNumber.Text.Split(' ').Except(new string[1] { "" });
+            if (n.Count() > 0)
+                tmp = tmp.Where(x => n.Contains(x.Code)).ToList();
+            return tmp;
+        }
+        #endregion
     }
 }

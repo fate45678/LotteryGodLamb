@@ -24,59 +24,59 @@
 
             <DockPanel Grid.Row="0" Margin="0,0,0,3">
                 <DockPanel DockPanel.Dock="Top">
-                    <TextBlock HorizontalAlignment="Left">殺直選</TextBlock>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Gray">(格式12345 54321 中間用空格隔開，雙擊清空)</TextBlock>
+                    <TextBlock HorizontalAlignment="Left">杀直选</TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Gray">(格式12345 54321 中间用空格隔开，双击清空)</TextBlock>
                     <WrapPanel HorizontalAlignment="Right">
-                        <Button Name="btnOpenFile" Click="btnOpenFile_Click" Margin="0,0,0,5">開啟檔案</Button>
+                        <Button Name="btnOpenFile" Click="btnOpenFile_Click" Margin="0,0,0,5">开启档案</Button>
                     </WrapPanel>
                 </DockPanel>
-                <TextBox Name="txtEditor" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Bottom" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+                <TextBox Name="tePos" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Bottom" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
             </DockPanel>
 
-            <GroupBox Header="定位殺" Margin="0,0,0,3" Grid.Row="1" >
+            <GroupBox Header="定位杀" Margin="0,0,0,3" Grid.Row="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="萬位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="万位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblTenThousands" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="千位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="千位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblThousands" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="百位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="百位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblHundreds" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="十位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="十位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblTens" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" >
-                        <TextBlock Text="個位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="个位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblUnits" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                 </DockPanel>
             </GroupBox>
 
-            <GroupBox Header="和、跨、膽" Margin="0,0,0,3" Grid.Row="2" >
+            <GroupBox Header="和、跨、胆" Margin="0,0,0,3" Grid.Row="2" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="殺和尾" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblTenThousands2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <TextBlock Text="杀和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblSumLast" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
-                        <TextBlock Text="殺和值" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <TextBox x:Name="teSeperateNumber" Width="320" DockPanel.Dock="Left">
+                        <TextBlock Text="殺和值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
                                     <VisualBrush.Visual>
-                                        <TextBlock FontStyle="Normal" Text="和值輸入以空格分割開，例如：8 9 10 20 30"/>
+                                        <TextBlock FontStyle="Normal" Text="和值输入以空格分割开，例如：8 9 10 20 30"/>
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </TextBox.Resources>
@@ -97,35 +97,237 @@
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="殺跨度" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblHundreds2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <TextBlock Text="杀跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblCross" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="殺通碼" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblTens2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <TextBlock Text="杀通码" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblComm" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
+                    </DockPanel>
+                   
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Header="胆组" Margin="0,0,0,3" Grid.Row="3" >
+                <DockPanel Margin="5" x:Name="dpAll">
+                    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,5">
+                        <CheckBox x:Name="btnCountRepeat" Content="胆码计重" DockPanel.Dock="Left" Margin="0,0,5,0" />
+                        <Button Tag="Remark" Content="胆组说明" DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" Click="Button_Click" Margin="0,0,5,0" />
+                        <TextBlock Text="胆码开出个数，记得选一下" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" x:Name="dpType1">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button Tag="Type1" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type1" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select1" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit1" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit1" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear1" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" x:Name="dpType2">
+                        <DockPanel DockPanel.Dock="Left" >
+                            <Button Tag="Type2" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type2" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select2" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit2" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit2" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear2" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" x:Name="dpType3">
+                        <DockPanel DockPanel.Dock="Left" >
+                            <Button Tag="Type3" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type3" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0">
+                            <Button Tag="Select3" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit3" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit3" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear3" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom" x:Name="dpType4">
+                        <DockPanel DockPanel.Dock="Left" >
+                            <Button Tag="Type4" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type4" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select4" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit4" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit4" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom" x:Name="dpType5">
+                        <DockPanel DockPanel.Dock="Left" >
+                            <Button Tag="Type5" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type5" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select5" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit5" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit5" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom" x:Name="dpType6">
+                        <DockPanel DockPanel.Dock="Left" >
+                            <Button Tag="Type6" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="4" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="5" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="6" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="7" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="8" Width="20" Click="Button_Click"/>
+                            <Button Tag="Type6" Content="9" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,10,0" DockPanel.Dock="Left">
+                            <Button Tag="Select4" Content="全" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Button Tag="Unit6" Content="0" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="1" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="2" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="3" Width="20" Click="Button_Click"/>
+                            <Button Tag="Unit6" Content="4" Width="20" Click="Button_Click"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                            <Button Tag="Clear4" Content="清" Click="Button_Click" Width="28"/>
+                        </DockPanel>
+                    </DockPanel>
+
+                    <!--使用CheckBoxList計算值-->
+                    <DockPanel Visibility="Collapsed">
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber1_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                            <local:CheckBoxList x:Name="cblNumber2_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber3_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber4_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <local:CheckBoxList x:Name="cblNumber5" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber5_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Bottom">
+                            <local:CheckBoxList x:Name="cblNumber6" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <local:CheckBoxList x:Name="cblNumber6_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                        </DockPanel>
                     </DockPanel>
                 </DockPanel>
             </GroupBox>
 
-            <GroupBox Header="" Margin="0,0,0,3" Grid.Row="3" >
-
-            </GroupBox>
-
-            <GroupBox Header="建議新手只輸入一行膽碼，勿輸入多行膽碼，膽碼開出個數不可選" Foreground="Gray" Grid.Row="4" >
+            <GroupBox Header="建议新手只输入一行胆码，勿输入多行胆码，胆码开出个数不可选" Foreground="Gray" Grid.Row="4" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="大小比" Foreground="Black" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="大小比" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblRatio" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="奇偶比" Foreground="Black" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="奇偶比" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblRatio2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="質合比" Foreground="Black" Width="35" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="质合比" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblRatio3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                    </DockPanel>
+                    <DockPanel >
+                        <TextBlock Text="杀AC值" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <local:CheckBoxList x:Name="cblAC" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                 </DockPanel>
             </GroupBox>
@@ -137,15 +339,15 @@
                 <RowDefinition MinHeight="60" Height="Auto"/>
                 <RowDefinition MinHeight="60" Height="Auto"/>
             </Grid.RowDefinitions>
-            <GroupBox Header="殺大小排列" Margin="0,0,0,3" Grid.Row="0">
+            <GroupBox Header="杀大小排列" Margin="0,0,0,3" Grid.Row="0">
                 <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
 
-            <GroupBox Header="殺奇偶排列" Margin="0,0,0,3" Grid.Row="1">
+            <GroupBox Header="杀奇偶排列" Margin="0,0,0,3" Grid.Row="1">
                 <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
 
-            <GroupBox Header="殺質合排列" Grid.Row="2">
+            <GroupBox Header="杀质合排列" Grid.Row="2">
                 <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
         </Grid>

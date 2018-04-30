@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfAppTest.AP;
 using WpfAppTest.Base;
 
@@ -37,19 +28,18 @@ namespace WpfAppTest
             }
         }
 
-        List<BaseOptions> Data2;
         void SetData()
         {
             /*CheckBoxList*/
             cblOption1.ItemsSource = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
             cblOption2.ItemsSource = DB.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).OrderByDescending(x => x.Code);
-            cblOption3.ItemsSource = DB.TwoStartOption1().OrderBy(x => x.ID);
+            cblOption3.ItemsSource = DB.CreateOption(1, 5, new string[5] { "对子", "连号", "杂号", "假对", "假连" }).OrderBy(x => x.ID);
 
             /*RadioButtonList*/
-            Data2 = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
-            rblOption1.ItemsSource = Data2;
-            rblOption2.ItemsSource = Data2;
-            rblOption3.ItemsSource = Data2;
+            var data = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            rblOption1.ItemsSource = data;
+            rblOption2.ItemsSource = data;
+            rblOption3.ItemsSource = data;
 
             /*預設值*/
             SetDefaultValue();
@@ -71,7 +61,6 @@ namespace WpfAppTest
             rblOption2.SelectedValue = 1;
             rblOption3.SelectedValue = 1;
 
-            cblOption1.VisibleItems = "100000000";
             IsSetting = false;
         }
 
@@ -93,8 +82,14 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            tmp = Calculation.SumNumber(tmp, cblOption1, ((int)rblOption1.SelectedValue == 1));
+            //012路
+            tmp = Calculation.DivThreeRemainder(tmp, cblOption1, ((int)rblOption1.SelectedValue == 1));
+
+            //大中小
             tmp = Calculation.CheckValueNumber(tmp, cblOption2, 2, ((int)rblOption2.SelectedValue == 1));
+
+            //類型
+            tmp = Calculation.TwoStartType(tmp, cblOption3.SelectedValue, ((int)rblOption3.SelectedValue == 1));
             return tmp;
         }
 

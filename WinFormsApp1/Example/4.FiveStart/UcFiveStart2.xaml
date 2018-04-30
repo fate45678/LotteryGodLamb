@@ -25,13 +25,13 @@
         <!--左半-->
         <DockPanel Margin="5" Grid.Column="0" Grid.Row="0">
             <TextBlock x:Name="tbType1" DockPanel.Dock="Left"/>
-            <TextBlock x:Name="tbType1Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式見下方舉例，雙擊清空)"/>
+            <TextBlock x:Name="tbType1Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式见下方举例，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="0" Grid.Row="1" >
-            <!--<TextBox.Resources>
-                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                     <VisualBrush.Visual>
-                        <TextBlock FontStyle="Normal" Text="輸入格式舉例:\n12*354*12*789*01\n中間用*分開5個位置，每行一個負試"/>
+                        <TextBlock FontStyle="Normal" Text="输入格式举例:&#13;12*354*12*789*01&#13;中间用*分开5个位置，每行一个复式"/>
                     </VisualBrush.Visual>
                 </VisualBrush>
             </TextBox.Resources>
@@ -46,49 +46,49 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-            </TextBox.Style>-->
+            </TextBox.Style>
         </TextBox>
 
         <DockPanel Margin="5" Grid.Column="0" Grid.Row="2" >
             <TextBlock x:Name="tbType3" />
-            <TextBlock x:Name="tbType3Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式123 456 789中間用空格隔開，雙擊清空)"/>
+            <TextBlock x:Name="tbType3Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式123 456 789中间用空格隔开，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType3" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="0" Grid.Row="3"/>
 
         <DockPanel Margin="5" Grid.Column="0" Grid.Row="4">
             <TextBlock x:Name="tbType5" />
-            <TextBlock x:Name="tbType5Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式23 56 78中間用空格隔開，雙擊清空)"/>
+            <TextBlock x:Name="tbType5Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式23 56 78中间用空格隔开，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"  Grid.Column="0" Grid.Row="5"/>
 
         <DockPanel Margin="5" Grid.Column="0" Grid.Row="6">
             <TextBlock x:Name="tbType7" />
-            <TextBlock x:Name="tbType7Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式見下方舉例，雙擊清空)"/>
+            <TextBlock x:Name="tbType7Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式见下方举例，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType7" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="0" Grid.Row="7"/>
 
         <!--右半-->
         <DockPanel Margin="5" Grid.Column="1" Grid.Row="0">
             <TextBlock x:Name="tbType2"/>
-            <TextBlock x:Name="tbType2Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式23 56 78中間用空格隔開，雙擊清空)"/>
+            <TextBlock x:Name="tbType2Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式23 56 78中间用空格隔开，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1"/>
 
         <DockPanel Margin="5" Grid.Column="1" Grid.Row="2">
             <TextBlock x:Name="tbType4" />
-            <TextBlock x:Name="tbType4Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式見下方舉例，雙擊清空)"/>
+            <TextBlock x:Name="tbType4Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式见下方举例，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="3"/>
 
         <DockPanel Margin="5" Grid.Column="1" Grid.Row="4">
             <TextBlock x:Name="tbType6" />
-            <TextBlock x:Name="tbType6Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式123 456 789中間用空格隔開，雙擊清空)"/>
+            <TextBlock x:Name="tbType6Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式123 456 789中间用空格隔开，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType6" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="5"/>
 
         <DockPanel Margin="5" Grid.Column="1" Grid.Row="6">
             <TextBlock x:Name="tbType8" />
-            <TextBlock x:Name="tbType8Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式見下方舉例，雙擊清空)"/>
+            <TextBlock x:Name="tbType8Remark" DockPanel.Dock="Right" Margin="5, 0, 0, 0" Foreground="Gray" Text="(格式见下方举例，双击清空)"/>
         </DockPanel>
         <TextBox Margin="5" MouseDoubleClick="Type_MouseDoubleClick" x:Name="teType8" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="7"/>
 

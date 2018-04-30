@@ -45,12 +45,13 @@
 
             <DockPanel Grid.Row="1" >
                 <Button x:Name="btnFilter" Content="開始縮水" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 3, 0, 3" Height="20"/>
-                <ComboBox Text="複製" x:Name="cbCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" SelectionChanged="ComboBox_SelectionChanged" HorizontalContentAlignment="Center">
-                    <ComboBoxItem Name="Item1" HorizontalContentAlignment="Center">複製
+                <Button Content="複製" x:Name="btnCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" Click="btn_Click"/>
+                <ComboBox x:Name="cbCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" SelectionChanged="ComboBox_SelectionChanged" HorizontalContentAlignment="Center" >
+                    <ComboBoxItem Name="Item1" HorizontalContentAlignment="Center">　複製
                     </ComboBoxItem>
-                    <ComboBoxItem Name="Item2" HorizontalContentAlignment="Center">複製到大底A
+                    <ComboBoxItem Name="Item2" HorizontalContentAlignment="Center">　複製到大底A
                     </ComboBoxItem>
-                    <ComboBoxItem Name="Item3" HorizontalContentAlignment="Center">複製到大底B
+                    <ComboBoxItem Name="Item3" HorizontalContentAlignment="Center">　複製到大底B
                     </ComboBoxItem>
                 </ComboBox>
                 

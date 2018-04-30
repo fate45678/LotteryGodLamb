@@ -15,7 +15,7 @@ namespace WpfAppTest
     /// <summary>
     /// UcFiveStart1.xaml 的互動邏輯
     /// </summary>
-    public partial class UcFiveStart4 :Control.UserControl
+    public partial class UcFiveStart4 : Control.UserControl
     {
         public UcFiveStart4()
         {
@@ -158,5 +158,19 @@ namespace WpfAppTest
                 }
             }
         }
+
+        #region 外部呼叫
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        public void SetDefaultValue()
+        {
+            /*TextBox*/
+            teCompareA.Text = "";
+            teCompareB.Text = "";
+            teUnit.Text = "0";
+            teResult.Text = "";
+        }
+        #endregion
     }
 }

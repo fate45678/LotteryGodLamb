@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
-    <GroupBox Header="殺012排列" Width="650">
+    <GroupBox Header="杀012排列" Width="650">
         <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
     </GroupBox>
 </UserControl>

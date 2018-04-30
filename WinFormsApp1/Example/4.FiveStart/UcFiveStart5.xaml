@@ -12,8 +12,8 @@
             <RowDefinition Height="400"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Margin="5">
-            <TextBlock Text="黏貼大底號碼，號碼之間可以是逗號、空格、分號或回車。空白默認為全部號碼(10萬注)做底。" DockPanel.Dock="Left"></TextBlock>
-            <Button x:Name="btnImport" Content="匯入" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
+            <TextBlock Text="黏贴大底号码，号码之间可以是逗号、空格、分号或回车。空白默认为全部号码(10万注)做底。" DockPanel.Dock="Left"></TextBlock>
+            <Button x:Name="btnImport" Content="汇入" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
             <Button x:Name="btnClear" Content="清除" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
         </DockPanel>
         <TextBox x:Name="teNumber" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5">

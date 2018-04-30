@@ -36,7 +36,6 @@ namespace WpfAppTest
         {
             if (IsFirstTime)
             {
-                OldText = new int[2] { 0, 0 };
                 SetData();
                 IsFirstTime = false;
             }
@@ -52,7 +51,22 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
+            OldText = new int[2] { 0, 0 };
             AllConbination = DB.CombinationNumber(4, 0, 9);
+
+            SetDefaultValue();
+        }
+
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        void SetDefaultValue()
+        {
+            teText.Text = "";
+            teResult.Text = "";
+            teStart.Text = "0";
+            teEnd.Text = "0";
+            tbCount.Text = "0";
         }
 
         /// <summary>
@@ -70,6 +84,7 @@ namespace WpfAppTest
                     /*開始縮水*/
                     var tmp = ucFour1.Filter(AllConbination);
                     teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                    tbCount.Text = tmp.Count.ToString();
                 }
                 else if (btn.Name == "btnTransfer")
                 {
@@ -82,7 +97,7 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teResult.Text))
                     {
                         System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                        System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                        System.Windows.Forms.MessageBox.Show("号码复制成功。");
                     }
                 }
                 else if (btn.Name == "btnClear")
@@ -90,11 +105,7 @@ namespace WpfAppTest
                     /*清空條件*/
                     ucFour1.SetDefaultValue();
 
-                    //此頁面
-                    teText.Text = "";
-                    teResult.Text = "";
-                    teStart.Text = "";
-                    teEnd.Text = "";
+                    SetDefaultValue();
                 }
             }
         }
