@@ -308,9 +308,8 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
+            "复式",
+            "单式"});
             this.cbGameDirect.Location = new System.Drawing.Point(168, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(158, 20);
@@ -585,9 +584,9 @@
             this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(3, 3);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(143, 12);
+            this.label24.Size = new System.Drawing.Size(119, 12);
             this.label24.TabIndex = 6;
-            this.label24.Text = "重庆时时彩  五星直选复式";
+            this.label24.Text = "重庆时时彩  五星复式";
             // 
             // panel14
             // 
@@ -786,9 +785,9 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(3, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(143, 12);
+            this.label16.Size = new System.Drawing.Size(119, 12);
             this.label16.TabIndex = 6;
-            this.label16.Text = "重庆时时彩  五星直选复式";
+            this.label16.Text = "重庆时时彩  五星复式";
             // 
             // panel12
             // 

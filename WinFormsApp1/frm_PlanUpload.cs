@@ -27,6 +27,7 @@ namespace WinFormsApp1
             InitializeComponent();
             picAD4.Visible = false;
             pnlAD4.BorderStyle = BorderStyle.None;
+            setRule();
         }
 
 
@@ -71,7 +72,29 @@ namespace WinFormsApp1
             else if(loginButtonType ==1)
                 button1.Text = "登出";
         }
+        class rule
+        {
+            public string data { get; set; }
+        }
 
+        List<rule> rule1 = new List<rule>();
+        private void setRule()
+        {
+            rule1.Add(new rule { data = "\b" });
+            rule1.Add(new rule { data = "1" });
+            rule1.Add(new rule { data = "2" });
+            rule1.Add(new rule { data = "3" });
+            rule1.Add(new rule { data = "4" });
+            rule1.Add(new rule { data = "5" });
+            rule1.Add(new rule { data = "6" });
+            rule1.Add(new rule { data = "7" });
+            rule1.Add(new rule { data = "8" });
+            rule1.Add(new rule { data = "9" });
+            rule1.Add(new rule { data = "0" });
+            rule1.Add(new rule { data = " " });
+            rule1.Add(new rule { data = "," });
+
+        }
 
         int temp = 0;
         private void filtercbItem(int current)
@@ -248,9 +271,11 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= '0' && e.KeyChar <= '9') return;
-            if (e.KeyChar == '+' || e.KeyChar == '-') return;
-            if (e.KeyChar == 8) return;
+            for (int i = 0; i < rule1.Count(); i++)
+            {
+                if (rule1.ElementAt(i).data == e.KeyChar.ToString())
+                    return;
+            }
             e.Handled = true;
         }
         /// <summary>
@@ -262,8 +287,6 @@ namespace WinFormsApp1
         {
             if (string.IsNullOrEmpty(label4.Text))
                 MessageBox.Show("尚未登入。");
-            else if (errorFlag == true)
-                MessageBox.Show("有重複的號碼，修正並除錯後再嘗試上傳。");
             else
             {
                 Dictionary<int, string> dic = new Dictionary<int, string>();
@@ -286,6 +309,17 @@ namespace WinFormsApp1
         private void cbGameKind_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateLabel24();
+            if (cbGameKind.SelectedIndex == 7)
+            {
+                cbGameDirect.SelectedIndex = -1;
+                cbGameDirect.Enabled = false;
+            }
+            else
+            {
+                cbGameDirect.SelectedIndex = 0;
+                cbGameDirect.Enabled = true ;
+
+            }
         }
         /// <summary>
         /// 選擇計畫種類cb選項更改事件
@@ -308,7 +342,6 @@ namespace WinFormsApp1
         }
 
 
-        bool errorFlag = false;
         /// <summary>
         /// 除錯按鈕事件
         /// </summary>
@@ -316,37 +349,76 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
-            errorFlag = false;
-            string input = richTextBox2.Text;
-            string patten = ",";
-            string[] st = Regex.Split(input, patten);
-            string[] result = st.Distinct().ToArray();
+            string[] temp;
+            string data = "";
+            if (richTextBox2.Text.IndexOf(" ") != -1 && richTextBox2.Text.IndexOf(",") != -1)
+                data = richTextBox2.Text.Replace(" ", ",");
+            else if (richTextBox2.Text.IndexOf(" ")!=-1)
+                data = richTextBox2.Text.Replace(" ", ",");
+            else if (richTextBox2.Text.IndexOf(",") != -1)
+                data = richTextBox2.Text;
+            temp = Regex.Split(data, ",");
 
-            if (st.Length > 0)
+            List<string> withoutEmpty = new List<string>();
+            for (int i = 0; i < temp.Length; i++)
             {
-                richTextBox2.Text = "";
+                if (!string.IsNullOrEmpty(temp[i]))
+                    withoutEmpty.Add(temp[i]);
+            }
+            string[] yee = withoutEmpty.ToArray();
+            string[] result = withoutEmpty.Distinct().ToArray();
+
+            if (yee.Length > 0)
+            {
                 for (int i = 0; i < result.Length; i++)
                 {
                     int count = 0;
-                    for (int j = 0; j < st.Length; j++)
+                    for (int j = 0; j < yee.Length; j++)
                     {
-                        if (st[j] == result[i])
+                        if (result[i] == yee[j])
                             count++;
-                        if (count > 1 && st[j].Equals(result[i]))
-                            st[j] = st[j] + "x";
+                        if (count > 1 && yee[j].Equals(result[i]))
+                            yee[j] = yee[j] + "x";
                     }
                 }
-                for (int i = 0; i < st.Length-1; i++)
+                richTextBox2.Text = "";
+                int labelCount = 0;
+                for (int i = 0; i < yee.Length; i++)
                 {
-                    if (st[i].IndexOf("x") != -1)
+                    if (yee[i].IndexOf("x") == -1)
                     {
-                        errorFlag = true;
-                        AppendText(richTextBox2, st[i].Replace("x", "") + ",", Color.Red);
+                        if (richTextboxRule == 5 && yee[i].Length == 5)
+                        {
+                            richTextBox2.Text += yee[i] + " ";
+                            labelCount++;
+                        }
+                        else if (richTextboxRule == 4 && yee[i].Length == 4)
+                        {
+                            richTextBox2.Text += yee[i] + " ";
+                            labelCount++;
+                        }
+                        else if (richTextboxRule == 3 && yee[i].Length == 3)
+                        {
+                            richTextBox2.Text += yee[i] + " ";
+                            labelCount++;
+                        }
+                        else if (richTextboxRule == 2 && yee[i].Length == 2)
+                        {
+                            richTextBox2.Text += yee[i] + " ";
+                            labelCount++;
+                        }
+                        else if (richTextboxRule == 1 && yee[i].Length == 1)
+                        {
+                            richTextBox2.Text += yee[i] + " ";
+                            labelCount++;
+                        }
                     }
-                    else
-                        AppendText(richTextBox2, st[i] + ",", Color.Black);
                 }
+                MessageBox.Show("已清除重複及錯誤資料。");
+                label21.Text = "共"+labelCount+"注";
             }
+
+
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
@@ -375,57 +447,17 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-           
 
-            #region 自動產生逗號
-            string withoutComma = richTextBox2.Text.Replace(",", "");
-            if (richTextboxRule == 5)
-            {
-                if (richTextBox2.TextLength > 4 && withoutComma.Length % 5 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
-                {
-                    richTextBox2.Text += ",";
-                    richTextBox2.Select(richTextBox2.MaxLength, 0);
-                }
-            }
-            else if (richTextboxRule == 4)
-            {
-                if (richTextBox2.TextLength > 3 && withoutComma.Length % 4 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
-                {
-                    richTextBox2.Text += ",";
-                    richTextBox2.Select(richTextBox2.MaxLength, 0);
-                }
-            }
-            else if (richTextboxRule == 3)
-            {
-                if (richTextBox2.TextLength > 2 && withoutComma.Length % 3 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
-                {
-                    richTextBox2.Text += ",";
-                    richTextBox2.Select(richTextBox2.MaxLength, 0);
-                }
-            }
-            else if (richTextboxRule == 2)
-            {
-                if (richTextBox2.TextLength > 1 && withoutComma.Length % 2 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
-                {
-                    richTextBox2.Text += ",";
-                    richTextBox2.Select(richTextBox2.MaxLength, 0);
-                }
-            }
-            else if (richTextboxRule == 1)
-            {
-                if (richTextBox2.TextLength > 0 && withoutComma.Length % 1 == 0 && !richTextBox2.Text.Substring(richTextBox2.SelectionStart - 1, 1).Equals(","))
-                {
-                    richTextBox2.Text += ",";
-                    richTextBox2.Select(richTextBox2.MaxLength, 0);
-                }
-            }
-            MatchCollection mc;
-            Regex r = new Regex(",");
-            mc = r.Matches(richTextBox2.Text);
-            label21.Text = "共" + mc.Count + "注";
+
+           
+            //MatchCollection mc;
+            //Regex r = new Regex(" ");
+            //mc = r.Matches(richTextBox2.Text);
+            //label21.Text = "共" + mc.Count + "注";
             #endregion
-            
+
         }
+
 
         int richTextboxRule = 5;
         /// <summary>
@@ -497,11 +529,6 @@ namespace WinFormsApp1
                     checkedListBox1.Items.Add(dic1_SortedByKey.ElementAt(i).Key.ToString());
                 }
            
-        }
-        private void button8_Click(object sender, EventArgs e)
-        {
-           
-            
         }
         private void lsbSent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -615,7 +642,7 @@ namespace WinFormsApp1
             comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
         }
 
-        #endregion
+       
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue);
