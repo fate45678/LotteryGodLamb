@@ -71,6 +71,11 @@ namespace WinFormsApp1
                 button1.Text = "登入";
             else if(loginButtonType ==1)
                 button1.Text = "登出";
+            if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
+            {
+                button8.Enabled = true;
+                button9.Enabled = true;
+            }
         }
         class rule
         {
@@ -647,6 +652,12 @@ namespace WinFormsApp1
         {
             var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue);
             comboBox2.DataSource = new BindingSource(dt_cycle, null);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            frm_Note frm = new frm_Note();
+            frm.Show();
         }
     }
 }
