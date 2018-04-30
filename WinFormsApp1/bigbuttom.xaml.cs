@@ -25,15 +25,20 @@ namespace WinFormsApp1
         public bigbuttom()
         {
             InitializeComponent();
-            UpdateProgressBar(0,0);
+            UpdateProgressBar(0, 0);
         }
 
+        bool IsFirstTime = true;
         private void GDMaster_Loaded(object sender, RoutedEventArgs e)
         {
-
+            if (IsFirstTime)
+            {
+                rbChongqingLottery.IsChecked = true;
+                IsFirstTime = false;
+            }
         }
 
-        private void UpdateProgressBar(double Sum,int count)
+        private void UpdateProgressBar(double Sum, int count)
         {
             if (Sum == 0 && count == 0)
             {
@@ -43,9 +48,8 @@ namespace WinFormsApp1
             else
             {
                 pg.Value = Sum / count;
-                lbpercent.Content = (Sum / count)+" %";
+                lbpercent.Content = (Sum / count) + " %";
             }
-            
         }
 
         private void dpEnd_Loaded(object sender, RoutedEventArgs e)
@@ -92,8 +96,6 @@ namespace WinFormsApp1
             }
             else
                 MessageBox.Show("請選擇彩種。");
-           
-            
         }
 
         public static BitmapImage toBitmap(Byte[] value)
@@ -164,13 +166,12 @@ namespace WinFormsApp1
         /// <param name="number"></param>
         /// <param name="rule"></param>
         /// <param name="type"></param>
-        private string checkNum(string number,string rule,int type)
+        private string checkNum(string number, string rule, int type)
         {
             //一樣
-            if (1==1)
+            if (1 == 1)
                 return "V";
-            else
-                return "X";
+            return "X";
         }
 
         /// <summary>
@@ -180,7 +181,7 @@ namespace WinFormsApp1
         {
             #region 計算最上面個十百千萬 checkbox勾選數量
             int count = 0;
-            if (CBtenThousand.IsChecked==true)
+            if (CBtenThousand.IsChecked == true)
                 count++;
             if (CBThousand.IsChecked == true)
                 count++;
@@ -217,12 +218,13 @@ namespace WinFormsApp1
             return true;
 
         }
+
         public class history
         {
             public string issue { get; set; }
             public string number { get; set; }
             public string result { get; set; }
-            
+
         }
     }
 }
