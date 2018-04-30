@@ -88,7 +88,7 @@
                     <DockPanel x:Name="dp3" Margin="5">
                         <DockPanel HorizontalAlignment="Center" >
                             <TextBlock Text="杀两码组合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
-                            <TextBox Name="teEditor3_1" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox Name="teEditor3_1" Width="195" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
                                 <TextBox.Resources>
                                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                         <VisualBrush.Visual>
@@ -112,7 +112,7 @@
                         </DockPanel>
                         <DockPanel HorizontalAlignment="Center" >
                             <TextBlock Text="必出两码组合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
-                            <TextBox Name="teEditor3_2" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox Name="teEditor3_2" Width="195" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
                                 <TextBox.Resources>
                                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                         <VisualBrush.Visual>
@@ -141,7 +141,7 @@
                     <DockPanel x:Name="dp4" Margin="5">
                         <DockPanel HorizontalAlignment="Center" >
                             <TextBlock Text="杀三码组合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
-                            <TextBox Name="teEditor4_1" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox Name="teEditor4_1" Width="195" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
                                 <TextBox.Resources>
                                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                         <VisualBrush.Visual>
@@ -165,7 +165,7 @@
                         </DockPanel>
                         <DockPanel HorizontalAlignment="Center" >
                             <TextBlock Text="必出三码组合 格式 (** **)" Margin="0,0,0,3" DockPanel.Dock="Top"/>
-                            <TextBox Name="teEditor4_2" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                            <TextBox Name="teEditor4_2" Width="195" Margin="0,0,5,0" DockPanel.Dock="Bottom" MouseDoubleClick="txtEditor_MouseDoubleClick" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
                                 <TextBox.Resources>
                                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                         <VisualBrush.Visual>

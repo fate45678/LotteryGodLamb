@@ -52,7 +52,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
-            AllConbination = DB.CombinationNumber(3, 0, 1);
+            AllConbination = DB.CombinationNumber(3, 0, 9);
         }
 
         /// <summary>

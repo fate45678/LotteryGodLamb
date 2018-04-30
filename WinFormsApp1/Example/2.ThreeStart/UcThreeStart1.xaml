@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WpfAppTest" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -157,25 +158,25 @@
 
                 <TabItem Header="公式">
                     <DockPanel Margin="10">
-                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" >
+                        <!--<DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" >
                             <TextBlock Text="輸入格式：" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="45**" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="5*78" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="1**3" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="一行一注" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
-                        </DockPanel>
+                        </DockPanel>-->
                         <TextBox Name="teEditor7" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="其他">
                     <DockPanel Margin="10">
-                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" >
+                        <!--<DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" >
                             <TextBlock Text="輸入格式：" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="45**" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="5*78" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="1**3" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="一行一注" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
-                        </DockPanel>
+                        </DockPanel>-->
                         <TextBox Name="teEditor8" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
                     </DockPanel>
                 </TabItem>
@@ -321,17 +322,57 @@
             <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Left" Margin="0,0,5,0">
-                        <CheckBox Content="匹配過濾" DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="cbMatch" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
-                        <TextBox DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="teMatch"/>
-                        <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Top" x:Name="cblMatch" Margin="0,0,0,3"/>
-                        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,3">
-                            <Button Content="添加" DockPanel.Dock="Left" Margin="0,0,5,0" Width="50" x:Name="btnAdd1"/>
-                            <Button Content="刪除" DockPanel.Dock="Right" Margin="0,0,5,0" Width="50" x:Name="btnDelete1"/>
+                        <DockPanel DockPanel.Dock="Top">
+                            <CheckBox Content="匹配過濾" DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="cbMatch" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                            <TextBox DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="teMatch" TextChanged="te_TextChanged"/>
+                            <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Bottom" x:Name="cblMatch" Margin="0,0,0,3"/>
                         </DockPanel>
-                        <DockPanel DockPanel.Dock="Bottom"/>
+                        <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                            <Button x:Name="btnAdd1" Content="添加" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                            <Button x:Name="btnDelete1" Content="刪除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                        </DockPanel>
                     </DockPanel>
-                    <DataGrid DockPanel.Dock="Right" ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="dgData1">
-
+                    <DataGrid DockPanel.Dock="Right" ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="dgData1" IsReadOnly="True"
+                              Background="White" SelectionUnit="FullRow" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" 
+                              ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue" />
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="TextBlock.Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="AliceBlue" />
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="TextBlock.Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="號碼" Binding="{Binding Value1}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="3,0,3,0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="出數" Binding="{Binding Value2}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="Padding" Value="3,0,3,0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
             </Border>
@@ -379,10 +420,10 @@
                             <DockPanel Margin="5">
                                 <DockPanel DockPanel.Dock="Top" Margin="0,0,0,3">
                                     <CheckBox Content="大底" x:Name="cbCheck4" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" DockPanel.Dock="Left" Margin="0,0,5,0"/>
-                                    <Button Content="選擇大底" DockPanel.Dock="Right" x:Name="btnSelect"/>
+                                    <Button Content="選擇大底" DockPanel.Dock="Right" x:Name="btnSelect" Click="btn_Click"/>
                                     <CheckBox Content="大底是組選號碼" DockPanel.Dock="Left" Margin="0,0,5,0" x:Name="btnIsGroup"/>
                                 </DockPanel>
-                                <TextBox DockPanel.Dock="Bottom" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" x:Name="teBottom"/>
+                                <TextBox DockPanel.Dock="Bottom" x:Name="teBottom" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
                             </DockPanel>
                         </GroupBox>
                     </DockPanel>
@@ -403,29 +444,75 @@
 
             <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
-                    <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
+                    <DockPanel DockPanel.Dock="Left" HorizontalAlignment="Left"  Margin="0,0,5,0">
                         <CheckBox x:Name="cbPosMatch" Content="位置大小匹配" DockPanel.Dock="Top" Margin="0,0,0,3" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
-                        <DockPanel DockPanel.Dock="Top">
-                            <Button x:Name="btnAdd2" Content="添加" DockPanel.Dock="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
-                            <Button x:Name="btnDelete2" Content="刪除" DockPanel.Dock="Right" Margin="0,0,5,0" Width="50"/>
-                        </DockPanel>
-                        <DockPanel DockPanel.Dock="Bottom"/>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Left" Margin="0,0,5,0">
                         <DockPanel DockPanel.Dock="Top" Margin="0,0,0,3">
-                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbPosMatchNumber" Margin="0,0,5,0" Width="70" HorizontalAlignment="Left"/>
-                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbEqual" Margin="0,0,5,0" Width="70" HorizontalAlignment="Left"/>
-                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbPosMatchNumber2" Width="70" HorizontalAlignment="Left"/>
+                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbPosMatchNumber" Margin="0,0,5,0" Width="40" HorizontalAlignment="Left"/>
+                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbEqual" Margin="0,0,5,0" Width="75" HorizontalAlignment="Left"/>
+                            <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="cbPosMatchNumber2" Width="40" HorizontalAlignment="Left"/>
                         </DockPanel>
-                        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" DockPanel.Dock="Bottom" x:Name="dgData2">
-
+                        <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                            <Button x:Name="btnAdd2" Content="添加" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                            <Button x:Name="btnDelete2" Content="刪除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Left">
+                        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False" DockPanel.Dock="Bottom" x:Name="dgData2" IsReadOnly="True"
+                                  Background="White" SelectionUnit="FullRow" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray"
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="AliceBlue" />
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="TextBlock.Foreground" Value="Black"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="AliceBlue" />
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="TextBlock.Foreground" Value="Black"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="位數" Binding="{Binding Value1}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="Padding" Value="3,0,3,0" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="大小" Binding="{Binding Operator}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="Padding" Value="3,0,3,0" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="位數" Binding="{Binding Value2}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
                         </DataGrid>
+
                     </DockPanel>
                 </DockPanel>
             </Border>
 
             <!--Column=1-->
-            <GroupBox Header="杀012排列" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
+            <GroupBox Header="012路特別排除" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
                 <DockPanel Width="110">
                     <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
