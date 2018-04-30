@@ -31,6 +31,7 @@ namespace WinFormsApp1
             cbCost.SelectedIndex = 0;
             cbCount.SelectedIndex = 0;
             cbMoney.SelectedIndex = 0;
+            tbFiexed.Text = "10";
         }
 
         bool isFirstTime = true;
@@ -70,8 +71,6 @@ namespace WinFormsApp1
                 }
             }
             isFirstTime = false;
-
-
         }
 
         private void rbFiexed_Checked(object sender, RoutedEventArgs e)
