@@ -76,6 +76,11 @@ namespace WinFormsApp1
                 button8.Enabled = true;
                 button9.Enabled = true;
             }
+            else
+            {
+                button8.Enabled = false;
+                button9.Enabled = false;
+            }
         }
         class rule
         {
@@ -214,6 +219,7 @@ namespace WinFormsApp1
                     frm_PlanAgent.resetFavoriteFlag();
                     button1.Text = "登入";
                     loginButtonType = 0;
+                    frmGameMain.globalMessageTemp = "";
                 }
             }
         }
@@ -294,12 +300,12 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
-                Dictionary<int, string> dic = new Dictionary<int, string>();
-                dic.Add(0, "p_curNum");
+                //Dictionary<int, string> dic = new Dictionary<int, string>();
+                //dic.Add(0, "p_curNum");
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-                var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'", dic);
-                int planNUmber = int.Parse(plancount.ElementAt(0)) + 1;
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum) values('" + label4.Text + "重慶時時彩" + planName + "第" + planNUmber + "週期','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','" + planNUmber + "')");
+                //var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'", dic);
+                //int planNUmber = int.Parse(plancount.ElementAt(0)) + 1;
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+"')");
 
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1();

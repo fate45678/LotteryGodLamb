@@ -64,6 +64,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -78,6 +79,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -99,8 +101,6 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -571,6 +571,19 @@
             this.panel15.Size = new System.Drawing.Size(346, 43);
             this.panel15.TabIndex = 6;
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Gray;
+            this.button8.Enabled = false;
+            this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button8.Location = new System.Drawing.Point(257, 6);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "備註";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -725,6 +738,18 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(346, 61);
             this.panel13.TabIndex = 5;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Gray;
+            this.button9.Enabled = false;
+            this.button9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Location = new System.Drawing.Point(258, 6);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "備註";
+            this.button9.UseVisualStyleBackColor = false;
             // 
             // label19
             // 
@@ -952,31 +977,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Gray;
-            this.button8.Enabled = false;
-            this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button8.Location = new System.Drawing.Point(257, 6);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "備註";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Gray;
-            this.button9.Enabled = false;
-            this.button9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Location = new System.Drawing.Point(258, 6);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 12;
-            this.button9.Text = "備註";
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // frm_PlanUpload
             // 

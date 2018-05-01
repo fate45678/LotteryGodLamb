@@ -25,6 +25,7 @@ namespace WinFormsApp1
         public static string globalUserName;
         public static string globalUserAccount;
         public static string globalGetCurrentPeriod;
+        public static string globalMessageTemp = "";
 
         public class NextPeriod
         {

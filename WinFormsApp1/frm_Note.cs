@@ -15,15 +15,20 @@ namespace WinFormsApp1
         public frm_Note()
         {
             InitializeComponent();
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0,"p_note");
-            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select top 1 * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
-            richTextBox1.Text = dt.ElementAt(0).ToString();
+           
         }
 
         private void frm_Note_Load(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(frmGameMain.globalMessageTemp))
+            {
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "p_note");
+                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select top 1 * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
+                richTextBox1.Text = dt.ElementAt(0).ToString();
+            }
+            else
+                richTextBox1.Text = frmGameMain.globalMessageTemp;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,7 +38,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            frmGameMain.globalMessageTemp = richTextBox1.Text;
         }
     }
 }
