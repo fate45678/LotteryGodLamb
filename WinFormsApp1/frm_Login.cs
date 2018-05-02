@@ -40,6 +40,7 @@ namespace WinFormsApp1
                     {
                         this.Close();
                         frm_PlanUpload.loginButtonType = 1;
+                        
                     }
 
                 }

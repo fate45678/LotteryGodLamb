@@ -52,18 +52,328 @@ namespace WinFormsApp1
                 //檢查資料庫 沒有就新增
             }
         }
-        private void updatecheckboxlist1()
+        /// <summary>
+        /// type 0 一般 1 照新增時間 2 照中獎機率
+        /// </summary>
+        /// <param name="type"></param>
+        private void updatecheckboxlist1(int type)
         {
-            checkedListBox1.Items.Clear();
             Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0, "p_name");
-            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "'", dic);
-            for (int i = 0; i < dt.Count; i++)
-            {
-                checkedListBox1.Items.Add(dt.ElementAt(i).ToString());
+            dic.Add(0, "p_id");
+            dic.Add(1, "p_name");
+            dic.Add(2, "p_start");
+            dic.Add(3, "p_end");
+            dic.Add(4, "p_rule");
 
+            if (type == 0)
+            {
+                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "'", dic);
+                dic.Clear();
+                if (dt.Count > 0)
+                {
+                    checkedListBox1.Items.Clear();
+                    for (int i = 0; i < dt.Count; i = i + 5)
+                    {
+                        checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
+                            calhits
+                            (
+                                dt.ElementAt(i + 2),
+                                dt.ElementAt(i + 3),
+                                dt.ElementAt(i + 4),
+                                dt.ElementAt(i + 1)
+                            ));
+                    }
+                }
             }
+            else if (type == 1)
+            {
+                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
+                dic.Clear();
+                if (dt.Count > 0)
+                {
+                    checkedListBox1.Items.Clear();
+                    for (int i = 0; i < dt.Count; i = i + 5)
+                    {
+                        checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
+                            calhits
+                            (
+                                dt.ElementAt(i + 2),
+                                dt.ElementAt(i + 3),
+                                dt.ElementAt(i + 4),
+                                dt.ElementAt(i + 1)
+                            ));
+                    }
+                }
+            }
+            else if (type == 2)
+            {
+                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
+                dic.Clear();
+                if (dt.Count > 0)
+                {
+                    checkedListBox1.Items.Clear();
+                    Dictionary<string, double> content = new Dictionary<string, double>();
+                    for (int i = 0; i < dt.Count; i = i + 5)
+                    {
+                        content.Add(dt.ElementAt(i + 1), calhitsRtndouble
+                            (
+                                dt.ElementAt(i + 2),
+                                dt.ElementAt(i + 3),
+                                dt.ElementAt(i + 4),
+                                dt.ElementAt(i + 1)
+                            ));
+                    }
+
+                    Dictionary<string, double> dic1_SortedByKey = content.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
+                    checkedListBox1.Items.Clear();
+                    for (int i = 0; i < dic1_SortedByKey.Count(); i++)
+                    {
+                        checkedListBox1.Items.Add(dic1_SortedByKey.ElementAt(i).Key.ToString()+"    "+ dic1_SortedByKey.ElementAt(i).Value.ToString()+"%");
+                    }
+                }
+            }
+
         }
+
+        private string calhits(string start,string end, string number, string type)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0,"number");
+            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where issue between "+start+" and "+end, dic);
+            var st = Regex.Split(number, " ");
+            int sum = 0;
+            int hits = 0;
+            #region 玩法
+            if (type.IndexOf("五星") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i] == st[j])
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("四星") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1,4) == st[j].Substring(1, 4))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("前三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(0, 3) == st[j].Substring(0, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("中三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1, 3) == st[j].Substring(1, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("后三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(2, 3) == st[j].Substring(2, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("前二") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(0, 2) == st[j].Substring(0, 2))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("后二") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(3, 2) == st[j].Substring(3, 2))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(4,0) == st[j].Substring(4, 0))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            #endregion
+            return "";
+        }
+
+        private double calhitsRtndouble(string start, string end, string number, string type)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0, "number");
+            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where issue between " + start + " and " + end, dic);
+            var st = Regex.Split(number, " ");
+            int sum = 0;
+            int hits = 0;
+            if (type.IndexOf("五星") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i] == st[j])
+                            hits++;
+                    }
+                }
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return result;
+                }
+            }
+            return 0;
+
+        }
+
         public void refreshInterface()
         {
             label4.Text = frmGameMain.globalUserName;
@@ -270,7 +580,7 @@ namespace WinFormsApp1
             label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
 
             if (updateCount % 3 == 0 && allorwUpdate)
-                updatecheckboxlist1();
+                updatecheckboxlist1(updateLstbType);
             updateCount++;
 
 
@@ -300,15 +610,11 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
-                //Dictionary<int, string> dic = new Dictionary<int, string>();
-                //dic.Add(0, "p_curNum");
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-                //var plancount = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select case when max(p_curNum) is null then 0 else max(p_curNum) end as 'p_curNum' from Upplan where p_account ='" + frmGameMain.globalUserAccount + "'", dic);
-                //int planNUmber = int.Parse(plancount.ElementAt(0)) + 1;
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+"')");
 
                 MessageBox.Show("上傳成功。");
-                updatecheckboxlist1();
+                updatecheckboxlist1(0);
             }
             allorwUpdate = true;
         }
@@ -329,7 +635,6 @@ namespace WinFormsApp1
             {
                 cbGameDirect.SelectedIndex = 0;
                 cbGameDirect.Enabled = true ;
-
             }
         }
         /// <summary>
@@ -428,8 +733,6 @@ namespace WinFormsApp1
                 MessageBox.Show("已清除重複及錯誤資料。");
                 label21.Text = "共"+labelCount+"注";
             }
-
-
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
@@ -458,15 +761,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-
-
-           
-            //MatchCollection mc;
-            //Regex r = new Regex(" ");
-            //mc = r.Matches(richTextBox2.Text);
-            //label21.Text = "共" + mc.Count + "注";
             #endregion
-
         }
 
 
@@ -567,7 +862,7 @@ namespace WinFormsApp1
             foreach (object checkedItem in checkedListBox1.CheckedItems)
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + checkedItem.ToString() + "'");
             MessageBox.Show("刪除成功。");
-            updatecheckboxlist1();
+            updatecheckboxlist1(0);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -589,68 +884,68 @@ namespace WinFormsApp1
                 if (getData.Count != 0)
                 {
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name ,p_account ,p_start ,p_end ,p_rule) values('" + label16.Text + "續傳" + "','" + getData.ElementAt(0) + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + richTextBox1.Text + "," + "')");
-                    updatecheckboxlist1();
+                    updatecheckboxlist1(0);
                 }
                 else
                     MessageBox.Show("該計畫帳號不存在。");
             }
         }
+        int updateLstbType = 0;
         private void button11_Click(object sender, EventArgs e)
         {
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-                dic.Add(0, "p_name");
-            var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
-            checkedListBox1.Items.Clear();
-            for (int i = 0; i < dt.Count; i++)
-                checkedListBox1.Items.Add(dt.ElementAt(i).ToString());
+            updateLstbType = 1;
+            allorwUpdate = false;
+            updatecheckboxlist1(updateLstbType);
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            upodatelsbSentbyHitTimes();
+            updateLstbType = 2;
+            allorwUpdate = false;
+            updatecheckboxlist1(updateLstbType);
         }
 
         bool allorwUpdate = true;
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Dictionary<int, string> dic = new Dictionary<int, string>();
-            dic.Add(0, "p_name");
-            dic.Add(1, "p_account");
-            dic.Add(2, "p_start");
-            dic.Add(3, "p_end");
-            dic.Add(4, "p_rule");
-            allorwUpdate = false;
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + checkedListBox1.SelectedItem + "'", dic);
-            for (int i = 0; i < getData.Count; i++)
-            {
+        //    Dictionary<int, string> dic = new Dictionary<int, string>();
+        //    dic.Add(0, "p_name");
+        //    dic.Add(1, "p_account");
+        //    dic.Add(2, "p_start");
+        //    dic.Add(3, "p_end");
+        //    dic.Add(4, "p_rule");
+        //    allorwUpdate = false;
+        //    var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + checkedListBox1.SelectedItem + "'", dic);
+        //    for (int i = 0; i < getData.Count; i++)
+        //    {
 
-                if (i == 0)
-                    label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
-                else if (i == 2)
-                    label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
-                else if (i == 4)
-                {
-                    richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
-                    string strReplace = getData.ElementAt(i).Replace(",", "");
-                    int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
-                    label15.Text = "共" + times + "注";
-                }
-            }
-            listBox1.Items.Clear();
-            //檢查期數
-            for (int i = 0; i < dt_history.Count; i++)
-            {
-                if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
-                {
-                    if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
-                        listBox1.Items.Add(dt_history[i].ToString() + "     中");
-                    else
-                        listBox1.Items.Add(dt_history[i].ToString() + "     掛");
-                }
-                else
-                    listBox1.Items.Add(dt_history[i].ToString() + "     停");
-            }
-            comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
-            comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
+        //        if (i == 0)
+        //            label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
+        //        else if (i == 2)
+        //            label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
+        //        else if (i == 4)
+        //        {
+        //            richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
+        //            string strReplace = getData.ElementAt(i).Replace(",", "");
+        //            int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
+        //            label15.Text = "共" + times + "注";
+        //        }
+        //    }
+        //    listBox1.Items.Clear();
+        //    //檢查期數
+        //    for (int i = 0; i < dt_history.Count; i++)
+        //    {
+        //        if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
+        //        {
+        //            if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
+        //                listBox1.Items.Add(dt_history[i].ToString() + "     中");
+        //            else
+        //                listBox1.Items.Add(dt_history[i].ToString() + "     掛");
+        //        }
+        //        else
+        //            listBox1.Items.Add(dt_history[i].ToString() + "     停");
+        //    }
+        //    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
+        //    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
         }
 
        
@@ -664,6 +959,11 @@ namespace WinFormsApp1
         {
             frm_Note frm = new frm_Note();
             frm.Show();
+        }
+
+        public void button12_Click(object sender, EventArgs e)
+        {
+            updatecheckboxlist1(updateLstbType);
         }
     }
 }
