@@ -64,6 +64,7 @@ namespace WinFormsApp1
             dic.Add(2, "p_start");
             dic.Add(3, "p_end");
             dic.Add(4, "p_rule");
+            dic.Add(5, "p_uploadDate");
 
             if (type == 0)
             {
@@ -72,7 +73,7 @@ namespace WinFormsApp1
                 if (dt.Count > 0)
                 {
                     checkedListBox1.Items.Clear();
-                    for (int i = 0; i < dt.Count; i = i + 5)
+                    for (int i = 0; i < dt.Count; i = i + 6)
                     {
                         checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
                             calhits
@@ -81,7 +82,9 @@ namespace WinFormsApp1
                                 dt.ElementAt(i + 3),
                                 dt.ElementAt(i + 4),
                                 dt.ElementAt(i + 1)
-                            ));
+                            )
+                            + " "+ dt.ElementAt(i + 5)
+                            );
                     }
                 }
             }
@@ -92,7 +95,7 @@ namespace WinFormsApp1
                 if (dt.Count > 0)
                 {
                     checkedListBox1.Items.Clear();
-                    for (int i = 0; i < dt.Count; i = i + 5)
+                    for (int i = 0; i < dt.Count; i = i + 6)
                     {
                         checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
                             calhits
@@ -101,7 +104,7 @@ namespace WinFormsApp1
                                 dt.ElementAt(i + 3),
                                 dt.ElementAt(i + 4),
                                 dt.ElementAt(i + 1)
-                            ));
+                            ) + " " + dt.ElementAt(i + 5));
                     }
                 }
             }
@@ -113,7 +116,7 @@ namespace WinFormsApp1
                 {
                     checkedListBox1.Items.Clear();
                     Dictionary<string, double> content = new Dictionary<string, double>();
-                    for (int i = 0; i < dt.Count; i = i + 5)
+                    for (int i = 0; i < dt.Count; i = i + 6)
                     {
                         content.Add(dt.ElementAt(i + 1), calhitsRtndouble
                             (
@@ -978,8 +981,9 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
+                checkData();
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+"')");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+", getDate()')");
 
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1(0);
@@ -1033,19 +1037,13 @@ namespace WinFormsApp1
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
         }
 
-
-        /// <summary>
-        /// 除錯按鈕事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button7_Click(object sender, EventArgs e)
+        private void checkData()
         {
             string[] temp;
             string data = "";
             if (richTextBox2.Text.IndexOf(" ") != -1 && richTextBox2.Text.IndexOf(",") != -1)
                 data = richTextBox2.Text.Replace(" ", ",");
-            else if (richTextBox2.Text.IndexOf(" ")!=-1)
+            else if (richTextBox2.Text.IndexOf(" ") != -1)
                 data = richTextBox2.Text.Replace(" ", ",");
             else if (richTextBox2.Text.IndexOf(",") != -1)
                 data = richTextBox2.Text;
@@ -1110,12 +1108,21 @@ namespace WinFormsApp1
 
                     }
                     else
-                        errorList += yee[i].Replace("x","") + ", ";
+                        errorList += yee[i].Replace("x", "") + ", ";
 
                 }
-                MessageBox.Show("已清除重複及錯誤資料。\n"+errorList);
-                label21.Text = "共"+labelCount+"注";
+                MessageBox.Show("已清除重複及錯誤資料。\n" + errorList);
+                label21.Text = "共" + labelCount + "注";
             }
+        }
+        /// <summary>
+        /// 除錯按鈕事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button7_Click(object sender, EventArgs e)
+        {
+            checkData();
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
