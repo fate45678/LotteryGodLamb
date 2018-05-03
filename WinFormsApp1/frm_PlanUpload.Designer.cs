@@ -581,7 +581,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 8;
-            this.button8.Text = "備註";
+            this.button8.Text = "計畫備註";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -749,7 +749,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 12;
-            this.button9.Text = "備註";
+            this.button9.Text = "修改備註";
             this.button9.UseVisualStyleBackColor = false;
             // 
             // label19

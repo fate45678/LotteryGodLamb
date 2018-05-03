@@ -195,7 +195,6 @@ namespace WinFormsApp1
                     isFirstTime = false;
                 }
             }
-
         }
 
         private static string choosePlanName = "";

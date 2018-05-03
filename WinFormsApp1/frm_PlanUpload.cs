@@ -123,8 +123,14 @@ namespace WinFormsApp1
                                 dt.ElementAt(i + 1)
                             ));
                     }
+                    Dictionary<string, double> dic1_SortedByKey = new Dictionary<string, double>();
 
-                    Dictionary<string, double> dic1_SortedByKey = content.OrderBy(p => p.Key).ToDictionary(p => p.Key, o => o.Value);
+                    var dicSort = from objDic in content orderby objDic.Value descending select objDic;
+                    foreach (KeyValuePair<string, double> kvp in dicSort)
+                        dic1_SortedByKey.Add(kvp.Key, kvp.Value);
+
+
+
                     checkedListBox1.Items.Clear();
                     for (int i = 0; i < dic1_SortedByKey.Count(); i++)
                     {
@@ -312,14 +318,110 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (type.IndexOf("定位胆") != -1)
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("萬")!=-1)
             {
                 for (int i = 0; i < dt.Count(); i++)
                 {
                     for (int j = 0; j < st.Length - 1; j++)
                     {
                         sum++;
-                        if (dt[i].Substring(4,0) == st[j].Substring(4, 0))
+                        if (dt[i].Substring(0,1) == st[j].Substring(0, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("千") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1, 1) == st[j].Substring(1, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("百") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(2, 1) == st[j].Substring(2, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("十") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(3, 1) == st[j].Substring(3, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return "0%";
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return result.ToString().Substring(0, 3) + "%";
+                    else
+                        return result.ToString() + "%";
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("個") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(4, 0) == st[j].Substring(4, 0))
                             hits++;
                     }
                 }
@@ -359,6 +461,7 @@ namespace WinFormsApp1
                             hits++;
                     }
                 }
+                #region 中獎率
                 if (hits == 0)
                     return 0;
                 else
@@ -367,8 +470,273 @@ namespace WinFormsApp1
                     if (result.ToString().Length > 3)
                         return double.Parse(result.ToString().Substring(0, 3));
                     else
-                        return result;
+                        return double.Parse(result.ToString());
                 }
+                #endregion
+            }
+            else if (type.IndexOf("四星") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1, 4) == st[j].Substring(1, 4))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("前三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(0, 3) == st[j].Substring(0, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("中三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1, 3) == st[j].Substring(1, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("后三") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(2, 3) == st[j].Substring(2, 3))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("前二") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(0, 2) == st[j].Substring(0, 2))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("后二") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(3, 2) == st[j].Substring(3, 2))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("萬") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(0, 1) == st[j].Substring(0, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("千") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(1, 1) == st[j].Substring(1, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("百") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(2, 1) == st[j].Substring(2, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("十") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(3, 1) == st[j].Substring(3, 1))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
+            }
+            else if (type.IndexOf("定位胆") != -1 && type.IndexOf("個") != -1)
+            {
+                for (int i = 0; i < dt.Count(); i++)
+                {
+                    for (int j = 0; j < st.Length - 1; j++)
+                    {
+                        sum++;
+                        if (dt[i].Substring(4, 0) == st[j].Substring(4, 0))
+                            hits++;
+                    }
+                }
+                #region 中獎率
+                if (hits == 0)
+                    return 0;
+                else
+                {
+                    double result = ((double)hits / sum) * 100;
+                    if (result.ToString().Length > 3)
+                        return double.Parse(result.ToString().Substring(0, 3));
+                    else
+                        return double.Parse(result.ToString());
+                }
+                #endregion
             }
             return 0;
 
@@ -628,13 +996,21 @@ namespace WinFormsApp1
             updateLabel24();
             if (cbGameKind.SelectedIndex == 7)
             {
-                cbGameDirect.SelectedIndex = -1;
-                cbGameDirect.Enabled = false;
+                cbGameDirect.Items.Clear();
+                cbGameDirect.Items.Add("萬");
+                cbGameDirect.Items.Add("千");
+                cbGameDirect.Items.Add("百");
+                cbGameDirect.Items.Add("十");
+                cbGameDirect.Items.Add("個");
+                cbGameDirect.SelectedIndex = 0;
+
             }
             else
             {
+                cbGameDirect.Items.Clear();
+                cbGameDirect.Items.Add("單式");
+                cbGameDirect.Items.Add("複式");
                 cbGameDirect.SelectedIndex = 0;
-                cbGameDirect.Enabled = true ;
             }
         }
         /// <summary>
@@ -699,6 +1075,7 @@ namespace WinFormsApp1
                 }
                 richTextBox2.Text = "";
                 int labelCount = 0;
+                string errorList = "";
                 for (int i = 0; i < yee.Length; i++)
                 {
                     if (yee[i].IndexOf("x") == -1)
@@ -728,9 +1105,15 @@ namespace WinFormsApp1
                             richTextBox2.Text += yee[i] + " ";
                             labelCount++;
                         }
+                        else
+                            errorList += yee[i] + ", ";
+
                     }
+                    else
+                        errorList += yee[i].Replace("x","") + ", ";
+
                 }
-                MessageBox.Show("已清除重複及錯誤資料。");
+                MessageBox.Show("已清除重複及錯誤資料。\n"+errorList);
                 label21.Text = "共"+labelCount+"注";
             }
         }
