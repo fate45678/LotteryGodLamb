@@ -433,6 +433,7 @@
     <Content Include="bt_icon\bt_nex.png" />
     <Content Include="bt_icon\bt_up.png" />
     <Content Include="bt_icon\loading_icon.gif" />
+    <EmbeddedResource Include="Number\20180501Number.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Example\5.Calculator\" />
