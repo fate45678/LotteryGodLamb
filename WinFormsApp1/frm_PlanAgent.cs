@@ -313,7 +313,11 @@ namespace WinFormsApp1
 
             for (int i = 0; i < getPlan.Count; i = i + 2)
             {
-                dic.Add(getPlan.ElementAt(i), getPlan.ElementAt(i + 1));
+                if(dic.ContainsKey(getPlan.ElementAt(i)))
+                    dic.Add(getPlan.ElementAt(i)+"("+i+")", getPlan.ElementAt(i + 1));
+                else
+                    dic.Add(getPlan.ElementAt(i), getPlan.ElementAt(i + 1));
+
             }
             //統計擊中次數
             hitTimes.Clear();

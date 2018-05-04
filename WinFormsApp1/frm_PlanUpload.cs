@@ -983,7 +983,7 @@ namespace WinFormsApp1
             {
                 checkData();
                 string planName = label24.Text.Replace("重庆时时彩  ", "");
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+", getDate()')");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate) values('" + label4.Text + "重慶時時彩" + planName+"','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','"+frmGameMain.globalMessageTemp+"', getDate())");
 
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1(0);
