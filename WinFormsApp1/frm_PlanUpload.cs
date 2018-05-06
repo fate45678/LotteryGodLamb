@@ -58,6 +58,7 @@ namespace WinFormsApp1
         /// <param name="type"></param>
         private void updatecheckboxlist1(int type)
         {
+            //sql查詢欄位
             Dictionary<int, string> dic = new Dictionary<int, string>();
             dic.Add(0, "p_id");
             dic.Add(1, "p_name");
@@ -65,6 +66,8 @@ namespace WinFormsApp1
             dic.Add(3, "p_end");
             dic.Add(4, "p_rule");
             dic.Add(5, "p_uploadDate");
+            //checklistboxitem datasource
+            List<compentContent> content = new List<compentContent>();
 
             if (type == 0)
             {
@@ -72,10 +75,9 @@ namespace WinFormsApp1
                 dic.Clear();
                 if (dt.Count > 0)
                 {
-                    checkedListBox1.Items.Clear();
                     for (int i = 0; i < dt.Count; i = i + 6)
                     {
-                        checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
+                       content.Add(new compentContent {id= int.Parse(dt.ElementAt(0)),value= dt.ElementAt(i + 1) + " " +
                             calhits
                             (
                                 dt.ElementAt(i + 2),
@@ -83,9 +85,10 @@ namespace WinFormsApp1
                                 dt.ElementAt(i + 4),
                                 dt.ElementAt(i + 1)
                             )
-                            + " "+ dt.ElementAt(i + 5)
-                            );
+                            + " " + dt.ElementAt(i + 5)
+                       });
                     }
+                    
                 }
             }
             else if (type == 1)
@@ -94,17 +97,21 @@ namespace WinFormsApp1
                 dic.Clear();
                 if (dt.Count > 0)
                 {
-                    checkedListBox1.Items.Clear();
                     for (int i = 0; i < dt.Count; i = i + 6)
                     {
-                        checkedListBox1.Items.Add(dt.ElementAt(i + 1) + " " +
-                            calhits
-                            (
-                                dt.ElementAt(i + 2),
-                                dt.ElementAt(i + 3),
-                                dt.ElementAt(i + 4),
-                                dt.ElementAt(i + 1)
-                            ) + " " + dt.ElementAt(i + 5));
+                        content.Add(new compentContent
+                        {
+                            id = int.Parse(dt.ElementAt(i)),
+                            value = dt.ElementAt(i + 1) + " " +
+                                        calhits
+                                        (
+                                            dt.ElementAt(i + 2),
+                                            dt.ElementAt(i + 3),
+                                            dt.ElementAt(i + 4),
+                                            dt.ElementAt(i + 1)
+                                        ) + "   " + dt.ElementAt(i + 5).Substring(0, dt.ElementAt(i + 5).IndexOf(" "))
+                        }
+                                    );
                     }
                 }
             }
@@ -114,33 +121,45 @@ namespace WinFormsApp1
                 dic.Clear();
                 if (dt.Count > 0)
                 {
-                    checkedListBox1.Items.Clear();
-                    Dictionary<string, double> content = new Dictionary<string, double>();
+                    Dictionary<string, double> repeat = new Dictionary<string, double>();
                     for (int i = 0; i < dt.Count; i = i + 6)
                     {
-                        content.Add(dt.ElementAt(i + 1), calhitsRtndouble
+                        if (repeat.ContainsKey(dt.ElementAt(i + 1)))
+                        {
+                            repeat.Add(dt.ElementAt(i)+"_"+dt.ElementAt(i + 1)+"("+i+")", calhitsRtndouble
                             (
                                 dt.ElementAt(i + 2),
                                 dt.ElementAt(i + 3),
                                 dt.ElementAt(i + 4),
                                 dt.ElementAt(i + 1)
                             ));
+
+                        }
+                        else
+                        {
+                            repeat.Add(dt.ElementAt(i) + "_" + dt.ElementAt(i + 1), calhitsRtndouble
+                            (
+                                dt.ElementAt(i + 2),
+                                dt.ElementAt(i + 3),
+                                dt.ElementAt(i + 4),
+                                dt.ElementAt(i + 1)
+                            ));
+
+                        }
                     }
                     Dictionary<string, double> dic1_SortedByKey = new Dictionary<string, double>();
 
-                    var dicSort = from objDic in content orderby objDic.Value descending select objDic;
+                    var dicSort = from objDic in repeat orderby objDic.Value descending select objDic;
                     foreach (KeyValuePair<string, double> kvp in dicSort)
-                        dic1_SortedByKey.Add(kvp.Key, kvp.Value);
-
-
-
-                    checkedListBox1.Items.Clear();
-                    for (int i = 0; i < dic1_SortedByKey.Count(); i++)
-                    {
-                        checkedListBox1.Items.Add(dic1_SortedByKey.ElementAt(i).Key.ToString()+"    "+ dic1_SortedByKey.ElementAt(i).Value.ToString()+"%");
-                    }
+                        content.Add(new compentContent
+                            { id = int.Parse(kvp.Key.Substring(0, kvp.Key.IndexOf("_"))),
+                            value = kvp.Key.Substring(kvp.Key.IndexOf("_"))+"   "+ kvp.Value+"%"
+                        });
                 }
             }
+            checkedListBox1.DataSource = content;
+            checkedListBox1.ValueMember = "id";
+            checkedListBox1.DisplayMember = "value";
 
         }
 
@@ -767,6 +786,11 @@ namespace WinFormsApp1
         {
             public string data { get; set; }
         }
+        class compentContent
+        {
+            public int id { get; set; }
+            public string value { get; set; }
+        }
 
         List<rule> rule1 = new List<rule>();
         private void setRule()
@@ -1250,7 +1274,7 @@ namespace WinFormsApp1
         private void button5_Click(object sender, EventArgs e)
         {
             foreach (object checkedItem in checkedListBox1.CheckedItems)
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + checkedItem.ToString() + "'");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_id = "+ checkedListBox1.SelectedValue);
             MessageBox.Show("刪除成功。");
             updatecheckboxlist1(0);
         }
