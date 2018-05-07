@@ -72,6 +72,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlSentConti = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.contextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.編輯 = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel31 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -114,6 +116,7 @@
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.pnlSentConti.SuspendLayout();
+            this.contextmenu.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel30.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -651,12 +654,29 @@
             // 
             // listBox1
             // 
+            this.listBox1.ContextMenuStrip = this.contextmenu;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(5, 111);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(343, 148);
             this.listBox1.TabIndex = 5;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // contextmenu
+            // 
+            this.contextmenu.AllowDrop = true;
+            this.contextmenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.編輯});
+            this.contextmenu.Name = "contextMenuStrip1";
+            this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            // 
+            // 編輯
+            // 
+            this.編輯.Name = "編輯";
+            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Text = "編輯";
             // 
             // richTextBox1
             // 
@@ -751,6 +771,7 @@
             this.button9.TabIndex = 12;
             this.button9.Text = "修改備註";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label19
             // 
@@ -1024,6 +1045,7 @@
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.pnlSentConti.ResumeLayout(false);
+            this.contextmenu.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             this.panel30.ResumeLayout(false);
@@ -1116,5 +1138,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ContextMenuStrip contextmenu;
+        private System.Windows.Forms.ToolStripMenuItem 編輯;
     }
 }

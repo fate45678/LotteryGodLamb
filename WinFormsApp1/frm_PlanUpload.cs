@@ -77,7 +77,7 @@ namespace WinFormsApp1
                 {
                     for (int i = 0; i < dt.Count; i = i + 6)
                     {
-                       content.Add(new compentContent {id= int.Parse(dt.ElementAt(0)),value= dt.ElementAt(i + 1) + " " +
+                       content.Add(new compentContent {id= int.Parse(dt.ElementAt(i)),value= dt.ElementAt(i + 1) + " " +
                             calhits
                             (
                                 dt.ElementAt(i + 2),
@@ -1321,48 +1321,73 @@ namespace WinFormsApp1
         bool allorwUpdate = true;
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-        //    Dictionary<int, string> dic = new Dictionary<int, string>();
-        //    dic.Add(0, "p_name");
-        //    dic.Add(1, "p_account");
-        //    dic.Add(2, "p_start");
-        //    dic.Add(3, "p_end");
-        //    dic.Add(4, "p_rule");
-        //    allorwUpdate = false;
-        //    var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + checkedListBox1.SelectedItem + "'", dic);
-        //    for (int i = 0; i < getData.Count; i++)
-        //    {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0, "p_name");
+            dic.Add(1, "p_account");
+            dic.Add(2, "p_start");
+            dic.Add(3, "p_end");
+            dic.Add(4, "p_rule");
+            allorwUpdate = false;
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + checkedListBox1.SelectedValue + "'", dic);
+            label17.Text = "已上传: 第" + getData.ElementAt(2) + "~" + getData.ElementAt(3) + "期";
 
-        //        if (i == 0)
-        //            label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
-        //        else if (i == 2)
-        //            label17.Text = "已上传: 第" + getData.ElementAt(i) + "~" + getData.ElementAt(i + 1) + "期";
-        //        else if (i == 4)
-        //        {
-        //            richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
-        //            string strReplace = getData.ElementAt(i).Replace(",", "");
-        //            int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
-        //            label15.Text = "共" + times + "注";
-        //        }
-        //    }
-        //    listBox1.Items.Clear();
-        //    //檢查期數
-        //    for (int i = 0; i < dt_history.Count; i++)
-        //    {
-        //        if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
-        //        {
-        //            if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
-        //                listBox1.Items.Add(dt_history[i].ToString() + "     中");
-        //            else
-        //                listBox1.Items.Add(dt_history[i].ToString() + "     掛");
-        //        }
-        //        else
-        //            listBox1.Items.Add(dt_history[i].ToString() + "     停");
-        //    }
-        //    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
-        //    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
+                for (int i = 0; i < getData.Count; i++)
+                {
+                    if (i == 0)
+                        label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
+                    else if (i == 2){}
+                    else if (i == 4)
+                    {
+                        richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
+                        string strReplace = getData.ElementAt(i).Replace(",", "");
+                        int times = (getData.ElementAt(i).Length - strReplace.Length) / 1;
+                        label15.Text = "共" + times + "注";
+                    }
+                }
+                listBox1.Items.Clear();
+            if (getData.Count>0)
+            {
+                for (int i = 1; i < 41; i++)
+                {
+                    if (i < 4)//
+                    {
+                        listBox1.Items.Add(getData.ElementAt(2).Substring(0, 8) + "00" + ((i * 3) - 2) + " 到 " + getData.ElementAt(2).Substring(0, 8) + "00" + i * 3 + " 未投注");
+                    }
+                    else if (i >= 4 && i < 34)
+                    {
+                        listBox1.Items.Add(getData.ElementAt(2).Substring(0, 8) + "0" + ((i * 3) - 2) + " 到 " + getData.ElementAt(2).Substring(0, 8) + "0" + i * 3 + " 未投注");
+                    }
+                    else if (i >= 34 && i < 41)
+                    {
+                        listBox1.Items.Add(getData.ElementAt(2).Substring(0, 8) + ((i * 3) - 2) + " 到 " + getData.ElementAt(2).Substring(0, 8) +  i * 3 + " 未投注");
+                    }
+                    else
+                    {
+                        listBox1.Items.Add(getData.ElementAt(2).Substring(0, 8) + ((i * 3) - 2) + " 到 " +
+                        getData.ElementAt(2).Substring(0, 8) + i * 3 + "ERROR");
+                    }
+
+                }
+            }
+            
+                
+            //    for (int i = 0; i < dt_history.Count; i++)
+            //    {
+            //        if (int.Parse(dt_history.ElementAt(i).Substring(4, 7)) >= int.Parse(getData.ElementAt(2).Substring(4, 7)) && int.Parse(dt_history.ElementAt(i).Substring(4, 7)) <= int.Parse(getData.ElementAt(3).Substring(4, 7)))
+            //        {
+            //            if (getData.ElementAt(4).IndexOf(dt_history.ElementAt(i).Substring(dt_history.ElementAt(i).IndexOf(" ") + 1).Trim()) != -1)
+            //                listBox1.Items.Add(dt_history[i].ToString() + "     中");
+            //            else
+            //                listBox1.Items.Add(dt_history[i].ToString() + "     掛");
+            //        }
+            //        else
+            //            listBox1.Items.Add(dt_history[i].ToString() + "     停");
+            //    }
+            comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(getData.ElementAt(3).Substring(8))), null);
+            comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(getData.ElementAt(3).Substring(8))) + 1), null);
         }
 
-       
+
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue);
@@ -1378,6 +1403,20 @@ namespace WinFormsApp1
         public void button12_Click(object sender, EventArgs e)
         {
             updatecheckboxlist1(updateLstbType);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (checkedListBox1.SelectedValue!=null)
+            {
+                frm_Note frm = new frm_Note((int)checkedListBox1.SelectedValue);
+                frm.Show();
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
