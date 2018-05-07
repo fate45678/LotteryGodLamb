@@ -324,11 +324,11 @@
                         <TextBlock Text="质合比" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblRatio3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                     </DockPanel>
-                    <DockPanel >
+                    <!--<DockPanel >
                         <TextBlock Text="杀AC值" Foreground="Black" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblAC" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
-                        <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
-                    </DockPanel>
+                        --><!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>--><!--
+                    </DockPanel>-->
                 </DockPanel>
             </GroupBox>
         </Grid>

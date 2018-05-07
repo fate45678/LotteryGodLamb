@@ -36,11 +36,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <DockPanel Grid.Row="0" Margin="5,0,0,5">
+            <!--<DockPanel Grid.Row="0" Margin="5,0,0,5">
                 <TextBlock Text="输入奖号" DockPanel.Dock="Left" Margin="0,0,3,0" Padding="0,5,0,0"/>
                 <Button Content="兑奖匹配" DockPanel.Dock="Right" />
                 <TextBox DockPanel.Dock="Left" Margin="0,0,3,0"/>
-            </DockPanel>
+            </DockPanel>-->
             <TextBox x:Name="teResult" Margin="5,0,0,5" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
 
             </TextBox>

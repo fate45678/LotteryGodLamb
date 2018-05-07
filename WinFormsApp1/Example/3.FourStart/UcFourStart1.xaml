@@ -290,11 +290,11 @@
                         <local:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" >
+                    <!--<DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀AC值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblType4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
-                        <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
-                    </DockPanel>
+                        --><!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>--><!--
+                    </DockPanel>-->
                 </DockPanel>
             </GroupBox>
 

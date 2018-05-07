@@ -33,7 +33,7 @@ namespace WpfAppTest
             /*CheckBoxList*/
             cblOption1.ItemsSource = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
             cblOption2.ItemsSource = DB.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).OrderByDescending(x => x.Code);
-            cblOption3.ItemsSource = DB.CreateOption(1, 5, new string[5] { "对子", "连号", "杂号", "假对", "假连" }).OrderBy(x => x.ID);
+            cblOption3.ItemsSource = DB.CreateOption(1, 4, new string[4] { "对子", "连号", "杂号", "假对" }).OrderBy(x => x.ID); //, "假连"
 
             /*RadioButtonList*/
             var data = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });

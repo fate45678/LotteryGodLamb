@@ -34,10 +34,12 @@ namespace WpfAppTest
             {
                 SetData();
                 SetContextMenu();
+                SetDefaultValue();
                 IsFirstTime = false;
             }
         }
 
+        #region 其他及初始事件
         /// <summary>
         /// 委派事件
         /// </summary>
@@ -71,7 +73,7 @@ namespace WpfAppTest
 
             AllConbination = DB.CombinationNumber(2, 0, 9);
 
-            var tab = DB.CreateOption(1, 9, new string[9] { "胆码", "定位形态", "不定位形态", "和值", "合尾", "跨度", "和差", "垃圾组合", "大底集合" });
+            var tab = DB.CreateOption(1, 9, new string[9] { "胆码", "定位形态", "不定位形态", "和值", "和尾", "跨度", "和差", "垃圾组合", "大底集合" });
             foreach (var tmp in tab)
             {
                 if (tmp.ID == 1)
@@ -99,13 +101,23 @@ namespace WpfAppTest
                 TabItem tb = new TabItem() { Content = form[tmp.ID], Header = tmp.Name };
                 tcSettings.Items.Add(tb);
             }
-            cbCopy.SelectedIndex = 0;
+            (tcSettings.Items[6] as TabItem).Visibility = Visibility.Collapsed;
         }
 
+        void SetDefaultValue()
+        {
+            if (cm != null)
+                mi_Click(cm.Items[0], null);
+            teResult.Text = "";
+        }
+        #endregion
+
+        #region 複製相關事件
         /// <summary>
-        /// contextmenu
+        /// 複製的contextmenu
         /// </summary>
         ContextMenu cm;
+
         /// <summary>
         /// 設定button contextmenu
         /// </summary>
@@ -115,16 +127,17 @@ namespace WpfAppTest
             {
                 cm = new ContextMenu();
 
-                MenuItem miCopyResult = new MenuItem() { Header = "複製", Tag = "miCopyResult" };
+                MenuItem miCopyResult = new MenuItem() { Header = "复制", Tag = "miCopyResult" };
                 //miCopyResult.Icon = new Image() { Source = ImageCollection.GetGlyph("Toolbar_GoTo16") };
                 miCopyResult.Click += mi_Click;
                 cm.Items.Add(miCopyResult);
 
-                MenuItem miCopyA = new MenuItem() { Header = "複製到大底A", Tag = "miCopyA" };
+                MenuItem miCopyA = new MenuItem() { Header = "复制到大底A", Tag = "miCopyA" };
                 //miCopyA.Icon = new Image() { Source = ImageCollection.GetGlyph("Toolbar_Clear16") };
                 miCopyA.Click += mi_Click;
+                cm.Items.Add(miCopyA);
 
-                MenuItem miCopyB = new MenuItem() { Header = "複製到大底B", Tag = "miCopyB" };
+                MenuItem miCopyB = new MenuItem() { Header = "复制到大底B", Tag = "miCopyB" };
                 //miCopyB.Icon = new Image() { Source = ImageCollection.GetGlyph("Toolbar_Clear16") };
                 miCopyB.Click += mi_Click;
                 cm.Items.Add(miCopyB);
@@ -132,6 +145,11 @@ namespace WpfAppTest
             btnCopy.ContextMenu = cm;
         }
 
+        /// <summary>
+        /// ContextMenu click事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void mi_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             MenuItem mi = (MenuItem)sender;
@@ -145,7 +163,7 @@ namespace WpfAppTest
                         if (!string.IsNullOrEmpty(teResult.Text))
                         {
                             System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                            System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                            System.Windows.Forms.MessageBox.Show("号码复制成功。");
                         }
                     }
                     else if ((string)mi.Tag == "miCopyA")
@@ -160,10 +178,14 @@ namespace WpfAppTest
                         if (!string.IsNullOrEmpty(teResult.Text))
                             (form[9] as UcTwoStart9).teCompareB.Text = teResult.Text;
                     }
+                    btnCopy.Content = mi.Header;
+                    btnCopy.Tag = (string)mi.Tag;
                 }
             }
         }
+        #endregion
 
+        #region tab切換事件
         /// <summary>
         /// Tab Change事件
         /// </summary>
@@ -185,7 +207,9 @@ namespace WpfAppTest
                 btnClearB.Visibility = Visibility.Collapsed;
             }
         }
+        #endregion
 
+        #region 按鈕事件
         /// <summary>
         /// 按鈕事件
         /// </summary>
@@ -214,10 +238,10 @@ namespace WpfAppTest
                 tmp = (form[4] as UcTwoStart4).Filter(tmp);
                 tmp = (form[5] as UcTwoStart5).Filter(tmp);
                 tmp = (form[6] as UcTwoStart6).Filter(tmp);
+                tmp = (form[8] as UcTwoStart8).Filter(tmp);
 
-                //垃圾跟和差邏輯不清楚, 大底集合不須縮水
+                //和差邏輯目前不需要, 大底集合不須縮水
                 //tmp = (form[7] as UcTwoStart7).Filter(tmp);
-                //tmp = (form[8] as UcTwoStart8).Filter(tmp);
 
                 teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
             }
@@ -226,7 +250,7 @@ namespace WpfAppTest
                 /*結果清除*/
                 foreach (var item in tcSettings.Items)
                     BaseHelper.DynamicPublicMethod((item as TabItem).Content, "SetDefaultValue", new object[] { });
-                teResult.Text = "";
+                SetDefaultValue();
             }
             else if (btn.Name == "btnClearA")
             {
@@ -240,43 +264,27 @@ namespace WpfAppTest
             }
             else if (btn.Name == "btnCopy")
             {
-                /*複製號碼*/
-            }
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbCopy.SelectedIndex == 0)
-            {
-                /*複製號碼*/
-                if (!string.IsNullOrEmpty(teResult.Text))
+                /*複製*/
+                if (btnCopy.Tag != null)
                 {
-                    System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                    System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                    if (cm != null)
+                    {
+                        switch ((string)btnCopy.Tag)
+                        {
+                            case "miCopyResult":
+                                mi_Click(cm.Items[0], null);
+                                break;
+                            case "miCopyA":
+                                mi_Click(cm.Items[1], null);
+                                break;
+                            case "miCopyB":
+                                mi_Click(cm.Items[2], null);
+                                break;
+                        }
+                    }
                 }
             }
-            else if (cbCopy.SelectedIndex == 1)
-            {
-                /*複製到大底A*/
-                if (!string.IsNullOrEmpty(teResult.Text))
-                    (form[9] as UcTwoStart9).teCompareA.Text = teResult.Text;
-            }
-            else if (cbCopy.SelectedIndex == 2)
-            {
-                /*複製到大底B*/
-                if (!string.IsNullOrEmpty(teResult.Text))
-                    (form[9] as UcTwoStart9).teCompareB.Text = teResult.Text;
-            }
         }
-
-        private void cbCopy_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cbCopy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

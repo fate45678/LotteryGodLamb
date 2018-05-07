@@ -55,6 +55,12 @@ namespace WpfAppTest
             AllConbination = DB.CombinationNumber(3, 0, 9);
         }
 
+        void SetDefaultValue()
+        {
+            teResult.Text = "";
+            tbCount.Text = "0";
+        }
+
         /// <summary>
         /// 右半-結果區的按鈕事件
         /// </summary>
@@ -70,6 +76,7 @@ namespace WpfAppTest
                     /*開始縮水*/
                     var tmp = ucThree1.Filter(AllConbination);
                     teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                    tbCount.Text = tmp.Count.ToString();
                 }
                 else if (btn.Name == "btnTransfer")
                 {
@@ -82,13 +89,15 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teResult.Text))
                     {
                         System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                        System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                        System.Windows.Forms.MessageBox.Show("号码复制成功。");
                     }
                 }
                 else if (btn.Name == "btnClear")
                 {
                     /*清空條件*/
                     ucThree1.SetDefaultValue();
+
+                    SetDefaultValue();
                 }
             }
         }

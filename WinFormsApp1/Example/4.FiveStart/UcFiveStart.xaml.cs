@@ -49,7 +49,7 @@ namespace WpfAppTest
         void SetData()
         {
             AllConbination = DB.CombinationNumber(5, 0, 9);
-            cblSpecialExclude.ItemsSource = DB.CreateOption(1, 14, new string[14] { "上山", "下山", "不連", "2連", "3連", "4連", "5連", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
+            cblSpecialExclude.ItemsSource = DB.CreateOption(1, 14, new string[14] { "上山", "下山", "不连", "2连", "3连", "4连", "5连", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
 
             if (form == null)
                 form = new Dictionary<int, System.Windows.Controls.UserControl>();
@@ -131,7 +131,7 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teResult.Text))
                     {
                         System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                        System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                        System.Windows.Forms.MessageBox.Show("号码复制成功。");
                     }
                 }
                 else if (btn.Name == "btnExport")
@@ -140,13 +140,13 @@ namespace WpfAppTest
                     FolderBrowserDialog path = new FolderBrowserDialog();
                     if (path.ShowDialog() == DialogResult.OK)
                     {
-                        string exportPath = @"" + path.SelectedPath + @"\五星號碼匯出.txt";
+                        string exportPath = @"" + path.SelectedPath + @"\五星号码导出.txt";
                         FileStream fs = new FileStream(exportPath, FileMode.Create, FileAccess.ReadWrite);
                         StreamWriter sw = new StreamWriter(fs, Encoding.Default);
                         sw.Write(teResult.Text);
                         sw.Close();
                         fs.Close();
-                        System.Windows.Forms.MessageBox.Show("號碼匯出成功。");
+                        System.Windows.Forms.MessageBox.Show("号码导出成功。");
                     }
                 }
             }

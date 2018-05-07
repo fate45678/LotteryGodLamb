@@ -129,7 +129,7 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            ////殺垃圾復式
+            ////殺垃圾複式
             //tmp = Calculation.PosNumber(tmp, tePos1.Text, 1, false);
 
             //殺兩碼

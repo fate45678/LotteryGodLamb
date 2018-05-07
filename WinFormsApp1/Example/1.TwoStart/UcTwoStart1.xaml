@@ -28,7 +28,7 @@
         </GroupBox>
         <GroupBox Grid.Row="3" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="個位" Foreground="Blue" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
+                <TextBlock Text="个位" Foreground="Blue" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
                 <local:CheckBoxList x:Name="cblFixUnit" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" />
                 <local:RadioButtonList x:Name="rblFixUnit" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>

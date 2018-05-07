@@ -29,8 +29,8 @@
             </Grid.RowDefinitions>
             <TabControl x:Name="tcSettings" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" SelectionChanged="tcSettings_SelectionChanged" />
 
-            <Button Content="全清(此頁)" x:Name="btnOptionClear" Click="btn_Click" Grid.Row="2" Grid.Column="0" Margin="0, 3, 0, 0" Height="20"/>
-            <Button Content="全選(此頁)" x:Name="btnSelectAll" Click="btn_Click" Grid.Row="2" Grid.Column="1" Margin="3, 3, 0, 0" Height="20" />
+            <Button Content="全清(此页)" x:Name="btnOptionClear" Click="btn_Click" Grid.Row="2" Grid.Column="0" Margin="0, 3, 0, 0" Height="20"/>
+            <Button Content="全选(此页)" x:Name="btnSelectAll" Click="btn_Click" Grid.Row="2" Grid.Column="1" Margin="3, 3, 0, 0" Height="20" />
             <Button Content="清除大底A" x:Name="btnClearA" Click="btn_Click" Grid.Row="2" Grid.Column="2" Margin="3, 3, 0, 0" Height="20" Visibility="Collapsed"/>
             <Button Content="清除大底B" x:Name="btnClearB" Click="btn_Click" Grid.Row="2" Grid.Column="3" Margin="3, 3, 0, 0" Height="20" Visibility="Collapsed"/>
         </Grid>
@@ -44,18 +44,8 @@
             <TextBox x:Name="teResult" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
 
             <DockPanel Grid.Row="1" >
-                <Button x:Name="btnFilter" Content="開始縮水" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 3, 0, 3" Height="20"/>
-                <Button Content="複製" x:Name="btnCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" Click="btn_Click"/>
-                <ComboBox x:Name="cbCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" SelectionChanged="ComboBox_SelectionChanged" HorizontalContentAlignment="Center" >
-                    <ComboBoxItem Name="Item1" HorizontalContentAlignment="Center">　複製
-                    </ComboBoxItem>
-                    <ComboBoxItem Name="Item2" HorizontalContentAlignment="Center">　複製到大底A
-                    </ComboBoxItem>
-                    <ComboBoxItem Name="Item3" HorizontalContentAlignment="Center">　複製到大底B
-                    </ComboBoxItem>
-                </ComboBox>
-                
-                <!--<Button x:Name="btnCopy" Content="複製" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20"/>-->
+                <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 3, 0, 3" Height="20"/>
+                <Button Content="复制" x:Name="btnCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" Click="btn_Click" />
                 <Button x:Name="btnClear" Content="全清" Click="btn_Click" DockPanel.Dock="Bottom" Height="20"/>
             </DockPanel>
         </Grid>

@@ -61,26 +61,26 @@ namespace WpfAppTest
             cblType3.ItemsSource = data;
 
             //AC值
-            cblAC.ItemsSource = DB.CreateContinueNumber(1, 3);
+            //cblAC.ItemsSource = DB.CreateContinueNumber(1, 3);
 
             //匹配過濾
             cblMatch.ItemsSource = DB.CreateOption(0, 3);
 
             //特別排除
-            cblSpecialExcept.ItemsSource = DB.CreateOption(1, 6, new string[6] { "豹子", "組三", "組六", "不連", "二連", "三連" });
+            cblSpecialExcept.ItemsSource = DB.CreateOption(1, 6, new string[6] { "豹子", "組三", "組六", "不连", "二连", "三连" });
 
             //012路
             cbl012.ItemsSource = DB.CombinationNumber(3, 0, 2).OrderBy(x => x.Code).ToList();
 
             /*RadioButtonList*/
-            rblSelect.ItemsSource = DB.CreateOption(1, 3, new string[3] { "出1膽", "出2膽", "出3膽" });
-            rblSpecialCalc.ItemsSource = DB.CreateOption(1, 3, new string[3] { "南山雪算膽法", "黃金算膽法", "wpshh算膽法" });
+            rblSelect.ItemsSource = DB.CreateOption(1, 3, new string[3] { "出1胆", "出2胆", "出3胆" });
+            //rblSpecialCalc.ItemsSource = DB.CreateOption(1, 3, new string[3] { "南山雪算胆法", "黄金算胆法", "wpshh算胆法" });
 
             /*ComboBox*/
-            var data2 = DB.CreateOption(1, 3, new string[3] { "百", "十", "個" });
+            var data2 = DB.CreateOption(1, 3, new string[3] { "百", "十", "个" });
             cbPosMatchNumber.ItemsSource = data2;
             cbPosMatchNumber2.ItemsSource = data2;
-            cbEqual.ItemsSource = DB.CreateOption(1, 6, new string[6] { "大於", "小於", "等於", "大於等於", "小於等於", "不等於" });
+            cbEqual.ItemsSource = DB.CreateOption(1, 6, new string[6] { "大于", "小于", "等于", "大于等于", "小于等于", "不等于" });
 
             /*CheckBox*/
 
@@ -113,7 +113,7 @@ namespace WpfAppTest
 
             /*RadioButtonList*/
             rblSelect.SelectedValue = 1;
-            rblSpecialCalc.SelectedValue = 1;
+            //rblSpecialCalc.SelectedValue = 1;
 
             /*ComboBox*/
             cbPosMatchNumber.SelectedValue = 1;
@@ -141,6 +141,22 @@ namespace WpfAppTest
 
             cbPosMatch.IsChecked = false;
             CheckBox_Checked(cbPosMatch, null);
+
+            cbIsGroup.IsChecked = false;
+
+            /*DataGrid*/
+            dgData1.ItemsSource = new List<Match>();
+            dgData2.ItemsSource = new List<Match>();
+
+            /*TextBox*/
+            teEditor1.Text = teEditor2.Text = teEditor3.Text = teEditor4.Text =
+            teEditor5.Text = teEditor6.Text = teEditor7.Text = teEditor8.Text = 
+            teMatch.Text = teBottom.Text = teSum.Text = 
+            teCheckHundred.Text = teCheckHundred2.Text = teCheckHundred3.Text = 
+            teCheckTen.Text = teCheckTen2.Text = teCheckTen3.Text = 
+            teCheckUnit.Text = teCheckUnit2.Text = teCheckUnit3.Text = "";
+            teRange1.Text = "0";
+            teRange2.Text = "27";
         }
 
         /// <summary>
@@ -148,11 +164,17 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            #region group1-殺直選.垃圾復式.殺2碼.定位殺2碼.必出2碼.交集.公式.其他
+            //定位殺兩碼
+            //交集
+            //公式
+            //其他
+
+            #region group1-殺直選.垃圾複式.殺2碼.定位殺2碼.必出2碼.交集.公式.其他
             //殺直選
             tmp = Calculation.AssignNumber(tmp, teEditor1.Text, false);
 
-            //垃圾復式-邏輯待確定
+            //垃圾複式
+            tmp = Calculation.GarbageNumber(tmp, teEditor2.Text, 2, '*', 3);
 
             //殺兩碼
             tmp = Calculation.ExistsNumber(tmp, teEditor3.Text, 2, false);
@@ -169,7 +191,8 @@ namespace WpfAppTest
             //其他
             #endregion
 
-            #region
+            //膽
+            #region 和 跨 膽
             //殺和尾
             tmp = Calculation.SumLastNumber(tmp, cblType1, false);
 
@@ -180,20 +203,28 @@ namespace WpfAppTest
             #endregion
 
             #region 和值
-            //殺指定和值
-            tmp = Calculation.SumNumber(tmp, teSum.Text, false);
+            if ((bool)cbRemoveSum.IsChecked)
+            {
+                //殺指定和值
+                tmp = Calculation.SumNumber(tmp, teSum.Text, false);
 
-            //和值範圍
-            int rangeStart = 0;
-            int rangeEnd = 0;
-            int.TryParse(teRange1.Text, out rangeStart);
-            int.TryParse(teRange2.Text, out rangeEnd);
-            var range = DB.CreateContinueNumber(rangeStart, rangeEnd);
-            tmp = Calculation.SumNumber(tmp, string.Join(" ", range.Select(x => x.Code)), true);
+                //和值範圍
+                int rangeStart = 0;
+                int rangeEnd = 0;
+                int.TryParse(teRange1.Text, out rangeStart);
+                int.TryParse(teRange2.Text, out rangeEnd);
+                var range = DB.CreateContinueNumber(rangeStart, rangeEnd);
+                tmp = Calculation.SumNumber(tmp, string.Join(" ", range.Select(x => x.Code)), true);
+            }
             #endregion
 
-            #region 排除復式/定位殺
-            //排除復式
+            #region 排除複式/定位殺
+            //排除複式
+            if ((bool)cbCheck1.IsChecked)
+            {
+                string condition = teCheckHundred.Text + "/" + teCheckTen.Text + "/" + teCheckUnit.Text;
+                tmp = Calculation.CompoundNumber(tmp, condition, '/', 3);
+            }
 
             //定位殺
             if ((bool)cbCheck2.IsChecked)
@@ -222,9 +253,23 @@ namespace WpfAppTest
             tmp = Calculation.DivThreeRemainder(tmp, cbl012, false);
             #endregion
 
-            #region 大底 / 復式
+            //大底
+            #region 大底 / 複式
+            //複式
+            if ((bool)cbCheck3.IsChecked)
+            {
+                string condition = teCheckHundred3.Text + "/" + teCheckTen3.Text + "/" + teCheckUnit3.Text;
+                tmp = Calculation.CompoundNumber(tmp, condition, '/', 3, true);
+            }
+
+            //大底
             if ((bool)cbCheck4.IsChecked)
                 tmp = Calculation.AssignNumber(tmp, teBottom.Text, true);
+            #endregion
+
+            #region 位置大小匹配
+            if ((bool)cbPosMatch.IsChecked)
+                tmp = Calculation.ThreeStartMatch(tmp, dgData2.ItemsSource.Cast<Match>().ToList());
             #endregion
 
             return tmp;
@@ -239,7 +284,9 @@ namespace WpfAppTest
         /// <param name="e"></param>
         private void txtEditor_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //txtEditor.Text = "";
+            var te = sender as System.Windows.Controls.TextBox;
+            if (te != null)
+                te.Text = "";
         }
 
         int[] OldText;
@@ -305,23 +352,23 @@ namespace WpfAppTest
                 }
                 else if (cb.Name == "cbCheck3")
                 {
-                    if ((bool)cbCheck4.IsChecked)
+                    if ((bool)cbCheck4.IsChecked && ischeck)
                     {
                         cbCheck3.IsChecked = !ischeck;
-                        System.Windows.MessageBox.Show("大底和復式不能同時選擇。");
+                        System.Windows.MessageBox.Show("大底和复式不能同时选择。");
                     }
                     else
                         teCheckHundred3.IsEnabled = teCheckTen3.IsEnabled = teCheckUnit3.IsEnabled = ischeck;
                 }
                 else if (cb.Name == "cbCheck4")
                 {
-                    if ((bool)cbCheck3.IsChecked)
+                    if ((bool)cbCheck3.IsChecked && ischeck)
                     {
                         cbCheck4.IsChecked = !ischeck;
-                        System.Windows.MessageBox.Show("大底和復式不能同時選擇。");
+                        System.Windows.MessageBox.Show("大底和复式不能同时选择。");
                     }
                     else
-                        btnIsGroup.IsEnabled = btnSelect.IsEnabled = teBottom.IsEnabled = ischeck;
+                        cbIsGroup.IsEnabled = btnSelect.IsEnabled = teBottom.IsEnabled = ischeck;
                 }
                 else if (cb.Name == "cbRemoveSum")
                 {
@@ -355,7 +402,15 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teMatch.Text))
                     {
                         var tmp = dgData1.ItemsSource.Cast<Match>().ToList();
-                        tmp.Add(new Match { Value1 = teMatch.Text, Value2 = GetCheckBoxDisplayName(cblMatch), Operator = "" });
+                        tmp.Add(new Match 
+                        { 
+                            ValueName1 = teMatch.Text, 
+                            ValueName2 = GetCheckBoxDisplayName(cblMatch), 
+                            OperatorName = "",
+                            Value1 = 0,
+                            Value2 = 0,
+                            Operator = 0
+                        });
 
                         dgData1.ItemsSource = tmp;
                     }
@@ -371,9 +426,12 @@ namespace WpfAppTest
                     var tmp = dgData2.ItemsSource.Cast<Match>().ToList();
                     tmp.Add(new Match
                     {
-                        Value1 = GetComboBoxDisplayName(cbPosMatchNumber),
-                        Operator = GetComboBoxDisplayName(cbEqual),
-                        Value2 = GetComboBoxDisplayName(cbPosMatchNumber2)
+                        ValueName1 = GetComboBoxDisplayName(cbPosMatchNumber),
+                        ValueName2 = GetComboBoxDisplayName(cbPosMatchNumber2),
+                        OperatorName = GetComboBoxDisplayName(cbEqual),
+                        Value1 = (int)cbPosMatchNumber.SelectedValue,
+                        Value2 = (int)cbPosMatchNumber2.SelectedValue,
+                        Operator = (int)cbEqual.SelectedValue
                     });
 
                     dgData2.ItemsSource = tmp;
@@ -411,14 +469,14 @@ namespace WpfAppTest
                                     openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
                                     te.Text = File.ReadAllText(openFileDialog.FileName);
                                 else
-                                    System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
+                                    System.Windows.Forms.MessageBox.Show("非文本文件无法开启。");
                             }
                             else
                                 te.Text = "";
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("檔案不存在，請確認後再選取。");
+                            System.Windows.Forms.MessageBox.Show("档案不存在，请确认后再选取。");
                         }
                     }
                 }
@@ -465,13 +523,19 @@ namespace WpfAppTest
 
     public class Match
     {
-        private string _Value1;
+        private int _Value1;
 
-        private string _Operator;
+        private int _Value2;
 
-        private string _Value2;
+        private int _Operator;
 
-        public string Value1
+        private string _ValueName1;
+
+        private string _ValueName2;
+
+        private string _OperatorName;
+
+        public int Value1
         {
             get
             {
@@ -483,7 +547,20 @@ namespace WpfAppTest
             }
         }
 
-        public string Operator
+        public int Value2
+        {
+            get
+            {
+                return _Value2;
+            }
+            set
+            {
+                _Value2 = value;
+            }
+
+        }
+
+        public int Operator
         {
             get
             {
@@ -495,15 +572,39 @@ namespace WpfAppTest
             }
         }
 
-        public string Value2
+        public string ValueName1
         {
             get
             {
-                return _Value2;
+                return _ValueName1;
             }
             set
             {
-                _Value2 = value;
+                _ValueName1 = value;
+            }
+        }
+
+        public string ValueName2
+        {
+            get
+            {
+                return _ValueName2;
+            }
+            set
+            {
+                _ValueName2 = value;
+            }
+        }
+
+        public string OperatorName
+        {
+            get
+            {
+                return _OperatorName;
+            }
+            set
+            {
+                _OperatorName = value;
             }
         }
     }

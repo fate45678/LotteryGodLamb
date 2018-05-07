@@ -117,9 +117,9 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            tmp = Base.Calculation.PosNumber(tmp, cblFixTen,  "0" , (int)rblFixTen.SelectedValue == 1);
-            tmp = Base.Calculation.PosNumber(tmp, cblFixUnit,  "1" , (int)rblFixUnit.SelectedValue == 1);
-            tmp = Base.Calculation.PosNumber(tmp, cblAnyOne, "*" , (int)rblAnyOne.SelectedValue == 1);
+            tmp = Base.Calculation.PosNumber(tmp, cblFixTen, "0", (int)rblFixTen.SelectedValue == 1);
+            tmp = Base.Calculation.PosNumber(tmp, cblFixUnit, "1", (int)rblFixUnit.SelectedValue == 1);
+            tmp = Base.Calculation.PosNumber(tmp, cblAnyOne, "*", (int)rblAnyOne.SelectedValue == 1);
             return tmp;
         }
     }

@@ -28,7 +28,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="Auto"/>
+                <!--<ColumnDefinition Width="60" />-->
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
@@ -182,20 +183,20 @@
                 </TabItem>
             </TabControl>
 
-            <GroupBox Header="和、跨、膽" Margin="0,0,0,3" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <GroupBox Header="和、跨、胆" Margin="0,0,0,3" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="殺和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="杀和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="殺跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="杀跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0,8,0,0">
-                        <TextBlock Text="選膽" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="选胆" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
                         <local:RadioButtonList x:Name="rblSelect"  DisplayMemberPath="Name" ValueMemberPath="ID" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
@@ -209,7 +210,7 @@
             <Border Margin="0,0,0,3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" Margin="0,5,0,3">
-                        <CheckBox Content="殺指定和值" x:Name="cbRemoveSum" Width="90" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
+                        <CheckBox Content="杀指定和值" x:Name="cbRemoveSum" Width="90" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
                         <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
@@ -234,7 +235,7 @@
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom">
-                        <TextBlock Text="和值範圍" DockPanel.Dock="Left" Width="90" />
+                        <TextBlock Text="和值范围" DockPanel.Dock="Left" Width="90" />
                         <DockPanel DockPanel.Dock="Right">
                             <TextBox x:Name="teRange1" TextChanged="te_TextChanged" Text="0" Width="30" HorizontalAlignment="Left"/>
                             <TextBlock Text="-" Margin="5,0,5,0" HorizontalAlignment="Left"/>
@@ -244,31 +245,33 @@
                     </DockPanel>
                 </DockPanel>
             </Border>
-
+            
             <Border Margin="0,5,0,5" Grid.Row="3" Grid.Column="0" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top">
                         <TextBlock Text="百位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                         <TextBox DockPanel.Dock="Left" Width="50" x:Name="teCheckHundred" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
-                        <CheckBox Content="排除復式" x:Name="cbCheck1" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                        <CheckBox Content="排除复式" x:Name="cbCheck1" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="十位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                         <TextBox DockPanel.Dock="Left" Width="50" x:Name="teCheckTen" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" >
-                        <TextBlock Text="個位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="个位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                         <TextBox DockPanel.Dock="Left" Width="50" x:Name="teCheckUnit" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
                     </DockPanel>
                 </DockPanel>
             </Border>
 
-            <Border Margin="0,5,0,5" Grid.Row="3" Grid.Column="1" BorderBrush="LightGray" BorderThickness="1" >
+            <DockPanel Grid.Row="3" Grid.Column="1" Margin="0,0,5,0"/>
+
+            <Border Margin="0,5,0,5" Grid.Row="3" Grid.Column="2" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Left">
                         <DockPanel DockPanel.Dock="Top">
                             <TextBlock Text="百位" Width="35" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
-                            <CheckBox Content="定位殺" x:Name="cbCheck2" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                            <CheckBox Content="定位杀" x:Name="cbCheck2" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="75" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
                             <TextBox DockPanel.Dock="Left" x:Name="teCheckHundred2" Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -276,29 +279,29 @@
                             <TextBox DockPanel.Dock="Left" x:Name="teCheckTen2"  Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Bottom" >
-                            <TextBlock Text="個位" Width="35" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
+                            <TextBlock Text="个位" Width="35" HorizontalAlignment="Left" Margin="0, 0, 5, 3"/>
                             <TextBox x:Name="teCheckUnit2" DockPanel.Dock="Left" Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
                         </DockPanel>
                     </DockPanel>
                 </DockPanel>
             </Border>
 
-            <GroupBox Header="AC值" Grid.Row="3" Grid.Column="2" Margin="0,0,0,5">
+            <!--<GroupBox Header="AC值" Grid.Row="3" Grid.Column="2" Margin="0,0,0,5">
                 <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" x:Name="cblAC"/>
-            </GroupBox>
+            </GroupBox>-->
 
-            <Border Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
+            <!--<Border Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <local:RadioButtonList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Top" x:Name="rblSpecialCalc" Margin="0,0,0,3"/>
                     <DockPanel DockPanel.Dock="Bottom">
-                        <TextBlock Text="輸入上期開獎號" DockPanel.Dock="Left" Margin="0,0,5,0"/>
-                        <!--<TextBlock Text="期尾+上期獎"/>-->
-                        <Button Content="算膽" DockPanel.Dock="Right"/>
+                        <TextBlock Text="输入上期开奖号" DockPanel.Dock="Left" Margin="0,0,5,0"/>
+                        --><!--<TextBlock Text="期尾+上期獎"/>--><!--
+                        <Button Content="算胆" DockPanel.Dock="Right"/>
                         <TextBox DockPanel.Dock="Left" Margin="0,0,5,0">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                     <VisualBrush.Visual>
-                                        <TextBlock FontStyle="Normal" Text="格式本期期尾+上期獎號，如18期为8878"/>
+                                        <TextBlock FontStyle="Normal" Text="格式本期期尾+上期奖号，如18期为8878"/>
                                     </VisualBrush.Visual>
                                 </VisualBrush>
                             </TextBox.Resources>
@@ -317,19 +320,19 @@
                         </TextBox>
                     </DockPanel>
                 </DockPanel>
-            </Border>
+            </Border>-->
 
             <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Left" Margin="0,0,5,0">
                         <DockPanel DockPanel.Dock="Top">
-                            <CheckBox Content="匹配過濾" DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="cbMatch" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                            <CheckBox Content="匹配过滤" DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="cbMatch" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
                             <TextBox DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="teMatch" TextChanged="te_TextChanged"/>
                             <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Bottom" x:Name="cblMatch" Margin="0,0,0,3"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
                             <Button x:Name="btnAdd1" Content="添加" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
-                            <Button x:Name="btnDelete1" Content="刪除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                            <Button x:Name="btnDelete1" Content="删除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
                         </DockPanel>
                     </DockPanel>
                     <DataGrid DockPanel.Dock="Right" ItemsSource="{Binding}" AutoGenerateColumns="False" x:Name="dgData1" IsReadOnly="True"
@@ -356,7 +359,7 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="號碼" Binding="{Binding Value1}">
+                            <DataGridTextColumn Header="号码" Binding="{Binding ValueName1}">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -364,7 +367,7 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="出數" Binding="{Binding Value2}">
+                            <DataGridTextColumn Header="出数" Binding="{Binding ValueName2}">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -394,23 +397,23 @@
             </Grid.RowDefinitions>
 
             <!--Column=0-->
-            <GroupBox Header="復式/大底" Margin="0,0,0,3" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Header="复式/大底" Margin="0,0,0,3" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                 <DockPanel Margin="5">
-                    <TextBlock Text="大底和復式不能同時選擇" DockPanel.Dock="Top" Margin="0,0,0,3" TextBlock.Foreground="Blue" />
+                    <TextBlock Text="大底和复式不能同时选择" DockPanel.Dock="Top" Margin="0,0,0,3" TextBlock.Foreground="Blue" />
                     <DockPanel DockPanel.Dock="Bottom">
-                        <GroupBox Header="復式輸入" DockPanel.Dock="Left" Margin="0,0,5,0">
+                        <GroupBox Header="复式输入" DockPanel.Dock="Left" Margin="0,0,5,0">
                             <DockPanel Margin="5">
                                 <DockPanel DockPanel.Dock="Top">
                                     <TextBlock Text="百位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                                     <TextBox DockPanel.Dock="Left" Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 3" x:Name="teCheckHundred3"/>
-                                    <CheckBox Content="輸入復式" x:Name="cbCheck3" DockPanel.Dock="Right" HorizontalAlignment="Right" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Width="75"/>
+                                    <CheckBox Content="输入复式" x:Name="cbCheck3" DockPanel.Dock="Right" HorizontalAlignment="Right" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Width="75"/>
                                 </DockPanel>
                                 <DockPanel DockPanel.Dock="Top" >
                                     <TextBlock Text="十位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                                     <TextBox DockPanel.Dock="Left" Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 3"  x:Name="teCheckTen3"/>
                                 </DockPanel>
                                 <DockPanel DockPanel.Dock="Bottom" >
-                                    <TextBlock Text="個位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
+                                    <TextBlock Text="个位" DockPanel.Dock="Left" Width="35" Margin="0, 0, 5, 0"/>
                                     <TextBox DockPanel.Dock="Left" Width="50" HorizontalAlignment="Left" Margin="0, 0, 5, 0"  x:Name="teCheckUnit3"/>
                                 </DockPanel>
                             </DockPanel>
@@ -420,8 +423,8 @@
                             <DockPanel Margin="5">
                                 <DockPanel DockPanel.Dock="Top" Margin="0,0,0,3">
                                     <CheckBox Content="大底" x:Name="cbCheck4" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" DockPanel.Dock="Left" Margin="0,0,5,0"/>
-                                    <Button Content="選擇大底" DockPanel.Dock="Right" x:Name="btnSelect" Click="btn_Click"/>
-                                    <CheckBox Content="大底是組選號碼" DockPanel.Dock="Left" Margin="0,0,5,0" x:Name="btnIsGroup"/>
+                                    <Button Content="选择大底" DockPanel.Dock="Right" x:Name="btnSelect" Click="btn_Click"/>
+                                    <CheckBox Content="大底是组选号码" DockPanel.Dock="Left" Margin="0,0,5,0" x:Name="cbIsGroup"/>
                                 </DockPanel>
                                 <TextBox DockPanel.Dock="Bottom" x:Name="teBottom" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
                             </DockPanel>
@@ -453,7 +456,7 @@
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
                             <Button x:Name="btnAdd2" Content="添加" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
-                            <Button x:Name="btnDelete2" Content="刪除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
+                            <Button x:Name="btnDelete2" Content="删除" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
                         </DockPanel>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Left">
@@ -481,7 +484,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="位數" Binding="{Binding Value1}">
+                                <DataGridTextColumn Header="位数" Binding="{Binding ValueName1}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -489,7 +492,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="大小" Binding="{Binding Operator}">
+                                <DataGridTextColumn Header="大小" Binding="{Binding OperatorName}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -497,7 +500,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="位數" Binding="{Binding Value2}">
+                                <DataGridTextColumn Header="位数" Binding="{Binding ValueName2}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -512,13 +515,13 @@
             </Border>
 
             <!--Column=1-->
-            <GroupBox Header="012路特別排除" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
+            <GroupBox Header="012路特别排除" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
                 <DockPanel Width="110">
                     <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
-            <GroupBox Header="特別排除" Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Header="特别排除" Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                 <local:CheckBoxList x:Name="cblSpecialExcept" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
         </Grid>

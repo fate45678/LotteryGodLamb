@@ -59,7 +59,7 @@ namespace WpfAppTest
             cblRatio.ItemsSource = Ratio;
             cblRatio2.ItemsSource = Ratio;
             cblRatio3.ItemsSource = Ratio;
-            cblAC.ItemsSource = DB.CreateOption(1, 9);
+            //cblAC.ItemsSource = DB.CreateOption(1, 9);
 
             /*預設值*/
         }
@@ -144,6 +144,7 @@ namespace WpfAppTest
             cblRatio.Clear();
             cblRatio2.Clear();
             cblRatio3.Clear();
+            //cblAC.Clear();
 
             teSum.Text = "";
         }

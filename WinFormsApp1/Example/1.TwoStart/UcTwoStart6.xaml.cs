@@ -43,7 +43,7 @@ namespace WpfAppTest
             cblFilter.ItemsSource = DB.CreateContinueNumber();
             cblType1.ItemsSource = DB.CreateOption(0, 1, new string[2] { "奇", "偶" });
             cblType2.ItemsSource = DB.CreateOption(0, 1, new string[2] { "大", "小" });
-            cblType3.ItemsSource = DB.CreateOption(0, 1, new string[2] { "質", "合" });
+            cblType3.ItemsSource = DB.CreateOption(0, 1, new string[2] { "质", "合" });
             cblType4.ItemsSource = DB.CreateOption(0, 2, new string[3] { "大", "中", "小" });
             cblType5.ItemsSource = DB.CreateContinueNumber(0, 2);
             cblType6.ItemsSource = DB.CreateContinueNumber(0, 4);
@@ -151,7 +151,7 @@ namespace WpfAppTest
                                     tmp[0] = tmp[1] = tmp[2] = tmp[3] = tmp[4] = ((bool)cblType2.CheckItem.IsChecked ? '1' : '0');
                             }
                             break;
-                        case "cblType3": //質合
+                        case "cblType3": //质合
                             if (cblType3.CheckItem.Tag != null)
                             {
                                 if ((int)cblType3.CheckItem.Tag == 1)

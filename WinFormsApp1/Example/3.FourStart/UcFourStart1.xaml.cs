@@ -57,7 +57,7 @@ namespace WpfAppTest
             cblType1.ItemsSource = data;
             cblType2.ItemsSource = data;
             cblType3.ItemsSource = data;
-            cblType4.ItemsSource = data;
+            //cblType4.ItemsSource = data;
 
             //012路
             cbl012.ItemsSource = DB.CombinationNumber(4, 0, 2).OrderBy(x => x.Code).ToList();
@@ -108,7 +108,7 @@ namespace WpfAppTest
             cblType1.Clear();
             cblType2.Clear();
             cblType3.Clear();
-            cblType4.Clear();
+            //cblType4.Clear();
 
             cblSpecial.Clear();
             cblSpecialExcept.Clear();
