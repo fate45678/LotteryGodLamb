@@ -120,22 +120,42 @@ namespace WinFormsApp1
             tbCount.Text = ((strData.Length - strReplace.Length) / goal.Length).ToString();
         }
 
+        /// <summary>
+        /// 複製號碼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btCopy_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Clipboard.SetText(tbNum.Text);
             System.Windows.Forms.MessageBox.Show("複製成功。");
         }
 
+        /// <summary>
+        /// 清空號碼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btClear_Click(object sender, RoutedEventArgs e)
         {
             tbNum.Text = "";
         }
 
+        /// <summary>
+        /// 黏貼號碼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btPaste_Click(object sender, RoutedEventArgs e)
         {
             tbNum.Text += System.Windows.Clipboard.GetText();
         }
 
+        /// <summary>
+        /// 開始驗證
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
             //檢查
