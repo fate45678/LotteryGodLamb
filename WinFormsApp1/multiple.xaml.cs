@@ -32,6 +32,7 @@ namespace WinFormsApp1
             cbCount.SelectedIndex = 0;
             cbMoney.SelectedIndex = 0;
             tbFiexed.Text = "10";
+            cbPercent.SelectedIndex = 0;
         }
 
         bool isFirstTime = true;
