@@ -45,7 +45,7 @@
 
         <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="質合" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
+                <TextBlock Text="质合" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
                 <local:CheckBoxList x:Name="cblType3" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
@@ -72,13 +72,13 @@
         <StackPanel Grid.Row="1" Grid.Column="4" Grid.RowSpan="3">
             <GroupBox Margin="5" Height="140">
                 <DockPanel Margin="5">
-                    <TextBlock Text="和尾　分類一" DockPanel.Dock="Top" Margin="5" />
+                    <TextBlock Text="和尾　分类一" DockPanel.Dock="Top" Margin="5" />
                     <local:CheckBoxList x:Name="cblSumLastType1" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
                 </DockPanel>
             </GroupBox>
             <GroupBox Margin="5" Height="140">
                 <DockPanel Margin="5">
-                    <TextBlock Text="和尾　分類二" DockPanel.Dock="Top" Margin="5" />
+                    <TextBlock Text="和尾　分类二" DockPanel.Dock="Top" Margin="5" />
                     <local:CheckBoxList x:Name="cblSumLastType2" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
                 </DockPanel>
             </GroupBox>

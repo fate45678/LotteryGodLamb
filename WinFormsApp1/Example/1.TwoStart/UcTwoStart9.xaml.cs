@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WpfAppTest
 {
@@ -53,8 +54,24 @@ namespace WpfAppTest
                     string[] arrayB = new string[] { };
                     string[] arrayC = new string[] { };
                     string[] empty = new string[1] { "" };
-                    arrayA = teCompareA.Text.Split(' ').ToArray();
-                    arrayB = teCompareB.Text.Split(' ').ToArray();
+                    
+                    //處理文字區段
+                    string textA = Regex.Replace(teCompareA.Text, "[^0-9]", "");
+                    string textB = Regex.Replace(teCompareB.Text, "[^0-9]", "");
+
+                    int countA = textA.Length / 2;
+                    int countB = textB.Length / 2;
+                    int max = (countA > countB ? countA : countB);
+                    for (int i = 1; i <= max; i++)
+                    {
+                        if (countA >= i)
+                            textA = textA.Insert(2 * i + (i - 1), " ");
+                        if (countB >= i)
+                            textB = textB.Insert(2 * i + (i - 1), " ");
+                    }
+
+                    arrayA = textA.Split(' ').Where(x => x.ToString().Length == 2).ToArray();
+                    arrayB = textB.Split(' ').Where(x => x.ToString().Length == 2).ToArray();
 
                     if (btn.Name == "btnIntersection")
                     {
@@ -83,7 +100,10 @@ namespace WpfAppTest
                         arrayC = arrayB.Except(arrayA).ToArray();
                     }
 
-                    //Array.Sort(arrayC);
+                    teCompareA.Text = string.Join(" ", arrayA);
+                    teCompareB.Text = string.Join(" ", arrayB);
+
+                    Array.Sort(arrayC);
                     DataRefresh(string.Join(" ", arrayC));
                 }
             }

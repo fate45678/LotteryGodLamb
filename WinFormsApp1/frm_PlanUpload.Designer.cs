@@ -64,6 +64,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -71,6 +72,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlSentConti = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.contextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.編輯 = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel31 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -78,6 +81,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -97,6 +101,7 @@
             this.button11 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlUserSetting.SuspendLayout();
@@ -111,6 +116,7 @@
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.pnlSentConti.SuspendLayout();
+            this.contextmenu.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel30.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -143,7 +149,7 @@
             this.pnlUserSetting.Location = new System.Drawing.Point(3, 3);
             this.pnlUserSetting.Name = "pnlUserSetting";
             this.pnlUserSetting.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.pnlUserSetting.Size = new System.Drawing.Size(1494, 30);
+            this.pnlUserSetting.Size = new System.Drawing.Size(1446, 30);
             this.pnlUserSetting.TabIndex = 1;
             // 
             // button1
@@ -308,9 +314,8 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
+            "复式",
+            "单式"});
             this.cbGameDirect.Location = new System.Drawing.Point(168, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(158, 20);
@@ -368,7 +373,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 33);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(1494, 510);
+            this.panel2.Size = new System.Drawing.Size(1446, 510);
             this.panel2.TabIndex = 1;
             // 
             // pnlHistory
@@ -422,7 +427,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(1102, 346);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(392, 6);
+            this.panel9.Size = new System.Drawing.Size(344, 6);
             this.panel9.TabIndex = 8;
             // 
             // pnlAD4
@@ -433,7 +438,7 @@
             this.pnlAD4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAD4.Location = new System.Drawing.Point(1102, 352);
             this.pnlAD4.Name = "pnlAD4";
-            this.pnlAD4.Size = new System.Drawing.Size(392, 158);
+            this.pnlAD4.Size = new System.Drawing.Size(344, 158);
             this.pnlAD4.TabIndex = 3;
             // 
             // picAD4
@@ -445,7 +450,7 @@
             this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picAD4.Location = new System.Drawing.Point(0, 0);
             this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(390, 156);
+            this.picAD4.Size = new System.Drawing.Size(342, 156);
             this.picAD4.TabIndex = 1;
             this.picAD4.TabStop = false;
             this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
@@ -561,6 +566,7 @@
             // 
             // panel15
             // 
+            this.panel15.Controls.Add(this.button8);
             this.panel15.Controls.Add(this.label23);
             this.panel15.Controls.Add(this.label24);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
@@ -568,6 +574,19 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(346, 43);
             this.panel15.TabIndex = 6;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Gray;
+            this.button8.Enabled = false;
+            this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button8.Location = new System.Drawing.Point(257, 6);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "計畫備註";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label23
             // 
@@ -585,9 +604,9 @@
             this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(3, 3);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(143, 12);
+            this.label24.Size = new System.Drawing.Size(119, 12);
             this.label24.TabIndex = 6;
-            this.label24.Text = "重庆时时彩  五星直选复式";
+            this.label24.Text = "重庆时时彩  五星复式";
             // 
             // panel14
             // 
@@ -635,12 +654,29 @@
             // 
             // listBox1
             // 
+            this.listBox1.ContextMenuStrip = this.contextmenu;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(5, 111);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(343, 148);
             this.listBox1.TabIndex = 5;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // contextmenu
+            // 
+            this.contextmenu.AllowDrop = true;
+            this.contextmenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.編輯});
+            this.contextmenu.Name = "contextMenuStrip1";
+            this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            // 
+            // 編輯
+            // 
+            this.編輯.Name = "編輯";
+            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Text = "編輯";
             // 
             // richTextBox1
             // 
@@ -711,6 +747,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.button9);
             this.panel13.Controls.Add(this.label19);
             this.panel13.Controls.Add(this.comboBox2);
             this.panel13.Controls.Add(this.comboBox1);
@@ -722,6 +759,19 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(346, 61);
             this.panel13.TabIndex = 5;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Gray;
+            this.button9.Enabled = false;
+            this.button9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Location = new System.Drawing.Point(258, 6);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "修改備註";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label19
             // 
@@ -786,9 +836,9 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(3, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(143, 12);
+            this.label16.Size = new System.Drawing.Size(119, 12);
             this.label16.TabIndex = 6;
-            this.label16.Text = "重庆时时彩  五星直选复式";
+            this.label16.Text = "重庆时时彩  五星复式";
             // 
             // panel12
             // 
@@ -925,12 +975,27 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.button12);
             this.panel10.Controls.Add(this.label10);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(323, 39);
             this.panel10.TabIndex = 7;
+            // 
+            // button12
+            // 
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Location = new System.Drawing.Point(206, 9);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(89, 21);
+            this.button12.TabIndex = 9;
+            this.button12.Text = "刷新";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // label10
             // 
@@ -955,7 +1020,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1500, 549);
+            this.ClientSize = new System.Drawing.Size(1452, 549);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlUserSetting);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -980,6 +1045,7 @@
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.pnlSentConti.ResumeLayout(false);
+            this.contextmenu.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             this.panel30.ResumeLayout(false);
@@ -1069,5 +1135,10 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ContextMenuStrip contextmenu;
+        private System.Windows.Forms.ToolStripMenuItem 編輯;
     }
 }

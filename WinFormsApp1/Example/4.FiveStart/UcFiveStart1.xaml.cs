@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Forms;
+using Controls = System.Windows.Controls;
+using Forms = System.Windows.Forms;
 using System.IO;
 using WpfAppTest.AP;
+using WpfAppTest.Base;
 
 namespace WpfAppTest
 {
     /// <summary>
     /// UcFiveStart1.xaml 的互動邏輯
     /// </summary>
-    public partial class UcFiveStart1 : System.Windows.Controls.UserControl
+    public partial class UcFiveStart1 : Controls.UserControl
     {
         public UcFiveStart1()
         {
@@ -41,11 +35,14 @@ namespace WpfAppTest
             }
         }
 
+        /// <summary>
+        /// 設定資料
+        /// </summary>
         void SetData()
         {
             cblData1.ItemsSource = DB.ZeroOneCombination(5, '大', '小').OrderByDescending(x => x.Code).ToList();
             cblData2.ItemsSource = DB.ZeroOneCombination(5, '奇', '偶').OrderByDescending(x => x.Code).ToList();
-            cblData3.ItemsSource = DB.ZeroOneCombination(5, '質', '合').OrderByDescending(x => x.Code).ToList();
+            cblData3.ItemsSource = DB.ZeroOneCombination(5, '质', '合').OrderByDescending(x => x.Code).ToList();
 
             var Data = DB.CreateContinueNumber().OrderBy(x => x.ID).ToList();
             cblTenThousands.ItemsSource = Data;
@@ -54,16 +51,17 @@ namespace WpfAppTest
             cblTens.ItemsSource = Data;
             cblUnits.ItemsSource = Data;
 
-            cblTenThousands2.ItemsSource = Data;
-            cblHundreds2.ItemsSource = Data;
-            cblTens2.ItemsSource = Data;
+            cblSumLast.ItemsSource = Data;
+            cblCross.ItemsSource = Data;
+            cblComm.ItemsSource = Data;
 
             var Ratio = DB.Ratio(5);
             cblRatio.ItemsSource = Ratio;
             cblRatio2.ItemsSource = Ratio;
             cblRatio3.ItemsSource = Ratio;
+            //cblAC.ItemsSource = DB.CreateOption(1, 9);
 
-            //cblSpecialExclude.ItemsSource = SpecialExculde;
+            /*預設值*/
         }
 
         /// <summary>
@@ -73,7 +71,7 @@ namespace WpfAppTest
         /// <param name="e"></param>
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            Forms.OpenFileDialog openFileDialog = new Forms.OpenFileDialog();
 
             // 設定Filter，指定只能開啟特定的檔案 
 
@@ -92,14 +90,14 @@ namespace WpfAppTest
                     //檢核檔名
                     if (!string.IsNullOrEmpty(openFileDialog.FileName))
                     {
-                        if (openFileDialog.FileName.Length >= 3 && 
+                        if (openFileDialog.FileName.Length >= 3 &&
                             openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
-                            txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+                            tePos.Text = File.ReadAllText(openFileDialog.FileName);
                         else
                             System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
                     }
                     else
-                        txtEditor.Text = "";
+                        tePos.Text = "";
                 }
                 else
                 {
@@ -115,45 +113,113 @@ namespace WpfAppTest
         /// <param name="e"></param>
         private void txtEditor_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            txtEditor.Text = "";
+            var te = (sender as Controls.TextBox);
+            if (te != null)
+            {
+                te.Text = "";
+            }
         }
 
-        ///// <summary>
-        ///// 右半-結果區的按鈕事件
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void btn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var btn = (sender as System.Windows.Controls.Button);
-        //    if (btn != null)
-        //    {
-        //        if (btn.Name == "btnCopy")
-        //        {
-        //            /*全部複製功能*/
-        //            if (!string.IsNullOrEmpty(teResult.Text))
-        //            {
-        //                System.Windows.Forms.Clipboard.SetText(teResult.Text);
-        //                System.Windows.Forms.MessageBox.Show("號碼複製成功。");
-        //            }
-        //        }
-        //        else if (btn.Name == "btnExport")
-        //        {
-        //            /*匯出全部號碼*/
-        //            FolderBrowserDialog path = new FolderBrowserDialog();
-        //            if (path.ShowDialog() == DialogResult.OK)
-        //            {
-        //                string exportPath = @"" + path.SelectedPath + @"\五星號碼匯出.txt";
-        //                FileStream fs = new FileStream(exportPath, FileMode.Create, FileAccess.ReadWrite);
-        //                StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-        //                sw.Write(teResult.Text);
-        //                sw.Close();
-        //                fs.Close();
-        //                System.Windows.Forms.MessageBox.Show("號碼匯出成功。");
-        //            }
-        //        }
-                
-        //    }
-        //}
+        #region 外部呼叫
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        public void SetDefaultValue()
+        {
+            /*CheckBoxList*/
+            cblData1.Clear();
+            cblData2.Clear();
+            cblData3.Clear();
+
+            cblTenThousands.Clear();
+            cblThousands.Clear();
+            cblHundreds.Clear();
+            cblTens.Clear();
+            cblUnits.Clear();
+
+            cblSumLast.Clear();
+            cblCross.Clear();
+            cblComm.Clear();
+
+            cblRatio.Clear();
+            cblRatio2.Clear();
+            cblRatio3.Clear();
+            //cblAC.Clear();
+
+            teSum.Text = "";
+        }
+
+        /// <summary>
+        /// 選取全部選項
+        /// </summary>
+        public void SelectAll()
+        {
+            /*CheckBoxList*/
+            cblData1.SelectedAll();
+            cblData2.SelectedAll();
+            cblData3.SelectedAll();
+
+            cblTenThousands.SelectedAll();
+            cblThousands.SelectedAll();
+            cblHundreds.SelectedAll();
+            cblTens.SelectedAll();
+            cblUnits.SelectedAll();
+
+            cblSumLast.SelectedAll();
+            cblCross.SelectedAll();
+            cblComm.SelectedAll();
+
+            cblRatio.SelectedAll();
+            cblRatio2.SelectedAll();
+            cblRatio3.SelectedAll();
+        }
+
+        /// <summary>
+        /// 過濾數字
+        /// </summary>
+        public List<BaseOptions> Filter(List<BaseOptions> tmp)
+        {
+            ////殺直選
+            //tmp = Calculation.PosNumber(tmp, tePos1.Text, 1, false);
+
+            //定位殺
+            tmp = Calculation.PosNumber(tmp, cblTenThousands, "4", false);
+            tmp = Calculation.PosNumber(tmp, cblThousands, "3", false);
+            tmp = Calculation.PosNumber(tmp, cblHundreds, "2", false);
+            tmp = Calculation.PosNumber(tmp, cblTens, "1", false);
+            tmp = Calculation.PosNumber(tmp, cblUnits, "0", false);
+
+            //殺和尾
+            tmp = Calculation.SumLastNumber(tmp, cblData1, false);
+
+            //殺和值
+            tmp = Calculation.SumNumber(tmp, teSum.Text, false);
+
+            //殺跨度
+            tmp = Calculation.CrossNumber(tmp, cblCross, false);
+
+            //殺大小
+            tmp = Calculation.CheckValueNumber(tmp, cblData1, 1, false);
+
+            //殺奇偶
+            tmp = Calculation.OddEvenNumber(tmp, cblData2, false);
+
+            //殺质合
+            tmp = Calculation.PrimeNumber(tmp, cblData3, false);
+
+            
+            return tmp;
+        }
+        #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void te_TextChanged(object sender, Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }

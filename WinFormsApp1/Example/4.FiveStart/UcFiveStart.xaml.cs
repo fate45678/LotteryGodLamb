@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 using WpfAppTest.AP;
+using WpfAppTest.Base;
 
 namespace WpfAppTest
 {
@@ -56,7 +49,7 @@ namespace WpfAppTest
         void SetData()
         {
             AllConbination = DB.CombinationNumber(5, 0, 9);
-            cblSpecialExclude.ItemsSource = DB.FiveStart_SpecialExclude();
+            cblSpecialExclude.ItemsSource = DB.CreateOption(1, 14, new string[14] { "上山", "下山", "不连", "2连", "3连", "4连", "5连", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
 
             if (form == null)
                 form = new Dictionary<int, System.Windows.Controls.UserControl>();
@@ -81,6 +74,18 @@ namespace WpfAppTest
         }
 
         /// <summary>
+        /// 設定預設值
+        /// </summary>
+        void SetDefaultValue()
+        {
+            /*ComboBoxList*/
+            cblSpecialExclude.Clear();
+
+            /*TextBox*/
+            teResult.Text = "";
+        }
+
+        /// <summary>
         /// 右半-結果區的按鈕事件
         /// </summary>
         /// <param name="sender"></param>
@@ -90,13 +95,43 @@ namespace WpfAppTest
             var btn = (sender as System.Windows.Controls.Button);
             if (btn != null)
             {
-                if (btn.Name == "btnCopy")
+                if (btn.Name == "btnFilter")
+                {
+                    /*開始縮水*/
+                    //BaseHelper.DynamicPublicMethod((tcSettings.Items[0] as TabItem).Content, "Filter", new object[1] { AllConbination });
+
+                    //大底先篩
+                    var tmp = ((tcSettings.Items[12] as TabItem).Content as UcFiveStart5).Filter(AllConbination);
+
+                    //特別排除
+                    tmp = Calculation.FiveSpecialData(tmp, cblSpecialExclude.SelectedValue);
+
+                    tmp = ((tcSettings.Items[0] as TabItem).Content as UcFiveStart1).Filter(tmp);
+                    tmp = ((tcSettings.Items[1] as TabItem).Content as UcFiveStart2).Filter(tmp);
+                    tmp = ((tcSettings.Items[10] as TabItem).Content as UcFiveStart3).Filter(tmp);
+
+
+                    teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                    tbCount.Text = tmp.Count.ToString();
+                }
+                else if (btn.Name == "btnClear")
+                {
+                    /*清空所有條件*/
+                    foreach (var items in form)
+                        BaseHelper.DynamicPublicMethod(items.Value, "SetDefaultValue", new object[] { });
+                    SetDefaultValue();
+                }
+                else if (btn.Name == "btnTransfer")
+                {
+                    /*轉為組選*/
+                }
+                else if (btn.Name == "btnCopy")
                 {
                     /*全部複製功能*/
                     if (!string.IsNullOrEmpty(teResult.Text))
                     {
                         System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                        System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                        System.Windows.Forms.MessageBox.Show("号码复制成功。");
                     }
                 }
                 else if (btn.Name == "btnExport")
@@ -105,16 +140,15 @@ namespace WpfAppTest
                     FolderBrowserDialog path = new FolderBrowserDialog();
                     if (path.ShowDialog() == DialogResult.OK)
                     {
-                        string exportPath = @"" + path.SelectedPath + @"\五星號碼匯出.txt";
+                        string exportPath = @"" + path.SelectedPath + @"\五星号码导出.txt";
                         FileStream fs = new FileStream(exportPath, FileMode.Create, FileAccess.ReadWrite);
                         StreamWriter sw = new StreamWriter(fs, Encoding.Default);
                         sw.Write(teResult.Text);
                         sw.Close();
                         fs.Close();
-                        System.Windows.Forms.MessageBox.Show("號碼匯出成功。");
+                        System.Windows.Forms.MessageBox.Show("号码导出成功。");
                     }
                 }
-
             }
         }
 
@@ -130,8 +164,10 @@ namespace WpfAppTest
 
             if (tcSettings.SelectedIndex > 0 && tcSettings.SelectedIndex < 10)
             {
-                int i = (tcSettings.SelectedIndex > 1 && tcSettings.SelectedIndex < 10 ? 2 : tcSettings.SelectedIndex + 1); ;
-                (form[i] as UcFiveStart2).TextBoxEnable(tcSettings.SelectedIndex);
+                BaseHelper.DynamicPublicMethod((tcSettings.Items[tcSettings.SelectedIndex] as TabItem).Content, "TextBoxEnable", new object[1] { tcSettings.SelectedIndex });
+
+                //int i = (tcSettings.SelectedIndex > 1 && tcSettings.SelectedIndex < 10 ? 2 : tcSettings.SelectedIndex + 1); ;
+                //(form[i] as UcFiveStart2).TextBoxEnable(tcSettings.SelectedIndex);
             }
         }
     }

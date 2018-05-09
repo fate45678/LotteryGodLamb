@@ -31,6 +31,7 @@ namespace WinFormsApp1
             cbCost.SelectedIndex = 0;
             cbCount.SelectedIndex = 0;
             cbMoney.SelectedIndex = 0;
+            tbFiexed.Text = "10";
         }
 
         bool isFirstTime = true;
@@ -45,7 +46,7 @@ namespace WinFormsApp1
 
                     cbPercent.IsEnabled = false;
                     tbProgressStart.IsEnabled = false;
-                    tbProgressEnd.IsEnabled = false;
+                    tbProgressAdd.IsEnabled = false;
                     tbFiexed.IsEnabled = true;
                 }
                 else if (rbPercent.IsChecked == true)
@@ -55,7 +56,7 @@ namespace WinFormsApp1
 
                     cbPercent.IsEnabled = true;
                     tbProgressStart.IsEnabled = false;
-                    tbProgressEnd.IsEnabled = false;
+                    tbProgressAdd.IsEnabled = false;
                     tbFiexed.IsEnabled = false;
                 }
                 else if (rbProgress.IsChecked == true)
@@ -65,13 +66,11 @@ namespace WinFormsApp1
 
                     cbPercent.IsEnabled = false;
                     tbProgressStart.IsEnabled = true;
-                    tbProgressEnd.IsEnabled = true;
+                    tbProgressAdd.IsEnabled = true;
                     tbFiexed.IsEnabled = false;
                 }
             }
             isFirstTime = false;
-
-
         }
 
         private void rbFiexed_Checked(object sender, RoutedEventArgs e)
@@ -94,28 +93,57 @@ namespace WinFormsApp1
             List<content> lt = new List<content>();
             if (rbFiexed.IsChecked == true)
             {
-                int multiple = 1;//倍數(不知道邏輯先給2)
+                int multiple = 1;//倍數
                 int issue = int.Parse(cbPlan.Text);//期數
                 int count = int.Parse(cbCount.Text);//注數
                 double oneCost = double.Parse(cbCost.Text);//單注成本
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
                 //tbFiexed
+<<<<<<< HEAD
                 while (((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100) < double.Parse(tbFiexed.Text))
                 {
                     multiple++;
                 }
+=======
+                bool haveError = false;
+>>>>>>> d173489adfa39c59ebb27346c16b012e16636531
                 for (int i = 0; i < issue; i++)
                 {
+                    if (i == 0)
+                    {
+                        while ((oneMoney * multiple) - (oneCost * count * multiple) <= double.Parse(tbFiexed.Text) && !haveError)
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                    }
+                    else
+                    {
+                        while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < double.Parse(tbFiexed.Text))
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                    }
+                    if (haveError)
+                    {
+                        MessageBox.Show("此計畫不適合倍投。");
+                        break;
+                    }
+
                     sumMoneyTemp += (oneCost * count * multiple);
+
                     lt.Add(new content()
                     {
-                        issue = i+1,
+                        issue = i + 1,
                         multiple = multiple,
                         currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
                         sumMoney = sumMoneyTemp,
                         income = oneMoney * multiple,//收益 = 單注獎金*倍數
-                        profit = (oneMoney * multiple)-sumMoneyTemp,//利潤 = 收益 - 累計投入
+                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
                         returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
                     });
                 }
@@ -129,14 +157,36 @@ namespace WinFormsApp1
                 double oneCost = double.Parse(cbCost.Text);//單注成本
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
+                bool haveError = false;
 
                 for (int i = 0; i < issue; i++)
                 {
-                    while ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100 < double.Parse(cbPercent.Text))
+
+                    if (i == 0)
                     {
-                        multiple++;
+                        while ((((oneMoney * multiple) - (oneCost * count * multiple)) / (oneCost * count * multiple)) * 100 < double.Parse(cbPercent.Text))
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
                     }
-                    
+                    else
+                    {
+                        while ((((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple))) / (sumMoneyTemp + (oneCost * count * multiple))) * 100 < double.Parse(cbPercent.Text))
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                    }
+
+
+                    if (haveError)
+                    {
+                        MessageBox.Show("此計畫不適合倍投。");
+                        break;
+                    }
 
 
                     sumMoneyTemp += (oneCost * count * multiple);
@@ -154,6 +204,59 @@ namespace WinFormsApp1
             }
             else if (rbProgress.IsChecked == true)
             {
+                int multiple = 1;//倍數
+                int issue = int.Parse(cbPlan.Text);//期數
+                int count = int.Parse(cbCount.Text);//注數
+                double oneCost = double.Parse(cbCost.Text);//單注成本
+                double oneMoney = double.Parse(cbMoney.Text);//單注獎金
+                double sumMoneyTemp = 0;
+                //tbFiexed
+                bool haveError = false;
+                double progress = 0.0;
+                for (int i = 0; i < issue; i++)
+                {
+                    if (i == 0)
+                    {
+                        while ((oneMoney * multiple) - (oneCost * count * multiple) < double.Parse(tbProgressStart.Text) + double.Parse(tbProgressAdd.Text) && !haveError)//第一次 收益小於 起步加累進
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                        progress = (oneMoney * multiple) - (oneCost * count * multiple);
+                    }
+                    else
+                    {
+                        while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < progress+double.Parse(tbProgressAdd.Text))//收益小於 上筆利潤 加累進
+                        {
+                            multiple++;
+                            if (multiple > 10000)
+                                haveError = true;
+                        }
+                        if ((oneMoney * multiple) - (oneCost * count * multiple) > progress + double.Parse(tbProgressAdd.Text))
+                            progress = (oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple));
+                        else
+                            progress += double.Parse(tbProgressAdd.Text);
+                    }
+                    if (haveError)
+                    {
+                        MessageBox.Show("此計畫不適合倍投。");
+                        break;
+                    }
+
+                    sumMoneyTemp += (oneCost * count * multiple);
+
+                    lt.Add(new content()
+                    {
+                        issue = i + 1,
+                        multiple = multiple,
+                        currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
+                        sumMoney = sumMoneyTemp,
+                        income = oneMoney * multiple,//收益 = 單注獎金*倍數
+                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
+                        returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
+                    });
+                }
 
             }
             GDMaster.ItemsSource = lt;

@@ -173,6 +173,12 @@
     <Compile Include="frm_Message.Designer.cs">
       <DependentUpon>frm_Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Note.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Note.Designer.cs">
+      <DependentUpon>frm_Note.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_PlanAgent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,7 +217,6 @@
     </Compile>
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\BaseOptions.cs" />
-    <Compile Include="Model\OptionData.cs" />
     <Compile Include="multiple.xaml.cs">
       <DependentUpon>multiple.xaml</DependentUpon>
     </Compile>
@@ -247,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Message.resx">
       <DependentUpon>frm_Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Note.resx">
+      <DependentUpon>frm_Note.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_PlanAgent.resx">
       <DependentUpon>frm_PlanAgent.cs</DependentUpon>
@@ -425,6 +433,7 @@
     <Content Include="bt_icon\bt_nex.png" />
     <Content Include="bt_icon\bt_up.png" />
     <Content Include="bt_icon\loading_icon.gif" />
+    <EmbeddedResource Include="Number\20180501Number.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Example\5.Calculator\" />

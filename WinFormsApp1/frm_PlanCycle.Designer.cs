@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PlanCycle));
             this.pnlUserSetting = new System.Windows.Forms.Panel();
             this.pnlUserSettingRow2 = new System.Windows.Forms.Panel();
             this.btnViewResult = new System.Windows.Forms.Button();
@@ -59,19 +58,17 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
+            this.btnMidthrNumberPhantomPlan = new System.Windows.Forms.Button();
+            this.btnFiveNumberGodPlan = new System.Windows.Forms.Button();
+            this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pnlAD1 = new System.Windows.Forms.Panel();
-            this.picAD1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pnlHistory = new System.Windows.Forms.Panel();
             this.rtxtHistory = new System.Windows.Forms.RichTextBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label115 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.pnlAD2 = new System.Windows.Forms.Panel();
-            this.picAD2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlCycleSelect = new System.Windows.Forms.Panel();
             this.rtxtPlanCycle = new System.Windows.Forms.RichTextBox();
@@ -89,6 +86,7 @@
             this.pnlCycleList = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -117,7 +115,7 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -129,12 +127,8 @@
             this.panel4.SuspendLayout();
             this.pnlUserRank.SuspendLayout();
             this.panel33.SuspendLayout();
-            this.pnlAD1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD1)).BeginInit();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
-            this.pnlAD2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD2)).BeginInit();
             this.pnlCycleSelect.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel30.SuspendLayout();
@@ -306,9 +300,8 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
+            "单式",
+            "复式"});
             this.cbGameDirect.Location = new System.Drawing.Point(145, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(125, 23);
@@ -517,7 +510,6 @@
             // 
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel8);
-            this.panel2.Controls.Add(this.pnlAD2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.pnlCycleSelect);
             this.panel2.Controls.Add(this.panel1);
@@ -535,31 +527,67 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.pnlHistory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(825, 0);
+            this.panel5.Location = new System.Drawing.Point(891, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(514, 361);
+            this.panel5.Size = new System.Drawing.Size(514, 453);
             this.panel5.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pnlUserRank);
-            this.panel4.Controls.Add(this.panel7);
-            this.panel4.Controls.Add(this.pnlAD1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(299, 0);
+            this.panel4.Location = new System.Drawing.Point(300, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(215, 361);
+            this.panel4.Size = new System.Drawing.Size(214, 453);
             this.panel4.TabIndex = 1;
             // 
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserRank.Controls.Add(this.btnMidthrNumberPhantomPlan);
+            this.pnlUserRank.Controls.Add(this.btnFiveNumberGodPlan);
+            this.pnlUserRank.Controls.Add(this.rtxPlanList);
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
-            this.pnlUserRank.Size = new System.Drawing.Size(215, 255);
+            this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
+            // 
+            // btnMidthrNumberPhantomPlan
+            // 
+            this.btnMidthrNumberPhantomPlan.Location = new System.Drawing.Point(-1, 57);
+            this.btnMidthrNumberPhantomPlan.Name = "btnMidthrNumberPhantomPlan";
+            this.btnMidthrNumberPhantomPlan.Size = new System.Drawing.Size(214, 23);
+            this.btnMidthrNumberPhantomPlan.TabIndex = 6;
+            this.btnMidthrNumberPhantomPlan.Text = "中三复式幻影計畫";
+            this.btnMidthrNumberPhantomPlan.UseVisualStyleBackColor = true;
+            this.btnMidthrNumberPhantomPlan.Click += new System.EventHandler(this.btnMidthrNumberPhantomPlan_Click);
+            // 
+            // btnFiveNumberGodPlan
+            // 
+            this.btnFiveNumberGodPlan.Location = new System.Drawing.Point(-1, 28);
+            this.btnFiveNumberGodPlan.Name = "btnFiveNumberGodPlan";
+            this.btnFiveNumberGodPlan.Size = new System.Drawing.Size(214, 23);
+            this.btnFiveNumberGodPlan.TabIndex = 5;
+            this.btnFiveNumberGodPlan.Text = "五星单式玉神計畫";
+            this.btnFiveNumberGodPlan.UseVisualStyleBackColor = true;
+            this.btnFiveNumberGodPlan.Click += new System.EventHandler(this.btnFiveNumberGodPlan_Click);
+            // 
+            // rtxPlanList
+            // 
+            this.rtxPlanList.BackColor = System.Drawing.Color.White;
+            this.rtxPlanList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxPlanList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxPlanList.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rtxPlanList.HideSelection = false;
+            this.rtxPlanList.Location = new System.Drawing.Point(0, 28);
+            this.rtxPlanList.Name = "rtxPlanList";
+            this.rtxPlanList.ReadOnly = true;
+            this.rtxPlanList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtxPlanList.Size = new System.Drawing.Size(212, 423);
+            this.rtxPlanList.TabIndex = 4;
+            this.rtxPlanList.Text = "";
             // 
             // panel33
             // 
@@ -568,7 +596,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(213, 28);
+            this.panel33.Size = new System.Drawing.Size(212, 28);
             this.panel33.TabIndex = 3;
             // 
             // label116
@@ -582,45 +610,12 @@
             this.label116.TabIndex = 1;
             this.label116.Text = "大神榜";
             // 
-            // panel7
-            // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 255);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(215, 6);
-            this.panel7.TabIndex = 6;
-            // 
-            // pnlAD1
-            // 
-            this.pnlAD1.BackColor = System.Drawing.Color.Transparent;
-            this.pnlAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAD1.Controls.Add(this.picAD1);
-            this.pnlAD1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlAD1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD1.Location = new System.Drawing.Point(0, 261);
-            this.pnlAD1.Name = "pnlAD1";
-            this.pnlAD1.Size = new System.Drawing.Size(215, 100);
-            this.pnlAD1.TabIndex = 0;
-            // 
-            // picAD1
-            // 
-            this.picAD1.BackColor = System.Drawing.Color.Transparent;
-            this.picAD1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD1.BackgroundImage")));
-            this.picAD1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAD1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picAD1.Location = new System.Drawing.Point(0, 0);
-            this.picAD1.Name = "picAD1";
-            this.picAD1.Size = new System.Drawing.Size(213, 98);
-            this.picAD1.TabIndex = 1;
-            this.picAD1.TabStop = false;
-            this.picAD1.Click += new System.EventHandler(this.picAD1_Click);
-            // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(234, 0);
+            this.panel6.Location = new System.Drawing.Point(256, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(65, 361);
+            this.panel6.Size = new System.Drawing.Size(44, 453);
             this.panel6.TabIndex = 5;
             // 
             // pnlHistory
@@ -631,20 +626,21 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(0, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(234, 361);
+            this.pnlHistory.Size = new System.Drawing.Size(256, 453);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
             // 
             this.rtxtHistory.BackColor = System.Drawing.Color.White;
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(2, 28);
+            this.rtxtHistory.Location = new System.Drawing.Point(0, 28);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(231, 329);
+            this.rtxtHistory.Size = new System.Drawing.Size(254, 423);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -655,7 +651,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(232, 28);
+            this.panel32.Size = new System.Drawing.Size(254, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -672,42 +668,17 @@
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(825, 361);
+            this.panel8.Location = new System.Drawing.Point(891, 453);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(692, 6);
+            this.panel8.Size = new System.Drawing.Size(626, 6);
             this.panel8.TabIndex = 7;
-            // 
-            // pnlAD2
-            // 
-            this.pnlAD2.BackColor = System.Drawing.Color.Transparent;
-            this.pnlAD2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAD2.Controls.Add(this.picAD2);
-            this.pnlAD2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD2.Location = new System.Drawing.Point(825, 367);
-            this.pnlAD2.Name = "pnlAD2";
-            this.pnlAD2.Size = new System.Drawing.Size(692, 92);
-            this.pnlAD2.TabIndex = 3;
-            // 
-            // picAD2
-            // 
-            this.picAD2.BackColor = System.Drawing.Color.Transparent;
-            this.picAD2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD2.BackgroundImage")));
-            this.picAD2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAD2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAD2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picAD2.Location = new System.Drawing.Point(0, 0);
-            this.picAD2.Name = "picAD2";
-            this.picAD2.Size = new System.Drawing.Size(690, 90);
-            this.picAD2.TabIndex = 1;
-            this.picAD2.TabStop = false;
-            this.picAD2.Click += new System.EventHandler(this.picAD2_Click);
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(815, 0);
+            this.panel3.Location = new System.Drawing.Point(853, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 459);
+            this.panel3.Size = new System.Drawing.Size(38, 459);
             this.panel3.TabIndex = 4;
             // 
             // pnlCycleSelect
@@ -720,10 +691,10 @@
             this.pnlCycleSelect.Controls.Add(this.panel30);
             this.pnlCycleSelect.Controls.Add(this.panel29);
             this.pnlCycleSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCycleSelect.Location = new System.Drawing.Point(402, 0);
+            this.pnlCycleSelect.Location = new System.Drawing.Point(429, 0);
             this.pnlCycleSelect.Name = "pnlCycleSelect";
             this.pnlCycleSelect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.pnlCycleSelect.Size = new System.Drawing.Size(413, 459);
+            this.pnlCycleSelect.Size = new System.Drawing.Size(424, 459);
             this.pnlCycleSelect.TabIndex = 1;
             // 
             // rtxtPlanCycle
@@ -734,7 +705,7 @@
             this.rtxtPlanCycle.Location = new System.Drawing.Point(5, 46);
             this.rtxtPlanCycle.Name = "rtxtPlanCycle";
             this.rtxtPlanCycle.ReadOnly = true;
-            this.rtxtPlanCycle.Size = new System.Drawing.Size(401, 379);
+            this.rtxtPlanCycle.Size = new System.Drawing.Size(412, 379);
             this.rtxtPlanCycle.TabIndex = 2;
             this.rtxtPlanCycle.Text = "";
             // 
@@ -745,7 +716,7 @@
             this.panel31.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel31.Location = new System.Drawing.Point(5, 425);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(401, 27);
+            this.panel31.Size = new System.Drawing.Size(412, 27);
             this.panel31.TabIndex = 3;
             // 
             // btnCopyPlanNumber
@@ -784,7 +755,7 @@
             this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel30.Location = new System.Drawing.Point(5, 23);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(401, 23);
+            this.panel30.Size = new System.Drawing.Size(412, 23);
             this.panel30.TabIndex = 1;
             // 
             // lblPlanCycleDetail
@@ -807,7 +778,7 @@
             this.panel29.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel29.Location = new System.Drawing.Point(5, 0);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(401, 23);
+            this.panel29.Size = new System.Drawing.Size(412, 23);
             this.panel29.TabIndex = 0;
             // 
             // label2
@@ -832,7 +803,7 @@
             this.cbPlanCycleSelect.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cbPlanCycleSelect.ForeColor = System.Drawing.Color.Black;
             this.cbPlanCycleSelect.FormattingEnabled = true;
-            this.cbPlanCycleSelect.Location = new System.Drawing.Point(265, 0);
+            this.cbPlanCycleSelect.Location = new System.Drawing.Point(276, 0);
             this.cbPlanCycleSelect.Name = "cbPlanCycleSelect";
             this.cbPlanCycleSelect.Size = new System.Drawing.Size(136, 23);
             this.cbPlanCycleSelect.TabIndex = 5;
@@ -857,7 +828,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(391, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(11, 459);
+            this.panel1.Size = new System.Drawing.Size(38, 459);
             this.panel1.TabIndex = 0;
             // 
             // pnlCycle
@@ -906,6 +877,24 @@
             this.label13.Size = new System.Drawing.Size(72, 25);
             this.label13.TabIndex = 7;
             this.label13.Text = "第 ?? 周期";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "25689 挂",
+            "57689 中",
+            "99888 停"});
+            this.comboBox1.Location = new System.Drawing.Point(78, 0);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(128, 26);
+            this.comboBox1.TabIndex = 11;
             // 
             // label14
             // 
@@ -1259,23 +1248,9 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // comboBox1
+            // backgroundWorker1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "25689 挂",
-            "57689 中",
-            "99888 停"});
-            this.comboBox1.Location = new System.Drawing.Point(78, 0);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 26);
-            this.comboBox1.TabIndex = 11;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // frm_PlanCycle
             // 
@@ -1306,13 +1281,9 @@
             this.pnlUserRank.ResumeLayout(false);
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
-            this.pnlAD1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picAD1)).EndInit();
             this.pnlHistory.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
-            this.pnlAD2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picAD2)).EndInit();
             this.pnlCycleSelect.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel30.ResumeLayout(false);
@@ -1362,7 +1333,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnViewResult;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel pnlAD2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel pnlHistory;
@@ -1371,9 +1341,7 @@
         private System.Windows.Forms.Panel pnlShowPlanTitle;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlUserRank;
-        private System.Windows.Forms.Panel pnlAD1;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
@@ -1398,8 +1366,6 @@
         private System.Windows.Forms.Label label118;
         private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.Label label117;
-        private System.Windows.Forms.PictureBox picAD1;
-        private System.Windows.Forms.PictureBox picAD2;
         private System.Windows.Forms.RichTextBox rtxtHistory;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
@@ -1427,6 +1393,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.RichTextBox rtxPlanList;
+        private System.Windows.Forms.Button btnFiveNumberGodPlan;
+        private System.Windows.Forms.Button btnMidthrNumberPhantomPlan;
 
     }
 }

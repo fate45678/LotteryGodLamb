@@ -19,12 +19,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="垃圾集合A" Grid.Row="0" Margin="5" />
+        <TextBlock Text="垃圾組合A" Grid.Row="0" Margin="5" />
         <Separator Grid.Row="1" Margin="5"/>
-        <TextBlock Text="格式：(123/123)一行一?垃圾負試" Foreground="Blue" Grid.Row="2" Margin="5" />
+        <TextBlock Text="格式：(123/123)一行一个垃圾复式" Foreground="Blue" Grid.Row="2" Margin="5" />
         <TextBox x:Name="teCompareA" Grid.Row="3" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
 
-        <TextBlock Text="垃圾集合B" Grid.Row="5" Margin="5" />
+        <TextBlock Text="垃圾組合B" Grid.Row="5" Margin="5" />
         <Separator Grid.Row="6" Margin="5"/>
         <TextBlock Text="格式：(12,34,56,78)" Foreground="Blue" Grid.Row="7" Margin="5" />
         <TextBox x:Name="teCompareB" Grid.Row="8" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />

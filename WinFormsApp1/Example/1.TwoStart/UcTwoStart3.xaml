@@ -33,7 +33,7 @@
 
         <GroupBox Grid.Row="2" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="類型" DockPanel.Dock="Left" Margin="5" Width="50" Foreground="Blue" />
+                <TextBlock Text="类型" DockPanel.Dock="Left" Margin="5" Width="50" Foreground="Blue" />
                 <local:CheckBoxList x:Name="cblOption3" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="230"/>
                 <local:RadioButtonList x:Name="rblOption3" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>

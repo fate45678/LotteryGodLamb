@@ -36,35 +36,35 @@
         </GroupBox>
         <GroupBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="除3 餘數" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
+                <TextBlock Text="除3 余数" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
                 <local:CheckBoxList x:Name="cblOption2" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Grid.Column="0" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="和值　分類一" DockPanel.Dock="Top" Margin="5" />
+                <TextBlock Text="和值　分类一" DockPanel.Dock="Top" Margin="5" />
                 <local:CheckBoxList x:Name="cblType1" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Grid.Column="1" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="和值　分類二" DockPanel.Dock="Top" Margin="5" />
+                <TextBlock Text="和值　分类二" DockPanel.Dock="Top" Margin="5" />
                 <local:CheckBoxList x:Name="cblType2" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Grid.Column="2" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="和值　分類三" DockPanel.Dock="Top" Margin="5" />
+                <TextBlock Text="和值　分类三" DockPanel.Dock="Top" Margin="5" />
                 <local:CheckBoxList x:Name="cblType3" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Grid.Column="3" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="和值　分類四" DockPanel.Dock="Top" Margin="5" />
+                <TextBlock Text="和值　分类四" DockPanel.Dock="Top" Margin="5" />
                 <local:CheckBoxList x:Name="cblType4" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="100" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
