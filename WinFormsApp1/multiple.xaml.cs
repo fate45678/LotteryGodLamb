@@ -130,7 +130,7 @@ namespace WinFormsApp1
                     }
                     if (haveError)
                     {
-                        MessageBox.Show("此計畫不適合倍投。");
+                        MessageBox.Show("此计划不适合倍投。");
                         break;
                     }
 
@@ -184,7 +184,7 @@ namespace WinFormsApp1
 
                     if (haveError)
                     {
-                        MessageBox.Show("此計畫不適合倍投。");
+                        MessageBox.Show("此计划不适合倍投。");
                         break;
                     }
 
@@ -240,7 +240,7 @@ namespace WinFormsApp1
                     }
                     if (haveError)
                     {
-                        MessageBox.Show("此計畫不適合倍投。");
+                        MessageBox.Show("此计划不适合倍投。");
                         break;
                     }
 

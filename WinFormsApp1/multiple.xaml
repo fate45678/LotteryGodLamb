@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="計畫期" Grid.Row="0" Grid.Column="0" Padding="5" />
+            <TextBlock Text="计划期" Grid.Row="0" Grid.Column="0" Padding="5" />
             <ComboBox x:Name="cbPlan"  Grid.Row="0" Grid.Column="1" MinWidth="50" IsEditable="True">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
@@ -42,7 +42,7 @@
                 <ComboBoxItem Content="9"/>
                 <ComboBoxItem Content="10"/>
             </ComboBox>
-            <TextBlock Text="單注成本" Grid.Row="0" Grid.Column="2" Padding="5" />
+            <TextBlock Text="计划期" Grid.Row="0" Grid.Column="2" Padding="5" />
             <ComboBox  x:Name="cbCost" Grid.Row="0" Grid.Column="3" MinWidth="50"  IsEditable="True">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
@@ -50,7 +50,7 @@
                 <ComboBoxItem Content="4"/>
                 <ComboBoxItem Content="5"/>
             </ComboBox>
-            <TextBlock Text="注數" Grid.Row="1" Grid.Column="0" Padding="5" />
+            <TextBlock Text="注数" Grid.Row="1" Grid.Column="0" Padding="5" />
             <ComboBox x:Name="cbCount" Grid.Row="1" Grid.Column="1" IsEditable="True">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
@@ -58,7 +58,7 @@
                 <ComboBoxItem Content="4"/>
                 <ComboBoxItem Content="5"/>
             </ComboBox>
-            <TextBlock Text="單注獎金" Grid.Row="1" Grid.Column="2" Padding="5" />
+            <TextBlock Text="单注奖金" Grid.Row="1" Grid.Column="2" Padding="5" />
             <ComboBox x:Name="cbMoney" Grid.Row="1" Grid.Column="3" MinWidth="50" IsEditable="True">
                 <ComboBoxItem Content="10"/>
                 <ComboBoxItem Content="100"/>
@@ -77,7 +77,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="0.8*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton x:Name="rbFiexed" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Content="固定利潤" IsChecked="true" Checked="rbFiexed_Checked"/>
+            <RadioButton x:Name="rbFiexed" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Content="固定利润" IsChecked="true" Checked="rbFiexed_Checked"/>
             <TextBox x:Name="tbFiexed" Grid.Row="0" Grid.Column="1"  Width="50" HorizontalAlignment="Left"/>
             <RadioButton x:Name="rbPercent" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Content="百分比" Checked="rbPercent_Checked"/>
             <DockPanel Grid.Row="1" Grid.Column="1">
@@ -87,18 +87,18 @@
                 <TextBlock Text=" %"/>
             </DockPanel>
 
-            <RadioButton x:Name="rbProgress" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Content="累進利潤" Checked="rbProgress_Checked"/>
+            <RadioButton x:Name="rbProgress" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Content="累进利润" Checked="rbProgress_Checked"/>
             <DockPanel Grid.Row="2" Grid.Column="1">
                 <TextBlock Text="起步" Padding="5,5,0,0"/>
                 <TextBox x:Name="tbProgressStart" MinWidth="50" Text="0.00" IsEnabled="False"/>
-                <TextBlock Text="累進" Padding="0,5,0,0"/>
+                <TextBlock Text="累进" Padding="0,5,0,0"/>
                 <TextBox x:Name="tbProgressAdd" MinWidth="50" Text="5.00" IsEnabled="False"/>
             </DockPanel>
         </Grid>
-        <Button x:Name="btCal" Grid.Row="0" Grid.Column="2" Content="計算" MinWidth="80" MinHeight="50" Margin="5,0,0,0" Click="btCal_Click"/>
+        <Button x:Name="btCal" Grid.Row="0" Grid.Column="2" Content="计算" MinWidth="80" MinHeight="50" Margin="5,0,0,0" Click="btCal_Click"/>
         <DataGrid x:Name="GDMaster" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="期號" Binding="{Binding issue}">
+                <DataGridTextColumn Header="期号" Binding="{Binding issue}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -106,7 +106,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="倍數" Binding="{Binding multiple}">
+                <DataGridTextColumn Header="倍数" Binding="{Binding multiple}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -114,7 +114,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="當期投入" Binding="{Binding currentMoney}">
+                <DataGridTextColumn Header="当期投入" Binding="{Binding currentMoney}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -122,7 +122,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="累計投入" Binding="{Binding sumMoney}">
+                <DataGridTextColumn Header="累计投入" Binding="{Binding sumMoney}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -138,7 +138,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="利潤" Binding="{Binding profit}">
+                <DataGridTextColumn Header="利润" Binding="{Binding profit}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -146,7 +146,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="回報率%" Binding="{Binding returns}">
+                <DataGridTextColumn Header="回报率%" Binding="{Binding returns}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
