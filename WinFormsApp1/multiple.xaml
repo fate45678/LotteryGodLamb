@@ -84,13 +84,13 @@
 
             <RadioButton x:Name="rbProgress" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Content="累进利润" Checked="rbProgress_Checked" Margin="5,0,0,5"/>
             <DockPanel Grid.Row="2" Grid.Column="5" Margin="5,0,0,5">
-                <TextBlock Text="起步" Margin="0,0,5,0"/>
-                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False"/>
-                <TextBlock Text="累进" Margin="0,0,5,0"/>
-                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False"/>
+                <TextBlock Text="起步" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False" Margin="0,0,5,0"/>
+                <TextBlock Text="累进" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False" />
             </DockPanel>
 
-            <Button x:Name="btCal" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Content="计算" MinWidth="80" MinHeight="50" Margin="5,0,0,0" Click="btCal_Click"/>
+            <Button x:Name="btCal" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Content="计算" MinWidth="80" MinHeight="50" Margin="5,0,0,5" Click="btCal_Click"/>
         </Grid>
 
         <DataGrid x:Name="GDMaster" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" >
