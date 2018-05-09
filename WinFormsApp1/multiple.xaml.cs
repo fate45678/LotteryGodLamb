@@ -100,14 +100,14 @@ namespace WinFormsApp1
                 double oneMoney = double.Parse(cbMoney.Text);//單注獎金
                 double sumMoneyTemp = 0;
                 //tbFiexed
-<<<<<<< HEAD
+
                 while (((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100) < double.Parse(tbFiexed.Text))
                 {
                     multiple++;
                 }
-=======
+
                 bool haveError = false;
->>>>>>> d173489adfa39c59ebb27346c16b012e16636531
+
                 for (int i = 0; i < issue; i++)
                 {
                     if (i == 0)
