@@ -4,77 +4,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WinFormsApp1"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:BatchTypeToImageConverter x:Key="TypeConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="0.5*"/>
-            </Grid.ColumnDefinitions>
-            <GroupBox Header="選擇-彩種" Grid.Row="0" Grid.Column="0" Padding="5,0,5,0">
-                <RadioButton x:Name="rbChongqingLottery">重慶時時彩</RadioButton>
+            <GroupBox Header="选择-彩种" Grid.Row="0" Grid.Column="0" Padding="5">
+                <RadioButton x:Name="rbChongqingLottery">重庆时时彩</RadioButton>
             </GroupBox>
-            <GroupBox Header="選擇-位置" Grid.Row="0" Grid.Column="2" Padding="5,0,5,0">
+
+            <DataGrid x:Name="GDMaster" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" AutoGenerateColumns="False" SelectionUnit="Cell"
+                      Background="White" HorizontalGridLinesBrush="DarkGray" VerticalGridLinesBrush="DarkGray">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="10,0,10,0" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="开奖期数" Binding="{Binding issue}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="10,0,10,0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="开奖号码" Binding="{Binding number}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="10,0,10,0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <!--<DataGridTemplateColumn Header="結果" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Stretch="None" Source="{Binding Path=result, Converter={StaticResource TypeConverter}, ConverterParameter=result}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header="結果" Binding="{Binding result}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="Padding" Value="10,0,10,0" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <GroupBox Header="选择-位置" Grid.Row="0" Grid.Column="2" Padding="5">
                 <DockPanel>
-                    <CheckBox x:Name="CBtenThousand" Padding="5,0,20,0" Margin="10,0,0,0">萬</CheckBox>
+                    <CheckBox x:Name="CBtenThousand" Padding="5,0,20,0" Margin="10,0,0,0">万</CheckBox>
                     <CheckBox x:Name="CBThousand" Padding="5,0,20,0" >千</CheckBox>
                     <CheckBox x:Name="CBhundred" Padding="5,0,20,0" >百</CheckBox>
                     <CheckBox x:Name="CBten" Padding="5,0,20,0" >十</CheckBox>
-                    <CheckBox x:Name="CBones" Padding="5,0,20,0" >個</CheckBox>
+                    <CheckBox x:Name="CBones" Padding="5,0,20,0" >个</CheckBox>
                 </DockPanel>
             </GroupBox>
-            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+
+            <Grid Grid.Row="1" Grid.Column="2" Margin="0,5,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <DataGrid x:Name="GDMaster" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" AutoGenerateColumns="False" Loaded="GDMaster_Loaded" >
-                    <DataGrid.Columns>
-                        
-                        <DataGridTextColumn Header="開獎期數" Binding="{Binding issue}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="3,0,3,0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="開獎號碼" Binding="{Binding number}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Padding" Value="3,0,3,0" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="結果" Binding="{Binding result}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <GroupBox Grid.Row="0" Grid.Column="1" Header="選擇時間  選定日期範圍後需要點擊 '更新開獎' 才會更新開獎數據" Padding="5,10,5,10">
-                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <GroupBox Grid.Row="0" Header="选择-时间　选定日期范围后需要点击 ''更新开奖'' 才会更新开奖数据" Padding="5,10,5,10">
+                    <Grid Grid.Row="1" Grid.ColumnSpan="3">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="auto"/>
@@ -83,86 +101,122 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <DockPanel Grid.Row="0" Grid.Column="0">
-                            <DatePicker x:Name="dpStart" Loaded="dpStart_Loaded"/>
-                            <Label Content="－" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <DatePicker x:Name="dpEnd" Loaded="dpEnd_Loaded"/>
-                            <Button x:Name="btUpdate" Content="更新開獎" Click="btUpdate_Click"/>
-                            <Button Content="導入" />
+                            <DockPanel HorizontalAlignment="Left" Margin="0,0,5,0">
+                                <DatePicker x:Name="dpStart" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="{x:Type DatePickerTextBox}">
+                                            <Setter Property="Control.Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <TextBox x:Name="PART_TextBox" Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat='yyyy 年 MM 月 dd 日'}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                                <Label Content="－" HorizontalAlignment="Center"/>
+                                <DatePicker x:Name="dpEnd" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Right">
+                                    <DatePicker.Resources>
+                                        <Style TargetType="{x:Type DatePickerTextBox}">
+                                            <Setter Property="Control.Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <TextBox x:Name="PART_TextBox" Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat='yyyy 年 MM 月 dd 日'}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right">
+                                <Button x:Name="btnUpdate" Margin="0,0,5,0" Padding="5,0,5,0"  Content="更新开奖" Click="btn_Click"/>
+                                <Button x:Name="btnExport"  Padding="5,0,5,0" Content="汇入" Click="btn_Click" />
+                            </DockPanel>
                         </DockPanel>
                         <Grid Grid.Row="1" Grid.Column="0">
-                            <ProgressBar x:Name="pg" Minimum="0" Maximum="100" MinWidth="100" Foreground="Green" Background="Gray" BorderBrush="Orange" BorderThickness="1" Height="20" />
+                            <ProgressBar x:Name="pg" Minimum="0" Maximum="100" MinWidth="100" Foreground="Green" Background="Gray" BorderBrush="LightBlue" BorderThickness="1" Height="20" />
                             <Label x:Name="lbpercent" Content="" HorizontalAlignment="Center" FontFamily="微軟正黑體" FontSize="16" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
-                <GroupBox Grid.Row="1" Grid.Column="1" Padding="5,10,5,0" >
+
+                <GroupBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" Padding="5,10,5,10" >
                     <GroupBox.Header>
                         <DockPanel>
-                            <TextBlock Text="結果- 驗證" />
-                            <TextBlock Text="   期" />
-                            <TextBlock Text="準確率 : " Foreground="Red" Margin="200,0,200,0" />
+                            <TextBlock Text="结果-验证" />
+                            <TextBlock x:Name="tePeriod" Margin="4,0,4,0" FontWeight="Bold"/>
+                            <TextBlock Text="期" />
+                            <TextBlock Text="准确率 : " Foreground="Red" Margin="30,0,0,0" />
+                            <TextBlock x:Name="tePercent" Margin="4,0,4,0" Foreground="Red" FontWeight="Bold"/>
                         </DockPanel>
                     </GroupBox.Header>
                     <DockPanel>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="Auto" MinHeight="30"/>
+                                <RowDefinition Height="Auto" MinHeight="30"/>
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" MinWidth="70"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" MinWidth="70"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="正確期數 :" Grid.Row="0" Grid.Column="0" />
-                            <TextBlock Text="           " Grid.Row="0" Grid.Column="1" />
-                            <TextBlock Text="期 :" Grid.Row="0" Grid.Column="2" />
-                            <TextBlock Text="錯誤期數 :" Grid.Row="0" Grid.Column="3" Margin="30,0,0,0" />
-                            <TextBlock Text="           " Grid.Row="0" Grid.Column="4" />
-                            <TextBlock Text="期" Grid.Row="0" Grid.Column="5" />
+                            <TextBlock Text="正确期数 :" Grid.Row="0" Grid.Column="1" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" x:Name="teCorrectPeriod" HorizontalAlignment="Center" Foreground="Red" FontWeight="Bold"/>
+                            <TextBlock Text="期" Grid.Row="0" Grid.Column="3" />
+                            <TextBlock Text="错误期数 :" Grid.Row="0" Grid.Column="5" />
+                            <TextBlock Grid.Row="0" Grid.Column="6" x:Name="teErrorPeriod" HorizontalAlignment="Center" Foreground="Green" FontWeight="Bold"/>
+                            <TextBlock Text="期" Grid.Row="0" Grid.Column="7" />
 
-                            <TextBlock Text="選中期數 :" Grid.Row="1" Grid.Column="0" />
-                            <TextBlock Text="           " Grid.Row="1" Grid.Column="1" />
-                            <TextBlock Text="期 :" Grid.Row="1" Grid.Column="2" />
-                            <TextBlock Text="連錯期數 :" Grid.Row="1" Grid.Column="3" Margin="30,0,0,0" />
-                            <TextBlock Text="           " Grid.Row="1" Grid.Column="4" />
-                            <TextBlock Text="期" Grid.Row="1" Grid.Column="5" />
+                            <TextBlock Text="选中期数 :" Grid.Row="1" Grid.Column="1" />
+                            <TextBlock Grid.Row="1" Grid.Column="2" x:Name="teCorrectContinuePeriod" HorizontalAlignment="Center" Foreground="Red" FontWeight="Bold"/>
+                            <TextBlock Text="期" Grid.Row="1" Grid.Column="3" />
+                            <TextBlock Text="连错期数 :" Grid.Row="1" Grid.Column="5" />
+                            <TextBlock Grid.Row="1" Grid.Column="6" x:Name="teErrorContinuePeriod" HorizontalAlignment="Center" Foreground="Green" FontWeight="Bold"/>
+                            <TextBlock Text="期" Grid.Row="1" Grid.Column="7" />
 
-                            <TextBlock Text="當前遺漏 :" Grid.Row="2" Grid.Column="0" />
-                            <TextBlock Text="           " Grid.Row="2" Grid.Column="1" />
-                            <TextBlock Text="期 :" Grid.Row="2" Grid.Column="2" />
+                            <TextBlock Text="当前遗漏 :" Grid.Row="2" Grid.Column="1" />
+                            <TextBlock Grid.Row="2" Grid.Column="2" x:Name="teMissPeriod" HorizontalAlignment="Center" Foreground="Red" FontWeight="Bold"/>
+                            <TextBlock Text="期" Grid.Row="2" Grid.Column="3" />
                         </Grid>
                     </DockPanel>
                 </GroupBox>
-                <TextBlock Grid.Row="2" Grid.Column="1" MinHeight="80"/>
-                <GroupBox Grid.Row="3" Grid.Column="1">
+
+                <TextBlock Grid.Row="3" />
+
+                <GroupBox Grid.Row="4" Margin="0,5,0,0">
                     <GroupBox.Header>
                         <DockPanel>
-                            <TextBlock Text="我的號碼 共"/>
-                            <TextBlock x:Name="tbCount" Text="0"/>
+                            <TextBlock Text="我的号码　共"/>
+                            <TextBlock x:Name="tbCount" Text="0" Margin="4,0,4,0" FontWeight="Bold"/>
                             <TextBlock Text="注"/>
                         </DockPanel>
                     </GroupBox.Header>
-                    <TextBox x:Name="tbNum" MinHeight="200" TextChanged="tbNum_TextChanged"/>
+                    <TextBox x:Name="tbNum" Height="150" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"/>
                 </GroupBox>
-                <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
+
+                <Grid Grid.Row="5" HorizontalAlignment="Center" Margin="0,10,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btStart" Grid.Row="0" Grid.Column="0" Content="開始驗證" Padding="8,5,8,5" Margin="30,0,0,0" Click="btStart_Click"/>
-                    <Button x:Name="btCopy" Grid.Row="0" Grid.Column="1" Content="複製號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btCopy_Click"/>
-                    <Button x:Name="btPaste" Grid.Row="0" Grid.Column="2" Content="黏貼號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btPaste_Click"/>
-                    <Button x:Name="btClear" Grid.Row="0" Grid.Column="3" Content="清空號碼" Padding="8,5,8,5" Margin="50,0,0,0" Click="btClear_Click"/>
+                    <Button x:Name="btnStart" Grid.Row="0" Grid.Column="0" Content="开始验证" Padding="8,5,8,5" Margin="30,0,15,0" Click="btn_Click"/>
+                    <Button x:Name="btnCopy" Grid.Row="0" Grid.Column="1" Content="复制号码" Padding="8,5,8,5" Margin="15,0,15,0" Click="btn_Click"/>
+                    <Button x:Name="btnPaste" Grid.Row="0" Grid.Column="2" Content="黏贴号码" Padding="8,5,8,5" Margin="15,0,15,0" Click="btn_Click"/>
+                    <Button x:Name="btnClear" Grid.Row="0" Grid.Column="3" Content="清空号码" Padding="8,5,8,5" Margin="15,0,30,0" Click="btn_Click"/>
                 </Grid>
             </Grid>
         </Grid>

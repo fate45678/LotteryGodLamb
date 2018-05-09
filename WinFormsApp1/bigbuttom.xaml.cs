@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using Microsoft.Win32;
 
 namespace WinFormsApp1
 {
@@ -25,19 +27,38 @@ namespace WinFormsApp1
         public bigbuttom()
         {
             InitializeComponent();
-            UpdateProgressBar(0, 0);
+
         }
 
         bool IsFirstTime = true;
-        private void GDMaster_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (IsFirstTime)
             {
-                rbChongqingLottery.IsChecked = true;
+                SetDefaultValue();
                 IsFirstTime = false;
             }
         }
 
+        /// <summary>
+        /// 設定預設值
+        /// </summary>
+        void SetDefaultValue()
+        {
+            //彩種
+            rbChongqingLottery.IsChecked = true;
+
+            //UpdateProgressBar(0, 0);
+
+            //初始化開獎期數
+            btn_Click(btnUpdate, null);
+        }
+
+        /// <summary>
+        /// 更新ProgressBar
+        /// </summary>
+        /// <param name="Sum"></param>
+        /// <param name="count"></param>
         private void UpdateProgressBar(double Sum, int count)
         {
             if (Sum == 0 && count == 0)
@@ -52,199 +73,312 @@ namespace WinFormsApp1
             }
         }
 
-        private void dpEnd_Loaded(object sender, RoutedEventArgs e)
+        public class history
         {
-            dpEnd.SelectedDate = DateTime.Today;
+            public int rowNo { get; set; }
+            public string issue { get; set; }
+            public string number { get; set; }
+            public string result { get; set; }
         }
 
-        private void dpStart_Loaded(object sender, RoutedEventArgs e)
-        {
-            dpStart.SelectedDate = DateTime.Today;
-        }
+        /// <summary>
+        /// 暫存開獎號
+        /// </summary>
+        List<history> dtHistory;
 
-        List<string> dt;
-        private void btUpdate_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 按鈕事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-            if (rbChongqingLottery.IsChecked == true)
+            var btn = sender as Button;
+            if (btn != null)
             {
-                UpdateProgressBar(100, 1);//更新進度條 之後改用多執行緒更新
-
-                Dictionary<int, string> dic = new Dictionary<int, string>();
-                dic.Add(0, "issue");
-                dic.Add(1, "number");
-                dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where  convert(datetime,substring(issue,0,9)) between '" + dpStart.SelectedDate.ToString().Substring(0, dpStart.SelectedDate.ToString().IndexOf("上") - 1) + "' and '" + dpEnd.SelectedDate.ToString().Substring(0, dpEnd.SelectedDate.ToString().IndexOf("上") - 1) + "'", dic);
-                if (dt != null)
+                if (btn.Name == "btnExport")
                 {
-                    Dictionary<string, string> history = new Dictionary<string, string>();
-                    for (int i = 0; i < dt.Count; i = i + 2)
-                        history.Add(dt.ElementAt(i), dt.ElementAt(i + 1));
-                    if (history != null)
+                    #region 匯入
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+
+                    // 設定Filter，指定只能開啟特定的檔案 
+                    openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+                    if ((bool)openFileDialog.ShowDialog())
                     {
-                        List<history> ht = new List<history>();
-                        for (int i = 0; i < dt.Count; i = i + 2)
+                        //檢核是否存在檔案
+                        if (File.Exists(openFileDialog.FileName))
                         {
-                            ht.Add(new history()
+                            //檢核檔名
+                            if (!string.IsNullOrEmpty(openFileDialog.FileName))
                             {
-                                issue = dt.ElementAt(i),
-                                number = dt.ElementAt(i + 1),
-                                result = ""
-                            });
+                                if (openFileDialog.FileName.Length >= 3 &&
+                                    openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
+                                {
+                                    string[] array = File.ReadAllLines(openFileDialog.FileName);
+                                    List<history> ht = new List<history>();
+
+                                    if (array.Count() > 0)
+                                    {
+                                        for (int i = 0; i < array.Count(); i++)
+                                        {
+                                            string text = FilterText(array[i], 0);
+                                            if (text.Length <= 5)
+                                                continue;
+
+                                            text = text.Insert(text.Length - 5, " ");
+                                            var s = text.Split(' ').ToArray();
+                                            ht.Add(new history()
+                                            {
+                                                rowNo = i + 1,
+                                                issue = s[0],
+                                                number = s[1],
+                                                result = ""
+                                            });
+                                        }
+                                    }
+                                    dtHistory = ht.Select(x => new history { rowNo = x.rowNo, issue = x.issue, number = x.number, result = x.result }).ToList();
+                                    GDMaster.ItemsSource = ht;
+                                }
+                                else
+                                    System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
+                            }
+                            else
+                                tbNum.Text = "";
                         }
-                        GDMaster.ItemsSource = ht;
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("檔案不存在，請確認後再選取。");
+                        }
                     }
+                    #endregion
+                }
+                else if (btn.Name == "btnUpdate")
+                {
+                    #region 更新開獎
+                    if (rbChongqingLottery.IsChecked == true)
+                    {
+                        UpdateProgressBar(100, 1);//更新進度條 之後改用多執行緒更新
+
+                        Dictionary<int, string> dic = new Dictionary<int, string>();
+                        dic.Add(0, "issue");
+                        dic.Add(1, "number");
+                        List<string> dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where  convert(datetime,substring(issue,0,9)) between '" + dpStart.SelectedDate.ToString().Substring(0, dpStart.SelectedDate.ToString().IndexOf("上") - 1) + "' and '" + dpEnd.SelectedDate.ToString().Substring(0, dpEnd.SelectedDate.ToString().IndexOf("上") - 1) + "'", dic);
+                        if (dt != null)
+                        {
+                            Dictionary<string, string> history = new Dictionary<string, string>();
+                            for (int i = 0; i < dt.Count; i = i + 2)
+                                history.Add(dt.ElementAt(i), dt.ElementAt(i + 1));
+
+                            if (history != null)
+                            {
+                                List<history> ht = new List<history>();
+                                for (int i = 0; i < dt.Count; i += 2)
+                                {
+                                    ht.Add(new history()
+                                    {
+                                        rowNo = i / 2 + 1,
+                                        issue = dt.ElementAt(i),
+                                        number = dt.ElementAt(i + 1),
+                                        result = ""
+                                    });
+                                }
+                                dtHistory = ht.Select(x => new history { rowNo = x.rowNo, issue = x.issue, number = x.number, result = x.result }).ToList();
+                                GDMaster.ItemsSource = ht;
+                            }
+                        }
+                    }
+                    else
+                        MessageBox.Show("请选择彩种。");
+                    #endregion
+                }
+                else if (btn.Name == "btnCopy")
+                {
+                    #region 複製號碼
+                    System.Windows.Clipboard.SetText(tbNum.Text);
+                    System.Windows.Forms.MessageBox.Show("复制成功。");
+                    #endregion
+                }
+                else if (btn.Name == "btnPaste")
+                {
+                    #region 黏貼號碼
+                    tbNum.Text += System.Windows.Clipboard.GetText();
+                    #endregion
+                }
+                else if (btn.Name == "btnClear")
+                {
+                    #region 清空號碼
+                    tbNum.Text = "";
+                    #endregion
+                }
+                else if (btn.Name == "btnStart")
+                {
+                    #region 開始驗證
+                    if (dtHistory == null || dtHistory.Count() == 0)
+                    {
+                        MessageBox.Show("无开奖号码，无法验证。");
+                        return;
+                    }
+
+                    //處理文字區段
+                    int[] check = new int[5] { ((bool)CBtenThousand.IsChecked ? 1 : 0),
+                                               ((bool)CBThousand.IsChecked ? 1 : 0),
+                                               ((bool)CBhundred.IsChecked ? 1 : 0),
+                                               ((bool)CBten.IsChecked ? 1 : 0),
+                                               ((bool)CBones.IsChecked ? 1 : 0)};
+                    int checkCount = check.Count();
+                    int number = check.Where(x => x == 1).Count();
+
+                    if (number == 0)
+                    {
+                        MessageBox.Show("请选择号码位置。");
+                        return;
+                    }
+
+                    string text = FilterText(tbNum.Text, number);
+                    var tmp = text.Split(' ').Where(x => x.ToString().Length == number).ToArray();
+                    if (tmp.Count() == 0)
+                    {
+                        MessageBox.Show("没有可用的号码。");
+                        return;
+                    }
+                    text = string.Join(" ", tmp);
+                    tbNum.Text = text;
+                    tbCount.Text = tmp.Count().ToString();
+
+                    //開始驗證
+                    List<history> ht = dtHistory.Select(x => new history { rowNo = x.rowNo, issue = x.issue, number = x.number, result = x.result }).ToList();
+                    foreach (var h in ht)
+                    {
+                        foreach (var x in tmp)
+                        {
+                            if (h.result != "")
+                                continue;
+
+                            bool ismatch = true;
+                            int j = 0;
+                            for (int i = 0; i < checkCount; i++)
+                            {
+                                if (!ismatch)
+                                    continue;
+
+                                if (check[i] == 1)
+                                {
+                                    if (h.number[i] != x[j])
+                                        ismatch = false;
+                                    j++;
+                                }
+                            }
+
+                            if (ismatch)
+                                h.result = "V";//"1";
+                        }
+                        if (h.result == "")
+                            h.result = "╳";//"0";
+                    }
+                    GDMaster.ItemsSource = ht;
+
+                    //更新期數
+                    List<history> CheckTrue = ht.Where(x => x.result == "V").ToList();
+                    List<history> CheckFalse = ht.Where(x => x.result == "╳").ToList();
+                    int MinTrue = (CheckTrue.Count == 0 ? 0 : CheckTrue.Min(x => x.rowNo));
+                    int MinFalse = (CheckFalse.Count == 0 ? 0 : CheckFalse.Min(x => x.rowNo));
+                    int MaxTrue = (CheckTrue.Count == 0 ? 0 : CheckTrue.Max(x => x.rowNo));
+                    int MaxFalse = (CheckFalse.Count == 0 ? 0 : CheckFalse.Max(x => x.rowNo));
+
+                    tePeriod.Text = ht.Count.ToString();
+                    teCorrectPeriod.Text = CheckTrue.Count.ToString();
+                    teErrorPeriod.Text = CheckFalse.Count.ToString();
+
+                    //c=>上次 c2=>上上次
+                    int conti = 0, c = 1, c2 = 0;
+                    if (MinTrue > 0)
+                    { 
+                        foreach (var item in CheckTrue)
+                        {
+
+                            if (item.rowNo - c == 1 && c - c2 != 1)
+                                conti++;
+
+                            c2 = c;
+                            c = item.rowNo;
+                        }
+                    }
+                    teCorrectContinuePeriod.Text = conti.ToString();
+
+                    conti = 0;
+                    c = 1;
+                    c2 = 0;
+                    if (MinFalse > 0)
+                    {
+                        foreach (var item in CheckFalse)
+                        {
+
+                            if (item.rowNo - c == 1 && c - c2 != 1)
+                                conti++;
+
+                            c2 = c;
+                            c = item.rowNo;
+                        }
+                    }
+                    teErrorContinuePeriod.Text = conti.ToString();
+
+                    teMissPeriod.Text = (MaxFalse - MaxTrue <= 0 ? 0 : MaxFalse - MaxTrue).ToString();
+
+                    //準確率
+                    tePercent.Text = string.Format("{0}%", Math.Round((decimal)((decimal)CheckTrue.Count / (decimal)ht.Count * 100), 2));
+                    #endregion
                 }
             }
-            else
-                MessageBox.Show("請選擇彩種。");
         }
 
-        public static BitmapImage toBitmap(Byte[] value)
+        /// <summary>
+        /// 篩選文字
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        string FilterText(string text, int number)
         {
-            if (value != null && value is byte[])
+            text = Regex.Replace(text, "[^0-9]", "");
+            if (number > 0)
             {
-                byte[] ByteArray = value as byte[];
-                BitmapImage bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.StreamSource = new MemoryStream(ByteArray);
-                bmp.EndInit();
-                return bmp;
+                int count = text.Length / number;
+
+                for (int i = 1; i <= count; i++)
+                {
+                    if (count >= i)
+                        text = text.Insert(number * i + (i - 1), " ");
+                }
+            }
+            return text;
+        }
+    }
+
+    /// <summary>
+    /// 圖檔轉換
+    /// </summary>
+    public class BatchTypeToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || value.ToString() == "" || value.GetType() != typeof(Byte))
+                return null;
+
+            int result = int.Parse(value.ToString());
+            if (parameter.ToString() == "result")
+            {
+                if (result == 1)
+                    return new Uri(@"..\img\AD1.png");
+                else
+                    return new Uri(@"..\img\AD2.png");
             }
             return null;
         }
 
-        private void tbNum_TextChanged(object sender, TextChangedEventArgs e)
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string strData = tbNum.Text;
-            string goal = ",";
-            string strReplace = strData.Replace(goal, "");
-            tbCount.Text = ((strData.Length - strReplace.Length) / goal.Length).ToString();
-        }
-
-        /// <summary>
-        /// 複製號碼
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btCopy_Click(object sender, RoutedEventArgs e)
-        {
-            System.Windows.Clipboard.SetText(tbNum.Text);
-            System.Windows.Forms.MessageBox.Show("複製成功。");
-        }
-
-        /// <summary>
-        /// 清空號碼
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btClear_Click(object sender, RoutedEventArgs e)
-        {
-            tbNum.Text = "";
-        }
-
-        /// <summary>
-        /// 黏貼號碼
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btPaste_Click(object sender, RoutedEventArgs e)
-        {
-            tbNum.Text += System.Windows.Clipboard.GetText();
-        }
-
-        /// <summary>
-        /// 開始驗證
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btStart_Click(object sender, RoutedEventArgs e)
-        {
-            //檢查
-            if (checkCbNTExt())
-            {
-                List<history> ht = new List<history>();
-                for (int i = 0; i < dt.Count; i = i + 2)
-                {
-                    //判斷號碼是否相符
-
-                    ht.Add(new history()
-                    {
-                        issue = dt.ElementAt(i),
-                        number = dt.ElementAt(i + 1),
-                        result = "V"
-                    });
-                }
-                GDMaster.ItemsSource = ht;
-            }
-            else
-            {
-
-            }
-        }
-        /// <summary>
-        /// 檢查號碼是否符合規則
-        /// </summary>
-        /// <param name="number"></param>
-        /// <param name="rule"></param>
-        /// <param name="type"></param>
-        private string checkNum(string number, string rule, int type)
-        {
-            //一樣
-            if (1 == 1)
-                return "V";
-            return "X";
-        }
-
-        /// <summary>
-        /// 檢查最上面checkbox勾選數量是否小於等於我的號碼textbox數字
-        /// </summary>
-        private bool checkCbNTExt()
-        {
-            #region 計算最上面個十百千萬 checkbox勾選數量
-            int count = 0;
-            if (CBtenThousand.IsChecked == true)
-                count++;
-            if (CBThousand.IsChecked == true)
-                count++;
-            if (CBhundred.IsChecked == true)
-                count++;
-            if (CBten.IsChecked == true)
-                count++;
-            if (CBones.IsChecked == true)
-                count++;
-            #endregion
-            //只有一組規則
-            //if (count != tbNum.Text.Length && tbNum.Text.IndexOf(" ") != -1)
-            //{
-            //    MessageBox.Show("沒有可用的號碼。");
-            //    return false;
-            //}
-            ////有一組以上規則
-            //else if ()
-            //{
-
-            //}
-            //else
-            //    return true;
-
-
-            //if (tbNum.Text.Trim().Length % count == 0)
-            //{
-
-            //}
-            //else
-            //{
-
-            //}
-            return true;
-
-        }
-
-        public class history
-        {
-            public string issue { get; set; }
-            public string number { get; set; }
-            public string result { get; set; }
-
+            return null;
         }
     }
 }
