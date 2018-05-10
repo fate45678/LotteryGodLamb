@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using System.Windows.Interop;
 
 namespace WinFormsApp1
 {
@@ -40,6 +41,10 @@ namespace WinFormsApp1
             }
         }
 
+        BitmapSource btn_check;
+
+        BitmapSource btn_cross;
+
         /// <summary>
         /// 設定預設值
         /// </summary>
@@ -52,6 +57,9 @@ namespace WinFormsApp1
 
             //初始化開獎期數
             btn_Click(btnUpdate, null);
+
+            btn_check = Imaging.CreateBitmapSourceFromHBitmap(Properties.Resources.btn_check.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            btn_cross = Imaging.CreateBitmapSourceFromHBitmap(Properties.Resources.btn_cross.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         /// <summary>
@@ -79,6 +87,7 @@ namespace WinFormsApp1
             public string issue { get; set; }
             public string number { get; set; }
             public string result { get; set; }
+            public BitmapSource Path { get; set; }
         }
 
         /// <summary>
@@ -271,10 +280,16 @@ namespace WinFormsApp1
                             }
 
                             if (ismatch)
+                            {
                                 h.result = "V";//"1";
+                                h.Path = btn_check;
+                            }
                         }
                         if (h.result == "")
+                        {
                             h.result = "╳";//"0";
+                            h.Path = btn_cross;
+                        }
                     }
                     GDMaster.ItemsSource = ht;
 
@@ -291,9 +306,9 @@ namespace WinFormsApp1
                     teErrorPeriod.Text = CheckFalse.Count.ToString();
 
                     //c=>上次 c2=>上上次
-                    int conti = 0, c = 1, c2 = 0;
+                    int conti = 0, c = -1, c2 = -1;
                     if (MinTrue > 0)
-                    { 
+                    {
                         foreach (var item in CheckTrue)
                         {
 
@@ -307,8 +322,8 @@ namespace WinFormsApp1
                     teCorrectContinuePeriod.Text = conti.ToString();
 
                     conti = 0;
-                    c = 1;
-                    c2 = 0;
+                    c = -1;
+                    c2 = -1;
                     if (MinFalse > 0)
                     {
                         foreach (var item in CheckFalse)
@@ -326,7 +341,7 @@ namespace WinFormsApp1
                     teMissPeriod.Text = (MaxFalse - MaxTrue <= 0 ? 0 : MaxFalse - MaxTrue).ToString();
 
                     //準確率
-                    tePercent.Text = string.Format("{0}%", Math.Round((decimal)((decimal)CheckTrue.Count / (decimal)ht.Count * 100), 2));
+                    tePercent.Text = string.Format("{0:0.00%}", Math.Round((decimal)((decimal)CheckTrue.Count / (decimal)ht.Count), 4));
                     #endregion
                 }
             }
@@ -353,32 +368,16 @@ namespace WinFormsApp1
             }
             return text;
         }
-    }
 
-    /// <summary>
-    /// 圖檔轉換
-    /// </summary>
-    public class BatchTypeToImageConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            if (value == null || value.ToString() == "" || value.GetType() != typeof(Byte))
-                return null;
+        //private void PART_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
 
-            int result = int.Parse(value.ToString());
-            if (parameter.ToString() == "result")
-            {
-                if (result == 1)
-                    return new Uri(@"..\img\AD1.png");
-                else
-                    return new Uri(@"..\img\AD2.png");
-            }
-            return null;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return null;
-        }
+        //    TextBox te = sender as TextBox;
+        //    if (te != null)
+        //    {
+        //        FilterText(te.Text, 0);
+        //        te.Text = string.Format("{0:yyyy 年 MM 月 dd 日}", te.Text);
+        //    }
+        //}
     }
 }
