@@ -72,7 +72,7 @@
             </ComboBox>
 
             <RadioButton x:Name="rbFiexed" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Content="固定利润" IsChecked="true" Checked="rbFiexed_Checked" Margin="5,0,0,5"/>
-            <TextBox x:Name="tbFiexed" Grid.Row="0" Grid.Column="5"  Width="50" HorizontalAlignment="Left" Margin="5,0,0,5"/>
+            <TextBox x:Name="tbFiexed" Grid.Row="0" Grid.Column="5"  Width="50" HorizontalAlignment="Left" Margin="5,0,0,5" TextChanged="tb_TextChanged"/>
 
             <RadioButton x:Name="rbPercent" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Content="百分比" Checked="rbPercent_Checked" Margin="5,0,0,5"/>
             <DockPanel Grid.Row="1" Grid.Column="5" Margin="5,0,0,5">
@@ -85,9 +85,9 @@
             <RadioButton x:Name="rbProgress" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Content="累进利润" Checked="rbProgress_Checked" Margin="5,0,0,5"/>
             <DockPanel Grid.Row="2" Grid.Column="5" Margin="5,0,0,5">
                 <TextBlock Text="起步" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False" Margin="0,0,5,0"/>
+                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False" Margin="0,0,5,0" TextChanged="tb_TextChanged"/>
                 <TextBlock Text="累进" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False" />
+                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False" TextChanged="tb_TextChanged"/>
             </DockPanel>
 
             <Button x:Name="btCal" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Content="计算" MinWidth="80" MinHeight="50" Margin="5,0,0,5" Click="btCal_Click"/>

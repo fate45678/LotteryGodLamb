@@ -7,10 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WinFormsApp1
 {
@@ -280,11 +277,25 @@ namespace WinFormsApp1
             //回報
             public string returns{get;set;}
         }
-        
+
+        /// <summary>
+        /// 遮罩
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var te = sender as TextBox;
+            if (te != null)
+            {
+                te.Text = string.Format("{0:#,##0.00}", decimal.Parse(Regex.Replace(te.Text, "[^0-9]", "")));
+            }
+        }
+
         //檢查cb key的內容 聚寶盆沒有做 會有null
         //private void cbPlan_KeyDown(object sender, KeyEventArgs e)
         //{
-           
+
         //}
     }
     
