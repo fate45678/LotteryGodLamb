@@ -104,6 +104,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button13 = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -688,6 +689,7 @@
             // 
             // panel31
             // 
+            this.panel31.Controls.Add(this.button13);
             this.panel31.Controls.Add(this.label15);
             this.panel31.Controls.Add(this.button3);
             this.panel31.Controls.Add(this.button2);
@@ -1015,6 +1017,20 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(129, 26);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(82, 23);
+            this.button13.TabIndex = 26;
+            this.button13.Text = "除错";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // frm_PlanUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1140,5 +1156,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ContextMenuStrip contextmenu;
         private System.Windows.Forms.ToolStripMenuItem 編輯;
+        private System.Windows.Forms.Button button13;
     }
 }
