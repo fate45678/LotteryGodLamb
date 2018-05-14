@@ -71,7 +71,7 @@
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
-                        <TextBlock Text="殺和值" Width="40" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="杀和值" Width="40" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
                         <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">

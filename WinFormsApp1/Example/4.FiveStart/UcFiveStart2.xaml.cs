@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Media;
 using System.Drawing;
+using WpfAppTest.Base;
 
 namespace WpfAppTest
 {
@@ -130,19 +131,28 @@ namespace WpfAppTest
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
             ////殺垃圾複式
-            //tmp = Calculation.PosNumber(tmp, tePos1.Text, 1, false);
+            tmp = Calculation.GarbageNumber(tmp, teType1.Text, 2, '*', 5);
 
             //殺兩碼
+            tmp = Calculation.ExistsNumber(tmp, teType2.Text, 2, false, false);
 
             //殺三碼
+            tmp = Calculation.ExistsNumber(tmp, teType3.Text, 3, false, false);
 
             //殺四碼
+            tmp = Calculation.ExistsNumber(tmp, teType4.Text, 4, false, false);
 
             //必出兩碼
+            tmp = Calculation.ExistsNumber(tmp, teType5.Text, 2, false, true);
+
+            //必出三碼
+            tmp = Calculation.ExistsNumber(tmp, teType6.Text, 3, false, true);
 
             //必出四碼
+            tmp = Calculation.ExistsNumber(tmp, teType7.Text, 4, false, true);
 
             //組合定位殺
+            tmp = Calculation.PosNumber(tmp, teType8.Text, -1, false);
 
             return tmp;
         }

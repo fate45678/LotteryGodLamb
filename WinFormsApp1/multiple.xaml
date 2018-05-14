@@ -33,7 +33,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="计划期" Grid.Row="0" Grid.Column="0" Padding="5" Margin="5,0,0,5" />
-            <ComboBox x:Name="cbPlan"  Grid.Row="0" Grid.Column="1" Width="50" IsEditable="True" Margin="5,0,0,5">
+            <ComboBox x:Name="cbPlan"  Grid.Row="0" Grid.Column="1" Width="50" IsEditable="True" Margin="5,0,0,5" LostFocus="cb_LostFocus">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
                 <ComboBoxItem Content="3"/>
@@ -47,7 +47,7 @@
             </ComboBox>
 
             <TextBlock Text="单注成本" Grid.Row="0" Grid.Column="2" Padding="5" Margin="5,0,0,5" />
-            <ComboBox x:Name="cbCost" Grid.Row="0" Grid.Column="3" Width="50" IsEditable="True" Margin="5,0,0,5">
+            <ComboBox x:Name="cbCost" Grid.Row="0" Grid.Column="3" Width="50" IsEditable="True" Margin="5,0,0,5" LostFocus="cb_LostFocus">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
                 <ComboBoxItem Content="3"/>
@@ -56,7 +56,7 @@
             </ComboBox>
 
             <TextBlock Text="注数" Grid.Row="1" Grid.Column="0" Padding="5" Margin="5,0,0,5" />
-            <ComboBox x:Name="cbCount" Grid.Row="1" Grid.Column="1" IsEditable="True" Margin="5,0,0,5">
+            <ComboBox x:Name="cbCount" Grid.Row="1" Grid.Column="1" IsEditable="True" Margin="5,0,0,5" Width="50" LostFocus="cb_LostFocus">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="2"/>
                 <ComboBoxItem Content="3"/>
@@ -65,18 +65,18 @@
             </ComboBox>
 
             <TextBlock Text="单注奖金" Grid.Row="1" Grid.Column="2" Padding="5" Margin="5,0,0,5" />
-            <ComboBox x:Name="cbMoney" Grid.Row="1" Grid.Column="3" MinWidth="50" IsEditable="True" Margin="5,0,0,5">
+            <ComboBox x:Name="cbMoney" Grid.Row="1" Grid.Column="3" Width="50" IsEditable="True" Margin="5,0,0,5" LostFocus="cb_LostFocus">
                 <ComboBoxItem Content="10"/>
                 <ComboBoxItem Content="100"/>
                 <ComboBoxItem Content="1000"/>
             </ComboBox>
 
             <RadioButton x:Name="rbFiexed" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Content="固定利润" IsChecked="true" Checked="rbFiexed_Checked" Margin="5,0,0,5"/>
-            <TextBox x:Name="tbFiexed" Grid.Row="0" Grid.Column="5"  Width="50" HorizontalAlignment="Left" Margin="5,0,0,5" TextChanged="tb_TextChanged"/>
+            <TextBox x:Name="tbFiexed" Grid.Row="0" Grid.Column="5" Text="10.00" Width="50" HorizontalAlignment="Left" Margin="5,0,0,5" TextChanged="te_TextChanged"/>
 
             <RadioButton x:Name="rbPercent" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Content="百分比" Checked="rbPercent_Checked" Margin="5,0,0,5"/>
             <DockPanel Grid.Row="1" Grid.Column="5" Margin="5,0,0,5">
-                <ComboBox x:Name="cbPercent" MinWidth="50" IsEditable="True" IsEnabled="False">
+                <ComboBox x:Name="cbPercent" Width="50" IsEditable="True" IsEnabled="False" LostFocus="cb_LostFocus">
                     <ComboBoxItem Content="10"/>
                 </ComboBox>
                 <TextBlock Text=" %"/>
@@ -85,21 +85,27 @@
             <RadioButton x:Name="rbProgress" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Content="累进利润" Checked="rbProgress_Checked" Margin="5,0,0,5"/>
             <DockPanel Grid.Row="2" Grid.Column="5" Margin="5,0,0,5">
                 <TextBlock Text="起步" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False" Margin="0,0,5,0" TextChanged="tb_TextChanged"/>
+                <TextBox x:Name="tbProgressStart" Width="50" Text="0.00" IsEnabled="False" Margin="0,0,5,0" TextChanged="te_TextChanged"/>
                 <TextBlock Text="累进" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False" TextChanged="tb_TextChanged"/>
+                <TextBox x:Name="tbProgressAdd" Width="50" Text="5.00" IsEnabled="False" TextChanged="te_TextChanged"/>
             </DockPanel>
 
-            <Button x:Name="btCal" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Content="计算" MinWidth="80" MinHeight="50" Margin="5,0,0,5" Click="btCal_Click"/>
+            <Button x:Name="btCal" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Content="计算" Width="80" MinHeight="50" Margin="5,0,0,5" Click="btCal_Click"/>
         </Grid>
 
-        <DataGrid x:Name="GDMaster" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" >
+        <DataGrid x:Name="GDMaster" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" SelectionUnit="Cell"
+                  HorizontalGridLinesBrush="DarkGray" VerticalGridLinesBrush="DarkGray" IsReadOnly="True">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="期号" Binding="{Binding issue}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -107,47 +113,47 @@
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="当期投入" Binding="{Binding currentMoney}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="累计投入" Binding="{Binding sumMoney}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="收益" Binding="{Binding income}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="利润" Binding="{Binding profit}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="回报率%" Binding="{Binding returns}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="3,0,3,0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="5,0,5,0" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

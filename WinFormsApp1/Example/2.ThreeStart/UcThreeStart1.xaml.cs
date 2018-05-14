@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.IO;
 using WpfAppTest.AP;
 using WpfAppTest.Base;
+using System.Text.RegularExpressions;
 
 namespace WpfAppTest
 {
@@ -81,6 +82,7 @@ namespace WpfAppTest
             cbPosMatchNumber.ItemsSource = data2;
             cbPosMatchNumber2.ItemsSource = data2;
             cbEqual.ItemsSource = DB.CreateOption(1, 6, new string[6] { "大于", "小于", "等于", "大于等于", "小于等于", "不等于" });
+            cbRow.ItemsSource = DB.CreateOption(1, 20);
 
             /*CheckBox*/
 
@@ -150,13 +152,16 @@ namespace WpfAppTest
 
             /*TextBox*/
             teEditor1.Text = teEditor2.Text = teEditor3.Text = teEditor4.Text =
-            teEditor5.Text = teEditor6.Text = teEditor7.Text = teEditor8.Text = 
-            teMatch.Text = teBottom.Text = teSum.Text = 
-            teCheckHundred.Text = teCheckHundred2.Text = teCheckHundred3.Text = 
-            teCheckTen.Text = teCheckTen2.Text = teCheckTen3.Text = 
+            teEditor5.Text = teEditor6.Text = //teEditor7.Text = teEditor8.Text =
+            teMatch.Text = teBottom.Text = teSum.Text =
+            teCheckHundred.Text = teCheckHundred2.Text = teCheckHundred3.Text =
+            teCheckTen.Text = teCheckTen2.Text = teCheckTen3.Text =
             teCheckUnit.Text = teCheckUnit2.Text = teCheckUnit3.Text = "";
             teRange1.Text = "0";
             teRange2.Text = "27";
+
+            /*ComboBox*/
+            cbRow.SelectedValue = 8;
         }
 
         /// <summary>
@@ -164,8 +169,20 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            //定位殺兩碼
-            //交集
+            //大底
+            #region 大底 / 複式
+            //複式
+            if ((bool)cbCheck3.IsChecked)
+            {
+                string condition = teCheckHundred3.Text + "/" + teCheckTen3.Text + "/" + teCheckUnit3.Text;
+                tmp = Calculation.CompoundNumber(tmp, condition, '/', 3, true);
+            }
+
+            //大底
+            if ((bool)cbCheck4.IsChecked && !(bool)cbIsGroup.IsChecked)
+                tmp = Calculation.AssignNumber(tmp, teBottom.Text, true);
+            #endregion
+
             //公式
             //其他
 
@@ -177,22 +194,28 @@ namespace WpfAppTest
             tmp = Calculation.GarbageNumber(tmp, teEditor2.Text, 2, '*', 3);
 
             //殺兩碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor3.Text, 2, false);
+            tmp = Calculation.ExistsNumber(tmp, teEditor3.Text, 2, true, false);
 
             //定位殺兩碼
+            tmp = Calculation.PosNumber(tmp, teEditor4.Text, 2, false);
 
             //必出兩碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor5.Text, 2, true);
+            tmp = Calculation.ExistsNumber(tmp, teEditor5.Text, 2, true, true);
 
             //交集
-
+            if (!string.IsNullOrEmpty(teEditor6.Text))
+            {
+                var inter = Regex.Replace(Regex.Replace(teEditor6.Text, "\n", " "), "[^0-9|\\s]", "").Split(' ').Except(new string[1] { "" }).Where(x=>x.Length == 3);
+                if (inter.Count() > 0)
+                    tmp = tmp.Where(x => inter.Contains(x.Code)).ToList();
+            }
             //公式
 
             //其他
             #endregion
 
             //膽
-            #region 和 跨 膽
+            #region group2-和 跨 膽
             //殺和尾
             tmp = Calculation.SumLastNumber(tmp, cblType1, false);
 
@@ -202,7 +225,7 @@ namespace WpfAppTest
             //選膽
             #endregion
 
-            #region 和值
+            #region group3-和值
             if ((bool)cbRemoveSum.IsChecked)
             {
                 //殺指定和值
@@ -218,7 +241,7 @@ namespace WpfAppTest
             }
             #endregion
 
-            #region 排除複式/定位殺
+            #region group4-排除複式/定位殺
             //排除複式
             if ((bool)cbCheck1.IsChecked)
             {
@@ -237,42 +260,41 @@ namespace WpfAppTest
             //AC值
             #endregion
 
-            #region 大小
+            #region group5-大小
             tmp = Calculation.CheckValueNumber(tmp, cblData1, 1, true);
             #endregion
 
-            #region 奇偶
+            #region group6-奇偶
             tmp = Calculation.OddEvenNumber(tmp, cblData2, true);
             #endregion
 
-            #region 質合
+            #region group7-質合
             tmp = Calculation.PrimeNumber(tmp, cblData3, true);
             #endregion
 
-            #region 012路特別排除
+            #region group8-012路特別排除
             tmp = Calculation.DivThreeRemainder(tmp, cbl012, false);
             #endregion
 
-            //大底
-            #region 大底 / 複式
-            //複式
-            if ((bool)cbCheck3.IsChecked)
-            {
-                string condition = teCheckHundred3.Text + "/" + teCheckTen3.Text + "/" + teCheckUnit3.Text;
-                tmp = Calculation.CompoundNumber(tmp, condition, '/', 3, true);
-            }
-
-            //大底
-            if ((bool)cbCheck4.IsChecked)
-                tmp = Calculation.AssignNumber(tmp, teBottom.Text, true);
-            #endregion
-
-            #region 位置大小匹配
+            #region group9-位置大小匹配
             if ((bool)cbPosMatch.IsChecked)
                 tmp = Calculation.ThreeStartMatch(tmp, dgData2.ItemsSource.Cast<Match>().ToList());
             #endregion
 
+            #region group10-特別排除
+            tmp = Calculation.ThreeSpecialData(tmp, cblSpecialExcept.SelectedValue);
+            #endregion
+
             return tmp;
+        }
+
+        /// <summary>
+        /// 更新大底
+        /// </summary>
+        /// <param name="text"></param>
+        public void RefreshBottom(string text)
+        {
+            teBottom.Text = text;
         }
         #endregion
 
@@ -402,10 +424,10 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teMatch.Text))
                     {
                         var tmp = dgData1.ItemsSource.Cast<Match>().ToList();
-                        tmp.Add(new Match 
-                        { 
-                            ValueName1 = teMatch.Text, 
-                            ValueName2 = GetCheckBoxDisplayName(cblMatch), 
+                        tmp.Add(new Match
+                        {
+                            ValueName1 = teMatch.Text,
+                            ValueName2 = GetCheckBoxDisplayName(cblMatch),
                             OperatorName = "",
                             Value1 = 0,
                             Value2 = 0,
@@ -442,6 +464,32 @@ namespace WpfAppTest
                     tmp.Remove(dgData2.SelectedItem as Match);
                     dgData2.ItemsSource = tmp;
                 }
+                else if (btn.Name == "btnExport")
+                {
+                    /*匯出結果*/
+                    FolderBrowserDialog path = new FolderBrowserDialog();
+                    if (path.ShowDialog() == DialogResult.OK)
+                    {
+                        string exportPath = @"" + path.SelectedPath + @"\三星号码导出.txt";
+                        FileStream fs = new FileStream(exportPath, FileMode.Create, FileAccess.ReadWrite);
+                        StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+
+                        var array = Regex.Replace(teBottom.Text, "[^0-9|\\s]", "").Split(' ').Except(new string[1] { "" }).ToArray();
+                        //切割行列, n幾行
+                        int n = (array.Count() / (int)cbRow.SelectedValue) + ((array.Count() % (int)cbRow.SelectedValue) > 0 ? 1 : 0);
+                        string text = "";
+                        for (int i = 1; i <= array.Count(); i++)
+                        {
+                            text = text + array[i - 1] + " ";
+                            if (i % n == 0)
+                                text += "\r\n";
+                        }
+                        sw.Write(text);
+                        sw.Close();
+                        fs.Close();
+                        System.Windows.Forms.MessageBox.Show("号码导出成功。");
+                    }
+                }
                 else if (btn.Name == "btnSelect")
                 {
                     /*開啟檔案並讀取*/
@@ -467,7 +515,10 @@ namespace WpfAppTest
                             {
                                 if (openFileDialog.FileName.Length >= 3 &&
                                     openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
-                                    te.Text = File.ReadAllText(openFileDialog.FileName);
+                                {
+                                    string text = File.ReadAllText(openFileDialog.FileName);
+                                    te.Text = string.Join("    ", text.Split(' ').Except(new string[1] { " " }));
+                                }
                                 else
                                     System.Windows.Forms.MessageBox.Show("非文本文件无法开启。");
                             }

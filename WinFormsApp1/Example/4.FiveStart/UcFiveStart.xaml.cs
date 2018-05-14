@@ -48,6 +48,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
+            btnTransfer.IsEnabled = false;
             AllConbination = DB.CombinationNumber(5, 0, 9);
             cblSpecialExclude.ItemsSource = DB.CreateOption(1, 14, new string[14] { "上山", "下山", "不连", "2连", "3连", "4连", "5连", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
 
@@ -83,6 +84,7 @@ namespace WpfAppTest
 
             /*TextBox*/
             teResult.Text = "";
+            tbCount.Text = "0";
         }
 
         /// <summary>
@@ -98,6 +100,10 @@ namespace WpfAppTest
                 if (btn.Name == "btnFilter")
                 {
                     /*開始縮水*/
+                    string btncontent = (string)btn.Content;
+                    btn.IsEnabled = false;
+                    btn.Content = "载入中...";
+                    
                     //BaseHelper.DynamicPublicMethod((tcSettings.Items[0] as TabItem).Content, "Filter", new object[1] { AllConbination });
 
                     //大底先篩
@@ -110,9 +116,11 @@ namespace WpfAppTest
                     tmp = ((tcSettings.Items[1] as TabItem).Content as UcFiveStart2).Filter(tmp);
                     tmp = ((tcSettings.Items[10] as TabItem).Content as UcFiveStart3).Filter(tmp);
 
-
                     teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
                     tbCount.Text = tmp.Count.ToString();
+
+                    btn.Content = btncontent;
+                    btn.IsEnabled = true;
                 }
                 else if (btn.Name == "btnClear")
                 {

@@ -56,8 +56,8 @@ namespace WpfAppTest
                     string[] empty = new string[1] { "" };
                     
                     //處理文字區段
-                    string textA = Regex.Replace(teCompareA.Text, "[^0-9]", "");
-                    string textB = Regex.Replace(teCompareB.Text, "[^0-9]", "");
+                    string textA = Regex.Replace(Regex.Replace(teCompareA.Text, "\n", " "), "[^0-9|\\s]", "");
+                    string textB = Regex.Replace(Regex.Replace(teCompareB.Text, "\n", " "), "[^0-9|\\s]", "");
 
                     int countA = textA.Length / 2;
                     int countB = textB.Length / 2;
@@ -70,8 +70,8 @@ namespace WpfAppTest
                             textB = textB.Insert(2 * i + (i - 1), " ");
                     }
 
-                    arrayA = textA.Split(' ').Where(x => x.ToString().Length == 2).ToArray();
-                    arrayB = textB.Split(' ').Where(x => x.ToString().Length == 2).ToArray();
+                    arrayA = textA.Split(' ').Where(x => x.Length == 2).ToArray();
+                    arrayB = textB.Split(' ').Where(x => x.Length == 2).ToArray();
 
                     if (btn.Name == "btnIntersection")
                     {

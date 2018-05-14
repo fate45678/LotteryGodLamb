@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -29,19 +29,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="【中奖查询】" Margin="0,0,0,3" Grid.Row="0" HorizontalAlignment="Center"/>
-            <TextBox x:Name="teText" Margin="0,0,0,3" Grid.Row="1"/>
+            <!--<TextBlock Text="【中奖查询】" Margin="0,0,0,3" Grid.Row="0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="teText" Margin="0,0,0,3" Grid.Row="1"/>-->
             <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
             <DockPanel Margin="0,0,0,3" Grid.Row="3" HorizontalAlignment="Center">
                 <TextBlock Text="最后注数：" />
                 <TextBlock x:Name="tbCount" Text="0" />
             </DockPanel>
-            <TextBlock Text="过滤条件总容错" Margin="0,0,0,3" Grid.Row="4" HorizontalAlignment="Center"/>
+            <!--<TextBlock Text="过滤条件总容错" Margin="0,0,0,3" Grid.Row="4" HorizontalAlignment="Center"/>
             <DockPanel Grid.Row="5" Margin="0,0,0,3" HorizontalAlignment="Center">
                 <TextBox Margin="5" x:Name="teStart" TextChanged="te_TextChanged" DockPanel.Dock="Left" Width="20"/>
                 <TextBlock Margin="5" Text="至" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Margin="5" x:Name="teEnd" TextChanged="te_TextChanged" DockPanel.Dock="Right" Width="20"/>
-            </DockPanel>
+            </DockPanel>-->
             <StackPanel Grid.Row="6">
                 <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0,0,0,3" />
                 <Button x:Name="btnTransfer" Content="转为组选" Click="btn_Click" Margin="0,0,0,3" />

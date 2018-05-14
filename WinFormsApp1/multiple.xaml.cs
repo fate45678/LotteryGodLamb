@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Text.RegularExpressions;
 
 namespace WinFormsApp1
@@ -28,7 +25,7 @@ namespace WinFormsApp1
             cbCost.SelectedIndex = 0;
             cbCount.SelectedIndex = 0;
             cbMoney.SelectedIndex = 0;
-            tbFiexed.Text = "10";
+
             cbPercent.SelectedIndex = 0;
         }
 
@@ -89,23 +86,19 @@ namespace WinFormsApp1
         private void btCal_Click(object sender, RoutedEventArgs e)
         {
             List<content> lt = new List<content>();
-            if (rbFiexed.IsChecked == true)
-            {
-                int multiple = 1;//倍數
-                int issue = int.Parse(cbPlan.Text);//期數
-                int count = int.Parse(cbCount.Text);//注數
-                double oneCost = double.Parse(cbCost.Text);//單注成本
-                double oneMoney = double.Parse(cbMoney.Text);//單注獎金
-                double sumMoneyTemp = 0;
-                //tbFiexed
+            int multiple = 1;//倍數
+            int issue = int.Parse(cbPlan.Text);//期數
+            int count = int.Parse(cbCount.Text);//注數
+            double oneCost = double.Parse(cbCost.Text);//單注成本
+            double oneMoney = double.Parse(cbMoney.Text);//單注獎金
+            double sumMoneyTemp = 0;
 
+            if ((bool)rbFiexed.IsChecked)
+            {
                 while (((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100) < double.Parse(tbFiexed.Text))
-                {
                     multiple++;
-                }
 
                 bool haveError = false;
-
                 for (int i = 0; i < issue; i++)
                 {
                     if (i == 0)
@@ -138,28 +131,20 @@ namespace WinFormsApp1
                     {
                         issue = i + 1,
                         multiple = multiple,
-                        currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
-                        sumMoney = sumMoneyTemp,
-                        income = oneMoney * multiple,//收益 = 單注獎金*倍數
-                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
-                        returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
+                        currentMoney = string.Format("{0:#,##0.00}", Math.Round(oneCost * count * multiple, 2)),//當期投入 = 單注成本*注數*倍數
+                        sumMoney = string.Format("{0:#,##0.00}", Math.Round(sumMoneyTemp, 2)),
+                        income = string.Format("{0:#,##0.00}", Math.Round(oneMoney * multiple, 2)),//收益 = 單注獎金*倍數
+                        profit = string.Format("{0:#,##0.00}", Math.Round((oneMoney * multiple) - sumMoneyTemp, 2)),//利潤 = 收益 - 累計投入
+                        returns = string.Format("{0:#,##0.00}", Math.Round(((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100), 2)).ToString() + "%" //回報率 = 利潤/累計投入
                     });
                 }
-
             }
-            else if (rbPercent.IsChecked == true)
+            else if ((bool)rbPercent.IsChecked)
             {
-                int multiple = 1;//倍數(不知道邏輯先給2)
-                int issue = int.Parse(cbPlan.Text);//期數
-                int count = int.Parse(cbCount.Text);//注數
-                double oneCost = double.Parse(cbCost.Text);//單注成本
-                double oneMoney = double.Parse(cbMoney.Text);//單注獎金
-                double sumMoneyTemp = 0;
                 bool haveError = false;
 
                 for (int i = 0; i < issue; i++)
                 {
-
                     if (i == 0)
                     {
                         while ((((oneMoney * multiple) - (oneCost * count * multiple)) / (oneCost * count * multiple)) * 100 < double.Parse(cbPercent.Text))
@@ -179,36 +164,27 @@ namespace WinFormsApp1
                         }
                     }
 
-
                     if (haveError)
                     {
                         MessageBox.Show("此计划不适合倍投。");
                         break;
                     }
 
-
                     sumMoneyTemp += (oneCost * count * multiple);
                     lt.Add(new content()
                     {
                         issue = i + 1,
                         multiple = multiple,
-                        currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
-                        sumMoney = sumMoneyTemp,
-                        income = oneMoney * multiple,//收益 = 單注獎金*倍數
-                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
-                        returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
+                        currentMoney = string.Format("{0:#,##0.00}", Math.Round(oneCost * count * multiple, 2)),//當期投入 = 單注成本*注數*倍數
+                        sumMoney = string.Format("{0:#,##0.00}", Math.Round(sumMoneyTemp, 2)),
+                        income = string.Format("{0:#,##0.00}", Math.Round(oneMoney * multiple, 2)),//收益 = 單注獎金*倍數
+                        profit = string.Format("{0:#,##0.00}", Math.Round((oneMoney * multiple) - sumMoneyTemp, 2)),//利潤 = 收益 - 累計投入
+                        returns = string.Format("{0:#,##0.00}", Math.Round(((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100), 2)).ToString() + "%" //回報率 = 利潤/累計投入
                     });
                 }
             }
-            else if (rbProgress.IsChecked == true)
+            else if ((bool)rbProgress.IsChecked)
             {
-                int multiple = 1;//倍數
-                int issue = int.Parse(cbPlan.Text);//期數
-                int count = int.Parse(cbCount.Text);//注數
-                double oneCost = double.Parse(cbCost.Text);//單注成本
-                double oneMoney = double.Parse(cbMoney.Text);//單注獎金
-                double sumMoneyTemp = 0;
-                //tbFiexed
                 bool haveError = false;
                 double progress = 0.0;
                 for (int i = 0; i < issue; i++)
@@ -225,7 +201,7 @@ namespace WinFormsApp1
                     }
                     else
                     {
-                        while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < progress+double.Parse(tbProgressAdd.Text))//收益小於 上筆利潤 加累進
+                        while ((oneMoney * multiple) - (sumMoneyTemp + (oneCost * count * multiple)) < progress + double.Parse(tbProgressAdd.Text))//收益小於 上筆利潤 加累進
                         {
                             multiple++;
                             if (multiple > 10000)
@@ -248,14 +224,13 @@ namespace WinFormsApp1
                     {
                         issue = i + 1,
                         multiple = multiple,
-                        currentMoney = oneCost * count * multiple,//當期投入 = 單注成本*注數*倍數
-                        sumMoney = sumMoneyTemp,
-                        income = oneMoney * multiple,//收益 = 單注獎金*倍數
-                        profit = (oneMoney * multiple) - sumMoneyTemp,//利潤 = 收益 - 累計投入
-                        returns = ((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100).ToString() + "%" //回報率 = 利潤/累計投入
+                        currentMoney = string.Format("{0:#,##0.00}", Math.Round(oneCost * count * multiple, 2)),//當期投入 = 單注成本*注數*倍數
+                        sumMoney = string.Format("{0:#,##0.00}", Math.Round(sumMoneyTemp, 2)),
+                        income = string.Format("{0:#,##0.00}", Math.Round(oneMoney * multiple, 2)),//收益 = 單注獎金*倍數
+                        profit = string.Format("{0:#,##0.00}", Math.Round((oneMoney * multiple) - sumMoneyTemp, 2)),//利潤 = 收益 - 累計投入
+                        returns = string.Format("{0:#,##0.00}", Math.Round(((((oneMoney * multiple) - sumMoneyTemp) / sumMoneyTemp) * 100), 2)).ToString() + "%" //回報率 = 利潤/累計投入
                     });
                 }
-
             }
             GDMaster.ItemsSource = lt;
         }
@@ -267,15 +242,15 @@ namespace WinFormsApp1
             //倍數
             public int multiple { get; set; }
             //當前投入
-            public double currentMoney { get; set; }
+            public string currentMoney { get; set; }
             //累計投入
-            public double sumMoney { get; set; }
+            public string sumMoney { get; set; }
             //收益
-            public double income{ get; set; }
+            public string income { get; set; }
             //利潤
-            public double profit { get; set; }
+            public string profit { get; set; }
             //回報
-            public string returns{get;set;}
+            public string returns { get; set; }
         }
 
         /// <summary>
@@ -283,20 +258,45 @@ namespace WinFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tb_TextChanged(object sender, TextChangedEventArgs e)
+        private void cb_LostFocus(object sender, RoutedEventArgs e)
         {
-            var te = sender as TextBox;
-            if (te != null)
+            if (sender is ComboBox)
             {
-                te.Text = string.Format("{0:#,##0.00}", decimal.Parse(Regex.Replace(te.Text, "[^0-9]", "")));
+                ComboBox cb = sender as ComboBox;
+                if (cb != null)
+                {
+                    string text = Regex.Replace(cb.Text, "[^0-9]", "");
+                    int number = 0;
+                    int.TryParse(text, out number);
+                    cb.Text = string.Format("{0}", number);
+                }
             }
         }
 
-        //檢查cb key的內容 聚寶盆沒有做 會有null
-        //private void cbPlan_KeyDown(object sender, KeyEventArgs e)
-        //{
+        private void te_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox te = sender as TextBox;
+                if (te != null)
+                {
+                    var split = te.Text.Split('.');
 
-        //}
+                    for (int i = 0; i < split.Count(); i++)
+                    {
+                        split[i] = Regex.Replace(split[i], "[^0-9]", "");
+                        if (split.Count() > 1)
+                        {
+                            if (i == split.Count() - 1)
+                                split[i] = '.' + split[i];
+                        }
+                    }
+                    string text = string.Join("", split);
+                    decimal number = 0;
+                    decimal.TryParse(text, out number);
+                    te.Text = string.Format("{0:0.00}", number);
+                }
+            }
+        }
     }
-    
 }

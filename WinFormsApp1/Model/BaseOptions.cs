@@ -19,6 +19,8 @@ namespace WpfAppTest
 
         private string _Code;
 
+        private bool _Check;
+
         public int ID
         {
             get
@@ -52,6 +54,18 @@ namespace WpfAppTest
             set
             {
                 _Code = value;
+            }
+        }
+
+        public bool Check
+        {
+            get
+            {
+                return _Check;
+            }
+            set
+            {
+                _Check = value;
             }
         }
     }

@@ -53,6 +53,7 @@ namespace WpfAppTest
         {
             OldText = new int[2] { 0, 0 };
             AllConbination = DB.CombinationNumber(4, 0, 9);
+            btnTransfer.IsEnabled = false;
 
             SetDefaultValue();
         }
@@ -62,12 +63,17 @@ namespace WpfAppTest
         /// </summary>
         void SetDefaultValue()
         {
-            teText.Text = "";
+            //teText.Text = "";
             teResult.Text = "";
-            teStart.Text = "0";
-            teEnd.Text = "0";
+            //teStart.Text = "0";
+            //teEnd.Text = "0";
             tbCount.Text = "0";
         }
+
+        /// <summary>
+        /// 縮水後結果
+        /// </summary>
+        List<BaseOptions> FilterData;
 
         /// <summary>
         /// 右半-結果區的按鈕事件
@@ -82,14 +88,32 @@ namespace WpfAppTest
                 if (btn.Name == "btnFilter")
                 {
                     /*開始縮水*/
+                    string btncontent = (string)btn.Content;
+                    btn.IsEnabled = false;
+                    btn.Content = "载入中...";
+
+                    //縮水
                     var tmp = ucFour1.Filter(AllConbination);
                     teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
                     tbCount.Text = tmp.Count.ToString();
+
+                    //組選
+                    FilterData = tmp;
+                    btnTransfer.IsEnabled = true;
+
+                    //btn啟用
+                    btn.Content = btncontent;
+                    btn.IsEnabled = true;
                 }
                 else if (btn.Name == "btnTransfer")
                 {
                     /*轉為組選*/
-                    /*尚未有邏輯確認*/
+                    if (FilterData != null)
+                    {
+                        var tmp = Base.Calculation.TransNumber(FilterData);
+                        teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                        tbCount.Text = tmp.Count.ToString();
+                    }
                 }
                 else if (btn.Name == "btnCopy")
                 {

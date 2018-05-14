@@ -94,14 +94,14 @@ namespace WpfAppTest
                             openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
                             tePos.Text = File.ReadAllText(openFileDialog.FileName);
                         else
-                            System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
+                            System.Windows.Forms.MessageBox.Show("非文本文件无法开启。");
                     }
                     else
                         tePos.Text = "";
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("檔案不存在，請確認後再選取。");
+                    System.Windows.Forms.MessageBox.Show("档案不存在，请确认后再选取。");
                 }
             }
         }
@@ -147,6 +147,7 @@ namespace WpfAppTest
             //cblAC.Clear();
 
             teSum.Text = "";
+            tePos.Text = "";
         }
 
         /// <summary>
@@ -179,8 +180,8 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            ////殺直選
-            //tmp = Calculation.PosNumber(tmp, tePos1.Text, 1, false);
+            //殺直選
+            tmp = Calculation.AssignNumber(tmp, tePos.Text, false);
 
             //定位殺
             tmp = Calculation.PosNumber(tmp, cblTenThousands, "4", false);
@@ -198,6 +199,9 @@ namespace WpfAppTest
             //殺跨度
             tmp = Calculation.CrossNumber(tmp, cblCross, false);
 
+            //殺通碼
+            tmp = Calculation.ExistsNumber(tmp, cblComm, 1, false, false);
+
             //殺大小
             tmp = Calculation.CheckValueNumber(tmp, cblData1, 1, false);
 
@@ -207,17 +211,11 @@ namespace WpfAppTest
             //殺质合
             tmp = Calculation.PrimeNumber(tmp, cblData3, false);
 
-            
             return tmp;
         }
         #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void te_TextChanged(object sender, Controls.TextChangedEventArgs e)
         {
 
         }
