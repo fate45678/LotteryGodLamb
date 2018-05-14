@@ -42,7 +42,7 @@
                 <Button Content="兑奖匹配" DockPanel.Dock="Right" />
                 <TextBox DockPanel.Dock="Left" Margin="0,0,3,0"/>
             </DockPanel>-->
-            <TextBox x:Name="teResult" Margin="5,0,0,5" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+            <TextBox x:Name="teResult" Margin="5,0,0,5" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
 
             </TextBox>
             <DockPanel Grid.Row="2" Margin="5,0,0,5" HorizontalAlignment="Center">

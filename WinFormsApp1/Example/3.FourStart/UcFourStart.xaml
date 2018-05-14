@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
             <!--<TextBlock Text="【中奖查询】" Margin="0,0,0,3" Grid.Row="0" HorizontalAlignment="Center"/>
             <TextBox x:Name="teText" Margin="0,0,0,3" Grid.Row="1"/>-->
-            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True"/>
             <DockPanel Margin="0,0,0,3" Grid.Row="3" HorizontalAlignment="Center">
                 <TextBlock Text="最后注数：" />
                 <TextBlock x:Name="tbCount" Text="0" />
