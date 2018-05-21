@@ -217,6 +217,9 @@
     </Compile>
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\BaseOptions.cs" />
+    <Compile Include="Model\DyCheckListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="multiple.xaml.cs">
       <DependentUpon>multiple.xaml</DependentUpon>
     </Compile>
@@ -282,7 +285,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -430,20 +432,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bt_icon\btn_check.png" />
-    <Content Include="bt_icon\btn_cross.png" />
     <Content Include="bt_icon\bt_fin.png" />
     <Content Include="bt_icon\bt_nex.png" />
     <Content Include="bt_icon\bt_up.png" />
     <Content Include="bt_icon\loading_icon.gif" />
-    <Content Include="img\AD1.png" />
-    <Content Include="img\AD2.png" />
-    <Content Include="img\AD3.png" />
-    <None Include="img\Check.png" />
-    <Content Include="img\circle.png" />
-    <None Include="img\Cross.png" />
-    <Content Include="img\message.png" />
-    <Content Include="img\system.ico" />
     <EmbeddedResource Include="Number\20180501Number.txt" />
   </ItemGroup>
   <ItemGroup>

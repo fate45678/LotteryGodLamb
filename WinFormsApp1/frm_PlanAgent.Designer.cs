@@ -43,7 +43,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.pnlRightTop = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -53,6 +53,7 @@
             this.label115 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.pnlPlanNumber = new System.Windows.Forms.Panel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -192,7 +193,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.76119F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.23881F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
@@ -249,7 +250,7 @@
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUserRank.Controls.Add(this.richTextBox2);
+            this.pnlUserRank.Controls.Add(this.tableLayoutPanel3);
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlUserRank.Location = new System.Drawing.Point(724, 0);
@@ -257,13 +258,24 @@
             this.pnlUserRank.Size = new System.Drawing.Size(306, 406);
             this.pnlUserRank.TabIndex = 10;
             // 
-            // richTextBox2
+            // tableLayoutPanel3
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(6, 28);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(295, 371);
-            this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "載入中...";
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel3.MaximumSize = new System.Drawing.Size(396, 364);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 8;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(301, 318);
+            this.tableLayoutPanel3.TabIndex = 4;
             // 
             // panel33
             // 
@@ -352,6 +364,7 @@
             // 
             this.pnlPlanNumber.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlPlanNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPlanNumber.Controls.Add(this.listBox2);
             this.pnlPlanNumber.Controls.Add(this.richTextBox1);
             this.pnlPlanNumber.Controls.Add(this.listBox1);
             this.pnlPlanNumber.Controls.Add(this.panel4);
@@ -362,11 +375,20 @@
             this.pnlPlanNumber.Size = new System.Drawing.Size(396, 406);
             this.pnlPlanNumber.TabIndex = 1;
             // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 12;
+            this.listBox2.Location = new System.Drawing.Point(7, 250);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(382, 64);
+            this.listBox2.TabIndex = 3;
+            // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 249);
+            this.richTextBox1.Location = new System.Drawing.Point(7, 319);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(382, 153);
+            this.richTextBox1.Size = new System.Drawing.Size(382, 83);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -559,24 +581,19 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 21);
             this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(396, 364);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 364);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -732,9 +749,8 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "直选复式",
-            "直选单式",
-            "五星组合"});
+            "单式",
+            "复式"});
             this.cbGameDirect.Location = new System.Drawing.Point(147, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(152, 20);
@@ -766,8 +782,7 @@
             "中三",
             "后三",
             "前二",
-            "后二",
-            "定位胆"});
+            "后二"});
             this.cbGameKind.Location = new System.Drawing.Point(3, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(134, 20);
@@ -880,6 +895,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

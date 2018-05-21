@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -71,11 +72,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlSentConti = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.contextmenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.編輯 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -92,7 +95,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -104,7 +107,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button13 = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -315,8 +317,8 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "复式",
-            "单式"});
+            "单式",
+            "复式"});
             this.cbGameDirect.Location = new System.Drawing.Point(168, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(158, 20);
@@ -349,8 +351,7 @@
             "中三",
             "后三",
             "前二",
-            "后二",
-            "定位胆"});
+            "后二"});
             this.cbGameKind.Location = new System.Drawing.Point(0, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(158, 20);
@@ -383,7 +384,7 @@
             this.pnlHistory.Controls.Add(this.rtxtHistory);
             this.pnlHistory.Controls.Add(this.panel32);
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlHistory.Location = new System.Drawing.Point(1102, 0);
+            this.pnlHistory.Location = new System.Drawing.Point(1110, 0);
             this.pnlHistory.Name = "pnlHistory";
             this.pnlHistory.Size = new System.Drawing.Size(348, 346);
             this.pnlHistory.TabIndex = 0;
@@ -426,9 +427,9 @@
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(1102, 346);
+            this.panel9.Location = new System.Drawing.Point(1110, 346);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(344, 6);
+            this.panel9.Size = new System.Drawing.Size(336, 6);
             this.panel9.TabIndex = 8;
             // 
             // pnlAD4
@@ -437,9 +438,9 @@
             this.pnlAD4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD4.Controls.Add(this.picAD4);
             this.pnlAD4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD4.Location = new System.Drawing.Point(1102, 352);
+            this.pnlAD4.Location = new System.Drawing.Point(1110, 352);
             this.pnlAD4.Name = "pnlAD4";
-            this.pnlAD4.Size = new System.Drawing.Size(344, 158);
+            this.pnlAD4.Size = new System.Drawing.Size(336, 158);
             this.pnlAD4.TabIndex = 3;
             // 
             // picAD4
@@ -451,7 +452,7 @@
             this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picAD4.Location = new System.Drawing.Point(0, 0);
             this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(342, 156);
+            this.picAD4.Size = new System.Drawing.Size(334, 156);
             this.picAD4.TabIndex = 1;
             this.picAD4.TabStop = false;
             this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
@@ -459,7 +460,7 @@
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(1082, 0);
+            this.panel4.Location = new System.Drawing.Point(1090, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(20, 510);
             this.panel4.TabIndex = 5;
@@ -473,7 +474,7 @@
             this.pnlNewPlan.Controls.Add(this.panel7);
             this.pnlNewPlan.Controls.Add(this.panel8);
             this.pnlNewPlan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNewPlan.Location = new System.Drawing.Point(724, 0);
+            this.pnlNewPlan.Location = new System.Drawing.Point(732, 0);
             this.pnlNewPlan.Name = "pnlNewPlan";
             this.pnlNewPlan.Padding = new System.Windows.Forms.Padding(5);
             this.pnlNewPlan.Size = new System.Drawing.Size(358, 510);
@@ -632,7 +633,7 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(708, 0);
+            this.panel3.Location = new System.Drawing.Point(716, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(16, 510);
             this.panel3.TabIndex = 4;
@@ -642,27 +643,27 @@
             this.pnlSentConti.AutoScroll = true;
             this.pnlSentConti.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlSentConti.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSentConti.Controls.Add(this.listBox2);
             this.pnlSentConti.Controls.Add(this.listBox1);
             this.pnlSentConti.Controls.Add(this.richTextBox1);
             this.pnlSentConti.Controls.Add(this.panel31);
             this.pnlSentConti.Controls.Add(this.panel30);
             this.pnlSentConti.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSentConti.Location = new System.Drawing.Point(350, 0);
+            this.pnlSentConti.Location = new System.Drawing.Point(358, 0);
             this.pnlSentConti.Name = "pnlSentConti";
             this.pnlSentConti.Padding = new System.Windows.Forms.Padding(5);
             this.pnlSentConti.Size = new System.Drawing.Size(358, 510);
             this.pnlSentConti.TabIndex = 1;
             // 
-            // listBox1
+            // listBox2
             // 
-            this.listBox1.ContextMenuStrip = this.contextmenu;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(5, 111);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(343, 148);
-            this.listBox1.TabIndex = 5;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox2.ContextMenuStrip = this.contextmenu;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 12;
+            this.listBox2.Location = new System.Drawing.Point(5, 265);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(343, 76);
+            this.listBox2.TabIndex = 6;
             // 
             // contextmenu
             // 
@@ -679,11 +680,23 @@
             this.編輯.Size = new System.Drawing.Size(100, 22);
             this.編輯.Text = "編輯";
             // 
+            // listBox1
+            // 
+            this.listBox1.ContextMenuStrip = this.contextmenu;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(5, 111);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(343, 148);
+            this.listBox1.TabIndex = 5;
+            this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(5, 262);
+            this.richTextBox1.Location = new System.Drawing.Point(5, 345);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(343, 180);
+            this.richTextBox1.Size = new System.Drawing.Size(343, 97);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -698,6 +711,20 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(346, 55);
             this.panel31.TabIndex = 3;
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(122, 26);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(82, 23);
+            this.button13.TabIndex = 26;
+            this.button13.Text = "除错";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // label15
             // 
@@ -865,7 +892,7 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(336, 0);
+            this.panel1.Location = new System.Drawing.Point(344, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(14, 510);
             this.panel1.TabIndex = 0;
@@ -873,24 +900,24 @@
             // pnlSent
             // 
             this.pnlSent.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pnlSent.Controls.Add(this.checkedListBox1);
+            this.pnlSent.Controls.Add(this.checkedListBoxEx1);
             this.pnlSent.Controls.Add(this.panel6);
             this.pnlSent.Controls.Add(this.panel5);
             this.pnlSent.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSent.Location = new System.Drawing.Point(3, 0);
             this.pnlSent.Name = "pnlSent";
             this.pnlSent.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlSent.Size = new System.Drawing.Size(333, 510);
+            this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
             // 
-            // checkedListBox1
+            // checkedListBoxEx1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(5, 70);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(322, 395);
-            this.checkedListBox1.TabIndex = 6;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 
             // panel6
             // 
@@ -898,7 +925,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(5, 472);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(323, 33);
+            this.panel6.Size = new System.Drawing.Size(331, 33);
             this.panel6.TabIndex = 4;
             // 
             // button5
@@ -923,7 +950,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(5, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(323, 66);
+            this.panel5.Size = new System.Drawing.Size(331, 66);
             this.panel5.TabIndex = 2;
             // 
             // panel11
@@ -934,7 +961,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 39);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(323, 24);
+            this.panel11.Size = new System.Drawing.Size(331, 24);
             this.panel11.TabIndex = 8;
             // 
             // button10
@@ -982,7 +1009,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(323, 39);
+            this.panel10.Size = new System.Drawing.Size(331, 39);
             this.panel10.TabIndex = 7;
             // 
             // button12
@@ -1016,20 +1043,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(129, 26);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(82, 23);
-            this.button13.TabIndex = 26;
-            this.button13.Text = "除错";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // frm_PlanUpload
             // 
@@ -1147,7 +1160,6 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.PictureBox picAD4;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.ListBox listBox1;
@@ -1157,5 +1169,7 @@
         private System.Windows.Forms.ContextMenuStrip contextmenu;
         private System.Windows.Forms.ToolStripMenuItem 編輯;
         private System.Windows.Forms.Button button13;
+        private Model.CheckedListBoxEx checkedListBoxEx1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

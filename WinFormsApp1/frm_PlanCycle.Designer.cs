@@ -58,6 +58,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
+            this.btnFiveNumberLightPlan = new System.Windows.Forms.Button();
+            this.btnFiveNumberPhantomPlan = new System.Windows.Forms.Button();
             this.btnMidthrNumberPhantomPlan = new System.Windows.Forms.Button();
             this.btnFiveNumberGodPlan = new System.Windows.Forms.Button();
             this.rtxPlanList = new System.Windows.Forms.RichTextBox();
@@ -334,8 +336,7 @@
             "中三",
             "后三",
             "前二",
-            "后二",
-            "定位胆"});
+            "后二"});
             this.cbGameKind.Location = new System.Drawing.Point(10, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(125, 23);
@@ -544,6 +545,8 @@
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserRank.Controls.Add(this.btnFiveNumberLightPlan);
+            this.pnlUserRank.Controls.Add(this.btnFiveNumberPhantomPlan);
             this.pnlUserRank.Controls.Add(this.btnMidthrNumberPhantomPlan);
             this.pnlUserRank.Controls.Add(this.btnFiveNumberGodPlan);
             this.pnlUserRank.Controls.Add(this.rtxPlanList);
@@ -554,13 +557,33 @@
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
             // 
+            // btnFiveNumberLightPlan
+            // 
+            this.btnFiveNumberLightPlan.Location = new System.Drawing.Point(-2, 86);
+            this.btnFiveNumberLightPlan.Name = "btnFiveNumberLightPlan";
+            this.btnFiveNumberLightPlan.Size = new System.Drawing.Size(214, 23);
+            this.btnFiveNumberLightPlan.TabIndex = 8;
+            this.btnFiveNumberLightPlan.Text = "五星單式神灯计画 三期一周";
+            this.btnFiveNumberLightPlan.UseVisualStyleBackColor = true;
+            this.btnFiveNumberLightPlan.Click += new System.EventHandler(this.btnFiveNumberLightPlan_Click);
+            // 
+            // btnFiveNumberPhantomPlan
+            // 
+            this.btnFiveNumberPhantomPlan.Location = new System.Drawing.Point(-2, 57);
+            this.btnFiveNumberPhantomPlan.Name = "btnFiveNumberPhantomPlan";
+            this.btnFiveNumberPhantomPlan.Size = new System.Drawing.Size(214, 23);
+            this.btnFiveNumberPhantomPlan.TabIndex = 7;
+            this.btnFiveNumberPhantomPlan.Text = "五星單式幻影计画 三期一周";
+            this.btnFiveNumberPhantomPlan.UseVisualStyleBackColor = true;
+            this.btnFiveNumberPhantomPlan.Click += new System.EventHandler(this.btnFiveNumberPhantomPlan_Click);
+            // 
             // btnMidthrNumberPhantomPlan
             // 
-            this.btnMidthrNumberPhantomPlan.Location = new System.Drawing.Point(-1, 57);
+            this.btnMidthrNumberPhantomPlan.Location = new System.Drawing.Point(-1, 115);
             this.btnMidthrNumberPhantomPlan.Name = "btnMidthrNumberPhantomPlan";
             this.btnMidthrNumberPhantomPlan.Size = new System.Drawing.Size(214, 23);
             this.btnMidthrNumberPhantomPlan.TabIndex = 6;
-            this.btnMidthrNumberPhantomPlan.Text = "中三复式幻影計畫";
+            this.btnMidthrNumberPhantomPlan.Text = "中三單式幻影计画 二期一周";
             this.btnMidthrNumberPhantomPlan.UseVisualStyleBackColor = true;
             this.btnMidthrNumberPhantomPlan.Click += new System.EventHandler(this.btnMidthrNumberPhantomPlan_Click);
             // 
@@ -570,7 +593,7 @@
             this.btnFiveNumberGodPlan.Name = "btnFiveNumberGodPlan";
             this.btnFiveNumberGodPlan.Size = new System.Drawing.Size(214, 23);
             this.btnFiveNumberGodPlan.TabIndex = 5;
-            this.btnFiveNumberGodPlan.Text = "五星单式玉神計畫";
+            this.btnFiveNumberGodPlan.Text = "五星单式玉神计画 三期一周";
             this.btnFiveNumberGodPlan.UseVisualStyleBackColor = true;
             this.btnFiveNumberGodPlan.Click += new System.EventHandler(this.btnFiveNumberGodPlan_Click);
             // 
@@ -1397,6 +1420,7 @@
         private System.Windows.Forms.RichTextBox rtxPlanList;
         private System.Windows.Forms.Button btnFiveNumberGodPlan;
         private System.Windows.Forms.Button btnMidthrNumberPhantomPlan;
-
+        private System.Windows.Forms.Button btnFiveNumberLightPlan;
+        private System.Windows.Forms.Button btnFiveNumberPhantomPlan;
     }
 }
