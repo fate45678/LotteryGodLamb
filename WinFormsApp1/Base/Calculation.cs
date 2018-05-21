@@ -46,9 +46,73 @@ namespace WpfAppTest.Base
 
         #region 通用
 
-        #region 定位 or 定位殺 or 組合
+        #region 轉為組選
         /// <summary>
-        /// 定位 or 定位殺 or 組合
+        /// 轉為組選
+        /// </summary>
+        /// <param name="data">全部組合資料</param>
+        public static List<BaseOptions> TransNumber(List<BaseOptions> data)
+        {
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
+            if (tmpData != null && tmpData.Count > 0)
+            {
+                int number = data.FirstOrDefault().Code.Length;
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (tmpData.Where(x => x.ID == data[i].ID).Count() > 0)
+                    {
+                        var tmp = ExistsNumber(tmpData, data[i].Code, number, true, true).Where(x => x.Code != data[i].Code).ToList();
+                        tmpData = tmpData.Except(tmp).ToList();
+                    }
+                }
+            }
+            return (tmpData == null ? null : tmpData.OrderBy(x => x.Code).ToList());
+        }
+        #endregion
+
+        #region 定位 or 定位殺 or 組合
+
+        /// <summary>
+        /// 複式: 定位(殺) or 組合(殺)
+        /// </summary>
+        /// <param name="data">全部組合資料</param>
+        /// <param name="condition"></param>
+        /// <param name="number">定n位:n=-1 表示為組合, 不限定個數; n>0, 則n表示定n位</param>
+        /// <param name="isKeep">是否保留</param>
+        public static List<BaseOptions> PosNumber(List<BaseOptions> data, string condition, int number, bool isKeep)
+        {
+            List<BaseOptions> tmpData = (data == null ? null : data.Select(x => new BaseOptions { ID = x.ID, Name = x.Name, Code = x.Code, Check = false }).ToList());
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
+            {
+                condition = condition.Replace(",", " ").Replace("\r\n", " ");
+                var conArray = condition.Split(' ').Where(x => (number == -1) || (number > -1 && x.Length - x.Replace("*", "").Length == x.Length - number)).ToArray();
+                if (conArray.Count() > 0)
+                {
+                    foreach (var item in tmpData)
+                    {
+                        foreach (var n in conArray)
+                        {
+                            bool isok = true;
+                            for (int i = 0; i < n.Length; i++)
+                            {
+                                if (n[i] == '*' || !isok)
+                                    continue;
+
+                                if (item.Code[i] != n[i])
+                                    isok = false;
+                            }
+                            if (!item.Check && isok)
+                                item.Check = true;
+                        }
+                    }
+                    tmpData = tmpData.Where(x => (isKeep && x.Check) || (!isKeep && !x.Check)).ToList();
+                }
+            }
+            return (tmpData == null ? null : tmpData.OrderBy(x => x.Code).ToList());
+        }
+
+        /// <summary>
+        /// 單式: 定位 or 定位殺
         /// </summary>
         /// <param name="data">全部組合資料</param>
         /// <param name="condition"></param>
@@ -57,7 +121,7 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> PosNumber(List<BaseOptions> data, string condition, string pos, bool isKeep)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int posindex = 0;
@@ -104,12 +168,12 @@ namespace WpfAppTest.Base
         }
 
         /// <summary>
-        /// 定位 or 定位殺 or 組合-for CheckBoxList使用
+        /// 定位(殺) or 組合(殺)-for CheckBoxList使用
         /// </summary>
         /// <param name="data">全部組合資料</param>
         /// <param name="cbl"></param>
         /// <param name="pos">定位的index</param>
-        /// <param name="isKeep">是否保留</param>
+        /// <param name="isKeep">是否保留 true定位 false定位殺</param>
         public static List<BaseOptions> PosNumber(List<BaseOptions> data, CheckBoxList cbl, string pos, bool isKeep = true)
         {
             string condition = BeforeCheck(data, cbl);
@@ -117,9 +181,9 @@ namespace WpfAppTest.Base
         }
         #endregion
 
-        #region 直選
+        #region 直選/殺直選
         /// <summary>
-        /// 直選
+        /// 直選/殺直選
         /// </summary>
         /// <param name="data">全部組合資料</param>
         /// <param name="condition"></param>
@@ -127,8 +191,9 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> AssignNumber(List<BaseOptions> data, string condition, bool isKeep)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
+                condition = condition.Replace(",", " ");
                 var conArray = condition.Split(' ');
 
                 //不保留
@@ -149,41 +214,81 @@ namespace WpfAppTest.Base
         /// <param name="data">全部組合資料</param>
         /// <param name="condition"></param>
         /// <param name="n">出n碼</param>
+        /// <param name="checkUnit">是否參考個數</param>
         /// <param name="isKeep">是否保留 true出n碼 false殺n碼</param>
-        public static List<BaseOptions> ExistsNumber(List<BaseOptions> data, string condition, int n, bool isKeep)
+        public static List<BaseOptions> ExistsNumber(List<BaseOptions> data, string condition, int n, bool checkUnit, bool isKeep)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
+                condition = condition.Replace(",", " ");
                 var conArray = condition.Split(' ');
                 conArray = conArray.Where(x => x.ToString().Length == n).ToArray();
-                bool match = false;
 
-                foreach (var item in data)
+                if (conArray.Count() > 0)
                 {
-                    foreach (var no in conArray)
+                    bool match = true;
+                    foreach (var item in tmpData)
                     {
-                        foreach (var c in no)
+                        item.Check = false;
+                        foreach (var number in conArray)
                         {
-                            match = item.Code.Contains(c.ToString());
-                            if (!match)
+                            match = true;
+
+                            //暫存code
+                            string tmpCode = item.Code;
+                            int index = -1;
+                            foreach (var c in number)
+                            {
+                                if (checkUnit)
+                                {
+                                    if (tmpCode.Contains(c.ToString()))
+                                    {
+                                        index = tmpCode.IndexOf(c);
+                                        if (index > -1)
+                                            tmpCode = tmpCode.Remove(index, 1);
+                                        else
+                                            match = false;
+                                    }
+                                    else
+                                        match = false;
+                                }
+                                else
+                                {
+                                    if (!tmpCode.Contains(c.ToString()))
+                                        match = false;
+                                }
+
+                                if (!match)
+                                    break;
+                            }
+
+                            if (match)
+                            {
+                                item.Check = true;
                                 break;
+                            }
                         }
                     }
-
-                    if (match)
-                    {
-                        if (!isKeep)
-                            tmpData.Remove(item);
-                    }
-                    else
-                    {
-                        if (isKeep)
-                            tmpData.Remove(item);
-                    }
+                    tmpData = tmpData.Where(x => (isKeep && x.Check) || (!isKeep && !x.Check)).ToList();
                 }
             }
             return (tmpData == null ? null : tmpData.OrderBy(x => x.Code).ToList());
+        }
+
+        /// <summary>
+        /// 任n碼-for CheckBoxList使用
+        /// 組號裡出現某些數字,任n碼
+        /// </summary>
+        /// <param name="data">全部組合資料</param>
+        /// <param name="condition"></param>
+        /// <param name="n">出n碼</param>
+        /// <param name="checkUnit">是否參考個數</param>
+        /// <param name="isKeep">是否保留 true出n碼 false殺n碼</param>
+        public static List<BaseOptions> ExistsNumber(List<BaseOptions> data, CheckBoxList cbl, int n, bool checkUnit, bool isKeep = true)
+        {
+            string condition = BeforeCheck(data, cbl);
+            return ExistsNumber(data, condition, n, checkUnit, isKeep);
         }
         #endregion
 
@@ -197,7 +302,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> OddEvenNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int number = 0;
@@ -251,7 +356,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> CheckValueNumber(List<BaseOptions> data, string condition, int type, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int number = 0;
@@ -306,7 +411,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> DivThreeRemainder(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int number = 0;
@@ -359,7 +464,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> PrimeNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 string checkvalue = "";
@@ -411,7 +516,7 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> SumNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int number = 0;
@@ -462,7 +567,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> SumLastNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 int number = 0;
@@ -513,7 +618,7 @@ namespace WpfAppTest.Base
         private static List<BaseOptions> CrossNumber(List<BaseOptions> data, string condition, bool isKeep = true)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && !string.IsNullOrEmpty(condition))
+            if (tmpData != null && tmpData.Count > 0 && !string.IsNullOrEmpty(condition))
             {
                 var conArray = condition.Split(' ');
                 char[] tmp;
@@ -632,6 +737,7 @@ namespace WpfAppTest.Base
         #endregion
 
         #region 特殊
+
         #region 二星-不定型態-類型
         /// <summary>
         /// 二星-不定型態-類型
@@ -642,19 +748,19 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> TwoStartType(List<BaseOptions> data, string value, bool isKeep)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && value.Contains("1"))
+            if (tmpData != null && tmpData.Count > 0 && value.Contains("1"))
             {
                 bool match = false;
                 foreach (var item in data)
                 {
                     match = (value[0] == '1' && PairNumber(item)) ||
-                            (value[1] == '1' && ContinueNumber(item)) ||
+                            (value[1] == '1' && TwoStartContinueNumber(item)) ||
                             (value[3] == '1' && FalsePair(item, 5));
                     //(value[4] == '1' && FalsePair(item, 6));
 
                     //散號
                     if (value[2] == '1')
-                        match = (match || (!PairNumber(item) && !ContinueNumber(item)));
+                        match = (match || (!PairNumber(item) && !TwoStartContinueNumber(item)));
 
                     if (isKeep)
                     {
@@ -682,7 +788,7 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> ThreeStartMatch(List<BaseOptions> data, List<Match> rows)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && rows != null && rows.Count > 0)
+            if (tmpData != null && tmpData.Count > 0 && rows != null && rows.Count > 0)
             {
                 foreach (Match row in rows)
                 {
@@ -716,17 +822,17 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> ThreeSpecialData(List<BaseOptions> data, string value)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && value.Contains("1"))
+            if (tmpData != null && tmpData.Count > 0 && value.Contains("1"))
             {
                 bool match = true;
                 foreach (var item in data)
                 {
                     match = (value[0] == '1' && SameNumber(item)) ||
-                            (value[1] == '1' && SameNumber(item)) ||
+                            (value[1] == '1' && NSameNumber(item, 2)) ||
                             (value[2] == '1' && SameNumber(item)) ||
                             (value[3] == '1' && DisContinueNumber(item)) ||
-                            (value[4] == '1' && SameNumber(item)) ||
-                            (value[5] == '1' && SameNumber(item));
+                            (value[4] == '1' && ContinueNumber(item, 2)) ||
+                            (value[5] == '1' && ContinueNumber(item, 3));
 
                     if (match)
                         tmpData.Remove(item);
@@ -746,7 +852,7 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> FourSpecialData(List<BaseOptions> data, string value)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && value.Contains("1"))
+            if (tmpData != null && tmpData.Count > 0 && value.Contains("1"))
             {
                 bool match = true;
                 foreach (var item in data)
@@ -776,20 +882,23 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> FourSpecial2Data(List<BaseOptions> data, string value)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && value.Contains("1"))
+            if (tmpData != null && tmpData.Count > 0 && value.Contains("1"))
             {
                 bool match = true;
                 foreach (var item in data)
                 {
                     match = (value[0] == '1' && SameNumber(item)) ||
                             (value[1] == '1' && DisContinueNumber(item)) ||
-                            (value[2] == '1' && SameNumber(item)) ||
-                            (value[3] == '1' && SameNumber(item)) ||
-                            (value[4] == '1' && SameNumber(item)) ||
-                            (value[5] == '1' && SameNumber(item)) ||
+                            (value[2] == '1' && ContinueNumber(item, 2)) ||
+                            (value[3] == '1' && ContinueNumber(item, 3)) ||
+                            (value[4] == '1' && ContinueNumber(item, 4)) ||
                             (value[6] == '1' && PairNumber(item)) ||
-                            (value[7] == '1' && ThreeSameNumber(item)) ||
+                            (value[7] == '1' && NSameNumber(item, 3)) ||
                             (value[8] == '1' && TwoPairNumber(item));
+
+                    if (value[5] == '1')
+                        match = (match || (!SameNumber(item) && !DisContinueNumber(item) && !ContinueNumber(item, 2) && !ContinueNumber(item, 3) &&
+                                           !ContinueNumber(item, 4) && !PairNumber(item) && !NSameNumber(item, 3) && !TwoPairNumber(item)));
 
                     if (match)
                         tmpData.Remove(item);
@@ -809,18 +918,19 @@ namespace WpfAppTest.Base
         public static List<BaseOptions> FiveSpecialData(List<BaseOptions> data, string value)
         {
             List<BaseOptions> tmpData = (data == null ? null : data.ToList());
-            if (tmpData != null && value.Contains("1"))
+            if (tmpData != null && tmpData.Count > 0 && value.Contains("1"))
             {
                 bool match = true;
                 foreach (var item in data)
                 {
+                    //上山.下山.不連.2連.3連.4連.5連.AAAAA.AABCD.AABBC.AAABB.AAABC.AAAAB.ABCDE
                     match = (value[0] == '1' && ASCNumber(item)) ||
                             (value[1] == '1' && DESCNumber(item)) ||
-                            (value[2] == '1' && SameNumber(item)) ||
-                            (value[3] == '1' && SameNumber(item)) ||
-                            (value[4] == '1' && SameNumber(item)) ||
-                            (value[5] == '1' && SameNumber(item)) ||
-                            (value[6] == '1' && SameNumber(item)) ||
+                            (value[2] == '1' && DisContinueNumber(item)) ||
+                            (value[3] == '1' && ContinueNumber(item, 2)) ||
+                            (value[4] == '1' && ContinueNumber(item, 3)) ||
+                            (value[5] == '1' && ContinueNumber(item, 4)) ||
+                            (value[6] == '1' && ContinueNumber(item, 5)) ||
                             (value[7] == '1' && AAAAANumber(item)) ||
                             (value[8] == '1' && AABCDNumber(item)) ||
                             (value[9] == '1' && AABBCNumber(item)) ||
@@ -838,6 +948,28 @@ namespace WpfAppTest.Base
         #endregion
 
         #region 特殊處理
+
+        #region 連號-二星使用
+        /// <summary>
+        /// 連號-二星使用
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>true:連號 false:不連號</returns>
+        private static bool TwoStartContinueNumber(BaseOptions data)
+        {
+            int last = -99;
+            int tmpNumber = 0;
+            foreach (var c in data.Code)
+            {
+                int.TryParse(c.ToString(), out tmpNumber);
+                if (tmpNumber - 1 == last || tmpNumber + 1 == last)
+                    return true;
+
+                last = tmpNumber;
+            }
+            return false;
+        }
+        #endregion
 
         #region 上山
         /// <summary>
@@ -1104,28 +1236,6 @@ namespace WpfAppTest.Base
         }
         #endregion
 
-        #region 連號-二星使用
-        /// <summary>
-        /// 連號-二星使用
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns>true:連號 false:不連號</returns>
-        private static bool ContinueNumber(BaseOptions data)
-        {
-            int last = -99;
-            int tmpNumber = 0;
-            foreach (var c in data.Code)
-            {
-                int.TryParse(c.ToString(), out tmpNumber);
-                if (tmpNumber - 1 == last || tmpNumber + 1 == last)
-                    return true;
-
-                last = tmpNumber;
-            }
-            return false;
-        }
-        #endregion
-
         #region 不連
         /// <summary>
         /// 不連
@@ -1151,16 +1261,40 @@ namespace WpfAppTest.Base
         }
         #endregion
 
-        #region 二連
-        #endregion
+        #region n連
+        /// <summary>
+        /// 是否n連號
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="n">n連</param>
+        /// <returns>是否n連號</returns>
+        private static bool ContinueNumber(BaseOptions data, int n)
+        {
+            var array = string.Join("|", data.Code.ToCharArray().OrderBy(x => x));
+            array = (array[array.Length - 1] == '9' ? "-1|" : "") + array + (array[0] == '0' ? "|0" : "");
+            var tmp = array.Split('|').ToArray();
 
-        #region 三連
-        #endregion
+            //上一碼
+            int last = 0;
+            int.TryParse(tmp[0].ToString(), out last);
+            int tmpNumber = 0;
+            int max = 0;
+            int count = 1;
 
-        #region 四連
-        #endregion
+            for (int i = 1; i < tmp.Length; i++)
+            {
+                int.TryParse(tmp[i].ToString(), out tmpNumber);
+                if ((last == 9 ? -1 : last) + 1 == tmpNumber)
+                    count++;
+                else
+                    count = 1;
 
-        #region 五連
+                int.TryParse(tmp[i].ToString(), out last);
+                if (count > max)
+                    max = count;
+            }
+            return (max == n);
+        }
         #endregion
 
         #region 散號
@@ -1178,17 +1312,17 @@ namespace WpfAppTest.Base
         }
         #endregion
 
-        #region 三同號
+        #region n同號
         /// <summary>
-        /// 三同號
+        /// n同號
         /// </summary>
         /// <param name="data"></param>
-        /// <returns>true:有符合三同號 false:未符合三同號</returns>
-        private static bool ThreeSameNumber(BaseOptions data)
+        /// <returns>true:有符合n同號 false:未符合n同號</returns>
+        private static bool NSameNumber(BaseOptions data, int n)
         {
             for (int i = 0; i <= 9; i++)
             {
-                if (data.Code.Where(x => x.ToString() == i.ToString()).Count() >= 3)
+                if (data.Code.Where(x => x.ToString() == i.ToString()).Count() >= n)
                     return true;
             }
             return false;

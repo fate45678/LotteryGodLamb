@@ -146,6 +146,13 @@ namespace WpfAppTest
             teSum.Text = "";
             teStart.Text = "0";
             teEnd.Text = "0";
+
+            /*CheckBox*/
+            cbIgnore1_1.IsChecked = true;
+            cbIgnore1_2.IsChecked = true;
+            cbIgnore2_1.IsChecked = true;
+            cbIgnore2_2.IsChecked = true;
+
             IsSetting = false;
         }
 
@@ -173,21 +180,23 @@ namespace WpfAppTest
             //殺直選
             tmp = Calculation.AssignNumber(tmp, teEditor1.Text, false);
 
-            //殺垃圾
+            //殺垃圾複式
+            tmp = Calculation.GarbageNumber(tmp, teEditor2.Text, 2, '*', 4);
 
             //殺兩碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor3_1.Text, 2, false);
+            tmp = Calculation.ExistsNumber(tmp, teEditor3_1.Text, 2, (!(bool)cbIgnore1_1.IsChecked), false);
 
             //必出兩碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor3_2.Text, 2, true);
+            tmp = Calculation.ExistsNumber(tmp, teEditor3_2.Text, 2, (!(bool)cbIgnore1_2.IsChecked), true);
 
             //殺三碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor4_1.Text, 3, false);
+            tmp = Calculation.ExistsNumber(tmp, teEditor4_1.Text, 3, (!(bool)cbIgnore2_1.IsChecked), false);
 
             //必出三碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor4_2.Text, 3, true);
+            tmp = Calculation.ExistsNumber(tmp, teEditor4_2.Text, 3, (!(bool)cbIgnore2_2.IsChecked), true);
 
             //定位杀号
+            tmp = Calculation.PosNumber(tmp, teEditor5.Text, -1, false);
             #endregion
 
             #region group2-定位殺
@@ -208,8 +217,9 @@ namespace WpfAppTest
             tmp = Calculation.CrossNumber(tmp, cblType2, false);
 
             //殺通碼
+            tmp = Calculation.ExistsNumber(tmp, cblType3, 1, false, false);
 
-            //殺AC值
+            //殺AC值=>目前不需
 
             #endregion
 

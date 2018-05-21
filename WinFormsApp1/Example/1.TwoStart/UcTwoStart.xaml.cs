@@ -232,6 +232,10 @@ namespace WpfAppTest
             else if (btn.Name == "btnFilter")
             {
                 /*號碼縮水*/
+                string btncontent = (string)btn.Content;
+                btn.IsEnabled = false;
+                btn.Content = "载入中...";
+
                 var tmp = (form[1] as UcTwoStart1).Filter(AllConbination);
                 tmp = (form[2] as UcTwoStart2).Filter(tmp);
                 tmp = (form[3] as UcTwoStart3).Filter(tmp);
@@ -244,6 +248,9 @@ namespace WpfAppTest
                 //tmp = (form[7] as UcTwoStart7).Filter(tmp);
 
                 teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+
+                btn.Content = btncontent;
+                btn.IsEnabled = true;
             }
             else if (btn.Name == "btnClear")
             {

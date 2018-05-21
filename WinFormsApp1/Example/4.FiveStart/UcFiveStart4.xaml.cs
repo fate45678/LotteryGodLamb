@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Windows.Media;
 using System.Drawing;
 using Forms = System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace WpfAppTest
 {
@@ -71,14 +72,14 @@ namespace WpfAppTest
                                     openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
                                     te.Text = File.ReadAllText(openFileDialog.FileName);
                                 else
-                                    System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
+                                    System.Windows.Forms.MessageBox.Show("非文本文件无法开启。");
                             }
                             else
                                 te.Text = "";
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("檔案不存在，請確認後再選取。");
+                            System.Windows.Forms.MessageBox.Show("档案不存在，请确认后再选取。");
                         }
                     }
                 }
@@ -94,7 +95,7 @@ namespace WpfAppTest
                     if (!string.IsNullOrEmpty(teResult.Text))
                     {
                         System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                        System.Windows.Forms.MessageBox.Show("號碼複製成功。");
+                        System.Windows.Forms.MessageBox.Show("号码复制成功。");
                     }
                 }
                 else if (btn.Name == "btnIntersection" || btn.Name == "btnUnion" ||
@@ -104,8 +105,13 @@ namespace WpfAppTest
                     string[] arrayB = new string[] { };
                     string[] arrayC = new string[] { };
                     string[] empty = new string[1] { "" };
-                    arrayA = teCompareA.Text.Split(' ').ToArray();
-                    arrayB = teCompareB.Text.Split(' ').ToArray();
+
+                    //處理文字區段
+                    string textA = Regex.Replace(Regex.Replace(teCompareA.Text, "\n", " "), "[^0-9|\\s]", "");
+                    string textB = Regex.Replace(Regex.Replace(teCompareB.Text, "\n", " "), "[^0-9|\\s]", "");
+
+                    arrayA = textA.Split(' ').Except(empty).ToArray();
+                    arrayB = textB.Split(' ').Except(empty).ToArray();
 
                     if (btn.Name == "btnIntersection")
                     {
@@ -127,6 +133,10 @@ namespace WpfAppTest
                         /*B排除A*/
                         arrayC = arrayB.Except(arrayA).ToArray();
                     }
+
+                    teCompareA.Text = string.Join(" ", arrayA);
+                    teCompareB.Text = string.Join(" ", arrayB);
+
                     teResult.Text = string.Join(" ", arrayC);
                     teUnit.Text = arrayC.Count().ToString();
                 }

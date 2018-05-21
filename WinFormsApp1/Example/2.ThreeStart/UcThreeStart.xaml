@@ -9,7 +9,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!--左半-篩選區-->
@@ -23,17 +24,17 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True"/>
 
             <StackPanel Grid.Row="1">
                 <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
                     <TextBlock Text="最后注数：" DockPanel.Dock="Left"/>
                     <TextBlock x:Name="tbCount" DockPanel.Dock="Right"/>
                 </DockPanel>
-                <Button x:Name="btnFilter" Content="開始縮水" Click="btn_Click" DockPanel.Dock="Top" Margin="0,0,0,3"/>
-                <Button x:Name="btnTransfer" Content="轉為組選" Click="btn_Click" Margin="0,0,0,3"/>
-                <Button x:Name="btnCopy" Content="複製號碼" Click="btn_Click" DockPanel.Dock="Bottom" Margin="0,0,0,3"/>
-                <Button x:Name="btnClear" Content="清空條件" Click="btn_Click" DockPanel.Dock="Bottom" />
+                <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0,0,0,3"/>
+                <Button x:Name="btnTransfer" Content="转为组选" Click="btn_Click" Margin="0,0,0,3"/>
+                <Button x:Name="btnCopy" Content="复制号码" Click="btn_Click" DockPanel.Dock="Bottom" Margin="0,0,0,3"/>
+                <Button x:Name="btnClear" Content="清空条件" Click="btn_Click" DockPanel.Dock="Bottom" />
             </StackPanel>
         </Grid>
     </Grid>

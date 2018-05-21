@@ -36,7 +36,6 @@ namespace WpfAppTest
         {
             if (IsFirstTime)
             {
-                OldText = new int[2] { 0, 0 };
                 SetData();
                 IsFirstTime = false;
             }
@@ -53,6 +52,8 @@ namespace WpfAppTest
         void SetData()
         {
             AllConbination = DB.CombinationNumber(3, 0, 9);
+            btnTransfer.IsEnabled = false;
+            OldText = new int[2] { 0, 0 };
         }
 
         void SetDefaultValue()
@@ -60,6 +61,11 @@ namespace WpfAppTest
             teResult.Text = "";
             tbCount.Text = "0";
         }
+
+        /// <summary>
+        /// 縮水後結果
+        /// </summary>
+        List<BaseOptions> FilterData;
 
         /// <summary>
         /// 右半-結果區的按鈕事件
@@ -74,14 +80,34 @@ namespace WpfAppTest
                 if (btn.Name == "btnFilter")
                 {
                     /*開始縮水*/
+                    string btncontent = (string)btn.Content;
+                    btn.IsEnabled = false;
+                    btn.Content = "载入中...";
+
+                    //縮水
                     var tmp = ucThree1.Filter(AllConbination);
                     teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
                     tbCount.Text = tmp.Count.ToString();
+                    ucThree1.RefreshBottom(string.Join("    ", tmp.Select(x => x.Code)));
+
+                    //組選
+                    FilterData = tmp;
+                    btnTransfer.IsEnabled = true;
+
+                    //btn啟用
+                    btn.Content = btncontent;
+                    btn.IsEnabled = true;
                 }
                 else if (btn.Name == "btnTransfer")
                 {
                     /*轉為組選*/
-                    /*尚未有邏輯確認*/
+                    if (FilterData != null)
+                    {
+                        var tmp = Base.Calculation.TransNumber(FilterData);
+                        teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                        tbCount.Text = tmp.Count.ToString();
+                        ucThree1.RefreshBottom(string.Join("    ", tmp.Select(x => x.Code)));
+                    }
                 }
                 else if (btn.Name == "btnCopy")
                 {

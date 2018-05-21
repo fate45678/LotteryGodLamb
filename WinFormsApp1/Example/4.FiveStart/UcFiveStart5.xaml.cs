@@ -139,14 +139,14 @@ namespace WpfAppTest
                                     openFileDialog.FileName.Substring(openFileDialog.FileName.Length - 3, 3) == "txt")
                                     teNumber.Text = File.ReadAllText(openFileDialog.FileName);
                                 else
-                                    System.Windows.Forms.MessageBox.Show("非文字檔無法開啟。");
+                                    System.Windows.Forms.MessageBox.Show("非文本文件无法开启。");
                             }
                             else
                                 teNumber.Text = "";
                         }
                         else
                         {
-                            System.Windows.Forms.MessageBox.Show("檔案不存在，請確認後再選取。");
+                            System.Windows.Forms.MessageBox.Show("档案不存在，请确认后再选取。");
                         }
                     }
                 }

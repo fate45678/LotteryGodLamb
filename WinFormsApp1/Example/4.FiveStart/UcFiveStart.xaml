@@ -9,7 +9,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!--左半-篩選區-->
@@ -41,19 +42,19 @@
                 <Button Content="兑奖匹配" DockPanel.Dock="Right" />
                 <TextBox DockPanel.Dock="Left" Margin="0,0,3,0"/>
             </DockPanel>-->
-            <TextBox x:Name="teResult" Margin="5,0,0,5" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+            <TextBox x:Name="teResult" Margin="5,0,0,5" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
 
             </TextBox>
-            <DockPanel Grid.Row="2" Margin="5,0,0,5">
+            <DockPanel Grid.Row="2" Margin="5,0,0,5" HorizontalAlignment="Center">
                 <TextBlock Text="结果注数：" DockPanel.Dock="Left"/>
                 <TextBlock x:Name="tbCount" Text="0"/>
             </DockPanel>
-            
+
             <DockPanel Margin="5,0,0,0" Grid.Row="3">
                 <StackPanel DockPanel.Dock="Left">
                     <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 0, 0, 3"/>
-                    <Button x:Name="btnClear" Content="清空所有条件" Click="btn_Click" Margin="0, 0, 0, 3"/>
                     <Button x:Name="btnTransfer" Content="转为组选" Click="btn_Click" Margin="0, 0, 0, 3"/>
+                    <Button x:Name="btnClear" Content="清空所有条件" Click="btn_Click" Margin="0, 0, 0, 3"/>
                     <Button x:Name="btnCopy" Content="复制全部号码" Click="btn_Click" Margin="0, 0, 0, 3"/>
                     <Button x:Name="btnExport" Content="导出全部号码" Click="btn_Click" DockPanel.Dock="Bottom" />
                 </StackPanel>
