@@ -28,11 +28,28 @@ namespace WpfAppTest
             }
         }
 
+        CheckBoxList cblOption1_2;
+        CheckBoxList cblOption2_2;
         void SetData()
         {
+            cblOption1_2 = new CheckBoxList();
+            cblOption1_2.DisplayMemberPath = "Name";
+            cblOption1_2.ValueMemberPath = "ID";
+
+            cblOption2_2 = new CheckBoxList();
+            cblOption2_2.DisplayMemberPath = "Name";
+            cblOption2_2.ValueMemberPath = "ID";
+
             /*CheckBoxList*/
-            cblOption1.ItemsSource = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
-            cblOption2.ItemsSource = DB.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).OrderByDescending(x => x.Code);
+            var dataOption1 = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code).ToList();
+            var dataOption2 = DB.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).ToList();
+            cblOption1_2.ItemsSource = dataOption1;
+            cblOption2_2.ItemsSource = dataOption2;
+
+            var array1 = new string[6] { "00", "01", "02", "12", "11", "22" };
+
+            cblOption1.ItemsSource = dataOption1.Where(x => array1.Contains(x.Code)).ToList();
+            cblOption2.ItemsSource = dataOption2.Where(x => array1.Contains(x.Code)).OrderByDescending(x => x.Code).ToList();
             cblOption3.ItemsSource = DB.CreateOption(1, 4, new string[4] { "对子", "连号", "杂号", "假对" }).OrderBy(x => x.ID); //, "假连"
 
             /*RadioButtonList*/
@@ -50,7 +67,6 @@ namespace WpfAppTest
         /// </summary>
         public void SetDefaultValue()
         {
-            IsSetting = true;
             /*CheckBoxList*/
             cblOption1.Clear();
             cblOption2.Clear();
@@ -60,8 +76,6 @@ namespace WpfAppTest
             rblOption1.SelectedValue = 1;
             rblOption2.SelectedValue = 1;
             rblOption3.SelectedValue = 1;
-
-            IsSetting = false;
         }
 
         /// <summary>
@@ -69,12 +83,10 @@ namespace WpfAppTest
         /// </summary>
         public void SelectAll()
         {
-            IsSetting = true;
             /*CheckBoxList*/
             cblOption1.SelectedAll();
             cblOption2.SelectedAll();
             cblOption3.SelectedAll();
-            IsSetting = false;
         }
 
         /// <summary>
@@ -83,29 +95,37 @@ namespace WpfAppTest
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
             //012路
-            tmp = Calculation.DivThreeRemainder(tmp, cblOption1, ((int)rblOption1.SelectedValue == 1));
+            cblOption1_2.SelectedValue = changevalue(cblOption1_2, cblOption1);
+            tmp = Calculation.DivThreeRemainder(tmp, cblOption1_2, ((int)rblOption1.SelectedValue == 1));
 
             //大中小
-            tmp = Calculation.CheckValueNumber(tmp, cblOption2, 2, ((int)rblOption2.SelectedValue == 1));
+            cblOption2_2.SelectedValue = changevalue(cblOption2_2, cblOption2);
+            tmp = Calculation.CheckValueNumber(tmp, cblOption2_2, 2, ((int)rblOption2.SelectedValue == 1));
 
             //類型
             tmp = Calculation.TwoStartType(tmp, cblOption3.SelectedValue, ((int)rblOption3.SelectedValue == 1));
             return tmp;
         }
 
-        bool IsSetting = false;
-        private void cbl_SelectedValueChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private string changevalue(CheckBoxList dest, CheckBoxList source)
         {
-            if (!IsSetting)
+            string str = source.SelectedValue;
+            var datadest = dest.ItemsSource.Cast<BaseOptions>().ToList();
+            var datasource = source.ItemsSource.Cast<BaseOptions>().ToList();
+
+            for (int i = 0; i < source.SelectedValue.Length; i++)
             {
-                var cbl = sender as CheckBoxList;
-                if (cbl != null)
+                if (source.SelectedValue[i] == '1')
                 {
-                    if (cbl.Name == "cblOption1")
-                    {
-                    }
+                    string test = datasource.Where(x => x.ID == i + 1).FirstOrDefault().Code;
+                    string test2 = (test[1].ToString() + test[0].ToString());
+                    int id = datadest.Where(x => x.Code == test2).FirstOrDefault().ID;
+                    var array = str.ToCharArray();
+                    array[id - 1] = '1';
+                    str = string.Join("", array);
                 }
             }
+            return str;
         }
     }
 }

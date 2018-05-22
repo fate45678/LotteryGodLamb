@@ -23,7 +23,7 @@
             <TabControl x:Name="tcSettings" SelectionChanged="tcSettings_SelectionChanged" />
 
             <DockPanel Grid.Row="1">
-                <GroupBox Header="杀大小排列" Margin="0,3,0,0" Grid.Row="0" >
+                <GroupBox Header="特别排除" Margin="0,3,0,0" Grid.Row="0" >
                     <local:CheckBoxList Margin="3" x:Name="cblSpecialExclude" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </GroupBox>
             </DockPanel>

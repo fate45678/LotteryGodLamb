@@ -54,10 +54,10 @@ namespace WpfAppTest
                     string[] arrayB = new string[] { };
                     string[] arrayC = new string[] { };
                     string[] empty = new string[1] { "" };
-                    
+
                     //處理文字區段
-                    string textA = Regex.Replace(Regex.Replace(teCompareA.Text, "\n", " "), "[^0-9|\\s]", "");
-                    string textB = Regex.Replace(Regex.Replace(teCompareB.Text, "\n", " "), "[^0-9|\\s]", "");
+                    string textA = Regex.Replace(Regex.Replace(teCompareA.Text, "\n", " "), "[^0-9]", "");
+                    string textB = Regex.Replace(Regex.Replace(teCompareB.Text, "\n", " "), "[^0-9]", "");
 
                     int countA = textA.Length / 2;
                     int countB = textB.Length / 2;

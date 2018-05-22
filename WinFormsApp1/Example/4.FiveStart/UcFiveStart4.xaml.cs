@@ -126,12 +126,12 @@ namespace WpfAppTest
                     else if (btn.Name == "btnExcludeB")
                     {
                         /*A排除B*/
-                        arrayC = arrayA.Except(arrayB).ToArray();
+                        arrayC = arrayA.Except(arrayB).Except(empty).ToArray();
                     }
                     else if (btn.Name == "btnExcludeA")
                     {
                         /*B排除A*/
-                        arrayC = arrayB.Except(arrayA).ToArray();
+                        arrayC = arrayB.Except(arrayA).Except(empty).ToArray();
                     }
 
                     teCompareA.Text = string.Join(" ", arrayA);

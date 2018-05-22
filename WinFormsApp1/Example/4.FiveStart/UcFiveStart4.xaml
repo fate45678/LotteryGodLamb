@@ -22,7 +22,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid x:Name="gdContainer">
+    <Grid x:Name="gdContainer" Width="850">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="250"/>
@@ -38,8 +38,8 @@
             <TextBlock Text="五星大底A" DockPanel.Dock="Left">
 
             </TextBlock>
-            <Button x:Name="btnImportA" Content="汇入A" Click="btn_Click" DockPanel.Dock="Right"></Button>
-            <Button x:Name="btnClearA" Content="清除A" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
+            <Button x:Name="btnImportA" Content="汇入A" Click="btn_Click" DockPanel.Dock="Right" />
+            <Button x:Name="btnClearA" Content="清除A" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,5,0"/>
         </DockPanel>
         <TextBox x:Name="teCompareA" Grid.Column="0" Grid.Row="1" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
 
@@ -47,8 +47,8 @@
             <TextBlock Text="五星大底B" DockPanel.Dock="Left">
 
             </TextBlock>
-            <Button x:Name="btnImportB" Content="汇入B" Click="btn_Click" DockPanel.Dock="Right"></Button>
-            <Button x:Name="btnClearB" Content="清除B" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
+            <Button x:Name="btnImportB" Content="汇入B" Click="btn_Click" DockPanel.Dock="Right" />
+            <Button x:Name="btnClearB" Content="清除B" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,5,0"/>
         </DockPanel>
         <TextBox x:Name="teCompareB" Grid.Column="1" Grid.Row="1" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
 

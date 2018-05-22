@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -415,7 +415,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
 
             <!--Column=0-->
@@ -547,7 +547,7 @@
 
             <!--Column=1-->
             <GroupBox Header="012路特别排除" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
-                <DockPanel Width="150">
+                <DockPanel Width="160" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>

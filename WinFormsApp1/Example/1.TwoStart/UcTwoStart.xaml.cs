@@ -104,11 +104,14 @@ namespace WpfAppTest
             (tcSettings.Items[6] as TabItem).Visibility = Visibility.Collapsed;
         }
 
+        bool IsSetting = false;
         void SetDefaultValue()
         {
+            IsSetting = true;
             if (cm != null)
                 mi_Click(cm.Items[0], null);
             teResult.Text = "";
+            IsSetting = false;
         }
         #endregion
 
@@ -163,7 +166,8 @@ namespace WpfAppTest
                         if (!string.IsNullOrEmpty(teResult.Text))
                         {
                             System.Windows.Forms.Clipboard.SetText(teResult.Text);
-                            System.Windows.Forms.MessageBox.Show("号码复制成功。");
+                            if (!IsSetting)
+                                System.Windows.Forms.MessageBox.Show("号码复制成功。");
                         }
                     }
                     else if ((string)mi.Tag == "miCopyA")

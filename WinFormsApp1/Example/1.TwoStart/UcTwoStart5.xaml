@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
-    <Grid>
+    <Grid Width="850">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

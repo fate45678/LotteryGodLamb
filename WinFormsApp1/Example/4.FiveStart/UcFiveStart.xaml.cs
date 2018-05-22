@@ -88,6 +88,11 @@ namespace WpfAppTest
         }
 
         /// <summary>
+        /// 縮水後結果
+        /// </summary>
+        List<BaseOptions> FilterData;
+
+        /// <summary>
         /// 右半-結果區的按鈕事件
         /// </summary>
         /// <param name="sender"></param>
@@ -103,22 +108,50 @@ namespace WpfAppTest
                     string btncontent = (string)btn.Content;
                     btn.IsEnabled = false;
                     btn.Content = "载入中...";
-                    
+
                     //BaseHelper.DynamicPublicMethod((tcSettings.Items[0] as TabItem).Content, "Filter", new object[1] { AllConbination });
 
+                    /*原寫法
+                    ////大底先篩
+                    //var tmp = ((tcSettings.Items[12] as TabItem).Content as UcFiveStart5).Filter(AllConbination);
+
+                    ////特別排除
+                    //tmp = Calculation.FiveSpecialData(tmp, cblSpecialExclude.SelectedValue);
+
+                    //tmp = ((tcSettings.Items[0] as TabItem).Content as UcFiveStart1).Filter(tmp);
+                    //tmp = ((tcSettings.Items[1] as TabItem).Content as UcFiveStart2).Filter(tmp);
+                    //tmp = ((tcSettings.Items[10] as TabItem).Content as UcFiveStart3).Filter(tmp);
+                    */
+
                     //大底先篩
-                    var tmp = ((tcSettings.Items[12] as TabItem).Content as UcFiveStart5).Filter(AllConbination);
+                    List<BaseOptions> data = ((tcSettings.Items[12] as TabItem).Content as UcFiveStart5).Filter(AllConbination);
 
-                    //特別排除
-                    tmp = Calculation.FiveSpecialData(tmp, cblSpecialExclude.SelectedValue);
+                    //最後結果
+                    List<BaseOptions> tmp = new List<BaseOptions>();
 
-                    tmp = ((tcSettings.Items[0] as TabItem).Content as UcFiveStart1).Filter(tmp);
-                    tmp = ((tcSettings.Items[1] as TabItem).Content as UcFiveStart2).Filter(tmp);
-                    tmp = ((tcSettings.Items[10] as TabItem).Content as UcFiveStart3).Filter(tmp);
+                    foreach (var item in data)
+                    {
+                        var UnitItem = new List<BaseOptions>() { item };
 
-                    teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                        //特別排除
+                        UnitItem = Calculation.FiveSpecialData(UnitItem, cblSpecialExclude.SelectedValue);
+
+                        UnitItem = ((tcSettings.Items[0] as TabItem).Content as UcFiveStart1).Filter(UnitItem);
+                        UnitItem = ((tcSettings.Items[1] as TabItem).Content as UcFiveStart2).Filter(UnitItem);
+                        UnitItem = ((tcSettings.Items[10] as TabItem).Content as UcFiveStart3).Filter(UnitItem);
+
+                        if (UnitItem.Count > 0)
+                            tmp.Add(UnitItem[0]);
+                    }
+
+                    teResult.Text = string.Join(" ", tmp.OrderBy(x => x.Code).Select(x => x.Code));
                     tbCount.Text = tmp.Count.ToString();
 
+                    //組選
+                    FilterData = tmp;
+                    btnTransfer.IsEnabled = true;
+
+                    //btn啟用
                     btn.Content = btncontent;
                     btn.IsEnabled = true;
                 }
@@ -132,6 +165,12 @@ namespace WpfAppTest
                 else if (btn.Name == "btnTransfer")
                 {
                     /*轉為組選*/
+                    if (FilterData != null)
+                    {
+                        var tmp = Base.Calculation.TransNumber(FilterData);
+                        teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
+                        tbCount.Text = tmp.Count.ToString();
+                    }
                 }
                 else if (btn.Name == "btnCopy")
                 {

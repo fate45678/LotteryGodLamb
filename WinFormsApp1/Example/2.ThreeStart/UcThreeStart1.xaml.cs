@@ -165,6 +165,24 @@ namespace WpfAppTest
         }
 
         /// <summary>
+        /// 過濾前檢核
+        /// </summary>
+        /// <returns></returns>
+        public bool BeforeCheck()
+        {
+            string check = cblType3.SelectedValue.Replace("0", "");
+            if (check.Count() > 0)
+            {
+                if (check.Count() < (int)rblSelect.SelectedValue)
+                {
+                    System.Windows.MessageBox.Show("出胆个数与选择不符，请重新选择。");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 過濾數字
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
@@ -205,7 +223,7 @@ namespace WpfAppTest
             //交集
             if (!string.IsNullOrEmpty(teEditor6.Text))
             {
-                var inter = Regex.Replace(Regex.Replace(teEditor6.Text, "\n", " "), "[^0-9|\\s]", "").Split(' ').Except(new string[1] { "" }).Where(x=>x.Length == 3);
+                var inter = Regex.Replace(Regex.Replace(teEditor6.Text, "\n", " "), "[^0-9|\\s]", "").Split(' ').Except(new string[1] { "" }).Where(x => x.Length == 3);
                 if (inter.Count() > 0)
                     tmp = tmp.Where(x => inter.Contains(x.Code)).ToList();
             }
@@ -214,7 +232,6 @@ namespace WpfAppTest
             //其他
             #endregion
 
-            //膽
             #region group2-和 跨 膽
             //殺和尾
             tmp = Calculation.SumLastNumber(tmp, cblType1, false);
@@ -223,6 +240,16 @@ namespace WpfAppTest
             tmp = Calculation.CrossNumber(tmp, cblType2, false);
 
             //選膽
+            string conditions = Calculation.BeforeCheck(tmp, cblType3);
+            conditions = conditions.Replace(",", " ");
+            var conArray = conditions.Split(' ').Except(new string[1] { "" });
+            int unit = (int)rblSelect.SelectedValue;
+            if (unit >= 2 && conArray.Count() >= unit)
+            {
+                WpfAppTest.AP.DB.test tmps = WpfAppTest.AP.DB.CombinationNNumber("", conditions.Split(' ').ToArray(), unit, new WpfAppTest.AP.DB.test());
+                conditions = string.Join(" ", tmps.result2.Split(' ').Where(x => x.Distinct().Count() == unit));
+            }
+            tmp = Calculation.ExistsNumber(tmp, conditions, (int)rblSelect.SelectedValue, true, true);
             #endregion
 
             #region group3-和值

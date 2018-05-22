@@ -40,7 +40,7 @@ namespace WpfAppTest.AP
         }
 
         /// <summary>
-        /// 
+        /// 產生選項
         /// </summary>
         /// <param name="start">開始數字</param>
         /// <param name="end">結束數字</param>
@@ -123,7 +123,7 @@ namespace WpfAppTest.AP
             int reverse = number;
             for (int i = start; i <= number; i++)
             {
-                tmp.Add(new BaseOptions { ID = i, Name = i.ToString() + "：" + reverse.ToString() });
+                tmp.Add(new BaseOptions { ID = i + 1, Name = i.ToString() + "：" + reverse.ToString() });
                 reverse--;
             }
             return tmp;
@@ -208,41 +208,36 @@ namespace WpfAppTest.AP
             }
             return tmp;
         }
-        #endregion
 
-        #region 2星
-
-        #region 不定位形
         /// <summary>
-        /// ex. ?子  假?  ??  假?  ??
+        /// 數字n組合=>若傳 0 1 2 則組合為00 01 02 10 11 12 20 21 22
         /// </summary>
+        /// <param name="condition">組合</param>
+        /// <param name="n">組合個數</param>
         /// <returns></returns>
-        public static List<BaseOptions> TwoStartOption1()
+        public static test CombinationNNumber(string result, string[] array, int n, test test)
         {
-            var tmp = new List<BaseOptions>
+            test.result = "";
+            if (result.Length == n)
             {
-                new BaseOptions
+                test.result = result;
+            }
+            else
+            {
+                for (int i = 0; i < array.Count(); i++)
                 {
-                    ID = 1, Name = "?子", Code = "1"
-                },
-                new BaseOptions
-                {
-                    ID = 2, Name = "假?", Code = "2"
-                },
-                new BaseOptions
-                {
-                    ID = 3, Name = "??", Code = "3"
-                },
-                new BaseOptions
-                {
-                    ID = 4, Name = "假?", Code = "4"
-                },
-                new BaseOptions
-                {
-                    ID = 5, Name = "??", Code = "5"
+                    test = CombinationNNumber(result + array[i], array, n, test);
+                    if (!string.IsNullOrEmpty(test.result))
+                    {
+                        if (string.IsNullOrEmpty(test.result2))
+                            test.result2 = "";
+
+                        test.result2 += (test.result2 != "" ? " " : "") + test.result;
+                    }
                 }
-            };
-            return tmp;
+                test.result = "";
+            }
+            return test;
         }
         #endregion
 
@@ -404,82 +399,6 @@ namespace WpfAppTest.AP
         }
         #endregion
 
-        #endregion
-
-        #region 3星獨有
-
-        #endregion
-
-        #region 4星獨有
-
-        #endregion
-
-        #region 5星獨有
-        /// <summary>
-        /// 特別排除項目-5星
-        /// </summary>
-        /// <returns></returns>
-        public static List<BaseOptions> FiveStart_SpecialExclude()
-        {
-            var tmp = new List<BaseOptions>
-            {
-                new BaseOptions
-                {
-                    ID = 1, Name = "上山"
-                },
-                new BaseOptions
-                {
-                    ID = 2, Name = "下山"
-                },
-                new BaseOptions
-                {
-                    ID = 3, Name = "不連"
-                },
-                new BaseOptions
-                {
-                    ID = 4, Name = "2連"
-                },
-                new BaseOptions
-                {
-                    ID = 5, Name = "3連"
-                },
-                new BaseOptions
-                {
-                    ID = 6, Name = "4連"
-                },
-                new BaseOptions
-                {
-                    ID = 7, Name = "5連"
-                },
-                new BaseOptions
-                {
-                    ID = 8, Name = "AAAAA"
-                },
-                new BaseOptions
-                {
-                    ID = 9, Name = "AABCD"
-                },
-                new BaseOptions
-                {
-                    ID = 10, Name = "AAABB"
-                },
-                new BaseOptions
-                {
-                    ID = 11, Name = "AAABC"
-                },
-                new BaseOptions
-                {
-                    ID = 12, Name = "AAAAB"
-                },
-                new BaseOptions
-                {
-                    ID = 13, Name = "ABCDE"
-                }
-            };
-            return tmp;
-        }
-        #endregion
-
         #region 頁籤選項2-5星
 
         /// <summary>
@@ -546,5 +465,11 @@ namespace WpfAppTest.AP
             return tmp;
         }
         #endregion
+
+        public class test
+        {
+            public string result;
+            public string result2;
+        }
     }
 }

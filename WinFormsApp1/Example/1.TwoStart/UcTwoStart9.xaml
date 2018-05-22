@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid x:Name="gdContainer">
+    <Grid x:Name="gdContainer" Width="850">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

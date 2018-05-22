@@ -43,7 +43,7 @@ namespace WpfAppTest
             cblOption1.ItemsSource = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
             cblOption2.ItemsSource = DB.ZeroOneCombination(2, '奇', '偶').OrderBy(x => x.Code);
             cblOption3.ItemsSource = DB.ZeroOneCombination(2, '大', '小').OrderByDescending(x => x.Code);
-            cblOption4.ItemsSource = DB.ZeroOneCombination(2, '質', '合').OrderByDescending(x => x.Code);
+            cblOption4.ItemsSource = DB.ZeroOneCombination(2, '质', '合').OrderByDescending(x => x.Code);
 
             /*RadioButtonList*/
             var Data = DB.CreateOption(1, 2, new string [2] { "保留", "排除" });

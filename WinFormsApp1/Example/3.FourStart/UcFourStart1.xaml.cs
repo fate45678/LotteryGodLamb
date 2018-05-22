@@ -81,10 +81,10 @@ namespace WpfAppTest
             SetDefaultValue();
         }
 
-        /// <summary>
-        /// 是否由程式設定值
-        /// </summary>
-        bool IsSetting = false;
+        ///// <summary>
+        ///// 是否由程式設定值
+        ///// </summary>
+        //bool IsSetting = false;
 
         #region 外部呼叫
         /// <summary>
@@ -92,7 +92,7 @@ namespace WpfAppTest
         /// </summary>
         public void SetDefaultValue()
         {
-            IsSetting = true;
+            //IsSetting = true;
 
             /*CheckBoxList*/
             cblData1.Clear();
@@ -130,7 +130,7 @@ namespace WpfAppTest
                 if (b is Controls.Button)
                 {
                     Controls.Button bt = b as Controls.Button;
-                    bt.Background = System.Windows.Media.Brushes.LightGray;
+                    bt.Background = System.Windows.Media.Brushes.Gainsboro;
                 }
             }
 
@@ -153,7 +153,7 @@ namespace WpfAppTest
             cbIgnore2_1.IsChecked = true;
             cbIgnore2_2.IsChecked = true;
 
-            IsSetting = false;
+            //IsSetting = false;
         }
 
         ///// <summary>
@@ -171,8 +171,10 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
+            string[] empty = new string[1] { "" };
+
             //大底先篩再過濾
-            var n = teNumber.Text.Split(' ').Except(new string[1] { "" });
+            var n = teNumber.Text.Split(' ').Except(empty);
             if (n.Count() > 0)
                 tmp = tmp.Where(x => n.Contains(x.Code)).ToList();
 
@@ -223,27 +225,38 @@ namespace WpfAppTest
 
             #endregion
 
-            #region group4-殺特殊型態
+            #region group4-膽碼
+            if (cblNumber1.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber1, cblNumber1_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber2.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber2, cblNumber2_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber3.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber3, cblNumber3_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber4.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber4, cblNumber4_2, null, (bool)btnCountRepeat.IsChecked);
+            #endregion
+
+            #region group5-殺特殊型態
             tmp = Calculation.FourSpecialData(tmp, cblSpecial.SelectedValue);
             #endregion
 
-            #region group5-特别排除
+            #region group6-特别排除
             tmp = Calculation.FourSpecial2Data(tmp, cblSpecialExcept.SelectedValue);
             #endregion
 
-            #region group6-殺大小
+            #region group7-殺大小
             tmp = Calculation.CheckValueNumber(tmp, cblData1, 1, false);
             #endregion
 
-            #region group7-殺奇偶
+            #region group8-殺奇偶
             tmp = Calculation.OddEvenNumber(tmp, cblData2, false);
             #endregion
 
-            #region group8-殺质合
+            #region group9-殺质合
             tmp = Calculation.PrimeNumber(tmp, cblData3, false);
             #endregion
 
-            #region group9-殺012路
+            #region group10-殺012路
             tmp = Calculation.DivThreeRemainder(tmp, cbl012, false);
             #endregion
 
@@ -358,7 +371,7 @@ namespace WpfAppTest
                         if (tmp[index] == '1')
                             btn.Background = System.Windows.Media.Brushes.LawnGreen;
                         else
-                            btn.Background = System.Windows.Media.Brushes.LightGray;
+                            btn.Background = System.Windows.Media.Brushes.Gainsboro;
                         cbl.SelectedValue = string.Join("", tmp);
                     }
 
@@ -373,7 +386,7 @@ namespace WpfAppTest
                             if (((string)btn.Tag).Contains("Select"))
                                 bt.Background = System.Windows.Media.Brushes.LawnGreen;
                             else
-                                bt.Background = System.Windows.Media.Brushes.LightGray;
+                                bt.Background = System.Windows.Media.Brushes.Gainsboro;
                         }
                     }
                 }

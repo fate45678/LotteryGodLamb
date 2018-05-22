@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
-    <Grid>
+    <Grid Width="850">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
@@ -42,7 +42,7 @@
 
         <GroupBox Grid.Row="3" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="質合" DockPanel.Dock="Left" Margin="5" Width="50" Foreground="Blue" />
+                <TextBlock Text="质合" DockPanel.Dock="Left" Margin="5" Width="50" Foreground="Blue" />
                 <local:CheckBoxList x:Name="cblOption4" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="220"/>
                 <local:RadioButtonList x:Name="rblOption4" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>

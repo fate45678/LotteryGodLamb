@@ -9,6 +9,7 @@ using Forms = System.Windows.Forms;
 using System.IO;
 using WpfAppTest.AP;
 using WpfAppTest.Base;
+using System.Collections;
 
 namespace WpfAppTest
 {
@@ -55,6 +56,22 @@ namespace WpfAppTest
             cblCross.ItemsSource = Data;
             cblComm.ItemsSource = Data;
 
+            //膽碼
+            cblNumber1.ItemsSource = Data;
+            cblNumber2.ItemsSource = Data;
+            cblNumber3.ItemsSource = Data;
+            cblNumber4.ItemsSource = Data;
+            cblNumber5.ItemsSource = Data;
+            cblNumber6.ItemsSource = Data;
+
+            Data = DB.CreateOption(0, 4);
+            cblNumber1_2.ItemsSource = Data;
+            cblNumber2_2.ItemsSource = Data;
+            cblNumber3_2.ItemsSource = Data;
+            cblNumber4_2.ItemsSource = Data;
+            cblNumber5_2.ItemsSource = Data;
+            cblNumber6_2.ItemsSource = Data;
+
             var Ratio = DB.Ratio(5);
             cblRatio.ItemsSource = Ratio;
             cblRatio2.ItemsSource = Ratio;
@@ -62,6 +79,7 @@ namespace WpfAppTest
             //cblAC.ItemsSource = DB.CreateOption(1, 9);
 
             /*預設值*/
+            SetDefaultValue();
         }
 
         /// <summary>
@@ -146,6 +164,32 @@ namespace WpfAppTest
             cblRatio3.Clear();
             //cblAC.Clear();
 
+            //膽組
+            cblNumber1.Clear();
+            cblNumber1_2.Clear();
+            cblNumber2.Clear();
+            cblNumber2_2.Clear();
+            cblNumber3.Clear();
+            cblNumber3_2.Clear();
+            cblNumber4.Clear();
+            cblNumber4_2.Clear();
+            cblNumber5.Clear();
+            cblNumber5_2.Clear();
+            cblNumber6.Clear();
+            cblNumber6_2.Clear();
+            btnCountRepeat.IsChecked = false;
+            Hashtable ht = new Hashtable();
+            Base.BaseHelper.GetChildren(dpAll, ht);
+            foreach (var b in ht.Values)
+            {
+                if (b is Controls.Button)
+                {
+                    Controls.Button bt = b as Controls.Button;
+                    bt.Background = System.Windows.Media.Brushes.Gainsboro;
+                }
+            }
+
+            /*TextBox*/
             teSum.Text = "";
             tePos.Text = "";
         }
@@ -176,6 +220,25 @@ namespace WpfAppTest
         }
 
         /// <summary>
+        /// 過濾前檢核
+        /// </summary>
+        /// <returns></returns>
+        public bool BeforeCheck()
+        {
+            if ((cblNumber1.SelectedValue.IndexOf('1') > -1 && cblNumber1_2.SelectedValue.IndexOf('1') == -1) ||
+                (cblNumber2.SelectedValue.IndexOf('1') > -1 && cblNumber2_2.SelectedValue.IndexOf('1') == -1) ||
+                (cblNumber3.SelectedValue.IndexOf('1') > -1 && cblNumber3_2.SelectedValue.IndexOf('1') == -1) ||
+                (cblNumber4.SelectedValue.IndexOf('1') > -1 && cblNumber4_2.SelectedValue.IndexOf('1') == -1) ||
+                (cblNumber5.SelectedValue.IndexOf('1') > -1 && cblNumber5_2.SelectedValue.IndexOf('1') == -1) ||
+                (cblNumber6.SelectedValue.IndexOf('1') > -1 && cblNumber6_2.SelectedValue.IndexOf('1') == -1))
+            {
+                System.Windows.MessageBox.Show("已设定胆组但未设定出胆个数。");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 過濾數字
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
@@ -191,7 +254,7 @@ namespace WpfAppTest
             tmp = Calculation.PosNumber(tmp, cblUnits, "0", false);
 
             //殺和尾
-            tmp = Calculation.SumLastNumber(tmp, cblData1, false);
+            tmp = Calculation.SumLastNumber(tmp, cblSumLast, false);
 
             //殺和值
             tmp = Calculation.SumNumber(tmp, teSum.Text, false);
@@ -211,13 +274,174 @@ namespace WpfAppTest
             //殺质合
             tmp = Calculation.PrimeNumber(tmp, cblData3, false);
 
+            //膽碼
+            if (cblNumber1.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber1, cblNumber1_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber2.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber2, cblNumber2_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber3.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber3, cblNumber3_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber4.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber4, cblNumber4_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber5.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber5, cblNumber5_2, null, (bool)btnCountRepeat.IsChecked);
+            if (cblNumber6.SelectedValue.IndexOf('1') > -1)
+                tmp = Calculation.ExistsNumber2(tmp, cblNumber6, cblNumber6_2, null, (bool)btnCountRepeat.IsChecked);
+
+            //比例大小比
+            tmp = Calculation.BigSmallRatio(tmp, cblRatio.SelectedValue);
+
+            //比例奇偶比
+            tmp = Calculation.OddEvenRatio(tmp, cblRatio2.SelectedValue);
+
+            //比例質合比
+            tmp = Calculation.PrimeRatio(tmp, cblRatio3.SelectedValue);
             return tmp;
         }
         #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Controls.Button btn = sender as Controls.Button;
+            if (btn != null)
+            {
+                if (btn.Tag != null)
+                {
+                    int index = 0;
+                    char[] tmp;
+                    Hashtable ht = new Hashtable();
+                    CheckBoxList cbl = null;
+                    switch ((string)btn.Tag)
+                    {
+                        case "Type1":
+                            cbl = cblNumber1;
+                            break;
+                        case "Type2":
+                            cbl = cblNumber2;
+                            break;
+                        case "Type3":
+                            cbl = cblNumber3;
+                            break;
+                        case "Type4":
+                            cbl = cblNumber4;
+                            break;
+                        case "Type5":
+                            cbl = cblNumber5;
+                            break;
+                        case "Type6":
+                            cbl = cblNumber6;
+                            break;
+                        case "Unit1":
+                            cbl = cblNumber1_2;
+                            break;
+                        case "Unit2":
+                            cbl = cblNumber2_2;
+                            break;
+                        case "Unit3":
+                            cbl = cblNumber3_2;
+                            break;
+                        case "Unit4":
+                            cbl = cblNumber4_2;
+                            break;
+                        case "Unit5":
+                            cbl = cblNumber5_2;
+                            break;
+                        case "Unit6":
+                            cbl = cblNumber6_2;
+                            break;
+                        case "Clear1":
+                            cblNumber1.Clear();
+                            cblNumber1_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType1, ht);
+                            break;
+                        case "Clear2":
+                            cblNumber2.Clear();
+                            cblNumber2_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType2, ht);
+                            break;
+                        case "Clear3":
+                            cblNumber3.Clear();
+                            cblNumber3_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType3, ht);
+                            break;
+                        case "Clear4":
+                            cblNumber4.Clear();
+                            cblNumber4_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType4, ht);
+                            break;
+                        case "Clear5":
+                            cblNumber5.Clear();
+                            cblNumber5_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType5, ht);
+                            break;
+                        case "Clear6":
+                            cblNumber6.Clear();
+                            cblNumber6_2.Clear();
+                            Base.BaseHelper.GetChildren(dpType6, ht);
+                            break;
+                        case "Select1":
+                            cblNumber1.SelectedAll();
+                            cblNumber1_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType1, ht);
+                            break;
+                        case "Select2":
+                            cblNumber2.SelectedAll();
+                            cblNumber2_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType2, ht);
+                            break;
+                        case "Select3":
+                            cblNumber3.SelectedAll();
+                            cblNumber3_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType3, ht);
+                            break;
+                        case "Select4":
+                            cblNumber4.SelectedAll();
+                            cblNumber4_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType4, ht);
+                            break;
+                        case "Select5":
+                            cblNumber5.SelectedAll();
+                            cblNumber5_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType5, ht);
+                            break;
+                        case "Select6":
+                            cblNumber6.SelectedAll();
+                            cblNumber6_2.SelectedAll();
+                            Base.BaseHelper.GetChildren(dpType6, ht);
+                            break;
+                        case "Remark":
+                            Forms.MessageBox.Show("可以选择多个胆组。");
+                            break;
+                    }
 
+                    if (cbl != null)
+                    {
+                        int.TryParse(btn.Content.ToString(), out index);
+                        tmp = cbl.SelectedValue.ToArray();
+                        tmp[index] = (tmp[index] == '1' ? '0' : '1');
+                        if (tmp[index] == '1')
+                            btn.Background = System.Windows.Media.Brushes.LawnGreen;
+                        else
+                            btn.Background = System.Windows.Media.Brushes.Gainsboro;
+                        cbl.SelectedValue = string.Join("", tmp);
+                    }
+
+                    foreach (var b in ht.Values)
+                    {
+                        if (b is Controls.Button)
+                        {
+                            Controls.Button bt = b as Controls.Button;
+                            if (((string)bt.Tag).Contains("Select") || ((string)bt.Tag).Contains("Clear"))
+                                continue;
+
+                            if (((string)btn.Tag).Contains("Select"))
+                                bt.Background = System.Windows.Media.Brushes.LawnGreen;
+                            else
+                                bt.Background = System.Windows.Media.Brushes.Gainsboro;
+                        }
+                    }
+                }
+            }
         }
     }
 }

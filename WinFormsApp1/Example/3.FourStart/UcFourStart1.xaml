@@ -29,7 +29,7 @@
                             <TextBlock Text="单式号码" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="双击清空" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
                         </DockPanel>
-                        <TextBox Name="teEditor1" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                        <TextBox Name="teEditor1" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Width="320">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                     <VisualBrush.Visual>
@@ -60,7 +60,7 @@
                             <TextBlock Text="12*34*56*78" Margin="0,0,0,3" DockPanel.Dock="Top"/>
                             <TextBlock Text="双击清空" Margin="0,0,0,3" DockPanel.Dock="Bottom" />
                         </DockPanel>
-                        <TextBox Name="teEditor2" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" >
+                        <TextBox Name="teEditor2" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Width="320">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                     <VisualBrush.Visual>
@@ -211,7 +211,7 @@
                             <TextBlock Text="1**3" Margin="0,0,0,3" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
                             <TextBlock Text="一行一注" Margin="0,0,0,3" DockPanel.Dock="Bottom" HorizontalAlignment="Center"/>
                         </DockPanel>
-                        <TextBox Name="teEditor5" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
+                        <TextBox Name="teEditor5" Margin="0,0,5,0" MouseDoubleClick="txtEditor_MouseDoubleClick" DockPanel.Dock="Left" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Width="320">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left" AlignmentY="Top">
                                     <VisualBrush.Visual>
@@ -269,7 +269,7 @@
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
-                        <TextBlock Text="杀和值" Width="40" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
+                        <TextBlock Text="杀和值" Width="40" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 0, 5, 0"/>
                         <TextBox x:Name="teSum" Width="320" DockPanel.Dock="Left" HorizontalAlignment="Left">
                             <TextBox.Resources>
                                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
@@ -316,9 +316,9 @@
             <GroupBox Header="胆组" Margin="0,0,0,3" Grid.Row="3" >
                 <DockPanel Margin="5" x:Name="dpAll">
                     <DockPanel DockPanel.Dock="Top" Margin="0,0,0,5">
-                        <CheckBox x:Name="btnCountRepeat" Content="胆码计重" DockPanel.Dock="Left" Margin="0,0,5,0" />
-                        <Button Tag="Remark" Content="胆组说明" DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" Click="Button_Click" Margin="0,0,5,0" />
-                        <TextBlock Text="胆码开出个数，记得选一下" DockPanel.Dock="Right"/>
+                        <CheckBox x:Name="btnCountRepeat" Content="胆码计重" DockPanel.Dock="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" />
+                        <Button Tag="Remark" Content="胆组说明" DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" Margin="0,0,5,0" />
+                        <TextBlock Text="胆码开出个数，记得选一下" DockPanel.Dock="Right" VerticalAlignment="Center"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" x:Name="dpType1">
                         <DockPanel DockPanel.Dock="Left">
@@ -449,9 +449,9 @@
                         </DockPanel>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom">
-                        <TextBlock Text="胆组容错" Margin="0,7,5,0" DockPanel.Dock="Left"/>
+                        <TextBlock Text="胆组容错" Margin="0,7,5,0" DockPanel.Dock="Left" VerticalAlignment="Center"/>
                         <TextBox Text="0" x:Name="teStart" Width="20" TextChanged="te_TextChanged" Margin="0,5,5,0" DockPanel.Dock="Left"/>
-                        <TextBlock Text="至" Margin="0,7,5,0" DockPanel.Dock="Left"/>
+                        <TextBlock Text="至" Margin="0,7,5,0" DockPanel.Dock="Left" VerticalAlignment="Center"/>
                         <TextBox Text="0" x:Name="teEnd" Width="20" TextChanged="te_TextChanged" Margin="0,5,5,0" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
                     </DockPanel>
                 </DockPanel>
@@ -491,7 +491,7 @@
             </GroupBox>
 
             <GroupBox Header="杀012排列" Margin="0,0,0,3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                <DockPanel Width="550">
+                <DockPanel Width="500" HorizontalAlignment="Left">
                     <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
@@ -523,7 +523,7 @@
             </DockPanel>-->
 
             <GroupBox Header="特别排除" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
-                <local:CheckBoxList x:Name="cblSpecialExcept" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <local:CheckBoxList x:Name="cblSpecialExcept" ToolTip="散号為排除对子号" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </GroupBox>
         </Grid>
     </Grid>

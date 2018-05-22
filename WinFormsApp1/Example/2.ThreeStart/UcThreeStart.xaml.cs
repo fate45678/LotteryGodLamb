@@ -79,7 +79,11 @@ namespace WpfAppTest
             {
                 if (btn.Name == "btnFilter")
                 {
-                    /*開始縮水*/
+                    /*1.檢核*/
+                    if (!ucThree1.BeforeCheck())
+                        return;
+
+                    /*2.開始縮水*/
                     string btncontent = (string)btn.Content;
                     btn.IsEnabled = false;
                     btn.Content = "载入中...";

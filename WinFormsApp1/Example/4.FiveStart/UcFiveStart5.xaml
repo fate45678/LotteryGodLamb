@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:WpfAppTest" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
-    <Grid x:Name="gdContainer">
+    <Grid x:Name="gdContainer" Width="850">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Margin="5">
             <TextBlock Text="黏贴大底号码，号码之间可以是逗号、空格、分号或回车。空白默认为全部号码(10万注)做底。" DockPanel.Dock="Left"></TextBlock>
-            <Button x:Name="btnImport" Content="汇入" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
-            <Button x:Name="btnClear" Content="清除" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right"></Button>
+            <Button x:Name="btnImport" Content="汇入" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right" />
+            <Button x:Name="btnClear" Content="清除" Click="btn_Click" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,5,0"/>
         </DockPanel>
         <TextBox x:Name="teNumber" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5">
             
