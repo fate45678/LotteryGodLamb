@@ -59,6 +59,7 @@
             this.pnlNewPlan = new System.Windows.Forms.Panel();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnCopyUp = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -106,8 +108,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
-            this.btnCopyUp = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -506,6 +506,20 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(346, 55);
             this.panel7.TabIndex = 3;
+            // 
+            // btnCopyUp
+            // 
+            this.btnCopyUp.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCopyUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopyUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyUp.ForeColor = System.Drawing.Color.White;
+            this.btnCopyUp.Location = new System.Drawing.Point(161, 26);
+            this.btnCopyUp.Name = "btnCopyUp";
+            this.btnCopyUp.Size = new System.Drawing.Size(82, 23);
+            this.btnCopyUp.TabIndex = 26;
+            this.btnCopyUp.Text = "缩水贴上";
+            this.btnCopyUp.UseVisualStyleBackColor = false;
+            this.btnCopyUp.Click += new System.EventHandler(this.btnCopyUp_Click);
             // 
             // button7
             // 
@@ -913,6 +927,15 @@
             this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
             // 
+            // checkedListBoxEx1
+            // 
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button5);
@@ -1037,29 +1060,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // checkedListBoxEx1
-            // 
-            this.checkedListBoxEx1.FormattingEnabled = true;
-            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
-            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
-            this.checkedListBoxEx1.TabIndex = 7;
-            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
-            // 
-            // btnCopyUp
-            // 
-            this.btnCopyUp.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCopyUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCopyUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCopyUp.ForeColor = System.Drawing.Color.White;
-            this.btnCopyUp.Location = new System.Drawing.Point(161, 26);
-            this.btnCopyUp.Name = "btnCopyUp";
-            this.btnCopyUp.Size = new System.Drawing.Size(82, 23);
-            this.btnCopyUp.TabIndex = 26;
-            this.btnCopyUp.Text = "缩水贴上";
-            this.btnCopyUp.UseVisualStyleBackColor = false;
-            this.btnCopyUp.Click += new System.EventHandler(this.btnCopyUp_Click);
             // 
             // frm_PlanUpload
             // 
