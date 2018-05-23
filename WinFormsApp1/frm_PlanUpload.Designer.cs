@@ -95,7 +95,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -107,6 +106,8 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
+            this.btnCopyUp = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
@@ -491,9 +492,11 @@
             this.richTextBox2.Text = "";
             this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
+            this.richTextBox2.Leave += new System.EventHandler(this.richTextBox2_Leave);
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnCopyUp);
             this.panel7.Controls.Add(this.button7);
             this.panel7.Controls.Add(this.button6);
             this.panel7.Controls.Add(this.button4);
@@ -510,7 +513,7 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(99, 26);
+            this.button7.Location = new System.Drawing.Point(80, 26);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(82, 23);
             this.button7.TabIndex = 25;
@@ -524,7 +527,7 @@
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(6, 26);
+            this.button6.Location = new System.Drawing.Point(3, 26);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(78, 23);
             this.button6.TabIndex = 24;
@@ -538,9 +541,9 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(217, 26);
+            this.button4.Location = new System.Drawing.Point(246, 26);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 23);
+            this.button4.Size = new System.Drawing.Size(97, 23);
             this.button4.TabIndex = 23;
             this.button4.Text = "上传";
             this.button4.UseVisualStyleBackColor = false;
@@ -910,15 +913,6 @@
             this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
             // 
-            // checkedListBoxEx1
-            // 
-            this.checkedListBoxEx1.FormattingEnabled = true;
-            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
-            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
-            this.checkedListBoxEx1.TabIndex = 7;
-            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button5);
@@ -1043,6 +1037,29 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // checkedListBoxEx1
+            // 
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
+            // 
+            // btnCopyUp
+            // 
+            this.btnCopyUp.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCopyUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopyUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyUp.ForeColor = System.Drawing.Color.White;
+            this.btnCopyUp.Location = new System.Drawing.Point(161, 26);
+            this.btnCopyUp.Name = "btnCopyUp";
+            this.btnCopyUp.Size = new System.Drawing.Size(82, 23);
+            this.btnCopyUp.TabIndex = 26;
+            this.btnCopyUp.Text = "缩水贴上";
+            this.btnCopyUp.UseVisualStyleBackColor = false;
+            this.btnCopyUp.Click += new System.EventHandler(this.btnCopyUp_Click);
             // 
             // frm_PlanUpload
             // 
@@ -1171,5 +1188,6 @@
         private System.Windows.Forms.Button button13;
         private Model.CheckedListBoxEx checkedListBoxEx1;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button btnCopyUp;
     }
 }

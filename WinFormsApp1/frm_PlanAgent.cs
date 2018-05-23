@@ -127,26 +127,27 @@ namespace WinFormsApp1
         private void UpdateHistory()
         {
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            if (rtxtHistory.Text == "") //無資料就全寫入(第一次載入頁面)
+            if (rtxtHistory.Text == "") //無資料就全寫入
             {
-                cnd.Start();
-
-                for (int i = 120; i > 0; i--)
+                for (int i = 0; i < frmGameMain.jArr.Count; i++)
                 {
+                    //if (i == 120) break; //寫120筆就好
                     if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                    { 
-                        rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "\r\n";
-                        dt_history.Add(frmGameMain.jArr[i]["Issue"].ToString() + "     " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", ""));
-                    }
-                    //改成server端記錄每期開獎?
-                    //con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+                        rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                 }
             }
-            else if (!string.IsNullOrEmpty(rtxtHistory.Text) && dt_history.ElementAt(dt_history.Count() - 1).IndexOf(frmGameMain.jArr[0]["Issue"].ToString()) == -1)
-            {              
-                rtxtHistory.Text += "第" + frmGameMain.jArr[0]["Issue"].ToString() + "期  " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", "") + "\r\n";
-                dt_history.Add(frmGameMain.jArr[0]["Issue"].ToString() + "     " + frmGameMain.jArr[0]["Number"].ToString().Replace(",", ""));
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[0]["Issue"].ToString() + "','" + frmGameMain.jArr[0]["Number"].ToString().Replace(",", "") + "'");
+            else //有資料先判斷
+            {
+                if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
+                {
+                    rtxtHistory.Text = "";
+                    for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                    {
+                        //if (i == 120) break; //寫120筆就好
+                        if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
+                            rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
             }
         }
 
@@ -158,6 +159,7 @@ namespace WinFormsApp1
         int timeCount = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Interval = 300000;
             timeCount++;
             if (timeCount % 15 == 0 || timeCount == 3)
                 updateGod();
@@ -207,10 +209,14 @@ namespace WinFormsApp1
 
         private static string choosePlanName = "";
         List<string> dt_history = new List<string>();
-        int amount = 0;
+        //int amount = 0;
         private void dynamicBt_Click(object sender, EventArgs e)
         {
-            amount = 0;
+            //int searchType = 0;//0 初始值 1 cb search 2 userNmae search
+
+            string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
+            //amount = 0;
             choosePlanName = (sender as Button).Name;
             Dictionary<int, string> dic = new Dictionary<int, string>();
             dic.Add(0, "p_name");
@@ -219,180 +225,263 @@ namespace WinFormsApp1
             dic.Add(3, "p_end");
             dic.Add(4, "p_rule");
             dic.Add(5, "p_note");
-            string iiii = "select * from Upplan where p_name = '" + (sender as Button).Text + "'";
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + (sender as Button).Name + "'", dic);
-            richTextBox1.Text = getData.ElementAt(4).Substring(0, getData.ElementAt(4).Length);
             listBox1.Items.Clear();
-            //檢查期數
 
-            string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
+            string selectGameKind = cbGameKind.Text;
 
-            long Start = Int64.Parse(getData.ElementAt(2));
-            long End = Int64.Parse(getData.ElementAt(3));
-
-            //用來填入今天的期數
-            string tmpIssue = NowDate.Substring(0, 8);
-            string Issue = "";
-
-            //紀錄比對的Number
-            string CheckNumber = "";
-
-            //確認是否面一筆已開獎但是後一筆尚未開獎
-            bool nextIsOpen = false;
-
-            //中挂次數
-            int win = 0, fail = 0;
-
-            //最後補上的敘述的參數
-            int totalWin = 0;
-
-            //辨識種類
-            string GameKind = cbGameKind.Text;
-
-            for (int i = 1; i <= 120; i++)
+            //先處理舊資料
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_uploadDate , p_name", dic);
+            for (int i = 0; i < getOldData.Count; i = i + 6)
             {
-                Issue = tmpIssue + i.ToString("d3");
-                var getNumber = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(Issue)).ToList();
+                //玩法種類
+                string oldGameKind = getOldData.ElementAt(i);
 
-                //不等於零表示已經開獎
-                if (getNumber.Count() != 0)
+                //上傳的開始以及結束期數
+                long oldstart = Int64.Parse(getOldData.ElementAt(i + 2));
+                long oldend = Int64.Parse(getOldData.ElementAt(i + 3));
+
+                //上傳了幾期
+                long oldamount = (oldend - oldstart) + 1;
+
+                //總共中獎幾次 掛幾次 總共投了幾注
+                int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0;
+
+                string oldcheckNumber = "";
+
+                bool OldisAllOpen = true;
+
+                for (int ii = 0; ii < oldamount; ii++)
                 {
-                    //如果上傳的投注期數比較小表示沒投注
-                    if (Int64.Parse(getData.ElementAt(2)) > Int64.Parse(Issue) || Int64.Parse(getData.ElementAt(3)) < Int64.Parse(Issue))
-                    {
-                        if (i % 2 == 0)
-                        {
-                            if (nextIsOpen)
-                            {
-                                if (win != 0)
-                                {
-                                    //win++;
-                                    listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 中(" + win + ")");
-                                    win = 0;
-                                    fail = 0;
-                                }
-                                else
-                                {
-                                    fail++;
-                                    listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 挂(" + fail + ")");
-                                    fail = 0;
-                                }
-                            }
-                            else
-                            {
-                                //listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 未上傳計畫");
-                            }
+                    var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
 
-                            nextIsOpen = false;
-                        }
+                    //表示還沒開獎
+                    if (oldshowIssue.Count == 0)
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                        OldisAllOpen = false;
+                        break;
                     }
-                    else if (Int64.Parse(getData.ElementAt(2)) <= Int64.Parse(Issue) && Int64.Parse(getData.ElementAt(3)) >= Int64.Parse(Issue))
+                    else if (oldGameKind.Contains("五星"))
                     {
-                        amount++;
-                        CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "");
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
+                    }
+                    else if (oldGameKind.Contains("四星"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                        //前三中三后三前二后二
+                    }
+                    else if (oldGameKind.Contains("中三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                    }
+                    else if (oldGameKind.Contains("前三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                    }
+                    else if (oldGameKind.Contains("后三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                    }
+                    else if (oldGameKind.Contains("前二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                    }
+                    else if (oldGameKind.Contains("后二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                    }
 
-                        if (GameKind.Contains("五星"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "");
-                        }
-                        else if (GameKind.Contains("四星"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
-                            //前三中三后三前二后二
-                        }
-                        else if (GameKind.Contains("中三"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
-                        }
-                        else if (GameKind.Contains("前三"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
-                        }
-                        else if (GameKind.Contains("后三"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
-                        }
-                        else if (GameKind.Contains("前二"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
-                        }
-                        else if (GameKind.Contains("后二"))
-                        {
-                            CheckNumber = getNumber[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
-                        }
+                    //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
 
-
-
-                        //判斷有沒有中奖
-                        if (getData.ElementAt(4).Contains(CheckNumber))
-                        {
-                            win++;
-                            totalWin++;
-                            if (i % 2 == 0)
-                            {
-                                listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 中(" + win + ")");
-                                win = 0;
-                                fail = 0;
-                            }
-                        }
-                        else if (win != 0) //如果第一個就中了 則只顯示中(1)
-                        {
-                            //totalWin++;
-                            listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 中(" + win + ")");
-                            win = 0;
-                            fail = 0;
-                        }
-                        else
-                        {
-                            fail++;
-                            if (i % 2 == 0)
-                            {
-                                listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 挂(" + fail + ")");
-                                fail = 0;
-                            }
-                        }
-                        nextIsOpen = true;
+                    //是否有中獎
+                    if (getOldData.ElementAt(i + 4).Contains(oldcheckNumber))
+                    {
+                        oldtotalWin++;
+                        oldtotalPlay++;
+                        break;
+                    }
+                    else
+                    {
+                        oldtotalFail++;
+                        oldtotalPlay++;
                     }
                 }
-                else //這裡開始表示尚未開獎
+
+                if (OldisAllOpen)
                 {
-                    if (i % 2 == 0)
+                    if (oldtotalWin != 0)
                     {
-                        if (nextIsOpen)
-                            listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 尚未開獎(2)");
-                        else
-                            listBox1.Items.Add(Int64.Parse(Issue) - 1 + " 到 " + Issue + " 尚未開獎(1)");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 中(" + oldtotalPlay + ")");
                     }
-                    nextIsOpen = false;
+                    else
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 掛(" + oldtotalFail + ")");
+                    }
                 }
             }
 
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + (sender as Button).Name + "'", dic);
+            //label17.Text = "已上传: 第" + getData.ElementAt(2) + "~" + getData.ElementAt(3) + "期";
 
-            //最後補上Note
-            //long amount = Int64.Parse(getData.ElementAt(3)) - Int64.Parse(getData.ElementAt(2)) + 1;
-            if (getData.ElementAt(3).Substring(0,8) != NowDate)
-            {
-                amount = 0;
-            }
-            string Winning = "";
-            listBox2.Items.Clear();
-            listBox2.Items.Add(getData.ElementAt(5));
-            listBox2.Items.Add("已投注: " + amount + "期");
-            listBox2.Items.Add("中奖: " + totalWin + "期");
+            //for (int i = 0; i < getData.Count; i++)
+            //{
+            //    if (i == 0)
+            //        //label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
+            //    else if (i == 2) { }
+            //    else if (i == 4)
+            //    {
+            //        richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
+            //        string strReplace = getData.ElementAt(i).Replace(",", "");
+            //        int times = (Convert.ToInt32(getData.ElementAt(3).Substring(8, 3)) - Convert.ToInt32(getData.ElementAt(2).Substring(8, 3)));
+            //        //label15.Text = "共" + times + "注";
+            //    }
+            //}
 
-            if (totalWin == 0)
+            if (getData.Count > 0)
             {
-                Winning = "中奖率0%";
+                //玩法種類
+                string GameKind = getData.ElementAt(0);
+
+                //上傳的開始以及結束期數
+                long start = Int64.Parse(getData.ElementAt(2));
+                long end = Int64.Parse(getData.ElementAt(3));
+
+                //上傳了幾期
+                long amount = (end - start) + 1;
+
+                //總共中獎幾次 掛幾次 總共投了幾注
+                int totalWin = 0, totalFail = 0, totalPlay = 0;
+
+                string checkNumber = "";
+
+                bool isAllOpen = true;
+
+                for (int i = 0; i < amount; i++)
+                {
+                    var showIssue = showJa.Where(x => x["Issue"].ToString().Contains((start + i).ToString())).ToList();
+
+                    //表示還沒開獎
+                    if (showIssue.Count == 0)
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 尚未開獎(" + (amount - totalPlay) + ")");
+                        isAllOpen = false;
+                        break;
+                    }
+                    else if (GameKind.Contains("五星"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "");
+                    }
+                    else if (GameKind.Contains("四星"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                        //前三中三后三前二后二
+                    }
+                    else if (GameKind.Contains("中三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                    }
+                    else if (GameKind.Contains("前三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                    }
+                    else if (GameKind.Contains("后三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                    }
+                    else if (GameKind.Contains("前二"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                    }
+                    else if (GameKind.Contains("后二"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                    }
+
+                    //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                    //是否有中獎
+                    if (getData.ElementAt(4).Contains(checkNumber))
+                    {
+                        totalWin++;
+                        totalPlay++;
+                        break;
+                    }
+                    else
+                    {
+                        totalFail++;
+                        totalPlay++;
+                    }
+                }
+
+                if (isAllOpen)
+                {
+                    if (totalWin != 0)
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 中(" + totalPlay + ")");
+                    }
+                    else
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 掛(" + totalFail + ")");
+                    }
+                }
+
+
+                //補上note敘述
+                listBox2.Items.Clear();
+                if (getData.ElementAt(3).Substring(0, 8) != NowDate)
+                {
+                    amount = 0;
+                }
+                string WinRate = "";
+                listBox2.Items.Add(getData.ElementAt(5));
+                listBox2.Items.Add("已投注: " + totalPlay + "期");
+                listBox2.Items.Add("中奖: " + totalWin + "期");
+                if (totalWin == 0)
+                {
+                    WinRate = "中奖率0%";
+                }
+                else
+                {
+                    WinRate = "中獎率" + (((double)totalWin / (double)totalPlay) * 100).ToString("0.00") + "%";//"中獎率" + calhits(getData.ElementAt(2), getData.ElementAt(3), getData.ElementAt(4), getData.ElementAt(0)) ;
+                    //Winning = "中奖率" + WinRate + "%";
+                }
+                listBox2.Items.Add(WinRate);
+
+                int item = 0;
+                if (getData.ElementAt(0).Contains("五星"))//五星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 5;
+                }
+                else if (getData.ElementAt(0).Contains("四星"))//四星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 4;
+
+                }
+                else if (getData.ElementAt(0).Contains("前三") || getData.ElementAt(0).Contains("中三") || getData.ElementAt(0).Contains("后三"))//三星中三后三前二
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 3;
+                }
+                else if (getData.ElementAt(0).Contains("前二") || getData.ElementAt(0).Contains("后三"))//二星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 2;
+                }
+                else //一星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 1;
+                }
+
+
+                //todo都要修正中奖幾期ˊ
+                //label15.Text = "共" + item + "注 ";
             }
             else
             {
-                calhits(getData.ElementAt(2), getData.ElementAt(3), getData.ElementAt(4), getData.ElementAt(0));
-                Winning = "中奖率" + winRate.ToString("0.00") +"%";//calhits(getData.ElementAt(2), getData.ElementAt(3), getData.ElementAt(4), getData.ElementAt(0));//"中奖率" + (((double)totalWin / (double)amount) * 100).ToString("0.00") + "%";//calhits(getData.ElementAt(2), getData.ElementAt(3), getData.ElementAt(4), getData.ElementAt(0));
+                System.Windows.MessageBox.Show("查無資料");
+                return;
             }
-            listBox2.Items.Add(Winning);
-        }
 
+
+        }
 
         int searchType = 0;//0 初始值 1 cb search 2 userNmae search
         /// <summary>
@@ -1117,8 +1206,7 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
-                    this.tableLayoutPanel2.Controls.Add(control, x, y);
-
+                    //this.tableLayoutPanel2.Controls.Add(control, x, y);
                 }
             }
             else
