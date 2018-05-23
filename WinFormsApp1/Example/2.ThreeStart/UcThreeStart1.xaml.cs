@@ -101,9 +101,9 @@ namespace WpfAppTest
         public void SetDefaultValue()
         {
             /*CheckBoxList*/
-            cblData1.Clear();
-            cblData2.Clear();
-            cblData3.Clear();
+            cblData1.SelectedAll();
+            cblData2.SelectedAll();
+            cblData3.SelectedAll();
 
             cblType1.Clear();
             cblType2.Clear();
