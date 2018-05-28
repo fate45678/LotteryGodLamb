@@ -381,17 +381,19 @@ namespace WinFormsApp1
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
         {
-            ////這邊取得時間自動關機
-            //int NowDate = Int32.Parse(DateTime.Now.ToString("u").Replace("Z", "").Replace(":", "").Substring(10, 5));
-            //if (NowDate < 10 || NowDate > 235)
-            //{
-            //    MessageBox.Show("目前维护中请于12:10分后使用");
-            //    //this.Dispose();
-            //    Application.Exit();
-            //}
-
+            //這邊取得時間自動關機
+            int NowDate = Int32.Parse(DateTime.Now.ToString("u").Replace("Z", "").Replace(":", "").Substring(10, 5));
+            if (NowDate < 10 || NowDate > 2355)
+            {
+                timer_GetGameInfo.Stop();
+                MessageBox.Show("目前维护中请于12:10分后使用");
+                this.Dispose();
+                Application.Exit();
+            }
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
+            
+            
         }
         private void lblMenuPlanUpload_Click(object sender, EventArgs e)
         {

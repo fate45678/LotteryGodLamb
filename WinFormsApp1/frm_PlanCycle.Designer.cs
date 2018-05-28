@@ -494,6 +494,7 @@
             this.txtGameNum.TabStop = false;
             this.txtGameNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGameNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGameNum_KeyPress);
+            this.txtGameNum.Leave += new System.EventHandler(this.txtGameNum_Leave_1);
             // 
             // pnlShowPlan
             // 

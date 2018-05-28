@@ -23,143 +23,143 @@ namespace WinFormsApp1
         string[] numHistory;
         public static JArray jArrHistoryNumber;
         string NowAnalyzeNumber = "";
+        public static JArray NowAnalyzeNumberArr;
+
+        //五星亂數用不到了
+        //private void getFiveNumber()
+        //{
+
+        //    System.Reflection.Assembly thisExe;
+        //    thisExe = System.Reflection.Assembly.GetExecutingAssembly();
+        //    Stream file = thisExe.GetManifestResourceStream("WinFormsApp1.Number.20180501Number.txt");
+
+        //    string text = "";
+
+        //    using (StreamReader sr = new StreamReader(file, Encoding.Default))
+        //    {
+        //        text = sr.ReadToEnd();
+        //        //MessageBox.Show(strTxt); 
+        //    }
+
+        //    string[] test = text.Split('"');
+        //    string[] test2 = test[0].Split(',');
+        //    lblBets.Text = test2.Count().ToString();
+        //    numHistory = test;
 
 
-        //五星的亂數
-        private void getFiveNumber()
+        //    string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+        //var frmGameMainjArr = jArrHistoryNumber.Where(x => x["Issue"].ToString().Contains(date)).ToList();
+
+        #region 需要排序在打開
+        //需要新排序請用這裡
+        //string[] test2 = test[0].Split(',');
+        //string temp = "";
+
+        //Array.Sort(test2, 0, test2.Count());
+        //for (int i = 0; i < test2.Count(); i++)
+        //{
+        //    temp += ", " + test2[i];
+        //}
+
+        //string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+        //using (FileStream fs = File.Create(@"E:\" + date + "Number.txt"))
+        //{
+        //    Byte[] info = new UTF8Encoding(true).GetBytes(temp.Substring(2));
+        //    // Add some information to the file.
+        //    fs.Write(info, 0, info.Length);
+        //}
+
+
+        //未來自動產出的方法
+        /*
+        Random generator = new Random();
+        string TodayQuantity = "";
+        string NumberFileTmp = "";
+
+        //先決定這次產出的筆數
+        switch (cbGamePlus.Text)
         {
-
-            System.Reflection.Assembly thisExe;
-            thisExe = System.Reflection.Assembly.GetExecutingAssembly();
-            Stream file = thisExe.GetManifestResourceStream("WinFormsApp1.Number.20180501Number.txt");
-
-            string text = "";
-
-            using (StreamReader sr = new StreamReader(file, Encoding.Default))
-            {
-                text = sr.ReadToEnd();
-                //MessageBox.Show(strTxt); 
-            }
-
-            string[] test = text.Split('"');
-            string[] test2 = test[0].Split(',');
-            lblBets.Text = test2.Count().ToString();
-            numHistory = test;
-
-
-            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            //var frmGameMainjArr = jArrHistoryNumber.Where(x => x["Issue"].ToString().Contains(date)).ToList();
-
-            #region 需要排序在打開
-            //需要新排序請用這裡
-            //string[] test2 = test[0].Split(',');
-            //string temp = "";
-
-            //Array.Sort(test2, 0, test2.Count());
-            //for (int i = 0; i < test2.Count(); i++)
-            //{
-            //    temp += ", " + test2[i];
-            //}
-
-            //string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            //using (FileStream fs = File.Create(@"E:\" + date + "Number.txt"))
-            //{
-            //    Byte[] info = new UTF8Encoding(true).GetBytes(temp.Substring(2));
-            //    // Add some information to the file.
-            //    fs.Write(info, 0, info.Length);
-            //}
-
-
-            //未來自動產出的方法
-            /*
-            Random generator = new Random();
-            string TodayQuantity = "";
-            string NumberFileTmp = "";
-
-            //先決定這次產出的筆數
-            switch (cbGamePlus.Text)
-            {
-                case "30000+":
-                    TodayQuantity = generator.Next(30000, 39999).ToString();
-                    break;
-                case "40000+":
-                    TodayQuantity = generator.Next(40000, 49999).ToString();
-                    break;
-                case "50000+":
-                    TodayQuantity = generator.Next(50000, 59999).ToString();
-                    break;
-            }
-            //每期注数 (依計畫而定)
-            lblBets.Text = TodayQuantity;
-
-            string tmpString = "";
-            int j = Convert.ToInt32(TodayQuantity);
-            
-            String r = "";
-            var resourceNames = new List<string>();
-
-            for (int i = 0; i < 1; i++) 
-            {
-                tmpString = "";
-                //Random generator = new Random();
-                for (int ii = 0; ii < j; ii++)
-                {
-                    r = generator.Next(0, 99999).ToString("D5");
-                    if (!tmpString.Contains(r))
-                    {
-                        tmpString = tmpString + "," + r ;
-                    }
-                    else
-                    {
-                        ii--;
-                    }
-                }
-                NumberFileTmp += "\"" + tmpString.Substring(1) ;
-                resourceNames.Add(tmpString);
-            }
-
-            //排序重組
-            string[] NumberFileTmpSort = NumberFileTmp.Substring(1).Split('"');
-
-            string[] TmpArr;
-            string tmpSortString = "";
-            string[] TmpSortArr;
-            var resourceNamesSort = new List<string>();
-
-
-            for (int i = 0; i < NumberFileTmpSort.Count(); i++)
-            {
-                TmpSortArr = NumberFileTmpSort[i].Split(',');
-                Array.Sort(TmpSortArr, 0, TmpSortArr.Count());
-                tmpSortString = "";
-                for (int ii = 0; ii < TmpSortArr.Count(); ii++)
-                {
-                    tmpSortString += ", " + TmpSortArr[ii];
-                }
-                resourceNamesSort.Add("\"" + tmpSortString.Substring(2));
-            }
-
-            string fileNumber = "";
-            for (int i = 0; i < resourceNamesSort.Count(); i++)
-            {
-                fileNumber += resourceNamesSort[i];
-            }
-
-            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            using (FileStream fs = File.Create(@"E:\" + date + "Number.txt"))
-            {
-                Byte[] info = new UTF8Encoding(true).GetBytes(NumberFileTmp.Substring(1));
-                // Add some information to the file.
-                fs.Write(info, 0, info.Length);
-            }
-
-            string text = System.IO.File.ReadAllText(@"E:\" + date + "Number.txt");
-
-            string[] test = text.Split('"');
-            string[] test2 = test[0].Split(',');
-            //FiveNumber = test;*/
-            #endregion
+            case "30000+":
+                TodayQuantity = generator.Next(30000, 39999).ToString();
+                break;
+            case "40000+":
+                TodayQuantity = generator.Next(40000, 49999).ToString();
+                break;
+            case "50000+":
+                TodayQuantity = generator.Next(50000, 59999).ToString();
+                break;
         }
+        //每期注数 (依計畫而定)
+        lblBets.Text = TodayQuantity;
+
+        string tmpString = "";
+        int j = Convert.ToInt32(TodayQuantity);
+
+        String r = "";
+        var resourceNames = new List<string>();
+
+        for (int i = 0; i < 1; i++) 
+        {
+            tmpString = "";
+            //Random generator = new Random();
+            for (int ii = 0; ii < j; ii++)
+            {
+                r = generator.Next(0, 99999).ToString("D5");
+                if (!tmpString.Contains(r))
+                {
+                    tmpString = tmpString + "," + r ;
+                }
+                else
+                {
+                    ii--;
+                }
+            }
+            NumberFileTmp += "\"" + tmpString.Substring(1) ;
+            resourceNames.Add(tmpString);
+        }
+
+        //排序重組
+        string[] NumberFileTmpSort = NumberFileTmp.Substring(1).Split('"');
+
+        string[] TmpArr;
+        string tmpSortString = "";
+        string[] TmpSortArr;
+        var resourceNamesSort = new List<string>();
+
+
+        for (int i = 0; i < NumberFileTmpSort.Count(); i++)
+        {
+            TmpSortArr = NumberFileTmpSort[i].Split(',');
+            Array.Sort(TmpSortArr, 0, TmpSortArr.Count());
+            tmpSortString = "";
+            for (int ii = 0; ii < TmpSortArr.Count(); ii++)
+            {
+                tmpSortString += ", " + TmpSortArr[ii];
+            }
+            resourceNamesSort.Add("\"" + tmpSortString.Substring(2));
+        }
+
+        string fileNumber = "";
+        for (int i = 0; i < resourceNamesSort.Count(); i++)
+        {
+            fileNumber += resourceNamesSort[i];
+        }
+
+        string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+        using (FileStream fs = File.Create(@"E:\" + date + "Number.txt"))
+        {
+            Byte[] info = new UTF8Encoding(true).GetBytes(NumberFileTmp.Substring(1));
+            // Add some information to the file.
+            fs.Write(info, 0, info.Length);
+        }
+
+        string text = System.IO.File.ReadAllText(@"E:\" + date + "Number.txt");
+
+        string[] test = text.Split('"');
+        string[] test2 = test[0].Split(',');
+        //FiveNumber = test;*/
+        #endregion
+        // }
 
         private class ComboboxItem
         {
@@ -378,6 +378,12 @@ namespace WinFormsApp1
 
         private void btnViewResult_Click(object sender, EventArgs e)
         {
+            if (Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
+            {
+                MessageBox.Show("只能输入1700 ~ 2000的数字");
+                txtGameNum.Focus();
+                return;
+            }
             ConnectDbGetHistoryNumber();
             pnlShowPlan.Visible = false;
             if (txtGameNum.Text == "" || txtGameNum.Text == "请输入奖金号" ||
@@ -827,14 +833,18 @@ namespace WinFormsApp1
             lblPlanCycleDetail.Text = item.Value;
             //先固定350組
             //這邊是用死的寫法需修正 TODO
-            if (cbPlanCycleSelect.SelectedIndex == 0)
-                rtxtPlanCycle.Text = numHistory[0];
-            else if (cbPlanCycleSelect.SelectedIndex == 1)
-                rtxtPlanCycle.Text = numHistory[0];
-            else if (cbPlanCycleSelect.SelectedIndex == 2)
-                rtxtPlanCycle.Text = numHistory[0];
-            else
-                rtxtPlanCycle.Text = numHistory[0];
+            int Index = cbPlanCycleSelect.SelectedIndex;
+
+            rtxtPlanCycle.Text = NowAnalyzeNumberArr[Index]["Number"].ToString();
+
+            //if (cbPlanCycleSelect.SelectedIndex == 0)
+            //    rtxtPlanCycle.Text = numHistory[0];
+            //else if (cbPlanCycleSelect.SelectedIndex == 1)
+            //    rtxtPlanCycle.Text = numHistory[0];
+            //else if (cbPlanCycleSelect.SelectedIndex == 2)
+            //    rtxtPlanCycle.Text = numHistory[0];
+            //else
+            //    rtxtPlanCycle.Text = numHistory[0];
         }
 
         private void cbCycleResult1_DrawItem(object sender, DrawItemEventArgs e)
@@ -897,6 +907,7 @@ namespace WinFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Interval = 300000;
             UpdateHistory();
         }
 
@@ -1090,7 +1101,10 @@ namespace WinFormsApp1
 
             //抓取比對的投注數量
             ConnectDbGetRandomNumber(cbGamePlus.Text, cbGamePlan.Text);
+            //for (int i = 0; i < NowAnalyzeNumberArr.Count(); i++)
+            //{
 
+            //}
             string threeNumber = NowAnalyzeNumber;
             List<string> numHistoryList = new List<string>();
             numHistoryList.Add(threeNumber);
@@ -1293,7 +1307,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text))).ToString();
+                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1)).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -1497,7 +1511,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text))).ToString();
+                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100) )).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -1702,7 +1716,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text)) - (Convert.ToDecimal(sumFail) * Convert.ToDecimal(lblBetsMoney.Text))).ToString();
+                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10))).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -1907,7 +1921,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text)) - (Convert.ToDecimal(sumFail) * Convert.ToDecimal(lblBetsMoney.Text))).ToString();
+                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -2108,7 +2122,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text)) - (Convert.ToDecimal(sumFail) * Convert.ToDecimal(lblBetsMoney.Text))).ToString();
+                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -2308,7 +2322,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text)) - (Convert.ToDecimal(sumFail) * Convert.ToDecimal(lblBetsMoney.Text))).ToString();
+                    lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) *0.1).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -2508,7 +2522,7 @@ namespace WinFormsApp1
                     //總投注額?元
                     lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                     //獎金?元
-                    lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * Convert.ToDecimal(txtGameNum.Text)) - (Convert.ToDecimal(sumFail) * Convert.ToDecimal(lblBetsMoney.Text))).ToString();
+                    lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) * 0.1).ToString();
                     //盈虧?元
                     lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                     //中奖率
@@ -2522,7 +2536,7 @@ namespace WinFormsApp1
 
             }
 
-            rtxtPlanCycle.ReadOnly = true;
+            rtxtPlanCycle.ReadOnly = true;//this
         }
 
         private void ConnectDbGetHistoryNumber()
@@ -2569,50 +2583,69 @@ namespace WinFormsApp1
                 if (PlanName == "玉神计划")
                 {
                     con.Open();
-                    string Sqlstr = @"SELECT top(1) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
+                    string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
                     SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
-                    NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                    //DataTable dt = ds.Tables[0];
-                    //NowAnalyzeNumber = dt.Rows[0][""].ToString();
-                    //var str_json = JsonConvert.SerializeObject(ds.Tables[0], Formatting.Indented);
+                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                    DataTable dt = ds.Tables[0];
+
+                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
                     //MessageBox.Show("Connection Open ! ");
-                    //JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
                     //string ii = ja[0]["issue"].ToString();
-                    //jArrHistoryNumber = ja;
+                    NowAnalyzeNumberArr = ja;
                 }
                 else if (PlanName == "幻影计划")
                 {
                     con.Open();
-                    string Sqlstr = @"SELECT top(2) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
+                    string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >40 AND NUM <81";
+                    //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                     SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
-                    NowAnalyzeNumber = ds.Tables[0].Rows[1]["Number"].ToString();
-                    //DataTable dt = ds.Tables[0];
-                    //NowAnalyzeNumber = dt.Rows[0][""].ToString();
-                    //var str_json = JsonConvert.SerializeObject(ds.Tables[0], Formatting.Indented);
+                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                    DataTable dt = ds.Tables[0];
+
+                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
                     //MessageBox.Show("Connection Open ! ");
-                    //JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
                     //string ii = ja[0]["issue"].ToString();
-                    //jArrHistoryNumber = ja;
+                    NowAnalyzeNumberArr = ja;
                 }
                 else
                 {
                     con.Open();
-                    string Sqlstr = @"SELECT top(3) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
+                    string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >40 AND NUM <80";
+                    //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                     SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                    //DataTable dt = ds.Tables[0];
-                    //NowAnalyzeNumber = dt.Rows[0][""].ToString();
-                    //var str_json = JsonConvert.SerializeObject(ds.Tables[0], Formatting.Indented);
+                    da.Fill(ds);
+                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                    DataTable dt = ds.Tables[0];
+
+                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
                     //MessageBox.Show("Connection Open ! ");
-                    //JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
                     //string ii = ja[0]["issue"].ToString();
-                    //jArrHistoryNumber = ja;
+                    NowAnalyzeNumberArr = ja;
                 }
                 con.Close();
             }
@@ -2733,6 +2766,20 @@ namespace WinFormsApp1
             #endregion
 
             CountAndShow();
+        }
+
+        private void txtGameNum_Leave_1(object sender, EventArgs e)
+        {
+            int Bouns = 0;
+            if (txtGameNum.Text.Trim() != "")
+            {
+                Bouns = Int32.Parse(txtGameNum.Text.Trim());
+                if (Bouns < 1700 || Bouns > 2000)
+                {
+                    MessageBox.Show("只能输入1700 ~ 2000的数字");
+                    return;
+                }
+            }
         }
     }
 }

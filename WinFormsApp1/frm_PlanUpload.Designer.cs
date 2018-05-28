@@ -59,6 +59,7 @@
             this.pnlNewPlan = new System.Windows.Forms.Panel();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnCopyUp = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -491,9 +492,11 @@
             this.richTextBox2.Text = "";
             this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             this.richTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox2_KeyPress);
+            this.richTextBox2.Leave += new System.EventHandler(this.richTextBox2_Leave);
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btnCopyUp);
             this.panel7.Controls.Add(this.button7);
             this.panel7.Controls.Add(this.button6);
             this.panel7.Controls.Add(this.button4);
@@ -504,13 +507,27 @@
             this.panel7.Size = new System.Drawing.Size(346, 55);
             this.panel7.TabIndex = 3;
             // 
+            // btnCopyUp
+            // 
+            this.btnCopyUp.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCopyUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopyUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopyUp.ForeColor = System.Drawing.Color.White;
+            this.btnCopyUp.Location = new System.Drawing.Point(161, 26);
+            this.btnCopyUp.Name = "btnCopyUp";
+            this.btnCopyUp.Size = new System.Drawing.Size(82, 23);
+            this.btnCopyUp.TabIndex = 26;
+            this.btnCopyUp.Text = "缩水贴上";
+            this.btnCopyUp.UseVisualStyleBackColor = false;
+            this.btnCopyUp.Click += new System.EventHandler(this.btnCopyUp_Click);
+            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.DodgerBlue;
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(99, 26);
+            this.button7.Location = new System.Drawing.Point(80, 26);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(82, 23);
             this.button7.TabIndex = 25;
@@ -524,7 +541,7 @@
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(6, 26);
+            this.button6.Location = new System.Drawing.Point(3, 26);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(78, 23);
             this.button6.TabIndex = 24;
@@ -538,9 +555,9 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(217, 26);
+            this.button4.Location = new System.Drawing.Point(246, 26);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 23);
+            this.button4.Size = new System.Drawing.Size(97, 23);
             this.button4.TabIndex = 23;
             this.button4.Text = "上传";
             this.button4.UseVisualStyleBackColor = false;
@@ -1171,5 +1188,6 @@
         private System.Windows.Forms.Button button13;
         private Model.CheckedListBoxEx checkedListBoxEx1;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button btnCopyUp;
     }
 }
