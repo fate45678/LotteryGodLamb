@@ -90,6 +90,12 @@ namespace WpfAppTest
             dgData1.ItemsSource = new List<Match>();
             dgData2.ItemsSource = new List<Match>();
 
+            //定義寬度
+            cblData1.WrapRow(4);
+            cblData2.WrapRow(4);
+            cblData3.WrapRow(4);
+            cbl012.WrapRow(3);
+
             /*設定預設值*/
             SetDefaultValue();
         }

@@ -41,12 +41,16 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="teResult" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
-
-            <DockPanel Grid.Row="1" >
-                <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0, 3, 0, 3" Height="20"/>
-                <Button Content="复制" x:Name="btnCopy" DockPanel.Dock="Top" Margin="0, 0, 0, 3" Height="20" Click="btn_Click" />
+            <TextBox x:Name="teResult" Margin="0,0,0,3" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
+            <DockPanel Margin="0,0,0,3" Grid.Row="1" HorizontalAlignment="Center">
+                <TextBlock Text="本次投注：" />
+                <TextBlock x:Name="tbCount" Text="0" />
+            </DockPanel>
+            <DockPanel Grid.Row="2" >
+                <Button x:Name="btnFilter" Content="开始缩水" Click="btn_Click" DockPanel.Dock="Top" Margin="0,0,0,3" Height="20"/>
+                <Button Content="复制" x:Name="btnCopy" DockPanel.Dock="Top" Margin="0,0,0,3" Height="20" Click="btn_Click" />
                 <Button x:Name="btnClear" Content="全清" Click="btn_Click" DockPanel.Dock="Bottom" Height="20"/>
             </DockPanel>
         </Grid>

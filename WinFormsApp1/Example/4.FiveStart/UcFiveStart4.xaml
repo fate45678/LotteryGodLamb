@@ -22,7 +22,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid x:Name="gdContainer" Width="850">
+    <Grid x:Name="gdContainer">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="250"/>

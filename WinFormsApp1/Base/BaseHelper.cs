@@ -10,6 +10,7 @@ using System.Collections;
 using System.Windows.Data;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Windows.Threading;
 
 namespace WpfAppTest.Base
 {
@@ -44,6 +45,16 @@ namespace WpfAppTest.Base
         /// 是否Runtime
         /// </summary>
         public static bool RunTime { get { return !DesignerProperties.GetIsInDesignMode(new DependencyObject()); } }
+
+        /// <summary>
+        /// 處理所有事件的委派
+        /// </summary>
+        public static void DoEvent()
+        {
+            //Application.DoEvents()
+            var tmp = new Application();
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new Action(delegate { }));
+        }
 
         public static void DataFieldBinding(FrameworkElement container)
         {

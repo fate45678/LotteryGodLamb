@@ -111,6 +111,7 @@ namespace WpfAppTest
             if (cm != null)
                 mi_Click(cm.Items[0], null);
             teResult.Text = "";
+            tbCount.Text = "0";
             IsSetting = false;
         }
         #endregion
@@ -252,7 +253,7 @@ namespace WpfAppTest
                 //tmp = (form[7] as UcTwoStart7).Filter(tmp);
 
                 teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
-
+                tbCount.Text = tmp.Count.ToString();
                 btn.Content = btncontent;
                 btn.IsEnabled = true;
             }

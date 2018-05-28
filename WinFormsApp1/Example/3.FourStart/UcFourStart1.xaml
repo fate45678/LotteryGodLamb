@@ -465,9 +465,9 @@
         <!--右半-->
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180"/>
-                <ColumnDefinition Width="180"/>
-                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -479,19 +479,25 @@
             </Grid.RowDefinitions>
 
             <GroupBox Header="杀大小排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" >
-                <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <DockPanel HorizontalAlignment="Center">
+                    <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀奇偶排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" >
-                <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <DockPanel HorizontalAlignment="Center">
+                    <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀质合排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" >
-                <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <DockPanel HorizontalAlignment="Center">
+                    <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀012排列" Margin="0,0,0,3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                <DockPanel Width="500" HorizontalAlignment="Left">
+                <DockPanel HorizontalAlignment="Left">
                     <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>

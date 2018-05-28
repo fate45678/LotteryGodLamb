@@ -78,6 +78,11 @@ namespace WpfAppTest
             cblRatio3.ItemsSource = Ratio;
             //cblAC.ItemsSource = DB.CreateOption(1, 9);
 
+            //設定寬度
+            cblData1.WrapRow(4);
+            cblData2.WrapRow(4);
+            cblData3.WrapRow(4);
+
             /*預設值*/
             SetDefaultValue();
         }
@@ -247,11 +252,11 @@ namespace WpfAppTest
             tmp = Calculation.AssignNumber(tmp, tePos.Text, false);
 
             //定位殺
-            tmp = Calculation.PosNumber(tmp, cblTenThousands, "4", false);
-            tmp = Calculation.PosNumber(tmp, cblThousands, "3", false);
+            tmp = Calculation.PosNumber(tmp, cblTenThousands, "0", false);
+            tmp = Calculation.PosNumber(tmp, cblThousands, "1", false);
             tmp = Calculation.PosNumber(tmp, cblHundreds, "2", false);
-            tmp = Calculation.PosNumber(tmp, cblTens, "1", false);
-            tmp = Calculation.PosNumber(tmp, cblUnits, "0", false);
+            tmp = Calculation.PosNumber(tmp, cblTens, "3", false);
+            tmp = Calculation.PosNumber(tmp, cblUnits, "4", false);
 
             //殺和尾
             tmp = Calculation.SumLastNumber(tmp, cblSumLast, false);

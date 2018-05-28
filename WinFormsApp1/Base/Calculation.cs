@@ -430,7 +430,7 @@ namespace WpfAppTest.Base
                         int.TryParse(c.ToString(), out number);
                         if (type == 1)
                             checkvalue += ((int)(number / lenth) - (number > 0 && number % lenth == 0 ? 1 : 0)).ToString();
-                        else 
+                        else
                             checkvalue += ((c == '6' || c == '9' ? -1 : 0) + (int)(number / lenth)).ToString();
                     }
 
@@ -1596,8 +1596,11 @@ namespace WpfAppTest.Base
         {
             if (data.Code.ToCharArray().Distinct().Count() == 4)
             {
-                if (data.Code[0] == data.Code[1])
-                    return true;
+                //舊寫法有考慮到位置
+                //if (data.Code[0] == data.Code[1])
+                //    return true;
+
+                return true;
             }
             return false;
         }
@@ -1613,11 +1616,19 @@ namespace WpfAppTest.Base
         {
             if (data.Code.ToCharArray().Distinct().Count() == 3)
             {
-                if (data.Code[0] == data.Code[1] &&
-                    data.Code[2] == data.Code[3])
+                if (data.Code.Where(x => data.Code.Length - data.Code.Replace(x.ToString(), "").Length > 2).Count() == 0)
                     return true;
             }
             return false;
+
+            //舊寫法有考慮到位置
+            //if (data.Code.ToCharArray().Distinct().Count() == 3)
+            //{
+            //    //if (data.Code[0] == data.Code[1] &&
+            //    //    data.Code[2] == data.Code[3])
+            //    //    return true;
+            //}
+            //return false;
         }
         #endregion
 
@@ -1629,11 +1640,18 @@ namespace WpfAppTest.Base
         /// <returns>true:符合 false:未符合</returns>
         private static bool AAABBNumber(BaseOptions data)
         {
+            //舊的寫法有考慮位置
+            //if (data.Code.ToCharArray().Distinct().Count() == 2)
+            //{
+            //    if (data.Code[0] == data.Code[1] &&
+            //        data.Code[0] == data.Code[2] &&
+            //        data.Code[3] == data.Code[4])
+            //        return true;
+            //}
+
             if (data.Code.ToCharArray().Distinct().Count() == 2)
             {
-                if (data.Code[0] == data.Code[1] &&
-                    data.Code[0] == data.Code[2] &&
-                    data.Code[3] == data.Code[4])
+                if (data.Code.Where(x => data.Code.Length - data.Code.Replace(x.ToString(), "").Length > 3).Count() == 0)
                     return true;
             }
             return false;
@@ -1648,10 +1666,16 @@ namespace WpfAppTest.Base
         /// <returns>true:符合 false:未符合</returns>
         private static bool AAABCNumber(BaseOptions data)
         {
+            //if (data.Code.ToCharArray().Distinct().Count() == 3)
+            //{
+            //    if (data.Code[0] == data.Code[1] &&
+            //        data.Code[0] == data.Code[2])
+            //        return true;
+            //}
+
             if (data.Code.ToCharArray().Distinct().Count() == 3)
             {
-                if (data.Code[0] == data.Code[1] &&
-                    data.Code[0] == data.Code[2])
+                if (data.Code.Where(x => data.Code.Length - data.Code.Replace(x.ToString(), "").Length == 3).Count() > 0)
                     return true;
             }
             return false;
@@ -1666,11 +1690,17 @@ namespace WpfAppTest.Base
         /// <returns>true:符合 false:未符合</returns>
         private static bool AAAABNumber(BaseOptions data)
         {
+            //if (data.Code.ToCharArray().Distinct().Count() == 2)
+            //{
+            //    if (data.Code[0] == data.Code[1] &&
+            //        data.Code[0] == data.Code[2] &&
+            //        data.Code[0] == data.Code[3])
+            //        return true;
+            //}
+
             if (data.Code.ToCharArray().Distinct().Count() == 2)
             {
-                if (data.Code[0] == data.Code[1] &&
-                    data.Code[0] == data.Code[2] &&
-                    data.Code[0] == data.Code[3])
+                if (data.Code.Where(x => data.Code.Length - data.Code.Replace(x.ToString(), "").Length == 4).Count() > 0)
                     return true;
             }
             return false;

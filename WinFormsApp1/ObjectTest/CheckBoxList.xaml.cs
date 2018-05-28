@@ -109,41 +109,44 @@ namespace WpfAppTest
             }
         }
 
-        string _VisibleItems;
-        public string VisibleItems
-        {
-            get { return _VisibleItems; }
-            set
-            {
-                if (_VisibleItems != value)
-                {
-                    _VisibleItems = value;
-                    SetCheckBoxVisible2();
-                }
-            }
-        }
+        //string _VisibleItems;
+        //public string VisibleItems
+        //{
+        //    get { return _VisibleItems; }
+        //    set
+        //    {
+        //        if (_VisibleItems != value)
+        //        {
+        //            _VisibleItems = value;
+        //            SetCheckBoxVisible2();
+        //        }
+        //    }
+        //}
 
-        void SetCheckBoxVisible2()
-        {
-            if (CheckBoxs == null) return;
-            foreach (var cb in CheckBoxs)
-            {
-                int i = int.Parse(cb.Tag.ToString());
-                if (i <= 0 || i > ValueLength)
-                    cb.Visibility = Visibility.Collapsed;
+        //void SetCheckBoxVisible2()
+        //{
+        //    if (CheckBoxs == null) return;
+        //    foreach (var cb in CheckBoxs)
+        //    {
+        //        int i = int.Parse(cb.Tag.ToString());
+        //        if (i <= 0 || i > ValueLength)
+        //            cb.Visibility = Visibility.Collapsed;
 
-                if (!string.IsNullOrEmpty(VisibleItems) && VisibleItems.Length >= i)
-                    cb.Visibility = (VisibleItems[i - 1] == '0' ? Visibility.Visible : Visibility.Collapsed);
-                else
-                    cb.Visibility = Visibility.Visible;
-            }
-        }
+        //        if (!string.IsNullOrEmpty(VisibleItems) && VisibleItems.Length >= i)
+        //            cb.Visibility = (VisibleItems[i - 1] == '0' ? Visibility.Visible : Visibility.Collapsed);
+        //        else
+        //            cb.Visibility = Visibility.Visible;
+        //    }
+        //}
 
         List<CheckBox> CheckBoxs;
 
+        bool IsFirstTime = true;
         private void root_Loaded(object sender, RoutedEventArgs e)
         {
             InitCheckBoxs();
+            if (IsFirstTime)
+                IsFirstTime = false;
         }
 
         private void InitCheckBoxs()
@@ -178,6 +181,9 @@ namespace WpfAppTest
                     SetCheckBoxVisible();
                     SetChecked(SelectedValue);
                 }
+
+                if (!IsFirstTime && _col > 0)
+                    WrapRow(_col);
             }
         }
 
@@ -409,6 +415,25 @@ namespace WpfAppTest
                 this.SelectedAll();
             else
                 this.Clear();
+        }
+
+
+        int _col = 0;
+        /// <summary>
+        /// 折行
+        /// </summary>
+        /// <param name="col">幾行折一列</param>
+        public void WrapRow(int col)
+        {
+            if (CheckBoxs == null)
+            {
+                _col = col;
+                return;
+            }
+
+            double actual = CheckBoxs.Sum(x => x.DesiredSize.Width);
+            if (col > 0 && this.Items.Count > 0) 
+                Width = (actual / (Items.Count / col));
         }
     }
 }

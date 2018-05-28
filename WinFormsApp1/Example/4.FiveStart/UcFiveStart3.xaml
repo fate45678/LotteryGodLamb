@@ -6,9 +6,11 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
-    <Grid Width="850">
+    <Grid>
         <GroupBox Header="杀012排列" Width="650">
-            <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+            <DockPanel HorizontalAlignment="Center">
+                <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+            </DockPanel>
         </GroupBox>
     </Grid>
 </UserControl>

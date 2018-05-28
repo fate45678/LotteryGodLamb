@@ -77,6 +77,12 @@ namespace WpfAppTest
             cblSpecial.ItemsSource = DB.CreateOption(1, 6, new string[6] { "上山", "下山", "凸型", "凹型", "N型", "反N型" });
             cblSpecialExcept.ItemsSource = DB.CreateOption(1, 9, new string[9] { "豹子", "不连", "2连", "3连", "4连", "散号", "对子号", "三同号", "两个对子" });
 
+            //設定寬度
+            cblData1.WrapRow(2);
+            cblData2.WrapRow(2);
+            cblData3.WrapRow(2);
+            cbl012.WrapRow(9);
+
             /*設定預設值*/
             SetDefaultValue();
         }
@@ -202,10 +208,10 @@ namespace WpfAppTest
             #endregion
 
             #region group2-定位殺
-            tmp = Calculation.PosNumber(tmp, cblThousands, "3", false);
-            tmp = Calculation.PosNumber(tmp, cblHundreds, "2", false);
-            tmp = Calculation.PosNumber(tmp, cblTens, "1", false);
-            tmp = Calculation.PosNumber(tmp, cblUnits, "0", false);
+            tmp = Calculation.PosNumber(tmp, cblThousands, "0", false);
+            tmp = Calculation.PosNumber(tmp, cblHundreds, "1", false);
+            tmp = Calculation.PosNumber(tmp, cblTens, "2", false);
+            tmp = Calculation.PosNumber(tmp, cblUnits, "3", false);
             #endregion
 
             #region group3-殺和尾.殺和值.殺跨度.殺通碼.殺AC值

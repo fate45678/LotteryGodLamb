@@ -38,6 +38,7 @@ namespace WpfAppTest
         void SetData()
         {
             cbl012.ItemsSource = DB.CombinationNumber(5, 0, 2).OrderBy(x => x.Code);
+            //cbl012.WrapRow(10);
         }
 
         #region 外部呼叫
