@@ -161,9 +161,9 @@ namespace WpfAppTest
                             if (cblType4.CheckItem.Tag != null)
                             {
                                 if ((int)cblType4.CheckItem.Tag == 3)
-                                    tmp[0] = tmp[1] = tmp[2] = tmp[3] = ((bool)cblType4.CheckItem.IsChecked ? '1' : '0');
+                                    tmp[0] = tmp[1] = tmp[2] = ((bool)cblType4.CheckItem.IsChecked ? '1' : '0');
                                 else if ((int)cblType4.CheckItem.Tag == 2)
-                                    tmp[4] = tmp[5] = tmp[6] = ((bool)cblType4.CheckItem.IsChecked ? '1' : '0');
+                                    tmp[3] = tmp[4] = tmp[5] = tmp[6] = ((bool)cblType4.CheckItem.IsChecked ? '1' : '0');
                                 else if ((int)cblType4.CheckItem.Tag == 1)
                                     tmp[7] = tmp[8] = tmp[9] = ((bool)cblType4.CheckItem.IsChecked ? '1' : '0');
                             }
@@ -179,19 +179,11 @@ namespace WpfAppTest
                                     tmp[2] = tmp[5] = tmp[8] = ((bool)cblType5.CheckItem.IsChecked ? '1' : '0');
                             }
                             break;
-                        case "cblType6": //???
+                        case "cblType6": //對應碼
                             if (cblType6.CheckItem.Tag != null)
                             {
-                                if ((int)cblType6.CheckItem.Tag == 1)
-                                    tmp[0] = tmp[2] = tmp[5] = tmp[8] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
-                                else if ((int)cblType6.CheckItem.Tag == 2)
-                                    tmp[1] = tmp[6] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
-                                else if ((int)cblType6.CheckItem.Tag == 3)
-                                    tmp[2] = tmp[7] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
-                                else if ((int)cblType6.CheckItem.Tag == 4)
-                                    tmp[3] = tmp[8] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
-                                else if ((int)cblType6.CheckItem.Tag == 5)
-                                    tmp[4] = tmp[9] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
+                                int type = (int)cblType6.CheckItem.Tag;
+                                tmp[type - 1] = tmp[type + 4] = ((bool)cblType6.CheckItem.IsChecked ? '1' : '0');
                             }
                             break;
                         case "cblSumLastType1": //合尾　分類一

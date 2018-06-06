@@ -64,7 +64,7 @@
         </GroupBox>
         <GroupBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5">
             <DockPanel Margin="5">
-                <TextBlock Text="殺AC值" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
+                <TextBlock Text="对应码" DockPanel.Dock="Left" Margin="5" Width="50"></TextBlock>
                 <local:CheckBoxList x:Name="cblType6" DockPanel.Dock="Left" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" SelectedValueChanged="cbl_SelectedValueChanged"/>
             </DockPanel>
         </GroupBox>
