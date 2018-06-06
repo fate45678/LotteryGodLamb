@@ -17,6 +17,8 @@ namespace WpfAppTest.Base
     {
         static string[] emptyArray = new string[1] { "" };
 
+        static List<BaseOptions> emptyList = new List<BaseOptions>();
+
         #region 通用判斷
         /// <summary>
         /// 判斷前組合
@@ -47,6 +49,45 @@ namespace WpfAppTest.Base
         #endregion
 
         #region 通用
+
+        #region
+        /// <summary>
+        /// 轉為組選
+        /// </summary>
+        /// <param name="condition">組合</param>
+        /// <param name="number">分割數</param>
+        /// <param name="split">分格符號</param>
+        /// <param name="data">全部組合資料</param>
+        public static string ConbinationString(string condition, int number, string split = ",")
+        {
+            var conArray = condition.Split(char.Parse(split)).ToArray();
+            if (conArray.Count() == 0)
+                return "";
+
+            string str = string.Join(split, conArray.Where(x => x.ToString().Count() == number));
+            conArray = conArray.Where(x => x.ToString().Count() > number).ToArray();
+
+            foreach (var item in conArray)
+            {
+                string tmp = item;
+                string txt = "";
+
+                foreach (var c in item)
+                {
+                    for (int x = 0; x < number; x++)
+                        txt += tmp[x].ToString();
+                    tmp = tmp.Remove(0, 1);
+                    if (tmp.Count() >= number)
+                        txt += split;
+                    else
+                        break;
+                }
+
+                str += (txt == "" ? "" : " ") + txt;
+            }
+            return str;
+        }
+        #endregion
 
         #region 轉為組選
         /// <summary>
@@ -297,7 +338,7 @@ namespace WpfAppTest.Base
 
             if (!string.IsNullOrEmpty(condition) && !string.IsNullOrEmpty(condition2))
             {
-                List<BaseOptions> tmpData = new List<BaseOptions>(); ;
+                List<BaseOptions> tmpData = emptyList.ToList();
                 if (cbl2 != null)
                     n = condition2.Split(' ').Select(x => int.Parse(x.ToString())).ToArray();
 
@@ -838,6 +879,61 @@ namespace WpfAppTest.Base
         }
         #endregion
 
+        #region 三星-匹配過濾
+        /// <summary>
+        /// 三星-匹配過濾
+        /// </summary>
+        /// <param name="data">全部組合資料</param>
+        /// <param name="condition">條件</param>
+        /// <param name="number">個數</param>
+        /// ex.
+        public static List<BaseOptions> ThreeStartMatchFilter(List<BaseOptions> data, List<Match> rows)
+        {
+            List<BaseOptions> tmpData = (data == null ? null : data.ToList());
+            if (tmpData == null || tmpData.Count == 0)
+                return emptyList.ToList();
+
+            if (rows != null && rows.Count > 0)
+            {
+                List<Match> match = rows.ToList();
+
+                foreach (var item in match)
+                    item.ValueName1 = string.Join("", item.ValueName1.ToCharArray().Distinct());
+
+                if (match.Where(x => x.ValueName2.ToArray().Where(y => int.Parse(y.ToString()) > x.ValueName1.Count()).Count() > 0).FirstOrDefault() != null)
+                    return emptyList.ToList();
+
+                BaseOptions tmp;
+                foreach (var item in data)
+                {
+                    tmp = new BaseOptions { ID = item.ID, Code = item.Code, Name = item.Name, Check = true };
+                    foreach (var m in match)
+                    {
+                        int count = 0;
+                        foreach (var c in m.ValueName1)
+                        {
+                            int index = 0;
+                            index = item.Code.IndexOf(c.ToString());
+                            if (index > -1)
+                                count++;
+                        }
+                        if (!m.ValueName2.ToArray().Contains(char.Parse(count.ToString())))
+                        {
+                            tmp.Check = false;
+                            continue;
+                        }
+                    }
+
+                    if (!tmp.Check)
+                    {
+                        tmpData.Remove(item);
+                    }
+                }
+            }
+            return tmpData.OrderBy(x => x.Code).ToList();
+        }
+        #endregion
+
         #region 三星-位置大小匹配
         /// <summary>
         /// 三星-位置大小匹配
@@ -949,9 +1045,9 @@ namespace WpfAppTest.Base
                 {
                     match = (value[0] == '1' && SameNumber(item)) ||
                             (value[1] == '1' && DisContinueNumber(item)) ||
-                            (value[2] == '1' && ContinueNumber(item, 2)) ||
-                            (value[3] == '1' && ContinueNumber(item, 3)) ||
-                            (value[4] == '1' && ContinueNumber(item, 4)) ||
+                            (value[2] == '1' && ContinueNumber(item, 2, true)) ||
+                            (value[3] == '1' && ContinueNumber(item, 3, true)) ||
+                            (value[4] == '1' && ContinueNumber(item, 4, true, "2")) ||
                             (value[6] == '1' && PairNumber(item)) ||
                             (value[7] == '1' && NUpSameNumber(item, 3)) ||
                             (value[8] == '1' && TwoPairNumber(item));
@@ -1006,6 +1102,7 @@ namespace WpfAppTest.Base
         }
         #endregion
 
+        #region 五星-大小比
         /// <summary>
         /// 五星-大小比
         /// </summary>
@@ -1029,9 +1126,11 @@ namespace WpfAppTest.Base
                         break;
                 }
             }
-            return match ? data : new List<BaseOptions>();
+            return match ? data : emptyList.ToList();
         }
+        #endregion
 
+        #region 五星-奇偶比
         /// <summary>
         /// 五星-奇偶比
         /// </summary>
@@ -1057,9 +1156,11 @@ namespace WpfAppTest.Base
                         break;
                 }
             }
-            return match ? data : new List<BaseOptions>();
+            return match ? data : emptyList.ToList();
         }
+        #endregion
 
+        #region 五星-質合比
         /// <summary>
         /// 五星-質合比
         /// </summary>
@@ -1085,8 +1186,10 @@ namespace WpfAppTest.Base
                         break;
                 }
             }
-            return match ? data : new List<BaseOptions>();
+            return match ? data : emptyList.ToList();
         }
+        #endregion
+
         #endregion
 
         #region 特殊處理
@@ -1439,41 +1542,18 @@ namespace WpfAppTest.Base
         /// <param name="data"></param>
         /// <param name="n">n連 => n=0 則為不連號</param>
         /// <param name="isUp">n連以上</param>
+        /// <param name="mode">1:01789是五連 2:01789是四連</param>
         /// <returns>是否n連號</returns>
-        private static bool ContinueNumber(BaseOptions data, int n, bool isUp = false)
+        private static bool ContinueNumber(BaseOptions data, int n, bool isUp = false, string mode = "1")
         {
             List<int> list = data.Code.OrderBy(x => x).Select(x => int.Parse(x.ToString())).Distinct().ToList();
             if (list.Count < n || n < 2)
                 return false;
 
-            //if (isUp)
-            //{
-            //var array = string.Join("|", chararray);
-            //array = (chararray[chararray.Count() - 1] == '9' && chararray[0] == '0' ? "-1|" : "") + array + (chararray[chararray.Count() - 1] == '9' && chararray[0] == '0' ? "|0" : "");
-            //var tmp = array.Split('|').ToArray();
-
-            ////上一碼
-            //int last = 0;
-            //int.TryParse(tmp[0].ToString(), out last);
-            //int tmpNumber = 0;
-            //int max = 0;
-            //int count = 1;
-
-            //for (int i = 1; i < tmp.Length; i++)
-            //{
-            //    int.TryParse(tmp[i].ToString(), out tmpNumber);
-            //    if ((last == 9 ? -1 : last) + 1 == tmpNumber)
-            //        count++;
-            //    else
-            //        count = 1;
-
-            //    last = tmpNumber;
-            //    if (count > max)
-            //        max = count;
-            //}
-            //return (n == 0 ? max >= 2 : (isDistinct ? (max >= n) : (max == n)));
-            //}
-
+            if (mode == "2")
+                if (string.Join("", list) == "0189")
+                    return n == 3;
+            
             //上一碼
             int tmpNumber = 0;
             int max = 0;

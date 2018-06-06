@@ -38,6 +38,7 @@ namespace WpfAppTest
         {
             if (IsFirstTime)
             {
+                SetContextMenu();
                 SetData();
                 IsFirstTime = false;
             }
@@ -48,7 +49,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
-            OldText = new int[3] { 0, 27, 0 };
+            OldText = new string[3] { "0", "27", "" };
 
             /*CheckBoxList*/
             cblData1.ItemsSource = DB.ZeroOneCombination(3, '大', '小').OrderByDescending(x => x.Code).ToList();
@@ -193,12 +194,14 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
+            string condition = "";
+
             //大底
             #region 大底 / 複式
             //複式
             if ((bool)cbCheck3.IsChecked)
             {
-                string condition = teCheckHundred3.Text + "/" + teCheckTen3.Text + "/" + teCheckUnit3.Text;
+                condition = teCheckHundred3.Text + "/" + teCheckTen3.Text + "/" + teCheckUnit3.Text;
                 tmp = Calculation.CompoundNumber(tmp, condition, '/', 3, true);
             }
 
@@ -218,7 +221,9 @@ namespace WpfAppTest
             tmp = Calculation.GarbageNumber(tmp, teEditor2.Text, 2, '*', 3);
 
             //殺兩碼
-            tmp = Calculation.ExistsNumber(tmp, teEditor3.Text, 2, true, false);
+            condition = Calculation.ConbinationString(teEditor3.Text, 2);
+            tmp = Calculation.ExistsNumber(tmp, condition, 2, true, false);
+            
 
             //定位殺兩碼
             tmp = Calculation.PosNumber(tmp, teEditor4.Text, 2, false);
@@ -246,16 +251,16 @@ namespace WpfAppTest
             tmp = Calculation.CrossNumber(tmp, cblType2, false);
 
             //選膽
-            string conditions = Calculation.BeforeCheck(tmp, cblType3);
-            conditions = conditions.Replace(",", " ");
-            var conArray = conditions.Split(' ').Except(new string[1] { "" });
+            condition = Calculation.BeforeCheck(tmp, cblType3);
+            condition = condition.Replace(",", " ");
+            var conArray = condition.Split(' ').Except(new string[1] { "" });
             int unit = (int)rblSelect.SelectedValue;
             if (unit >= 2 && conArray.Count() >= unit)
             {
-                WpfAppTest.AP.DB.test tmps = WpfAppTest.AP.DB.CombinationNNumber("", conditions.Split(' ').ToArray(), unit, new WpfAppTest.AP.DB.test());
-                conditions = string.Join(" ", tmps.result2.Split(' ').Where(x => x.Distinct().Count() == unit));
+                WpfAppTest.AP.DB.test tmps = WpfAppTest.AP.DB.CombinationNNumber("", condition.Split(' ').ToArray(), unit, new WpfAppTest.AP.DB.test());
+                condition = string.Join(" ", tmps.result2.Split(' ').Where(x => x.Distinct().Count() == unit));
             }
-            tmp = Calculation.ExistsNumber(tmp, conditions, (int)rblSelect.SelectedValue, true, true);
+            tmp = Calculation.ExistsNumber(tmp, condition, (int)rblSelect.SelectedValue, true, true);
             #endregion
 
             #region group3-和值
@@ -278,7 +283,7 @@ namespace WpfAppTest
             //排除複式
             if ((bool)cbCheck1.IsChecked)
             {
-                string condition = teCheckHundred.Text + "/" + teCheckTen.Text + "/" + teCheckUnit.Text;
+                condition = teCheckHundred.Text + "/" + teCheckTen.Text + "/" + teCheckUnit.Text;
                 tmp = Calculation.CompoundNumber(tmp, condition, '/', 3);
             }
 
@@ -309,12 +314,17 @@ namespace WpfAppTest
             tmp = Calculation.DivThreeRemainder(tmp, cbl012, false);
             #endregion
 
-            #region group9-位置大小匹配
+            #region group9-匹配過濾
+            if ((bool)cbMatch.IsChecked)
+                tmp = Calculation.ThreeStartMatchFilter(tmp, dgData1.ItemsSource.Cast<Match>().ToList());
+            #endregion
+
+            #region group10-位置大小匹配
             if ((bool)cbPosMatch.IsChecked)
                 tmp = Calculation.ThreeStartMatch(tmp, dgData2.ItemsSource.Cast<Match>().ToList());
             #endregion
 
-            #region group10-特別排除
+            #region group11-特別排除
             tmp = Calculation.ThreeSpecialData(tmp, cblSpecialExcept.SelectedValue);
             #endregion
 
@@ -344,7 +354,7 @@ namespace WpfAppTest
                 te.Text = "";
         }
 
-        int[] OldText;
+        string[] OldText;
         /// <summary>
         /// 數字遮罩
         /// </summary>
@@ -365,17 +375,17 @@ namespace WpfAppTest
                     index = 2;
 
                 if (te.Text == "" || te.Text == null)
-                    te.Text = "0";
+                {
+                    if (index < 2)
+                        te.Text = "0";
+                }
                 else
                 {
                     int i = 0;
                     if (!int.TryParse(te.Text, out i))
-                        te.Text = OldText[index].ToString();
+                        te.Text = OldText[index];
                     else
-                    {
-                        te.Text = i.ToString();
-                        OldText[index] = i;
-                    }
+                        OldText[index] = te.Text;
                 }
             }
         }
@@ -454,7 +464,7 @@ namespace WpfAppTest
             {
                 if (btn.Name == "btnAdd1")
                 {
-                    if (!string.IsNullOrEmpty(teMatch.Text))
+                    if (!string.IsNullOrEmpty(teMatch.Text) && cblMatch.SelectedValue.Contains("1"))
                     {
                         var tmp = dgData1.ItemsSource.Cast<Match>().ToList();
                         tmp.Add(new Match
@@ -602,6 +612,36 @@ namespace WpfAppTest
             return "";
         }
 
+        #endregion
+
+        #region 設定contextmenu
+        void SetContextMenu()
+        {
+            System.Windows.Controls.ContextMenu cm = new System.Windows.Controls.ContextMenu();
+            System.Windows.Controls.ContextMenu cm2 = new System.Windows.Controls.ContextMenu();
+
+            System.Windows.Controls.MenuItem miClear = new System.Windows.Controls.MenuItem() { Header = "清除", Tag = "miClear1" };
+            System.Windows.Controls.MenuItem miClear2 = new System.Windows.Controls.MenuItem() { Header = "清除", Tag = "miClear2" };
+            miClear.Click += mi_Click;
+            miClear2.Click += mi_Click;
+            cm.Items.Add(miClear);
+            cm2.Items.Add(miClear2);
+
+            dgData1.ContextMenu = cm;
+            dgData2.ContextMenu = cm2;
+        }
+
+        void mi_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            System.Windows.Controls.MenuItem mi = (System.Windows.Controls.MenuItem)sender;
+            if (mi.Tag != null)
+            {
+                if ((string)mi.Tag == "miClear1")
+                    dgData1.ItemsSource = new List<Match>();
+                else if ((string)mi.Tag == "miClear2")
+                    dgData2.ItemsSource = new List<Match>();
+            }
+        }
         #endregion
     }
 

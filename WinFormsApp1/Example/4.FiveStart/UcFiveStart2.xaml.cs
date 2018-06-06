@@ -152,7 +152,8 @@ namespace WpfAppTest
             tmp = Calculation.ExistsNumber(tmp, teType7.Text, 4, false, true);
 
             //組合定位殺
-            tmp = Calculation.PosNumber(tmp, teType8.Text, -1, false);
+            string txt = string.Join(" ", teType8.Text.Split(' ').Where(x=>x.ToString().Count() == 5));
+            tmp = Calculation.PosNumber(tmp, txt, -1, false);
 
             return tmp;
         }

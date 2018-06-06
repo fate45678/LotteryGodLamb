@@ -64,7 +64,7 @@ namespace WpfAppTest
             cblNumber5.ItemsSource = Data;
             cblNumber6.ItemsSource = Data;
 
-            Data = DB.CreateOption(0, 4);
+            Data = DB.CreateOption(0, 5);
             cblNumber1_2.ItemsSource = Data;
             cblNumber2_2.ItemsSource = Data;
             cblNumber3_2.ItemsSource = Data;
@@ -386,32 +386,32 @@ namespace WpfAppTest
                             break;
                         case "Select1":
                             cblNumber1.SelectedAll();
-                            cblNumber1_2.SelectedAll();
+                            cblNumber1_2.SelectedValue = cblNumber1_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType1, ht);
                             break;
                         case "Select2":
                             cblNumber2.SelectedAll();
-                            cblNumber2_2.SelectedAll();
+                            cblNumber2_2.SelectedValue = cblNumber2_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType2, ht);
                             break;
                         case "Select3":
                             cblNumber3.SelectedAll();
-                            cblNumber3_2.SelectedAll();
+                            cblNumber3_2.SelectedValue = cblNumber3_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType3, ht);
                             break;
                         case "Select4":
                             cblNumber4.SelectedAll();
-                            cblNumber4_2.SelectedAll();
+                            cblNumber4_2.SelectedValue = cblNumber4_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType4, ht);
                             break;
                         case "Select5":
                             cblNumber5.SelectedAll();
-                            cblNumber5_2.SelectedAll();
+                            cblNumber5_2.SelectedValue = cblNumber5_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType5, ht);
                             break;
                         case "Select6":
                             cblNumber6.SelectedAll();
-                            cblNumber6_2.SelectedAll();
+                            cblNumber6_2.SelectedValue = cblNumber6_2.SelectedValue[0] + "11111";
                             Base.BaseHelper.GetChildren(dpType6, ht);
                             break;
                         case "Remark":
@@ -440,7 +440,11 @@ namespace WpfAppTest
                                 continue;
 
                             if (((string)btn.Tag).Contains("Select"))
+                            {
+                                if (bt.Content.ToString() == "0" && ((string)bt.Tag).Contains("Unit"))
+                                    continue;
                                 bt.Background = System.Windows.Media.Brushes.LawnGreen;
+                            }
                             else
                                 bt.Background = System.Windows.Media.Brushes.Gainsboro;
                         }
