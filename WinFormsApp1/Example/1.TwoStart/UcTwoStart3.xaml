@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfAppTest"
+             xmlns:base="clr-namespace:Wpf.Base;assembly=Wpf.Base"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
     <Grid Width="850">
@@ -17,9 +17,9 @@
             <DockPanel Margin="5">
                 <TextBlock Text="012路" DockPanel.Dock="Left" Margin="5" Width="50" Foreground="Blue" />
                 <DockPanel Width="240" DockPanel.Dock="Left" >
-                    <local:CheckBoxList x:Name="cblOption1" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="150" HorizontalAlignment="Left"/>
+                    <base:CheckBoxList x:Name="cblOption1" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="150" HorizontalAlignment="Left"/>
                 </DockPanel>
-                <local:RadioButtonList x:Name="rblOption1" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:RadioButtonList x:Name="rblOption1" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>
         </GroupBox>
 
@@ -27,17 +27,17 @@
             <DockPanel Margin="5">
                 <TextBlock Text="大中小" Margin="5" Width="50" Foreground="Blue" />
                 <DockPanel Width="240">
-                    <local:CheckBoxList x:Name="cblOption2" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="180" HorizontalAlignment="Left"/>
+                    <base:CheckBoxList x:Name="cblOption2" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="180" HorizontalAlignment="Left"/>
                 </DockPanel>
-                <local:RadioButtonList x:Name="rblOption2" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:RadioButtonList x:Name="rblOption2" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Margin="5">
             <DockPanel Margin="5">
                 <TextBlock Text="类型" Margin="5" Width="50" Foreground="Blue" />
-                <local:CheckBoxList x:Name="cblOption3" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="230"/>
-                <local:RadioButtonList x:Name="rblOption3" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:CheckBoxList x:Name="cblOption3" DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" Width="230"/>
+                <base:RadioButtonList x:Name="rblOption3" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </DockPanel>
         </GroupBox>
     </Grid>

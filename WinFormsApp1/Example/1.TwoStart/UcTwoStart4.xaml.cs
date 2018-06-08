@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
+
 namespace WpfAppTest
 {
     /// <summary>
@@ -40,16 +31,16 @@ namespace WpfAppTest
         void SetData()
         {
             /*CheckBoxList*/
-            cblFilter.ItemsSource = DB.CreateContinueNumber(0, 18, 2);
-            cblOption1.ItemsSource = DB.ZeroOneCombination(1, '奇', '偶').OrderByDescending(x => x.Code);
-            cblOption2.ItemsSource = DB.CreateContinueNumber(0, 2);
-            cblType1.ItemsSource = DB.TwoStartSumType1();
-            cblType2.ItemsSource = DB.TwoStartSumType2();
-            cblType3.ItemsSource = DB.TwoStartSumType3();
-            cblType4.ItemsSource = DB.TwoStartSumType4();
+            cblFilter.ItemsSource = Calculation.CreateContinueNumber(0, 18, 2);
+            cblOption1.ItemsSource = Calculation.ZeroOneCombination(1, '奇', '偶').OrderByDescending(x => x.Code);
+            cblOption2.ItemsSource = Calculation.CreateContinueNumber(0, 2);
+            cblType1.ItemsSource = CustomOption.TwoStartSumType1();
+            cblType2.ItemsSource = CustomOption.TwoStartSumType2();
+            cblType3.ItemsSource = CustomOption.TwoStartSumType3();
+            cblType4.ItemsSource = CustomOption.TwoStartSumType4();
 
             /*RadioButtonList*/
-            Data2 = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            Data2 = Calculation.CreateOption(1, 2, new string[2] { "保留", "排除" });
             rblOption.ItemsSource = Data2;
 
             /*預設值*/

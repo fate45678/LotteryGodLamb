@@ -69,12 +69,16 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Wpf.Base">
+      <HintPath>..\..\..\Wpf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfApp.Custom">
+      <HintPath>..\..\..\WpfApp.Custom.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AP\DB.cs" />
-    <Compile Include="Base\BaseHelper.cs" />
-    <Compile Include="Base\Calculation.cs" />
-    <Compile Include="bigbuttom.xaml.cs">
+    <Compile Include="Options\CustomOption.cs" />
+    <Compile Include="Example\6.Varification\bigbuttom.xaml.cs">
       <DependentUpon>bigbuttom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Connection.cs">
@@ -216,19 +220,11 @@
       <DependentUpon>frm_Trend.cs</DependentUpon>
     </Compile>
     <Compile Include="Game_Function.cs" />
-    <Compile Include="Model\BaseOptions.cs" />
     <Compile Include="Model\DyCheckListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="multiple.xaml.cs">
+    <Compile Include="Example\5.Calculator\multiple.xaml.cs">
       <DependentUpon>multiple.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectTest\CheckBoxList.xaml.cs">
-      <DependentUpon>CheckBoxList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectTest\PathConverter.cs" />
-    <Compile Include="ObjectTest\RadioButtonList.xaml.cs">
-      <DependentUpon>RadioButtonList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -322,7 +318,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="bigbuttom.xaml">
+    <Page Include="Example\6.Varification\bigbuttom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,17 +402,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="multiple.xaml">
+    <Page Include="Example\5.Calculator\multiple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ObjectTest\CheckBoxList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ObjectTest\RadioButtonList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UcKLine.xaml">
       <SubType>Designer</SubType>
@@ -444,10 +432,7 @@
     <Content Include="img\system.ico" />
     <EmbeddedResource Include="Number\20180501Number.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Example\5.Calculator\" />
-    <Folder Include="Example\6.Varification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

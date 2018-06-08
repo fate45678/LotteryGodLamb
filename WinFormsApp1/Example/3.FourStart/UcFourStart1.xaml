@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfAppTest" 
+             xmlns:base="clr-namespace:Wpf.Base;assembly=Wpf.Base"  
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
     <Grid>
@@ -240,22 +240,22 @@
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="千位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblThousands" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblThousands" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="百位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblHundreds" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblHundreds" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="十位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblTens" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblTens" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom" >
                         <TextBlock Text="个位" DockPanel.Dock="Left" Width="40" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblUnits" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblUnits" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                 </DockPanel>
@@ -265,7 +265,7 @@
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0, 3, 0, 3">
@@ -295,17 +295,17 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀通码" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <!--<DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀AC值" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         -->
                     <!--<Button Content="清" Width="28" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     <!--
@@ -432,20 +432,20 @@
                     <!--使用CheckBoxList計算值-->
                     <DockPanel Visibility="Collapsed">
                         <DockPanel DockPanel.Dock="Top">
-                            <local:CheckBoxList x:Name="cblNumber1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
-                            <local:CheckBoxList x:Name="cblNumber1_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                            <base:CheckBoxList x:Name="cblNumber1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <base:CheckBoxList x:Name="cblNumber1_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
-                            <local:CheckBoxList x:Name="cblNumber2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
-                            <local:CheckBoxList x:Name="cblNumber2_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                            <base:CheckBoxList x:Name="cblNumber2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                            <base:CheckBoxList x:Name="cblNumber2_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
-                            <local:CheckBoxList x:Name="cblNumber3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
-                            <local:CheckBoxList x:Name="cblNumber3_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                            <base:CheckBoxList x:Name="cblNumber3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <base:CheckBoxList x:Name="cblNumber3_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Bottom">
-                            <local:CheckBoxList x:Name="cblNumber4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
-                            <local:CheckBoxList x:Name="cblNumber4_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
+                            <base:CheckBoxList x:Name="cblNumber4" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left"/>
+                            <base:CheckBoxList x:Name="cblNumber4_2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Right"/>
                         </DockPanel>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Bottom">
@@ -458,7 +458,7 @@
             </GroupBox>
 
             <GroupBox Header="杀特殊形态" Grid.Row="4" >
-                <local:CheckBoxList x:Name="cblSpecial" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:CheckBoxList x:Name="cblSpecial" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </GroupBox>
         </Grid>
 
@@ -480,25 +480,25 @@
 
             <GroupBox Header="杀大小排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" >
                 <DockPanel HorizontalAlignment="Center">
-                    <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                    <base:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀奇偶排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" >
                 <DockPanel HorizontalAlignment="Center">
-                    <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                    <base:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀质合排列" Margin="0,0,0,3" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" >
                 <DockPanel HorizontalAlignment="Center">
-                    <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                    <base:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
             <GroupBox Header="杀012排列" Margin="0,0,0,3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <DockPanel HorizontalAlignment="Left">
-                    <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                    <base:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
@@ -529,7 +529,7 @@
             </DockPanel>-->
 
             <GroupBox Header="特别排除" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
-                <local:CheckBoxList x:Name="cblSpecialExcept" ToolTip="散号為排除对子号" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:CheckBoxList x:Name="cblSpecialExcept" ToolTip="散号為排除对子号" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </GroupBox>
         </Grid>
     </Grid>

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using Control = System.Windows.Controls;
 using System.IO;
-using WpfAppTest.AP;
+using WpfApp.Custom;
 using System.Collections;
 using System.Collections.Generic;
-using System.Windows.Media;
-using System.Drawing;
 using Form = System.Windows.Forms;
-using WpfAppTest.Base;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -42,7 +39,7 @@ namespace WpfAppTest
         /// </summary>
         void Initial()
         {
-            List<BaseOptions> list = DB.FiveStartTab();
+            List<BaseOptions> list = CustomOption.FiveStartTab();
             foreach (var tmp in result.Values)
             {
                 if (tmp is Control.TextBlock)
@@ -65,7 +62,7 @@ namespace WpfAppTest
         /// </summary>
         void GetTextBox()
         {
-            Base.BaseHelper.GetChildren(gdContainer, result);
+            BaseHelper.GetChildren(gdContainer, result);
         }
 
         /// <summary>

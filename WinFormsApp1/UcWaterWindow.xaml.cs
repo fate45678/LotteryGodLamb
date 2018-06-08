@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfAppTest;
-using WpfAppTest.AP;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WinFormsApp1
 {
@@ -42,7 +32,7 @@ namespace WinFormsApp1
         /// </summary>
         void SetListBoxItems()
         {
-            lbType.ItemsSource = DB.CreateOption(1, 6, new string[6] { "2星組號系統", "3星組號系統", "4星組號系統", "5星組號系統", "倍投計算器", "大底驗證" });
+            lbType.ItemsSource = Calculation.CreateOption(1, 6, new string[6] { "2星組號系統", "3星組號系統", "4星組號系統", "5星組號系統", "倍投計算器", "大底驗證" });
             if (lbType.Items.Count > 0)
                 lbType.SelectedIndex = 0;
         }

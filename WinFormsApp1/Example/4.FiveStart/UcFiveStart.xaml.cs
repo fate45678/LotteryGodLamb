@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.IO;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -49,13 +48,13 @@ namespace WpfAppTest
         void SetData()
         {
             btnTransfer.IsEnabled = false;
-            AllConbination = DB.CombinationNumber(5, 0, 9);
-            cblSpecialExclude.ItemsSource = DB.CreateOption(1, 14, new string[14] { "上山", "下山", "不连", "2连", "3连", "4连", "5连", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
+            AllConbination = Calculation.CombinationNumber(5, 0, 9);
+            cblSpecialExclude.ItemsSource = Calculation.CreateOption(1, 14, new string[14] { "上山", "下山", "不连", "2连", "3连", "4连", "5连", "AAAAA", "AABCD", "AABBC", "AAABB", "AAABC", "AAAAB", "ABCDE" });
 
             if (form == null)
                 form = new Dictionary<int, System.Windows.Controls.UserControl>();
             int i = 0;
-            foreach (var tmp in DB.FiveStartTab())
+            foreach (var tmp in CustomOption.FiveStartTab())
             {
                 if (tmp.ID == 1)
                     form.Add(tmp.ID, new UcFiveStart1());
@@ -167,7 +166,7 @@ namespace WpfAppTest
                     /*轉為組選*/
                     if (FilterData != null)
                     {
-                        var tmp = Base.Calculation.TransNumber(FilterData);
+                        var tmp = Calculation.TransNumber(FilterData);
                         teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
                         tbCount.Text = tmp.Count.ToString();
                     }

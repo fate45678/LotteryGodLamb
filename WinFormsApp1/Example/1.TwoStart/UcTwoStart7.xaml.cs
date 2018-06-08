@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppTest.AP;
+using Wpf.Base;
+using WpfApp.Custom;
 
 namespace WpfAppTest
 {
@@ -30,7 +19,7 @@ namespace WpfAppTest
         void SetData()
         {
             /*RadioButtonList*/
-            Data2 = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            Data2 = Calculation.CreateOption(1, 2, new string[2] { "保留", "排除" });
             rblOption1.ItemsSource = Data2;
             rblOption2.ItemsSource = Data2;
             rblOpiton3.ItemsSource = Data2;

@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
 using System.Text.RegularExpressions;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -52,44 +44,44 @@ namespace WpfAppTest
             OldText = new string[3] { "0", "27", "" };
 
             /*CheckBoxList*/
-            cblData1.ItemsSource = DB.ZeroOneCombination(3, '大', '小').OrderByDescending(x => x.Code).ToList();
-            cblData2.ItemsSource = DB.ZeroOneCombination(3, '奇', '偶').OrderByDescending(x => x.Code).ToList();
-            cblData3.ItemsSource = DB.ZeroOneCombination(3, '质', '合').OrderByDescending(x => x.Code).ToList();
+            cblData1.ItemsSource = Calculation.ZeroOneCombination(3, '大', '小').OrderByDescending(x => x.Code).ToList();
+            cblData2.ItemsSource = Calculation.ZeroOneCombination(3, '奇', '偶').OrderByDescending(x => x.Code).ToList();
+            cblData3.ItemsSource = Calculation.ZeroOneCombination(3, '质', '合').OrderByDescending(x => x.Code).ToList();
 
             //0123456789
-            var data = DB.CreateContinueNumber().OrderBy(x => x.ID).ToList();
+            var data = Calculation.CreateContinueNumber().OrderBy(x => x.ID).ToList();
             cblType1.ItemsSource = data;
             cblType2.ItemsSource = data;
             cblType3.ItemsSource = data;
 
             //AC值
-            //cblAC.ItemsSource = DB.CreateContinueNumber(1, 3);
+            //cblAC.ItemsSource = Calculation.CreateContinueNumber(1, 3);
 
             //匹配過濾
-            cblMatch.ItemsSource = DB.CreateOption(0, 3);
+            cblMatch.ItemsSource = Calculation.CreateOption(0, 3);
 
             //特別排除
-            cblSpecialExcept.ItemsSource = DB.CreateOption(1, 6, new string[6] { "豹子", "組三", "組六", "不连", "二连", "三连" });
+            cblSpecialExcept.ItemsSource = Calculation.CreateOption(1, 6, new string[6] { "豹子", "組三", "組六", "不连", "二连", "三连" });
 
             //012路
-            cbl012.ItemsSource = DB.CombinationNumber(3, 0, 2).OrderBy(x => x.Code).ToList();
+            cbl012.ItemsSource = Calculation.CombinationNumber(3, 0, 2).OrderBy(x => x.Code).ToList();
 
             /*RadioButtonList*/
-            rblSelect.ItemsSource = DB.CreateOption(1, 3, new string[3] { "出1胆", "出2胆", "出3胆" });
-            //rblSpecialCalc.ItemsSource = DB.CreateOption(1, 3, new string[3] { "南山雪算胆法", "黄金算胆法", "wpshh算胆法" });
+            rblSelect.ItemsSource = Calculation.CreateOption(1, 3, new string[3] { "出1胆", "出2胆", "出3胆" });
+            //rblSpecialCalc.ItemsSource = Calculation.CreateOption(1, 3, new string[3] { "南山雪算胆法", "黄金算胆法", "wpshh算胆法" });
 
             /*ComboBox*/
-            var data2 = DB.CreateOption(1, 3, new string[3] { "百", "十", "个" });
+            var data2 = Calculation.CreateOption(1, 3, new string[3] { "百", "十", "个" });
             cbPosMatchNumber.ItemsSource = data2;
             cbPosMatchNumber2.ItemsSource = data2;
-            cbEqual.ItemsSource = DB.CreateOption(1, 6, new string[6] { "大于", "小于", "等于", "大于等于", "小于等于", "不等于" });
-            cbRow.ItemsSource = DB.CreateOption(1, 20);
+            cbEqual.ItemsSource = Calculation.CreateOption(1, 6, new string[6] { "大于", "小于", "等于", "大于等于", "小于等于", "不等于" });
+            cbRow.ItemsSource = Calculation.CreateOption(1, 20);
 
             /*CheckBox*/
 
             /*DataGrid*/
-            dgData1.ItemsSource = new List<Match>();
-            dgData2.ItemsSource = new List<Match>();
+            dgData1.ItemsSource = new List<WpfApp.Custom.Match>();
+            dgData2.ItemsSource = new List<WpfApp.Custom.Match>();
 
             //定義寬度
             cblData1.WrapRow(4);
@@ -154,8 +146,8 @@ namespace WpfAppTest
             cbIsGroup.IsChecked = false;
 
             /*DataGrid*/
-            dgData1.ItemsSource = new List<Match>();
-            dgData2.ItemsSource = new List<Match>();
+            dgData1.ItemsSource = new List<WpfApp.Custom.Match>();
+            dgData2.ItemsSource = new List<WpfApp.Custom.Match>();
 
             /*TextBox*/
             teEditor1.Text = teEditor2.Text = teEditor3.Text = teEditor4.Text =
@@ -257,7 +249,7 @@ namespace WpfAppTest
             int unit = (int)rblSelect.SelectedValue;
             if (unit >= 2 && conArray.Count() >= unit)
             {
-                WpfAppTest.AP.DB.test tmps = WpfAppTest.AP.DB.CombinationNNumber("", condition.Split(' ').ToArray(), unit, new WpfAppTest.AP.DB.test());
+                Calculation.test tmps = Calculation.CombinationNNumber("", condition.Split(' ').ToArray(), unit, new Calculation.test());
                 condition = string.Join(" ", tmps.result2.Split(' ').Where(x => x.Distinct().Count() == unit));
             }
             tmp = Calculation.ExistsNumber(tmp, condition, (int)rblSelect.SelectedValue, true, true);
@@ -274,7 +266,7 @@ namespace WpfAppTest
                 int rangeEnd = 0;
                 int.TryParse(teRange1.Text, out rangeStart);
                 int.TryParse(teRange2.Text, out rangeEnd);
-                var range = DB.CreateContinueNumber(rangeStart, rangeEnd);
+                var range = Calculation.CreateContinueNumber(rangeStart, rangeEnd);
                 tmp = Calculation.SumNumber(tmp, string.Join(" ", range.Select(x => x.Code)), true);
             }
             #endregion
@@ -316,12 +308,12 @@ namespace WpfAppTest
 
             #region group9-匹配過濾
             if ((bool)cbMatch.IsChecked)
-                tmp = Calculation.ThreeStartMatchFilter(tmp, dgData1.ItemsSource.Cast<Match>().ToList());
+                tmp = Calculation.ThreeStartMatchFilter(tmp, dgData1.ItemsSource.Cast<WpfApp.Custom.Match>().ToList());
             #endregion
 
             #region group10-位置大小匹配
             if ((bool)cbPosMatch.IsChecked)
-                tmp = Calculation.ThreeStartMatch(tmp, dgData2.ItemsSource.Cast<Match>().ToList());
+                tmp = Calculation.ThreeStartMatch(tmp, dgData2.ItemsSource.Cast<WpfApp.Custom.Match>().ToList());
             #endregion
 
             #region group11-特別排除
@@ -466,8 +458,8 @@ namespace WpfAppTest
                 {
                     if (!string.IsNullOrEmpty(teMatch.Text) && cblMatch.SelectedValue.Contains("1"))
                     {
-                        var tmp = dgData1.ItemsSource.Cast<Match>().ToList();
-                        tmp.Add(new Match
+                        var tmp = dgData1.ItemsSource.Cast<WpfApp.Custom.Match>().ToList();
+                        tmp.Add(new WpfApp.Custom.Match
                         {
                             ValueName1 = teMatch.Text,
                             ValueName2 = GetCheckBoxDisplayName(cblMatch),
@@ -482,14 +474,14 @@ namespace WpfAppTest
                 }
                 else if (btn.Name == "btnDelete1")
                 {
-                    var tmp = dgData1.ItemsSource.Cast<Match>().ToList();
-                    tmp.Remove(dgData1.SelectedItem as Match);
+                    var tmp = dgData1.ItemsSource.Cast<WpfApp.Custom.Match>().ToList();
+                    tmp.Remove(dgData1.SelectedItem as WpfApp.Custom.Match);
                     dgData1.ItemsSource = tmp;
                 }
                 else if (btn.Name == "btnAdd2")
                 {
-                    var tmp = dgData2.ItemsSource.Cast<Match>().ToList();
-                    tmp.Add(new Match
+                    var tmp = dgData2.ItemsSource.Cast<WpfApp.Custom.Match>().ToList();
+                    tmp.Add(new WpfApp.Custom.Match
                     {
                         ValueName1 = GetComboBoxDisplayName(cbPosMatchNumber),
                         ValueName2 = GetComboBoxDisplayName(cbPosMatchNumber2),
@@ -503,8 +495,8 @@ namespace WpfAppTest
                 }
                 else if (btn.Name == "btnDelete2")
                 {
-                    var tmp = dgData2.ItemsSource.Cast<Match>().ToList();
-                    tmp.Remove(dgData2.SelectedItem as Match);
+                    var tmp = dgData2.ItemsSource.Cast<WpfApp.Custom.Match>().ToList();
+                    tmp.Remove(dgData2.SelectedItem as WpfApp.Custom.Match);
                     dgData2.ItemsSource = tmp;
                 }
                 else if (btn.Name == "btnExport")
@@ -637,99 +629,11 @@ namespace WpfAppTest
             if (mi.Tag != null)
             {
                 if ((string)mi.Tag == "miClear1")
-                    dgData1.ItemsSource = new List<Match>();
+                    dgData1.ItemsSource = new List<WpfApp.Custom.Match>();
                 else if ((string)mi.Tag == "miClear2")
-                    dgData2.ItemsSource = new List<Match>();
+                    dgData2.ItemsSource = new List<WpfApp.Custom.Match>();
             }
         }
         #endregion
-    }
-
-    public class Match
-    {
-        private int _Value1;
-
-        private int _Value2;
-
-        private int _Operator;
-
-        private string _ValueName1;
-
-        private string _ValueName2;
-
-        private string _OperatorName;
-
-        public int Value1
-        {
-            get
-            {
-                return _Value1;
-            }
-            set
-            {
-                _Value1 = value;
-            }
-        }
-
-        public int Value2
-        {
-            get
-            {
-                return _Value2;
-            }
-            set
-            {
-                _Value2 = value;
-            }
-
-        }
-
-        public int Operator
-        {
-            get
-            {
-                return _Operator;
-            }
-            set
-            {
-                _Operator = value;
-            }
-        }
-
-        public string ValueName1
-        {
-            get
-            {
-                return _ValueName1;
-            }
-            set
-            {
-                _ValueName1 = value;
-            }
-        }
-
-        public string ValueName2
-        {
-            get
-            {
-                return _ValueName2;
-            }
-            set
-            {
-                _ValueName2 = value;
-            }
-        }
-
-        public string OperatorName
-        {
-            get
-            {
-                return _OperatorName;
-            }
-            set
-            {
-                _OperatorName = value;
-            }
-        }
     }
 }

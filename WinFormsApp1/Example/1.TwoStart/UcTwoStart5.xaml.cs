@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -41,18 +31,18 @@ namespace WpfAppTest
         void SetData()
         {
             /*CheckBoxList*/
-            cblFilter.ItemsSource = DB.CreateContinueNumber();
-            cblType1.ItemsSource = DB.CreateOption(0, 1, new string[2] { "奇", "偶" });
-            cblType2.ItemsSource = DB.CreateOption(0, 1, new string[2] { "大", "小" });
-            cblType3.ItemsSource = DB.CreateOption(0, 1, new string[2] { "质", "合" });
-            cblType4.ItemsSource = DB.CreateOption(0, 2, new string[3] { "大", "中", "小" });
-            cblType5.ItemsSource = DB.CreateContinueNumber(0, 2);
-            cblType6.ItemsSource = DB.CreateContinueNumber(0, 4);
-            cblSumLastType1.ItemsSource = DB.TwoStart_SumLastType1();
-            cblSumLastType2.ItemsSource = DB.TwoStart_SumLastType2();
+            cblFilter.ItemsSource = Calculation.CreateContinueNumber();
+            cblType1.ItemsSource = Calculation.CreateOption(0, 1, new string[2] { "奇", "偶" });
+            cblType2.ItemsSource = Calculation.CreateOption(0, 1, new string[2] { "大", "小" });
+            cblType3.ItemsSource = Calculation.CreateOption(0, 1, new string[2] { "质", "合" });
+            cblType4.ItemsSource = Calculation.CreateOption(0, 2, new string[3] { "大", "中", "小" });
+            cblType5.ItemsSource = Calculation.CreateContinueNumber(0, 2);
+            cblType6.ItemsSource = Calculation.CreateContinueNumber(0, 4);
+            cblSumLastType1.ItemsSource = CustomOption.TwoStart_SumLastType1();
+            cblSumLastType2.ItemsSource = CustomOption.TwoStart_SumLastType2();
 
             /*RadioButtonList*/
-            Data2 = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            Data2 = Calculation.CreateOption(1, 2, new string[2] { "保留", "排除" });
             rblFilter.ItemsSource = Data2;
 
             /*預設值*/

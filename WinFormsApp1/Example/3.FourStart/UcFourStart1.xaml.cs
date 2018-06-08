@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Controls = System.Windows.Controls;
 using System.Windows.Input;
 using Forms = System.Windows.Forms;
-using System.IO;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
 using System.Collections;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -42,12 +40,12 @@ namespace WpfAppTest
         {
             OldText = new int[2] { 0, 0 };
 
-            var data = DB.CreateContinueNumber().OrderBy(x => x.ID).ToList();
+            var data = Calculation.CreateContinueNumber().OrderBy(x => x.ID).ToList();
 
             /*CheckBoxList*/
-            cblData1.ItemsSource = DB.ZeroOneCombination(4, '大', '小').OrderByDescending(x => x.Code).ToList();
-            cblData2.ItemsSource = DB.ZeroOneCombination(4, '奇', '偶').OrderByDescending(x => x.Code).ToList();
-            cblData3.ItemsSource = DB.ZeroOneCombination(4, '质', '合').OrderByDescending(x => x.Code).ToList();
+            cblData1.ItemsSource = Calculation.ZeroOneCombination(4, '大', '小').OrderByDescending(x => x.Code).ToList();
+            cblData2.ItemsSource = Calculation.ZeroOneCombination(4, '奇', '偶').OrderByDescending(x => x.Code).ToList();
+            cblData3.ItemsSource = Calculation.ZeroOneCombination(4, '质', '合').OrderByDescending(x => x.Code).ToList();
 
             cblThousands.ItemsSource = data;
             cblHundreds.ItemsSource = data;
@@ -60,7 +58,7 @@ namespace WpfAppTest
             //cblType4.ItemsSource = data;
 
             //012路
-            cbl012.ItemsSource = DB.CombinationNumber(4, 0, 2).OrderBy(x => x.Code).ToList();
+            cbl012.ItemsSource = Calculation.CombinationNumber(4, 0, 2).OrderBy(x => x.Code).ToList();
 
             //膽碼
             cblNumber1.ItemsSource = data;
@@ -68,14 +66,14 @@ namespace WpfAppTest
             cblNumber3.ItemsSource = data;
             cblNumber4.ItemsSource = data;
 
-            data = DB.CreateOption(0, 4);
+            data = Calculation.CreateOption(0, 4);
             cblNumber1_2.ItemsSource = data;
             cblNumber2_2.ItemsSource = data;
             cblNumber3_2.ItemsSource = data;
             cblNumber4_2.ItemsSource = data;
 
-            cblSpecial.ItemsSource = DB.CreateOption(1, 6, new string[6] { "上山", "下山", "凸型", "凹型", "N型", "反N型" });
-            cblSpecialExcept.ItemsSource = DB.CreateOption(1, 9, new string[9] { "豹子", "不连", "2连", "3连", "4连", "散号", "对子号", "三同号", "两个对子" });
+            cblSpecial.ItemsSource = Calculation.CreateOption(1, 6, new string[6] { "上山", "下山", "凸型", "凹型", "N型", "反N型" });
+            cblSpecialExcept.ItemsSource = Calculation.CreateOption(1, 9, new string[9] { "豹子", "不连", "2连", "3连", "4连", "散号", "对子号", "三同号", "两个对子" });
 
             //設定寬度
             cblData1.WrapRow(2);
@@ -130,7 +128,7 @@ namespace WpfAppTest
             cblNumber4_2.Clear();
             btnCountRepeat.IsChecked = false;
             Hashtable ht = new Hashtable();
-            Base.BaseHelper.GetChildren(dpAll, ht);
+            BaseHelper.GetChildren(dpAll, ht);
             foreach (var b in ht.Values)
             {
                 if (b is Controls.Button)
@@ -327,42 +325,42 @@ namespace WpfAppTest
                         case "Clear1":
                             cblNumber1.Clear();
                             cblNumber1_2.Clear();
-                            Base.BaseHelper.GetChildren(dpType1, ht);
+                            BaseHelper.GetChildren(dpType1, ht);
                             break;
                         case "Clear2":
                             cblNumber2.Clear();
                             cblNumber2_2.Clear();
-                            Base.BaseHelper.GetChildren(dpType2, ht);
+                            BaseHelper.GetChildren(dpType2, ht);
                             break;
                         case "Clear3":
                             cblNumber3.Clear();
                             cblNumber3_2.Clear();
-                            Base.BaseHelper.GetChildren(dpType3, ht);
+                            BaseHelper.GetChildren(dpType3, ht);
                             break;
                         case "Clear4":
                             cblNumber4.Clear();
                             cblNumber4_2.Clear();
-                            Base.BaseHelper.GetChildren(dpType4, ht);
+                            BaseHelper.GetChildren(dpType4, ht);
                             break;
                         case "Select1":
                             cblNumber1.SelectedAll();
                             cblNumber1_2.SelectedValue = cblNumber1_2.SelectedValue[0] + "1111";
-                            Base.BaseHelper.GetChildren(dpType1, ht);
+                            BaseHelper.GetChildren(dpType1, ht);
                             break;
                         case "Select2":
                             cblNumber2.SelectedAll();
                             cblNumber2_2.SelectedValue = cblNumber2_2.SelectedValue[0] + "1111";
-                            Base.BaseHelper.GetChildren(dpType2, ht);
+                            BaseHelper.GetChildren(dpType2, ht);
                             break;
                         case "Select3":
                             cblNumber3.SelectedAll();
                             cblNumber3_2.SelectedValue = cblNumber3_2.SelectedValue[0] + "1111";
-                            Base.BaseHelper.GetChildren(dpType3, ht);
+                            BaseHelper.GetChildren(dpType3, ht);
                             break;
                         case "Select4":
                             cblNumber4.SelectedAll();
                             cblNumber4_2.SelectedValue = cblNumber4_2.SelectedValue[0] + "1111";
-                            Base.BaseHelper.GetChildren(dpType4, ht);
+                            BaseHelper.GetChildren(dpType4, ht);
                             break;
                         case "Remark":
                             Forms.MessageBox.Show("可以选择多个胆组。");

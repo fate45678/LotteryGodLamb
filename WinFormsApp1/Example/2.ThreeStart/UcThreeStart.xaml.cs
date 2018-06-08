@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Controls = System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Forms = System.Windows.Forms;
-using System.IO;
-using WpfAppTest.AP;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -51,7 +40,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
-            AllConbination = DB.CombinationNumber(3, 0, 9);
+            AllConbination = Calculation.CombinationNumber(3, 0, 9);
             btnTransfer.IsEnabled = false;
             OldText = new int[2] { 0, 0 };
         }
@@ -107,7 +96,7 @@ namespace WpfAppTest
                     /*轉為組選*/
                     if (FilterData != null)
                     {
-                        var tmp = Base.Calculation.TransNumber(FilterData);
+                        var tmp = Calculation.TransNumber(FilterData);
                         teResult.Text = string.Join(" ", tmp.Select(x => x.Code));
                         tbCount.Text = tmp.Count.ToString();
                         ucThree1.RefreshBottom(string.Join("    ", tmp.Select(x => x.Code)));

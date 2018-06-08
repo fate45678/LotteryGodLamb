@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -71,9 +61,9 @@ namespace WpfAppTest
             if (form == null)
                 form = new Dictionary<int, System.Windows.Controls.UserControl>();
 
-            AllConbination = DB.CombinationNumber(2, 0, 9);
+            AllConbination = Calculation.CombinationNumber(2, 0, 9);
 
-            var tab = DB.CreateOption(1, 9, new string[9] { "胆码", "定位形态", "不定位形态", "和值", "和尾", "跨度", "和差", "垃圾组合", "大底集合" });
+            var tab = Calculation.CreateOption(1, 9, new string[9] { "胆码", "定位形态", "不定位形态", "和值", "和尾", "跨度", "和差", "垃圾组合", "大底集合" });
             foreach (var tmp in tab)
             {
                 if (tmp.ID == 1)

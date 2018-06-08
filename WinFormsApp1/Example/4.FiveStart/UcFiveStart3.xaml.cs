@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -37,7 +37,7 @@ namespace WpfAppTest
         /// </summary>
         void SetData()
         {
-            cbl012.ItemsSource = DB.CombinationNumber(5, 0, 2).OrderBy(x => x.Code);
+            cbl012.ItemsSource = Calculation.CombinationNumber(5, 0, 2).OrderBy(x => x.Code);
             //cbl012.WrapRow(10);
         }
 

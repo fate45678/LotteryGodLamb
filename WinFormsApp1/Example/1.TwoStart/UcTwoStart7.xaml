@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfAppTest"
+             xmlns:Base="clr-namespace:Wpf.Base;assembly=Wpf.Base"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Width="850">
@@ -28,7 +28,7 @@
                 <TextBlock Text="总和差" Margin="5" Grid.Column="0" />
                 <TextBox x:Name="teSum1" Margin="5" Grid.Column="1" />
                 <TextBox x:Name="teSum2" Margin="0, 5, 5, 5" Grid.Column="2" />
-                <local:RadioButtonList x:Name="rblOption1" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <Base:RadioButtonList x:Name="rblOption1" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </Grid>
         </GroupBox>
 
@@ -44,7 +44,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="对码和" Margin="5" Grid.Column="0" />
                 <TextBox x:Name="teSum3" Margin="5" Grid.Column="1" />
-                <local:RadioButtonList x:Name="rblOption2" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <Base:RadioButtonList x:Name="rblOption2" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </Grid>
         </GroupBox>
 
@@ -60,7 +60,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="对码差" Margin="5" Grid.Column="0" />
                 <TextBox x:Name="teSum4" Margin="5" Grid.Column="1" />
-                <local:RadioButtonList x:Name="rblOpiton3" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <Base:RadioButtonList x:Name="rblOpiton3" DockPanel.Dock="Right" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </Grid>
         </GroupBox>
     </Grid>

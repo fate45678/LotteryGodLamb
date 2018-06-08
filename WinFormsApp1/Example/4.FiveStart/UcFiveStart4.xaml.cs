@@ -1,13 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using Control = System.Windows.Controls;
 using System.IO;
-using WpfAppTest.AP;
-using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Media;
-using System.Drawing;
 using Forms = System.Windows.Forms;
 using System.Text.RegularExpressions;
 

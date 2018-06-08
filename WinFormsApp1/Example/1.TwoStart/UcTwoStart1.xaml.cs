@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using WinFormsApp1;
+using Wpf.Base;
+using WpfApp.Custom;
 
 namespace WpfAppTest
 {
@@ -39,13 +39,13 @@ namespace WpfAppTest
         void SetData()
         {
             /*CheckBoxList*/
-            var Data = DB.CreateContinueNumber();
+            var Data = Calculation.CreateContinueNumber();
             cblFixTen.ItemsSource = Data;
             cblFixUnit.ItemsSource = Data;
             cblAnyOne.ItemsSource = Data;
 
             /*RadioButtonList*/
-            var Data2 = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            var Data2 = Calculation.CreateOption(1, 2, new string[2] { "保留", "排除" });
             rblFixTen.ItemsSource = Data2;
             rblFixUnit.ItemsSource = Data2;
             rblAnyOne.ItemsSource = Data2;
@@ -117,9 +117,9 @@ namespace WpfAppTest
         /// </summary>
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
-            tmp = Base.Calculation.PosNumber(tmp, cblFixTen, "0", (int)rblFixTen.SelectedValue == 1);
-            tmp = Base.Calculation.PosNumber(tmp, cblFixUnit, "1", (int)rblFixUnit.SelectedValue == 1);
-            tmp = Base.Calculation.PosNumber(tmp, cblAnyOne, "*", (int)rblAnyOne.SelectedValue == 1);
+            tmp = Calculation.PosNumber(tmp, cblFixTen,  "0" , (int)rblFixTen.SelectedValue == 1);
+            tmp = Calculation.PosNumber(tmp, cblFixUnit,  "1" , (int)rblFixUnit.SelectedValue == 1);
+            tmp = Calculation.PosNumber(tmp, cblAnyOne, "*" , (int)rblAnyOne.SelectedValue == 1);
             return tmp;
         }
     }

@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -40,13 +30,13 @@ namespace WpfAppTest
         void SetData()
         {
             /*CheckBoxList*/
-            cblOption1.ItemsSource = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
-            cblOption2.ItemsSource = DB.ZeroOneCombination(2, '奇', '偶').OrderBy(x => x.Code);
-            cblOption3.ItemsSource = DB.ZeroOneCombination(2, '大', '小').OrderByDescending(x => x.Code);
-            cblOption4.ItemsSource = DB.ZeroOneCombination(2, '质', '合').OrderByDescending(x => x.Code);
+            cblOption1.ItemsSource = Calculation.CombinationNumber(2, 0, 2).OrderBy(x => x.Code);
+            cblOption2.ItemsSource = Calculation.ZeroOneCombination(2, '奇', '偶').OrderBy(x => x.Code);
+            cblOption3.ItemsSource = Calculation.ZeroOneCombination(2, '大', '小').OrderByDescending(x => x.Code);
+            cblOption4.ItemsSource = Calculation.ZeroOneCombination(2, '质', '合').OrderByDescending(x => x.Code);
 
             /*RadioButtonList*/
-            var Data = DB.CreateOption(1, 2, new string [2] { "保留", "排除" });
+            var Data = Calculation.CreateOption(1, 2, new string [2] { "保留", "排除" });
             rblOption1.ItemsSource = Data;
             rblOption2.ItemsSource = Data;
             rblOption3.ItemsSource = Data;

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Wpf.Base;
+using WpfApp.Custom;
 
 namespace WpfAppTest
 {
@@ -43,10 +33,10 @@ namespace WpfAppTest
         public List<BaseOptions> Filter(List<BaseOptions> tmp)
         {
             //垃圾複式
-            tmp = Base.Calculation.GarbageNumber(tmp, teCompareA.Text, 2, '/', 2);
+            tmp = Calculation.GarbageNumber(tmp, teCompareA.Text, 2, '/', 2);
 
             //垃圾單式
-            tmp = Base.Calculation.GarbageNumber(tmp, teCompareB.Text, 1, ',');
+            tmp = Calculation.GarbageNumber(tmp, teCompareB.Text, 1, ',');
             return tmp;
         }
     }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using WpfAppTest.AP;
-using WpfAppTest.Base;
+using WpfApp.Custom;
+using Wpf.Base;
 
 namespace WpfAppTest
 {
@@ -41,8 +40,8 @@ namespace WpfAppTest
             cblOption2_2.ValueMemberPath = "ID";
 
             /*CheckBoxList*/
-            var dataOption1 = DB.CombinationNumber(2, 0, 2).OrderBy(x => x.Code).ToList();
-            var dataOption2 = DB.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).ToList();
+            var dataOption1 = Calculation.CombinationNumber(2, 0, 2).OrderBy(x => x.Code).ToList();
+            var dataOption2 = Calculation.CombinationNumber(2, 0, 2, new string[3] { "小", "中", "大" }).ToList();
             cblOption1_2.ItemsSource = dataOption1;
             cblOption2_2.ItemsSource = dataOption2;
 
@@ -50,10 +49,10 @@ namespace WpfAppTest
 
             cblOption1.ItemsSource = dataOption1.Where(x => array1.Contains(x.Code)).ToList();
             cblOption2.ItemsSource = dataOption2.Where(x => array1.Contains(x.Code)).OrderByDescending(x => x.Code).ToList();
-            cblOption3.ItemsSource = DB.CreateOption(1, 4, new string[4] { "对子", "连号", "杂号", "假对" }).OrderBy(x => x.ID); //, "假连"
+            cblOption3.ItemsSource = Calculation.CreateOption(1, 4, new string[4] { "对子", "连号", "杂号", "假对" }).OrderBy(x => x.ID); //, "假连"
 
             /*RadioButtonList*/
-            var data = DB.CreateOption(1, 2, new string[2] { "保留", "排除" });
+            var data = Calculation.CreateOption(1, 2, new string[2] { "保留", "排除" });
             rblOption1.ItemsSource = data;
             rblOption2.ItemsSource = data;
             rblOption3.ItemsSource = data;

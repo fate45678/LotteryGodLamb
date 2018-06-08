@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfAppTest" 
+             xmlns:base="clr-namespace:Wpf.Base;assembly=Wpf.Base" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
 
@@ -211,21 +211,21 @@
                 <DockPanel Margin="5">
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀和尾" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType1" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
                         <TextBlock Text="杀跨度" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType2" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" Margin="0,8,0,0">
                         <TextBlock Text="选胆" Width="40" DockPanel.Dock="Left" Margin="0, 0, 5, 0"/>
-                        <local:RadioButtonList x:Name="rblSelect"  DisplayMemberPath="Name" ValueMemberPath="ID" />
+                        <base:RadioButtonList x:Name="rblSelect"  DisplayMemberPath="Name" ValueMemberPath="ID" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top" >
-                        <local:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
+                        <base:CheckBoxList x:Name="cblType3" DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Left" />
                         <!--<Button Content="清" Width="25" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="5, 0, 5, 0"/>-->
                     </DockPanel>
                 </DockPanel>
@@ -311,12 +311,12 @@
             </Border>
 
             <!--<GroupBox Header="AC值" Grid.Row="3" Grid.Column="2" Margin="0,0,0,5">
-                <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" x:Name="cblAC"/>
+                <base:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" Margin="5" x:Name="cblAC"/>
             </GroupBox>-->
 
             <!--<Border Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="LightGray" BorderThickness="1" >
                 <DockPanel Margin="5">
-                    <local:RadioButtonList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Top" x:Name="rblSpecialCalc" Margin="0,0,0,3"/>
+                    <base:RadioButtonList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Top" x:Name="rblSpecialCalc" Margin="0,0,0,3"/>
                     <DockPanel DockPanel.Dock="Bottom">
                         <TextBlock Text="输入上期开奖号" DockPanel.Dock="Left" Margin="0,0,5,0"/>
                         -->
@@ -354,7 +354,7 @@
                         <DockPanel DockPanel.Dock="Top">
                             <CheckBox Content="匹配过滤" DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="cbMatch" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
                             <TextBox DockPanel.Dock="Top" Margin="0,0,0,3" x:Name="teMatch" TextChanged="te_TextChanged"/>
-                            <local:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Bottom" x:Name="cblMatch" Margin="0,0,0,3"/>
+                            <base:CheckBoxList DisplayMemberPath="Name" ValueMemberPath="ID" DockPanel.Dock="Bottom" x:Name="cblMatch" Margin="0,0,0,3"/>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
                             <Button x:Name="btnAdd1" Content="添加" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,5,0" Width="50" Click="btn_Click"/>
@@ -469,15 +469,15 @@
             </GroupBox>
 
             <GroupBox Header="大小排列" Margin="0,0,0,3" Grid.Row="1" Grid.Column="0">
-                <local:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID"/>
+                <base:CheckBoxList Margin="5" x:Name="cblData1" DisplayMemberPath="Name" ValueMemberPath="ID"/>
             </GroupBox>
 
             <GroupBox Header="奇偶排列" Margin="0,0,0,3" Grid.Row="2" Grid.Column="0">
-                <local:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <base:CheckBoxList Margin="5" x:Name="cblData2" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
 
             <GroupBox Header="质合排列" Margin="0,0,0,3" Grid.Row="3" Grid.Column="0">
-                <local:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <base:CheckBoxList Margin="5" x:Name="cblData3" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
 
             <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="1" >
@@ -552,12 +552,12 @@
             <!--Column=1-->
             <GroupBox Header="012路特别排除" Margin="0,0,0,3" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" >
                 <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <local:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                    <base:CheckBoxList x:Name="cbl012" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
                 </DockPanel>
             </GroupBox>
 
             <GroupBox Header="特别排除" Margin="0,0,0,3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                <local:CheckBoxList x:Name="cblSpecialExcept" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
+                <base:CheckBoxList x:Name="cblSpecialExcept" Margin="5" DisplayMemberPath="Name" ValueMemberPath="ID" />
             </GroupBox>
         </Grid>
     </Grid>
