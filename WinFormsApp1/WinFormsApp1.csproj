@@ -69,11 +69,13 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="Wpf.Base">
-      <HintPath>..\..\..\Wpf.Base.dll</HintPath>
+    <Reference Include="Wpf.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Wpf.Base.dll</HintPath>
     </Reference>
-    <Reference Include="WpfApp.Custom">
-      <HintPath>..\..\..\WpfApp.Custom.dll</HintPath>
+    <Reference Include="WpfApp.Custom, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\WpfApp.Custom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
