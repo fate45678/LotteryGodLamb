@@ -380,6 +380,7 @@ namespace WinFormsApp1
         {
             if (Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
             {
+                //Test
                 MessageBox.Show("只能输入1700 ~ 2000的数字");
                 txtGameNum.Focus();
                 return;
