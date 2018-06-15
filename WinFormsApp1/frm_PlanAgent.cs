@@ -1544,8 +1544,21 @@ namespace WinFormsApp1
         public void Stop(){ }
         private void doWork(object sender,DoWorkEventArgs e)
         {
-            for (int i =0;i<120;i++)
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                for (int i = 0; i < 120; i++)
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            {
+                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[QQFFC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            {
+                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[TENCENTFFC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+            }
         }
     }
 }

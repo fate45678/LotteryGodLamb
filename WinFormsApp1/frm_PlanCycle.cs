@@ -588,13 +588,13 @@ namespace WinFormsApp1
         {
             if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
             {
-                //test
                 MessageBox.Show("只能输入1700 ~ 2000的数字");
                 txtGameNum.Focus();
                 return;
             }
 
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
+            UpdateHistory();
             pnlShowPlan.Visible = false;
             if (txtGameNum.Text == "" || txtGameNum.Text == "请输入奖金号" ||
                 txtTimes.Text == "" || txtTimes.Text == "请输入倍数" ||
@@ -820,7 +820,7 @@ namespace WinFormsApp1
 
         private void btnFiveNumberGodPlan_Click(object sender, EventArgs e)
         {
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
 
             #region 設定選項名稱
             //設定選項名稱
@@ -871,7 +871,7 @@ namespace WinFormsApp1
 
         private void btnMidthrNumberPhantomPlan_Click(object sender, EventArgs e)
         {
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
 
             #region 設定選項名稱
             cbGameKind.Text = "中三";
@@ -5257,7 +5257,7 @@ namespace WinFormsApp1
             rtxtPlanCycle.ReadOnly = true;//this
         }
 
-        private void ConnectDbGetHistoryNumber()
+        private void ConnectDbGetHistoryNumber(string LotteryName)
         {
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
 
@@ -5266,10 +5266,18 @@ namespace WinFormsApp1
             connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
             try
             {
                 con.Open();
-                string Sqlstr = @"SELECT issue as Issue, number as Number FROM HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+
+                if(LotteryName == "重庆时时彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "腾讯官方彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM QQFFC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if(LotteryName == "腾讯奇趣彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM TENCENTFFC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -5376,7 +5384,7 @@ WHERE NUM >40 AND NUM <80";
 
         private void btnFiveNumberPhantomPlan_Click(object sender, EventArgs e)
         {
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
 
             #region 設定選項名稱
             cbGameKind.Text = "五星";
@@ -5433,7 +5441,7 @@ WHERE NUM >40 AND NUM <80";
         {
            
 
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
 
             #region 設定選項名稱
             cbGameKind.Text = "五星";
@@ -5507,7 +5515,7 @@ WHERE NUM >40 AND NUM <80";
 
             string id = (sender as Button).Name;
             string[] idArr = id.Split(',');
-            ConnectDbGetHistoryNumber();
+            ConnectDbGetHistoryNumber(GameLotteryName);
 
 
             switch (idArr[0])

@@ -1382,8 +1382,19 @@ namespace WinFormsApp1
 
             }
             filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
-            label2.Text = "共" + calPeriod() + "期";
-            label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+
+            frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
+
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                label2.Text = "共" + calPeriod() + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+            }
+            else
+            {
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            }
 
             if (updateCount % 3 == 0 )//&& allorwUpdate
             {

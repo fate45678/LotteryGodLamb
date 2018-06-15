@@ -417,7 +417,7 @@ namespace WinFormsApp1
             }
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
-
+           
 
         }
         private void lblMenuPlanUpload_Click(object sender, EventArgs e)
