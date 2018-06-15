@@ -41,6 +41,7 @@ namespace WinFormsApp1
                         this.Close();
                         frm_PlanUpload.loginButtonType = 1;
                         frm_PlanAgent.loginButtonType = 1;
+                        frm_PlanUpload.isFirst = false;
                     }
 
                 }
@@ -53,4 +54,5 @@ namespace WinFormsApp1
             }
         }
     }
+
 }

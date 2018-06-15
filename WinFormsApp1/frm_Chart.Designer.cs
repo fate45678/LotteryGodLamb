@@ -66,6 +66,7 @@
             // 
             // pnlGameMenu
             // 
+            this.pnlGameMenu.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlGameMenu.Controls.Add(this.lblMenuLast100);
             this.pnlGameMenu.Controls.Add(this.label20);
             this.pnlGameMenu.Controls.Add(this.lblMenuLast50);
@@ -492,6 +493,7 @@
             // 
             // elementHost1
             // 
+            this.elementHost1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.elementHost1.Location = new System.Drawing.Point(0, 34);
             this.elementHost1.Name = "elementHost1";
             this.elementHost1.Size = new System.Drawing.Size(1081, 515);

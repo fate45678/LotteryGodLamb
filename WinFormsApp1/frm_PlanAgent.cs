@@ -127,6 +127,7 @@ namespace WinFormsApp1
         private void UpdateHistory()
         {
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            
             if (rtxtHistory.Text == "") //無資料就全寫入
             {
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
@@ -138,8 +139,10 @@ namespace WinFormsApp1
             }
             else //有資料先判斷
             {
+                
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
+                    cnd.Start();
                     rtxtHistory.Text = "";
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
@@ -159,13 +162,16 @@ namespace WinFormsApp1
         int timeCount = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 300000;
-            timeCount++;
-            if (timeCount % 15 == 0 || timeCount == 3)
-                updateGod();
-            UpdateHistory();
-            updateMyfavorite();
-            label10.Text = "欢迎: " + frmGameMain.globalUserName;
+            //timeCount++;
+            //if (timeCount % 15 == 0 || timeCount == 3)
+            //updateGod();
+            if (frmGameMain.jArr != null)
+            { 
+                UpdateHistory();
+                //updateMyfavorite();
+                timer1.Interval = 120000;
+            }
+            //label10.Text = "欢迎: " + frmGameMain.globalUserName;
         }
 
         static bool isFirstTime = true;
@@ -193,8 +199,8 @@ namespace WinFormsApp1
                         {
                             Control control = new Button();
                             control.Text = getData.ElementAt(i).ToString();
-                            control.Size = new System.Drawing.Size(140, 30);
-                            control.Name = String.Format("btx{0}y{1}", x, y);
+                            control.Size = new System.Drawing.Size(200, 30);
+                            control.Name = hitTimesElementAt[0];
                             control.ForeColor = Color.Blue;
                             control.Padding = new Padding(5);
                             control.Dock = DockStyle.Fill;
@@ -217,7 +223,7 @@ namespace WinFormsApp1
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
             //amount = 0;
-            choosePlanName = (sender as Button).Name;
+            choosePlanName = (sender as Button).Text;
             Dictionary<int, string> dic = new Dictionary<int, string>();
             dic.Add(0, "p_name");
             dic.Add(1, "p_account");
@@ -229,10 +235,14 @@ namespace WinFormsApp1
 
             string selectGameKind = cbGameKind.Text;
 
+            //總共中獎幾次 掛幾次 總共投了幾注
+            int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
+            string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
             //先處理舊資料
-            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_uploadDate , p_name", dic);
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)
             {
+                oldtotalWin = 0; oldtotalFail = 0; countPlay = 0;
                 //玩法種類
                 string oldGameKind = getOldData.ElementAt(i);
 
@@ -241,11 +251,8 @@ namespace WinFormsApp1
                 long oldend = Int64.Parse(getOldData.ElementAt(i + 3));
 
                 //上傳了幾期
-                long oldamount = (oldend - oldstart) + 1;
-
-                //總共中獎幾次 掛幾次 總共投了幾注
-                int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0;
-
+                long oldamount = (oldend - oldstart) + 1;               
+                
                 string oldcheckNumber = "";
 
                 bool OldisAllOpen = true;
@@ -298,12 +305,15 @@ namespace WinFormsApp1
                     {
                         oldtotalWin++;
                         oldtotalPlay++;
+                        countWin += oldtotalWin;
+                        countPlay++;
                         break;
                     }
                     else
                     {
                         oldtotalFail++;
                         oldtotalPlay++;
+                        countPlay++;
                     }
                 }
 
@@ -311,7 +321,7 @@ namespace WinFormsApp1
                 {
                     if (oldtotalWin != 0)
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 中(" + oldtotalPlay + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 中(" + countPlay + ")");
                     }
                     else
                     {
@@ -321,21 +331,6 @@ namespace WinFormsApp1
             }
 
             var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + (sender as Button).Name + "'", dic);
-            //label17.Text = "已上传: 第" + getData.ElementAt(2) + "~" + getData.ElementAt(3) + "期";
-
-            //for (int i = 0; i < getData.Count; i++)
-            //{
-            //    if (i == 0)
-            //        //label16.Text = getData.ElementAt(i).Substring(getData.ElementAt(i).IndexOf(" ") + 1);
-            //    else if (i == 2) { }
-            //    else if (i == 4)
-            //    {
-            //        richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
-            //        string strReplace = getData.ElementAt(i).Replace(",", "");
-            //        int times = (Convert.ToInt32(getData.ElementAt(3).Substring(8, 3)) - Convert.ToInt32(getData.ElementAt(2).Substring(8, 3)));
-            //        //label15.Text = "共" + times + "注";
-            //    }
-            //}
 
             if (getData.Count > 0)
             {
@@ -404,6 +399,7 @@ namespace WinFormsApp1
                     {
                         totalWin++;
                         totalPlay++;
+                        countWin += totalWin;
                         break;
                     }
                     else
@@ -428,23 +424,19 @@ namespace WinFormsApp1
 
                 //補上note敘述
                 listBox2.Items.Clear();
+                richTextBox1.Text = "";
+                richTextBox1.Text = getData.ElementAt(4);
                 if (getData.ElementAt(3).Substring(0, 8) != NowDate)
                 {
                     amount = 0;
                 }
                 string WinRate = "";
                 listBox2.Items.Add(getData.ElementAt(5));
-                listBox2.Items.Add("已投注: " + totalPlay + "期");
-                listBox2.Items.Add("中奖: " + totalWin + "期");
-                if (totalWin == 0)
-                {
-                    WinRate = "中奖率0%";
-                }
-                else
-                {
-                    WinRate = "中獎率" + (((double)totalWin / (double)totalPlay) * 100).ToString("0.00") + "%";//"中獎率" + calhits(getData.ElementAt(2), getData.ElementAt(3), getData.ElementAt(4), getData.ElementAt(0)) ;
-                    //Winning = "中奖率" + WinRate + "%";
-                }
+                listBox2.Items.Add("已投注: " + (oldtotalPlay +totalPlay) + "期");
+                listBox2.Items.Add("中奖: " + (countWin) + "期");
+                WinRate = "中奖率0.00%";
+                if (countWin != 0)
+                    WinRate = "中奖率" + (((double)(countWin) / (double)(oldtotalPlay + totalPlay)) * 100).ToString("0.00") + "%";
                 listBox2.Items.Add(WinRate);
 
                 int item = 0;
@@ -484,6 +476,7 @@ namespace WinFormsApp1
         }
 
         int searchType = 0;//0 初始值 1 cb search 2 userNmae search
+        string[] hitTimesElementAt;
         /// <summary>
         /// 查看按鈕功能
         /// </summary>
@@ -491,6 +484,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void btnView_Click(object sender, EventArgs e)
         {
+            
             searchType = 1;
             button42.Enabled = false;
             tableLayoutPanel1.Controls.Clear();
@@ -498,9 +492,7 @@ namespace WinFormsApp1
             if (hitTimes.Count > 0)
             {
                 string nowdate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-
-                string[] hitTimesElementAt;
-
+               
                 for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
@@ -543,34 +535,36 @@ namespace WinFormsApp1
 
                 }
             }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show("查無資料。");
-            }
-
+            updateMyfavorite();
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            richTextBox1.Text = "";
         }
 
         Dictionary<string, double> hitTimes = new Dictionary<string, double>();
         Dictionary<string, string> dic = new Dictionary<string, string>();
         public void calHits(int type)//0 cbSearch 1 text search
         {
+            hitTimes.Clear();
             dic.Clear();
             //取得過去所有號碼
             Dictionary<int, string> dic_history = new Dictionary<int, string>();
-            string dateNow = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "") + "%"; 
+            string dateNow = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "") + "%";
+            string SelectNowDate = DateTime.Now.ToString().Substring(0, 10);
             dic_history.Add(0, "number");
             string sqlQuery = "select * from Upplan";
             var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
             //取得上傳計畫 id 號碼
 
             if (type == 0)
-                sqlQuery = "select * from Upplan where p_isoldplan = '1' AND p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id";
+                //"select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate desc"
+                sqlQuery = "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
             else if (type == 1)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%'  order by p_id";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%'  order by p_id desc";
             else if (type == 2)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id ";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id desc ";
             else if (type == 4)
-                sqlQuery = "select * from Upplan where p_isoldplan = '1' order by p_id";
+                sqlQuery = "select * from Upplan where p_isoldplan = '1' order by p_uploadDate desc";
             else if (type == 5)
                 sqlQuery = "select * from Upplan where p_isoldplan = '1' AND p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
             else if (type == 6)
@@ -586,7 +580,13 @@ namespace WinFormsApp1
             var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", sqlQuery, dic_plan);
             //把 dic_plan 轉換成比較好操作的格式
 
-            for (int i = 0; i < getPlan.Count; i = i + 6)
+            if (getPlan.Count() == 0)
+            {
+                System.Windows.MessageBox.Show("查無資料");
+                return;
+            }
+
+            for (int i = 0; i < getPlan.Count-6; i = i + 6)
             {
                 if(dic.ContainsKey(getPlan.ElementAt(i)))
                     dic.Add(getPlan.ElementAt(i)+"("+i+")", getPlan.ElementAt(i + 1));
@@ -598,28 +598,118 @@ namespace WinFormsApp1
             hitTimes.Clear();
             string showTest = "";
             string hitElem = "";
+
+            string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
+            int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0;
+
             for (int i = 0; i < getPlan.Count; i= i + 6)
             {
-                hitElem = "";
+                oldtotalWin = 0; oldtotalFail = 0;
 
-                showTest = calhits(getPlan[i + 4], getPlan[i + 5] , getPlan[i + 1].Trim(), getPlan[i]);
-                hitElem = getPlan[i + 2] + "," + getPlan[i] + "," + showTest + " ," + getPlan[i + 3].Substring(10) + " ," + getPlan[i + 4];
-                hitTimes.Add(hitElem, winRate);
-                //hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
-                //int temp = 0;
-                //for (int j = 0; j < getHistory.Count; j++)
-                //{
-                //    if (dic.ElementAt(i).Value.IndexOf(getHistory.ElementAt(j)) != -1)
-                //        temp++;
-                //}
-                //int DoHaocount = 0;
-                //foreach (Match m in Regex.Matches(dic.ElementAt(i).Value, ","))
-                //{
-                //    DoHaocount++;
-                //}
-                //double hitPercent = (double)temp / 4;
-                //hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
+                hitElem = "";
+                //玩法種類
+                string oldGameKind = getPlan.ElementAt(i);
+
+                //上傳的開始以及結束期數
+                long oldstart = Int64.Parse(getPlan.ElementAt(i + 4));
+                long oldend = Int64.Parse(getPlan.ElementAt(i + 5));
+
+                //上傳了幾期
+                long oldamount = (oldend - oldstart) + 1;
+
+                //總共中獎幾次 掛幾次 總共投了幾注
+
+
+                string oldcheckNumber = "";
+
+
+                for (int ii = 0; ii < oldamount; ii++)
+                {
+                    var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+
+                    //表示還沒開獎
+                    if (oldshowIssue.Count == 0)
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                        
+                        break;
+                    }
+                    else if (oldGameKind.Contains("五星"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
+                    }
+                    else if (oldGameKind.Contains("四星"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                        //前三中三后三前二后二
+                    }
+                    else if (oldGameKind.Contains("中三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                    }
+                    else if (oldGameKind.Contains("前三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                    }
+                    else if (oldGameKind.Contains("后三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                    }
+                    else if (oldGameKind.Contains("前二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                    }
+                    else if (oldGameKind.Contains("后二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                    }
+
+                    //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                    //是否有中獎
+                    if (getPlan.ElementAt(i + 1).Contains(oldcheckNumber))
+                    {
+                        oldtotalWin++;
+                        oldtotalPlay++;
+                        countWin += oldtotalWin;
+                        break;
+                    }
+                    else
+                    {
+                        oldtotalFail++;
+                        oldtotalPlay++;
+                    }
+                }
             }
+
+            //showTest = calhits(getPlan[i + 4], getPlan[i + 5] , getPlan[i + 1].Trim(), getPlan[i]);
+            string win = "中奖率0%";
+            if (countWin != 0)
+                win = "中奖率" + (((double)(countWin) / (double)oldtotalPlay) * 100).ToString("0.00") + "%";
+            hitElem = getPlan[2] + "," + getPlan[0] + "," + win + " ," + getPlan[3].Substring(10) + " ," + getPlan[4];
+            double num = 0;
+            if (countWin == 0)
+                num = 0;
+            else
+                num = (((double)(countWin) / (double)oldtotalPlay) * 100);
+            hitTimes.Add(hitElem, num);
+
+            //hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
+            //int temp = 0;
+            //for (int j = 0; j < getHistory.Count; j++)
+            //{
+            //    if (dic.ElementAt(i).Value.IndexOf(getHistory.ElementAt(j)) != -1)
+            //        temp++;
+            //}
+            //int DoHaocount = 0;
+            //foreach (Match m in Regex.Matches(dic.ElementAt(i).Value, ","))
+            //{
+            //    DoHaocount++;
+            //}
+            //double hitPercent = (double)temp / 4;
+            //hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
+            
         }
 
         double winRate;
@@ -1206,7 +1296,7 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
-                    //this.tableLayoutPanel2.Controls.Add(control, x, y);
+                    this.tableLayoutPanel2.Controls.Add(control, x, y);
                 }
             }
             else
@@ -1306,6 +1396,7 @@ namespace WinFormsApp1
             }
         }
         #endregion
+
         #region 切換頁相關功能
         int pageIndex = 0;
         private void button43_Click(object sender, EventArgs e)
@@ -1358,6 +1449,82 @@ namespace WinFormsApp1
             }
         }
         #endregion
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //int index = this.listBox1.IndexFromPoint(e.Location);
+            string name = this.listBox1.Text.Replace("到", ",");
+            if (name == "")
+                return;
+            string[] nameArr = name.Split(',');
+            long start = Int64.Parse(nameArr[0].Trim());
+            long end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
+            string GameKind = cbGameKind.Text;
+
+            //int itmeType = 0;
+            string[] itemCount;
+
+            if (GameKind.Contains("五星"))
+            {
+                GameKind = "五星";
+                //itmeType = 5;
+            }
+            else if (GameKind.Contains("四星"))
+            {
+                GameKind = "四星";
+                //itmeType = 4;
+                //前三中三后三前二后二
+            }
+            else if (GameKind.Contains("中三"))
+            {
+                GameKind = "中三";
+                //itmeType = 3;
+            }
+            else if (GameKind.Contains("前三"))
+            {
+                GameKind = "前三";
+                //itmeType = 3;
+            }
+            else if (GameKind.Contains("后三"))
+            {
+                GameKind = "后三";
+                //itmeType = 3;
+            }
+            else if (GameKind.Contains("前二"))
+            {
+                GameKind = "前二";
+                //itmeType = 2;
+            }
+            else if (GameKind.Contains("后二"))
+            {
+                GameKind = "后二";
+                //itmeType = 2;
+            }
+            //string pid = checkedListBoxEx1.SelectedValue.ToString();
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+
+            dic.Add(0, "p_rule");
+            dic.Add(1, "p_end");
+            //allorwUpdate = false;
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + GameKind + "%'", dic);
+            richTextBox1.Text = "";
+            for (int i = 0; i < getData.Count(); i = i + 2)
+            {
+                if (name.Contains(getData.ElementAt(i + 1)))
+                {
+                    richTextBox1.Text = getData.ElementAt(i);
+                    itemCount = richTextBox1.Text.Split(' ');
+                    //label15.Text = "共" + itemCount.Count().ToString() + "注";
+                    break;
+                }
+                else if (i + 3 < getData.Count() && end < Int64.Parse(getData.ElementAt(i + 3)))
+                {
+                    richTextBox1.Text = getData.ElementAt(i + 2);
+                    break;
+                }
+
+            }
+        }
     }
 
     class checkNupdateData
@@ -1370,7 +1537,8 @@ namespace WinFormsApp1
         public void Start()
         {
             ww.DoWork += new DoWorkEventHandler(doWork);
-            ww.RunWorkerAsync();
+            if (!ww.IsBusy)
+                ww.RunWorkerAsync();
             ww.WorkerSupportsCancellation = true;
         }
         public void Stop(){ }

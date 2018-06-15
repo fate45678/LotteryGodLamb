@@ -111,7 +111,7 @@
             // 
             // pnlPlanArea
             // 
-            this.pnlPlanArea.BackColor = System.Drawing.Color.Transparent;
+            this.pnlPlanArea.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlPlanArea.Controls.Add(this.pnlPlanRight);
             this.pnlPlanArea.Controls.Add(this.panel12);
             this.pnlPlanArea.Controls.Add(this.pnlPlanList);
@@ -190,17 +190,19 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.76119F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.23881F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(25, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(388, 118);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(440, 118);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel1
@@ -223,7 +225,7 @@
             this.label8.Padding = new System.Windows.Forms.Padding(4, 30, 4, 10);
             this.label8.Size = new System.Drawing.Size(79, 118);
             this.label8.TabIndex = 0;
-            this.label8.Text = "我的收藏";
+            this.label8.Text = "我\r\n的\r\n收\r\n藏";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel11
@@ -249,6 +251,7 @@
             // 
             // pnlUserRank
             // 
+            this.pnlUserRank.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUserRank.Controls.Add(this.tableLayoutPanel3);
             this.pnlUserRank.Controls.Add(this.panel33);
@@ -279,7 +282,7 @@
             // 
             // panel33
             // 
-            this.panel33.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel33.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel33.Controls.Add(this.label116);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
@@ -333,7 +336,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -362,7 +365,7 @@
             // 
             // pnlPlanNumber
             // 
-            this.pnlPlanNumber.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlPlanNumber.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlPlanNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPlanNumber.Controls.Add(this.listBox2);
             this.pnlPlanNumber.Controls.Add(this.richTextBox1);
@@ -400,6 +403,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(382, 196);
             this.listBox1.TabIndex = 1;
+            this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
             // 
             // panel4
             // 
@@ -422,7 +426,7 @@
             this.button40.Dock = System.Windows.Forms.DockStyle.Left;
             this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button40.ForeColor = System.Drawing.Color.White;
-            this.button40.Location = new System.Drawing.Point(326, 5);
+            this.button40.Location = new System.Drawing.Point(222, 5);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(53, 32);
             this.button40.TabIndex = 23;
@@ -437,7 +441,7 @@
             this.button37.Dock = System.Windows.Forms.DockStyle.Left;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button37.ForeColor = System.Drawing.Color.White;
-            this.button37.Location = new System.Drawing.Point(273, 5);
+            this.button37.Location = new System.Drawing.Point(169, 5);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(53, 32);
             this.button37.TabIndex = 22;
@@ -455,9 +459,8 @@
             this.label10.Location = new System.Drawing.Point(159, 5);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.label10.Size = new System.Drawing.Size(114, 26);
+            this.label10.Size = new System.Drawing.Size(10, 26);
             this.label10.TabIndex = 21;
-            this.label10.Text = "计划员:神灯小牛逼";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button33
@@ -568,7 +571,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.tableLayoutPanel1);
             this.panel5.Controls.Add(this.label6);
@@ -793,7 +796,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frm_PlanAgent

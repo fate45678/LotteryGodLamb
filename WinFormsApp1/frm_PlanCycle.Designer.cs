@@ -58,10 +58,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
-            this.btnFiveNumberLightPlan = new System.Windows.Forms.Button();
-            this.btnFiveNumberPhantomPlan = new System.Windows.Forms.Button();
-            this.btnMidthrNumberPhantomPlan = new System.Windows.Forms.Button();
-            this.btnFiveNumberGodPlan = new System.Windows.Forms.Button();
+            this.tblGod = new System.Windows.Forms.TableLayoutPanel();
             this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
@@ -117,7 +114,6 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -158,6 +154,7 @@
             // 
             // pnlUserSettingRow2
             // 
+            this.pnlUserSettingRow2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlUserSettingRow2.Controls.Add(this.btnViewResult);
             this.pnlUserSettingRow2.Controls.Add(this.label1);
             this.pnlUserSettingRow2.Controls.Add(this.cbGameCycle);
@@ -243,9 +240,9 @@
             this.cbGamePlan.ForeColor = System.Drawing.Color.Black;
             this.cbGamePlan.FormattingEnabled = true;
             this.cbGamePlan.Items.AddRange(new object[] {
-            "玉神计划",
-            "幻影计划",
-            "神灯计划"});
+            "神通计划",
+            "玉佛计划",
+            "大帝计划"});
             this.cbGamePlan.Location = new System.Drawing.Point(415, 3);
             this.cbGamePlan.Name = "cbGamePlan";
             this.cbGamePlan.Size = new System.Drawing.Size(125, 23);
@@ -272,9 +269,9 @@
             this.cbGamePlus.ForeColor = System.Drawing.Color.Black;
             this.cbGamePlus.FormattingEnabled = true;
             this.cbGamePlus.Items.AddRange(new object[] {
-            "30000+",
-            "40000+",
-            "50000+"});
+            "30+",
+            "40+",
+            "50+"});
             this.cbGamePlus.Location = new System.Drawing.Point(280, 3);
             this.cbGamePlus.Name = "cbGamePlus";
             this.cbGamePlus.Size = new System.Drawing.Size(125, 23);
@@ -302,8 +299,7 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "单式",
-            "复式"});
+            "单式"});
             this.cbGameDirect.Location = new System.Drawing.Point(145, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(125, 23);
@@ -330,13 +326,13 @@
             this.cbGameKind.ForeColor = System.Drawing.Color.Black;
             this.cbGameKind.FormattingEnabled = true;
             this.cbGameKind.Items.AddRange(new object[] {
-            "五星",
-            "四星",
+            "前二",
+            "后二",
             "前三",
             "中三",
             "后三",
-            "前二",
-            "后二"});
+            "四星",
+            "五星"});
             this.cbGameKind.Location = new System.Drawing.Point(10, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(125, 23);
@@ -346,6 +342,7 @@
             // 
             // pnlUserSettingRow1
             // 
+            this.pnlUserSettingRow1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlUserSettingRow1.Controls.Add(this.ckWinToNextCycle);
             this.pnlUserSettingRow1.Controls.Add(this.ckRegularCycle);
             this.pnlUserSettingRow1.Controls.Add(this.label5);
@@ -498,7 +495,7 @@
             // 
             // pnlShowPlan
             // 
-            this.pnlShowPlan.BackColor = System.Drawing.Color.Transparent;
+            this.pnlShowPlan.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlShowPlan.Controls.Add(this.panel2);
             this.pnlShowPlan.Controls.Add(this.pnlShowPlanTitle);
             this.pnlShowPlan.Location = new System.Drawing.Point(3, 58);
@@ -546,10 +543,7 @@
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUserRank.Controls.Add(this.btnFiveNumberLightPlan);
-            this.pnlUserRank.Controls.Add(this.btnFiveNumberPhantomPlan);
-            this.pnlUserRank.Controls.Add(this.btnMidthrNumberPhantomPlan);
-            this.pnlUserRank.Controls.Add(this.btnFiveNumberGodPlan);
+            this.pnlUserRank.Controls.Add(this.tblGod);
             this.pnlUserRank.Controls.Add(this.rtxPlanList);
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -558,45 +552,29 @@
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
             // 
-            // btnFiveNumberLightPlan
+            // tblGod
             // 
-            this.btnFiveNumberLightPlan.Location = new System.Drawing.Point(-2, 86);
-            this.btnFiveNumberLightPlan.Name = "btnFiveNumberLightPlan";
-            this.btnFiveNumberLightPlan.Size = new System.Drawing.Size(214, 23);
-            this.btnFiveNumberLightPlan.TabIndex = 8;
-            this.btnFiveNumberLightPlan.Text = "五星單式神灯计画 三期一周";
-            this.btnFiveNumberLightPlan.UseVisualStyleBackColor = true;
-            this.btnFiveNumberLightPlan.Click += new System.EventHandler(this.btnFiveNumberLightPlan_Click);
-            // 
-            // btnFiveNumberPhantomPlan
-            // 
-            this.btnFiveNumberPhantomPlan.Location = new System.Drawing.Point(-2, 57);
-            this.btnFiveNumberPhantomPlan.Name = "btnFiveNumberPhantomPlan";
-            this.btnFiveNumberPhantomPlan.Size = new System.Drawing.Size(214, 23);
-            this.btnFiveNumberPhantomPlan.TabIndex = 7;
-            this.btnFiveNumberPhantomPlan.Text = "五星單式幻影计画 三期一周";
-            this.btnFiveNumberPhantomPlan.UseVisualStyleBackColor = true;
-            this.btnFiveNumberPhantomPlan.Click += new System.EventHandler(this.btnFiveNumberPhantomPlan_Click);
-            // 
-            // btnMidthrNumberPhantomPlan
-            // 
-            this.btnMidthrNumberPhantomPlan.Location = new System.Drawing.Point(-1, 115);
-            this.btnMidthrNumberPhantomPlan.Name = "btnMidthrNumberPhantomPlan";
-            this.btnMidthrNumberPhantomPlan.Size = new System.Drawing.Size(214, 23);
-            this.btnMidthrNumberPhantomPlan.TabIndex = 6;
-            this.btnMidthrNumberPhantomPlan.Text = "中三單式幻影计画 二期一周";
-            this.btnMidthrNumberPhantomPlan.UseVisualStyleBackColor = true;
-            this.btnMidthrNumberPhantomPlan.Click += new System.EventHandler(this.btnMidthrNumberPhantomPlan_Click);
-            // 
-            // btnFiveNumberGodPlan
-            // 
-            this.btnFiveNumberGodPlan.Location = new System.Drawing.Point(-1, 28);
-            this.btnFiveNumberGodPlan.Name = "btnFiveNumberGodPlan";
-            this.btnFiveNumberGodPlan.Size = new System.Drawing.Size(214, 23);
-            this.btnFiveNumberGodPlan.TabIndex = 5;
-            this.btnFiveNumberGodPlan.Text = "五星单式玉神计画 三期一周";
-            this.btnFiveNumberGodPlan.UseVisualStyleBackColor = true;
-            this.btnFiveNumberGodPlan.Click += new System.EventHandler(this.btnFiveNumberGodPlan_Click);
+            this.tblGod.AutoScroll = true;
+            this.tblGod.ColumnCount = 1;
+            this.tblGod.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblGod.Location = new System.Drawing.Point(0, 28);
+            this.tblGod.Name = "tblGod";
+            this.tblGod.RowCount = 13;
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.Size = new System.Drawing.Size(212, 421);
+            this.tblGod.TabIndex = 9;
             // 
             // rtxPlanList
             // 
@@ -615,7 +593,7 @@
             // 
             // panel33
             // 
-            this.panel33.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel33.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel33.Controls.Add(this.label116);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
@@ -670,7 +648,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -708,7 +686,7 @@
             // pnlCycleSelect
             // 
             this.pnlCycleSelect.AutoScroll = true;
-            this.pnlCycleSelect.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlCycleSelect.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlCycleSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleSelect.Controls.Add(this.rtxtPlanCycle);
             this.pnlCycleSelect.Controls.Add(this.panel31);
@@ -868,7 +846,7 @@
             // pnlCycleList
             // 
             this.pnlCycleList.AutoScroll = true;
-            this.pnlCycleList.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlCycleList.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlCycleList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleList.Controls.Add(this.flowLayoutPanel1);
             this.pnlCycleList.Controls.Add(this.panel9);
@@ -907,6 +885,7 @@
             this.comboBox1.BackColor = System.Drawing.Color.White;
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox1.Enabled = false;
             this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.ForeColor = System.Drawing.Color.Black;
             this.comboBox1.FormattingEnabled = true;
@@ -977,6 +956,7 @@
             // 
             // panel36
             // 
+            this.panel36.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel36.Controls.Add(this.label130);
             this.panel36.Controls.Add(this.lblProfit);
             this.panel36.Controls.Add(this.label128);
@@ -1083,6 +1063,7 @@
             // 
             // panel35
             // 
+            this.panel35.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel35.Controls.Add(this.label123);
             this.panel35.Controls.Add(this.lblSumBetsCycle);
             this.panel35.Controls.Add(this.label119);
@@ -1161,6 +1142,7 @@
             // 
             // pnlShowPlanTitle
             // 
+            this.pnlShowPlanTitle.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlShowPlanTitle.Controls.Add(this.label122);
             this.pnlShowPlanTitle.Controls.Add(this.lblPlanWinOpp);
             this.pnlShowPlanTitle.Controls.Add(this.label120);
@@ -1269,12 +1251,8 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // frm_PlanCycle
             // 
@@ -1417,11 +1395,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.RichTextBox rtxPlanList;
-        private System.Windows.Forms.Button btnFiveNumberGodPlan;
-        private System.Windows.Forms.Button btnMidthrNumberPhantomPlan;
-        private System.Windows.Forms.Button btnFiveNumberLightPlan;
-        private System.Windows.Forms.Button btnFiveNumberPhantomPlan;
+        private System.Windows.Forms.TableLayoutPanel tblGod;
     }
 }

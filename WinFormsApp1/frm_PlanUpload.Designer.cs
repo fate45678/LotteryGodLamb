@@ -32,6 +32,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PlanUpload));
             this.pnlUserSetting = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnViewResult = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -108,7 +109,10 @@
             this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlUserSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -134,6 +138,8 @@
             // 
             // pnlUserSetting
             // 
+            this.pnlUserSetting.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSetting.Controls.Add(this.pictureBox1);
             this.pnlUserSetting.Controls.Add(this.button1);
             this.pnlUserSetting.Controls.Add(this.btnViewResult);
             this.pnlUserSetting.Controls.Add(this.label9);
@@ -153,8 +159,17 @@
             this.pnlUserSetting.Location = new System.Drawing.Point(3, 3);
             this.pnlUserSetting.Name = "pnlUserSetting";
             this.pnlUserSetting.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.pnlUserSetting.Size = new System.Drawing.Size(1446, 30);
+            this.pnlUserSetting.Size = new System.Drawing.Size(1446, 32);
             this.pnlUserSetting.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(953, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(250, 26);
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
@@ -163,9 +178,9 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(947, 3);
+            this.button1.Location = new System.Drawing.Point(876, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
+            this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 29;
             this.button1.Text = "登入";
             this.button1.UseVisualStyleBackColor = false;
@@ -178,9 +193,9 @@
             this.btnViewResult.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnViewResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewResult.ForeColor = System.Drawing.Color.White;
-            this.btnViewResult.Location = new System.Drawing.Point(866, 3);
+            this.btnViewResult.Location = new System.Drawing.Point(795, 3);
             this.btnViewResult.Name = "btnViewResult";
-            this.btnViewResult.Size = new System.Drawing.Size(81, 27);
+            this.btnViewResult.Size = new System.Drawing.Size(81, 29);
             this.btnViewResult.TabIndex = 28;
             this.btnViewResult.Text = "注册";
             this.btnViewResult.UseVisualStyleBackColor = false;
@@ -190,7 +205,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(826, 3);
+            this.label9.Location = new System.Drawing.Point(755, 3);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label9.Size = new System.Drawing.Size(40, 12);
@@ -201,19 +216,18 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(761, 3);
+            this.label4.Location = new System.Drawing.Point(755, 3);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.Size = new System.Drawing.Size(0, 17);
             this.label4.TabIndex = 27;
-            this.label4.Text = "神灯小牛逼";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(729, 3);
+            this.label3.Location = new System.Drawing.Point(723, 3);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label3.Size = new System.Drawing.Size(32, 17);
@@ -224,7 +238,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.Location = new System.Drawing.Point(689, 3);
+            this.label6.Location = new System.Drawing.Point(683, 3);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label6.Size = new System.Drawing.Size(40, 12);
@@ -238,9 +252,9 @@
             this.label2.Location = new System.Drawing.Point(648, 3);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label2.Size = new System.Drawing.Size(41, 17);
+            this.label2.Size = new System.Drawing.Size(35, 17);
             this.label2.TabIndex = 25;
-            this.label2.Text = "共99期";
+            this.label2.Text = "共2期";
             // 
             // cbGameCycle
             // 
@@ -250,10 +264,6 @@
             this.cbGameCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGameCycle.ForeColor = System.Drawing.Color.Black;
             this.cbGameCycle.FormattingEnabled = true;
-            this.cbGameCycle.Items.AddRange(new object[] {
-            "三期一周",
-            "二期一周",
-            "一期一周"});
             this.cbGameCycle.Location = new System.Drawing.Point(515, 3);
             this.cbGameCycle.Name = "cbGameCycle";
             this.cbGameCycle.Size = new System.Drawing.Size(133, 20);
@@ -373,7 +383,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.pnlSent);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 33);
+            this.panel2.Location = new System.Drawing.Point(3, 35);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel2.Size = new System.Drawing.Size(1446, 510);
@@ -381,11 +391,12 @@
             // 
             // pnlHistory
             // 
+            this.pnlHistory.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlHistory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlHistory.Controls.Add(this.rtxtHistory);
             this.pnlHistory.Controls.Add(this.panel32);
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlHistory.Location = new System.Drawing.Point(1110, 0);
+            this.pnlHistory.Location = new System.Drawing.Point(1095, 0);
             this.pnlHistory.Name = "pnlHistory";
             this.pnlHistory.Size = new System.Drawing.Size(348, 346);
             this.pnlHistory.TabIndex = 0;
@@ -406,7 +417,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -428,9 +439,9 @@
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(1110, 346);
+            this.panel9.Location = new System.Drawing.Point(1095, 346);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(336, 6);
+            this.panel9.Size = new System.Drawing.Size(351, 6);
             this.panel9.TabIndex = 8;
             // 
             // pnlAD4
@@ -439,9 +450,9 @@
             this.pnlAD4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD4.Controls.Add(this.picAD4);
             this.pnlAD4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD4.Location = new System.Drawing.Point(1110, 352);
+            this.pnlAD4.Location = new System.Drawing.Point(1095, 352);
             this.pnlAD4.Name = "pnlAD4";
-            this.pnlAD4.Size = new System.Drawing.Size(336, 158);
+            this.pnlAD4.Size = new System.Drawing.Size(351, 158);
             this.pnlAD4.TabIndex = 3;
             // 
             // picAD4
@@ -453,7 +464,7 @@
             this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picAD4.Location = new System.Drawing.Point(0, 0);
             this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(334, 156);
+            this.picAD4.Size = new System.Drawing.Size(349, 156);
             this.picAD4.TabIndex = 1;
             this.picAD4.TabStop = false;
             this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
@@ -461,21 +472,21 @@
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(1090, 0);
+            this.panel4.Location = new System.Drawing.Point(1085, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(20, 510);
+            this.panel4.Size = new System.Drawing.Size(10, 510);
             this.panel4.TabIndex = 5;
             // 
             // pnlNewPlan
             // 
             this.pnlNewPlan.AutoScroll = true;
-            this.pnlNewPlan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlNewPlan.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlNewPlan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlNewPlan.Controls.Add(this.richTextBox2);
             this.pnlNewPlan.Controls.Add(this.panel7);
             this.pnlNewPlan.Controls.Add(this.panel8);
             this.pnlNewPlan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNewPlan.Location = new System.Drawing.Point(732, 0);
+            this.pnlNewPlan.Location = new System.Drawing.Point(727, 0);
             this.pnlNewPlan.Name = "pnlNewPlan";
             this.pnlNewPlan.Padding = new System.Windows.Forms.Padding(5);
             this.pnlNewPlan.Size = new System.Drawing.Size(358, 510);
@@ -623,9 +634,9 @@
             this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(3, 3);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(119, 12);
+            this.label24.Size = new System.Drawing.Size(53, 12);
             this.label24.TabIndex = 6;
-            this.label24.Text = "重庆时时彩  五星复式";
+            this.label24.Text = "五星單式";
             // 
             // panel14
             // 
@@ -652,7 +663,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(716, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(16, 510);
+            this.panel3.Size = new System.Drawing.Size(11, 510);
             this.panel3.TabIndex = 4;
             // 
             // pnlSentConti
@@ -689,12 +700,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
@@ -882,9 +893,9 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(3, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(119, 12);
+            this.label16.Size = new System.Drawing.Size(53, 12);
             this.label16.TabIndex = 6;
-            this.label16.Text = "重庆时时彩  五星复式";
+            this.label16.Text = "五星單式";
             // 
             // panel12
             // 
@@ -932,7 +943,7 @@
             this.checkedListBoxEx1.FormattingEnabled = true;
             this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
             this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 354);
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 308);
             this.checkedListBoxEx1.TabIndex = 7;
             this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 
@@ -1058,8 +1069,19 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frm_PlanUpload
             // 
@@ -1076,6 +1098,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlUserSetting.ResumeLayout(false);
             this.pnlUserSetting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.pnlHistory.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
@@ -1189,5 +1212,8 @@
         private Model.CheckedListBoxEx checkedListBoxEx1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button btnCopyUp;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

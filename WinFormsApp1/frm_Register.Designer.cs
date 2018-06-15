@@ -55,7 +55,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 14);
             this.label1.TabIndex = 1;
-            this.label1.Text = "使用者帳號";
+            this.label1.Text = "使用者帐号";
             // 
             // label2
             // 
@@ -65,7 +65,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 14);
             this.label2.TabIndex = 2;
-            this.label2.Text = "使用者密碼";
+            this.label2.Text = "使用者密码";
             // 
             // tbPassword
             // 
@@ -83,7 +83,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 14);
             this.label3.TabIndex = 4;
-            this.label3.Text = "確認密碼";
+            this.label3.Text = "确认密码";
             // 
             // tbPasswordCheck
             // 
@@ -115,7 +115,7 @@
             this.btSend.Name = "btSend";
             this.btSend.Size = new System.Drawing.Size(102, 23);
             this.btSend.TabIndex = 8;
-            this.btSend.Text = "註冊";
+            this.btSend.Text = "注册";
             this.btSend.UseVisualStyleBackColor = true;
             this.btSend.Click += new System.EventHandler(this.btSend_Click);
             // 
@@ -133,6 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(427, 274);
             this.Controls.Add(this.btReset);
             this.Controls.Add(this.btSend);
@@ -145,7 +146,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbAccount);
             this.Name = "frm_Register";
-            this.Text = "frm_Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "注册";
             this.ResumeLayout(false);
             this.PerformLayout();
 

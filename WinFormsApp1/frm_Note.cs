@@ -36,10 +36,11 @@ namespace WinFormsApp1
             {
                 if (string.IsNullOrEmpty(frmGameMain.globalMessageTemp))
                 {
-                    Dictionary<int, string> dic = new Dictionary<int, string>();
-                    dic.Add(0, "p_note");
-                    var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select top 1 * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
-                    richTextBox1.Text = dt.ElementAt(0).ToString();
+                    richTextBox1.Text = "";
+                    //Dictionary<int, string> dic = new Dictionary<int, string>();
+                    //dic.Add(0, "p_note");
+                    //var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select top 1 * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' order by p_id desc", dic);
+                    //richTextBox1.Text = dt.ElementAt(0).ToString();
                 }
                 else
                     richTextBox1.Text = frmGameMain.globalMessageTemp;
@@ -61,8 +62,20 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmGameMain.globalMessageTemp = richTextBox1.Text;
-            MessageBox.Show("儲存成功。");
+            if (global_pid == 0)
+            {
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "UPDATE Upplan SET p_note = '" + richTextBox1.Text + "' WHERE p_id = '" + global_pid + "'");
+                frmGameMain.globalMessageTemp = richTextBox1.Text;
+                frm_PlanUpload.globalNote = richTextBox1.Text;
+                MessageBox.Show("儲存成功。");
+                this.Close();
+            }
+            else
+            {
+                frmGameMain.globalMessageTemp = richTextBox1.Text;
+                MessageBox.Show("儲存成功。");
+                this.Close();
+            }
         }
     }
 }

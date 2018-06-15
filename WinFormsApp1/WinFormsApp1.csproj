@@ -161,11 +161,11 @@
     <Compile Include="frm_Chart.Designer.cs">
       <DependentUpon>frm_Chart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Loading.cs">
+    <Compile Include="frm_LoadingControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Loading.Designer.cs">
-      <DependentUpon>Frm_Loading.cs</DependentUpon>
+    <Compile Include="frm_LoadingControl.Designer.cs">
+      <DependentUpon>frm_LoadingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_Login.cs">
       <SubType>Form</SubType>
@@ -215,11 +215,29 @@
     <Compile Include="frm_Shrink.Designer.cs">
       <DependentUpon>frm_Shrink.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_startLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_startLoading.Designer.cs">
+      <DependentUpon>frm_startLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThreeMessageShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThreeMessageShow.Designer.cs">
+      <DependentUpon>frm_ThreeMessageShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Trend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Trend.Designer.cs">
       <DependentUpon>frm_Trend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_TwoMessageShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_TwoMessageShow.Designer.cs">
+      <DependentUpon>frm_TwoMessageShow.cs</DependentUpon>
     </Compile>
     <Compile Include="Game_Function.cs" />
     <Compile Include="Model\DyCheckListBox.cs">
@@ -245,8 +263,8 @@
     <EmbeddedResource Include="frm_Chart.resx">
       <DependentUpon>frm_Chart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Loading.resx">
-      <DependentUpon>Frm_Loading.cs</DependentUpon>
+    <EmbeddedResource Include="frm_LoadingControl.resx">
+      <DependentUpon>frm_LoadingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
@@ -272,8 +290,17 @@
     <EmbeddedResource Include="frm_Shrink.resx">
       <DependentUpon>frm_Shrink.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_startLoading.resx">
+      <DependentUpon>frm_startLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThreeMessageShow.resx">
+      <DependentUpon>frm_ThreeMessageShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Trend.resx">
       <DependentUpon>frm_Trend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_TwoMessageShow.resx">
+      <DependentUpon>frm_TwoMessageShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -426,6 +453,7 @@
     <Content Include="bt_icon\bt_nex.png" />
     <Content Include="bt_icon\bt_up.png" />
     <Content Include="bt_icon\loading_icon.gif" />
+    <Content Include="img\1501733324023439TSKUVK.gif" />
     <Content Include="img\AD1.png" />
     <Content Include="img\AD2.png" />
     <Content Include="img\AD3.png" />

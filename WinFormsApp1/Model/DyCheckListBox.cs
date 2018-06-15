@@ -12,7 +12,7 @@ namespace WinFormsApp1.Model
         {
             get
             {
-                return (this.Font.Height + 10);//在这改变Item高度，（在字体高度上加上一个数值可能表示这个Item的高度高于其中的字体高度吧）
+                return (this.Font.Height + 23);//在这改变Item高度，（在字体高度上加上一个数值可能表示这个Item的高度高于其中的字体高度吧）
             }
             set
             {
