@@ -588,6 +588,7 @@ namespace WinFormsApp1
         {
             if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
             {
+                //test
                 MessageBox.Show("只能输入1700 ~ 2000的数字");
                 txtGameNum.Focus();
                 return;
