@@ -58,6 +58,7 @@ namespace WpfAppTest
         //取得歷史開獎
         private void useHttpWebRequest_GetHistory()
         {
+            //a.hywin888.net  hyqa.azurewebsites.net
             DateTime dt = DateTime.Now.AddDays(-2); //最早取前2天
             string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(frm_PlanCycle.GameLotteryName) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");

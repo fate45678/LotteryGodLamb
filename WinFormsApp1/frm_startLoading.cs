@@ -57,7 +57,7 @@ namespace WinFormsApp1
                         GameKind = "中三";
                         break;
                     case 2:
-                        GameKind = "五星";
+                        GameKind = "后三";
                         break;
                     case 1:
                         GameKind = "前二";

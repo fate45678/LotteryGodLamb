@@ -38,8 +38,8 @@ namespace WinFormsApp1
 
         public frmGameMain()
         {
-            //frm_startLoading frm_startLoading = new frm_startLoading();
-            //frm_startLoading.ShowDialog();
+            frm_startLoading frm_startLoading = new frm_startLoading();
+            frm_startLoading.ShowDialog();
 
             InitializeComponent();
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);
@@ -275,7 +275,8 @@ namespace WinFormsApp1
         //取得下一期時間
         private void useHttpWebRequest_GetNextPeriod()
         {
-            //hyqa.azurewebsites.net
+            //a.hywin888.net  hyqa.azurewebsites.net
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
             request.Method = WebRequestMethods.Http.Get;
             request.ContentType = "application/json";
@@ -321,6 +322,7 @@ namespace WinFormsApp1
         //取得歷史開獎
         private void useHttpWebRequest_GetHistory()
         {
+            //a.hywin888.net hyqa.azurewebsites.net/
             DateTime dt = DateTime.Now.AddDays(-2); //最早取前2天
             string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
