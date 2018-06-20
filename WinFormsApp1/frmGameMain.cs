@@ -367,6 +367,12 @@ namespace WinFormsApp1
                             lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 1);
                             lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
                             strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+
+                            //notifyIcon1.ShowBalloonTip(3000);
+                            //string tipTitle = "提示";
+                            //string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎" ;
+                            //ToolTipIcon tipType = ToolTipIcon.Info;
+                            //notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
                         }
                         //處理歷史開獎
                         //strHistory = "";

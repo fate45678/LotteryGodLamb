@@ -102,7 +102,6 @@
             this.pnlMenuPlanUpload = new System.Windows.Forms.Panel();
             this.pnlMenuPlanAgent = new System.Windows.Forms.Panel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.NFinfoTip = new System.Windows.Forms.NotifyIcon(this.components);
             this.pnlGameMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlGameSelect.SuspendLayout();
@@ -1094,16 +1093,10 @@
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "test_text";
-            this.notifyIcon1.BalloonTipTitle = "test_title";
+            this.notifyIcon1.BalloonTipText = "標題";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "神灯计划";
             this.notifyIcon1.Visible = true;
-            // 
-            // NFinfoTip
-            // 
-            this.NFinfoTip.Text = "notifyIcon2";
-            this.NFinfoTip.Visible = true;
             // 
             // frmGameMain
             // 
@@ -1222,7 +1215,6 @@
         private System.Windows.Forms.Panel pnlMenuShrink;
         private System.Windows.Forms.Panel pnlMenuPlanUpload;
         private System.Windows.Forms.Panel pnlMenuPlanAgent;
-        private System.Windows.Forms.NotifyIcon NFinfoTip;
     }
 }
 
