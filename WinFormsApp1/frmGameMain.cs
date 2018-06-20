@@ -38,8 +38,8 @@ namespace WinFormsApp1
 
         public frmGameMain()
         {
-            frm_startLoading frm_startLoading = new frm_startLoading();
-            frm_startLoading.ShowDialog();
+            //frm_startLoading frm_startLoading = new frm_startLoading();
+            //frm_startLoading.ShowDialog();
 
             InitializeComponent();
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);
@@ -222,6 +222,7 @@ namespace WinFormsApp1
             }
             useHttpWebRequest_GetNextPeriod();
             useHttpWebRequest_GetHistory();
+
             //重新放置新的物件
             frm_PlanCycle f_PlanCycle = new frm_PlanCycle();
             pnlMenuPlanCycle.Controls.Clear();
@@ -229,6 +230,10 @@ namespace WinFormsApp1
             f_PlanCycle.Size = this.Size;
             this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
             f_PlanCycle.Show();
+
+            frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();
+            frm_PlanUpload.isFirstTime = true;
+
         }
 
         //重設選單

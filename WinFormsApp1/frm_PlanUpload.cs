@@ -1189,27 +1189,40 @@ namespace WinFormsApp1
 
         int temp = 0;
         private void filtercbItem(int current)
-        {
-            if (current > temp)
-            {
-                var dt_plan = Items.Where(x => x.Key > current-1);
-                var dt_cycle = Items.Where(x => x.Key > current-1);
-                cbGamePlan.DataSource = new BindingSource(dt_plan, null);
-                comboBox1.DataSource = new BindingSource(dt_plan, null);
-                cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
-                comboBox2.DataSource = new BindingSource(dt_cycle, null);
-                temp = current;
-            }
-            else if (current == 120)
-            {
-                var dt_plan = Items.Where(x => x.Key < 999 );
-                var dt_cycle = Items.Where(x => x.Key >  1);
-                cbGamePlan.DataSource = new BindingSource(dt_plan, null);
-                comboBox1.DataSource = new BindingSource(dt_plan, null);
-                cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
-                comboBox2.DataSource = new BindingSource(dt_cycle, null);
-                temp = current;
-            }
+        {          
+            var dt_plan = Items.Where(x => x.Key > current - 1);
+            var dt_cycle = Items.Where(x => x.Key > current - 1);
+            cbGamePlan.DataSource = new BindingSource(dt_plan, null);
+            comboBox1.DataSource = new BindingSource(dt_plan, null);
+            cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
+            comboBox2.DataSource = new BindingSource(dt_cycle, null);
+            temp = current;
+
+            cbGamePlan.DisplayMember = "Value";
+            cbGamePlan.ValueMember = "Key";
+            cbGameCycle.DisplayMember = "Value";
+            cbGameCycle.ValueMember = "Key";
+
+            //if (current > temp)
+            //{
+            //    var dt_plan = Items.Where(x => x.Key > current-1);
+            //    var dt_cycle = Items.Where(x => x.Key > current-1);
+            //    cbGamePlan.DataSource = new BindingSource(dt_plan, null);
+            //    comboBox1.DataSource = new BindingSource(dt_plan, null);
+            //    cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
+            //    comboBox2.DataSource = new BindingSource(dt_cycle, null);
+            //    temp = current;
+            //}
+            //else //if (current == 120)
+            //{
+            //    var dt_plan = Items.Where(x => x.Key > current - 1);
+            //    var dt_cycle = Items.Where(x => x.Key > current - 1);
+            //    cbGamePlan.DataSource = new BindingSource(dt_plan, null);
+            //    comboBox1.DataSource = new BindingSource(dt_plan, null);
+            //    cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
+            //    comboBox2.DataSource = new BindingSource(dt_cycle, null);
+            //    temp = current;
+            //}
         }
         Dictionary<int, string> Items = new Dictionary<int, string>();
         /// <summary>
@@ -1217,8 +1230,10 @@ namespace WinFormsApp1
         /// </summary>
         private void InitcbItem()
         {
-            if (!string.IsNullOrEmpty(frmGameMain.globalGetCurrentPeriod))
+            if (!string.IsNullOrEmpty(frmGameMain.globalGetCurrentPeriod) || isFirstTime)
             {
+                Items = new Dictionary<int, string>();
+                cbGameCycle.DataSource = null;
                 cbGameCycle.Items.Clear();//不知道怎麼把預設的選項清掉
                 for (int i = 1; i < 121; i++)
                 {
@@ -1356,7 +1371,7 @@ namespace WinFormsApp1
         }
 
         public static bool isFirst = true;
-        bool isFirstTime = true;
+        public static bool isFirstTime = true;
         int updateCount = 0;
         int TimeCount = 600000;
         /// <summary>
@@ -1381,8 +1396,8 @@ namespace WinFormsApp1
                 InitcbItem();//初始化combobox
 
             }
-           
-
+            //cbGameCycle.DataSource = null;
+            //InitcbItem();
             frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
             string iiii = frmGameMain.globalGetCurrentPeriod;
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
