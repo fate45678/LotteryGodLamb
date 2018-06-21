@@ -1466,8 +1466,7 @@ namespace WinFormsApp1
                 InitcbItem();//初始化combobox
 
             }
-            //cbGameCycle.DataSource = null;
-            //InitcbItem();
+
             frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
             string iiii = frmGameMain.globalGetCurrentPeriod;
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
