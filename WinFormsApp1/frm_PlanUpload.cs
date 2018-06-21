@@ -1189,7 +1189,9 @@ namespace WinFormsApp1
 
         int temp = 0;
         private void filtercbItem(int current)
-        {          
+        {
+            //string iiii = Items[current - 1].ToString();
+            var dt_plantest = Items.Where(x => x.Key == current - 1);
             var dt_plan = Items.Where(x => x.Key > current - 1);
             var dt_cycle = Items.Where(x => x.Key > current - 1);
             cbGamePlan.DataSource = new BindingSource(dt_plan, null);
@@ -1197,11 +1199,6 @@ namespace WinFormsApp1
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
             comboBox2.DataSource = new BindingSource(dt_cycle, null);
             temp = current;
-
-            cbGamePlan.DisplayMember = "Value";
-            cbGamePlan.ValueMember = "Key";
-            cbGameCycle.DisplayMember = "Value";
-            cbGameCycle.ValueMember = "Key";
 
             //if (current > temp)
             //{
@@ -1235,30 +1232,103 @@ namespace WinFormsApp1
                 Items = new Dictionary<int, string>();
                 cbGameCycle.DataSource = null;
                 cbGameCycle.Items.Clear();//不知道怎麼把預設的選項清掉
-                for (int i = 1; i < 121; i++)
-                {
-                    if (i < 10)
-                        Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
-                    else if (i > 9 && i < 100)
-                        Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
-                    else
-                        Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                cbGamePlan.DataSource = null;
+                cbGamePlan.Items.Clear();
+                comboBox1.DataSource = null;
+                comboBox1.Items.Clear();
+                comboBox2.DataSource = null;
+                comboBox2.Items.Clear();
 
-                    cbGamePlan.DisplayMember = "Value";
-                    cbGamePlan.ValueMember = "Key";
-                    cbGameCycle.DisplayMember = "Value";
-                    cbGameCycle.ValueMember = "Key";
-                    comboBox1.DisplayMember = "Value";
-                    comboBox1.ValueMember = "Key";
-                    comboBox2.DisplayMember = "Value";
-                    comboBox2.ValueMember = "Key";
-                    cbGamePlan.DataSource = new BindingSource(Items, null);
-                    cbGameCycle.DataSource = new BindingSource(Items, null);
-                    comboBox1.DataSource = new BindingSource(Items, null);
-                    comboBox2.DataSource = new BindingSource(Items, null);
+                if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+                { 
+                    for (int i = 1; i < 121; i++)
+                    {
+                        if (i < 10)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                        else if (i > 9 && i < 100)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                        else
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                      
+                        //cbGamePlan.DisplayMember = "Value";
+                        //cbGamePlan.ValueMember = "Key";
+                        //cbGameCycle.DisplayMember = "Value";
+                        //cbGameCycle.ValueMember = "Key";
+                        //comboBox1.DisplayMember = "Value";
+                        //comboBox1.ValueMember = "Key";
+                        //comboBox2.DisplayMember = "Value";
+                        //comboBox2.ValueMember = "Key";
+                        //cbGamePlan.DataSource = new BindingSource(Items, null);
+                        //cbGameCycle.DataSource = new BindingSource(Items, null);
+                        //comboBox1.DataSource = new BindingSource(Items, null);
+                        //comboBox2.DataSource = new BindingSource(Items, null);
+                    }
                 }
+                else if(frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                {
+                    for (int i = 1; i < 1441; i++)
+                    {
+                        if (i < 10)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
+                        else if (i > 9 && i < 100)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                        else if (i > 100 && i < 1000)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                        else
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+
+                    }
+                }
+                else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+                {
+                    for (int i = 1; i < 1441; i++)
+                    {
+                        if (i < 10)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
+                        else if (i > 9 && i < 100)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                        else if (i > 100 && i < 1000)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                        else
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                    }   
+                }
+
+                var test = Items.ToList();
+                DataTable dt = ConvertToDataTable(test);
+
+                cbGamePlan.DisplayMember = "Value";
+                cbGamePlan.ValueMember = "Key";
+                cbGameCycle.DisplayMember = "Value";
+                cbGameCycle.ValueMember = "Key";
+                comboBox1.DisplayMember = "Value";
+                comboBox1.ValueMember = "Key";
+                comboBox2.DisplayMember = "Value";
+                comboBox2.ValueMember = "Key";
+                cbGamePlan.DataSource = dt;
+                cbGameCycle.DataSource = dt;
+                comboBox1.DataSource = dt;
+                comboBox2.DataSource = dt;
+
                 isFirstTime = false;
             }
+        }
+        public DataTable ConvertToDataTable<T>(IList<T> data)
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
         }
         /// <summary>
         /// 計算共幾注
@@ -1403,8 +1473,10 @@ namespace WinFormsApp1
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
             {
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
-                label2.Text = "共" + calPeriod() + "期";
-                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+                //label2.Text = "共" + calPeriod() + "期";
+                //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
             {
