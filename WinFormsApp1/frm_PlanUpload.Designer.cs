@@ -269,6 +269,7 @@
             this.cbGameCycle.Size = new System.Drawing.Size(133, 20);
             this.cbGameCycle.TabIndex = 22;
             this.cbGameCycle.TabStop = false;
+            this.cbGameCycle.SelectionChangeCommitted += new System.EventHandler(this.cbGameCycle_SelectionChangeCommitted);
             // 
             // label1
             // 
@@ -699,12 +700,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(99, 26);
+            this.contextmenu.Size = new System.Drawing.Size(101, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(98, 22);
+            this.編輯.Size = new System.Drawing.Size(100, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1

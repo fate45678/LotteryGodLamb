@@ -1294,6 +1294,7 @@ namespace WinFormsApp1
                     }   
                 }
 
+
                 var test = Items.ToList();
                 DataTable dt = ConvertToDataTable(test);
 
@@ -1378,6 +1379,9 @@ namespace WinFormsApp1
                 Application.DoEvents();
                 updatecheckboxlist1(0);
                 frm_LoadingControl.Close();
+
+                label16.Text = frm_PlanCycle.GameLotteryName + label16.Text;
+                label24.Text = label16.Text;
                 //backgroundWorker1.RunWorkerAsync();
 
             }
@@ -1606,8 +1610,10 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void cbGamePlan_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var dt_cycle = Items.Where(x => x.Key > (int)cbGamePlan.SelectedValue);
+            var dt_cycle = Items.Where(x => x.Key > (int)cbGamePlan.SelectedValue-1);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
+
+            label2.Text = "共1期";
         }
 
         private void checkData(string type)
@@ -2289,10 +2295,9 @@ namespace WinFormsApp1
             }
         }
 
-
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue);
+            var dt_cycle = Items.Where(x => x.Key > (int)comboBox1.SelectedValue - 1);
             comboBox2.DataSource = new BindingSource(dt_cycle, null);
         }
 
@@ -2524,6 +2529,67 @@ namespace WinFormsApp1
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
+        }
+
+        private void cbGameCycle_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int backAmount = (int)cbGameCycle.SelectedValue;
+            int frontAmount = (int)cbGamePlan.SelectedValue;
+
+            label2.Text = "共" + (backAmount - frontAmount) + "期";
+        }
+
+        public void clearNewMenu()
+        {
+            UpdateHistory();
+
+            if (isFirstTime)
+            {
+                if (cbGameKind.SelectedIndex == -1)
+                    cbGameKind.SelectedIndex = 0;
+                if (cbGameDirect.SelectedIndex == -1)
+                    cbGameDirect.SelectedIndex = 0;
+                InitcbItem();//初始化combobox
+
+            }
+
+            frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
+            string iiii = frmGameMain.globalGetCurrentPeriod;
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+                //label2.Text = "共" + calPeriod() + "期";
+                //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            }
+
+            if (updateCount % 3 == 0)//&& allorwUpdate
+            {
+                updatecheckboxlist1(updateLstbType);
+                //isFirst = true;
+            }
+
+            updateCount++;
+
+            if (!isFirst)
+            {
+                timer1.Interval = TimeCount;
+                updatecheckboxlist1(0);
+                //backgroundWorker1.CancelAsync();
+            }
         }
     }
 }
