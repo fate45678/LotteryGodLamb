@@ -2557,7 +2557,7 @@ namespace WinFormsApp1
             string iiii = frmGameMain.globalGetCurrentPeriod;
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
                 //label2.Text = "共" + calPeriod() + "期";
@@ -2565,13 +2565,13 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
