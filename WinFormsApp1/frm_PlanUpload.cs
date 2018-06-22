@@ -90,7 +90,7 @@ namespace WinFormsApp1
             string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
             Dictionary<int, string> dicGameKind = new Dictionary<int, string>();
             dicGameKind.Add(0, "p_name");
-            var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind);
+            var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_name LIKE '%"+ frm_PlanCycle.GameLotteryName+"%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind);
 
             System.Windows.Forms.Label lb11 = new System.Windows.Forms.Label();
 
@@ -1345,7 +1345,7 @@ namespace WinFormsApp1
        /// </summary>
         private void updateLabel24()
         {
-            label24.Text = "重庆时时彩  " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
+            label24.Text = frm_PlanCycle.GameLotteryName +" " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
         }
         /// <summary>
         /// 檢查資料庫是否有歷史號碼,沒有的話新增
@@ -1379,7 +1379,7 @@ namespace WinFormsApp1
                 updatecheckboxlist1(0);
                 frm_LoadingControl.Close();
 
-                label16.Text = frm_PlanCycle.GameLotteryName + label16.Text;
+                label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 label24.Text = label16.Text;
                 //backgroundWorker1.RunWorkerAsync();
 
@@ -1554,8 +1554,8 @@ namespace WinFormsApp1
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
-                string planName = label24.Text.Replace("重庆时时彩  ", "");
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "update Upplan set p_isoldplan = '2' WHERE p_name LIKE '%" + Kind + "%' ;Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate, p_isoldplan) values('" + label4.Text + "重慶時時彩" + planName + "','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','" + frmGameMain.globalMessageTemp + "','" + NowDateInsert + "', '1')");
+                string planName = label24.Text;
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "update Upplan set p_isoldplan = '2' WHERE p_name LIKE '%" + Kind + "%' ;Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate, p_isoldplan) values('" + label4.Text + planName + "','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','" + frmGameMain.globalMessageTemp + "','" + NowDateInsert + "', '1')");
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1(0);
                 frm_LoadingControl.Close();
@@ -2452,17 +2452,17 @@ namespace WinFormsApp1
                 {
                     //設定
                     cbGameKind.Text = "前二";
-                    cbGameKind.SelectedIndex = 5;
+                    //cbGameKind.SelectedIndex = 5;
                     richTextboxRule = 2;
-                    label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
                 else
                 {
                     //設定
                     cbGameKind.Text = "后二";
-                    cbGameKind.SelectedIndex = 6;
+                    //cbGameKind.SelectedIndex = 6;
                     richTextboxRule = 2;
-                    label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
             }
             else if (CopyKind.Length == 3)
@@ -2479,21 +2479,21 @@ namespace WinFormsApp1
                     cbGameKind.Text = "前三";
                     cbGameKind.SelectedIndex = 2;
                     richTextboxRule = 3;
-                    label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
                 else if (GameKindValue == "MidThree")
                 {
                     cbGameKind.Text = "中三";
                     cbGameKind.SelectedIndex = 3;
                     richTextboxRule = 3;
-                    label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
                 else
                 {
                     cbGameKind.Text = "后三";
                     cbGameKind.SelectedIndex = 4;
                     richTextboxRule = 3;
-                    label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
             }
             else if (CopyKind.Length == 4)
@@ -2501,14 +2501,14 @@ namespace WinFormsApp1
                 cbGameKind.Text = "四星";
                 cbGameKind.SelectedIndex = 1;
                 richTextboxRule = 4;
-                label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
             else if (CopyKind.Length == 5)
             {
                 cbGameKind.Text = "五星";
                 cbGameKind.SelectedIndex = 0;
                 richTextboxRule = 5;
-                label24.Text = cbGameKind.Text + cbGameDirect.Text;
+                label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
 
             richTextBox2.Text = CopyOn;
@@ -2537,13 +2537,8 @@ namespace WinFormsApp1
             int frontAmount = (int)cbGamePlan.SelectedValue;
 
             label2.Text = "共" + (backAmount - frontAmount) + "期";
-        }
 
-        public void clearNewMenu()
-        {
-            UpdateHistory();
-            label16.Text = "";
-            this.Dispose();
+            label23.Text = cbGameCycle.Text + " ~ " + cbGameCycle.Text + " " + label2.Text;
         }
 
         private void timeCheckChange_Tick(object sender, EventArgs e)
@@ -2575,12 +2570,21 @@ namespace WinFormsApp1
                 label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 label24.Text = label16.Text;
 
-                //string iiii = frmGameMain.globalGetCurrentPeriod;
+                ////調整comboboxu
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("后三");
+                    cbGameKind.Items.Add("四星");
+                    cbGameKind.Items.Add("五星");
                     //label2.Text = "共" + calPeriod() + "期";
                     //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
@@ -2589,13 +2593,28 @@ namespace WinFormsApp1
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("后三");
                 }
                 else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("后三");
                 }
+                cbGameKind.SelectedIndex = 0;
 
                 if (updateCount % 3 == 0)//&& allorwUpdate
                 {
@@ -2613,6 +2632,9 @@ namespace WinFormsApp1
                 }
 
                 isChangeLotteryName = false;
+
+                
+
 
                 frm_LoadingControl.Close();
             }
