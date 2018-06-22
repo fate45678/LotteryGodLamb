@@ -62,7 +62,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (global_pid == 0)
+            if (global_pid != 0)
             {
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "UPDATE Upplan SET p_note = '" + richTextBox1.Text + "' WHERE p_id = '" + global_pid + "'");
                 frmGameMain.globalMessageTemp = richTextBox1.Text;

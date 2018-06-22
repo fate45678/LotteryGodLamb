@@ -430,8 +430,9 @@ namespace WinFormsApp1
                 }
             }
 
-            
+
             //TimeCount = 30000;
+            checkedListBoxEx1.DataSource = null;
             checkedListBoxEx1.DataSource = content;
             checkedListBoxEx1.ValueMember = "id";
             checkedListBoxEx1.DisplayMember = "value";
@@ -1455,7 +1456,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            UpdateHistory();
+            
             refreshInterface();
 
             if (loginButtonType == 1)
@@ -1470,9 +1471,9 @@ namespace WinFormsApp1
                 InitcbItem();//初始化combobox
 
             }
-
+            
             frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
-            string iiii = frmGameMain.globalGetCurrentPeriod;
+            //string iiii = frmGameMain.globalGetCurrentPeriod;
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
             {
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
@@ -1483,27 +1484,28 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));            
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
 
-            if (updateCount % 3 == 0 )//&& allorwUpdate
-            {
-                updatecheckboxlist1(updateLstbType);
-                //isFirst = true;
-            }
+            //if (updateCount % 3 == 0 )//&& allorwUpdate
+            //{
+            //    updatecheckboxlist1(updateLstbType);
+            //    //isFirst = true;
+            //}
                 
             updateCount++;
 
             if(!isFirst)
-            { 
+            {
+                UpdateHistory();
                 timer1.Interval = TimeCount;
                 updatecheckboxlist1(0);
                 //backgroundWorker1.CancelAsync();
@@ -2115,8 +2117,26 @@ namespace WinFormsApp1
                 }
             }
             //this
+            //var iii = checkedListBoxEx1.SelectedValue;
+            //var iiiii = ((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.SelectedValue).id;
 
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + checkedListBoxEx1.SelectedValue + "'", dic);
+            string pid = "";
+            pid = checkedListBoxEx1.SelectedValue.ToString();
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                pid = checkedListBoxEx1.SelectedValue.ToString();
+                if (pid.Contains("WinFormsApp1.frm_PlanUpload+compentContent"))
+                {
+                    pid = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.SelectedValue).id).ToString();
+                }
+            }
+            else if(pid.Contains("WinFormsApp1.frm_PlanUpload+compentContent"))
+            {
+                pid = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.SelectedValue).id).ToString();
+            }
+
+
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + pid + "'", dic);
             label17.Text = "已上传: 第" + getData.ElementAt(2) + "~" + getData.ElementAt(3) + "期";
 
             for (int i = 0; i < getData.Count; i++)
@@ -2309,11 +2329,42 @@ namespace WinFormsApp1
 
         public void button12_Click(object sender, EventArgs e)
         {
+            richTextBox1.Text = "";
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+
             frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
             frm_LoadingControl.Show();
             Application.DoEvents();
             UpdateHistory();
-            updatecheckboxlist1(updateLstbType);
+            updatecheckboxlist1(0);
+
+            //順便更新combobox
+            if (cbGameKind.SelectedIndex == -1)
+                cbGameKind.SelectedIndex = 0;
+            if (cbGameDirect.SelectedIndex == -1)
+                cbGameDirect.SelectedIndex = 0;
+            InitcbItem();
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+                //label2.Text = "共" + calPeriod() + "期";
+                //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            {
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                label2.Text = "共" + 1 + "期";
+                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            }
             frm_LoadingControl.Close();
         }
 
@@ -2545,32 +2596,29 @@ namespace WinFormsApp1
         {
             if (isChangeLotteryName && loginButtonType == 1)
             {
+                isChangeLotteryName = false;
+
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
 
                 UpdateHistory();
-                refreshInterface();
-
+                //refreshInterface();
 
                 richTextBox2.Text = "";
 
-                if (isFirstTime)
-                {
-                    if (cbGameKind.SelectedIndex == -1)
-                        cbGameKind.SelectedIndex = 0;
-                    if (cbGameDirect.SelectedIndex == -1)
-                        cbGameDirect.SelectedIndex = 0;
-                    InitcbItem();//初始化combobox
-
-                }
+                if (cbGameKind.SelectedIndex == -1)
+                    cbGameKind.SelectedIndex = 0;
+                if (cbGameDirect.SelectedIndex == -1)
+                    cbGameDirect.SelectedIndex = 0;
+                InitcbItem();//初始化combobox
 
                 frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
 
                 label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 label24.Text = label16.Text;
 
-                ////調整comboboxu
+                ////調整combobox
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
@@ -2590,7 +2638,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
                 {
-                    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
@@ -2603,7 +2651,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 {
-                    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
@@ -2616,28 +2664,25 @@ namespace WinFormsApp1
                 }
                 cbGameKind.SelectedIndex = 0;
 
-                if (updateCount % 3 == 0)//&& allorwUpdate
-                {
-                    updatecheckboxlist1(updateLstbType);
-                    //isFirst = true;
-                }
+                //if (updateCount % 3 == 0)//&& allorwUpdate
+                //{
+                //    updatecheckboxlist1(updateLstbType);
+                //    isFirst = true;
+                //}
 
-                updateCount++;
-
-                if (!isFirst)
-                {
-                    timer1.Interval = TimeCount;
-                    updatecheckboxlist1(0);
-                    //backgroundWorker1.CancelAsync();
-                }
-
-                isChangeLotteryName = false;
-
+                updateCount++;                
                 
 
-
+                richTextBox1.Text = "";
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
                 frm_LoadingControl.Close();
+                updatecheckboxlist1(0);
+                //timer1.Interval = 500;
+                //isFirst = false;
+
             }
+
         }
     }
 }

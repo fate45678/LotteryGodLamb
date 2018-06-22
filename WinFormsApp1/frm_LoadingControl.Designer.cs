@@ -62,6 +62,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "frm_LoadingControl";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "等待窗口";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -146,6 +146,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbAccount);
             this.Name = "frm_Register";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "注册";
             this.ResumeLayout(false);
