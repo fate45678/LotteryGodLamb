@@ -390,7 +390,7 @@
             this.pnlGameRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGameRow.Location = new System.Drawing.Point(5, 5);
             this.pnlGameRow.Name = "pnlGameRow";
-            this.pnlGameRow.Size = new System.Drawing.Size(1108, 82);
+            this.pnlGameRow.Size = new System.Drawing.Size(1086, 82);
             this.pnlGameRow.TabIndex = 0;
             // 
             // pnlGameRow3
@@ -408,7 +408,7 @@
             this.pnlGameRow3.Location = new System.Drawing.Point(0, 54);
             this.pnlGameRow3.Name = "pnlGameRow3";
             this.pnlGameRow3.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow3.Size = new System.Drawing.Size(1108, 27);
+            this.pnlGameRow3.Size = new System.Drawing.Size(1086, 27);
             this.pnlGameRow3.TabIndex = 2;
             // 
             // lblGame3_9
@@ -565,7 +565,7 @@
             this.pnlGameRow2.Location = new System.Drawing.Point(0, 27);
             this.pnlGameRow2.Name = "pnlGameRow2";
             this.pnlGameRow2.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow2.Size = new System.Drawing.Size(1108, 27);
+            this.pnlGameRow2.Size = new System.Drawing.Size(1086, 27);
             this.pnlGameRow2.TabIndex = 1;
             // 
             // lblGame2_6
@@ -691,7 +691,7 @@
             this.pnlGameRow1.Location = new System.Drawing.Point(0, 0);
             this.pnlGameRow1.Name = "pnlGameRow1";
             this.pnlGameRow1.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pnlGameRow1.Size = new System.Drawing.Size(1108, 27);
+            this.pnlGameRow1.Size = new System.Drawing.Size(1086, 27);
             this.pnlGameRow1.TabIndex = 0;
             // 
             // lblGame1_7
@@ -835,10 +835,10 @@
             this.pnlGameLastNumber.Controls.Add(this.picNumber2);
             this.pnlGameLastNumber.Controls.Add(this.picNumber1);
             this.pnlGameLastNumber.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlGameLastNumber.Location = new System.Drawing.Point(1113, 5);
+            this.pnlGameLastNumber.Location = new System.Drawing.Point(1091, 5);
             this.pnlGameLastNumber.Name = "pnlGameLastNumber";
             this.pnlGameLastNumber.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlGameLastNumber.Size = new System.Drawing.Size(336, 82);
+            this.pnlGameLastNumber.Size = new System.Drawing.Size(358, 82);
             this.pnlGameLastNumber.TabIndex = 1;
             // 
             // panel38
@@ -851,7 +851,7 @@
             this.panel38.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel38.Location = new System.Drawing.Point(3, 3);
             this.panel38.Name = "panel38";
-            this.panel38.Size = new System.Drawing.Size(328, 26);
+            this.panel38.Size = new System.Drawing.Size(350, 26);
             this.panel38.TabIndex = 1;
             // 
             // lblNextPeriodTime

@@ -233,6 +233,7 @@ namespace WinFormsApp1
 
             frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();
             frm_PlanUpload.isFirstTime = true;
+            frm_PlanUpload.isChangeLotteryName = true;
 
             frm_PlanUpload.clearNewMenu();
         }
