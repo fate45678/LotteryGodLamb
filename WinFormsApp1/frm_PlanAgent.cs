@@ -27,7 +27,7 @@ namespace WinFormsApp1
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", @"/");
             label115.Text = NowDate + "历史开奖";
 
-            picAD3.Visible = false;//先拿掉廣告 之後版本更新
+            timeCheck.Visible = false;//先拿掉廣告 之後版本更新
             txtSearchUser.ForeColor = Color.LightGray;
             txtSearchUser.Text = "输入计划员名称";
             this.txtSearchUser.Leave += new System.EventHandler(this.txtSearchUser_Leave);
@@ -553,22 +553,35 @@ namespace WinFormsApp1
             string SelectNowDate = DateTime.Now.ToString().Substring(0, 10);
             dic_history.Add(0, "number");
             string sqlQuery = "select * from Upplan";
-            var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from QQFFC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from TENCENTFFC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            
             //取得上傳計畫 id 號碼
 
             if (type == 0)
                 //"select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate desc"
-                sqlQuery = "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
+                sqlQuery = "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name like '%" + frm_PlanCycle.GameLotteryName + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
             else if (type == 1)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%'  order by p_id desc";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%'  order by p_id desc";
             else if (type == 2)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id desc ";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id desc ";
             else if (type == 4)
-                sqlQuery = "select * from Upplan where p_isoldplan = '1' order by p_uploadDate desc";
+                sqlQuery = "select * from Upplan where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' order by p_uploadDate desc";
             else if (type == 5)
-                sqlQuery = "select * from Upplan where p_isoldplan = '1' AND p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
+                sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
             else if (type == 6)
-                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%' order by p_id desc";
+                sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND b.name like '%" + txtSearchUser.Text + "%' order by p_id desc";
 
             Dictionary<int, string> dic_plan = new Dictionary<int, string>();
             dic_plan.Add(0, "p_name");
@@ -1525,6 +1538,55 @@ namespace WinFormsApp1
 
             }
         }
+
+        public static bool ischagneGameName = false;
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (ischagneGameName)
+            {
+                ischagneGameName = false;
+
+                tableLayoutPanel1.Controls.Clear();
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                richTextBox1.Text = "";
+
+                if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");
+                    cbGameKind.Items.Add("四星");
+                    cbGameKind.Items.Add("五星");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");                
+                }
+                else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");                 
+                }
+
+                cbGameKind.SelectedIndex = 0;              
+
+                UpdateHistory();
+            }
+        }
     }
 
     class checkNupdateData
@@ -1546,7 +1608,7 @@ namespace WinFormsApp1
         {
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
             {
-                for (int i = 0; i < 120; i++)
+                for (int i = 0; i < 240; i++)
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[PR_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
@@ -1560,5 +1622,7 @@ namespace WinFormsApp1
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[TENCENTFFC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
             }
         }
+
+
     }
 }

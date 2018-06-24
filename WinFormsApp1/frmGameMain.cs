@@ -27,6 +27,8 @@ namespace WinFormsApp1
         public static string globalUserAccount;
         public static string globalGetCurrentPeriod;
         public static string globalMessageTemp = "";
+        //檢查是否為新開獎
+        string checkIsnewIssue = "";
 
         public static JArray jArrHistoryNumber;
 
@@ -234,6 +236,9 @@ namespace WinFormsApp1
             frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();
             frm_PlanUpload.isFirstTime = true;
             frm_PlanUpload.isChangeLotteryName = true;
+
+            frm_PlanAgent frm_PlanAgent = new frm_PlanAgent();
+            frm_PlanAgent.ischagneGameName = true;
         }
 
         //重設選單
@@ -373,11 +378,17 @@ namespace WinFormsApp1
                             lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
                             strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
 
-                            //notifyIcon1.ShowBalloonTip(3000);
-                            //string tipTitle = "提示";
-                            //string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎" ;
-                            //ToolTipIcon tipType = ToolTipIcon.Info;
-                            //notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+
+                            if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                            {
+                                notifyIcon1.ShowBalloonTip(3000);
+                                string tipTitle = "提示";
+                                string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                                ToolTipIcon tipType = ToolTipIcon.Info;
+                                notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);                              
+                             }
+
+                            checkIsnewIssue = ja[0]["Number"].ToString();
                         }
                         //處理歷史開獎
                         //strHistory = "";

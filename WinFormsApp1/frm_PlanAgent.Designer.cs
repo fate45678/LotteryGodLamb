@@ -34,7 +34,7 @@
             this.pnlPlanRight = new System.Windows.Forms.Panel();
             this.pnlRightBottom = new System.Windows.Forms.Panel();
             this.pnlAD3 = new System.Windows.Forms.Panel();
-            this.picAD3 = new System.Windows.Forms.PictureBox();
+            this.timeCheck = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pnlMyFavorite = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -86,11 +86,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbGameKind = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlPlanArea.SuspendLayout();
             this.pnlPlanRight.SuspendLayout();
             this.pnlRightBottom.SuspendLayout();
             this.pnlAD3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAD3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeCheck)).BeginInit();
             this.pnlMyFavorite.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlRightTop.SuspendLayout();
@@ -148,26 +149,26 @@
             // 
             this.pnlAD3.BackColor = System.Drawing.Color.Transparent;
             this.pnlAD3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAD3.Controls.Add(this.picAD3);
+            this.pnlAD3.Controls.Add(this.timeCheck);
             this.pnlAD3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAD3.Location = new System.Drawing.Point(476, 0);
             this.pnlAD3.Name = "pnlAD3";
             this.pnlAD3.Size = new System.Drawing.Size(553, 120);
             this.pnlAD3.TabIndex = 0;
             // 
-            // picAD3
+            // timeCheck
             // 
-            this.picAD3.BackColor = System.Drawing.Color.Transparent;
-            this.picAD3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD3.BackgroundImage")));
-            this.picAD3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAD3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAD3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picAD3.Location = new System.Drawing.Point(0, 0);
-            this.picAD3.Name = "picAD3";
-            this.picAD3.Size = new System.Drawing.Size(551, 118);
-            this.picAD3.TabIndex = 1;
-            this.picAD3.TabStop = false;
-            this.picAD3.Click += new System.EventHandler(this.picAD3_Click);
+            this.timeCheck.BackColor = System.Drawing.Color.Transparent;
+            this.timeCheck.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("timeCheck.BackgroundImage")));
+            this.timeCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.timeCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.timeCheck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timeCheck.Location = new System.Drawing.Point(0, 0);
+            this.timeCheck.Name = "timeCheck";
+            this.timeCheck.Size = new System.Drawing.Size(551, 118);
+            this.timeCheck.TabIndex = 1;
+            this.timeCheck.TabStop = false;
+            this.timeCheck.Click += new System.EventHandler(this.picAD3_Click);
             // 
             // panel9
             // 
@@ -752,8 +753,7 @@
             this.cbGameDirect.ForeColor = System.Drawing.Color.Black;
             this.cbGameDirect.FormattingEnabled = true;
             this.cbGameDirect.Items.AddRange(new object[] {
-            "单式",
-            "复式"});
+            "单式"});
             this.cbGameDirect.Location = new System.Drawing.Point(147, 3);
             this.cbGameDirect.Name = "cbGameDirect";
             this.cbGameDirect.Size = new System.Drawing.Size(152, 20);
@@ -799,6 +799,12 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 500;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // frm_PlanAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -815,7 +821,7 @@
             this.pnlPlanRight.ResumeLayout(false);
             this.pnlRightBottom.ResumeLayout(false);
             this.pnlAD3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picAD3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeCheck)).EndInit();
             this.pnlMyFavorite.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.pnlRightTop.ResumeLayout(false);
@@ -883,7 +889,7 @@
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button42;
         private System.Windows.Forms.Button button41;
-        private System.Windows.Forms.PictureBox picAD3;
+        private System.Windows.Forms.PictureBox timeCheck;
         private System.Windows.Forms.Panel pnlPlanRight;
         private System.Windows.Forms.Panel pnlHistory;
         private System.Windows.Forms.RichTextBox rtxtHistory;
@@ -900,5 +906,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Timer timer2;
     }
 }

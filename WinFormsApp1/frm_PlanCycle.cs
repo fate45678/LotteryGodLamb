@@ -97,9 +97,9 @@ namespace WinFormsApp1
             }
             else if (GameLotteryName == "腾讯官方彩")
             {
-                //cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前二");
                 cbGameKind.Items.Add("后二");
-                //cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("前三");
                 cbGameKind.Items.Add("中三");
                 cbGameKind.Items.Add("后三");
             }

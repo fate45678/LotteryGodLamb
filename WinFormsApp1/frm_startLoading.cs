@@ -33,7 +33,6 @@ namespace WinFormsApp1
             //刪除舊有資料
             DeleteGod();
 
-
             ConnectDbGetHistoryNumber();
             //玩法
             string GameKind = "";
