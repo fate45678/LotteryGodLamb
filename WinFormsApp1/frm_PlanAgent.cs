@@ -142,7 +142,7 @@ namespace WinFormsApp1
                 
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
-                    //cnd.Start();
+                    cnd.Start();
                     rtxtHistory.Text = "";
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
