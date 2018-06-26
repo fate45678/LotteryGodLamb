@@ -647,7 +647,7 @@ namespace WinFormsApp1
             try
             {
                 con.Open();
-                string Sqlstr = @"SELECT * from GodListPlanCycle   where [g_buttomRate] > '30' order by [g_buttomRate] desc";
+                string Sqlstr = @"SELECT * from GodListPlanCycle where [g_buttomRate] > '30' order by [g_buttomRate] desc";
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
