@@ -863,7 +863,7 @@ WHERE NUM >40 AND NUM <80";
                                     #endregion
 
                                     #region 計算
-                                    string CurrentBetsCycle = (cycle_2 - 1).ToString();
+                                    string CurrentBetsCycle = (sumBets).ToString(); 
                                     //中奖率
                                     double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
                                     string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
@@ -970,7 +970,7 @@ WHERE NUM >40 AND NUM <80";
                                     #endregion
 
                                     #region 計算
-                                    string CurrentBetsCycle = (cycle_2 - 1).ToString();
+                                    string CurrentBetsCycle = (sumBets).ToString(); 
                                     //中奖率
                                     double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
 

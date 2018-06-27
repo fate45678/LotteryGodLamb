@@ -1153,7 +1153,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -1358,7 +1358,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -1564,7 +1564,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -1770,7 +1770,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -1972,7 +1972,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -2173,7 +2173,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -2374,7 +2374,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -2587,7 +2587,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -2792,7 +2792,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -2998,7 +2998,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -3204,7 +3204,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -3406,7 +3406,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -3607,7 +3607,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -3808,7 +3808,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -4021,7 +4021,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -4226,7 +4226,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -4432,7 +4432,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -4638,7 +4638,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -4839,8 +4839,8 @@ namespace WinFormsApp1
                         lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
-                        //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        //中奖率                       
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -5041,7 +5041,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -5242,7 +5242,7 @@ namespace WinFormsApp1
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
-                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblCurrentBetsCycle.Text));
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
                         lblPlanWinOpp.Text = WinOpp.ToString("0.00");
                         #endregion
                     }
@@ -5669,19 +5669,6 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameCycle.Text = idArr[3];
 
-            //todo 可能會錯
-            cbGameCycle.Items.Clear();
-            cbGameCycle.Items.Add(new ComboboxItem("3", "三期一周"));
-            cbGameCycle.Items.Add(new ComboboxItem("2", "二期一周"));
-            cbGameCycle.Items.Add(new ComboboxItem("1", "一期一周"));
-
-            if (id.Contains("三期一周") )
-                cbGameCycle.SelectedIndex = 0;
-            else if (id.Contains("二期一周"))
-                cbGameCycle.SelectedIndex = 1;
-            else if(id.Contains("一期一周"))
-                cbGameCycle.SelectedIndex = 2;
-
             cbGamePlus.Text = idArr[4];
 
             ckRegularCycle.Checked = true;
@@ -5698,7 +5685,47 @@ WHERE NUM >40 AND NUM <80";
             cbGamePlan.Text = idArr[2];
             #endregion
 
+            //todo 可能會錯
+            cbGameCycle.Items.Clear();
+            if (id.Contains("3"))
+            {
+                cbGameCycle.Items.Add(new ComboboxItem("3", "三期一周"));
+                cbGameCycle.Items.Add(new ComboboxItem("2", "二期一周"));
+                cbGameCycle.Items.Add(new ComboboxItem("1", "一期一周"));
+
+                if (id.Contains("三期一周"))
+                    cbGameCycle.SelectedIndex = 0;
+                else if (id.Contains("二期一周"))
+                    cbGameCycle.SelectedIndex = 1;
+                else if (id.Contains("一期一周"))
+                    cbGameCycle.SelectedIndex = 2;
+            }
+            else if (id.Contains("4"))
+            {
+                cbGameCycle.Items.Add(new ComboboxItem("2", "二期一周"));
+                cbGameCycle.Items.Add(new ComboboxItem("1", "一期一周"));
+
+                 if (id.Contains("二期一周"))
+                    cbGameCycle.SelectedIndex = 0;
+                else if (id.Contains("一期一周"))
+                    cbGameCycle.SelectedIndex = 1;
+            }
+            else if (id.Contains("5"))
+            {
+                cbGameCycle.Items.Add(new ComboboxItem("2", "二期一周"));
+                cbGameCycle.Items.Add(new ComboboxItem("1", "一期一周"));
+
+                 if (id.Contains("二期一周"))
+                    cbGameCycle.SelectedIndex = 0;
+                else if (id.Contains("一期一周"))
+                    cbGameCycle.SelectedIndex = 1;
+            }
+
+
+
+
             CountAndShow();
+
             frm_LoadingControl.Close();
         }
     }
