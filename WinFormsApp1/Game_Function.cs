@@ -24,6 +24,9 @@ namespace WinFormsApp1
                 case "腾讯奇趣彩":
                     strCode = "TENCENTFFC";
                     break;
+                case "新疆时时彩":
+                    strCode = "XJSSC";
+                    break;
                 default:
                     strCode = "CQSSC";
                     break;

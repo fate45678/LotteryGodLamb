@@ -201,9 +201,9 @@ namespace WinFormsApp1
                     break;
                 case "天津时时彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_7.BackColor = Color.Black;
-                    lblGame1_7.ForeColor = Color.White;
-                    lblGame1_7.Refresh();
+                    lblGame1_5.BackColor = Color.Black;
+                    lblGame1_5.ForeColor = Color.White;
+                    lblGame1_5.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
                     break;
@@ -220,6 +220,14 @@ namespace WinFormsApp1
                     lblGame1_3.BackColor = Color.Black;
                     lblGame1_3.ForeColor = Color.White;
                     lblGame1_3.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    break;
+                case "新疆时时彩":
+                    ResetAllGame(); //重設彩票
+                    lblGame1_6.BackColor = Color.Black;
+                    lblGame1_6.ForeColor = Color.White;
+                    lblGame1_6.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
                     break;
