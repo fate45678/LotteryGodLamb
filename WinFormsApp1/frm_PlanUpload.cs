@@ -1296,7 +1296,7 @@ namespace WinFormsApp1
                 }
                 if (frm_PlanCycle.GameLotteryName == "天津时时彩")
                 {
-                    for (int i = 1; i < 121; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1321,7 +1321,7 @@ namespace WinFormsApp1
                 }
                 if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
                 {
-                    for (int i = 1; i < 121; i++)
+                    for (int i = 1; i < 97; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -2377,6 +2377,9 @@ namespace WinFormsApp1
 
         public void button12_Click(object sender, EventArgs e)
         {
+
+            label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+            label24.Text = label16.Text;
             richTextBox1.Text = "";
             listBox1.Items.Clear();
             listBox2.Items.Clear();
