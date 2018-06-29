@@ -58,7 +58,6 @@ namespace WinFormsApp1
             lblGame1_1.Click += new System.EventHandler(btnGame_Click);
             lblGame1_2.Click += new System.EventHandler(btnGame_Click);
             lblGame1_3.Click += new System.EventHandler(btnGame_Click);
-            lblGame1_4.Click += new System.EventHandler(btnGame_Click);
             lblGame1_5.Click += new System.EventHandler(btnGame_Click);
             lblGame1_6.Click += new System.EventHandler(btnGame_Click);
             lblGame1_7.Click += new System.EventHandler(btnGame_Click);            
@@ -66,7 +65,6 @@ namespace WinFormsApp1
             lblGame2_2.Click += new System.EventHandler(btnGame_Click);
             lblGame2_3.Click += new System.EventHandler(btnGame_Click);
             lblGame2_4.Click += new System.EventHandler(btnGame_Click);
-            lblGame2_5.Click += new System.EventHandler(btnGame_Click);
             lblGame2_6.Click += new System.EventHandler(btnGame_Click);
             lblGame3_1.Click += new System.EventHandler(btnGame_Click);
             lblGame3_2.Click += new System.EventHandler(btnGame_Click);
@@ -275,7 +273,6 @@ namespace WinFormsApp1
             lblGame1_1.BackColor = Color.Transparent; lblGame1_1.ForeColor = Color.Black; lblGame1_1.Refresh();
             lblGame1_2.BackColor = Color.Transparent; lblGame1_2.ForeColor = Color.Black; lblGame1_2.Refresh();
             lblGame1_3.BackColor = Color.Transparent; lblGame1_3.ForeColor = Color.Black; lblGame1_3.Refresh();
-            lblGame1_4.BackColor = Color.Transparent; lblGame1_4.ForeColor = Color.Black; lblGame1_4.Refresh();
             lblGame1_5.BackColor = Color.Transparent; lblGame1_5.ForeColor = Color.Black; lblGame1_5.Refresh();
             lblGame1_6.BackColor = Color.Transparent; lblGame1_6.ForeColor = Color.Black; lblGame1_6.Refresh();
             lblGame1_7.BackColor = Color.Transparent; lblGame1_7.ForeColor = Color.Black; lblGame1_7.Refresh();
@@ -283,7 +280,6 @@ namespace WinFormsApp1
             lblGame2_2.BackColor = Color.Transparent; lblGame2_2.ForeColor = Color.Black; lblGame2_2.Refresh();
             lblGame2_3.BackColor = Color.Transparent; lblGame2_3.ForeColor = Color.Black; lblGame2_3.Refresh();
             lblGame2_4.BackColor = Color.Transparent; lblGame2_4.ForeColor = Color.Black; lblGame2_4.Refresh();
-            lblGame2_5.BackColor = Color.Transparent; lblGame2_5.ForeColor = Color.Black; lblGame2_5.Refresh();
             lblGame2_6.BackColor = Color.Transparent; lblGame2_6.ForeColor = Color.Black; lblGame2_6.Refresh();
             lblGame3_1.BackColor = Color.Transparent; lblGame3_1.ForeColor = Color.Black; lblGame3_1.Refresh();
             lblGame3_2.BackColor = Color.Transparent; lblGame3_2.ForeColor = Color.Black; lblGame3_2.Refresh();
