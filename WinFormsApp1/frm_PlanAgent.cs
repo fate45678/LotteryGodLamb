@@ -142,7 +142,7 @@ namespace WinFormsApp1
                 
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
-                    cnd.Start();
+                    //cnd.Start();
                     rtxtHistory.Text = "";
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
@@ -193,6 +193,7 @@ namespace WinFormsApp1
                     int y = 0;
                     tableLayoutPanel2.Controls.Clear();
 
+                    int checkWinRate = 0;
                     if (getData.Count > 0)
                     {
                         for (int i = 0; i < getData.Count; i++)
@@ -200,8 +201,37 @@ namespace WinFormsApp1
                             Control control = new Button();
                             control.Text = getData.ElementAt(i).ToString();
                             control.Size = new System.Drawing.Size(200, 30);
-                            control.Name = hitTimesElementAt[0];
-                            control.ForeColor = Color.Blue;
+                            control.Name = getData[i];
+                            var uuu = getData[i].IndexOf("率");
+                            var XXX = getData[i].IndexOf("%");
+                            var iiiii = XXX - uuu;
+
+                            checkWinRate = int.Parse(getData[i].Substring(getData[i].IndexOf("中奖率"), 7));
+                            //control.ForeColor = Color.Blue;
+
+                            if (checkWinRate >= 80)
+                            {
+                                control.BackColor = Color.Red;
+                                control.ForeColor = Color.White;
+                            }
+                            else if (checkWinRate < 80 && checkWinRate >= 70)
+                            {
+                                control.BackColor = Color.Blue;
+                                control.ForeColor = Color.White;
+                            }
+                            else if (checkWinRate < 70 && checkWinRate >= 50)
+                            {
+                                control.BackColor = Color.Green;
+                                control.ForeColor = Color.White;
+                            }
+                            else if (checkWinRate < 50)
+                            {
+                                control.BackColor = Color.White;
+                                control.ForeColor = Color.Black;
+                            }
+                            else
+                                control.BackColor = Color.Yellow;
+
                             control.Padding = new Padding(5);
                             control.Dock = DockStyle.Fill;
                             control.Click += dynamicBt_Click;
@@ -237,7 +267,7 @@ namespace WinFormsApp1
 
             //總共中獎幾次 掛幾次 總共投了幾注
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
-            string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             //先處理舊資料
             var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)
@@ -264,7 +294,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (oldshowIssue.Count == 0)
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
                         OldisAllOpen = false;
                         break;
                     }
@@ -325,7 +355,7 @@ namespace WinFormsApp1
                     }
                     else
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 掛(" + oldtotalFail + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 挂(" + oldtotalFail + ")");
                     }
                 }
             }
@@ -358,7 +388,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (showIssue.Count == 0)
                     {
-                        listBox1.Items.Add(start + " 到 " + end + " 尚未開獎(" + (amount - totalPlay) + ")");
+                        listBox1.Items.Add(start + " 到 " + end + " 尚未开奖(" + (amount - totalPlay) + ")");
                         isAllOpen = false;
                         break;
                     }
@@ -417,7 +447,7 @@ namespace WinFormsApp1
                     }
                     else
                     {
-                        listBox1.Items.Add(start + " 到 " + end + " 掛(" + totalFail + ")");
+                        listBox1.Items.Add(start + " 到 " + end + " 挂(" + totalFail + ")");
                     }
                 }
 
@@ -484,7 +514,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void btnView_Click(object sender, EventArgs e)
         {
-            
+            choosePlanName = "";
             searchType = 1;
             button42.Enabled = false;
             tableLayoutPanel1.Controls.Clear();
@@ -549,8 +579,8 @@ namespace WinFormsApp1
             dic.Clear();
             //取得過去所有號碼
             Dictionary<int, string> dic_history = new Dictionary<int, string>();
-            string dateNow = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "") + "%";
-            string SelectNowDate = DateTime.Now.ToString().Substring(0, 10);
+            string dateNow = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10) + "%";
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             dic_history.Add(0, "number");
             string sqlQuery = "select * from Upplan";
 
@@ -590,7 +620,7 @@ namespace WinFormsApp1
             dic_plan.Add(3, "p_uploadDate");
             dic_plan.Add(4, "p_start");
             dic_plan.Add(5, "p_end");
-            var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", sqlQuery, dic_plan);
+            var getPlan = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", sqlQuery.Replace(" 上","").Replace("下",""), dic_plan);
             //把 dic_plan 轉換成比較好操作的格式
 
             if (getPlan.Count() == 0)
@@ -644,7 +674,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (oldshowIssue.Count == 0)
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
                         
                         break;
                     }
@@ -697,7 +727,7 @@ namespace WinFormsApp1
             }
 
             //showTest = calhits(getPlan[i + 4], getPlan[i + 5] , getPlan[i + 1].Trim(), getPlan[i]);
-            string win = "中奖率0%";
+            string win = "中奖率0.00%";
             if (countWin != 0)
                 win = "中奖率" + (((double)(countWin) / (double)oldtotalPlay) * 100).ToString("0.00") + "%";
             hitElem = getPlan[2] + "," + getPlan[0] + "," + win + " ," + getPlan[3].Substring(10) + " ," + getPlan[4];
@@ -1277,7 +1307,12 @@ namespace WinFormsApp1
         {
             if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
             {
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into favorite(f_name,user_account) values('" + choosePlanName + "','" + frmGameMain.globalUserAccount + "')");
+                if (choosePlanName == "")
+                {
+                    System.Windows.Forms.MessageBox.Show("請先點選計畫");
+                    return;
+                }
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into favorite(f_name,user_account) values('" + choosePlanName.Replace(@"\r\n", "") + "','" + frmGameMain.globalUserAccount + "')");
                 System.Windows.Forms.MessageBox.Show("新增完成。");
 
                 Dictionary<int, string> dic = new Dictionary<int, string>();
@@ -1292,17 +1327,29 @@ namespace WinFormsApp1
                     Control control = new Button();
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", x, y);
+                    control.Name = hitTimesElementAt[0];
                     control.Tag = hitTimes.ElementAt(i).Key;
 
-                    if (hitTimes.ElementAt(i).Value >= 0.8)
-                        control.ForeColor = Color.Red;
-                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                        control.ForeColor = Color.Blue;
-                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                        control.ForeColor = Color.Gray;
-                    else if (hitTimes.ElementAt(i).Value < 0.5)
-                        control.ForeColor = Color.Gray;
+                    if (hitTimes.ElementAt(i).Value >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
                     else
                         control.BackColor = Color.Yellow;
 
@@ -1332,17 +1379,31 @@ namespace WinFormsApp1
                     Control control = new Button();
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", 0, 0);
-                    if (hitTimes.ElementAt(i).Value >= 0.8)
-                        control.ForeColor = Color.Red;
-                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                        control.ForeColor = Color.Blue;
-                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                        control.ForeColor = Color.Gray;
-                    else if (hitTimes.ElementAt(i).Value < 0.5)
-                        control.ForeColor = Color.Gray;
+                    control.Name = hitTimesElementAt[0];
+
+                    if (hitTimes.ElementAt(i).Value >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
                     else
                         control.BackColor = Color.Yellow;
+
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicBt_Click;
@@ -1367,14 +1428,26 @@ namespace WinFormsApp1
                     control.Text = hitTimes.ElementAt(i).Key;
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = String.Format("btx{0}y{1}", 0, 0);
-                    if (hitTimes.ElementAt(i).Value >= 0.8)
-                        control.ForeColor = Color.Red;
-                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                        control.ForeColor = Color.Blue;
-                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                        control.ForeColor = Color.Gray;
-                    else if (hitTimes.ElementAt(i).Value < 0.5)
-                        control.ForeColor = Color.Gray;
+                    if (hitTimes.ElementAt(i).Value >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
                     else
                         control.BackColor = Color.Yellow;
                     control.Padding = new Padding(5);
@@ -1443,17 +1516,28 @@ namespace WinFormsApp1
                 control.Text = hitTimes.ElementAt(i).Key;
                 control.Size = new System.Drawing.Size(140, 30);
                 control.Name = String.Format("btx{0}y{1}", 0, 0);
-                if (hitTimes.ElementAt(i).Value >= 0.8)
-                    control.ForeColor = Color.Red;
-                else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                    control.ForeColor = Color.Blue;
-                else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                    control.ForeColor = Color.Gray;
-                else if (hitTimes.ElementAt(i).Value < 0.5)
-                    control.ForeColor = Color.Gray;
+                if (hitTimes.ElementAt(i).Value >= 80)
+                {
+                    control.BackColor = Color.Red;
+                    control.ForeColor = Color.White;
+                }
+                else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
+                {
+                    control.BackColor = Color.Blue;
+                    control.ForeColor = Color.White;
+                }
+                else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
+                {
+                    control.BackColor = Color.Green;
+                    control.ForeColor = Color.White;
+                }
+                else if (hitTimes.ElementAt(i).Value < 50)
+                {
+                    control.BackColor = Color.White;
+                    control.ForeColor = Color.Black;
+                }
                 else
                     control.BackColor = Color.Yellow;
-
                 control.Padding = new Padding(5);
                 control.Dock = DockStyle.Fill;
                 control.Click += dynamicBt_Click;
@@ -1519,7 +1603,7 @@ namespace WinFormsApp1
             dic.Add(0, "p_rule");
             dic.Add(1, "p_end");
             //allorwUpdate = false;
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + GameKind + "%'", dic);
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + GameKind + "%'", dic);
             richTextBox1.Text = "";
             for (int i = 0; i < getData.Count(); i = i + 2)
             {

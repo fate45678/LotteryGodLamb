@@ -198,6 +198,7 @@ namespace WinFormsApp1
                     lblGame1_1.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "天津时时彩":
                     ResetAllGame(); //重設彩票
@@ -206,6 +207,7 @@ namespace WinFormsApp1
                     lblGame1_7.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯官方彩":
                     ResetAllGame(); //重設彩票
@@ -214,6 +216,7 @@ namespace WinFormsApp1
                     lblGame1_2.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯奇趣彩":
                     ResetAllGame(); //重設彩票
@@ -222,6 +225,7 @@ namespace WinFormsApp1
                     lblGame1_3.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
@@ -338,7 +342,7 @@ namespace WinFormsApp1
         private void useHttpWebRequest_GetHistory()
         {
             //a.hywin888.net hyqa.azurewebsites.net/
-            DateTime dt = DateTime.Now.AddDays(-2); //最早取前2天
+            DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
             string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
             request.Method = WebRequestMethods.Http.Get;

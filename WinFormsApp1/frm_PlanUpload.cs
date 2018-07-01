@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
@@ -87,16 +88,23 @@ namespace WinFormsApp1
             List<compentContent> content = new List<compentContent>();
 
             //先確認資料庫內有甚麼種類的玩法
-            string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             Dictionary<int, string> dicGameKind = new Dictionary<int, string>();
             dicGameKind.Add(0, "p_name");
-            var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_name LIKE '%"+ frm_PlanCycle.GameLotteryName+"%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind);
+
+            var dtGameKindtmp = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_name LIKE '%"+ frm_PlanCycle.GameLotteryName+"%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind);
 
             System.Windows.Forms.Label lb11 = new System.Windows.Forms.Label();
 
             if (type == 0)
             {
-                for (int iKind = 0; iKind < dtGameKind.Count; iKind++)
+                //string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
+                Dictionary<int, string> dicGameKind0 = new Dictionary<int, string>();
+                dicGameKind0.Add(0, "p_name");
+
+                var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind0);
+
+                for (int iKind = 0; iKind < dtGameKindtmp.Count; iKind++)
                 {
                     oldtotalPlay = 0;
                     listBox1.Items.Clear();
@@ -132,7 +140,7 @@ namespace WinFormsApp1
                                 //表示還沒開獎
                                 if (oldshowIssue.Count == 0)
                                 {
-                                    listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                                    listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
                                     OldisAllOpen = false;
                                     break;
                                 }
@@ -206,228 +214,273 @@ namespace WinFormsApp1
                             //上传时间：20180609 11：12 
                             //已上传第20180609033期～20180609034期 
                             id = int.Parse(dt.ElementAt(0)),
-                            value = dt.ElementAt(1) + " " +
+                            value = "計畫序號: "+ dt.ElementAt(0) + ", "+ dt.ElementAt(1) + " " +
                              winRate
-                              + " \r\n上传时间:" + dt.ElementAt(5).Substring(9)
+                              + " \r\n上传时间:" + dt.ElementAt(5)
                               + " \r\n已上传第" + dt.ElementAt(dt.Count-4) + "期 ～ 第" + dt.ElementAt(3) + "期"
-                              + " ," + dt.ElementAt(0)
+                              //+ " ," + 
                         });
                     }
                 }
             }
             else if (type == 1)
             {
-                SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
-                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate desc", dic);
-                dic.Clear();
-                if (dt.Count > 0)
+                Dictionary<int, string> dicGameKind0 = new Dictionary<int, string>();
+                dicGameKind0.Add(0, "p_name");
+
+                var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name, p_uploadDate from Upplan where p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' and [p_isoldplan] = '1' order by p_uploadDate desc", dicGameKind0);
+
+
+                //order by p_uploadDate desc
+                for (int iKind = 0; iKind < dtGameKind.Count; iKind++)
                 {
-
-                    for (int i = 0; i < dt.Count; i = i + 6)
+                    oldtotalPlay = 0;
+                    listBox1.Items.Clear();
+                    var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + dtGameKind.ElementAt(iKind) + "' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate desc", dic);
+                    //dic.Clear();
+                    if (dt.Count > 0)
                     {
-                        //玩法種類
-                        string oldGameKind = dt.ElementAt(i + 1);
+                        oldtotalWin = 0; oldtotalFail = 0; //countPlay = 0;//
 
-                        //上傳的開始以及結束期數
-                        long oldstart = Int64.Parse(dt.ElementAt(i + 2));
-                        long oldend = Int64.Parse(dt.ElementAt(i + 3));
-
-                        //上傳了幾期
-                        long oldamount = (oldend - oldstart) + 1;
-
-                        //總共中獎幾次 掛幾次 總共投了幾注
-
-
-                        string oldcheckNumber = "";
-
-                        bool OldisAllOpen = true;
-
-                        for (int ii = 0; ii < oldamount; ii++)
+                        for (int i = 0; i < dt.Count; i = i + 6)
                         {
-                            var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+                            //玩法種類
+                            string oldGameKind = dt.ElementAt(i + 1);
 
-                            //表示還沒開獎
-                            if (oldshowIssue.Count == 0)
-                            {
-                                listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
-                                OldisAllOpen = false;
-                                break;
-                            }
-                            else if (oldGameKind.Contains("五星"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
-                            }
-                            else if (oldGameKind.Contains("四星"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
-                                //前三中三后三前二后二
-                            }
-                            else if (oldGameKind.Contains("中三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
-                            }
-                            else if (oldGameKind.Contains("前三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
-                            }
-                            else if (oldGameKind.Contains("后三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
-                            }
-                            else if (oldGameKind.Contains("前二"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
-                            }
-                            else if (oldGameKind.Contains("后二"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
-                            }
+                            //上傳的開始以及結束期數
+                            long oldstart = Int64.Parse(dt.ElementAt(i + 2));
+                            long oldend = Int64.Parse(dt.ElementAt(i + 3));
 
-                            //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+                            //上傳了幾期
+                            long oldamount = (oldend - oldstart) + 1;
 
-                            //是否有中獎
-                            if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
+                            //總共中獎幾次 掛幾次 總共投了幾注
+
+
+                            string oldcheckNumber = "";
+
+                            bool OldisAllOpen = true;
+
+                            for (int ii = 0; ii < oldamount; ii++)
                             {
-                                oldtotalWin++;
-                                oldtotalPlay++;
-                                break;
+                                var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+
+                                //表示還沒開獎
+                                if (oldshowIssue.Count == 0)
+                                {
+                                    listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
+                                    OldisAllOpen = false;
+                                    break;
+                                }
+                                else if (oldGameKind.Contains("五星"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
+                                }
+                                else if (oldGameKind.Contains("四星"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                    //前三中三后三前二后二
+                                }
+                                else if (oldGameKind.Contains("中三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                }
+                                else if (oldGameKind.Contains("前三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                }
+                                else if (oldGameKind.Contains("后三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                }
+                                else if (oldGameKind.Contains("前二"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                }
+                                else if (oldGameKind.Contains("后二"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                }
+
+                                //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                                //是否有中獎
+                                if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
+                                {
+                                    oldtotalWin++;
+                                    oldtotalPlay++;
+                                    countWin += oldtotalWin;
+                                    countPlay++;
+                                    //oldtotalPlay = 0;
+                                    break;
+                                }
+                                else
+                                {
+                                    oldtotalFail++;
+                                    oldtotalPlay++;
+                                    countPlay++;
+                                }
                             }
-                            else
-                            {
-                                oldtotalFail++;
-                                oldtotalPlay++;
-                            }
+                            //oldtotalPlay = oldtotalPlay - countPlay;
                         }
-                    }
 
-                    string winRate = "";
-                    if (oldtotalPlay == 0)
-                    {
-                        winRate = "中奖率0%";
-                    }
+                        string winRate = "";
 
-                    else
-                    {
-                        winRate = "中奖率" + (((double)(oldtotalWin) / (double)(oldtotalPlay)) * 100).ToString("0.00") + "%";
-                    }
+                        if (oldtotalPlay == 0)
+                        {
+                            winRate = "中奖率0%";
+                        }
 
-                    content.Add(new compentContent
-                    {
-                        id = int.Parse(dt.ElementAt(0)),
-                        value = dt.ElementAt(1).Replace("重慶時時彩", "") + " " +
-                         winRate
-                          + " 最新上傳時間 \r\n " + dt.ElementAt(5).Substring(9)
-                          + " 已上傳第" + dt.ElementAt(dt.Count-4) + "期 - 第" + dt.ElementAt(3) + "期"
-                          + " ," + dt.ElementAt(0)
-                    });
+                        else
+                        {
+                            winRate = "中奖率" + (((double)(oldtotalWin) / (double)(oldtotalPlay)) * 100).ToString("0.00") + "%";
+                        }
+
+                        content.Add(new compentContent
+                        {
+                            //重庆时时彩 前三直选单式 中奖率0％ 
+                            //上传时间：20180609 11：12 
+                            //已上传第20180609033期～20180609034期 
+                            id = int.Parse(dt.ElementAt(0)),
+                            value = "計畫序號: " + dt.ElementAt(0) + ", " + dt.ElementAt(1) + " " +
+                             winRate
+                              + " \r\n上传时间:" + dt.ElementAt(5)
+                              + " \r\n已上传第" + dt.ElementAt(dt.Count - 4) + "期 ～ 第" + dt.ElementAt(3) + "期"
+                              //+ " ," + dt.ElementAt(0)
+                        });
+                    }
                 }
             }
             else if (type == 2)
             {
-                SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
-                var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate desc", dic);
-                dic.Clear();
-                if (dt.Count > 0)
+                Dictionary<int, string> dicGameKind0 = new Dictionary<int, string>();
+                dicGameKind0.Add(0, "p_name");
+
+                var dtGameKind = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select distinct p_name from Upplan where p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_name", dicGameKind0);
+
+                for (int iKind = 0; iKind < dtGameKind.Count; iKind++)
                 {
 
-                    for (int i = 0; i < dt.Count; i = i + 6)
+                    oldtotalPlay = 0;
+                    listBox1.Items.Clear();
+                    var dt = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_name = '" + dtGameKind.ElementAt(iKind) + "' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_account = '" + frmGameMain.globalUserAccount + "' order by p_uploadDate", dic);
+                    //dic.Clear();
+                    if (dt.Count > 0)
                     {
-                        //玩法種類
-                        string oldGameKind = dt.ElementAt(i + 1);
+                        oldtotalWin = 0; oldtotalFail = 0; //countPlay = 0;//
 
-                        //上傳的開始以及結束期數
-                        long oldstart = Int64.Parse(dt.ElementAt(i + 2));
-                        long oldend = Int64.Parse(dt.ElementAt(i + 3));
-
-                        //上傳了幾期
-                        long oldamount = (oldend - oldstart) + 1;
-
-                        //總共中獎幾次 掛幾次 總共投了幾注
-
-
-                        string oldcheckNumber = "";
-
-                        bool OldisAllOpen = true;
-
-                        for (int ii = 0; ii < oldamount; ii++)
+                        for (int i = 0; i < dt.Count; i = i + 6)
                         {
-                            var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+                            //玩法種類
+                            string oldGameKind = dt.ElementAt(i + 1);
 
-                            //表示還沒開獎
-                            if (oldshowIssue.Count == 0)
-                            {
-                                listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
-                                OldisAllOpen = false;
-                                break;
-                            }
-                            else if (oldGameKind.Contains("五星"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
-                            }
-                            else if (oldGameKind.Contains("四星"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
-                                //前三中三后三前二后二
-                            }
-                            else if (oldGameKind.Contains("中三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
-                            }
-                            else if (oldGameKind.Contains("前三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
-                            }
-                            else if (oldGameKind.Contains("后三"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
-                            }
-                            else if (oldGameKind.Contains("前二"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
-                            }
-                            else if (oldGameKind.Contains("后二"))
-                            {
-                                oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
-                            }
+                            //上傳的開始以及結束期數
+                            long oldstart = Int64.Parse(dt.ElementAt(i + 2));
+                            long oldend = Int64.Parse(dt.ElementAt(i + 3));
 
-                            //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+                            //上傳了幾期
+                            long oldamount = (oldend - oldstart) + 1;
 
-                            //是否有中獎
-                            if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
+                            //總共中獎幾次 掛幾次 總共投了幾注
+
+
+                            string oldcheckNumber = "";
+
+                            bool OldisAllOpen = true;
+
+                            for (int ii = 0; ii < oldamount; ii++)
                             {
-                                oldtotalWin++;
-                                oldtotalPlay++;
-                                break;
+                                var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+
+                                //表示還沒開獎
+                                if (oldshowIssue.Count == 0)
+                                {
+                                    listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
+                                    OldisAllOpen = false;
+                                    break;
+                                }
+                                else if (oldGameKind.Contains("五星"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
+                                }
+                                else if (oldGameKind.Contains("四星"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                    //前三中三后三前二后二
+                                }
+                                else if (oldGameKind.Contains("中三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                }
+                                else if (oldGameKind.Contains("前三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                }
+                                else if (oldGameKind.Contains("后三"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                }
+                                else if (oldGameKind.Contains("前二"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                }
+                                else if (oldGameKind.Contains("后二"))
+                                {
+                                    oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                }
+
+                                //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                                //是否有中獎
+                                if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
+                                {
+                                    oldtotalWin++;
+                                    oldtotalPlay++;
+                                    countWin += oldtotalWin;
+                                    countPlay++;
+                                    //oldtotalPlay = 0;
+                                    break;
+                                }
+                                else
+                                {
+                                    oldtotalFail++;
+                                    oldtotalPlay++;
+                                    countPlay++;
+                                }
                             }
-                            else
-                            {
-                                oldtotalFail++;
-                                oldtotalPlay++;
-                            }
+                            //oldtotalPlay = oldtotalPlay - countPlay;
                         }
-                    }
 
-                    string winRate = "";
-                    if (oldtotalPlay == 0)
-                    {
-                        winRate = "中奖率0%";
-                    }
+                        string winRate = "";
 
-                    else
-                    {
-                        winRate = "中奖率" + (((double)(oldtotalWin) / (double)(oldtotalPlay)) * 100).ToString("0.00") + "%";
-                    }
+                        if (oldtotalPlay == 0)
+                        {
+                            winRate = "中奖率0%";
+                        }
 
-                    content.Add(new compentContent
-                    {
-                        id = int.Parse(dt.ElementAt(0)),
-                        value = dt.ElementAt(1).Replace("重慶時時彩", "") + " " +
-                         winRate
-                          + " 最新上傳時間 \r\n " + dt.ElementAt(5).Substring(9)
-                          + " 已上傳第" + dt.ElementAt(2) + "期 - 第" + dt.ElementAt(3) + "期"
-                          + " ," + dt.ElementAt(0)
-                    });
+                        else
+                        {
+                            winRate = "中奖率" + (((double)(oldtotalWin) / (double)(oldtotalPlay)) * 100).ToString("0.00") + "%";
+                        }
+
+                        content.Add(new compentContent
+                        {
+                            //重庆时时彩 前三直选单式 中奖率0％ 
+                            //上传时间：20180609 11：12 
+                            //已上传第20180609033期～20180609034期 
+                            id = int.Parse(dt.ElementAt(0)),
+                            value = "計畫序號: " + dt.ElementAt(0) + ", " + dt.ElementAt(1) + " " +
+                            winRate
+                              + " \r\n上传时间:" + dt.ElementAt(5)
+                              + " \r\n已上传第" + dt.ElementAt(dt.Count - 4) + "期 ～ 第" + dt.ElementAt(3) + "期",
+                              //+ " ," + dt.ElementAt(0),
+                            winRateContent = double.Parse(winRate.Replace("中奖率","").Replace("%",""))
+                        });
+                    }
                 }
+
+                var sortedList = content.OrderByDescending(x => x.winRateContent).ToList();
+                content = sortedList;
             }
 
 
@@ -1167,6 +1220,7 @@ namespace WinFormsApp1
         {
             public int id { get; set; }
             public string value { get; set; }
+            public double winRateContent { get; set; }
         }
 
         List<rule> rule1 = new List<rule>();
@@ -1346,7 +1400,7 @@ namespace WinFormsApp1
        /// </summary>
         private void updateLabel24()
         {
-            label24.Text = frm_PlanCycle.GameLotteryName +" " + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
+            label24.Text = frm_PlanCycle.GameLotteryName + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem;
         }
         /// <summary>
         /// 檢查資料庫是否有歷史號碼,沒有的話新增
@@ -1539,14 +1593,15 @@ namespace WinFormsApp1
             {
                 //checkData("A");
                 string Kind = cbGameKind.Text;
-                string NowDateInsert = DateTime.Now.ToString();
+                //string NowDateInsert = DateTime.Now.ToString();
+                string NowDateInsert = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss");
                 string checkDate = NowDateInsert.Substring(0, 10);
                 //檢查是否有重複的玩法
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "p_name");
                 dic.Add(1, "p_uploadDate");
                 //string iiii = "select * from userData where account = '" + frmGameMain.globalUserAccount + "'";
-                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name, p_uploadDate from Upplan where p_name LIKE '%" + Kind + "%' AND p_uploadDate LIKE '%"+ checkDate + "%'", dic);
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name, p_uploadDate from Upplan where p_name LIKE '%" + frm_PlanCycle.GameLotteryName + Kind + "%' AND p_uploadDate LIKE '%"+ checkDate + "%'", dic);
 
                 if (getData.Count > 0)
                 {
@@ -1925,10 +1980,45 @@ namespace WinFormsApp1
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            string pid = checkedListBoxEx1.SelectedValue.ToString();
+            string DeleteName = "";
             foreach (object checkedItem in checkedListBoxEx1.CheckedItems)
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_id = "+ checkedListBoxEx1.SelectedValue);
+            { 
+                DeleteName = checkDeleteName(pid);
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + DeleteName + "'");
+            }
+
             MessageBox.Show("刪除成功。");
             updatecheckboxlist1(0);
+        }
+
+        private string checkDeleteName(string pid)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+
+            //預設給四星五星
+            string Sqlstr = @"SELECT p_name From [Upplan] where p_id ='" + pid + "'";
+
+            try
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                string Pname = dt.Rows[0]["p_name"].ToString();
+                con.Close();
+                return Pname;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return "";
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -1947,7 +2037,8 @@ namespace WinFormsApp1
                 frm_LoadingControl.Show();
                 Application.DoEvents();
 
-                string updatePid = this.checkedListBoxEx1.Text.Split(',')[1];
+                //string updatePid = checkedListBoxEx1.SelectedValue.ToString();
+                string updatePid = this.checkedListBoxEx1.Text.Split(',')[0].Replace("計畫序號: ","");
                 //取得帳號
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "account");
@@ -1956,7 +2047,7 @@ namespace WinFormsApp1
                 if (getData.Count != 0)
                 {
                     string PName = label16.Text;
-                    string PNowDate = DateTime.Now.ToString("");
+                    string PNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss");
                     string PStart = comboBox1.Text;
                     //string PStart = label17.Text.Substring(label17.Text.IndexOf("2"), 11);
 
@@ -2010,20 +2101,25 @@ namespace WinFormsApp1
             dic.Add(5, "p_note");
             allorwUpdate = false;
 
-            string SelectNowDate = DateTime.Now.ToString().Substring(0, 9);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
 
             var kind = checkedListBoxEx1.Text;
-            string gameKind = kind.Split(' ')[0];
-            //int FindWord = gameKind.IndexOf("");
-            gameKind = gameKind.Substring(gameKind.Length -4, 4);
+            var check = kind.Split(' ');
+            string gameKind = " ";
 
+            if (check.Length > 1)
+            {
+                gameKind = kind.Split(' ')[2].Substring(kind.Split(' ')[2].Length - 4, 4);
+                //int FindWord = gameKind.IndexOf("");
+                //gameKind = kind.Substring(gameKind.Length -4, 4);
+            }
             //var abc = iii.ToString();
 
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWint = 0, countPlay = 0;
 
             listBox1.Items.Clear();
             //先處理舊資料
-            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan inner join userData on userData.account = Upplan.p_account WHERE p_name LIKE '%" + gameKind + "%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_isoldplan = '2' AND userData.name = '" + label4.Text + "' order by p_uploadDate , p_name", dic);
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan inner join userData on userData.account = Upplan.p_account WHERE p_name LIKE '%" + frm_PlanCycle.GameLotteryName + gameKind + "%' AND p_uploadDate LIKE '" + SelectNowDate + "%' AND p_isoldplan = '2' AND userData.name = '" + label4.Text + "' order by p_uploadDate , p_name", dic);
             for (int i = 0; i < getOldData.Count ; i = i+6)
             {
                 oldtotalWin = 0;
@@ -2051,7 +2147,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (oldshowIssue.Count == 0)
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未開獎(" + (oldamount - oldtotalPlay) + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
                         OldisAllOpen = false;
                         break;
                     }
@@ -2179,7 +2275,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (showIssue.Count == 0)
                     {
-                        listBox1.Items.Add(start + " 到 " + end + " 尚未開獎(" + (amount - totalPlay) + ")");
+                        listBox1.Items.Add(start + " 到 " + end + " 尚未开奖(" + (amount - totalPlay) + ")");
                         isAllOpen = false;
                         break; 
                     }
@@ -2383,9 +2479,15 @@ namespace WinFormsApp1
 
         }
 
+        public static string richBox1Number = "";
         private void button13_Click(object sender, EventArgs e)
         {
-            checkData("B");
+            //checkData("B");
+            //修改一個視窗
+            frm_editNumber edit = new frm_editNumber(richTextBox1.Text);
+            edit.ShowDialog();
+            if (richBox1Number != "")
+                richTextBox1.Text = richBox1Number;
         }
 
         private void listBox1_MouseClick(object sender, MouseEventArgs e)
@@ -2444,7 +2546,7 @@ namespace WinFormsApp1
             dic.Add(0, "p_rule");
             dic.Add(1, "p_end");
             //allorwUpdate = false;
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + GameKind + "%'", dic);
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + GameKind + "%'", dic);
             richTextBox1.Text = "";
             for (int i = 0; i < getData.Count(); i = i + 2)
             {
@@ -2587,9 +2689,9 @@ namespace WinFormsApp1
             int backAmount = (int)cbGameCycle.SelectedValue;
             int frontAmount = (int)cbGamePlan.SelectedValue;
 
-            label2.Text = "共" + (backAmount - frontAmount) + "期";
+            label2.Text = "共" + ((backAmount - frontAmount)+ 1) + "期";
 
-            label23.Text = cbGameCycle.Text + " ~ " + cbGameCycle.Text + " " + label2.Text;
+            label23.Text = cbGamePlan.Text + " ~ " + cbGameCycle.Text + " " + label2.Text;
         }
 
         private void timeCheckChange_Tick(object sender, EventArgs e)
@@ -2615,7 +2717,7 @@ namespace WinFormsApp1
 
                 frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
 
-                label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                label16.Text = frm_PlanCycle.GameLotteryName + "前二" + cbGameDirect.Text;
                 label24.Text = label16.Text;
 
                 ////調整combobox

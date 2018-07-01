@@ -701,12 +701,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(99, 26);
+            this.contextmenu.Size = new System.Drawing.Size(101, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(98, 22);
+            this.編輯.Size = new System.Drawing.Size(100, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
@@ -725,6 +725,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(5, 345);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(343, 97);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
@@ -751,7 +752,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(82, 23);
             this.button13.TabIndex = 26;
-            this.button13.Text = "除错";
+            this.button13.Text = "修改";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 

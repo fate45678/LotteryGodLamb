@@ -79,6 +79,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_editNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_editNumber.Designer.cs">
+      <DependentUpon>frm_editNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options\CustomOption.cs" />
     <Compile Include="Example\6.Varification\bigbuttom.xaml.cs">
       <DependentUpon>bigbuttom.xaml</DependentUpon>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Chart.resx">
       <DependentUpon>frm_Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_editNumber.resx">
+      <DependentUpon>frm_editNumber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_LoadingControl.resx">
       <DependentUpon>frm_LoadingControl.cs</DependentUpon>
