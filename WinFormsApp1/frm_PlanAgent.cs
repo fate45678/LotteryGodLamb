@@ -596,7 +596,15 @@ namespace WinFormsApp1
             {
                 var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from TENCENTFFC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
             }
-            
+            else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from TJSSC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from XJSSC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+
             //取得上傳計畫 id 號碼
 
             if (type == 0)
@@ -1665,7 +1673,29 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");                 
                 }
-
+                else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");
+                    cbGameKind.Items.Add("四星");
+                    cbGameKind.Items.Add("五星");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");
+                    cbGameKind.Items.Add("四星");
+                    cbGameKind.Items.Add("五星");
+                }
+                //
                 cbGameKind.SelectedIndex = 0;              
 
                 UpdateHistory();
@@ -1704,6 +1734,11 @@ namespace WinFormsApp1
             {
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[TENCENTFFC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            {
+                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[XJSSC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
             }
         }
 
