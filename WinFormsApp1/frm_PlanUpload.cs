@@ -1695,7 +1695,7 @@ namespace WinFormsApp1
             {
                 cbGameDirect.Items.Clear();
                 cbGameDirect.Items.Add("单式");
-                cbGameDirect.Items.Add("复式");
+                //cbGameDirect.Items.Add("复式");
                 cbGameDirect.SelectedIndex = 0;
             }
         }

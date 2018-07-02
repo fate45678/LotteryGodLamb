@@ -64,21 +64,21 @@ namespace WinFormsApp1
                 case "五星":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("五星组合");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "四星":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("四星组合");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "前三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("前三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -87,7 +87,7 @@ namespace WinFormsApp1
                 case "中三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     ///cbGameDirect.Items.Add("中三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -96,7 +96,7 @@ namespace WinFormsApp1
                 case "后三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("后三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -106,9 +106,9 @@ namespace WinFormsApp1
                 case "后二":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
-                    cbGameDirect.Items.Add("和值");
-                    cbGameDirect.Items.Add("跨度");
+                    //cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("和值");
+                    //cbGameDirect.Items.Add("跨度");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "定位胆":

@@ -960,7 +960,7 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -1010,9 +1010,9 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
-            cbGameDirect.Items.Add("和值");
-            cbGameDirect.Items.Add("跨度");
+            //cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("和值");
+            //cbGameDirect.Items.Add("跨度");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("300+");
@@ -8524,7 +8524,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8581,7 +8581,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8691,7 +8691,7 @@ WHERE NUM >40 AND NUM <80";
                 case "前三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
