@@ -52,8 +52,6 @@
             this.pnlGameSelect = new System.Windows.Forms.Panel();
             this.pnlGameRow = new System.Windows.Forms.Panel();
             this.pnlGameRow3 = new System.Windows.Forms.Panel();
-            this.lblGame3_9 = new System.Windows.Forms.Label();
-            this.lblGame3_7 = new System.Windows.Forms.Label();
             this.lblGame3_6 = new System.Windows.Forms.Label();
             this.lblGame3_5 = new System.Windows.Forms.Label();
             this.lblGame3_4 = new System.Windows.Forms.Label();
@@ -63,9 +61,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pnlGameRow2 = new System.Windows.Forms.Panel();
             this.lblGame2_6 = new System.Windows.Forms.Label();
-            this.lblGame2_4 = new System.Windows.Forms.Label();
-            this.lblGame2_3 = new System.Windows.Forms.Label();
-            this.lblGame2_2 = new System.Windows.Forms.Label();
             this.lblGame2_1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlGameRow1 = new System.Windows.Forms.Panel();
@@ -395,8 +390,6 @@
             // 
             // pnlGameRow3
             // 
-            this.pnlGameRow3.Controls.Add(this.lblGame3_9);
-            this.pnlGameRow3.Controls.Add(this.lblGame3_7);
             this.pnlGameRow3.Controls.Add(this.lblGame3_6);
             this.pnlGameRow3.Controls.Add(this.lblGame3_5);
             this.pnlGameRow3.Controls.Add(this.lblGame3_4);
@@ -410,38 +403,6 @@
             this.pnlGameRow3.Padding = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.pnlGameRow3.Size = new System.Drawing.Size(1086, 27);
             this.pnlGameRow3.TabIndex = 2;
-            // 
-            // lblGame3_9
-            // 
-            this.lblGame3_9.AutoSize = true;
-            this.lblGame3_9.BackColor = System.Drawing.Color.Transparent;
-            this.lblGame3_9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblGame3_9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGame3_9.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGame3_9.ForeColor = System.Drawing.Color.Black;
-            this.lblGame3_9.Location = new System.Drawing.Point(384, 1);
-            this.lblGame3_9.Name = "lblGame3_9";
-            this.lblGame3_9.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.lblGame3_9.Size = new System.Drawing.Size(69, 25);
-            this.lblGame3_9.TabIndex = 11;
-            this.lblGame3_9.Text = "文莱分分";
-            this.lblGame3_9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGame3_7
-            // 
-            this.lblGame3_7.AutoSize = true;
-            this.lblGame3_7.BackColor = System.Drawing.Color.Transparent;
-            this.lblGame3_7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblGame3_7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGame3_7.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGame3_7.ForeColor = System.Drawing.Color.Black;
-            this.lblGame3_7.Location = new System.Drawing.Point(315, 1);
-            this.lblGame3_7.Name = "lblGame3_7";
-            this.lblGame3_7.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.lblGame3_7.Size = new System.Drawing.Size(69, 25);
-            this.lblGame3_7.TabIndex = 9;
-            this.lblGame3_7.Text = "巴西三分";
-            this.lblGame3_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGame3_6
             // 
@@ -555,9 +516,6 @@
             // pnlGameRow2
             // 
             this.pnlGameRow2.Controls.Add(this.lblGame2_6);
-            this.pnlGameRow2.Controls.Add(this.lblGame2_4);
-            this.pnlGameRow2.Controls.Add(this.lblGame2_3);
-            this.pnlGameRow2.Controls.Add(this.lblGame2_2);
             this.pnlGameRow2.Controls.Add(this.lblGame2_1);
             this.pnlGameRow2.Controls.Add(this.label8);
             this.pnlGameRow2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -575,61 +533,13 @@
             this.lblGame2_6.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblGame2_6.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblGame2_6.ForeColor = System.Drawing.Color.Black;
-            this.lblGame2_6.Location = new System.Drawing.Point(419, 1);
+            this.lblGame2_6.Location = new System.Drawing.Point(128, 1);
             this.lblGame2_6.Name = "lblGame2_6";
             this.lblGame2_6.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.lblGame2_6.Size = new System.Drawing.Size(60, 25);
             this.lblGame2_6.TabIndex = 7;
             this.lblGame2_6.Text = "VR赛车";
             this.lblGame2_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGame2_4
-            // 
-            this.lblGame2_4.AutoSize = true;
-            this.lblGame2_4.BackColor = System.Drawing.Color.Transparent;
-            this.lblGame2_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblGame2_4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGame2_4.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGame2_4.ForeColor = System.Drawing.Color.Black;
-            this.lblGame2_4.Location = new System.Drawing.Point(348, 1);
-            this.lblGame2_4.Name = "lblGame2_4";
-            this.lblGame2_4.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.lblGame2_4.Size = new System.Drawing.Size(71, 25);
-            this.lblGame2_4.TabIndex = 5;
-            this.lblGame2_4.Text = "两分PK10";
-            this.lblGame2_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGame2_3
-            // 
-            this.lblGame2_3.AutoSize = true;
-            this.lblGame2_3.BackColor = System.Drawing.Color.Transparent;
-            this.lblGame2_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblGame2_3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGame2_3.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGame2_3.ForeColor = System.Drawing.Color.Black;
-            this.lblGame2_3.Location = new System.Drawing.Point(238, 1);
-            this.lblGame2_3.Name = "lblGame2_3";
-            this.lblGame2_3.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.lblGame2_3.Size = new System.Drawing.Size(110, 25);
-            this.lblGame2_3.TabIndex = 4;
-            this.lblGame2_3.Text = "芝加哥分分PK10";
-            this.lblGame2_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGame2_2
-            // 
-            this.lblGame2_2.AutoSize = true;
-            this.lblGame2_2.BackColor = System.Drawing.Color.Transparent;
-            this.lblGame2_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblGame2_2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGame2_2.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGame2_2.ForeColor = System.Drawing.Color.Black;
-            this.lblGame2_2.Location = new System.Drawing.Point(128, 1);
-            this.lblGame2_2.Name = "lblGame2_2";
-            this.lblGame2_2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.lblGame2_2.Size = new System.Drawing.Size(110, 25);
-            this.lblGame2_2.TabIndex = 3;
-            this.lblGame2_2.Text = "旧金山三分PK10";
-            this.lblGame2_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGame2_1
             // 
@@ -1135,8 +1045,6 @@
         private System.Windows.Forms.Panel pnlGameSelect;
         private System.Windows.Forms.Panel pnlGameRow;
         private System.Windows.Forms.Panel pnlGameRow3;
-        private System.Windows.Forms.Label lblGame3_9;
-        private System.Windows.Forms.Label lblGame3_7;
         private System.Windows.Forms.Label lblGame3_6;
         private System.Windows.Forms.Label lblGame3_5;
         private System.Windows.Forms.Label lblGame3_4;
@@ -1146,9 +1054,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnlGameRow2;
         private System.Windows.Forms.Label lblGame2_6;
-        private System.Windows.Forms.Label lblGame2_4;
-        private System.Windows.Forms.Label lblGame2_3;
-        private System.Windows.Forms.Label lblGame2_2;
         private System.Windows.Forms.Label lblGame2_1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnlGameRow1;

@@ -62,9 +62,6 @@ namespace WinFormsApp1
             lblGame1_6.Click += new System.EventHandler(btnGame_Click);
             lblGame1_7.Click += new System.EventHandler(btnGame_Click);            
             lblGame2_1.Click += new System.EventHandler(btnGame_Click);
-            lblGame2_2.Click += new System.EventHandler(btnGame_Click);
-            lblGame2_3.Click += new System.EventHandler(btnGame_Click);
-            lblGame2_4.Click += new System.EventHandler(btnGame_Click);
             lblGame2_6.Click += new System.EventHandler(btnGame_Click);
             lblGame3_1.Click += new System.EventHandler(btnGame_Click);
             lblGame3_2.Click += new System.EventHandler(btnGame_Click);
@@ -72,8 +69,7 @@ namespace WinFormsApp1
             lblGame3_4.Click += new System.EventHandler(btnGame_Click);
             lblGame3_5.Click += new System.EventHandler(btnGame_Click);
             lblGame3_6.Click += new System.EventHandler(btnGame_Click);
-            lblGame3_7.Click += new System.EventHandler(btnGame_Click);
-            lblGame3_9.Click += new System.EventHandler(btnGame_Click);
+
 
             timer_ShowMessage.Enabled = true;
             timer_GetGameInfo.Enabled = true;
@@ -196,6 +192,7 @@ namespace WinFormsApp1
                     lblGame1_1.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "天津时时彩":
                     ResetAllGame(); //重設彩票
@@ -204,6 +201,7 @@ namespace WinFormsApp1
                     lblGame1_5.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯官方彩":
                     ResetAllGame(); //重設彩票
@@ -212,6 +210,7 @@ namespace WinFormsApp1
                     lblGame1_2.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯奇趣彩":
                     ResetAllGame(); //重設彩票
@@ -220,6 +219,7 @@ namespace WinFormsApp1
                     lblGame1_3.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "新疆时时彩":
                     ResetAllGame(); //重設彩票
@@ -277,9 +277,6 @@ namespace WinFormsApp1
             lblGame1_6.BackColor = Color.Transparent; lblGame1_6.ForeColor = Color.Black; lblGame1_6.Refresh();
             lblGame1_7.BackColor = Color.Transparent; lblGame1_7.ForeColor = Color.Black; lblGame1_7.Refresh();
             lblGame2_1.BackColor = Color.Transparent; lblGame2_1.ForeColor = Color.Black; lblGame2_1.Refresh();
-            lblGame2_2.BackColor = Color.Transparent; lblGame2_2.ForeColor = Color.Black; lblGame2_2.Refresh();
-            lblGame2_3.BackColor = Color.Transparent; lblGame2_3.ForeColor = Color.Black; lblGame2_3.Refresh();
-            lblGame2_4.BackColor = Color.Transparent; lblGame2_4.ForeColor = Color.Black; lblGame2_4.Refresh();
             lblGame2_6.BackColor = Color.Transparent; lblGame2_6.ForeColor = Color.Black; lblGame2_6.Refresh();
             lblGame3_1.BackColor = Color.Transparent; lblGame3_1.ForeColor = Color.Black; lblGame3_1.Refresh();
             lblGame3_2.BackColor = Color.Transparent; lblGame3_2.ForeColor = Color.Black; lblGame3_2.Refresh();
@@ -287,8 +284,6 @@ namespace WinFormsApp1
             lblGame3_4.BackColor = Color.Transparent; lblGame3_4.ForeColor = Color.Black; lblGame3_4.Refresh();
             lblGame3_5.BackColor = Color.Transparent; lblGame3_5.ForeColor = Color.Black; lblGame3_5.Refresh();
             lblGame3_6.BackColor = Color.Transparent; lblGame3_6.ForeColor = Color.Black; lblGame3_6.Refresh();
-            lblGame3_7.BackColor = Color.Transparent; lblGame3_7.ForeColor = Color.Black; lblGame3_7.Refresh();
-            lblGame3_9.BackColor = Color.Transparent; lblGame3_9.ForeColor = Color.Black; lblGame3_9.Refresh();
         }
 
         //取得下一期時間
@@ -342,7 +337,7 @@ namespace WinFormsApp1
         private void useHttpWebRequest_GetHistory()
         {
             //a.hywin888.net hyqa.azurewebsites.net/
-            DateTime dt = DateTime.Now.AddDays(-2); //最早取前2天
+            DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
             string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
             request.Method = WebRequestMethods.Http.Get;
