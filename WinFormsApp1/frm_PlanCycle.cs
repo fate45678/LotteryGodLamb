@@ -750,6 +750,7 @@ namespace WinFormsApp1
             string[] buttomNameArr;
             int row = 0;
             tblGod.Controls.Clear();
+            //if(dtGodList)
             foreach (DataRow dr in dtGodList.Rows)
             {
                 Control control = new Button();
