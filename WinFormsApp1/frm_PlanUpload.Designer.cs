@@ -357,13 +357,13 @@
             this.cbGameKind.ForeColor = System.Drawing.Color.Black;
             this.cbGameKind.FormattingEnabled = true;
             this.cbGameKind.Items.AddRange(new object[] {
-            "五星",
-            "四星",
+            "前二",
+            "后二",
             "前三",
             "中三",
             "后三",
-            "前二",
-            "后二"});
+            "四星",
+            "五星"});
             this.cbGameKind.Location = new System.Drawing.Point(0, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(158, 20);
@@ -701,12 +701,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
