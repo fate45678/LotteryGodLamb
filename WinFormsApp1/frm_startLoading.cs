@@ -1270,22 +1270,22 @@ WHERE NUM >40 AND NUM <80";
             switch (pgbShow.Value)
             {
                 case 0:
-                    lbDoingDesc.Text = "载入后二资讯";
+                    lbDoingDesc.Text = "载入资讯中...0%";
                     break;
                 case 1:
-                    lbDoingDesc.Text = "载入前二资讯";
+                    lbDoingDesc.Text = "载入资讯中...20%";
                     break;
                 case 2:
-                    lbDoingDesc.Text = "载入后三资讯";
+                    lbDoingDesc.Text = "载入资讯中...40%";
                     break;
                 case 3:
-                    lbDoingDesc.Text = "载入中三资讯";
+                    lbDoingDesc.Text = "载入资讯中...60%";
                     break;
                 case 4:
-                    lbDoingDesc.Text = "载入前二资讯";
+                    lbDoingDesc.Text = "载入资讯中...80%";
                     break;
                 case 5:
-                    lbDoingDesc.Text = "即将完成软件载入";
+                    lbDoingDesc.Text = "即将完成软件载入...100%";
                     break;
             }
 

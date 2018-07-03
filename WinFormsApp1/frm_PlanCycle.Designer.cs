@@ -405,6 +405,7 @@
             // 
             // panel38
             // 
+            this.panel38.BackColor = System.Drawing.SystemColors.Window;
             this.panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel38.Controls.Add(this.txtTimes);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Left;
@@ -471,6 +472,7 @@
             // 
             // panel37
             // 
+            this.panel37.BackColor = System.Drawing.SystemColors.Window;
             this.panel37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel37.Controls.Add(this.txtGameNum);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Left;

@@ -223,6 +223,10 @@ namespace WinFormsApp1
                 userControl11.DrawChart(strGameKindSelect, strLineSelect, strMissSelect, strMissBarSelect, strChartSelect, strPeriodSelect);
         }
 
+        private void lbRefrash_Click(object sender, EventArgs e)
+        {
+            PassToUserControl();
+        }
 
     }
 }
