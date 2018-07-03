@@ -24,7 +24,7 @@ namespace WinFormsApp1
             this.ControlBox = false;
             bkgStart.RunWorkerAsync();
             bkgStart.WorkerReportsProgress = true;//啟動回報進度
-            pgbShow.Maximum = 7;//ProgressBar上限
+            pgbShow.Maximum = 5;//ProgressBar上限
             pgbShow.Minimum = 0;//ProgressBar下限
         }
 
@@ -1266,6 +1266,29 @@ WHERE NUM >40 AND NUM <80";
         private void bkgStart_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pgbShow.Value = e.ProgressPercentage;
+
+            switch (pgbShow.Value)
+            {
+                case 0:
+                    lbDoingDesc.Text = "载入后二资讯";
+                    break;
+                case 1:
+                    lbDoingDesc.Text = "载入前二资讯";
+                    break;
+                case 2:
+                    lbDoingDesc.Text = "载入后三资讯";
+                    break;
+                case 3:
+                    lbDoingDesc.Text = "载入中三资讯";
+                    break;
+                case 4:
+                    lbDoingDesc.Text = "载入前二资讯";
+                    break;
+                case 5:
+                    lbDoingDesc.Text = "即将完成软件载入";
+                    break;
+            }
+
         }
 
         private void bkgStart_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
