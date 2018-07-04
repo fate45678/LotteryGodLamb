@@ -553,6 +553,7 @@
             this.pnlUserRank.Name = "pnlUserRank";
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
+            this.pnlUserRank.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlUserRank_Paint);
             // 
             // tblGod
             // 
@@ -575,21 +576,20 @@
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.Size = new System.Drawing.Size(212, 421);
+            this.tblGod.Size = new System.Drawing.Size(212, 321);
             this.tblGod.TabIndex = 9;
             // 
             // rtxPlanList
             // 
             this.rtxPlanList.BackColor = System.Drawing.Color.White;
             this.rtxPlanList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxPlanList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtxPlanList.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxPlanList.HideSelection = false;
             this.rtxPlanList.Location = new System.Drawing.Point(0, 28);
             this.rtxPlanList.Name = "rtxPlanList";
             this.rtxPlanList.ReadOnly = true;
             this.rtxPlanList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxPlanList.Size = new System.Drawing.Size(212, 423);
+            this.rtxPlanList.Size = new System.Drawing.Size(212, 321);
             this.rtxPlanList.TabIndex = 4;
             this.rtxPlanList.Text = "";
             // 

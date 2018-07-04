@@ -8862,5 +8862,10 @@ WHERE NUM >40 AND NUM <80";
 
             frm_LoadingControl.Close();
         }
+
+        private void pnlUserRank_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="515" d:DesignWidth="1081" Loaded="UserControl_Loaded">
+             d:DesignHeight="515" Loaded="UserControl_Loaded" Width="1537.304">
 
-        <ScrollViewer Canvas.Left="0" Canvas.Top="0" Height="515" Name="scrollViewer1" Width="1081" HorizontalScrollBarVisibility="Auto">        
-            <Canvas Height="705" Name="canvas1" Width="981" Background="White">
-        </Canvas>        
-        </ScrollViewer>
-    
+    <ScrollViewer Canvas.Left="0" Canvas.Top="0" Height="515" Name="scrollViewer1" HorizontalScrollBarVisibility="Auto" Margin="10,0">
+        <Canvas Height="705" Name="canvas1" Width="981" Background="White">
+        </Canvas>
+    </ScrollViewer>
+
 </UserControl>

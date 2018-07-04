@@ -267,7 +267,7 @@ namespace WinFormsApp1
 
             //總共中獎幾次 掛幾次 總共投了幾注
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
-            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             //先處理舊資料
             var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)

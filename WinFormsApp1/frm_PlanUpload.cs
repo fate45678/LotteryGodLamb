@@ -1726,6 +1726,67 @@ namespace WinFormsApp1
             label2.Text = "共1期";
         }
 
+        private void checkdataTest()
+        {
+            //1.先確認玩法
+            string GameKind = cbGameKind.Text;
+            int lenghCheck = 0;
+
+            if (GameKind.Contains("二"))
+            {
+                lenghCheck = 2;
+            }
+            else if (GameKind.Contains("三"))
+            {
+                lenghCheck = 3;
+            }
+            else if (GameKind.Contains("四"))
+            {
+                lenghCheck = 4;
+            }
+            else if(GameKind.Contains("五"))
+            {
+                lenghCheck = 5;
+            }
+
+            string checkNumber = richTextBox2.Text.Replace(",","");
+            var checkTmp = checkNumber.Split(' ');
+
+            var checkTmpWhere = checkTmp.Where(x => x.Length == lenghCheck).Distinct().ToArray();
+            var checkTmpError = checkTmp.Where(x => x.Length != lenghCheck).Distinct().ToArray();
+
+            if (checkTmp.Count() == checkTmpWhere.Count())
+            {
+                label21.Text = "共" + checkTmp.Count().ToString() + "注";
+            }
+            else
+            { 
+                string CompletNumber = "";
+                for (int i = 0; i < checkTmpWhere.Count(); i++)
+                {
+                    CompletNumber = CompletNumber + " " + checkTmpWhere[i];
+                }
+
+                richTextBox2.Text = CompletNumber.Substring(1);
+            }
+            label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
+
+            string errorList = "";
+            if (checkTmpError.Count() != 0)
+            {
+                for (int i = 0; i < checkTmpError.Count(); i++)
+                {
+                    errorList = errorList + "," + checkTmpError[i];
+                }
+                MessageBox.Show("已清除重复及错误资料。\n" + errorList);
+            }
+            else
+            {
+                MessageBox.Show("除错完成");
+            }
+           
+        }
+
         private void checkData(string type)
         {
             //type A為一般上傳 type B為續傳上傳
@@ -1906,7 +1967,8 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
-            checkData("A");
+            //checkData("A");
+            checkdataTest();
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
@@ -2720,14 +2782,14 @@ namespace WinFormsApp1
             else if (CopyKind.Length == 4)
             {
                 cbGameKind.Text = "四星";
-                cbGameKind.SelectedIndex = 1;
+                cbGameKind.SelectedIndex = 5;
                 richTextboxRule = 4;
                 label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
             else if (CopyKind.Length == 5)
             {
                 cbGameKind.Text = "五星";
-                cbGameKind.SelectedIndex = 0;
+                cbGameKind.SelectedIndex = 6;
                 richTextboxRule = 5;
                 label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
