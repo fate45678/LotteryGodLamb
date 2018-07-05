@@ -2612,7 +2612,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>598095040</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>732334487</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>329663040</td></row>
@@ -3427,7 +3427,7 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>神灯计画</td><td>0</td><td/><td>329658976</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>神灯计画</td><td>0</td><td/><td>329671991</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>866525760</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>329652800</td></row>
@@ -3716,8 +3716,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.幻影娱乐.com</td><td>0</td><td/><td>598095040</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>598095040</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.幻影娱乐.com</td><td>0</td><td/><td>732334487</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>732334487</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>329652800</td></row>
 	</table>
 
@@ -3831,7 +3831,8 @@
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
-		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
+		<row><td>_Built_B6AEA830E4D9470C8A342027D3A83779.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4501,7 +4502,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>setup3</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>Component</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>setup3</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>Component</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_B6AEA830E4D9470C8A342027D3A83779.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

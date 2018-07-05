@@ -228,5 +228,12 @@ namespace WinFormsApp1
             PassToUserControl();
         }
 
+        public static bool isChange = false;
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (isChange)
+                PassToUserControl();
+        }
+
     }
 }

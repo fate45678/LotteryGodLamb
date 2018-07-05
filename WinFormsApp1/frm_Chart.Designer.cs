@@ -63,6 +63,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.userControl11 = new WinFormsApp1.UserControl1();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlGameMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -533,6 +534,12 @@
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = this.userControl11;
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // frm_Chart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -588,5 +595,6 @@
         private System.Windows.Forms.Label lbRefrash;
         private System.Windows.Forms.Label label12;
         private UserControl1 userControl11;
+        private System.Windows.Forms.Timer timer2;
     }
 }
