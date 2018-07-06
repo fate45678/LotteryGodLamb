@@ -1253,7 +1253,7 @@ namespace WinFormsApp1
             comboBox1.DataSource = new BindingSource(dt_plan, null);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
             comboBox2.DataSource = new BindingSource(dt_cycle, null);
-            temp = current;
+            //temp = current;
 
             //if (current > temp)
             //{
@@ -1348,7 +1348,7 @@ namespace WinFormsApp1
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
                     }   
                 }
-                if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+                else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
                 {
                     for (int i = 1; i < 85; i++)
                     {
@@ -1373,7 +1373,7 @@ namespace WinFormsApp1
                         //comboBox2.DataSource = new BindingSource(Items, null);
                     }
                 }
-                if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                else if(frm_PlanCycle.GameLotteryName == "新疆时时彩")
                 {
                     for (int i = 1; i < 97; i++)
                     {
@@ -2581,13 +2581,14 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                //var iii = int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
             else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }

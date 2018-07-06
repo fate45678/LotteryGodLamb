@@ -55,8 +55,8 @@ namespace WinFormsApp1
                 //return;               
             }
 
-            //frm_startLoading frm_startLoading = new frm_startLoading();
-            //frm_startLoading.ShowDialog();
+            frm_startLoading frm_startLoading = new frm_startLoading();
+            frm_startLoading.ShowDialog();
 
             InitializeComponent();
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);
