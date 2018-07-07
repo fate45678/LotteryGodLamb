@@ -342,6 +342,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>Component</td><td>{BAAE124B-759B-4512-BABE-9B7587920F9F}</td><td>INSTALLDIR</td><td>2</td><td/><td>File</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Component1</td><td>{DD4C2469-2CBA-4E57-BB1F-0BB1871D381B}</td><td>INSTALLDIR</td><td>2</td><td/><td>File1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{6DF963CC-780C-4BD1-9A8A-8B7EEB7DEDA5}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1052,6 +1053,7 @@
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>INSTALLDIR</td><td>Component</td></row>
+		<row><td>INSTALLDIR</td><td>Component1</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
@@ -1865,6 +1867,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>Component</td></row>
+		<row><td>AlwaysInstall</td><td>Component1</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
@@ -1881,6 +1884,7 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>File</td><td>Component</td><td>WinFormsApp1.主要輸出</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;WinFormsApp1&gt;|Built</td><td>3</td><td/></row>
+		<row><td>File1</td><td>Component1</td><td>CheckUpdateVersion.主要輸出</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;CheckUpdateVersion&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2023,6 +2027,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>Component</td><td/><td/><td>_E4E17636_1A60_4E08_A86A_5663F7004BEA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Component1</td><td/><td/><td>_93A441CD_CF10_43E1_A0DE_FB5640006CD4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_3AFF7E6C_8CE1_4BC2_93C5_5D6323233329_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -2301,6 +2306,7 @@
 		<col def="S255">Value</col>
 		<col def="S255">TestValue</col>
 		<col def="i4">Type</col>
+		<row><td>CheckUpdateVersion</td><td>CheckUpdateVersion\CheckUpdateVersion.csproj</td><td/><td>2</td></row>
 		<row><td>CommonFilesFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISPROJECTDIR</td><td/><td/><td>1</td></row>
 		<row><td>ISProductFolder</td><td/><td/><td>1</td></row>
@@ -2612,7 +2618,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>732334487</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>866544278</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>329663040</td></row>
@@ -3428,6 +3434,8 @@
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>神灯计画</td><td>0</td><td/><td>329658976</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>866525760</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>866519990</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>866544566</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>329652800</td></row>
@@ -3716,8 +3724,9 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>329652800</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.幻影娱乐.com</td><td>0</td><td/><td>732334487</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>732334487</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.幻影娱乐.com</td><td>0</td><td/><td>866544278</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>幻影娱乐</td><td>0</td><td/><td>866544278</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>866552534</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>329652800</td></row>
 	</table>
 
@@ -3832,6 +3841,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
+		<row><td>_Built1_3C15607E5CE5480893B3C93D70760E2F.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 		<row><td>_Built_B6AEA830E4D9470C8A342027D3A83779.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 	</table>
 
@@ -4503,6 +4513,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>_Built</td><td>setup3</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>Component</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_B6AEA830E4D9470C8A342027D3A83779.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>Component</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_3C15607E5CE5480893B3C93D70760E2F.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

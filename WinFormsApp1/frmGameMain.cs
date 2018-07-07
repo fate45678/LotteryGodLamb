@@ -45,15 +45,8 @@ namespace WinFormsApp1
 
         public frmGameMain()
         {
-            //確認是否已經過了維護時間
-            int NowDate = Int32.Parse(DateTime.Now.ToString("u").Replace("Z", "").Replace(":", "").Substring(10, 5));
-            if (NowDate < 10 || NowDate > 2355)
-            {
-                MessageBox.Show("目前维护中请于12:10分后使用");
-                this.Close();
-                Application.Exit();
-                //return;               
-            }
+            frm_VersionCheck frm_VersionCheck = new frm_VersionCheck();
+            frm_VersionCheck.ShowDialog();
 
             frm_startLoading frm_startLoading = new frm_startLoading();
             frm_startLoading.ShowDialog();

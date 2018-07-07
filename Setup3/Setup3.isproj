@@ -29,6 +29,10 @@
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
 	<ItemGroup>
+		<ProjectReference Include="..\CheckUpdateVersion\CheckUpdateVersion.csproj">
+			<Name>CheckUpdateVersion</Name>
+			<Project>{3B3840AC-618A-4A79-9084-593214875ED5}</Project>
+		</ProjectReference>
 		<ProjectReference Include="..\WinFormsApp1\WinFormsApp1.csproj">
 			<Name>WinFormsApp1</Name>
 			<Project>{A75EF098-8072-44DB-86C5-791AC63BA341}</Project>
