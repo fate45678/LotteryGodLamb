@@ -80,7 +80,7 @@ namespace WinFormsApp1
                 string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
 
                 //查看
-                MessageBox.Show(ProVersion);
+               // MessageBox.Show(ProVersion);
 
                 if (VersionNumber == ProVersion)
                     return false;

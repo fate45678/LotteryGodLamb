@@ -76,6 +76,9 @@ namespace WinFormsApp1
 
             timer_ShowMessage.Enabled = true;
             timer_GetGameInfo.Enabled = true;
+
+            string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
+            this.Text += ProVersion; 
         }
 
         private void frmGameMain_Load(object sender, EventArgs e)

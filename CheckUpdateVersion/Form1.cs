@@ -52,6 +52,9 @@ namespace CheckUpdateVersion
                 string VersionNumber = ds.Tables[0].Rows[0]["PV_version"].ToString();              
                 string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
 
+
+                //MessageBox.Show(ProVersion);
+
                 if (VersionNumber == ProVersion)
                     return false;
                 else
@@ -67,7 +70,7 @@ namespace CheckUpdateVersion
             }
         }
         int iCheckProcess = 1;
-        private void GetLastVersion()
+        private void bkgCheckVersion_DoWork(object sender, DoWorkEventArgs e)
         {
             bkgCheckVersion.ReportProgress(iCheckProcess);
             iCheckProcess++;
@@ -87,12 +90,6 @@ namespace CheckUpdateVersion
                 //下载档案中
                 bkgCheckVersion.ReportProgress(iCheckProcess);
                 iCheckProcess++;
-                //string url = "http://43.252.208.201/ShengDnnZip/" + FileName;
-                //HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
-                //HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                //Stream dataStream = httpResponse.GetResponseStream();
-                //byte[] buffer = new byte[8192];
-                //FileStream fs = new FileStream(LoaclPath, FileMode.Create, FileAccess.Write);
 
                 WebClient client = new WebClient();
                 client.DownloadFile("http://43.252.208.201/ShengDnnZip/" + FileName, LoaclPath + @"/" + FileName);
@@ -101,7 +98,7 @@ namespace CheckUpdateVersion
                 bkgCheckVersion.ReportProgress(iCheckProcess);
                 iCheckProcess++;
                 //取出檔案
-                using (ZipFile zip = ZipFile.Read(LoaclPath + FileName))
+                using (ZipFile zip = ZipFile.Read(LoaclPath + @"/" + FileName))
                 {
                     //第三步驟在這裡
                     //复盖原本的档案
@@ -110,15 +107,19 @@ namespace CheckUpdateVersion
 
                     foreach (ZipEntry entry in zip)
                     {
-                        //相同檔案覆蓋
+                        //相同檔案覆蓋                       
                         entry.Extract(LoaclPath, ExtractExistingFileAction.OverwriteSilently);
                     }
-                } 
+                }
+
+                //複製檔案且覆蓋
+                CopyFiles(LoaclPath + @"/Debug", LoaclPath);
 
                 //删除下载的档案
                 bkgCheckVersion.ReportProgress(iCheckProcess);
                 iCheckProcess++;
-                File.Delete(LoaclPath + FileName);
+                File.Delete(LoaclPath + @"/" + FileName);
+                Directory.Delete(LoaclPath + @"/Debug",true);
 
                 //更新完畢開始啟動程式
                 Process.Start(
@@ -133,9 +134,30 @@ namespace CheckUpdateVersion
             }
         }
 
-        private void bkgCheckVersion_DoWork(object sender, DoWorkEventArgs e)
+        //首先取得原始檔案夾路徑下的所有檔案名稱
+        private FileInfo[] GetFileList(string path)
         {
-            GetLastVersion();
+            FileInfo[] fileList = null;
+            if (Directory.Exists(path))
+            {
+                DirectoryInfo di = new DirectoryInfo(path);
+                fileList = di.GetFiles();
+            }
+
+            return fileList;
+        }
+
+        //複製檔案
+        private void CopyFiles(string remotePath, string localPath)
+        {
+            FileInfo[] file = GetFileList(remotePath);
+            for (int i = 0; i < file.Length; i++)
+            {
+                string fileName = remotePath + @"\" + file.GetValue(i).ToString();
+                string desFileName = localPath + @"\" + file.GetValue(i).ToString();
+                File.Copy(fileName, desFileName, true);
+                System.Threading.Thread.Sleep(500);
+            }
         }
 
         private void bkgCheckVersion_ProgressChanged(object sender, ProgressChangedEventArgs e)
