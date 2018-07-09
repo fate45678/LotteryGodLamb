@@ -18,7 +18,7 @@ namespace WinFormsApp1
 {
     public partial class frmGameMain : Form
     {
-        public bool openMessage = false;
+        public static bool openMessage = false;
         //public static string strHistory;
         //public static string strHistoryCount; 
         public static string strHistoryNumberOpen;
@@ -45,6 +45,9 @@ namespace WinFormsApp1
 
         public frmGameMain()
         {
+            frm_VersionCheck frm_VersionCheck = new frm_VersionCheck();
+            frm_VersionCheck.ShowDialog();
+
             frm_startLoading frm_startLoading = new frm_startLoading();
             frm_startLoading.ShowDialog();
 
@@ -73,17 +76,13 @@ namespace WinFormsApp1
 
             timer_ShowMessage.Enabled = true;
             timer_GetGameInfo.Enabled = true;
+
+            string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
+            this.Text += ProVersion; 
         }
 
         private void frmGameMain_Load(object sender, EventArgs e)
         {
-            //確認是否已經過了維護時間
-            int NowDate = Int32.Parse(DateTime.Now.ToString("u").Replace("Z", "").Replace(":", "").Substring(10, 5));
-            if (NowDate < 10 || NowDate > 2355)
-            {
-                MessageBox.Show("目前维护中请于12:10分后使用");
-                this.Dispose();
-            }
 
             frm_PlanCycle f_PlanCycle = new frm_PlanCycle();
             f_PlanCycle.TopLevel = false;
@@ -192,6 +191,7 @@ namespace WinFormsApp1
                     lblGame1_1.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "天津时时彩":
@@ -201,6 +201,7 @@ namespace WinFormsApp1
                     lblGame1_5.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯官方彩":
@@ -210,6 +211,7 @@ namespace WinFormsApp1
                     lblGame1_2.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "腾讯奇趣彩":
@@ -219,6 +221,7 @@ namespace WinFormsApp1
                     lblGame1_3.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 case "新疆时时彩":
@@ -228,6 +231,8 @@ namespace WinFormsApp1
                     lblGame1_6.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
@@ -429,7 +434,7 @@ namespace WinFormsApp1
 
         private void timer_ShowMessage_Tick(object sender, EventArgs e)
         {
-            //ShowMessage();
+            ShowMessage();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)

@@ -750,6 +750,7 @@ namespace WinFormsApp1
             string[] buttomNameArr;
             int row = 0;
             tblGod.Controls.Clear();
+            //if(dtGodList)
             foreach (DataRow dr in dtGodList.Rows)
             {
                 Control control = new Button();
@@ -960,7 +961,7 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -1010,9 +1011,9 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
-            cbGameDirect.Items.Add("和值");
-            cbGameDirect.Items.Add("跨度");
+            //cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("和值");
+            //cbGameDirect.Items.Add("跨度");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("300+");
@@ -8310,202 +8311,1040 @@ namespace WinFormsApp1
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             try
             {
-                if (GameCycle == "一期一周")
+                string GameDb = "";
+                switch (GameLotteryName)
                 {
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    con.Close();
-
+                    case "重庆时时彩":
+                        GameDb = "";
+                        break;
+                    case "腾讯奇趣彩":
+                        GameDb = "ForTENCENTFFC";
+                        break;
+                    case "腾讯官方彩":
+                        GameDb = "ForQQFFC";
+                        break;
+                    case "天津时时彩":
+                        GameDb = "ForTJSSC";
+                        break;
+                    case "新疆时时彩":
+                        GameDb = "ForXJSSC";
+                        break;
                 }
-                else if (GameCycle == "二期一周")
-                {
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
+                if (GameLotteryName == "重庆时时彩")
+                {
+                    #region 重庆时时彩
+                    if (GameCycle == "一期一周")
                     {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >60 AND NUM <121";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
                     }
                     else
                     {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    con.Close();
-                }
-                else
-                { 
-                    //todo 修改每種不同的號碼
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <81";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <80";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
                     }
-                    con.Close();
+                    #endregion
+                }
+                else if (GameLotteryName == "腾讯奇趣彩")
+                {
+                    #region 腾讯奇趣彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >720 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >480 AND NUM <961";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >960 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "腾讯官方彩")
+                {
+                    #region 腾讯官方彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >720 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >480 AND NUM <961";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >960 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "天津时时彩")
+                {
+                    #region 天津时时彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >42 AND NUM <85";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >28 AND NUM <57";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >56 AND NUM <84";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "新疆时时彩")
+                {
+                    #region 新疆时时彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >48 AND NUM <97";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >32 AND NUM <65";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >65 AND NUM <97";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -8524,7 +9363,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8581,7 +9420,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8691,7 +9530,7 @@ WHERE NUM >40 AND NUM <80";
                 case "前三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -8860,6 +9699,11 @@ WHERE NUM >40 AND NUM <80";
             CountAndShow();
 
             frm_LoadingControl.Close();
+        }
+
+        private void pnlUserRank_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

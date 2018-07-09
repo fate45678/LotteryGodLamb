@@ -357,13 +357,13 @@
             this.cbGameKind.ForeColor = System.Drawing.Color.Black;
             this.cbGameKind.FormattingEnabled = true;
             this.cbGameKind.Items.AddRange(new object[] {
-            "五星",
-            "四星",
+            "前二",
+            "后二",
             "前三",
             "中三",
             "后三",
-            "前二",
-            "后二"});
+            "四星",
+            "五星"});
             this.cbGameKind.Location = new System.Drawing.Point(0, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(158, 20);

@@ -1253,7 +1253,7 @@ namespace WinFormsApp1
             comboBox1.DataSource = new BindingSource(dt_plan, null);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
             comboBox2.DataSource = new BindingSource(dt_cycle, null);
-            temp = current;
+            //temp = current;
 
             //if (current > temp)
             //{
@@ -1348,7 +1348,7 @@ namespace WinFormsApp1
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
                     }   
                 }
-                if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+                else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
                 {
                     for (int i = 1; i < 85; i++)
                     {
@@ -1373,7 +1373,7 @@ namespace WinFormsApp1
                         //comboBox2.DataSource = new BindingSource(Items, null);
                     }
                 }
-                if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                else if(frm_PlanCycle.GameLotteryName == "新疆时时彩")
                 {
                     for (int i = 1; i < 97; i++)
                     {
@@ -1639,6 +1639,11 @@ namespace WinFormsApp1
                 MessageBox.Show("尚未登入。");
             else
             {
+                if (richTextBox2.Text.Trim() == "")
+                {
+                    MessageBox.Show("请输入号码。");
+                    return;
+                }
                 //checkData("A");
                 string Kind = cbGameKind.Text;
                 //string NowDateInsert = DateTime.Now.ToString();
@@ -1695,7 +1700,7 @@ namespace WinFormsApp1
             {
                 cbGameDirect.Items.Clear();
                 cbGameDirect.Items.Add("单式");
-                cbGameDirect.Items.Add("复式");
+                //cbGameDirect.Items.Add("复式");
                 cbGameDirect.SelectedIndex = 0;
             }
         }
@@ -1719,6 +1724,67 @@ namespace WinFormsApp1
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
 
             label2.Text = "共1期";
+        }
+
+        private void checkdataTest()
+        {
+            //1.先確認玩法
+            string GameKind = cbGameKind.Text;
+            int lenghCheck = 0;
+
+            if (GameKind.Contains("二"))
+            {
+                lenghCheck = 2;
+            }
+            else if (GameKind.Contains("三"))
+            {
+                lenghCheck = 3;
+            }
+            else if (GameKind.Contains("四"))
+            {
+                lenghCheck = 4;
+            }
+            else if(GameKind.Contains("五"))
+            {
+                lenghCheck = 5;
+            }
+
+            string checkNumber = richTextBox2.Text.Replace(",","");
+            var checkTmp = checkNumber.Split(' ');
+
+            var checkTmpWhere = checkTmp.Where(x => x.Length == lenghCheck).Distinct().ToArray();
+            var checkTmpError = checkTmp.Where(x => x.Length != lenghCheck).Distinct().ToArray();
+
+            if (checkTmp.Count() == checkTmpWhere.Count())
+            {
+                label21.Text = "共" + checkTmp.Count().ToString() + "注";
+            }
+            else
+            { 
+                string CompletNumber = "";
+                for (int i = 0; i < checkTmpWhere.Count(); i++)
+                {
+                    CompletNumber = CompletNumber + " " + checkTmpWhere[i];
+                }
+
+                richTextBox2.Text = CompletNumber.Substring(1);
+            }
+            label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
+
+            string errorList = "";
+            if (checkTmpError.Count() != 0)
+            {
+                for (int i = 0; i < checkTmpError.Count(); i++)
+                {
+                    errorList = errorList + "," + checkTmpError[i];
+                }
+                MessageBox.Show("已清除重复及错误资料。\n" + errorList);
+            }
+            else
+            {
+                MessageBox.Show("除错完成");
+            }
+           
         }
 
         private void checkData(string type)
@@ -1901,7 +1967,8 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
-            checkData("A");
+            //checkData("A");
+            checkdataTest();
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
@@ -2514,13 +2581,14 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                //var iii = int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
             else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
@@ -2715,14 +2783,14 @@ namespace WinFormsApp1
             else if (CopyKind.Length == 4)
             {
                 cbGameKind.Text = "四星";
-                cbGameKind.SelectedIndex = 1;
+                cbGameKind.SelectedIndex = 5;
                 richTextboxRule = 4;
                 label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
             else if (CopyKind.Length == 5)
             {
                 cbGameKind.Text = "五星";
-                cbGameKind.SelectedIndex = 0;
+                cbGameKind.SelectedIndex = 6;
                 richTextboxRule = 5;
                 label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
@@ -2759,30 +2827,9 @@ namespace WinFormsApp1
 
         private void timeCheckChange_Tick(object sender, EventArgs e)
         {
+
             if (isChangeLotteryName && loginButtonType == 1)
             {
-                isChangeLotteryName = false;
-
-                frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
-                frm_LoadingControl.Show();
-                Application.DoEvents();
-
-                UpdateHistory();
-                //refreshInterface();
-
-                richTextBox2.Text = "";
-
-                if (cbGameKind.SelectedIndex == -1)
-                    cbGameKind.SelectedIndex = 0;
-                if (cbGameDirect.SelectedIndex == -1)
-                    cbGameDirect.SelectedIndex = 0;
-                InitcbItem();//初始化combobox
-
-                frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
-
-                label16.Text = frm_PlanCycle.GameLotteryName + "前二" + cbGameDirect.Text;
-                label24.Text = label16.Text;
-
                 ////調整combobox
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
@@ -2794,7 +2841,7 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("后二");
                     cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");
                     cbGameKind.Items.Add("四星");
                     cbGameKind.Items.Add("五星");
@@ -2811,7 +2858,7 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("后二");
                     cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");
                 }
                 else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
@@ -2824,10 +2871,10 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("后二");
                     cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");
                 }
-                if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+                else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
@@ -2837,14 +2884,14 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("后二");
                     cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");
                     cbGameKind.Items.Add("四星");
                     cbGameKind.Items.Add("五星");
                     //label2.Text = "共" + calPeriod() + "期";
                     //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
-                if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
@@ -2854,31 +2901,50 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("后二");
                     cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中二");
+                    cbGameKind.Items.Add("中三");
                     cbGameKind.Items.Add("后三");
                     cbGameKind.Items.Add("四星");
                     cbGameKind.Items.Add("五星");
                     //label2.Text = "共" + calPeriod() + "期";
                     //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
-                cbGameKind.SelectedIndex = 0;
-
-                //if (updateCount % 3 == 0)//&& allorwUpdate
-                //{
-                //    updatecheckboxlist1(updateLstbType);
-                //    isFirst = true;
-                //}
-
-                updateCount++;                
                 
+
+                frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
+                frm_LoadingControl.Show();
+                Application.DoEvents();
+
+                UpdateHistory();
+                //refreshInterface();
+
+                richTextBox2.Text = "";
+
+                if (cbGameKind.SelectedIndex == -1)
+                    cbGameKind.SelectedIndex = 0;
+                if (cbGameDirect.SelectedIndex == -1)
+                    cbGameDirect.SelectedIndex = 0;
+                InitcbItem();//初始化combobox
+
+                //frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
+
+                label16.Text = frm_PlanCycle.GameLotteryName + "前二" + cbGameDirect.Text;
+                label24.Text = label16.Text;
+
+                updateCount++;                             
 
                 richTextBox1.Text = "";
                 listBox1.Items.Clear();
                 listBox2.Items.Clear();
-                frm_LoadingControl.Close();
-                updatecheckboxlist1(0);
+
                 //timer1.Interval = 500;
                 //isFirst = false;
+
+
+                cbGameKind.SelectedIndex = 0;
+
+                frm_LoadingControl.Close();
+                isChangeLotteryName = false;
+                updatecheckboxlist1(0);
 
             }
 

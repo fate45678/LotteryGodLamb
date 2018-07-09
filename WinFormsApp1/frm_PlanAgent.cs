@@ -64,21 +64,21 @@ namespace WinFormsApp1
                 case "五星":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("五星组合");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "四星":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("四星组合");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "前三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("前三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -87,7 +87,7 @@ namespace WinFormsApp1
                 case "中三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     ///cbGameDirect.Items.Add("中三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -96,7 +96,7 @@ namespace WinFormsApp1
                 case "后三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("后三组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -106,9 +106,9 @@ namespace WinFormsApp1
                 case "后二":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
-                    cbGameDirect.Items.Add("和值");
-                    cbGameDirect.Items.Add("跨度");
+                    //cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("和值");
+                    //cbGameDirect.Items.Add("跨度");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "定位胆":
@@ -267,7 +267,7 @@ namespace WinFormsApp1
 
             //總共中獎幾次 掛幾次 總共投了幾注
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
-            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             //先處理舊資料
             var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)

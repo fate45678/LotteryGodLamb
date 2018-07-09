@@ -18,8 +18,8 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {            
-            frmGameMain fGameMain = new frmGameMain();
-            fGameMain.openMessage = false;
+            //frmGameMain fGameMain = new frmGameMain();
+            frmGameMain.openMessage = false;
             this.Dispose();
             this.Close();
         }

@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlGameMenu = new System.Windows.Forms.Panel();
+            this.lbRefrash = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblMenuLast100 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lblMenuLast50 = new System.Windows.Forms.Label();
@@ -61,12 +63,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.userControl11 = new WinFormsApp1.UserControl1();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlGameMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlGameMenu
             // 
             this.pnlGameMenu.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlGameMenu.Controls.Add(this.lbRefrash);
+            this.pnlGameMenu.Controls.Add(this.label12);
             this.pnlGameMenu.Controls.Add(this.lblMenuLast100);
             this.pnlGameMenu.Controls.Add(this.label20);
             this.pnlGameMenu.Controls.Add(this.lblMenuLast50);
@@ -100,8 +105,36 @@
             this.pnlGameMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnlGameMenu.Name = "pnlGameMenu";
             this.pnlGameMenu.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
-            this.pnlGameMenu.Size = new System.Drawing.Size(1081, 36);
+            this.pnlGameMenu.Size = new System.Drawing.Size(1335, 36);
             this.pnlGameMenu.TabIndex = 5;
+            // 
+            // lbRefrash
+            // 
+            this.lbRefrash.AutoSize = true;
+            this.lbRefrash.BackColor = System.Drawing.Color.Gainsboro;
+            this.lbRefrash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbRefrash.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbRefrash.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbRefrash.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbRefrash.ForeColor = System.Drawing.Color.Black;
+            this.lbRefrash.Location = new System.Drawing.Point(1035, 10);
+            this.lbRefrash.Name = "lbRefrash";
+            this.lbRefrash.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.lbRefrash.Size = new System.Drawing.Size(55, 21);
+            this.lbRefrash.TabIndex = 33;
+            this.lbRefrash.Text = "刷新";
+            this.lbRefrash.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbRefrash.Click += new System.EventHandler(this.lbRefrash_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label12.Location = new System.Drawing.Point(1029, 10);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.label12.Size = new System.Drawing.Size(6, 12);
+            this.label12.TabIndex = 32;
             // 
             // lblMenuLast100
             // 
@@ -496,17 +529,23 @@
             this.elementHost1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.elementHost1.Location = new System.Drawing.Point(0, 34);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1081, 515);
+            this.elementHost1.Size = new System.Drawing.Size(1335, 515);
             this.elementHost1.TabIndex = 6;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = this.userControl11;
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // frm_Chart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1081, 549);
+            this.ClientSize = new System.Drawing.Size(1335, 549);
             this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.pnlGameMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -552,10 +591,10 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblMenuLine;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private UserControl1 userControl11;
         private System.Windows.Forms.Timer timer1;
-
-
-
+        private System.Windows.Forms.Label lbRefrash;
+        private System.Windows.Forms.Label label12;
+        private UserControl1 userControl11;
+        private System.Windows.Forms.Timer timer2;
     }
 }
