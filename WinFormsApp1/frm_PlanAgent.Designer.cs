@@ -112,7 +112,7 @@
             // 
             // pnlPlanArea
             // 
-            this.pnlPlanArea.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlPlanArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlPlanArea.Controls.Add(this.pnlPlanRight);
             this.pnlPlanArea.Controls.Add(this.panel12);
             this.pnlPlanArea.Controls.Add(this.pnlPlanList);
@@ -192,7 +192,7 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoScroll = true;
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
@@ -252,7 +252,7 @@
             // 
             // pnlUserRank
             // 
-            this.pnlUserRank.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserRank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUserRank.Controls.Add(this.tableLayoutPanel3);
             this.pnlUserRank.Controls.Add(this.panel33);
@@ -264,6 +264,7 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
@@ -283,7 +284,7 @@
             // 
             // panel33
             // 
-            this.panel33.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel33.Controls.Add(this.label116);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
@@ -337,7 +338,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -366,7 +367,7 @@
             // 
             // pnlPlanNumber
             // 
-            this.pnlPlanNumber.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlPlanNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlPlanNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPlanNumber.Controls.Add(this.listBox2);
             this.pnlPlanNumber.Controls.Add(this.richTextBox1);
@@ -572,7 +573,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.tableLayoutPanel1);
             this.panel5.Controls.Add(this.label6);

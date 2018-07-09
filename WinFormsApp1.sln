@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckUpdateVersion", "Check
 		{A75EF098-8072-44DB-86C5-791AC63BA341} = {A75EF098-8072-44DB-86C5-791AC63BA341}
 	EndProjectSection
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ShengDnnSetup", "ShengDnnSetup\ShengDnnSetup.isproj", "{29CA9282-A1D3-4836-AED0-C2CB603682C0}"
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ShengDnengSetup", "ShengDnnSetup\ShengDnengSetup.isproj", "{29CA9282-A1D3-4836-AED0-C2CB603682C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1179,7 +1179,7 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>RecentFolder</td><td>TARGETDIR</td><td>.:Recent</td><td/><td>0</td><td/></row>
 		<row><td>SHADOW</td><td>ProgramFilesFolder</td><td>shadow</td><td/><td>0</td><td/></row>
-		<row><td>SHENGDNN</td><td>SHADOW</td><td>ShengDnn</td><td/><td>0</td><td/></row>
+		<row><td>SHENGDNN</td><td>SHADOW</td><td>SHENGD~1|ShengDeng</td><td/><td>0</td><td/></row>
 		<row><td>SHENGDNNSETUP</td><td>SHADOW</td><td>SHENGD~1|ShengDnnSetup</td><td/><td>0</td><td/></row>
 		<row><td>SendToFolder</td><td>TARGETDIR</td><td>.:SendTo</td><td/><td>3</td><td/></row>
 		<row><td>StartMenuFolder</td><td>TARGETDIR</td><td>.:STARTM~1|Start Menu</td><td/><td>3</td><td/></row>
@@ -2668,7 +2668,7 @@
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
 		<row><td>COMPANY_NAME</td><td>1033</td><td>公司名称</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1000745940</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1269227232</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>始终安装</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>1000772532</td></row>
@@ -4312,7 +4312,7 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME14</td><td>2052</td><td>LAUNCH~1.EXE|Launch WinFormsApp1.exe</td><td>0</td><td/><td>1000742612</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>1028</td><td/><td>0</td><td/><td>1000771412</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>1033</td><td/><td>0</td><td/><td>1000771412</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000775508</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>2052</td><td>ShengDeng</td><td>0</td><td/><td>1269184160</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1028</td><td/><td>0</td><td/><td>1000772756</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td/><td>0</td><td/><td>1000772756</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000740020</td></row>
@@ -4914,7 +4914,7 @@
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td>http://www.shadow.com</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.shadow.com</td><td>0</td><td/><td>1000776628</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.shadow.com</td><td>0</td><td/><td>1269227232</td></row>
 		<row><td>ID_STRING10</td><td>1028</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000771284</td></row>
 		<row><td>ID_STRING10</td><td>1033</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000771284</td></row>
 		<row><td>ID_STRING10</td><td>2052</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000773332</td></row>
@@ -4922,7 +4922,7 @@
 		<row><td>ID_STRING11</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>1000777556</td></row>
 		<row><td>ID_STRING11</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000777556</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>shadow</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1000776628</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1269227232</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>ID_STRING4</td><td>1028</td><td>ShengDnn</td><td>0</td><td/><td>1000742068</td></row>
@@ -5214,6 +5214,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SccPath</td><td/></row>
 		<row><td>SchemaVersion</td><td>776</td></row>
 		<row><td>Type</td><td>MSIE</td></row>
+		<row><td>VSSccAuxPath</td><td/></row>
+		<row><td>VSSccLocalPath</td><td/></row>
+		<row><td>VSSccProvider</td><td/></row>
 	</table>
 
 	<table name="InstallUISequence">
@@ -5574,7 +5577,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{8D2EE9AC-099C-4C7B-B92C-247B47F35319}</td><td/></row>
-		<row><td>ProductName</td><td>ShengDnnSetup</td><td/></row>
+		<row><td>ProductName</td><td>ShengDengSetup</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>

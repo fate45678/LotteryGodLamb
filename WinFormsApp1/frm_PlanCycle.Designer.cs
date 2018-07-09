@@ -154,7 +154,7 @@
             // 
             // pnlUserSettingRow2
             // 
-            this.pnlUserSettingRow2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSettingRow2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlUserSettingRow2.Controls.Add(this.btnViewResult);
             this.pnlUserSettingRow2.Controls.Add(this.label1);
             this.pnlUserSettingRow2.Controls.Add(this.cbGameCycle);
@@ -342,7 +342,7 @@
             // 
             // pnlUserSettingRow1
             // 
-            this.pnlUserSettingRow1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSettingRow1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlUserSettingRow1.Controls.Add(this.ckWinToNextCycle);
             this.pnlUserSettingRow1.Controls.Add(this.ckRegularCycle);
             this.pnlUserSettingRow1.Controls.Add(this.label5);
@@ -497,7 +497,7 @@
             // 
             // pnlShowPlan
             // 
-            this.pnlShowPlan.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlShowPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlShowPlan.Controls.Add(this.panel2);
             this.pnlShowPlan.Controls.Add(this.pnlShowPlanTitle);
             this.pnlShowPlan.Location = new System.Drawing.Point(3, 58);
@@ -595,7 +595,7 @@
             // 
             // panel33
             // 
-            this.panel33.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel33.Controls.Add(this.label116);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
@@ -650,7 +650,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -679,6 +679,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(853, 0);
             this.panel3.Name = "panel3";
@@ -688,7 +689,7 @@
             // pnlCycleSelect
             // 
             this.pnlCycleSelect.AutoScroll = true;
-            this.pnlCycleSelect.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlCycleSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlCycleSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleSelect.Controls.Add(this.rtxtPlanCycle);
             this.pnlCycleSelect.Controls.Add(this.panel31);
@@ -715,6 +716,7 @@
             // 
             // panel31
             // 
+            this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel31.Controls.Add(this.btnCopyPlanNumber);
             this.panel31.Controls.Add(this.btnEditPlanNumber);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -755,6 +757,7 @@
             // 
             // panel30
             // 
+            this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel30.Controls.Add(this.lblPlanCycleDetail);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel30.Location = new System.Drawing.Point(5, 23);
@@ -776,6 +779,7 @@
             // 
             // panel29
             // 
+            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel29.Controls.Add(this.label2);
             this.panel29.Controls.Add(this.cbPlanCycleSelect);
             this.panel29.Controls.Add(this.lblPlanCycleSelected);
@@ -829,6 +833,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(391, 0);
             this.panel1.Name = "panel1";
@@ -848,7 +853,7 @@
             // pnlCycleList
             // 
             this.pnlCycleList.AutoScroll = true;
-            this.pnlCycleList.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlCycleList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlCycleList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleList.Controls.Add(this.flowLayoutPanel1);
             this.pnlCycleList.Controls.Add(this.panel9);
@@ -958,7 +963,7 @@
             // 
             // panel36
             // 
-            this.panel36.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel36.Controls.Add(this.label130);
             this.panel36.Controls.Add(this.lblProfit);
             this.panel36.Controls.Add(this.label128);
@@ -1065,7 +1070,7 @@
             // 
             // panel35
             // 
-            this.panel35.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel35.Controls.Add(this.label123);
             this.panel35.Controls.Add(this.lblSumBetsCycle);
             this.panel35.Controls.Add(this.label119);
@@ -1144,7 +1149,7 @@
             // 
             // pnlShowPlanTitle
             // 
-            this.pnlShowPlanTitle.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlShowPlanTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlShowPlanTitle.Controls.Add(this.label122);
             this.pnlShowPlanTitle.Controls.Add(this.lblPlanWinOpp);
             this.pnlShowPlanTitle.Controls.Add(this.label120);
@@ -1260,7 +1265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.ClientSize = new System.Drawing.Size(1500, 549);
             this.Controls.Add(this.pnlShowPlan);
             this.Controls.Add(this.pnlUserSetting);
