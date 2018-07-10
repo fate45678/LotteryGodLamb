@@ -58,6 +58,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
+            this.picboxAdCycle = new System.Windows.Forms.PictureBox();
             this.tblGod = new System.Windows.Forms.TableLayoutPanel();
             this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
@@ -114,7 +115,6 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.picboxAdCycle = new System.Windows.Forms.PictureBox();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -125,6 +125,7 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlUserRank.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).BeginInit();
             this.panel33.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -140,7 +141,6 @@
             this.panel36.SuspendLayout();
             this.panel35.SuspendLayout();
             this.pnlShowPlanTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUserSetting
@@ -556,6 +556,14 @@
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
             this.pnlUserRank.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlUserRank_Paint);
+            // 
+            // picboxAdCycle
+            // 
+            this.picboxAdCycle.Location = new System.Drawing.Point(0, 350);
+            this.picboxAdCycle.Name = "picboxAdCycle";
+            this.picboxAdCycle.Size = new System.Drawing.Size(210, 102);
+            this.picboxAdCycle.TabIndex = 10;
+            this.picboxAdCycle.TabStop = false;
             // 
             // tblGod
             // 
@@ -1263,14 +1271,6 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // picboxAdCycle
-            // 
-            this.picboxAdCycle.Location = new System.Drawing.Point(0, 350);
-            this.picboxAdCycle.Name = "picboxAdCycle";
-            this.picboxAdCycle.Size = new System.Drawing.Size(210, 102);
-            this.picboxAdCycle.TabIndex = 10;
-            this.picboxAdCycle.TabStop = false;
-            // 
             // frm_PlanCycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1298,6 +1298,7 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.pnlUserRank.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).EndInit();
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
             this.pnlHistory.ResumeLayout(false);
@@ -1323,7 +1324,6 @@
             this.panel35.PerformLayout();
             this.pnlShowPlanTitle.ResumeLayout(false);
             this.pnlShowPlanTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).EndInit();
             this.ResumeLayout(false);
 
         }

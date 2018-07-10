@@ -45,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblMenuPlanAgent = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblMenuPlanCycle = new System.Windows.Forms.Label();
             this.lblGameName = new System.Windows.Forms.Label();
             this.pnlMenuPlanCycle = new System.Windows.Forms.Panel();
             this.timer_ShowMessage = new System.Windows.Forms.Timer(this.components);
@@ -97,6 +96,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
             this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
+            this.lblMenuPlanCycle = new System.Windows.Forms.Label();
             this.pnlGameMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlGameSelect.SuspendLayout();
@@ -186,7 +186,7 @@
             // 
             this.lblMenuChart.AutoSize = true;
             this.lblMenuChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
-            this.lblMenuChart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuChart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuChart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuChart.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuChart.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -213,7 +213,7 @@
             // 
             this.lblMenuTrend.AutoSize = true;
             this.lblMenuTrend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
-            this.lblMenuTrend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuTrend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuTrend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuTrend.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuTrend.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -240,7 +240,7 @@
             // 
             this.lblMenuShrink.AutoSize = true;
             this.lblMenuShrink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
-            this.lblMenuShrink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuShrink.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuShrink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuShrink.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuShrink.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -267,7 +267,7 @@
             // 
             this.lblMenuPlanUpload.AutoSize = true;
             this.lblMenuPlanUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
-            this.lblMenuPlanUpload.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuPlanUpload.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuPlanUpload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuPlanUpload.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuPlanUpload.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -295,7 +295,7 @@
             // 
             this.lblMenuPlanAgent.AutoSize = true;
             this.lblMenuPlanAgent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
-            this.lblMenuPlanAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuPlanAgent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuPlanAgent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuPlanAgent.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuPlanAgent.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -318,23 +318,6 @@
             this.label1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.label1.Size = new System.Drawing.Size(6, 12);
             this.label1.TabIndex = 9;
-            // 
-            // lblMenuPlanCycle
-            // 
-            this.lblMenuPlanCycle.AutoSize = true;
-            this.lblMenuPlanCycle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(49)))), ((int)(((byte)(0)))));
-            this.lblMenuPlanCycle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblMenuPlanCycle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblMenuPlanCycle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblMenuPlanCycle.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuPlanCycle.ForeColor = System.Drawing.Color.White;
-            this.lblMenuPlanCycle.Location = new System.Drawing.Point(112, 10);
-            this.lblMenuPlanCycle.Name = "lblMenuPlanCycle";
-            this.lblMenuPlanCycle.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
-            this.lblMenuPlanCycle.Size = new System.Drawing.Size(127, 21);
-            this.lblMenuPlanCycle.TabIndex = 2;
-            this.lblMenuPlanCycle.Text = "神灯周期计划";
-            this.lblMenuPlanCycle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGameName
             // 
@@ -985,6 +968,23 @@
             // 
             this.bgwGodinsert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwGodinsert_DoWork);
             // 
+            // lblMenuPlanCycle
+            // 
+            this.lblMenuPlanCycle.AutoSize = true;
+            this.lblMenuPlanCycle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(49)))), ((int)(((byte)(0)))));
+            this.lblMenuPlanCycle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMenuPlanCycle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMenuPlanCycle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblMenuPlanCycle.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblMenuPlanCycle.ForeColor = System.Drawing.Color.White;
+            this.lblMenuPlanCycle.Location = new System.Drawing.Point(112, 10);
+            this.lblMenuPlanCycle.Name = "lblMenuPlanCycle";
+            this.lblMenuPlanCycle.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
+            this.lblMenuPlanCycle.Size = new System.Drawing.Size(127, 21);
+            this.lblMenuPlanCycle.TabIndex = 2;
+            this.lblMenuPlanCycle.Text = "神灯周期计划";
+            this.lblMenuPlanCycle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmGameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1035,7 +1035,6 @@
         private System.Windows.Forms.Label lblMenuShrink;
         private System.Windows.Forms.Label lblMenuPlanUpload;
         private System.Windows.Forms.Label lblMenuPlanAgent;
-        private System.Windows.Forms.Label lblMenuPlanCycle;
         private System.Windows.Forms.Label lblGameName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -1097,6 +1096,7 @@
         private System.Windows.Forms.Timer timerFourFiveGodinsert;
         private System.ComponentModel.BackgroundWorker bgwGodinsert;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblMenuPlanCycle;
     }
 }
 
