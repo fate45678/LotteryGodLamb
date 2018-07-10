@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -21,11 +22,79 @@ namespace WinFormsApp1
         public frm_startLoading()
         {
             InitializeComponent();
+            loadUrlAdPicture();
+
             this.ControlBox = false;
             bkgStart.RunWorkerAsync();
             bkgStart.WorkerReportsProgress = true;//啟動回報進度
             pgbShow.Maximum = 5;//ProgressBar上限
             pgbShow.Minimum = 0;//ProgressBar下限
+        }
+
+        string clickUrl = "";
+        private void loadUrlAdPicture()
+        {
+            if (frmGameMain.PlanProxyUser != "" && frmGameMain.PlanProxyPassWord != "")
+            {
+                string User = frmGameMain.PlanProxyUser;
+                clickUrl = getBackPlatfromDb(User);
+
+                if (clickUrl == null)
+                {
+                    MessageBox.Show("读取错误请洽客服");
+                    return;
+                }
+
+                string Url = string.Format("http://43.252.208.201:81/Upload/{0}/3/3.jpg", User);
+                var request = WebRequest.Create(Url);
+                using (var response = request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                {
+                    ptbAd.Image = Bitmap.FromStream(stream);
+                    ptbAd.Click += new EventHandler(pic_Click);
+                }
+            }
+        }
+
+        void pic_Click(object sender, EventArgs e)
+        {
+            // 將sender轉型成PictureBox
+            PictureBox pic = sender as PictureBox;
+
+            if (null == pic)
+                return;
+
+            System.Diagnostics.Process.Start(clickUrl);
+        }
+
+        private string getBackPlatfromDb(string User)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            string response = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "Select Ad_ConnectUrl From AdBackPlatform WHERE Ad_UserName = '{0}' AND Ad_Type = '3'";
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, User), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);            
+                con.Close();
+
+                response = ds.Tables[0].Rows[0]["Ad_ConnectUrl"].ToString();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
         }
 
         private void bkgStart_DoWork(object sender, DoWorkEventArgs e)

@@ -69,7 +69,7 @@
             // 
             // pnlGameMenu
             // 
-            this.pnlGameMenu.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlGameMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlGameMenu.Controls.Add(this.lbRefrash);
             this.pnlGameMenu.Controls.Add(this.label12);
             this.pnlGameMenu.Controls.Add(this.lblMenuLast100);
@@ -526,7 +526,7 @@
             // 
             // elementHost1
             // 
-            this.elementHost1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.elementHost1.Location = new System.Drawing.Point(0, 34);
             this.elementHost1.Name = "elementHost1";
             this.elementHost1.Size = new System.Drawing.Size(1335, 515);
@@ -544,12 +544,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.ClientSize = new System.Drawing.Size(1335, 549);
             this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.pnlGameMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_Chart";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Chart";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_Chart_Load);

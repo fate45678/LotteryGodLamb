@@ -718,6 +718,9 @@ namespace WinFormsApp1
 
         private void btnViewResult_Click(object sender, EventArgs e)
         {
+            //抓圖片
+            loadUrlPicture();
+
             if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
             {
                 MessageBox.Show("只能输入1700 ~ 2000的数字");
@@ -766,6 +769,72 @@ namespace WinFormsApp1
                 row++;
             }
             frm_LoadingControl.Close();
+        }
+
+        string clickUrl = "";
+        private void loadUrlPicture()
+        {
+            if (frmGameMain.PlanProxyPassWord != "" && frmGameMain.PlanProxyUser != "")
+            {
+                string User = frmGameMain.PlanProxyUser;
+                clickUrl = getBackPlatfromDb(User);
+
+                if (clickUrl == null)
+                {
+                    MessageBox.Show("读取错误请洽客服");
+                    return;
+                }
+
+                string Url = string.Format("http://43.252.208.201:81/Upload/{0}/0/0.jpg", User);
+                var request = WebRequest.Create(Url);
+                using (var response = request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                {
+                    picboxAdCycle.Image = Bitmap.FromStream(stream);
+                    picboxAdCycle.Click += new EventHandler(pic_Click);
+                }
+            }
+        }
+
+        private string getBackPlatfromDb(string User)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            string response = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "Select Ad_ConnectUrl From AdBackPlatform WHERE Ad_UserName = '{0}' AND Ad_Type = '3'";
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, User), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+
+                response = ds.Tables[0].Rows[0]["Ad_ConnectUrl"].ToString();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        void pic_Click(object sender, EventArgs e)
+        {
+            // 將sender轉型成PictureBox
+            PictureBox pic = sender as PictureBox;
+
+            if (null == pic)
+                return;
+
+            System.Diagnostics.Process.Start(clickUrl);
         }
 
         private DataTable getDbGodList()

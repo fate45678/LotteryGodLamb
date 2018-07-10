@@ -18,6 +18,10 @@ namespace WinFormsApp1
 {
     public partial class frmGameMain : Form
     {
+        //代理人的帳號密碼
+        public static string PlanProxyUser = "test01";
+        public static string PlanProxyPassWord = "123456";
+
         public static bool openMessage = false;
         //public static string strHistory;
         //public static string strHistoryCount; 
@@ -78,7 +82,7 @@ namespace WinFormsApp1
             timer_GetGameInfo.Enabled = true;
 
             string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
-            this.Text += ProVersion; 
+            this.Text = this.Text + "【" + PlanProxyUser + "】" + ProVersion; 
         }
 
         private void frmGameMain_Load(object sender, EventArgs e)
@@ -115,7 +119,7 @@ namespace WinFormsApp1
             f_Chart.Show();
             #region 進入時預設停在哪一分頁 哪一彩種
             HD_MenuSelect.Text = "神灯周期计划";
-            lblMenuPlanCycle.BackColor = Color.White;
+            lblMenuPlanCycle.BackColor = HexColor("#bd3100");
             lblMenuPlanCycle.Refresh();
             pnlMenuPlanAgent.Visible = false;
             pnlMenuPlanUpload.Visible = false;
@@ -149,27 +153,27 @@ namespace WinFormsApp1
             switch (HD_MenuSelect.Text)
             {
                 case "神灯周期计划":
-                    lblMenuPlanCycle.BackColor = HexColor("# bd3100");
+                    lblMenuPlanCycle.BackColor = HexColor("#bd3100");
                     lblMenuPlanCycle.Refresh();
                     pnlMenuPlanCycle.Visible = true;
                     break;
                 case "代理计划":
-                    lblMenuPlanAgent.BackColor = HexColor("# bd3100");
+                    lblMenuPlanAgent.BackColor = HexColor("#bd3100");
                     lblMenuPlanAgent.Refresh();
                     pnlMenuPlanAgent.Visible = true;
                     break;
                 case "计划上传":
-                    lblMenuPlanUpload.BackColor = HexColor("# bd3100");
+                    lblMenuPlanUpload.BackColor = HexColor("#bd3100");
                     lblMenuPlanUpload.Refresh();
                     pnlMenuPlanUpload.Visible = true;
                     break;
                 case "缩水工具":
-                    lblMenuShrink.BackColor = HexColor("# bd3100");
+                    lblMenuShrink.BackColor = HexColor("#bd3100");
                     lblMenuShrink.Refresh();
                     pnlMenuShrink.Visible = true;
                     break;
                 case "走势图":
-                    lblMenuChart.BackColor = HexColor("# bd3100");
+                    lblMenuChart.BackColor = HexColor("#bd3100");
                     lblMenuChart.Refresh();
                     pnlMenuChart.Visible = true;
                     break;
@@ -287,11 +291,11 @@ namespace WinFormsApp1
         //重設選單
         private void ResetAllMenu()
         {
-            lblMenuPlanCycle.BackColor = Color.LightGray; lblMenuPlanCycle.Refresh();
-            lblMenuPlanAgent.BackColor = Color.LightGray; lblMenuPlanAgent.Refresh();
-            lblMenuPlanUpload.BackColor = Color.LightGray; lblMenuPlanUpload.Refresh();
-            lblMenuShrink.BackColor = Color.LightGray; lblMenuShrink.Refresh();
-            lblMenuChart.BackColor = Color.LightGray; lblMenuChart.Refresh();
+            lblMenuPlanCycle.BackColor = HexColor("#df8514"); lblMenuPlanCycle.Refresh();
+            lblMenuPlanAgent.BackColor = HexColor("#df8514"); lblMenuPlanAgent.Refresh();
+            lblMenuPlanUpload.BackColor = HexColor("#df8514"); lblMenuPlanUpload.Refresh();
+            lblMenuShrink.BackColor = HexColor("#df8514"); lblMenuShrink.Refresh();
+            lblMenuChart.BackColor = HexColor("#df8514"); lblMenuChart.Refresh();
             pnlMenuPlanCycle.Visible = false;
             pnlMenuPlanAgent.Visible = false;
             pnlMenuPlanUpload.Visible = false;
@@ -461,7 +465,8 @@ namespace WinFormsApp1
 
         private void timer_ShowMessage_Tick(object sender, EventArgs e)
         {
-            //ShowMessage();
+            ShowMessage();
+            timer_ShowMessage.Interval = 300000;
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)

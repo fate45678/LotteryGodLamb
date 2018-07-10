@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
@@ -24,10 +25,13 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
+            //讀取廣告
+            loadUrlAdPicture();
+
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", @"/");
             label115.Text = NowDate + "历史开奖";
 
-            timeCheck.Visible = false;//先拿掉廣告 之後版本更新
+            //timeCheck.Visible = false;//先拿掉廣告 之後版本更新
             txtSearchUser.ForeColor = Color.LightGray;
             txtSearchUser.Text = "输入计划员名称";
             this.txtSearchUser.Leave += new System.EventHandler(this.txtSearchUser_Leave);
@@ -35,6 +39,72 @@ namespace WinFormsApp1
 
             cbGameKind.SelectedIndex = 0;
             cbGameDirect.SelectedIndex = 0;
+        }
+
+        private void loadUrlAdPicture()
+        {
+            if (frmGameMain.PlanProxyUser != "" && frmGameMain.PlanProxyPassWord != "")
+            {
+                string User = frmGameMain.PlanProxyUser;
+                clickUrl = getBackPlatfromDb(User);
+
+                if (clickUrl == null)
+                {
+                    System.Windows.Forms.MessageBox.Show("读取错误请洽客服");
+                    return;
+                }
+
+                string Url = string.Format("http://43.252.208.201:81/Upload/{0}/1/1.jpg", User);
+                var request = WebRequest.Create(Url);
+                using (var response = request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                {
+                    picBoxAdAngent.Image = Bitmap.FromStream(stream);
+                    picBoxAdAngent.Click += new EventHandler(pic_Click);
+                }
+            }
+        }
+
+        string clickUrl = "";
+        void pic_Click(object sender, EventArgs e)
+        {
+            // 將sender轉型成PictureBox
+            PictureBox pic = sender as PictureBox;
+
+            if (null == pic)
+                return;
+
+            System.Diagnostics.Process.Start(clickUrl);
+        }
+
+        private string getBackPlatfromDb(string User)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            string response = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "Select Ad_ConnectUrl From AdBackPlatform WHERE Ad_UserName = '{0}' AND Ad_Type = '3'";
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, User), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+
+                response = ds.Tables[0].Rows[0]["Ad_ConnectUrl"].ToString();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                return null;
+            }
         }
 
         #region TextBox的提示
@@ -152,11 +222,6 @@ namespace WinFormsApp1
                     }
                 }
             }
-        }
-
-        private void picAD3_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.cwl.gov.cn/");
         }
 
         int timeCount = 0;

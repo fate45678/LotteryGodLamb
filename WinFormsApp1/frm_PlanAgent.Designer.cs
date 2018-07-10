@@ -34,7 +34,7 @@
             this.pnlPlanRight = new System.Windows.Forms.Panel();
             this.pnlRightBottom = new System.Windows.Forms.Panel();
             this.pnlAD3 = new System.Windows.Forms.Panel();
-            this.timeCheck = new System.Windows.Forms.PictureBox();
+            this.picBoxAdAngent = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pnlMyFavorite = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -91,7 +91,7 @@
             this.pnlPlanRight.SuspendLayout();
             this.pnlRightBottom.SuspendLayout();
             this.pnlAD3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timeCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxAdAngent)).BeginInit();
             this.pnlMyFavorite.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlRightTop.SuspendLayout();
@@ -149,26 +149,25 @@
             // 
             this.pnlAD3.BackColor = System.Drawing.Color.Transparent;
             this.pnlAD3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAD3.Controls.Add(this.timeCheck);
+            this.pnlAD3.Controls.Add(this.picBoxAdAngent);
             this.pnlAD3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAD3.Location = new System.Drawing.Point(476, 0);
             this.pnlAD3.Name = "pnlAD3";
             this.pnlAD3.Size = new System.Drawing.Size(553, 120);
             this.pnlAD3.TabIndex = 0;
             // 
-            // timeCheck
+            // picBoxAdAngent
             // 
-            this.timeCheck.BackColor = System.Drawing.Color.Transparent;
-            this.timeCheck.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("timeCheck.BackgroundImage")));
-            this.timeCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.timeCheck.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.timeCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeCheck.Location = new System.Drawing.Point(0, 0);
-            this.timeCheck.Name = "timeCheck";
-            this.timeCheck.Size = new System.Drawing.Size(551, 118);
-            this.timeCheck.TabIndex = 1;
-            this.timeCheck.TabStop = false;
-            this.timeCheck.Click += new System.EventHandler(this.picAD3_Click);
+            this.picBoxAdAngent.BackColor = System.Drawing.Color.Transparent;
+            this.picBoxAdAngent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBoxAdAngent.BackgroundImage")));
+            this.picBoxAdAngent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBoxAdAngent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBoxAdAngent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBoxAdAngent.Location = new System.Drawing.Point(0, 0);
+            this.picBoxAdAngent.Name = "picBoxAdAngent";
+            this.picBoxAdAngent.Size = new System.Drawing.Size(551, 118);
+            this.picBoxAdAngent.TabIndex = 1;
+            this.picBoxAdAngent.TabStop = false;
             // 
             // panel9
             // 
@@ -822,7 +821,7 @@
             this.pnlPlanRight.ResumeLayout(false);
             this.pnlRightBottom.ResumeLayout(false);
             this.pnlAD3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.timeCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxAdAngent)).EndInit();
             this.pnlMyFavorite.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.pnlRightTop.ResumeLayout(false);
@@ -890,7 +889,7 @@
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button42;
         private System.Windows.Forms.Button button41;
-        private System.Windows.Forms.PictureBox timeCheck;
+        private System.Windows.Forms.PictureBox picBoxAdAngent;
         private System.Windows.Forms.Panel pnlPlanRight;
         private System.Windows.Forms.Panel pnlHistory;
         private System.Windows.Forms.RichTextBox rtxtHistory;

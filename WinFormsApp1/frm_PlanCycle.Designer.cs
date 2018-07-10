@@ -114,6 +114,7 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.picboxAdCycle = new System.Windows.Forms.PictureBox();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -139,6 +140,7 @@
             this.panel36.SuspendLayout();
             this.panel35.SuspendLayout();
             this.pnlShowPlanTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUserSetting
@@ -545,10 +547,10 @@
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserRank.Controls.Add(this.picboxAdCycle);
             this.pnlUserRank.Controls.Add(this.tblGod);
             this.pnlUserRank.Controls.Add(this.rtxPlanList);
             this.pnlUserRank.Controls.Add(this.panel33);
-            this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
@@ -1261,6 +1263,14 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // picboxAdCycle
+            // 
+            this.picboxAdCycle.Location = new System.Drawing.Point(0, 350);
+            this.picboxAdCycle.Name = "picboxAdCycle";
+            this.picboxAdCycle.Size = new System.Drawing.Size(210, 102);
+            this.picboxAdCycle.TabIndex = 10;
+            this.picboxAdCycle.TabStop = false;
+            // 
             // frm_PlanCycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1313,6 +1323,7 @@
             this.panel35.PerformLayout();
             this.pnlShowPlanTitle.ResumeLayout(false);
             this.pnlShowPlanTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1404,5 +1415,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RichTextBox rtxPlanList;
         private System.Windows.Forms.TableLayoutPanel tblGod;
+        private System.Windows.Forms.PictureBox picboxAdCycle;
     }
 }

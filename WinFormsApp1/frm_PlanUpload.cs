@@ -32,7 +32,7 @@ namespace WinFormsApp1
 
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", @"/");
             label115.Text = NowDate + "历史开奖";
-            picAD4.Visible = false;
+            //picAD4.Visible = false;
             pnlAD4.BorderStyle = BorderStyle.None;
             setRule();
         }
@@ -1454,6 +1454,7 @@ namespace WinFormsApp1
       
         #region UI事件
         public static int loginButtonType = 0;
+        string clickUrl = "";
         /// <summary>
         /// 登入按鈕事件
         /// </summary>
@@ -1463,6 +1464,9 @@ namespace WinFormsApp1
         {
             if (loginButtonType == 0)
             {
+                //抓廣告
+                loadUrlAdPicture();
+
                 frm_Login frm_login = new frm_Login();
                 frm_login.ShowDialog();
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
@@ -1492,6 +1496,71 @@ namespace WinFormsApp1
                     frmGameMain.globalMessageTemp = "";
                 }
             }
+        }
+
+        private void loadUrlAdPicture()
+        {
+            if (frmGameMain.PlanProxyUser != "" && frmGameMain.PlanProxyPassWord != "")
+            {
+                string User = frmGameMain.PlanProxyUser;
+                clickUrl = getBackPlatfromDb(User);
+
+                if (clickUrl == null)
+                {
+                    MessageBox.Show("读取错误请洽客服");
+                    return;
+                }
+
+                string Url = string.Format("http://43.252.208.201:81/Upload/{0}/2/2.jpg", User);
+                var request = WebRequest.Create(Url);
+                using (var response = request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                {
+                    picAD4.Image = Bitmap.FromStream(stream);
+                    picAD4.Click += new EventHandler(pic_Click);
+                }
+            }
+        }
+
+        private string getBackPlatfromDb(string User)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            string response = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "Select Ad_ConnectUrl From AdBackPlatform WHERE Ad_UserName = '{0}' AND Ad_Type = '3'";
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, User), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+
+                response = ds.Tables[0].Rows[0]["Ad_ConnectUrl"].ToString();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        void pic_Click(object sender, EventArgs e)
+        {
+            // 將sender轉型成PictureBox
+            PictureBox pic = sender as PictureBox;
+
+            if (null == pic)
+                return;
+
+            System.Diagnostics.Process.Start(clickUrl);
         }
 
         private void LogInHide()
@@ -1524,15 +1593,6 @@ namespace WinFormsApp1
             register.Owner = this;
             register.Show();
             return;
-        }
-        /// <summary>
-        /// 廣告圖片點擊
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void picAD4_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.cwl.gov.cn/");
         }
 
         public static bool isFirst = true;

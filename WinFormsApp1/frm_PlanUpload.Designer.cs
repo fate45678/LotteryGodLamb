@@ -469,7 +469,6 @@
             this.picAD4.Size = new System.Drawing.Size(349, 156);
             this.picAD4.TabIndex = 1;
             this.picAD4.TabStop = false;
-            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
             // 
             // panel4
             // 
@@ -707,12 +706,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
