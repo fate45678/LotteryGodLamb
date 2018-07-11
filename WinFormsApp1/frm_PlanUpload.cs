@@ -1706,7 +1706,7 @@ namespace WinFormsApp1
                 }
 
                 string NowIssue = frmGameMain.jArr.First()["Issue"].ToString();
-                if (NowIssue == cbGamePlan.Text)
+                if (double.Parse(NowIssue) >= double.Parse(cbGamePlan.Text))
                 {
                     MessageBox.Show(NowIssue + "本期已开出，请重新选择期数");
                     return;
