@@ -1704,6 +1704,13 @@ namespace WinFormsApp1
                     MessageBox.Show("请输入号码。");
                     return;
                 }
+
+                string NowIssue = frmGameMain.jArr.First()["Issue"].ToString();
+                if (NowIssue == cbGamePlan.Text)
+                {
+                    MessageBox.Show(NowIssue + "本期已开出，请重新选择期数");
+                    return;
+                }
                 //checkData("A");
                 string Kind = cbGameKind.Text;
                 //string NowDateInsert = DateTime.Now.ToString();
@@ -1804,12 +1811,13 @@ namespace WinFormsApp1
             {
                 lenghCheck = 4;
             }
-            else if(GameKind.Contains("五"))
+            else if (GameKind.Contains("五"))
             {
                 lenghCheck = 5;
             }
 
             string checkNumber = richTextBox2.Text.Replace(",","");
+
             var checkTmp = checkNumber.Split(' ');
 
             var checkTmpWhere = checkTmp.Where(x => x.Length == lenghCheck).Distinct().ToArray();
@@ -1819,8 +1827,8 @@ namespace WinFormsApp1
             {
                 label21.Text = "共" + checkTmp.Count().ToString() + "注";
             }
-            else
-            { 
+            else if (checkTmpWhere.Count() != 0)
+            {
                 string CompletNumber = "";
                 for (int i = 0; i < checkTmpWhere.Count(); i++)
                 {
@@ -1828,6 +1836,10 @@ namespace WinFormsApp1
                 }
 
                 richTextBox2.Text = CompletNumber.Substring(1);
+            }
+            else
+            {
+                richTextBox2.Text = "";
             }
             label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
 
