@@ -57,11 +57,11 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.button33 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.pnlPlanList = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -87,6 +87,7 @@
             this.cbGameKind = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.pnlPlanArea.SuspendLayout();
             this.pnlPlanRight.SuspendLayout();
             this.pnlRightBottom.SuspendLayout();
@@ -408,17 +409,29 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.button3);
             this.panel4.Controls.Add(this.button40);
             this.panel4.Controls.Add(this.button37);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.button33);
-            this.panel4.Controls.Add(this.label9);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.panel4.Size = new System.Drawing.Size(384, 37);
             this.panel4.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Gray;
+            this.button3.ForeColor = System.Drawing.Color.Red;
+            this.button3.Location = new System.Drawing.Point(242, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 32);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "刷新";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button40
             // 
@@ -427,7 +440,7 @@
             this.button40.Dock = System.Windows.Forms.DockStyle.Left;
             this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button40.ForeColor = System.Drawing.Color.White;
-            this.button40.Location = new System.Drawing.Point(222, 5);
+            this.button40.Location = new System.Drawing.Point(183, 5);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(53, 32);
             this.button40.TabIndex = 23;
@@ -442,7 +455,7 @@
             this.button37.Dock = System.Windows.Forms.DockStyle.Left;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button37.ForeColor = System.Drawing.Color.White;
-            this.button37.Location = new System.Drawing.Point(169, 5);
+            this.button37.Location = new System.Drawing.Point(130, 5);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(53, 32);
             this.button37.TabIndex = 22;
@@ -457,7 +470,7 @@
             this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(159, 5);
+            this.label10.Location = new System.Drawing.Point(120, 5);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.label10.Size = new System.Drawing.Size(10, 26);
@@ -471,27 +484,12 @@
             this.button33.Dock = System.Windows.Forms.DockStyle.Left;
             this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button33.ForeColor = System.Drawing.Color.White;
-            this.button33.Location = new System.Drawing.Point(39, 5);
+            this.button33.Location = new System.Drawing.Point(0, 5);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(120, 32);
             this.button33.TabIndex = 20;
             this.button33.Text = "详细计划";
             this.button33.UseVisualStyleBackColor = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.ForeColor = System.Drawing.Color.DarkRed;
-            this.label9.Location = new System.Drawing.Point(0, 5);
-            this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.label9.Size = new System.Drawing.Size(39, 26);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "刷新";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel12
             // 
@@ -802,8 +800,14 @@
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 500;
+            this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // frm_PlanAgent
             // 
@@ -880,7 +884,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Label label10;
@@ -907,5 +910,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer timer3;
     }
 }

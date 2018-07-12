@@ -197,7 +197,7 @@ namespace WinFormsApp1
         private void UpdateHistory()
         {
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-            
+
             if (rtxtHistory.Text == "") //無資料就全寫入
             {
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
@@ -209,7 +209,7 @@ namespace WinFormsApp1
             }
             else //有資料先判斷
             {
-                
+
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
                     //cnd.Start();
@@ -229,9 +229,9 @@ namespace WinFormsApp1
         {
             //timeCount++;
             //if (timeCount % 15 == 0 || timeCount == 3)
-            //updateGod();
+            updateGod();
             if (frmGameMain.jArr != null)
-            { 
+            {
                 UpdateHistory();
                 //updateMyfavorite();
                 timer1.Interval = 120000;
@@ -245,68 +245,239 @@ namespace WinFormsApp1
             isFirstTime = true;
         }
 
+        #region 我的最愛
         private void updateMyfavorite()
         {
-            if (isFirstTime)
+            if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
             {
-                if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
+                tableLayoutPanel2.Controls.Clear();
+                //重新整理我的最愛
+                DataTable dtFavorite = getfavorite();
+
+                double winRate = 0;
+                int x = 0, y = 0;
+                for (int i = 0; i < dtFavorite.Rows.Count; i++)
                 {
-                    Dictionary<int, string> dic = new Dictionary<int, string>();
-                    dic.Add(0, "f_name");
-                    var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from favorite where user_account = '" + frmGameMain.globalUserAccount + "'", dic);
-                    int x = 0;
-                    int y = 0;
-                    tableLayoutPanel2.Controls.Clear();
+                    Control control = new Button();
+                    control.Text = dtFavorite.Rows[i]["f_name"].ToString() + "中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = dtFavorite.Rows[i]["f_id"].ToString();
+                    control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
 
-                    int checkWinRate = 0;
-                    if (getData.Count > 0)
+                    winRate = double.Parse(dtFavorite.Rows[i]["f_hits"].ToString());
+                    if (winRate >= 80)
                     {
-                        for (int i = 0; i < getData.Count; i++)
-                        {
-                            Control control = new Button();
-                            control.Text = getData.ElementAt(i).ToString();
-                            control.Size = new System.Drawing.Size(200, 30);
-                            control.Name = getData[i];
-                            var uuu = getData[i].IndexOf("率");
-                            var XXX = getData[i].IndexOf("%");
-                            var iiiii = XXX - uuu;
-
-                            checkWinRate = int.Parse(getData[i].Substring(getData[i].IndexOf("中奖率"), 7));
-                            //control.ForeColor = Color.Blue;
-
-                            if (checkWinRate >= 80)
-                            {
-                                control.BackColor = Color.Red;
-                                control.ForeColor = Color.White;
-                            }
-                            else if (checkWinRate < 80 && checkWinRate >= 70)
-                            {
-                                control.BackColor = Color.Blue;
-                                control.ForeColor = Color.White;
-                            }
-                            else if (checkWinRate < 70 && checkWinRate >= 50)
-                            {
-                                control.BackColor = Color.Green;
-                                control.ForeColor = Color.White;
-                            }
-                            else if (checkWinRate < 50)
-                            {
-                                control.BackColor = Color.White;
-                                control.ForeColor = Color.Black;
-                            }
-                            else
-                                control.BackColor = Color.Yellow;
-
-                            control.Padding = new Padding(5);
-                            control.Dock = DockStyle.Fill;
-                            control.Click += dynamicBt_Click;
-                            this.tableLayoutPanel2.Controls.Add(control, x, y);
-                        }
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
                     }
-                    isFirstTime = false;
+                    else if (winRate < 80 && winRate >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 70 && winRate >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
+                    else
+                        control.BackColor = Color.Yellow;
+
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicFavoriteBt_Click;
+                    this.tableLayoutPanel2.Controls.Add(control, x, y);
+
+                    if (y < 3)
+                        y++;
+                    else
+                    {
+                        x++;
+                        y = 0;
+                    }
                 }
             }
+            //else
+            //    System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
         }
+
+        private DataTable getfavorite()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            //string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
+            try
+            {
+                con.Open();
+                string Sqlstr = @"select * from favorite where user_account = '" + frmGameMain.globalUserAccount + "'";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        private DataTable getfavorite(string id)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            //string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
+            try
+            {
+                con.Open();
+                string Sqlstr = @"select f_issue, f_note, f_number from favorite where f_id = '" + id + "'";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        //收藏我的最愛
+        private void button37_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
+            {
+                if (choosePlanName == "")
+                {
+                    System.Windows.Forms.MessageBox.Show("請先點選計畫");
+                    return;
+                }
+
+                string insertName = choosePlanName;
+                var insertArr = insertName.Trim().Replace("\r\n", "").Replace(" ", ",").Split(',');
+                insertArr = insertArr.Where(val => val != "").ToArray();
+
+                string fName = insertArr[0];
+                string fHits = insertArr[1].Replace("中奖率", "").Replace("%", "");
+                string fdate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Replace(@"/", "").Replace(" ", "").Replace(":", "");
+                string fNumber = richTextBox1.Text;
+                string fNote = "";
+                for (int i = 0; i < listBox2.Items.Count; i++)
+                    fNote += ',' + listBox2.Items[i].ToString();
+                fNote = fNote.Substring(1);
+
+                string fIssue = "";
+                for (int i = 0; i < listBox1.Items.Count; i++)
+                    fIssue += ',' + listBox1.Items[i].ToString();
+                fIssue = fIssue.Substring(1);
+
+                string sql = "Insert into favorite values('{0}', '{1}', '{2}', '{3}', {4}, '{5}', '{6}')";
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", string.Format(sql, fName, frmGameMain.globalUserAccount, fHits, fNumber, fdate, fNote, fIssue));
+                System.Windows.Forms.MessageBox.Show("新增完成。");
+
+                //重新整理我的最愛
+                DataTable dtFavorite = getfavorite();
+                tableLayoutPanel2.Controls.Clear();
+                double winRate = 0;
+                int x = 0, y = 0;
+                for (int i = 0; i < dtFavorite.Rows.Count; i++)
+                {
+                    Control control = new Button();
+                    control.Text = dtFavorite.Rows[i]["f_name"].ToString() + "中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
+                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Name = dtFavorite.Rows[i]["f_id"].ToString();
+                    control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
+
+                    winRate = double.Parse(dtFavorite.Rows[i]["f_hits"].ToString());
+                    if (winRate >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 80 && winRate >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 70 && winRate >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
+                    else
+                        control.BackColor = Color.Yellow;
+
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicFavoriteBt_Click;
+                    this.tableLayoutPanel2.Controls.Add(control, x, y);
+
+                    if (y < 3)
+                        y++;
+                    else
+                    { 
+                        x++;
+                        y = 0;
+                    }
+                }
+            }
+            else
+                System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
+
+        }
+
+        private void dynamicFavoriteBt_Click(object sender, EventArgs e)
+        {
+            choosePlanName = (sender as Button).Text;
+            listBox2.Items.Clear();
+            listBox1.Items.Clear();
+            string id = (sender as Button).Name;
+            DataTable dtFavorite = getfavorite(id);
+            richTextBox1.Text = dtFavorite.Rows[0]["f_number"].ToString();
+
+            string[] noteArr = dtFavorite.Rows[0]["f_note"].ToString().Split(',');
+            for (int i = 0; i < noteArr.Count(); i++)
+            {
+                listBox2.Items.Add(noteArr[i]);
+            }
+
+            string[] issueArr = dtFavorite.Rows[0]["f_issue"].ToString().Split(',');
+            for (int i = 0; i < issueArr.Count(); i++)
+            {
+                listBox1.Items.Add(issueArr[i]);
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {          
+            if (frm_PlanUpload.loginButtonType == 1)
+            {
+                updateMyfavorite();
+                timer3.Interval = 600000;
+            }
+        }
+        #endregion
 
         private static string choosePlanName = "";
         List<string> dt_history = new List<string>();
@@ -334,7 +505,7 @@ namespace WinFormsApp1
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
             string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             //先處理舊資料
-            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectGameKind + "%' order by p_id", dic);
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '"+ SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName +selectGameKind + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)
             {
                 oldtotalWin = 0; oldtotalFail = 0; countPlay = 0;
@@ -644,7 +815,7 @@ namespace WinFormsApp1
             dic.Clear();
             //取得過去所有號碼
             Dictionary<int, string> dic_history = new Dictionary<int, string>();
-            string dateNow = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10) + "%";
+            string dateNow = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10).Replace(@"/","") + "%";
             string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             dic_history.Add(0, "number");
             string sqlQuery = "select * from Upplan";
@@ -680,7 +851,7 @@ namespace WinFormsApp1
             else if (type == 2)
                 sqlQuery = "select a.* from Upplan a left join userData b on a.p_account = b.account where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND b.name like '%" + frmGameMain.globalUserName + "%'  order by p_id desc ";
             else if (type == 4)
-                sqlQuery = "select * from Upplan where p_name='%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' order by p_uploadDate desc";
+                sqlQuery = "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND p_hits > 30 order by p_hits desc";
             else if (type == 5)
                 sqlQuery = "select * from Upplan where p_name like '%" + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' order by p_id desc";
             else if (type == 6)
@@ -1376,66 +1547,6 @@ namespace WinFormsApp1
                 System.Windows.Forms.MessageBox.Show("查無資料。");
         }
 
-        private void button37_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(frmGameMain.globalUserAccount))
-            {
-                if (choosePlanName == "")
-                {
-                    System.Windows.Forms.MessageBox.Show("請先點選計畫");
-                    return;
-                }
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into favorite(f_name,user_account) values('" + choosePlanName.Replace(@"\r\n", "") + "','" + frmGameMain.globalUserAccount + "')");
-                System.Windows.Forms.MessageBox.Show("新增完成。");
-
-                Dictionary<int, string> dic = new Dictionary<int, string>();
-                dic.Add(0, "f_name");
-                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from favorite where user_account = '" + frmGameMain.globalUserAccount + "'", dic);
-                int x = 0;
-                int y = 0;
-                tableLayoutPanel2.Controls.Clear();
-
-                for (int i = 0; i < hitTimes.Count; i++)
-                {
-                    Control control = new Button();
-                    control.Text = hitTimes.ElementAt(i).Key;
-                    control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = hitTimesElementAt[0];
-                    control.Tag = hitTimes.ElementAt(i).Key;
-
-                    if (hitTimes.ElementAt(i).Value >= 80)
-                    {
-                        control.BackColor = Color.Red;
-                        control.ForeColor = Color.White;
-                    }
-                    else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
-                    {
-                        control.BackColor = Color.Blue;
-                        control.ForeColor = Color.White;
-                    }
-                    else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
-                    {
-                        control.BackColor = Color.Green;
-                        control.ForeColor = Color.White;
-                    }
-                    else if (hitTimes.ElementAt(i).Value < 50)
-                    {
-                        control.BackColor = Color.White;
-                        control.ForeColor = Color.Black;
-                    }
-                    else
-                        control.BackColor = Color.Yellow;
-
-                    control.Padding = new Padding(5);
-                    control.Dock = DockStyle.Fill;
-                    control.Click += dynamicBt_Click;
-                    this.tableLayoutPanel2.Controls.Add(control, x, y);
-                }
-            }
-            else
-                System.Windows.Forms.MessageBox.Show("尚未登入帳號。");
-
-        }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
@@ -1530,29 +1641,339 @@ namespace WinFormsApp1
                 }
             }
         }
+
         #region 刷新大神榜資料
         private void updateGod()
         {
             //richTextBox2.Text = "";
             tableLayoutPanel3.Controls.Clear();
-            calHits(4);
-            string[] hitTimesElementAt;
-            for (int i = 0; i < hitTimes.Count; i++)
-            {
-                //hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
-                Control control = new Button();
-                hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
-                control.Text = hitTimesElementAt[1];
-                control.Size = new System.Drawing.Size(100, 110);
-                control.Name = hitTimesElementAt[0];
 
+            //calHits(4);
+            DataTable GodList = GodUpdateTable();
+            //string[] hitTimesElementAt;
+            double checkWinRate = 0;
+            for (int i = 0; i < GodList.Rows.Count; i++)
+            {
+                Control control = new Button();
+                control.Text = GodList.Rows[i]["p_name"].ToString() + " 中獎率" + GodList.Rows[i]["p_hits"].ToString() + "%";
+                control.Name = GodList.Rows[i]["p_id"].ToString();
+                control.Size = new System.Drawing.Size(100, 110);
+                checkWinRate = double.Parse(GodList.Rows[i]["p_hits"].ToString());
+                if (checkWinRate >= 80)
+                {
+                    control.BackColor = Color.Red;
+                    control.ForeColor = Color.White;
+                }
+                else if (checkWinRate < 80 && checkWinRate >= 70)
+                {
+                    control.BackColor = Color.Blue;
+                    control.ForeColor = Color.White;
+                }
+                else if (checkWinRate < 70 && checkWinRate >= 50)
+                {
+                    control.BackColor = Color.Green;
+                    control.ForeColor = Color.White;
+                }
+                else if (checkWinRate < 50)
+                {
+                    control.BackColor = Color.White;
+                    control.ForeColor = Color.Black;
+                }
+                else
+                    control.BackColor = Color.Yellow;
                 control.Padding = new Padding(5);
                 control.Dock = DockStyle.Fill;
-                control.Click += dynamicBt_Click;
+                control.Click += dynamicGodBt_Click;
                 this.tableLayoutPanel3.Controls.Add(control, 0, 0);
 
                 //richTextBox2.Text += hitTimesElementAt[0] + "\r\n";
             }
+        }
+
+        private DataTable GodUpdateTable()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
+            try
+            {
+                con.Open();
+                string Sqlstr = @"select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND p_hits > 30 order by p_hits";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        private void dynamicGodBt_Click(object sender, EventArgs e)
+        {
+            //int searchType = 0;//0 初始值 1 cb search 2 userNmae search
+
+            string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
+            //amount = 0;
+            string[] choosePlanNameArr = ((sender as Button).Text).Split(' ');
+            choosePlanName = choosePlanNameArr[0];
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(0, "p_name");
+            dic.Add(1, "p_account");
+            dic.Add(2, "p_start");
+            dic.Add(3, "p_end");
+            dic.Add(4, "p_rule");
+            dic.Add(5, "p_note");
+            listBox1.Items.Clear();
+
+            string selectGameKind = cbGameKind.Text;
+
+            //總共中獎幾次 掛幾次 總共投了幾注
+            int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
+            //先處理舊資料
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + choosePlanName + "%' order by p_id", dic);
+            for (int i = 0; i < getOldData.Count; i = i + 6)
+            {
+                oldtotalWin = 0; oldtotalFail = 0; countPlay = 0;
+                //玩法種類
+                string oldGameKind = getOldData.ElementAt(i);
+
+                //上傳的開始以及結束期數
+                long oldstart = Int64.Parse(getOldData.ElementAt(i + 2));
+                long oldend = Int64.Parse(getOldData.ElementAt(i + 3));
+
+                //上傳了幾期
+                long oldamount = (oldend - oldstart) + 1;
+
+                string oldcheckNumber = "";
+
+                bool OldisAllOpen = true;
+
+                for (int ii = 0; ii < oldamount; ii++)
+                {
+                    var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
+
+                    //表示還沒開獎
+                    if (oldshowIssue.Count == 0)
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
+                        OldisAllOpen = false;
+                        break;
+                    }
+                    else if (oldGameKind.Contains("五星"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
+                    }
+                    else if (oldGameKind.Contains("四星"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                        //前三中三后三前二后二
+                    }
+                    else if (oldGameKind.Contains("中三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                    }
+                    else if (oldGameKind.Contains("前三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                    }
+                    else if (oldGameKind.Contains("后三"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                    }
+                    else if (oldGameKind.Contains("前二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                    }
+                    else if (oldGameKind.Contains("后二"))
+                    {
+                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                    }
+
+                    //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                    //是否有中獎
+                    if (getOldData.ElementAt(i + 4).Contains(oldcheckNumber))
+                    {
+                        oldtotalWin++;
+                        oldtotalPlay++;
+                        countWin += oldtotalWin;
+                        countPlay++;
+                        break;
+                    }
+                    else
+                    {
+                        oldtotalFail++;
+                        oldtotalPlay++;
+                        countPlay++;
+                    }
+                }
+
+                if (OldisAllOpen)
+                {
+                    if (oldtotalWin != 0)
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 中(" + countPlay + ")");
+                    }
+                    else
+                    {
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 挂(" + oldtotalFail + ")");
+                    }
+                }
+            }
+
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_id = '" + (sender as Button).Name + "'", dic);
+
+            if (getData.Count > 0)
+            {
+                //玩法種類
+                string GameKind = getData.ElementAt(0);
+
+                //上傳的開始以及結束期數
+                long start = Int64.Parse(getData.ElementAt(2));
+                long end = Int64.Parse(getData.ElementAt(3));
+
+                //上傳了幾期
+                long amount = (end - start) + 1;
+
+                //總共中獎幾次 掛幾次 總共投了幾注
+                int totalWin = 0, totalFail = 0, totalPlay = 0;
+
+                string checkNumber = "";
+
+                bool isAllOpen = true;
+
+                for (int i = 0; i < amount; i++)
+                {
+                    var showIssue = showJa.Where(x => x["Issue"].ToString().Contains((start + i).ToString())).ToList();
+
+                    //表示還沒開獎
+                    if (showIssue.Count == 0)
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 尚未开奖(" + (amount - totalPlay) + ")");
+                        isAllOpen = false;
+                        break;
+                    }
+                    else if (GameKind.Contains("五星"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "");
+                    }
+                    else if (GameKind.Contains("四星"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                        //前三中三后三前二后二
+                    }
+                    else if (GameKind.Contains("中三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                    }
+                    else if (GameKind.Contains("前三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                    }
+                    else if (GameKind.Contains("后三"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                    }
+                    else if (GameKind.Contains("前二"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                    }
+                    else if (GameKind.Contains("后二"))
+                    {
+                        checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                    }
+
+                    //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+
+                    //是否有中獎
+                    if (getData.ElementAt(4).Contains(checkNumber))
+                    {
+                        totalWin++;
+                        totalPlay++;
+                        countWin += totalWin;
+                        break;
+                    }
+                    else
+                    {
+                        totalFail++;
+                        totalPlay++;
+                    }
+                }
+
+                if (isAllOpen)
+                {
+                    if (totalWin != 0)
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 中(" + totalPlay + ")");
+                    }
+                    else
+                    {
+                        listBox1.Items.Add(start + " 到 " + end + " 挂(" + totalFail + ")");
+                    }
+                }
+
+
+                //補上note敘述
+                listBox2.Items.Clear();
+                richTextBox1.Text = "";
+                richTextBox1.Text = getData.ElementAt(4);
+                if (getData.ElementAt(3).Substring(0, 8) != NowDate)
+                {
+                    amount = 0;
+                }
+                string WinRate = "";
+                listBox2.Items.Add(getData.ElementAt(5));
+                listBox2.Items.Add("已投注: " + (oldtotalPlay + totalPlay) + "期");
+                listBox2.Items.Add("中奖: " + (countWin) + "期");
+                WinRate = "中奖率0.00%";
+                if (countWin != 0)
+                    WinRate = "中奖率" + (((double)(countWin) / (double)(oldtotalPlay + totalPlay)) * 100).ToString("0.00") + "%";
+                listBox2.Items.Add(WinRate);
+
+                int item = 0;
+                if (getData.ElementAt(0).Contains("五星"))//五星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 5;
+                }
+                else if (getData.ElementAt(0).Contains("四星"))//四星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 4;
+
+                }
+                else if (getData.ElementAt(0).Contains("前三") || getData.ElementAt(0).Contains("中三") || getData.ElementAt(0).Contains("后三"))//三星中三后三前二
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 3;
+                }
+                else if (getData.ElementAt(0).Contains("前二") || getData.ElementAt(0).Contains("后三"))//二星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 2;
+                }
+                else //一星
+                {
+                    item = richTextBox1.Text.Replace(" ", "").Length / 1;
+                }
+
+
+                //todo都要修正中奖幾期ˊ
+                //label15.Text = "共" + item + "注 ";
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("查無資料");
+                return;
+            }
+
+
         }
         #endregion
 
@@ -1629,7 +2050,7 @@ namespace WinFormsApp1
             string[] nameArr = name.Split(',');
             long start = Int64.Parse(nameArr[0].Trim());
             long end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
-            string GameKind = cbGameKind.Text;
+            string GameKind = choosePlanName;
 
             //int itmeType = 0;
             string[] itemCount;
@@ -1766,6 +2187,67 @@ namespace WinFormsApp1
                 UpdateHistory();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            updateGod();
+            choosePlanName = "";
+            searchType = 1;
+            button42.Enabled = false;
+            tableLayoutPanel1.Controls.Clear();
+            calHits(0);
+            if (hitTimes.Count > 0)
+            {
+                string nowdate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+
+                for (int i = 0; i < hitTimes.Count; i++)
+                {
+                    Control control = new Button();
+                    hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
+                    control.Text = hitTimesElementAt[1] + "\r\n 中奖率" + hitTimes.ElementAt(i).Value.ToString("0.00") + "%  \r\n" + hitTimesElementAt[3];
+                    if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                    {
+                        control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+                    }
+
+                    control.Size = new System.Drawing.Size(140, 130);
+                    control.Name = hitTimesElementAt[0];
+                    if (hitTimes.ElementAt(i).Value >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 80 && hitTimes.ElementAt(i).Value >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 70 && hitTimes.ElementAt(i).Value >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (hitTimes.ElementAt(i).Value < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
+                    else
+                        control.BackColor = Color.Yellow;
+
+                    control.Padding = new Padding(5);
+                    control.Dock = DockStyle.Fill;
+                    control.Click += dynamicBt_Click;
+                    this.tableLayoutPanel1.Controls.Add(control, 0, 0);
+
+                }
+            }
+            updateMyfavorite();
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            richTextBox1.Text = "";
+        }
+
     }
 
     class checkNupdateData

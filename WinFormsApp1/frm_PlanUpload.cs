@@ -220,6 +220,8 @@ namespace WinFormsApp1
                               + " \r\n已上传第" + dt.ElementAt(dt.Count-4) + "期 ～ 第" + dt.ElementAt(3) + "期"
                               //+ " ," + 
                         });
+
+                        con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Update Upplan set p_hits = '" + winRate.Replace("中奖率", "").Replace("%","") + "' WHERE p_id = '"+ int.Parse(dt.ElementAt(0)) + "'");
                     }
                 }
             }
@@ -348,6 +350,8 @@ namespace WinFormsApp1
                               + " \r\n已上传第" + dt.ElementAt(dt.Count - 4) + "期 ～ 第" + dt.ElementAt(3) + "期"
                               //+ " ," + dt.ElementAt(0)
                         });
+
+                        //con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Update FROM Upplan set p_hits = '" + winRate + "' WHERE p_id = '" + int.Parse(dt.ElementAt(0)) + "'");
                     }
                 }
             }
@@ -476,6 +480,8 @@ namespace WinFormsApp1
                               //+ " ," + dt.ElementAt(0),
                             winRateContent = double.Parse(winRate.Replace("中奖率","").Replace("%",""))
                         });
+
+                        //con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Update FROM Upplan set p_hits = '" + winRate + "' WHERE p_id = '" + int.Parse(dt.ElementAt(0)) + "'");
                     }
                 }
 
@@ -1695,6 +1701,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(label4.Text))
                 MessageBox.Show("尚未登入。");
             else
@@ -1721,7 +1728,7 @@ namespace WinFormsApp1
                 dic.Add(0, "p_name");
                 dic.Add(1, "p_uploadDate");
                 //string iiii = "select * from userData where account = '" + frmGameMain.globalUserAccount + "'";
-                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name, p_uploadDate from Upplan where p_name LIKE '%" + frm_PlanCycle.GameLotteryName + Kind + "%' AND p_uploadDate LIKE '%"+ checkDate + "%'", dic);
+                var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select p_name, p_uploadDate from Upplan where p_account = '" + frmGameMain.globalUserAccount +"' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + Kind + "%' AND p_uploadDate LIKE '%"+ checkDate + "%'", dic);
 
                 if (getData.Count > 0)
                 {
@@ -2334,7 +2341,7 @@ namespace WinFormsApp1
                     //表示還沒開獎
                     if (oldshowIssue.Count == 0)
                     {
-                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
+                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount) + ")");
                         OldisAllOpen = false;
                         break;
                     }

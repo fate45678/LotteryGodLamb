@@ -116,7 +116,7 @@
             this.lbRefrash.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbRefrash.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbRefrash.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbRefrash.ForeColor = System.Drawing.Color.Black;
+            this.lbRefrash.ForeColor = System.Drawing.Color.Red;
             this.lbRefrash.Location = new System.Drawing.Point(1035, 10);
             this.lbRefrash.Name = "lbRefrash";
             this.lbRefrash.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
