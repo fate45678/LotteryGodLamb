@@ -1701,7 +1701,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-
+            checkdataTest("A");
             if (string.IsNullOrEmpty(label4.Text))
                 MessageBox.Show("尚未登入。");
             else
@@ -1739,7 +1739,7 @@ namespace WinFormsApp1
                 frm_LoadingControl.Show();
                 Application.DoEvents();
                 string planName = label24.Text;
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "update Upplan set p_isoldplan = '2' WHERE p_name LIKE '%" + Kind + "%' ;Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate, p_isoldplan) values('" + label4.Text + planName + "','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','" + frmGameMain.globalMessageTemp + "','" + NowDateInsert + "', '1')");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "update Upplan set p_isoldplan = '2' where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + Kind + "%' AND p_uploadDate LIKE '%" + checkDate + "%' ;Insert into Upplan(p_name, p_account, p_start, p_end, p_rule,p_curNum, p_note, p_uploadDate, p_isoldplan) values('" + label4.Text + planName + "','" + frmGameMain.globalUserAccount + "','" + cbGamePlan.Text + "','" + cbGameCycle.Text + "','" + richTextBox2.Text + "','0','" + frmGameMain.globalMessageTemp + "','" + NowDateInsert + "', '1')");
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1(0);
                 frm_LoadingControl.Close();
@@ -1800,7 +1800,7 @@ namespace WinFormsApp1
             label2.Text = "共1期";
         }
 
-        private void checkdataTest()
+        private void checkdataTest(string type)
         {
             //1.先確認玩法
             string GameKind = cbGameKind.Text;
@@ -1823,7 +1823,12 @@ namespace WinFormsApp1
                 lenghCheck = 5;
             }
 
-            string checkNumber = richTextBox2.Text.Replace(",","");
+
+            string checkNumber = "";
+            if(type == "A")
+                checkNumber = richTextBox2.Text.Replace(",", "");
+            else
+                checkNumber = richTextBox1.Text.Replace(",", "");
 
             var checkTmp = checkNumber.Split(' ');
 
@@ -2047,7 +2052,7 @@ namespace WinFormsApp1
         private void button7_Click(object sender, EventArgs e)
         {
             //checkData("A");
-            checkdataTest();
+            checkdataTest("A");
         }
 
         private static void AppendText(System.Windows.Forms.RichTextBox box, string text, Color color)
@@ -2174,13 +2179,26 @@ namespace WinFormsApp1
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            string pid = checkedListBoxEx1.SelectedValue.ToString();
+            string pid = "";
+            var aaaa = checkedListBoxEx1.CheckedItems[0];
+            //var a = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.SelectedValue).id).ToString();
+            var ii = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.CheckedItems[0]).id).ToString(); ;
+
             string DeleteName = "";
-            foreach (object checkedItem in checkedListBoxEx1.CheckedItems)
-            { 
+
+            for (int i = 0; i < checkedListBoxEx1.CheckedItems.Count; i++)
+            {
+                pid = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.CheckedItems[i]).id).ToString();
                 DeleteName = checkDeleteName(pid);
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + DeleteName + "'");
             }
+
+            //foreach (object checkedItem in checkedListBoxEx1.CheckedItems)
+            //{
+            //    var iii = checkedItem;
+            //    DeleteName = checkDeleteName(pid);
+            //    con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "delete from Upplan where p_name = '" + DeleteName + "'");
+            //}
 
             MessageBox.Show("刪除成功。");
             updatecheckboxlist1(0);
@@ -2224,9 +2242,18 @@ namespace WinFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(label4.Text))
+            {
                 MessageBox.Show("請先登入。");
+                return;
+            }
+            else if (comboBox1.Text.Substring(8) == "120")
+            {
+                MessageBox.Show("已经是最后一期了");
+                return;
+            }
             else
             {
+                checkdataTest("B");
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
@@ -2593,10 +2620,17 @@ namespace WinFormsApp1
             var showNowIssueAPI = frmGameMain.jArr.First["Issue"].ToString();
             var showNowIssue = getData.ElementAt(3).ToString();
 
+
+
             if (int.Parse(showNowIssue.Substring(8)) < int.Parse(showNowIssueAPI.Substring(8)))
             {
                 comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssueAPI.Substring(8))), null);
                 comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssueAPI.Substring(8)))), null);
+            }
+            else if (showNowIssue.Substring(8) == "120")
+            {
+                comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8)) - 1), null);
+                comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8))) - 1), null);
             }
             else
             {
