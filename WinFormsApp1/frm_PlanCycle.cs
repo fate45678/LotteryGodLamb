@@ -9774,5 +9774,60 @@ WHERE NUM >65 AND NUM <97";
         {
 
         }
+
+        private void brnRefresh_Click(object sender, EventArgs e)
+        {
+            //抓圖片
+            loadUrlPicture();
+
+            if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
+            {
+                MessageBox.Show("只能输入1700 ~ 2000的数字");
+                txtGameNum.Focus();
+                return;
+            }
+
+            ConnectDbGetHistoryNumber(GameLotteryName);
+            UpdateHistory();
+            pnlShowPlan.Visible = false;
+            if (txtGameNum.Text == "" || txtGameNum.Text == "请输入奖金号" ||
+                txtTimes.Text == "" || txtTimes.Text == "请输入倍数" ||
+                (ckRegularCycle.Checked == false && ckWinToNextCycle.Checked == false) ||
+                cbGamePlus.SelectedItem == null ||
+                cbGamePlan.SelectedItem == null)
+            {
+                MessageBox.Show("所有欄位都必須輸入");
+                return;
+            }
+
+
+            frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
+            frm_LoadingControl.Show();
+            Application.DoEvents();
+            CountAndShow();
+
+            //放到背景
+            DataTable dtGodList = getDbGodList();
+
+            string[] buttomNameArr;
+            int row = 0;
+            tblGod.Controls.Clear();
+            //if(dtGodList)
+            foreach (DataRow dr in dtGodList.Rows)
+            {
+                Control control = new Button();
+                buttomNameArr = dr["g_buttomName"].ToString().Split(',');
+                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4];
+                control.Size = new System.Drawing.Size(206, 30);
+                control.Name = dr["g_buttomName"].ToString();
+                control.ForeColor = Color.Black;
+                control.Padding = new Padding(5);
+                control.Dock = DockStyle.Fill;
+                control.Click += dynamicBt_Click;
+                this.tblGod.Controls.Add(control, 0, row);
+                row++;
+            }
+            frm_LoadingControl.Close();
+        }
     }
 }
