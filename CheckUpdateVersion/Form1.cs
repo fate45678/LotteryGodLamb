@@ -92,7 +92,7 @@ namespace CheckUpdateVersion
                 iCheckProcess++;
 
                 WebClient client = new WebClient();
-                client.DownloadFile("http://43.252.208.201/ShengDnnZip/" + FileName, LoaclPath + @"/" + FileName);
+                client.DownloadFile("http://43.252.208.201:81/ShengDnnZip/" + FileName, LoaclPath + @"/" + FileName);
 
                 //解压缩档案中
                 bkgCheckVersion.ReportProgress(iCheckProcess);

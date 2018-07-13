@@ -340,14 +340,14 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>CheckUpdateVersion.exe</td><td>{EC1D774C-E558-46EA-96A9-5A36723222A7}</td><td>DEBUG</td><td>2</td><td/><td>checkupdateversion.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>CheckUpdateVersion.vshost.exe</td><td>{66B05750-EB05-4919-9F35-EB55168F2227}</td><td>DEBUG</td><td>2</td><td/><td>checkupdateversion.vshost.ex</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DotNetZip.dll</td><td>{31873F32-2B57-44BE-90B4-4DF8CB379A93}</td><td>DEBUG</td><td>2</td><td/><td>dotnetzip.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT</td><td>{C068D714-D0FB-4C1A-BD3D-1EB80A9C6487}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Newtonsoft.Json.dll</td><td>{14121CD7-04FD-4EFD-9CC9-8EEFEB4AC448}</td><td>DEBUG</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>WinFormsApp1.exe</td><td>{0FD9E11B-22E8-462C-A9A7-56500322F6C3}</td><td>DEBUG</td><td>2</td><td/><td>winformsapp1.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Wpf.Base.dll</td><td>{09608944-D3E1-4ACD-B8C8-FBCA45611A22}</td><td>DEBUG</td><td>2</td><td/><td>wpf.base.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>WpfApp.Custom.dll</td><td>{65AC3D0E-1FD6-4FE8-801B-7B866D9F2A07}</td><td>DEBUG</td><td>2</td><td/><td>wpfapp.custom.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CheckUpdateVersion.exe</td><td>{7801047E-983A-4F6A-9D9A-929705D6EE7F}</td><td>DEBUG</td><td>2</td><td/><td>checkupdateversion.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DotNetZip.dll</td><td>{CCBF919E-2E78-49C5-8E9A-B0810AAB59BA}</td><td>DEBUG</td><td>2</td><td/><td>dotnetzip.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td>{7EE1D9ED-9722-4687-A34C-2660089FA70E}</td><td>ALLUSERSPROFILE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{3CBF0945-B35C-472B-86A8-A27E727CD4CE}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{4B8A1AD6-9C6A-41EC-AA57-E0BB87884AE3}</td><td>DEBUG</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>WinFormsApp1.exe</td><td>{4AE897EA-72A5-4FE6-BED9-C31A61DEE366}</td><td>DEBUG</td><td>2</td><td/><td>winformsapp1.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Wpf.Base.dll</td><td>{222A72D0-6AAA-4433-B9B6-1B144A98B976}</td><td>DEBUG</td><td>2</td><td/><td>wpf.base.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>WpfApp.Custom.dll</td><td>{283D5BA5-17C2-4740-A053-CF7F40F783CB}</td><td>DEBUG</td><td>2</td><td/><td>wpfapp.custom.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1056,18 +1056,18 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>ALLUSERSPROFILE</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>DEBUG</td><td>CheckUpdateVersion.exe</td></row>
-		<row><td>DEBUG</td><td>CheckUpdateVersion.vshost.exe</td></row>
 		<row><td>DEBUG</td><td>DotNetZip.dll</td></row>
-		<row><td>DEBUG</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>DEBUG</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>DEBUG</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>DEBUG</td><td>WinFormsApp1.exe</td></row>
 		<row><td>DEBUG</td><td>Wpf.Base.dll</td></row>
 		<row><td>DEBUG</td><td>WpfApp.Custom.dll</td></row>
 		<row><td>INSTALLDIR</td><td>CheckUpdateVersion.exe</td></row>
-		<row><td>INSTALLDIR</td><td>CheckUpdateVersion.vshost.exe</td></row>
 		<row><td>INSTALLDIR</td><td>DotNetZip.dll</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>INSTALLDIR</td><td>WinFormsApp1.exe</td></row>
 		<row><td>INSTALLDIR</td><td>Wpf.Base.dll</td></row>
@@ -1179,7 +1179,7 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>RecentFolder</td><td>TARGETDIR</td><td>.:Recent</td><td/><td>0</td><td/></row>
 		<row><td>SHADOW</td><td>ProgramFilesFolder</td><td>shadow</td><td/><td>0</td><td/></row>
-		<row><td>SHENGDNN</td><td>SHADOW</td><td>ShengDnn</td><td/><td>0</td><td/></row>
+		<row><td>SHENGDNN</td><td>SHADOW</td><td>SHENGD~1|ShengDeng</td><td/><td>0</td><td/></row>
 		<row><td>SHENGDNNSETUP</td><td>SHADOW</td><td>SHENGD~1|ShengDnnSetup</td><td/><td>0</td><td/></row>
 		<row><td>SendToFolder</td><td>TARGETDIR</td><td>.:SendTo</td><td/><td>3</td><td/></row>
 		<row><td>StartMenuFolder</td><td>TARGETDIR</td><td>.:STARTM~1|Start Menu</td><td/><td>3</td><td/></row>
@@ -1194,6 +1194,7 @@
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>shadow</td><td>ProgramMenuFolder</td><td>shadow</td><td/><td>1</td><td/></row>
+		<row><td>shengd_1_shengdengsetup</td><td>shadow</td><td>SHENGD~1|ShengDengSetup</td><td/><td>1</td><td/></row>
 		<row><td>shengd_1_shengdnnsetup</td><td>shadow</td><td>SHENGD~1|ShengDnnSetup</td><td/><td>1</td><td/></row>
 	</table>
 
@@ -1887,9 +1888,9 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>CheckUpdateVersion.exe</td></row>
-		<row><td>AlwaysInstall</td><td>CheckUpdateVersion.vshost.exe</td></row>
 		<row><td>AlwaysInstall</td><td>DotNetZip.dll</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>AlwaysInstall</td><td>WinFormsApp1.exe</td></row>
 		<row><td>AlwaysInstall</td><td>Wpf.Base.dll</td></row>
@@ -1909,17 +1910,14 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>checkupdateversion.exe</td><td>CheckUpdateVersion.exe</td><td>CHECKU~1.EXE|CheckUpdateVersion.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.exe</td><td>1</td><td/></row>
-		<row><td>checkupdateversion.exe.confi</td><td>ISX_DEFAULTCOMPONENT</td><td>CHECKU~1.CON|CheckUpdateVersion.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.exe.config</td><td>1</td><td/></row>
-		<row><td>checkupdateversion.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>CHECKU~1.PDB|CheckUpdateVersion.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.pdb</td><td>1</td><td/></row>
-		<row><td>checkupdateversion.vshost.ex</td><td>CheckUpdateVersion.vshost.exe</td><td>CHECKU~1.EXE|CheckUpdateVersion.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.vshost.exe</td><td>1</td><td/></row>
-		<row><td>checkupdateversion.vshost.ex1</td><td>ISX_DEFAULTCOMPONENT</td><td>CHECKU~1.CON|CheckUpdateVersion.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>checkupdateversion.vshost.ex2</td><td>ISX_DEFAULTCOMPONENT</td><td>CHECKU~1.MAN|CheckUpdateVersion.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>checkupdateversion.exe.confi</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHECKU~1.CON|CheckUpdateVersion.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.exe.config</td><td>1</td><td/></row>
+		<row><td>checkupdateversion.pdb</td><td>ISX_DEFAULTCOMPONENT1</td><td>CHECKU~1.PDB|CheckUpdateVersion.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\CheckUpdateVersion.pdb</td><td>1</td><td/></row>
 		<row><td>dotnetzip.dll</td><td>DotNetZip.dll</td><td>DOTNET~1.DLL|DotNetZip.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\DotNetZip.dll</td><td>1</td><td/></row>
-		<row><td>dotnetzip.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DOTNET~1.XML|DotNetZip.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\DotNetZip.xml</td><td>1</td><td/></row>
+		<row><td>dotnetzip.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>DOTNET~1.XML|DotNetZip.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\DotNetZip.xml</td><td>1</td><td/></row>
 		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>NEWTON~1.DLL|Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
 		<row><td>winformsapp1.exe</td><td>WinFormsApp1.exe</td><td>WINFOR~1.EXE|WinFormsApp1.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WinFormsApp1.exe</td><td>1</td><td/></row>
-		<row><td>winformsapp1.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>WINFOR~1.PDB|WinFormsApp1.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WinFormsApp1.pdb</td><td>1</td><td/></row>
-		<row><td>winformsapp1.vshost.exe.mani</td><td>ISX_DEFAULTCOMPONENT</td><td>WINFOR~1.MAN|WinFormsApp1.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WinFormsApp1.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>winformsapp1.pdb</td><td>ISX_DEFAULTCOMPONENT1</td><td>WINFOR~1.PDB|WinFormsApp1.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WinFormsApp1.pdb</td><td>1</td><td/></row>
+		<row><td>winformsapp1.vshost.exe.mani</td><td>ISX_DEFAULTCOMPONENT1</td><td>WINFOR~1.MAN|WinFormsApp1.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WinFormsApp1.vshost.exe.manifest</td><td>1</td><td/></row>
 		<row><td>wpf.base.dll</td><td>Wpf.Base.dll</td><td>WPFBAS~1.DLL|Wpf.Base.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\Wpf.Base.dll</td><td>1</td><td/></row>
 		<row><td>wpfapp.custom.dll</td><td>WpfApp.Custom.dll</td><td>WPFAPP~1.DLL|WpfApp.Custom.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\FlandreS\Desktop\20180614pro\LotteryGodLamb\CheckUpdateVersion\bin\Debug\WpfApp.Custom.dll</td><td>1</td><td/></row>
 	</table>
@@ -2068,14 +2066,14 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>CheckUpdateVersion.exe</td><td/><td/><td>_82E6C8B5_8090_4306_BACB_31B345A91642_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>CheckUpdateVersion.vshost.exe</td><td/><td/><td>_7398648C_9576_42BA_93C9_7D3C981DDD8B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DotNetZip.dll</td><td/><td/><td>_904D2D50_6968_4D3C_8566_AEE24BB81B90_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_E95C9BC1_E123_4AA3_A88E_B9FF25F8DE05_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_8BE25637_5138_4AE7_AF10_A40D9B0526B2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>WinFormsApp1.exe</td><td/><td/><td>_6562828D_426E_4B3A_994D_30B4FF5C5E98_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Wpf.Base.dll</td><td/><td/><td>_78089021_06FF_4E72_A3A4_E8437DEEC014_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>WpfApp.Custom.dll</td><td/><td/><td>_D0958D42_0F2C_453B_99BE_AF8797B86F24_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CheckUpdateVersion.exe</td><td/><td/><td>_5673070D_BEDD_4FEC_A721_CBA551B29F37_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DotNetZip.dll</td><td/><td/><td>_CA0C77A9_8B89_4EC8_AF0C_76AB170F4BC0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_3C3E257F_2B8C_49E0_8130_C0A36CBA28CE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_39FA6A52_9BCE_4A41_B286_CB063C181901_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_0FB59C95_40D2_45A5_A999_B7722E6341BC_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>WinFormsApp1.exe</td><td/><td/><td>_65F427CF_10C0_43B7_8C28_9501DD4ED355_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Wpf.Base.dll</td><td/><td/><td>_4C2BE0B7_D2F3_4CA8_8631_5B0B59835433_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>WpfApp.Custom.dll</td><td/><td/><td>_9EC480CD_0E68_42F1_B9A8_FA7F7D1F04F8_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2668,7 +2666,7 @@
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
 		<row><td>COMPANY_NAME</td><td>1033</td><td>公司名称</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1000745940</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1403402357</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>始终安装</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>1000772532</td></row>
@@ -4312,7 +4310,13 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME14</td><td>2052</td><td>LAUNCH~1.EXE|Launch WinFormsApp1.exe</td><td>0</td><td/><td>1000742612</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>1028</td><td/><td>0</td><td/><td>1000771412</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>1033</td><td/><td>0</td><td/><td>1000771412</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000775508</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>2052</td><td>ShengDeng</td><td>0</td><td/><td>1269184160</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME16</td><td>1028</td><td/><td>0</td><td/><td>1403404437</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME16</td><td>1033</td><td/><td>0</td><td/><td>1403404437</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME16</td><td>2052</td><td>LAUNCH~1.EXE|Launch CheckUpdateVersion.exe</td><td>0</td><td/><td>1403404437</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME17</td><td>1028</td><td/><td>0</td><td/><td>1403404437</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME17</td><td>1033</td><td/><td>0</td><td/><td>1403404437</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME17</td><td>2052</td><td>ShengDeng</td><td>0</td><td/><td>1403441301</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1028</td><td/><td>0</td><td/><td>1000772756</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td/><td>0</td><td/><td>1000772756</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000740020</td></row>
@@ -4914,15 +4918,18 @@
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td>http://www.shadow.com</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.shadow.com</td><td>0</td><td/><td>1000776628</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.shadow.com</td><td>0</td><td/><td>1403402357</td></row>
 		<row><td>ID_STRING10</td><td>1028</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000771284</td></row>
 		<row><td>ID_STRING10</td><td>1033</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000771284</td></row>
 		<row><td>ID_STRING10</td><td>2052</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000773332</td></row>
 		<row><td>ID_STRING11</td><td>1028</td><td>ShengDnn</td><td>0</td><td/><td>1000777556</td></row>
 		<row><td>ID_STRING11</td><td>1033</td><td>ShengDnn</td><td>0</td><td/><td>1000777556</td></row>
 		<row><td>ID_STRING11</td><td>2052</td><td>ShengDnn</td><td>0</td><td/><td>1000777556</td></row>
+		<row><td>ID_STRING12</td><td>1028</td><td>LAUNCH~1.EXE|Launch WinFormsApp1.exe</td><td>0</td><td/><td>1403414677</td></row>
+		<row><td>ID_STRING12</td><td>1033</td><td>LAUNCH~1.EXE|Launch WinFormsApp1.exe</td><td>0</td><td/><td>1403414677</td></row>
+		<row><td>ID_STRING12</td><td>2052</td><td>LAUNCH~1.EXE|Launch WinFormsApp1.exe</td><td>0</td><td/><td>1403414677</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>shadow</td><td>0</td><td/><td>1000772532</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1000776628</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>shadow</td><td>0</td><td/><td>1403402357</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000772532</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>ShengDnnSetup</td><td>0</td><td/><td>1000776628</td></row>
 		<row><td>ID_STRING4</td><td>1028</td><td>ShengDnn</td><td>0</td><td/><td>1000742068</td></row>
@@ -5059,6 +5066,8 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 		<row><td>WinFormsApp1.exe1_2AECA9F26C274A87B7ECE3F8B635AB17.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
+		<row><td>WinFormsApp1.exe1_AC654C9CE25D47A4BF691EAF91F69B17.exe</td><td/><td>C:\Users\FlandreS\Desktop\cb7fl-3jr06-001.ico</td><td>0</td></row>
+		<row><td>WinFormsApp1.exe_2373797BAB7A4B15BB407979E58994F2.exe</td><td/><td>C:\Users\FlandreS\Desktop\cb7fl-3jr06-001.ico</td><td>0</td></row>
 		<row><td>WinFormsApp1.exe_244D09D5C5B34372A58744AF34593F00.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 		<row><td>_Built1_09A8F0D862FC4E15B50A9367B7B9CB69.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
 		<row><td>_Built1_136A9EB0ABA54CE2A6A2180765C3C751.exe</td><td/><td>C:\Users\FlandreS\Desktop\cbhdc-ly10z-002.ico</td><td>0</td></row>
@@ -5214,6 +5223,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SccPath</td><td/></row>
 		<row><td>SchemaVersion</td><td>776</td></row>
 		<row><td>Type</td><td>MSIE</td></row>
+		<row><td>VSSccAuxPath</td><td/></row>
+		<row><td>VSSccLocalPath</td><td/></row>
+		<row><td>VSSccProvider</td><td/></row>
 	</table>
 
 	<table name="InstallUISequence">
@@ -5574,7 +5586,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{8D2EE9AC-099C-4C7B-B92C-247B47F35319}</td><td/></row>
-		<row><td>ProductName</td><td>ShengDnnSetup</td><td/></row>
+		<row><td>ProductName</td><td>ShengDengSetup</td><td/></row>
 		<row><td>ProductVersion</td><td>1.00.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
@@ -5651,7 +5663,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>WinFormsApp1.exe</td><td>WinFormsApp1.exe</td><td/><td>shengd_1_shengdnnsetup</td><td>2</td></row>
+		<row><td>FileKey1</td><td>CheckUpdateVersion.exe</td><td/><td>shengd_1_shengdengsetup</td><td>2</td></row>
+		<row><td>WinFormsApp1.exe</td><td>WinFormsApp1.exe</td><td/><td>shengd_1_shengdengsetup</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -5737,8 +5750,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>WinFormsApp1.exe</td><td>shengd_1_shengdnnsetup</td><td>##IDS_SHORTCUT_DISPLAY_NAME15##</td><td>WinFormsApp1.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>WinFormsApp1.exe_244D09D5C5B34372A58744AF34593F00.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>WinFormsApp1.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME15##</td><td>WinFormsApp1.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>WinFormsApp1.exe1_2AECA9F26C274A87B7ECE3F8B635AB17.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>WinFormsApp1.exe</td><td>shengd_1_shengdengsetup</td><td>##IDS_SHORTCUT_DISPLAY_NAME17##</td><td>WinFormsApp1.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>WinFormsApp1.exe_2373797BAB7A4B15BB407979E58994F2.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>WinFormsApp1.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME17##</td><td>WinFormsApp1.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>WinFormsApp1.exe1_AC654C9CE25D47A4BF691EAF91F69B17.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

@@ -117,6 +117,7 @@
             // pnlGameMenu
             // 
             this.pnlGameMenu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlGameMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.pnlGameMenu.Controls.Add(this.panel1);
             this.pnlGameMenu.Controls.Add(this.lblMenuChart);
             this.pnlGameMenu.Controls.Add(this.label5);
@@ -155,7 +156,7 @@
             this.lblNextPeriod.AutoSize = true;
             this.lblNextPeriod.BackColor = System.Drawing.Color.Transparent;
             this.lblNextPeriod.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblNextPeriod.Location = new System.Drawing.Point(118, 5);
+            this.lblNextPeriod.Location = new System.Drawing.Point(130, 5);
             this.lblNextPeriod.Name = "lblNextPeriod";
             this.lblNextPeriod.Size = new System.Drawing.Size(71, 12);
             this.lblNextPeriod.TabIndex = 5;
@@ -165,9 +166,9 @@
             // 
             this.HD_GameSelect.AutoSize = true;
             this.HD_GameSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.HD_GameSelect.Location = new System.Drawing.Point(59, 5);
+            this.HD_GameSelect.Location = new System.Drawing.Point(65, 5);
             this.HD_GameSelect.Name = "HD_GameSelect";
-            this.HD_GameSelect.Size = new System.Drawing.Size(59, 12);
+            this.HD_GameSelect.Size = new System.Drawing.Size(65, 12);
             this.HD_GameSelect.TabIndex = 16;
             this.HD_GameSelect.Text = "GameSelect";
             // 
@@ -177,19 +178,19 @@
             this.HD_MenuSelect.Dock = System.Windows.Forms.DockStyle.Left;
             this.HD_MenuSelect.Location = new System.Drawing.Point(0, 5);
             this.HD_MenuSelect.Name = "HD_MenuSelect";
-            this.HD_MenuSelect.Size = new System.Drawing.Size(59, 12);
+            this.HD_MenuSelect.Size = new System.Drawing.Size(65, 12);
             this.HD_MenuSelect.TabIndex = 15;
             this.HD_MenuSelect.Text = "MenuSelect";
             // 
             // lblMenuChart
             // 
             this.lblMenuChart.AutoSize = true;
-            this.lblMenuChart.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuChart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
+            this.lblMenuChart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuChart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuChart.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuChart.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuChart.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuChart.ForeColor = System.Drawing.Color.White;
             this.lblMenuChart.Location = new System.Drawing.Point(673, 10);
             this.lblMenuChart.Name = "lblMenuChart";
             this.lblMenuChart.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -211,12 +212,12 @@
             // lblMenuTrend
             // 
             this.lblMenuTrend.AutoSize = true;
-            this.lblMenuTrend.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuTrend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuTrend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
+            this.lblMenuTrend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuTrend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuTrend.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuTrend.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuTrend.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuTrend.ForeColor = System.Drawing.Color.White;
             this.lblMenuTrend.Location = new System.Drawing.Point(566, 10);
             this.lblMenuTrend.Name = "lblMenuTrend";
             this.lblMenuTrend.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -238,12 +239,12 @@
             // lblMenuShrink
             // 
             this.lblMenuShrink.AutoSize = true;
-            this.lblMenuShrink.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuShrink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuShrink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
+            this.lblMenuShrink.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuShrink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuShrink.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuShrink.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuShrink.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuShrink.ForeColor = System.Drawing.Color.White;
             this.lblMenuShrink.Location = new System.Drawing.Point(459, 10);
             this.lblMenuShrink.Name = "lblMenuShrink";
             this.lblMenuShrink.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -265,12 +266,12 @@
             // lblMenuPlanUpload
             // 
             this.lblMenuPlanUpload.AutoSize = true;
-            this.lblMenuPlanUpload.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuPlanUpload.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuPlanUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
+            this.lblMenuPlanUpload.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuPlanUpload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuPlanUpload.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuPlanUpload.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuPlanUpload.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuPlanUpload.ForeColor = System.Drawing.Color.White;
             this.lblMenuPlanUpload.Location = new System.Drawing.Point(352, 10);
             this.lblMenuPlanUpload.Name = "lblMenuPlanUpload";
             this.lblMenuPlanUpload.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -293,12 +294,12 @@
             // lblMenuPlanAgent
             // 
             this.lblMenuPlanAgent.AutoSize = true;
-            this.lblMenuPlanAgent.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuPlanAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuPlanAgent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(133)))), ((int)(((byte)(20)))));
+            this.lblMenuPlanAgent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuPlanAgent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuPlanAgent.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuPlanAgent.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuPlanAgent.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuPlanAgent.ForeColor = System.Drawing.Color.White;
             this.lblMenuPlanAgent.Location = new System.Drawing.Point(245, 10);
             this.lblMenuPlanAgent.Name = "lblMenuPlanAgent";
             this.lblMenuPlanAgent.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -321,12 +322,12 @@
             // lblMenuPlanCycle
             // 
             this.lblMenuPlanCycle.AutoSize = true;
-            this.lblMenuPlanCycle.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblMenuPlanCycle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMenuPlanCycle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(49)))), ((int)(((byte)(0)))));
+            this.lblMenuPlanCycle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMenuPlanCycle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMenuPlanCycle.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMenuPlanCycle.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblMenuPlanCycle.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuPlanCycle.ForeColor = System.Drawing.Color.White;
             this.lblMenuPlanCycle.Location = new System.Drawing.Point(112, 10);
             this.lblMenuPlanCycle.Name = "lblMenuPlanCycle";
             this.lblMenuPlanCycle.Padding = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -338,10 +339,10 @@
             // lblGameName
             // 
             this.lblGameName.AutoSize = true;
-            this.lblGameName.BackColor = System.Drawing.Color.Transparent;
+            this.lblGameName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.lblGameName.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblGameName.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblGameName.ForeColor = System.Drawing.Color.Black;
+            this.lblGameName.ForeColor = System.Drawing.Color.White;
             this.lblGameName.Location = new System.Drawing.Point(0, 10);
             this.lblGameName.Name = "lblGameName";
             this.lblGameName.Padding = new System.Windows.Forms.Padding(20, 3, 20, 0);
@@ -502,7 +503,7 @@
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(75)))), ((int)(((byte)(55)))));
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(0, 1);
@@ -559,7 +560,7 @@
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(75)))), ((int)(((byte)(55)))));
             this.label8.Dock = System.Windows.Forms.DockStyle.Left;
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(0, 1);
@@ -669,7 +670,7 @@
             // lblGame1_1
             // 
             this.lblGame1_1.AutoSize = true;
-            this.lblGame1_1.BackColor = System.Drawing.Color.Black;
+            this.lblGame1_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.lblGame1_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblGame1_1.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblGame1_1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -684,7 +685,7 @@
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(75)))), ((int)(((byte)(55)))));
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(0, 1);
@@ -697,7 +698,7 @@
             // 
             // pnlGameLastNumber
             // 
-            this.pnlGameLastNumber.BackColor = System.Drawing.Color.SlateGray;
+            this.pnlGameLastNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.pnlGameLastNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlGameLastNumber.Controls.Add(this.panel38);
             this.pnlGameLastNumber.Controls.Add(this.lblNumber5);
@@ -1034,7 +1035,6 @@
         private System.Windows.Forms.Label lblMenuShrink;
         private System.Windows.Forms.Label lblMenuPlanUpload;
         private System.Windows.Forms.Label lblMenuPlanAgent;
-        private System.Windows.Forms.Label lblMenuPlanCycle;
         private System.Windows.Forms.Label lblGameName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -1063,7 +1063,6 @@
         private System.Windows.Forms.Label lblGame1_3;
         private System.Windows.Forms.Label lblGame1_2;
         private System.Windows.Forms.Label lblGame1_1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnlGameLastNumber;
         private System.Windows.Forms.Label lblNextPeriod;
         private System.Windows.Forms.Panel panel38;
@@ -1096,6 +1095,8 @@
         private System.Windows.Forms.Panel pnlMenuPlanAgent;
         private System.Windows.Forms.Timer timerFourFiveGodinsert;
         private System.ComponentModel.BackgroundWorker bgwGodinsert;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblMenuPlanCycle;
     }
 }
 

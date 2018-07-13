@@ -18,6 +18,10 @@ namespace WinFormsApp1
 {
     public partial class frmGameMain : Form
     {
+        //代理人的帳號密碼
+        public static string PlanProxyUser = "test01";
+        public static string PlanProxyPassWord = "123456";
+
         public static bool openMessage = false;
         //public static string strHistory;
         //public static string strHistoryCount; 
@@ -78,7 +82,7 @@ namespace WinFormsApp1
             timer_GetGameInfo.Enabled = true;
 
             string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
-            this.Text += ProVersion; 
+            this.Text = this.Text + "【" + PlanProxyUser + "】" + ProVersion; 
         }
 
         private void frmGameMain_Load(object sender, EventArgs e)
@@ -115,7 +119,7 @@ namespace WinFormsApp1
             f_Chart.Show();
             #region 進入時預設停在哪一分頁 哪一彩種
             HD_MenuSelect.Text = "神灯周期计划";
-            lblMenuPlanCycle.BackColor = Color.White;
+            lblMenuPlanCycle.BackColor = HexColor("#bd3100");
             lblMenuPlanCycle.Refresh();
             pnlMenuPlanAgent.Visible = false;
             pnlMenuPlanUpload.Visible = false;
@@ -149,27 +153,27 @@ namespace WinFormsApp1
             switch (HD_MenuSelect.Text)
             {
                 case "神灯周期计划":
-                    lblMenuPlanCycle.BackColor = Color.White;
+                    lblMenuPlanCycle.BackColor = HexColor("#bd3100");
                     lblMenuPlanCycle.Refresh();
                     pnlMenuPlanCycle.Visible = true;
                     break;
                 case "代理计划":
-                    lblMenuPlanAgent.BackColor = Color.White;
+                    lblMenuPlanAgent.BackColor = HexColor("#bd3100");
                     lblMenuPlanAgent.Refresh();
                     pnlMenuPlanAgent.Visible = true;
                     break;
                 case "计划上传":
-                    lblMenuPlanUpload.BackColor = Color.White;
+                    lblMenuPlanUpload.BackColor = HexColor("#bd3100");
                     lblMenuPlanUpload.Refresh();
                     pnlMenuPlanUpload.Visible = true;
                     break;
                 case "缩水工具":
-                    lblMenuShrink.BackColor = Color.White;
+                    lblMenuShrink.BackColor = HexColor("#bd3100");
                     lblMenuShrink.Refresh();
                     pnlMenuShrink.Visible = true;
                     break;
                 case "走势图":
-                    lblMenuChart.BackColor = Color.White;
+                    lblMenuChart.BackColor = HexColor("#bd3100");
                     lblMenuChart.Refresh();
                     pnlMenuChart.Visible = true;
                     break;
@@ -186,7 +190,7 @@ namespace WinFormsApp1
             {
                 case "重庆时时彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_1.BackColor = Color.Black;
+                    lblGame1_1.BackColor = HexColor("#df6600");
                     lblGame1_1.ForeColor = Color.White;
                     lblGame1_1.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
@@ -196,7 +200,7 @@ namespace WinFormsApp1
                     break;
                 case "天津时时彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_5.BackColor = Color.Black;
+                    lblGame1_5.BackColor = HexColor("#df6600");
                     lblGame1_5.ForeColor = Color.White;
                     lblGame1_5.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
@@ -206,7 +210,7 @@ namespace WinFormsApp1
                     break;
                 case "腾讯官方彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_2.BackColor = Color.Black;
+                    lblGame1_2.BackColor = HexColor("#df6600");
                     lblGame1_2.ForeColor = Color.White;
                     lblGame1_2.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
@@ -216,7 +220,7 @@ namespace WinFormsApp1
                     break;
                 case "腾讯奇趣彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_3.BackColor = Color.Black;
+                    lblGame1_3.BackColor = HexColor("#df6600");
                     lblGame1_3.ForeColor = Color.White;
                     lblGame1_3.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
@@ -226,7 +230,7 @@ namespace WinFormsApp1
                     break;
                 case "新疆时时彩":
                     ResetAllGame(); //重設彩票
-                    lblGame1_6.BackColor = Color.Black;
+                    lblGame1_6.BackColor = HexColor("#df6600");
                     lblGame1_6.ForeColor = Color.White;
                     lblGame1_6.Refresh();
                     HD_GameSelect.Text = ((Label)(sender)).Text;
@@ -257,14 +261,41 @@ namespace WinFormsApp1
             frm_PlanAgent.ischagneGameName = true;
         }
 
+        //色碼修改
+        public Color HexColor(String hex)
+        {
+           //將井字號移除
+            hex = hex.Replace("#", "");
+ 
+            byte a = 255;
+            byte r = 255;
+            byte g = 255;
+            byte b = 255; 
+            int start = 0;
+ 
+            //處理ARGB字串 
+            if (hex.Length == 8)
+            {
+                a = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                start = 2;
+            }
+ 
+            // 將RGB文字轉成byte
+            r = byte.Parse(hex.Substring(start, 2), System.Globalization.NumberStyles.HexNumber);
+            g = byte.Parse(hex.Substring(start + 2, 2), System.Globalization.NumberStyles.HexNumber);
+            b = byte.Parse(hex.Substring(start + 4, 2), System.Globalization.NumberStyles.HexNumber);
+ 
+            return Color.FromArgb(a, r, g, b);
+        }
+
         //重設選單
         private void ResetAllMenu()
         {
-            lblMenuPlanCycle.BackColor = Color.LightGray; lblMenuPlanCycle.Refresh();
-            lblMenuPlanAgent.BackColor = Color.LightGray; lblMenuPlanAgent.Refresh();
-            lblMenuPlanUpload.BackColor = Color.LightGray; lblMenuPlanUpload.Refresh();
-            lblMenuShrink.BackColor = Color.LightGray; lblMenuShrink.Refresh();
-            lblMenuChart.BackColor = Color.LightGray; lblMenuChart.Refresh();
+            lblMenuPlanCycle.BackColor = HexColor("#df8514"); lblMenuPlanCycle.Refresh();
+            lblMenuPlanAgent.BackColor = HexColor("#df8514"); lblMenuPlanAgent.Refresh();
+            lblMenuPlanUpload.BackColor = HexColor("#df8514"); lblMenuPlanUpload.Refresh();
+            lblMenuShrink.BackColor = HexColor("#df8514"); lblMenuShrink.Refresh();
+            lblMenuChart.BackColor = HexColor("#df8514"); lblMenuChart.Refresh();
             pnlMenuPlanCycle.Visible = false;
             pnlMenuPlanAgent.Visible = false;
             pnlMenuPlanUpload.Visible = false;
@@ -435,6 +466,7 @@ namespace WinFormsApp1
         private void timer_ShowMessage_Tick(object sender, EventArgs e)
         {
             ShowMessage();
+            timer_ShowMessage.Interval = 300000;
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)

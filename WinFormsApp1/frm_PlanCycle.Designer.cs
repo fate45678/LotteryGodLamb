@@ -58,6 +58,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
+            this.picboxAdCycle = new System.Windows.Forms.PictureBox();
             this.tblGod = new System.Windows.Forms.TableLayoutPanel();
             this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
@@ -114,6 +115,7 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.brnRefresh = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -124,6 +126,7 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlUserRank.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).BeginInit();
             this.panel33.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -154,7 +157,8 @@
             // 
             // pnlUserSettingRow2
             // 
-            this.pnlUserSettingRow2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSettingRow2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.pnlUserSettingRow2.Controls.Add(this.brnRefresh);
             this.pnlUserSettingRow2.Controls.Add(this.btnViewResult);
             this.pnlUserSettingRow2.Controls.Add(this.label1);
             this.pnlUserSettingRow2.Controls.Add(this.cbGameCycle);
@@ -342,7 +346,7 @@
             // 
             // pnlUserSettingRow1
             // 
-            this.pnlUserSettingRow1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSettingRow1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlUserSettingRow1.Controls.Add(this.ckWinToNextCycle);
             this.pnlUserSettingRow1.Controls.Add(this.ckRegularCycle);
             this.pnlUserSettingRow1.Controls.Add(this.label5);
@@ -497,7 +501,7 @@
             // 
             // pnlShowPlan
             // 
-            this.pnlShowPlan.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlShowPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlShowPlan.Controls.Add(this.panel2);
             this.pnlShowPlan.Controls.Add(this.pnlShowPlanTitle);
             this.pnlShowPlan.Location = new System.Drawing.Point(3, 58);
@@ -545,15 +549,23 @@
             // pnlUserRank
             // 
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserRank.Controls.Add(this.picboxAdCycle);
             this.pnlUserRank.Controls.Add(this.tblGod);
             this.pnlUserRank.Controls.Add(this.rtxPlanList);
             this.pnlUserRank.Controls.Add(this.panel33);
-            this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
             this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
             this.pnlUserRank.TabIndex = 1;
             this.pnlUserRank.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlUserRank_Paint);
+            // 
+            // picboxAdCycle
+            // 
+            this.picboxAdCycle.Location = new System.Drawing.Point(0, 350);
+            this.picboxAdCycle.Name = "picboxAdCycle";
+            this.picboxAdCycle.Size = new System.Drawing.Size(210, 102);
+            this.picboxAdCycle.TabIndex = 10;
+            this.picboxAdCycle.TabStop = false;
             // 
             // tblGod
             // 
@@ -595,7 +607,7 @@
             // 
             // panel33
             // 
-            this.panel33.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel33.Controls.Add(this.label116);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
@@ -650,7 +662,7 @@
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
@@ -679,6 +691,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(853, 0);
             this.panel3.Name = "panel3";
@@ -688,7 +701,7 @@
             // pnlCycleSelect
             // 
             this.pnlCycleSelect.AutoScroll = true;
-            this.pnlCycleSelect.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlCycleSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlCycleSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleSelect.Controls.Add(this.rtxtPlanCycle);
             this.pnlCycleSelect.Controls.Add(this.panel31);
@@ -715,6 +728,7 @@
             // 
             // panel31
             // 
+            this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel31.Controls.Add(this.btnCopyPlanNumber);
             this.panel31.Controls.Add(this.btnEditPlanNumber);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -755,6 +769,7 @@
             // 
             // panel30
             // 
+            this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel30.Controls.Add(this.lblPlanCycleDetail);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel30.Location = new System.Drawing.Point(5, 23);
@@ -776,6 +791,7 @@
             // 
             // panel29
             // 
+            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel29.Controls.Add(this.label2);
             this.panel29.Controls.Add(this.cbPlanCycleSelect);
             this.panel29.Controls.Add(this.lblPlanCycleSelected);
@@ -829,6 +845,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(391, 0);
             this.panel1.Name = "panel1";
@@ -848,7 +865,7 @@
             // pnlCycleList
             // 
             this.pnlCycleList.AutoScroll = true;
-            this.pnlCycleList.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlCycleList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlCycleList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCycleList.Controls.Add(this.flowLayoutPanel1);
             this.pnlCycleList.Controls.Add(this.panel9);
@@ -958,7 +975,7 @@
             // 
             // panel36
             // 
-            this.panel36.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel36.Controls.Add(this.label130);
             this.panel36.Controls.Add(this.lblProfit);
             this.panel36.Controls.Add(this.label128);
@@ -1065,7 +1082,7 @@
             // 
             // panel35
             // 
-            this.panel35.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel35.Controls.Add(this.label123);
             this.panel35.Controls.Add(this.lblSumBetsCycle);
             this.panel35.Controls.Add(this.label119);
@@ -1144,7 +1161,7 @@
             // 
             // pnlShowPlanTitle
             // 
-            this.pnlShowPlanTitle.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlShowPlanTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlShowPlanTitle.Controls.Add(this.label122);
             this.pnlShowPlanTitle.Controls.Add(this.lblPlanWinOpp);
             this.pnlShowPlanTitle.Controls.Add(this.label120);
@@ -1256,11 +1273,28 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // brnRefresh
+            // 
+            this.brnRefresh.BackColor = System.Drawing.Color.Gray;
+            this.brnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.brnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.brnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brnRefresh.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.brnRefresh.ForeColor = System.Drawing.Color.DarkRed;
+            this.brnRefresh.Location = new System.Drawing.Point(836, 1);
+            this.brnRefresh.Margin = new System.Windows.Forms.Padding(0);
+            this.brnRefresh.Name = "brnRefresh";
+            this.brnRefresh.Size = new System.Drawing.Size(132, 27);
+            this.brnRefresh.TabIndex = 24;
+            this.brnRefresh.Text = "刷新";
+            this.brnRefresh.UseVisualStyleBackColor = false;
+            this.brnRefresh.Click += new System.EventHandler(this.brnRefresh_Click);
+            // 
             // frm_PlanCycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.ClientSize = new System.Drawing.Size(1500, 549);
             this.Controls.Add(this.pnlShowPlan);
             this.Controls.Add(this.pnlUserSetting);
@@ -1283,6 +1317,7 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.pnlUserRank.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picboxAdCycle)).EndInit();
             this.panel33.ResumeLayout(false);
             this.panel33.PerformLayout();
             this.pnlHistory.ResumeLayout(false);
@@ -1399,5 +1434,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.RichTextBox rtxPlanList;
         private System.Windows.Forms.TableLayoutPanel tblGod;
+        private System.Windows.Forms.PictureBox picboxAdCycle;
+        private System.Windows.Forms.Button brnRefresh;
     }
 }
