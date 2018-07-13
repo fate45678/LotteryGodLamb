@@ -1796,14 +1796,20 @@ namespace WinFormsApp1
         {
             var dt_cycle = Items.Where(x => x.Key > (int)cbGamePlan.SelectedValue-1);
             cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
-
             label2.Text = "共1期";
+            label23.Text = "第" + cbGamePlan.Text + "期 ~ 第" + cbGameCycle.Text + "期 " + label2.Text;
+            
         }
 
         private void checkdataTest(string type)
         {
             //1.先確認玩法
-            string GameKind = cbGameKind.Text;
+            string GameKind = "";
+            if (type == "A")
+                GameKind = cbGameKind.Text;
+            else
+                GameKind = label16.Text.Substring(label16.Text.Length - 4, 4);
+            //string GameKind = cbGameKind.Text;
             int lenghCheck = 0;
 
             if (GameKind.Contains("二"))
@@ -1847,11 +1853,17 @@ namespace WinFormsApp1
                     CompletNumber = CompletNumber + " " + checkTmpWhere[i];
                 }
 
-                richTextBox2.Text = CompletNumber.Substring(1);
+                if(type == "A")
+                    richTextBox2.Text = CompletNumber.Substring(1);
+                else
+                    richTextBox1.Text = CompletNumber.Substring(1);
             }
             else
             {
-                richTextBox2.Text = "";
+                if (type == "A")
+                    richTextBox2.Text = "";
+                else
+                    richTextBox1.Text = "";
             }
             label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
 
@@ -2180,10 +2192,14 @@ namespace WinFormsApp1
         private void button5_Click(object sender, EventArgs e)
         {
             string pid = "";
-            var aaaa = checkedListBoxEx1.CheckedItems[0];
+            //var aaaa = checkedListBoxEx1.CheckedItems[0];
             //var a = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.SelectedValue).id).ToString();
-            var ii = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.CheckedItems[0]).id).ToString(); ;
-
+            //var ii = (((WinFormsApp1.frm_PlanUpload.compentContent)checkedListBoxEx1.CheckedItems[0]).id).ToString(); ;
+            if (checkedListBoxEx1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("請選擇刪除的計畫");
+                return;
+            }
             string DeleteName = "";
 
             for (int i = 0; i < checkedListBoxEx1.CheckedItems.Count; i++)
@@ -2246,6 +2262,11 @@ namespace WinFormsApp1
                 MessageBox.Show("請先登入。");
                 return;
             }
+            else if (richTextBox1.Text.Trim() == "")
+            {
+                MessageBox.Show("號碼不得為空。");
+                return;
+            }
             else if (comboBox1.Text.Substring(8) == "120")
             {
                 MessageBox.Show("已经是最后一期了");
@@ -2254,12 +2275,17 @@ namespace WinFormsApp1
             else
             {
                 checkdataTest("B");
+                if (richTextBox1.Text.Trim() == "")
+                {
+                    MessageBox.Show("號碼不得為空。");
+                    return;
+                }
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
 
                 //string updatePid = checkedListBoxEx1.SelectedValue.ToString();
-                string updatePid = this.checkedListBoxEx1.Text.Split(',')[0].Replace("計畫序號: ","");
+                string updatePid = this.checkedListBoxEx1.Text.Split(',')[0].Replace("計畫序號: ", "");
                 //取得帳號
                 Dictionary<int, string> dic = new Dictionary<int, string>();
                 dic.Add(0, "account");
@@ -2273,7 +2299,7 @@ namespace WinFormsApp1
                     //string PStart = label17.Text.Substring(label17.Text.IndexOf("2"), 11);
 
                     string PEnd = comboBox2.Text;
-                    string PRule = richTextBox1.Text;                   
+                    string PRule = richTextBox1.Text;
                     string PNote = frmGameMain.globalMessageTemp;//DELETE Upplan WHERE p_id = '{0}'
                     string cmd = string.Format("UPDATE Upplan SET p_isoldplan = '2' where p_id = '{7}';Insert INTO Upplan(p_name ,p_account ,p_start ,p_end ,p_rule,p_note ,p_uploadDate, p_isoldplan, p_curNum) VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','1', '0')", PName, frmGameMain.globalUserAccount, PStart, PEnd, PRule, PNote, PNowDate, updatePid);
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", cmd);
@@ -2281,7 +2307,7 @@ namespace WinFormsApp1
                     //con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Insert into Upplan(p_name ,p_account ,p_start ,p_end ,p_rule,p_uploadDate) values('" + label16.Text.Replace("續傳", "") + "續傳" + "','" + getData.ElementAt(0) + "','" + comboBox1.Text + "','" + comboBox2.Text + "','" + richTextBox1.Text + "','" + NowDate + "')");
                     updatecheckboxlist1(0);
 
-                    
+
                 }
                 else
                     MessageBox.Show("該計畫帳號不存在。");
@@ -2742,7 +2768,13 @@ namespace WinFormsApp1
                 return;
             string[] nameArr = name.Split(',');
             long start = Int64.Parse(nameArr[0].Trim());
-            long end = Int64.Parse(nameArr[1].Substring(1,11).Trim());
+
+            long end = 0;
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                end = Int64.Parse(nameArr[1].Substring(1,11).Trim());
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+                end = Int64.Parse(nameArr[1].Substring(1, 12).Trim());
+
             string GameKind = label16.Text;
 
             //int itmeType = 0;
@@ -2790,7 +2822,7 @@ namespace WinFormsApp1
             dic.Add(0, "p_rule");
             dic.Add(1, "p_end");
             //allorwUpdate = false;
-            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + GameKind + "%'", dic);
+            var getData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_account = '" + frmGameMain.globalUserAccount + "' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + GameKind + "%' ", dic);
             richTextBox1.Text = "";
             for (int i = 0; i < getData.Count(); i = i + 2)
             {
@@ -2935,7 +2967,7 @@ namespace WinFormsApp1
 
             label2.Text = "共" + ((backAmount - frontAmount)+ 1) + "期";
 
-            label23.Text = cbGamePlan.Text + " ~ " + cbGameCycle.Text + " " + label2.Text;
+            label23.Text = "第" + cbGamePlan.Text + "期 ~ 第" + cbGameCycle.Text + " " + label2.Text;
         }
 
         private void timeCheckChange_Tick(object sender, EventArgs e)
@@ -3026,6 +3058,7 @@ namespace WinFormsApp1
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
+                frm_LoadingControl.Close();
 
                 UpdateHistory();
                 //refreshInterface();
@@ -3055,7 +3088,7 @@ namespace WinFormsApp1
 
                 cbGameKind.SelectedIndex = 0;
 
-                frm_LoadingControl.Close();
+                
                 isChangeLotteryName = false;
                 updatecheckboxlist1(0);
 

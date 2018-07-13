@@ -990,6 +990,9 @@ namespace WinFormsApp1
                     num = (((double)(countWin) / (double)oldtotalPlay) * 100);
                 hitTimes.Add(hitElem, num);
 
+                string[] updateWinRateArr = hitElem.Split(',');
+
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Update Upplan set p_hits = '" + num + "' WHERE p_id = '" + int.Parse(updateWinRateArr[0]) + "'");
                 //hitTimes.Add(dic.ElementAt(i).Key, hitPercent);
                 //int temp = 0;
                 //for (int j = 0; j < getHistory.Count; j++)
@@ -1722,6 +1725,7 @@ namespace WinFormsApp1
             DataTable GodList = GodUpdateTable();
             //string[] hitTimesElementAt;
             double checkWinRate = 0;
+            int y = 0;
             for (int i = 0; i < GodList.Rows.Count; i++)
             {
                 Control control = new Button();
@@ -1754,8 +1758,8 @@ namespace WinFormsApp1
                 control.Padding = new Padding(5);
                 control.Dock = DockStyle.Fill;
                 control.Click += dynamicGodBt_Click;
-                this.tableLayoutPanel3.Controls.Add(control, 0, 0);
-
+                this.tableLayoutPanel3.Controls.Add(control, 0, y);
+                y++;
                 //richTextBox2.Text += hitTimesElementAt[0] + "\r\n";
             }
         }
@@ -1772,7 +1776,7 @@ namespace WinFormsApp1
             try
             {
                 con.Open();
-                string Sqlstr = @"select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND p_hits > 30 order by p_hits";
+                string Sqlstr = @"select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_name LIKE '%" + frm_PlanCycle.GameLotteryName + "%' AND p_isoldplan = '1' AND p_hits > 30 order by p_hits desc";
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -2053,6 +2057,7 @@ namespace WinFormsApp1
         {
             pageIndex = 0;
             button42.Enabled = false;
+            refreshTBpanel();
         }
 
         private void button42_Click(object sender, EventArgs e)
@@ -2074,12 +2079,23 @@ namespace WinFormsApp1
                 button42.Enabled = true;
             else
                 button42.Enabled = false;
+
+            string nowdate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            if (hitTimesElementAt == null || hitTimesElementAt.Count() == 0)
+                return;
+
             for (int i = pageIndex; i < pageIndex + 27 && i < hitTimes.Count; i++)
             {
                 Control control = new Button();
-                control.Text = hitTimes.ElementAt(i).Key;
-                control.Size = new System.Drawing.Size(140, 30);
-                control.Name = String.Format("btx{0}y{1}", 0, 0);
+                hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
+                control.Text = hitTimesElementAt[1] + "\r\n 中奖率" + hitTimes.ElementAt(i).Value.ToString("0.00") + "%  \r\n" + hitTimesElementAt[3];
+                if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                {
+                    control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+                }
+
+                control.Size = new System.Drawing.Size(140, 130);
+                control.Name = hitTimesElementAt[0];
                 if (hitTimes.ElementAt(i).Value >= 80)
                 {
                     control.BackColor = Color.Red;
@@ -2102,6 +2118,7 @@ namespace WinFormsApp1
                 }
                 else
                     control.BackColor = Color.Yellow;
+
                 control.Padding = new Padding(5);
                 control.Dock = DockStyle.Fill;
                 control.Click += dynamicBt_Click;
@@ -2119,7 +2136,13 @@ namespace WinFormsApp1
                 return;
             string[] nameArr = name.Split(',');
             long start = Int64.Parse(nameArr[0].Trim());
-            long end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
+            long end = 0;
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+                end = Int64.Parse(nameArr[1].Substring(1, 12).Trim());
+
+            //long end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
             string GameKind = choosePlanName;
 
             //int itmeType = 0;
@@ -2192,13 +2215,13 @@ namespace WinFormsApp1
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (ischagneGameName)
-            {
-                ischagneGameName = false;
-
+            {            
                 tableLayoutPanel1.Controls.Clear();
                 listBox1.Items.Clear();
                 listBox2.Items.Clear();
                 richTextBox1.Text = "";
+
+                ischagneGameName = false;
 
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
