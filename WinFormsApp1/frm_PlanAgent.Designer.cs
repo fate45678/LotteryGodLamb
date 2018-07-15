@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PlanAgent));
             this.pnlPlanArea = new System.Windows.Forms.Panel();
             this.pnlPlanRight = new System.Windows.Forms.Panel();
             this.pnlRightBottom = new System.Windows.Forms.Panel();
@@ -152,21 +151,19 @@
             this.pnlAD3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD3.Controls.Add(this.picBoxAdAngent);
             this.pnlAD3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlAD3.Location = new System.Drawing.Point(476, 0);
+            this.pnlAD3.Location = new System.Drawing.Point(512, 0);
             this.pnlAD3.Name = "pnlAD3";
-            this.pnlAD3.Size = new System.Drawing.Size(553, 120);
+            this.pnlAD3.Size = new System.Drawing.Size(526, 120);
             this.pnlAD3.TabIndex = 0;
             // 
             // picBoxAdAngent
             // 
             this.picBoxAdAngent.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxAdAngent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBoxAdAngent.BackgroundImage")));
             this.picBoxAdAngent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picBoxAdAngent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBoxAdAngent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBoxAdAngent.Location = new System.Drawing.Point(0, 0);
+            this.picBoxAdAngent.Location = new System.Drawing.Point(3, 0);
             this.picBoxAdAngent.Name = "picBoxAdAngent";
-            this.picBoxAdAngent.Size = new System.Drawing.Size(551, 118);
+            this.picBoxAdAngent.Size = new System.Drawing.Size(520, 118);
             this.picBoxAdAngent.TabIndex = 1;
             this.picBoxAdAngent.TabStop = false;
             // 
@@ -175,7 +172,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(466, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(10, 120);
+            this.panel9.Size = new System.Drawing.Size(46, 120);
             this.panel9.TabIndex = 7;
             // 
             // pnlMyFavorite
@@ -299,7 +296,7 @@
             this.label116.Location = new System.Drawing.Point(0, 0);
             this.label116.Name = "label116";
             this.label116.Padding = new System.Windows.Forms.Padding(5, 8, 5, 0);
-            this.label116.Size = new System.Drawing.Size(81, 20);
+            this.label116.Size = new System.Drawing.Size(79, 20);
             this.label116.TabIndex = 1;
             this.label116.Text = "代理-大神榜";
             // 
@@ -424,7 +421,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.ForeColor = System.Drawing.Color.Red;
+            this.button3.ForeColor = System.Drawing.Color.Snow;
             this.button3.Location = new System.Drawing.Point(242, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 32);
@@ -605,7 +602,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.Location = new System.Drawing.Point(3, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(263, 12);
+            this.label6.Size = new System.Drawing.Size(266, 12);
             this.label6.TabIndex = 0;
             this.label6.Text = "红色80~100% 蓝色70~80% 绿色50~70% 白色50%↓";
             // 
@@ -700,7 +697,7 @@
             this.txtSearchUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtSearchUser.Location = new System.Drawing.Point(3, 3);
             this.txtSearchUser.Name = "txtSearchUser";
-            this.txtSearchUser.Size = new System.Drawing.Size(244, 21);
+            this.txtSearchUser.Size = new System.Drawing.Size(244, 22);
             this.txtSearchUser.TabIndex = 0;
             // 
             // panel6

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pnlUserSetting = new System.Windows.Forms.Panel();
             this.pnlUserSettingRow2 = new System.Windows.Forms.Panel();
+            this.brnRefresh = new System.Windows.Forms.Button();
             this.btnViewResult = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbGameCycle = new System.Windows.Forms.ComboBox();
@@ -115,7 +116,6 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.brnRefresh = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -176,6 +176,23 @@
             this.pnlUserSettingRow2.Padding = new System.Windows.Forms.Padding(10, 3, 0, 0);
             this.pnlUserSettingRow2.Size = new System.Drawing.Size(1494, 29);
             this.pnlUserSettingRow2.TabIndex = 1;
+            // 
+            // brnRefresh
+            // 
+            this.brnRefresh.BackColor = System.Drawing.Color.Gray;
+            this.brnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.brnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.brnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brnRefresh.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.brnRefresh.ForeColor = System.Drawing.Color.White;
+            this.brnRefresh.Location = new System.Drawing.Point(836, 1);
+            this.brnRefresh.Margin = new System.Windows.Forms.Padding(0);
+            this.brnRefresh.Name = "brnRefresh";
+            this.brnRefresh.Size = new System.Drawing.Size(132, 27);
+            this.brnRefresh.TabIndex = 24;
+            this.brnRefresh.Text = "刷新";
+            this.brnRefresh.UseVisualStyleBackColor = false;
+            this.brnRefresh.Click += new System.EventHandler(this.brnRefresh_Click);
             // 
             // btnViewResult
             // 
@@ -1272,23 +1289,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // brnRefresh
-            // 
-            this.brnRefresh.BackColor = System.Drawing.Color.Gray;
-            this.brnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.brnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.brnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brnRefresh.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.brnRefresh.ForeColor = System.Drawing.Color.DarkRed;
-            this.brnRefresh.Location = new System.Drawing.Point(836, 1);
-            this.brnRefresh.Margin = new System.Windows.Forms.Padding(0);
-            this.brnRefresh.Name = "brnRefresh";
-            this.brnRefresh.Size = new System.Drawing.Size(132, 27);
-            this.brnRefresh.TabIndex = 24;
-            this.brnRefresh.Text = "刷新";
-            this.brnRefresh.UseVisualStyleBackColor = false;
-            this.brnRefresh.Click += new System.EventHandler(this.brnRefresh_Click);
             // 
             // frm_PlanCycle
             // 
