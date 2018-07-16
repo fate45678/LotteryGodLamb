@@ -97,7 +97,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -112,6 +111,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timeCheckChange = new System.Windows.Forms.Timer(this.components);
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.pnlUserSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -139,7 +139,7 @@
             // 
             // pnlUserSetting
             // 
-            this.pnlUserSetting.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlUserSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlUserSetting.Controls.Add(this.pictureBox1);
             this.pnlUserSetting.Controls.Add(this.button1);
             this.pnlUserSetting.Controls.Add(this.btnViewResult);
@@ -357,13 +357,13 @@
             this.cbGameKind.ForeColor = System.Drawing.Color.Black;
             this.cbGameKind.FormattingEnabled = true;
             this.cbGameKind.Items.AddRange(new object[] {
-            "五星",
-            "四星",
+            "前二",
+            "后二",
             "前三",
             "中三",
             "后三",
-            "前二",
-            "后二"});
+            "四星",
+            "五星"});
             this.cbGameKind.Location = new System.Drawing.Point(0, 3);
             this.cbGameKind.Name = "cbGameKind";
             this.cbGameKind.Size = new System.Drawing.Size(158, 20);
@@ -374,6 +374,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel2.Controls.Add(this.pnlHistory);
             this.panel2.Controls.Add(this.panel9);
             this.panel2.Controls.Add(this.pnlAD4);
@@ -392,14 +393,14 @@
             // 
             // pnlHistory
             // 
-            this.pnlHistory.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlHistory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlHistory.Controls.Add(this.rtxtHistory);
             this.pnlHistory.Controls.Add(this.panel32);
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(1095, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(348, 346);
+            this.pnlHistory.Size = new System.Drawing.Size(227, 367);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -412,18 +413,18 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(338, 308);
+            this.rtxtHistory.Size = new System.Drawing.Size(217, 331);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
             // panel32
             // 
-            this.panel32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(346, 28);
+            this.panel32.Size = new System.Drawing.Size(225, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -440,38 +441,36 @@
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(1095, 346);
+            this.panel9.Location = new System.Drawing.Point(1095, 367);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(351, 6);
+            this.panel9.Size = new System.Drawing.Size(351, 10);
             this.panel9.TabIndex = 8;
             // 
             // pnlAD4
             // 
-            this.pnlAD4.BackColor = System.Drawing.Color.Transparent;
+            this.pnlAD4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlAD4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAD4.Controls.Add(this.picAD4);
             this.pnlAD4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAD4.Location = new System.Drawing.Point(1095, 352);
+            this.pnlAD4.Location = new System.Drawing.Point(1095, 377);
             this.pnlAD4.Name = "pnlAD4";
-            this.pnlAD4.Size = new System.Drawing.Size(351, 158);
+            this.pnlAD4.Size = new System.Drawing.Size(351, 133);
             this.pnlAD4.TabIndex = 3;
             // 
             // picAD4
             // 
             this.picAD4.BackColor = System.Drawing.Color.Transparent;
-            this.picAD4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAD4.BackgroundImage")));
             this.picAD4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picAD4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAD4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picAD4.Location = new System.Drawing.Point(0, 0);
+            this.picAD4.Location = new System.Drawing.Point(-1, -1);
             this.picAD4.Name = "picAD4";
-            this.picAD4.Size = new System.Drawing.Size(349, 156);
+            this.picAD4.Size = new System.Drawing.Size(350, 131);
             this.picAD4.TabIndex = 1;
             this.picAD4.TabStop = false;
-            this.picAD4.Click += new System.EventHandler(this.picAD4_Click);
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(1085, 0);
             this.panel4.Name = "panel4";
@@ -481,7 +480,7 @@
             // pnlNewPlan
             // 
             this.pnlNewPlan.AutoScroll = true;
-            this.pnlNewPlan.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlNewPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlNewPlan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlNewPlan.Controls.Add(this.richTextBox2);
             this.pnlNewPlan.Controls.Add(this.panel7);
@@ -508,6 +507,7 @@
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel7.Controls.Add(this.btnCopyUp);
             this.panel7.Controls.Add(this.button7);
             this.panel7.Controls.Add(this.button6);
@@ -597,6 +597,7 @@
             // 
             // panel15
             // 
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel15.Controls.Add(this.button8);
             this.panel15.Controls.Add(this.label23);
             this.panel15.Controls.Add(this.label24);
@@ -641,6 +642,7 @@
             // 
             // panel14
             // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel14.Controls.Add(this.label20);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel14.Location = new System.Drawing.Point(0, 0);
@@ -661,6 +663,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(716, 0);
             this.panel3.Name = "panel3";
@@ -670,7 +673,7 @@
             // pnlSentConti
             // 
             this.pnlSentConti.AutoScroll = true;
-            this.pnlSentConti.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlSentConti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlSentConti.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlSentConti.Controls.Add(this.listBox2);
             this.pnlSentConti.Controls.Add(this.listBox1);
@@ -921,6 +924,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(344, 0);
             this.panel1.Name = "panel1";
@@ -929,7 +933,7 @@
             // 
             // pnlSent
             // 
-            this.pnlSent.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlSent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.pnlSent.Controls.Add(this.checkedListBoxEx1);
             this.pnlSent.Controls.Add(this.panel6);
             this.pnlSent.Controls.Add(this.panel5);
@@ -939,15 +943,6 @@
             this.pnlSent.Padding = new System.Windows.Forms.Padding(5);
             this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
-            // 
-            // checkedListBoxEx1
-            // 
-            this.checkedListBoxEx1.FormattingEnabled = true;
-            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
-            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 308);
-            this.checkedListBoxEx1.TabIndex = 7;
-            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 
             // panel6
             // 
@@ -1044,16 +1039,19 @@
             // 
             // button12
             // 
+            this.button12.BackColor = System.Drawing.Color.Gray;
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.Location = new System.Drawing.Point(206, 9);
             this.button12.Margin = new System.Windows.Forms.Padding(0);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(89, 21);
             this.button12.TabIndex = 9;
             this.button12.Text = "刷新";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // label10
@@ -1090,6 +1088,15 @@
             this.timeCheckChange.Enabled = true;
             this.timeCheckChange.Interval = 1000;
             this.timeCheckChange.Tick += new System.EventHandler(this.timeCheckChange_Tick);
+            // 
+            // checkedListBoxEx1
+            // 
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 270);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 
             // frm_PlanUpload
             // 

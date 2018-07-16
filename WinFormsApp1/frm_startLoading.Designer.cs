@@ -33,6 +33,7 @@
             this.bkgStart = new System.ComponentModel.BackgroundWorker();
             this.tlpAd = new System.Windows.Forms.TableLayoutPanel();
             this.ptbAd = new System.Windows.Forms.PictureBox();
+            this.lbDoingDesc = new System.Windows.Forms.Label();
             this.tlpAd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAd)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +71,7 @@
             this.tlpAd.Name = "tlpAd";
             this.tlpAd.RowCount = 1;
             this.tlpAd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpAd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 135F));
             this.tlpAd.Size = new System.Drawing.Size(519, 135);
             this.tlpAd.TabIndex = 2;
             // 
@@ -83,12 +84,22 @@
             this.ptbAd.TabIndex = 0;
             this.ptbAd.TabStop = false;
             // 
+            // lbDoingDesc
+            // 
+            this.lbDoingDesc.AutoSize = true;
+            this.lbDoingDesc.Location = new System.Drawing.Point(223, 212);
+            this.lbDoingDesc.Name = "lbDoingDesc";
+            this.lbDoingDesc.Size = new System.Drawing.Size(77, 12);
+            this.lbDoingDesc.TabIndex = 3;
+            this.lbDoingDesc.Text = "准备载入资讯";
+            // 
             // frm_startLoading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(527, 218);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.ClientSize = new System.Drawing.Size(527, 233);
+            this.Controls.Add(this.lbDoingDesc);
             this.Controls.Add(this.tlpAd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pgbShow);
@@ -109,5 +120,6 @@
         private System.ComponentModel.BackgroundWorker bkgStart;
         private System.Windows.Forms.TableLayoutPanel tlpAd;
         private System.Windows.Forms.PictureBox ptbAd;
+        private System.Windows.Forms.Label lbDoingDesc;
     }
 }

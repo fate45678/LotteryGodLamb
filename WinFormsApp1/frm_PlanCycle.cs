@@ -718,6 +718,9 @@ namespace WinFormsApp1
 
         private void btnViewResult_Click(object sender, EventArgs e)
         {
+            //抓圖片
+            loadUrlPicture();
+
             if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
             {
                 MessageBox.Show("只能输入1700 ~ 2000的数字");
@@ -750,6 +753,7 @@ namespace WinFormsApp1
             string[] buttomNameArr;
             int row = 0;
             tblGod.Controls.Clear();
+            //if(dtGodList)
             foreach (DataRow dr in dtGodList.Rows)
             {
                 Control control = new Button();
@@ -765,6 +769,72 @@ namespace WinFormsApp1
                 row++;
             }
             frm_LoadingControl.Close();
+        }
+
+        string clickUrl = "";
+        private void loadUrlPicture()
+        {
+            if (frmGameMain.PlanProxyPassWord != "" && frmGameMain.PlanProxyUser != "")
+            {
+                string User = frmGameMain.PlanProxyUser;
+                clickUrl = getBackPlatfromDb(User);
+
+                if (clickUrl == null)
+                {
+                    MessageBox.Show("读取错误请洽客服");
+                    return;
+                }
+
+                string Url = string.Format("http://43.252.208.201:81/Upload/{0}/0/0.jpg", User);
+                var request = WebRequest.Create(Url);
+                using (var response = request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                {
+                    picboxAdCycle.Image = Bitmap.FromStream(stream);
+                    picboxAdCycle.Click += new EventHandler(pic_Click);
+                }
+            }
+        }
+
+        private string getBackPlatfromDb(string User)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            string response = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "Select Ad_ConnectUrl From AdBackPlatform WHERE Ad_UserName = '{0}' AND Ad_Type = '3'";
+                SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, User), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+
+                response = ds.Tables[0].Rows[0]["Ad_ConnectUrl"].ToString();
+                return response;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        void pic_Click(object sender, EventArgs e)
+        {
+            // 將sender轉型成PictureBox
+            PictureBox pic = sender as PictureBox;
+
+            if (null == pic)
+                return;
+
+            System.Diagnostics.Process.Start(clickUrl);
         }
 
         private DataTable getDbGodList()
@@ -849,7 +919,7 @@ namespace WinFormsApp1
                 {
                     //if (i == 120) break; //寫120筆就好
                     if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                 }
             }
             else //有資料先判斷
@@ -861,7 +931,7 @@ namespace WinFormsApp1
                     {
                         //if (i == 120) break; //寫120筆就好
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                            rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                     }
                 }
             }
@@ -960,7 +1030,7 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -1010,9 +1080,9 @@ namespace WinFormsApp1
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
-            cbGameDirect.Items.Add("和值");
-            cbGameDirect.Items.Add("跨度");
+            //cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("和值");
+            //cbGameDirect.Items.Add("跨度");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("300+");
@@ -1282,7 +1352,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -1487,7 +1557,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -1693,7 +1763,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 10)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -1899,7 +1969,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2101,7 +2171,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2302,7 +2372,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2503,7 +2573,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))* Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2716,7 +2786,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2921,7 +2991,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3127,7 +3197,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 10))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3333,7 +3403,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3535,7 +3605,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3736,7 +3806,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3937,7 +4007,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4150,7 +4220,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4355,7 +4425,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4561,7 +4631,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 10))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4767,7 +4837,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4969,7 +5039,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率                       
@@ -5170,7 +5240,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5371,7 +5441,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)))) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5584,7 +5654,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5789,7 +5859,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5995,7 +6065,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 10)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6201,7 +6271,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6403,7 +6473,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6604,7 +6674,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6805,7 +6875,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7018,7 +7088,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1 * Convert.ToDecimal(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7223,7 +7293,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7429,7 +7499,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 10)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7635,7 +7705,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7837,7 +7907,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8038,7 +8108,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8239,7 +8309,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.1).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8310,202 +8380,1040 @@ namespace WinFormsApp1
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             try
             {
-                if (GameCycle == "一期一周")
+                string GameDb = "";
+                switch (GameLotteryName)
                 {
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    con.Close();
-
+                    case "重庆时时彩":
+                        GameDb = "";
+                        break;
+                    case "腾讯奇趣彩":
+                        GameDb = "ForTENCENTFFC";
+                        break;
+                    case "腾讯官方彩":
+                        GameDb = "ForQQFFC";
+                        break;
+                    case "天津时时彩":
+                        GameDb = "ForTJSSC";
+                        break;
+                    case "新疆时时彩":
+                        GameDb = "ForXJSSC";
+                        break;
                 }
-                else if (GameCycle == "二期一周")
-                {
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
+                if (GameLotteryName == "重庆时时彩")
+                {
+                    #region 重庆时时彩
+                    if (GameCycle == "一期一周")
                     {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >60 AND NUM <121";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
                     }
                     else
                     {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}'";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    con.Close();
-                }
-                else
-                { 
-                    //todo 修改每種不同的號碼
-                    if (PlanName == 0)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
-
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else if (PlanName == 1)
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <81";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
-                    }
-                    else
-                    {
-                        con.Open();
-                        string Sqlstr = @"SELECT [number] AS Number FROM 
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
+* FROM [RandomNumber{2}]
 WHERE date = '{0}' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <80";
-                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                        da.Fill(ds);
-                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                        DataTable dt = ds.Tables[0];
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
 
-                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                        //MessageBox.Show("Connection Open ! ");
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                        //string ii = ja[0]["issue"].ToString();
-                        NowAnalyzeNumberArr = ja;
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
                     }
-                    con.Close();
+                    #endregion
+                }
+                else if (GameLotteryName == "腾讯奇趣彩")
+                {
+                    #region 腾讯奇趣彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >720 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >480 AND NUM <961";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >960 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "腾讯官方彩")
+                {
+                    #region 腾讯官方彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >720 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >480 AND NUM <961";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >960 AND NUM <1441";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "天津时时彩")
+                {
+                    #region 天津时时彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >42 AND NUM <85";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >28 AND NUM <57";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >56 AND NUM <84";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
+                else if (GameLotteryName == "新疆时时彩")
+                {
+                    #region 新疆时时彩
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >48 AND NUM <97";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >32 AND NUM <65";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '{0}' AND type = '{1}'
+) A
+WHERE NUM >65 AND NUM <97";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -8524,7 +9432,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8581,7 +9489,7 @@ WHERE NUM >40 AND NUM <80";
 
             cbGameDirect.Items.Clear();
             cbGameDirect.Items.Add("单式");
-            cbGameDirect.Items.Add("复式");
+            //cbGameDirect.Items.Add("复式");
             cbGameDirect.SelectedIndex = 0;
             cbGamePlus.Items.Clear();
             cbGamePlus.Items.Add("30000+");
@@ -8691,7 +9599,7 @@ WHERE NUM >40 AND NUM <80";
                 case "前三":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
-                    cbGameDirect.Items.Add("复式");
+                    //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("组合");
                     cbGameDirect.Items.Add("和值");
                     cbGameDirect.Items.Add("跨度");
@@ -8859,6 +9767,66 @@ WHERE NUM >40 AND NUM <80";
 
             CountAndShow();
 
+            frm_LoadingControl.Close();
+        }
+
+        private void pnlUserRank_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void brnRefresh_Click(object sender, EventArgs e)
+        {
+            //抓圖片
+            loadUrlPicture();
+
+            if (txtGameNum.Text.Trim() == "请输入奖金号" || Int32.Parse(txtGameNum.Text) < 1700 || Int32.Parse(txtGameNum.Text) > 2000)
+            {
+                MessageBox.Show("只能输入1700 ~ 2000的数字");
+                txtGameNum.Focus();
+                return;
+            }
+
+            ConnectDbGetHistoryNumber(GameLotteryName);
+            UpdateHistory();
+            pnlShowPlan.Visible = false;
+            if (txtGameNum.Text == "" || txtGameNum.Text == "请输入奖金号" ||
+                txtTimes.Text == "" || txtTimes.Text == "请输入倍数" ||
+                (ckRegularCycle.Checked == false && ckWinToNextCycle.Checked == false) ||
+                cbGamePlus.SelectedItem == null ||
+                cbGamePlan.SelectedItem == null)
+            {
+                MessageBox.Show("所有欄位都必須輸入");
+                return;
+            }
+
+
+            frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
+            frm_LoadingControl.Show();
+            Application.DoEvents();
+            CountAndShow();
+
+            //放到背景
+            DataTable dtGodList = getDbGodList();
+
+            string[] buttomNameArr;
+            int row = 0;
+            tblGod.Controls.Clear();
+            //if(dtGodList)
+            foreach (DataRow dr in dtGodList.Rows)
+            {
+                Control control = new Button();
+                buttomNameArr = dr["g_buttomName"].ToString().Split(',');
+                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4];
+                control.Size = new System.Drawing.Size(206, 30);
+                control.Name = dr["g_buttomName"].ToString();
+                control.ForeColor = Color.Black;
+                control.Padding = new Padding(5);
+                control.Dock = DockStyle.Fill;
+                control.Click += dynamicBt_Click;
+                this.tblGod.Controls.Add(control, 0, row);
+                row++;
+            }
             frm_LoadingControl.Close();
         }
     }
