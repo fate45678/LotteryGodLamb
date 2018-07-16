@@ -204,7 +204,7 @@ namespace WinFormsApp1
                 {
                     //if (i == 120) break; //寫120筆就好
                     if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期 " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                 }
             }
             else //有資料先判斷
@@ -218,7 +218,7 @@ namespace WinFormsApp1
                     {
                         //if (i == 120) break; //寫120筆就好
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                            rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                     }
                 }
             }

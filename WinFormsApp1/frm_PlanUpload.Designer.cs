@@ -400,7 +400,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(1095, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(348, 367);
+            this.pnlHistory.Size = new System.Drawing.Size(208, 367);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -413,7 +413,7 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(338, 331);
+            this.rtxtHistory.Size = new System.Drawing.Size(198, 331);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -424,7 +424,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(346, 28);
+            this.panel32.Size = new System.Drawing.Size(206, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -704,12 +704,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1

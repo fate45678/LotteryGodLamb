@@ -60,8 +60,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlUserRank = new System.Windows.Forms.Panel();
             this.picboxAdCycle = new System.Windows.Forms.PictureBox();
-            this.tblGod = new System.Windows.Forms.TableLayoutPanel();
-            this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -116,6 +114,8 @@
             this.lblBets = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rtxPlanList = new System.Windows.Forms.RichTextBox();
+            this.tblGod = new System.Windows.Forms.TableLayoutPanel();
             this.pnlUserSetting.SuspendLayout();
             this.pnlUserSettingRow2.SuspendLayout();
             this.pnlUserSettingRow1.SuspendLayout();
@@ -549,7 +549,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.pnlHistory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(891, 0);
+            this.panel5.Location = new System.Drawing.Point(875, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(514, 453);
             this.panel5.TabIndex = 2;
@@ -558,9 +558,9 @@
             // 
             this.panel4.Controls.Add(this.pnlUserRank);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(300, 0);
+            this.panel4.Location = new System.Drawing.Point(225, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(214, 453);
+            this.panel4.Size = new System.Drawing.Size(289, 453);
             this.panel4.TabIndex = 1;
             // 
             // pnlUserRank
@@ -572,7 +572,7 @@
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
-            this.pnlUserRank.Size = new System.Drawing.Size(214, 453);
+            this.pnlUserRank.Size = new System.Drawing.Size(286, 453);
             this.pnlUserRank.TabIndex = 1;
             this.pnlUserRank.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlUserRank_Paint);
             // 
@@ -580,47 +580,9 @@
             // 
             this.picboxAdCycle.Location = new System.Drawing.Point(0, 350);
             this.picboxAdCycle.Name = "picboxAdCycle";
-            this.picboxAdCycle.Size = new System.Drawing.Size(210, 102);
+            this.picboxAdCycle.Size = new System.Drawing.Size(284, 102);
             this.picboxAdCycle.TabIndex = 10;
             this.picboxAdCycle.TabStop = false;
-            // 
-            // tblGod
-            // 
-            this.tblGod.AutoScroll = true;
-            this.tblGod.ColumnCount = 1;
-            this.tblGod.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblGod.Location = new System.Drawing.Point(0, 28);
-            this.tblGod.Name = "tblGod";
-            this.tblGod.RowCount = 13;
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tblGod.Size = new System.Drawing.Size(212, 321);
-            this.tblGod.TabIndex = 9;
-            // 
-            // rtxPlanList
-            // 
-            this.rtxPlanList.BackColor = System.Drawing.Color.White;
-            this.rtxPlanList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxPlanList.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rtxPlanList.HideSelection = false;
-            this.rtxPlanList.Location = new System.Drawing.Point(0, 28);
-            this.rtxPlanList.Name = "rtxPlanList";
-            this.rtxPlanList.ReadOnly = true;
-            this.rtxPlanList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxPlanList.Size = new System.Drawing.Size(212, 321);
-            this.rtxPlanList.TabIndex = 4;
-            this.rtxPlanList.Text = "";
             // 
             // panel33
             // 
@@ -629,7 +591,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(212, 28);
+            this.panel33.Size = new System.Drawing.Size(284, 28);
             this.panel33.TabIndex = 3;
             // 
             // label116
@@ -646,9 +608,9 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(256, 0);
+            this.panel6.Location = new System.Drawing.Point(204, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(44, 453);
+            this.panel6.Size = new System.Drawing.Size(21, 453);
             this.panel6.TabIndex = 5;
             // 
             // pnlHistory
@@ -659,21 +621,20 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(0, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(256, 453);
+            this.pnlHistory.Size = new System.Drawing.Size(204, 453);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
             // 
             this.rtxtHistory.BackColor = System.Drawing.Color.White;
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxtHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
             this.rtxtHistory.Location = new System.Drawing.Point(0, 28);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(254, 423);
+            this.rtxtHistory.Size = new System.Drawing.Size(202, 423);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -684,7 +645,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(254, 28);
+            this.panel32.Size = new System.Drawing.Size(202, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -701,9 +662,9 @@
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(891, 453);
+            this.panel8.Location = new System.Drawing.Point(875, 453);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(626, 6);
+            this.panel8.Size = new System.Drawing.Size(642, 6);
             this.panel8.TabIndex = 7;
             // 
             // panel3
@@ -712,7 +673,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(853, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(38, 459);
+            this.panel3.Size = new System.Drawing.Size(22, 459);
             this.panel3.TabIndex = 4;
             // 
             // pnlCycleSelect
@@ -1290,6 +1251,44 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // rtxPlanList
+            // 
+            this.rtxPlanList.BackColor = System.Drawing.Color.White;
+            this.rtxPlanList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxPlanList.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.rtxPlanList.HideSelection = false;
+            this.rtxPlanList.Location = new System.Drawing.Point(0, 28);
+            this.rtxPlanList.Name = "rtxPlanList";
+            this.rtxPlanList.ReadOnly = true;
+            this.rtxPlanList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtxPlanList.Size = new System.Drawing.Size(229, 321);
+            this.rtxPlanList.TabIndex = 4;
+            this.rtxPlanList.Text = "";
+            // 
+            // tblGod
+            // 
+            this.tblGod.AutoScroll = true;
+            this.tblGod.ColumnCount = 1;
+            this.tblGod.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblGod.Location = new System.Drawing.Point(0, 28);
+            this.tblGod.Name = "tblGod";
+            this.tblGod.RowCount = 13;
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tblGod.Size = new System.Drawing.Size(281, 321);
+            this.tblGod.TabIndex = 9;
+            // 
             // frm_PlanCycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1432,9 +1431,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RichTextBox rtxPlanList;
-        private System.Windows.Forms.TableLayoutPanel tblGod;
         private System.Windows.Forms.PictureBox picboxAdCycle;
         private System.Windows.Forms.Button brnRefresh;
+        private System.Windows.Forms.TableLayoutPanel tblGod;
+        private System.Windows.Forms.RichTextBox rtxPlanList;
     }
 }

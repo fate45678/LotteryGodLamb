@@ -48,7 +48,7 @@ namespace WinFormsApp1
                 {
                     //if (i == 120) break; //寫120筆就好
                     if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                 }
             }
             else //有資料先判斷
@@ -60,7 +60,7 @@ namespace WinFormsApp1
                     {
                         //if (i == 120) break; //寫120筆就好
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                            rtxtHistory.Text += "第" + frmGameMain.jArr[i]["Issue"].ToString() + "期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                     }
                 }
             }
@@ -2274,7 +2274,30 @@ namespace WinFormsApp1
             }
             else
             {
-                checkdataTest("B");
+                //檢查是否為最後一期
+                if (frm_PlanCycle.GameLotteryName == "重庆时时彩" && comboBox1.Text.Substring(8) == "120")
+                {
+                    MessageBox.Show("已经是最后一期了");
+                    return;
+                }
+                else if (frm_PlanCycle.GameLotteryName == "天津时时彩" && comboBox1.Text.Substring(8) == "84")
+                {
+                    MessageBox.Show("已经是最后一期了");
+                    return;
+                }
+                else if (frm_PlanCycle.GameLotteryName == "新疆时时彩" && comboBox1.Text.Substring(8) == "96")
+                {
+                    MessageBox.Show("已经是最后一期了");
+                    return;
+                }
+                else if ((frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩") && comboBox1.Text.Substring(8) == "1440")
+                {
+                    MessageBox.Show("已经是最后一期了");
+                    return;
+                }
+
+                checkdataTest("B");             
+
                 if (richTextBox1.Text.Trim() == "")
                 {
                     MessageBox.Show("號碼不得為空。");
@@ -2653,7 +2676,7 @@ namespace WinFormsApp1
                 comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssueAPI.Substring(8))), null);
                 comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssueAPI.Substring(8)))), null);
             }
-            else if (showNowIssue.Substring(8) == "120")
+            else if (showNowIssue.Substring(8) == "120" || showNowIssue.Substring(8) == "084" || showNowIssue.Substring(8) == "96" || showNowIssue.Substring(8) == "1440")
             {
                 comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8)) - 1), null);
                 comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8))) - 1), null);
