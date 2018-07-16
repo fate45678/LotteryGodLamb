@@ -8611,9 +8611,9 @@ WHERE NUM >40 AND NUM <80";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             string aaaa = string.Format(Sqlstr, date, type, GameDb);
-                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
                             //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
@@ -8629,7 +8629,7 @@ WHERE NUM >40 AND NUM <80";
                         else if (PlanName == 1)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8647,7 +8647,7 @@ WHERE NUM >40 AND NUM <80";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8672,7 +8672,7 @@ WHERE NUM >40 AND NUM <80";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -8693,7 +8693,7 @@ WHERE NUM >40 AND NUM <80";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >720 AND NUM <1441";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -8713,7 +8713,7 @@ WHERE NUM >720 AND NUM <1441";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8738,7 +8738,7 @@ WHERE NUM >720 AND NUM <1441";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -8759,7 +8759,7 @@ WHERE NUM >720 AND NUM <1441";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >480 AND NUM <961";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -8783,7 +8783,7 @@ WHERE NUM >480 AND NUM <961";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >960 AND NUM <1441";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -8814,7 +8814,7 @@ WHERE NUM >960 AND NUM <1441";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             string aaaa = string.Format(Sqlstr, date, type, GameDb);
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8832,7 +8832,7 @@ WHERE NUM >960 AND NUM <1441";
                         else if (PlanName == 1)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8850,7 +8850,7 @@ WHERE NUM >960 AND NUM <1441";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8875,7 +8875,7 @@ WHERE NUM >960 AND NUM <1441";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -8896,7 +8896,7 @@ WHERE NUM >960 AND NUM <1441";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >720 AND NUM <1441";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -8916,7 +8916,7 @@ WHERE NUM >720 AND NUM <1441";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(720) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -8941,7 +8941,7 @@ WHERE NUM >720 AND NUM <1441";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '{0}' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(480) number AS Number FROM RandomNumber{2} WHERE date = '20180703' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -8962,7 +8962,7 @@ WHERE NUM >720 AND NUM <1441";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >480 AND NUM <961";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -8986,7 +8986,7 @@ WHERE NUM >480 AND NUM <961";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >960 AND NUM <1441";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";

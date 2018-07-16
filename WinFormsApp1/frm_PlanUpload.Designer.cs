@@ -97,7 +97,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
-            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -112,6 +111,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timeCheckChange = new System.Windows.Forms.Timer(this.components);
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.pnlUserSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -400,7 +400,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(1095, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(208, 367);
+            this.pnlHistory.Size = new System.Drawing.Size(227, 367);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -413,7 +413,7 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(198, 331);
+            this.rtxtHistory.Size = new System.Drawing.Size(217, 331);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -424,7 +424,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(206, 28);
+            this.panel32.Size = new System.Drawing.Size(225, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -944,15 +944,6 @@
             this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
             // 
-            // checkedListBoxEx1
-            // 
-            this.checkedListBoxEx1.FormattingEnabled = true;
-            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
-            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 270);
-            this.checkedListBoxEx1.TabIndex = 7;
-            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button5);
@@ -1097,6 +1088,15 @@
             this.timeCheckChange.Enabled = true;
             this.timeCheckChange.Interval = 1000;
             this.timeCheckChange.Tick += new System.EventHandler(this.timeCheckChange_Tick);
+            // 
+            // checkedListBoxEx1
+            // 
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 270);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 
             // frm_PlanUpload
             // 

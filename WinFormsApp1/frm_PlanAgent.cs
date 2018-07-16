@@ -2219,9 +2219,7 @@ namespace WinFormsApp1
                 tableLayoutPanel1.Controls.Clear();
                 listBox1.Items.Clear();
                 listBox2.Items.Clear();
-                richTextBox1.Text = "";
-
-                ischagneGameName = false;
+                richTextBox1.Text = "";               
 
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
@@ -2275,14 +2273,72 @@ namespace WinFormsApp1
                     cbGameKind.Items.Add("五星");
                 }
                 //
-                cbGameKind.SelectedIndex = 0;              
-
+                cbGameKind.SelectedIndex = 0;
+                ischagneGameName = false;
                 UpdateHistory();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            tableLayoutPanel1.Controls.Clear();
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            richTextBox1.Text = "";
+
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+                cbGameKind.Items.Add("四星");
+                cbGameKind.Items.Add("五星");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+                cbGameKind.Items.Add("四星");
+                cbGameKind.Items.Add("五星");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+                cbGameKind.Items.Add("四星");
+                cbGameKind.Items.Add("五星");
+            }
+            //
+            cbGameKind.SelectedIndex = 0;
             updateGod();
             choosePlanName = "";
             searchType = 1;
