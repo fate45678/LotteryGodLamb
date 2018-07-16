@@ -2950,6 +2950,12 @@ namespace WinFormsApp1
             }
             else if (CopyKind.Length == 4)
             {
+                if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                {
+                    MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有四星玩法，请重新贴上正确号码");
+                    return;
+                }
+
                 cbGameKind.Text = "四星";
                 cbGameKind.SelectedIndex = 5;
                 richTextboxRule = 4;
@@ -2957,6 +2963,12 @@ namespace WinFormsApp1
             }
             else if (CopyKind.Length == 5)
             {
+                if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                {
+                    MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有五星玩法，请重新贴上正确号码");
+                    return;
+                }
+
                 cbGameKind.Text = "五星";
                 cbGameKind.SelectedIndex = 6;
                 richTextboxRule = 5;

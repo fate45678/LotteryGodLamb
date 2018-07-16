@@ -1534,17 +1534,31 @@ namespace WinFormsApp1
                 for (int i = 0; i < dtUser.Rows.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = hitTimes.ElementAt(i).Key;
+                    control.Text = dtUser.Rows[i]["p_name"].ToString()+ "\r\n 中獎率" + dtUser.Rows[i]["p_hits"].ToString() + "% \r\n最新上傳時間" + dtUser.Rows[i]["p_uploadDate"].ToString();
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", 0, 0);
-                    if (hitTimes.ElementAt(i).Value >= 0.8)
-                        control.ForeColor = Color.Red;
-                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                        control.ForeColor = Color.Blue;
-                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                        control.ForeColor = Color.Gray;
-                    else if (hitTimes.ElementAt(i).Value < 0.5)
-                        control.ForeColor = Color.Gray;
+                    control.Name = dtUser.Rows[i]["p_id"].ToString();
+
+                    double winRate = double.Parse(dtUser.Rows[i]["p_hits"].ToString());
+                    if (winRate >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 80 && winRate >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 70 && winRate >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
                     else
                         control.BackColor = Color.Yellow;
 

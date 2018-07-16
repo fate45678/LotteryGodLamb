@@ -758,8 +758,8 @@ namespace WinFormsApp1
             {
                 Control control = new Button();
                 buttomNameArr = dr["g_buttomName"].ToString().Split(',');
-                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4];
-                control.Size = new System.Drawing.Size(206, 30);
+                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4] + "\r\n中獎率"+ dr["g_buttomRate"].ToString() + "%";
+                control.Size = new System.Drawing.Size(206, 50);
                 control.Name = dr["g_buttomName"].ToString();
                 control.ForeColor = Color.Black;
                 control.Padding = new Padding(5);
