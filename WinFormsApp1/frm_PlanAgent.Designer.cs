@@ -263,7 +263,7 @@
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 384F));
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel3.MaximumSize = new System.Drawing.Size(396, 364);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";

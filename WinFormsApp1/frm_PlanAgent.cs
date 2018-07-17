@@ -1526,25 +1526,39 @@ namespace WinFormsApp1
 
         private void btnSearchPlan_Click(object sender, EventArgs e)
         {
-            searchType = 2;
+            string user = txtSearchUser.Text;
+            DataTable dtUser = getAccountPlan(user);
             tableLayoutPanel1.Controls.Clear();
-            calHits(1);
-            if (hitTimes.Count > 0)
+            if (dtUser.Rows.Count > 0)
             {
-                for (int i = 0; i < hitTimes.Count; i++)
+                for (int i = 0; i < dtUser.Rows.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = hitTimes.ElementAt(i).Key;
+                    control.Text = dtUser.Rows[i]["p_name"].ToString()+ "\r\n 中獎率" + dtUser.Rows[i]["p_hits"].ToString() + "% \r\n最新上傳時間" + dtUser.Rows[i]["p_uploadDate"].ToString();
                     control.Size = new System.Drawing.Size(140, 30);
-                    control.Name = String.Format("btx{0}y{1}", 0, 0);
-                    if (hitTimes.ElementAt(i).Value >= 0.8)
-                        control.ForeColor = Color.Red;
-                    else if (hitTimes.ElementAt(i).Value < 0.8 && hitTimes.ElementAt(i).Value >= 0.7)
-                        control.ForeColor = Color.Blue;
-                    else if (hitTimes.ElementAt(i).Value < 0.7 && hitTimes.ElementAt(i).Value >= 0.5)
-                        control.ForeColor = Color.Gray;
-                    else if (hitTimes.ElementAt(i).Value < 0.5)
-                        control.ForeColor = Color.Gray;
+                    control.Name = dtUser.Rows[i]["p_id"].ToString();
+
+                    double winRate = double.Parse(dtUser.Rows[i]["p_hits"].ToString());
+                    if (winRate >= 80)
+                    {
+                        control.BackColor = Color.Red;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 80 && winRate >= 70)
+                    {
+                        control.BackColor = Color.Blue;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 70 && winRate >= 50)
+                    {
+                        control.BackColor = Color.Green;
+                        control.ForeColor = Color.White;
+                    }
+                    else if (winRate < 50)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
                     else
                         control.BackColor = Color.Yellow;
 
@@ -1557,6 +1571,38 @@ namespace WinFormsApp1
             }
             else
                 System.Windows.Forms.MessageBox.Show("查無資料。");
+        }
+
+        private DataTable getAccountPlan(string user)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
+            string GameKind = cbGameKind.Text;
+            string GameDirect = cbGameDirect.Text;
+            try
+            {
+                con.Open();
+                
+                string Sqlstr = @"SELECT *
+FROM [lottery].[dbo].upplan
+inner join userData on upplan.p_account = userData.account
+where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName + GameKind + GameDirect + "%' AND userData.name = '" + user + "' AND p_uploadDate LIKE '"+ SelectNowDate + "%'";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                return null;
+            }
         }
 
 
