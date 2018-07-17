@@ -2889,8 +2889,8 @@ namespace WinFormsApp1
         private void btnCopyUp_Click(object sender, EventArgs e)
         {
             string CopyOn = System.Windows.Clipboard.GetText().Trim();
-            int CopyCount = CopyOn.Split(' ').Count();
-            string CopyKind = CopyOn.Split(' ')[0];
+            int CopyCount = CopyOn.Replace(",", " ").Split(' ').Count();
+            string CopyKind = CopyOn.Replace(",", " ").Split(' ')[0];
 
             if (CopyKind.Length == 2)
             {
@@ -2975,7 +2975,7 @@ namespace WinFormsApp1
                 label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             }
 
-            richTextBox2.Text = CopyOn;
+            richTextBox2.Text = CopyOn.Replace(",", " ");
             label21.Text = "共" + CopyCount + "注";
         }
 
