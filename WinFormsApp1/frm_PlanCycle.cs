@@ -1150,6 +1150,7 @@ namespace WinFormsApp1
             numHistoryList.Add(threeNumber);
             numHistory = numHistoryList.ToArray();
             lblBets.Text = numHistory[0].Split(',').Count().ToString();
+            int hisArr = 0; //用來更換randomNumber的
 
             //要改到外層
             pnlShowPlan.Visible = true;
@@ -1251,7 +1252,7 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
-                                    if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                    if (numHistory[hisArr].IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
                                         isWin = true;
@@ -1277,6 +1278,7 @@ namespace WinFormsApp1
                                     //cycle_2++;
                                 }
                                 i--;
+                                hisArr++;
                             }
 
                             cycle_2++;
@@ -9817,7 +9819,7 @@ WHERE NUM >65 AND NUM <97";
             {
                 Control control = new Button();
                 buttomNameArr = dr["g_buttomName"].ToString().Split(',');
-                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4];
+                control.Text = buttomNameArr[0] + buttomNameArr[1] + buttomNameArr[2] + buttomNameArr[3] + buttomNameArr[4] + "\r\n中獎率" + dr["g_buttomRate"].ToString() + "%";
                 control.Size = new System.Drawing.Size(206, 30);
                 control.Name = dr["g_buttomName"].ToString();
                 control.ForeColor = Color.Black;

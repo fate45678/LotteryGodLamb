@@ -247,19 +247,12 @@ namespace WinFormsApp1
                     //抓取計畫名稱
                     DataTable dtGamePlan = getPlanName(GameKind);
                     string GamePlanName = "";
-                    string[] numHistory;
-
+                    //string[] numHistory;
+                   
                     for (int iPlan = 0; iPlan < dtGamePlan.Rows.Count; iPlan++)
                     {
+                        
                         GamePlanName = dtGamePlan.Rows[iPlan]["GamePlan_name"].ToString();
-
-                        //抓取比對的投注數量
-                        ConnectDbGetRandomNumber(GameType, iPlan);
-
-                        string threeNumber = NowAnalyzeNumber;
-                        List<string> numHistoryList = new List<string>();
-                        numHistoryList.Add(threeNumber);
-                        numHistory = numHistoryList.ToArray();
 
                         string GameCycle = "";
                         //三期一周 / 二期一周 / 一期一周
@@ -301,6 +294,14 @@ namespace WinFormsApp1
                                 GameCycle = "一期一周";
                             }
 
+                            //抓取比對的投注數量
+                            ConnectDbGetRandomNumber(GameType, iPlan, GameCycle);
+
+                            string threeNumber = NowAnalyzeNumber;
+                            List<string> numHistoryList = new List<string>();
+                            numHistoryList.Add(threeNumber);
+                            var numHistory = NowAnalyzeNumberArr.ToArray();
+
                             //開始比對
                             if (GameKind == "后二") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
                             {
@@ -315,6 +316,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -359,7 +361,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -377,7 +379,7 @@ namespace WinFormsApp1
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 挂";
                                                 }
                                                 sumBets++;
-                                                periodtWin = j + 1;
+                                                periodtWin = j + 1;                                                
                                             }
                                             else //前面已中奖
                                             {
@@ -385,6 +387,7 @@ namespace WinFormsApp1
                                                 //cycle_2++;
                                             }
                                             iii--;
+                                            hisArr++;
                                         }
 
                                         cycle_2++;
@@ -433,6 +436,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -477,7 +481,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -552,6 +556,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -596,7 +601,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -671,6 +676,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -715,7 +721,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -790,6 +796,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -834,7 +841,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -909,6 +916,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -953,7 +961,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -1028,6 +1036,7 @@ namespace WinFormsApp1
                                     bool isWin = false; //中了沒
                                     int periodtWin = 0; //第幾期中
                                     string[] temp = { "", "", "" }; //存放combobox的值
+                                    int hisArr = 0;
 
                                     for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
                                     {
@@ -1072,7 +1081,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -1167,7 +1176,7 @@ namespace WinFormsApp1
         }
 
         //抓取對獎資料
-        private void ConnectDbGetRandomNumber(string type, int PlanName)
+        private void ConnectDbGetRandomNumber(string type, int PlanName, string GameCycle)
         {
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
             string connetionString = null;
@@ -1177,75 +1186,204 @@ namespace WinFormsApp1
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             try
             {
-                //todo 修改每種不同的號碼
-                if (PlanName == 0)
+                if (GameCycle == "三期一周")
                 {
-                    con.Open();
-                    string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' ";
-                    SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                    DataTable dt = ds.Tables[0];
 
-                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                    //MessageBox.Show("Connection Open ! ");
-                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                    //string ii = ja[0]["issue"].ToString();
-                    NowAnalyzeNumberArr = ja;
-                }
-                else if (PlanName == 1)
-                {
-                    con.Open();
-                    string Sqlstr = @"SELECT [number] AS Number FROM 
+                    //todo 修改每種不同的號碼
+                    if (PlanName == 0)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}' ";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else if (PlanName == 1)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT [number] AS Number FROM 
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber]
-WHERE date = '{0}' AND type = '{1}'
+WHERE date = '20180703' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <81";
-                    //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                    SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                    DataTable dt = ds.Tables[0];
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
 
-                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                    //MessageBox.Show("Connection Open ! ");
-                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                    //string ii = ja[0]["issue"].ToString();
-                    NowAnalyzeNumberArr = ja;
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >40 AND NUM <80";
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    con.Close();
+                }
+                else if (GameCycle == "二期一周")
+                {
+                    if (PlanName == 0)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}' ";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else if (PlanName == 1)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber]
+WHERE date = '20180703' AND type = '{1}'
+) A
+WHERE NUM >60 AND NUM <121";
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT top(60) number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}'";
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    con.Close();
                 }
                 else
                 {
-                    con.Open();
-                    string Sqlstr = @"SELECT [number] AS Number FROM 
-(
-SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
-* FROM [RandomNumber]
-WHERE date = '{0}' AND type = '{1}'
-) A
-WHERE NUM >40 AND NUM <80";
-                    //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
-                    SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                    NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
-                    da.Fill(ds);
-                    //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
-                    DataTable dt = ds.Tables[0];
+                    if (PlanName == 0)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}' ";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
 
-                    NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
-                    var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-                    //MessageBox.Show("Connection Open ! ");
-                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                    //string ii = ja[0]["issue"].ToString();
-                    NowAnalyzeNumberArr = ja;
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else if (PlanName == 1)
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}'";
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    else
+                    {
+                        con.Open();
+                        string Sqlstr = @"SELECT number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}'";
+                        //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                        SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                        NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                        da.Fill(ds);
+                        //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                        DataTable dt = ds.Tables[0];
+
+                        NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                        var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                        //MessageBox.Show("Connection Open ! ");
+                        JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                        //string ii = ja[0]["issue"].ToString();
+                        NowAnalyzeNumberArr = ja;
+                    }
+                    con.Close();
                 }
-                con.Close();
+
             }
             catch (Exception ex)
             {
