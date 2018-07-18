@@ -361,7 +361,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[0].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -387,12 +387,12 @@ namespace WinFormsApp1
                                                 //cycle_2++;
                                             }
                                             iii--;
-                                            hisArr++;
+                                            
                                         }
 
                                         cycle_2++;
                                         iii++;
-
+                                        hisArr++;
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
                                         {
@@ -481,7 +481,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -512,6 +512,7 @@ namespace WinFormsApp1
 
                                         cycle_2++;
                                         iii++;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
@@ -550,7 +551,7 @@ namespace WinFormsApp1
 
                                 }
                                 else if (GameDirect == "单式")
-                                {                                  
+                                {
                                     #region 驗證是否中奖
 
                                     bool isWin = false; //中了沒
@@ -558,7 +559,7 @@ namespace WinFormsApp1
                                     string[] temp = { "", "", "" }; //存放combobox的值
                                     int hisArr = 0;
 
-                                    for (int iii = jArrHistoryNumber.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    for (int iii = 0; iii < jArrHistoryNumber.Count; iii++) //從歷史結果開始比
                                     {
                                         //reset
                                         isWin = false;
@@ -567,49 +568,49 @@ namespace WinFormsApp1
                                         temp[1] = "";
                                         temp[2] = "";
 
+
                                         int NumberArrCount = numHistory.Count();
 
                                         for (int j = 0; j < iGameCycle; j++)
                                         {
-                                            if (iii < 0) break;
+                                            if (i >= jArrHistoryNumber.Count) break;
 
                                             string strMatch = "";
                                             switch (GameKind)
                                             {
                                                 case "五星":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "");
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "");
                                                     break;
                                                 case "四星":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 4);
                                                     break;
                                                 case "前三":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 3);
                                                     break;
                                                 case "中三":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(1, 3);
                                                     break;
                                                 case "后三":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(2, 3);
                                                     break;
                                                 case "前二":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 2);
                                                     break;
                                                 case "后二":
-                                                    strMatch = jArrHistoryNumber[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(3, 2);
                                                     break;
                                             }
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
-                                                    temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
 
-                                                    //todo 變成中獎下一周期要使用
                                                     //if (ckWinToNextCycle.Checked == true) //中奖即进入下一周期                                    
                                                     //{
-                                                    //    i--;
+                                                    //    i++;
                                                     //    sumBets++;
                                                     //    periodtWin = j + 1;
                                                     //    break;
@@ -617,21 +618,23 @@ namespace WinFormsApp1
                                                 }
                                                 else //挂
                                                 {
-                                                    temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 挂";
                                                 }
                                                 sumBets++;
                                                 periodtWin = j + 1;
+
                                             }
                                             else //前面已中奖
                                             {
-                                                temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 停";
                                                 //cycle_2++;
                                             }
-                                            iii--;
+                                            iii++;
                                         }
 
-                                        cycle_2++;
-                                        iii++;
+                                        cycle_2--;
+                                        iii--;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
@@ -640,24 +643,25 @@ namespace WinFormsApp1
                                                 cb_1.Items.Add(temp[k]);
                                         }
 
-
-                                        //lbl_3 = new Label();
                                         if (isWin == true)
                                         {
                                             sumWin++;
                                         }
+                                     
                                     }
+
                                     #endregion
 
                                     #region 計算
                                     //每期注數 共?元
+                                    //每期注數 共?元
                                     //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
                                     //目前下注?周期
-                                    string CurrentBetsCycle = (sumBets).ToString(); 
+                                    string CurrentBetsCycle = (sumBets).ToString();
                                     //中奖率
                                     double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
                                     //lblPlanWinOpp.Text = WinOpp.ToString("0.00");
-                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType ;
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
                                     InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
                                     #endregion
                                 }
@@ -721,7 +725,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -752,6 +756,7 @@ namespace WinFormsApp1
 
                                         cycle_2++;
                                         iii++;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
@@ -841,7 +846,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -872,6 +877,7 @@ namespace WinFormsApp1
 
                                         cycle_2++;
                                         iii++;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
@@ -961,7 +967,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -992,6 +998,7 @@ namespace WinFormsApp1
 
                                         cycle_2++;
                                         iii++;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)
@@ -1081,7 +1088,7 @@ namespace WinFormsApp1
                                             if (isWin == false) //還沒中
                                             {
                                                 ///////////////cycle_2 - 1
-                                                if (numHistory[hisArr].ToString().IndexOf(strMatch) > -1) //中
+                                                if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                                 {
                                                     temp[j] = "  " + jArrHistoryNumber[iii]["Number"].ToString().Replace(",", " ") + " 中";
                                                     isWin = true;
@@ -1112,6 +1119,7 @@ namespace WinFormsApp1
 
                                         cycle_2++;
                                         iii++;
+                                        hisArr++;
 
                                         ComboBox cb_1 = new ComboBox();
                                         for (int k = 0; k < 3; k++)

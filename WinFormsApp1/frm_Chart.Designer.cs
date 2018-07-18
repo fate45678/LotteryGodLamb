@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlGameMenu = new System.Windows.Forms.Panel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.userControl11 = new WinFormsApp1.UserControl1();
             this.lbRefrash = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblMenuLast100 = new System.Windows.Forms.Label();
@@ -61,8 +63,6 @@
             this.lblGameKind5Star = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.userControl11 = new WinFormsApp1.UserControl1();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnlGameMenu.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +70,7 @@
             // pnlGameMenu
             // 
             this.pnlGameMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.pnlGameMenu.Controls.Add(this.elementHost1);
             this.pnlGameMenu.Controls.Add(this.lbRefrash);
             this.pnlGameMenu.Controls.Add(this.label12);
             this.pnlGameMenu.Controls.Add(this.lblMenuLast100);
@@ -100,13 +101,23 @@
             this.pnlGameMenu.Controls.Add(this.label1);
             this.pnlGameMenu.Controls.Add(this.lblGameKind5Star);
             this.pnlGameMenu.Controls.Add(this.label7);
-            this.pnlGameMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlGameMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGameMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlGameMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnlGameMenu.Name = "pnlGameMenu";
             this.pnlGameMenu.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
-            this.pnlGameMenu.Size = new System.Drawing.Size(1335, 36);
+            this.pnlGameMenu.Size = new System.Drawing.Size(1431, 549);
             this.pnlGameMenu.TabIndex = 5;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.elementHost1.Location = new System.Drawing.Point(0, 34);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(1428, 515);
+            this.elementHost1.TabIndex = 6;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.userControl11;
             // 
             // lbRefrash
             // 
@@ -524,16 +535,6 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // elementHost1
-            // 
-            this.elementHost1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
-            this.elementHost1.Location = new System.Drawing.Point(0, 34);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1335, 515);
-            this.elementHost1.TabIndex = 6;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.userControl11;
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
@@ -545,8 +546,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
-            this.ClientSize = new System.Drawing.Size(1335, 549);
-            this.Controls.Add(this.elementHost1);
+            this.ClientSize = new System.Drawing.Size(1431, 549);
             this.Controls.Add(this.pnlGameMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_Chart";
@@ -595,7 +595,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbRefrash;
         private System.Windows.Forms.Label label12;
-        private UserControl1 userControl11;
         private System.Windows.Forms.Timer timer2;
+        private UserControl1 userControl11;
     }
 }
