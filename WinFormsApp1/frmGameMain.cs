@@ -589,7 +589,7 @@ namespace WinFormsApp1
                 if (PlanName == 0)
                 {
                     con.Open();
-                    string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '20180703' AND type = '{1}' ";
+                    string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '20180720' AND type = '{1}' ";
                     SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type), con);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
@@ -610,7 +610,7 @@ namespace WinFormsApp1
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber]
-WHERE date = '20180703' AND type = '{1}'
+WHERE date = '20180720' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <81";
                     //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
@@ -634,7 +634,7 @@ WHERE NUM >40 AND NUM <81";
 (
 SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber]
-WHERE date = '20180703' AND type = '{1}'
+WHERE date = '20180720' AND type = '{1}'
 ) A
 WHERE NUM >40 AND NUM <80";
                     //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
