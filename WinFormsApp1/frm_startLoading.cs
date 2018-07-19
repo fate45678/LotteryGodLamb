@@ -415,7 +415,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -537,7 +537,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -659,7 +659,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -781,7 +781,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -903,7 +903,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -1025,7 +1025,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
@@ -1147,7 +1147,7 @@ namespace WinFormsApp1
 
                                     #region 計算
                                     //每期注數 共?元
-                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString(".###");
+                                    //lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.000");
                                     //目前下注?周期
                                     string CurrentBetsCycle = (cycle_2 - 1).ToString();
                                     int test = LastBets;
