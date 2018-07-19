@@ -1369,7 +1369,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01 * Convert.ToDouble(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * 100 * 0.01 * Convert.ToDouble(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -1588,7 +1588,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text) * 100 * 1)) * Convert.ToDecimal(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -1808,7 +1808,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.1)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.1)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2028,7 +2028,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 1)) * Convert.ToDouble(txtTimes.Text) * 100 * 0.01 * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 1)) * Convert.ToDouble(txtTimes.Text) * 100 * 0.01).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2244,7 +2244,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 1)) * Convert.ToDouble(txtTimes.Text) * 100 * 0.01 * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 1)) * Convert.ToDouble(txtTimes.Text) * 100 * 0.01).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2460,7 +2460,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 100 * 0.001).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 100 * 0.001).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2675,7 +2675,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 100 * 0.001).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 100 * 0.001).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -2902,7 +2902,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * 100 * 0.01)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3341,7 +3341,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3561,7 +3561,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.01))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3777,7 +3777,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.01))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -3992,7 +3992,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)))) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4207,7 +4207,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)))) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4434,7 +4434,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))* 100 * 0.01)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4653,7 +4653,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)* 100))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4873,7 +4873,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.1))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.1))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5093,7 +5093,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 0.01 * 100))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5309,7 +5309,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100 * 0.01))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100 * 0.01))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率                       
@@ -5524,7 +5524,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)))) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5739,7 +5739,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)))) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5966,7 +5966,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6185,7 +6185,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6405,7 +6405,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.1 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 0.1 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6625,7 +6625,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 0.01 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -6841,7 +6841,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 0.01 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7056,7 +7056,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7271,7 +7271,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7498,7 +7498,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7717,7 +7717,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -7937,7 +7937,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.1 * 100 * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))) * 0.1 * 100 * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8157,7 +8157,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * 0.01 * 100)) * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(txtTimes.Text)))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8373,7 +8373,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")))) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))) * 0.01 * 100 * Convert.ToDouble(txtTimes.Text)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8588,7 +8588,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -8803,7 +8803,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text)) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002"))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
+                        lblWinMoney.Text = (Convert.ToDouble((Convert.ToDecimal(sumWin) * (Convert.ToDecimal(txtGameNum.Text))) * Convert.ToDecimal(txtTimes.Text)) * 0.001 * 100).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
