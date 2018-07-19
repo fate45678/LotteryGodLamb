@@ -513,8 +513,8 @@ namespace WinFormsApp1
 
         private void timerFourFiveGodinsert_Tick(object sender, EventArgs e)
         {
-            if(!bgwGodinsert.IsBusy)
-                bgwGodinsert.RunWorkerAsync();
+            //if(!bgwGodinsert.IsBusy)
+            //    bgwGodinsert.RunWorkerAsync();
         }
 
         private void ConnectDbGetHistoryNumber()
@@ -673,7 +673,7 @@ WHERE NUM >40 AND NUM <80";
             try
             {
                 con.Open();
-                string Sqlstr = @"Insert into GodListPlanCycle values('{0}','{1}')";
+                string Sqlstr = @"BEGIN IF NOT EXISTS (SELECT * FROM GodListPlanCycle WHERE g_buttomName = '{0}') BEGIN Insert into GodListPlanCycle values('{0}','{1}') END END";
                 var cmd = new SqlCommand(string.Format(Sqlstr, insertInfo, Rate), con);
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteReader();
