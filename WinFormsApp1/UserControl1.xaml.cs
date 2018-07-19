@@ -46,14 +46,22 @@ namespace WinFormsApp1
             #endregion
 
             #region 版面預設值
-            int col1Width = 80; //期號的寬度
-            int col2Width = 60; //開獎號碼的寬度
-            int digitWidth = 16; //每位數的寬度
+            int col1Width = 140; //期號的寬度
+            int col2Width = 100; //開獎號碼的寬度
+            int digitWidth = 25; //每位數的寬度
             int col3Width = 36; //组三 组六 豹子 对子 跨度 和值 的寬度
             int col4Width = 20; //大小型态 单双型态 质合型态 012型态 的單一值寬度
             int col5Width = 60; //和值尾数 的寬度
-            int rowHeight = 23; //每列高度
-            int fontSize = 12; //字體大小
+            int rowHeight = 30; //每列高度
+            int fontSize = 13; //字體大小
+            //int col1Width = 120; //期號的寬度
+            //int col2Width = 60; //開獎號碼的寬度
+            //int digitWidth = 16; //每位數的寬度
+            //int col3Width = 42; //组三 组六 豹子 对子 跨度 和值 的寬度
+            //int col4Width = 30; //大小型态 单双型态 质合型态 012型态 的單一值寬度
+            //int col5Width = 70; //和值尾数 的寬度
+            //int rowHeight = 33; //每列高度
+            //int fontSize = 12; //字體大小
             #endregion
 
             Label lbl;

@@ -104,6 +104,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pgbShow);
             this.Name = "frm_startLoading";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "載入窗口";
             this.tlpAd.ResumeLayout(false);
