@@ -61,7 +61,6 @@
             this.pnlUserRank = new System.Windows.Forms.Panel();
             this.picboxAdCycle = new System.Windows.Forms.PictureBox();
             this.tblGod = new System.Windows.Forms.TableLayoutPanel();
-            this.rtxPlanList = new System.Windows.Forms.RichTextBox();
             this.panel33 = new System.Windows.Forms.Panel();
             this.label116 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -568,7 +567,6 @@
             this.pnlUserRank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUserRank.Controls.Add(this.picboxAdCycle);
             this.pnlUserRank.Controls.Add(this.tblGod);
-            this.pnlUserRank.Controls.Add(this.rtxPlanList);
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
@@ -605,22 +603,8 @@
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tblGod.Size = new System.Drawing.Size(281, 321);
+            this.tblGod.Size = new System.Drawing.Size(281, 302);
             this.tblGod.TabIndex = 9;
-            // 
-            // rtxPlanList
-            // 
-            this.rtxPlanList.BackColor = System.Drawing.Color.White;
-            this.rtxPlanList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxPlanList.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rtxPlanList.HideSelection = false;
-            this.rtxPlanList.Location = new System.Drawing.Point(0, 28);
-            this.rtxPlanList.Name = "rtxPlanList";
-            this.rtxPlanList.ReadOnly = true;
-            this.rtxPlanList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxPlanList.Size = new System.Drawing.Size(229, 321);
-            this.rtxPlanList.TabIndex = 4;
-            this.rtxPlanList.Text = "";
             // 
             // panel33
             // 
@@ -1434,6 +1418,5 @@
         private System.Windows.Forms.PictureBox picboxAdCycle;
         private System.Windows.Forms.Button brnRefresh;
         private System.Windows.Forms.TableLayoutPanel tblGod;
-        private System.Windows.Forms.RichTextBox rtxPlanList;
     }
 }
