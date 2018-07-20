@@ -52,8 +52,8 @@ namespace WinFormsApp1
             frm_VersionCheck frm_VersionCheck = new frm_VersionCheck();
             frm_VersionCheck.ShowDialog();
 
-            frm_startLoading frm_startLoading = new frm_startLoading();
-            frm_startLoading.ShowDialog();
+            //frm_startLoading frm_startLoading = new frm_startLoading();
+            //frm_startLoading.ShowDialog();
 
             InitializeComponent();
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);

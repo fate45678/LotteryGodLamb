@@ -2267,7 +2267,7 @@ namespace WinFormsApp1
                         if (checkcycle_1 == 0)
                             cycle_1 = jArrHistoryNumber.Count / Convert.ToInt16(item.Value);
                         else
-                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value))+1;
+                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value)) + 1;
 
                         string cycleName = "";
                         for (int i = 0; i < jArrHistoryNumber.Count; i++)
@@ -2374,7 +2374,7 @@ namespace WinFormsApp1
                                     }
                                     sumBets++;
                                     periodtWin = j + 1;
-                                    
+
                                 }
                                 else //前面已中奖
                                 {
@@ -4434,7 +4434,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text))* 100 * 0.01)).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)) * 100 * 0.01)).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -4653,7 +4653,7 @@ namespace WinFormsApp1
                         //總投注額?元
                         lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString();
                         //獎金?元
-                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text)* 100))).ToString();
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * 100))).ToString();
                         //盈虧?元
                         lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString();
                         //中奖率
@@ -5755,7 +5755,7 @@ namespace WinFormsApp1
 
                 #endregion
             }
-            else if(GameLotteryName == "天津时时彩")
+            else if (GameLotteryName == "天津时时彩")
             {
                 #region 天津时时彩
 
@@ -8818,6 +8818,10 @@ namespace WinFormsApp1
                 }
 
                 #endregion
+            }
+            else if (GameLotteryName == "VR金星1.5分彩")
+            {
+
             }
             rtxtPlanCycle.ReadOnly = true;//this
         }

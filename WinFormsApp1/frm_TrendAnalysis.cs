@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,19 @@ namespace WinFormsApp1
 {
     public partial class frm_TrendAnalysis : Form
     {
+        bool isFisrtClick = true;
+        bool isTwoClick = true;
+        bool isThreeClick = true;
+        bool isFourthClick = true;
+        bool isFiveClick = true;
+
+        //標題 最大數值
+        Series series1 = new Series("萬位", 10);
+        Series series2 = new Series("千位", 10);
+        Series series3 = new Series("百位", 10);
+        Series series4 = new Series("十位", 10);
+        Series series5 = new Series("个位", 10);
+
         public frm_TrendAnalysis()
         {
             InitializeComponent();
@@ -19,21 +33,55 @@ namespace WinFormsApp1
 
         private void frm_TrendAnalysis_Load(object sender, EventArgs e)
         {
-            int[,] array = new int[,] {
-            {0,1,2,3,4,5,6,7,8,9},
-            {9,8,7,6,5,4,3,2,1,0},
-            {2,5,8,7,9,6,4,3,0,2},
-            {8,1,4,3,1,5,6,9,2,0},
-            {3,6,8,9,8,4,6,1,5,7}
-            };
+            setIssueInit("50");
+            DrawChart(50);
+
+            btnFirst.BackColor = Color.Blue;
+            btnFirst.ForeColor = Color.White;
+
+            btnSecond.BackColor = Color.Blue;
+            btnSecond.ForeColor = Color.White;
+
+            btnThree.BackColor = Color.Blue;
+            btnThree.ForeColor = Color.White;
+
+            btnFourth.BackColor = Color.Blue;
+            btnFourth.ForeColor = Color.White;
+
+            btnFive.BackColor = Color.Blue;
+            btnFive.ForeColor = Color.White;
+
+        }
+
+        private void DrawChart(int IssueCount)
+        {
+            this.chart1.Series.Clear();
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            //chart1.Series[0].Points.Clear();
+            DataTable dt = getHistoryNumber();
+
+            List<string> termsList = new List<string>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                termsList.Add(dr["number"].ToString());
+            }
+            var arr = termsList.ToArray();
+
+            series1 = new Series("萬位", 10);
+            series2 = new Series("千位", 10);
+            series3 = new Series("百位", 10);
+            series4 = new Series("十位", 10);
+            series5 = new Series("个位", 10);
 
 
-            //標題 最大數值
-            Series series1 = new Series("萬位", 10);
-            Series series2 = new Series("千位", 10);
-            Series series3 = new Series("百位", 10);
-            Series series4 = new Series("十位", 10);
-            Series series5 = new Series("个位", 10);
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisX2.Enabled = AxisEnabled.False;
+
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;                    
 
             //設定線條顏色
             series1.Color = Color.Blue;
@@ -43,11 +91,11 @@ namespace WinFormsApp1
             series5.Color = Color.Pink;
 
             //設定字型
-            series1.Font = new System.Drawing.Font("新細明體", 14);
-            series2.Font = new System.Drawing.Font("標楷體", 12);
-            series3.Font = new System.Drawing.Font("標楷體", 12);
-            series4.Font = new System.Drawing.Font("標楷體", 12);
-            series5.Font = new System.Drawing.Font("標楷體", 12);
+            series1.Font = new Font("標楷體", 12);
+            series2.Font = new Font("標楷體", 12);
+            series3.Font = new Font("標楷體", 12);
+            series4.Font = new Font("標楷體", 12);
+            series5.Font = new Font("標楷體", 12);
 
             //折線圖
             series1.ChartType = SeriesChartType.Line;
@@ -64,24 +112,229 @@ namespace WinFormsApp1
             series5.IsValueShownAsLabel = true;
 
             //將數值新增至序列
-            for (int index = 1; index < 10; index++)
+            double date = double.Parse(dt.Rows[0]["Issue"].ToString());
+            string Number = "";
+            for (int index = 0; index < IssueCount; index++)
             {
-                series1.Points.AddXY(index, array[0, index]);
-                series2.Points.AddXY(index, array[1, index]);
-                series3.Points.AddXY(index, array[2, index]);
-                series4.Points.AddXY(index, array[3, index]);
-                series5.Points.AddXY(index, array[4, index]);
+                Number = arr[index].ToString();
+                              
+                series1.Points.AddXY(date - index, double.Parse(Number.Substring(0, 1)));
+                series2.Points.AddXY(date - index, double.Parse(Number.Substring(1, 1)));
+                series3.Points.AddXY(date - index, double.Parse(Number.Substring(2, 1)));
+                series4.Points.AddXY(date - index, double.Parse(Number.Substring(3, 1)));
+                series5.Points.AddXY(date - index, double.Parse(Number.Substring(4, 1)));
             }
 
             //將序列新增到圖上
+
             this.chart1.Series.Add(series1);
+            //DataPoint dp1 = new DataPoint(series1);            
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
             this.chart1.Series.Add(series5);
 
             //標題
-            this.chart1.Titles.Add("標題");
+            this.chart1.Titles.Clear();
+            this.chart1.Titles.Add(frm_PlanCycle.GameLotteryName + "K線分析");
+
+            //this.chart1.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
+            this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+        }
+
+        private DataTable getHistoryNumber()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            try
+            {
+                con.Open();
+                Sqlstr = "SELECT * FROM HistoryNumber WHERE ISSUE LIKE '"+ date + "%' ORDER BY ISSUE DESC";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        private void setIssueInit(string type)
+        {
+            if(type == "50")
+            { 
+                btn50Issue.BackColor = Color.Blue;
+                btn50Issue.ForeColor = Color.White;
+
+                btn30Issue.BackColor = Color.LightGray;
+                btn30Issue.ForeColor = Color.Black;
+
+                btn10Issue.BackColor = Color.LightGray;
+                btn10Issue.ForeColor = Color.Black;
+            }
+            else if (type == "30")
+            {
+                btn50Issue.BackColor = Color.LightGray;
+                btn50Issue.ForeColor = Color.Black;
+
+                btn30Issue.BackColor = Color.Blue;
+                btn30Issue.ForeColor = Color.White;
+
+                btn10Issue.BackColor = Color.LightGray;
+                btn10Issue.ForeColor = Color.Black;
+            }
+            else if(type == "10")
+            {
+                btn50Issue.BackColor = Color.LightGray;
+                btn50Issue.ForeColor = Color.Black;
+
+                btn30Issue.BackColor = Color.LightGray;
+                btn30Issue.ForeColor = Color.Black;
+
+                btn10Issue.BackColor = Color.Blue;
+                btn10Issue.ForeColor = Color.White;
+            }
+
+
+        }
+
+        private void btn50Issue_Click(object sender, EventArgs e)
+        {
+            setIssueInit("50");
+            DrawChart(50);
+        }
+
+        private void btn30Issue_Click(object sender, EventArgs e)
+        {
+            setIssueInit("30");
+            DrawChart(30);
+        }
+
+        private void btn10Issue_Click(object sender, EventArgs e)
+        {
+            setIssueInit("10");
+            DrawChart(10);
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            if (isFisrtClick)
+            {
+                btnFirst.BackColor = Color.LightGray;
+                btnFirst.ForeColor = Color.Black;
+                this.chart1.Series.Remove(series1);
+                isFisrtClick = false;
+            }
+            else
+            {
+                btnFirst.BackColor = Color.Blue;
+                btnFirst.ForeColor = Color.White;
+                this.chart1.Series.Add(series1);
+                isFisrtClick = true;
+            }
+        }
+
+        private void btnSecond_Click(object sender, EventArgs e)
+        {
+            if (isTwoClick)
+            {
+                btnSecond.BackColor = Color.LightGray;
+                btnSecond.ForeColor = Color.Black;
+                this.chart1.Series.Remove(series2);
+                isTwoClick = false;
+            }
+            else
+            {
+                btnSecond.BackColor = Color.Blue;
+                btnSecond.ForeColor = Color.White;
+                this.chart1.Series.Add(series2);
+                isTwoClick = true;
+            }
+        }
+
+        private void btnThree_Click(object sender, EventArgs e)
+        {
+            if (isThreeClick)
+            {
+                btnThree.BackColor = Color.LightGray;
+                btnThree.ForeColor = Color.Black;
+                this.chart1.Series.Remove(series3);
+                isThreeClick = false;
+            }
+            else
+            {
+                btnThree.BackColor = Color.Blue;
+                btnThree.ForeColor = Color.White;
+                this.chart1.Series.Add(series3);
+                isThreeClick = true;
+            }
+        }
+
+        private void btnFourth_Click(object sender, EventArgs e)
+        {
+            if (isFourthClick)
+            {
+                btnFourth.BackColor = Color.LightGray;
+                btnFourth.ForeColor = Color.Black;
+                this.chart1.Series.Remove(series4);
+                isFourthClick = false;
+            }
+            else
+            {
+                btnFourth.BackColor = Color.Blue;
+                btnFourth.ForeColor = Color.White;
+                this.chart1.Series.Add(series4);
+                isFourthClick = true;
+            }
+        }
+
+        private void btnFive_Click(object sender, EventArgs e)
+        {
+            if (isFiveClick)
+            {
+                btnFive.BackColor = Color.LightGray;
+                btnFive.ForeColor = Color.Black;
+                this.chart1.Series.Remove(series5);
+                isFiveClick = false;
+            }
+            else
+            {
+                btnFive.BackColor = Color.Blue;
+                btnFive.ForeColor = Color.White;
+                this.chart1.Series.Add(series5);
+                isFiveClick = true;
+            }
+        }
+
+        private void btnRefrash_Click(object sender, EventArgs e)
+        {
+            setIssueInit("50");
+            DrawChart(50);
+
+            btnFirst.BackColor = Color.Blue;
+            btnFirst.ForeColor = Color.White;
+
+            btnSecond.BackColor = Color.Blue;
+            btnSecond.ForeColor = Color.White;
+
+            btnThree.BackColor = Color.Blue;
+            btnThree.ForeColor = Color.White;
+
+            btnFourth.BackColor = Color.Blue;
+            btnFourth.ForeColor = Color.White;
+
+            btnFive.BackColor = Color.Blue;
+            btnFive.ForeColor = Color.White;
         }
     }
 }
