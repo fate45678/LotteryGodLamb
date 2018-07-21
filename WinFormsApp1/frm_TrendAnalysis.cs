@@ -116,6 +116,8 @@ namespace WinFormsApp1
             string Number = "";
             for (int index = 0; index < IssueCount; index++)
             {
+                if (index >= arr.Count())
+                    break;
                 Number = arr[index].ToString();
                               
                 series1.Points.AddXY(date - index, double.Parse(Number.Substring(0, 1)));
