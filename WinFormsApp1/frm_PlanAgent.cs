@@ -387,6 +387,17 @@ namespace WinFormsApp1
                     fIssue += ',' + listBox1.Items[i].ToString();
                 fIssue = fIssue.Substring(1);
 
+                //先檢查是否重複
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(0, "f_name");
+                dic.Add(1, "user_account");
+                var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "SELECT f_name ,user_account FROM [favorite] WHERE f_name = '" + fName + "' AND user_account = '" + frmGameMain.globalUserAccount + "'", dic);
+                if (getOldData.Count != 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("已经重复收藏");
+                    return;
+                }
+
                 string sql = "Insert into favorite values('{0}', '{1}', '{2}', '{3}', {4}, '{5}', '{6}')";
                 con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", string.Format(sql, fName, frmGameMain.globalUserAccount, fHits, fNumber, fdate, fNote, fIssue));
                 System.Windows.Forms.MessageBox.Show("新增完成。");
@@ -840,6 +851,10 @@ namespace WinFormsApp1
             else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
             {
                 var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from XJSSC_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from VR15_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
             }
 
             Dictionary<int, string> dic_Name = new Dictionary<int, string>();
@@ -1775,7 +1790,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             for (int i = 0; i < GodList.Rows.Count; i++)
             {
                 Control control = new Button();
-                control.Text = GodList.Rows[i]["p_name"].ToString() + " 中獎率" + GodList.Rows[i]["p_hits"].ToString() + "%";
+                control.Text = GodList.Rows[i]["p_name"].ToString() + " 中奖率" + GodList.Rows[i]["p_hits"].ToString() + "%";
                 control.Name = GodList.Rows[i]["p_id"].ToString();
                 control.Size = new System.Drawing.Size(100, 110);
                 checkWinRate = double.Parse(GodList.Rows[i]["p_hits"].ToString());
@@ -1843,8 +1858,9 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
             //amount = 0;
-            string[] choosePlanNameArr = ((sender as Button).Text).Split(' ');
-            choosePlanName = choosePlanNameArr[0];
+            //string[] choosePlanNameArr = ((sender as Button).Text);
+            //choosePlanName = choosePlanNameArr[0];
+            choosePlanName = ((sender as Button).Text).Replace(" ", ",");
             Dictionary<int, string> dic = new Dictionary<int, string>();
             dic.Add(0, "p_name");
             dic.Add(1, "p_account");
@@ -1855,12 +1871,12 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             listBox1.Items.Clear();
 
             string selectGameKind = cbGameKind.Text;
-
+            string selectName = choosePlanName.Split(',')[0].ToString().Trim();
             //總共中獎幾次 掛幾次 總共投了幾注
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0; ;
             string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             //先處理舊資料
-            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + choosePlanName + "%' order by p_id", dic);
+            var getOldData = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from Upplan where p_uploadDate LIKE '" + SelectNowDate + "%' AND p_isoldplan = '2' AND p_name LIKE '%" + selectName + "%' order by p_id", dic);
             for (int i = 0; i < getOldData.Count; i = i + 6)
             {
                 oldtotalWin = 0; oldtotalFail = 0; countPlay = 0;
@@ -2183,7 +2199,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             string[] nameArr = name.Split(',');
             long start = Int64.Parse(nameArr[0].Trim());
             long end = 0;
-            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")//VR金星1.5分彩
                 end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 end = Int64.Parse(nameArr[1].Substring(1, 12).Trim());
@@ -2318,6 +2334,17 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                     cbGameKind.Items.Add("四星");
                     cbGameKind.Items.Add("五星");
                 }
+                else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("后二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("中三");
+                    cbGameKind.Items.Add("后三");
+                    cbGameKind.Items.Add("四星");
+                    cbGameKind.Items.Add("五星");
+                }
                 //
                 cbGameKind.SelectedIndex = 0;
                 ischagneGameName = false;
@@ -2373,6 +2400,17 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 cbGameKind.Items.Add("五星");
             }
             else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("后二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("中三");
+                cbGameKind.Items.Add("后三");
+                cbGameKind.Items.Add("四星");
+                cbGameKind.Items.Add("五星");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
             {
                 cbGameKind.Items.Clear();
                 cbGameKind.Items.Add("前二");
@@ -2442,7 +2480,6 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             listBox2.Items.Clear();
             richTextBox1.Text = "";
         }
-
     }
 
     class checkNupdateData
@@ -2482,6 +2519,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "exec[XJSSC_checkNadd] '" + frmGameMain.jArr[i]["Issue"].ToString() + "','" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", "") + "'");
             }
+
         }
 
 

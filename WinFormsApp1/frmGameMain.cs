@@ -52,8 +52,8 @@ namespace WinFormsApp1
             frm_VersionCheck frm_VersionCheck = new frm_VersionCheck();
             frm_VersionCheck.ShowDialog();
 
-            //frm_startLoading frm_startLoading = new frm_startLoading();
-            //frm_startLoading.ShowDialog();
+            frm_startLoading frm_startLoading = new frm_startLoading();
+            frm_startLoading.ShowDialog();
 
             InitializeComponent();
             lblMenuPlanCycle.Click += new System.EventHandler(btnMenu_Click);
@@ -238,6 +238,16 @@ namespace WinFormsApp1
                     frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
+                case "VR金星1.5分彩":
+                    ResetAllGame(); //重設彩票
+                    lblGame1_7.BackColor = HexColor("#df6600");
+                    lblGame1_7.ForeColor = Color.White;
+                    lblGame1_7.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
                     break;
@@ -325,127 +335,176 @@ namespace WinFormsApp1
         //取得下一期時間
         private void useHttpWebRequest_GetNextPeriod()
         {
-            //a.hywin888.net  hyqa.azurewebsites.net
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-            request.Method = WebRequestMethods.Http.Get;
-            request.ContentType = "application/json";
-
-            using (var response = (HttpWebResponse)request.GetResponse())
+            if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    using (var stream = response.GetResponseStream())
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var temp = reader.ReadToEnd();
-                        string json = JsonConvert.SerializeObject(temp);
-                        NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
 
-                        if (NextPeriod.SerialNumber == null)
+            }
+            else
+            {
+
+            
+                //a.hywin888.net  hyqa.azurewebsites.net
+                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json";
+
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (var stream = response.GetResponseStream())
+                        using (var reader = new StreamReader(stream))
                         {
-                            lblNextPeriod.Text = "00000000000";
-                            frmGameMain.globalGetCurrentPeriod = "00000000000";
-                            lblNextPeriodTime.Text = "-- : -- : --";
-                        }
-                        else
-                        {
-                            lblNextPeriod.Text = NextPeriod.SerialNumber;
-                            frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
-                            DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
-                            DateTime dt2 = DateTime.Now;
-                            TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
-                            string hh = ts.Hours.ToString("00");
-                            string mm = ts.Minutes.ToString("00");
-                            string ss = ts.Seconds.ToString("00");
-                            if (ss.IndexOf("-") > -1)
-                                ss = "00";
-                            lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                            var temp = reader.ReadToEnd();
+                            string json = JsonConvert.SerializeObject(temp);
+                            NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+
+                            if (NextPeriod.SerialNumber == null)
+                            {
+                                lblNextPeriod.Text = "00000000000";
+                                frmGameMain.globalGetCurrentPeriod = "00000000000";
+                                lblNextPeriodTime.Text = "-- : -- : --";
+                            }
+                            else
+                            {
+                                lblNextPeriod.Text = NextPeriod.SerialNumber;
+                                frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
+                                DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
+                                DateTime dt2 = DateTime.Now;
+                                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                                string hh = ts.Hours.ToString("00");
+                                string mm = ts.Minutes.ToString("00");
+                                string ss = ts.Seconds.ToString("00");
+                                if (ss.IndexOf("-") > -1)
+                                    ss = "00";
+                                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                            }
                         }
                     }
+                    else
+                    { }
                 }
-                else
-                { }
             }
         }
 
         //取得歷史開獎
         private void useHttpWebRequest_GetHistory()
         {
-            //a.hywin888.net hyqa.azurewebsites.net/
-            DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
-            string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
-            request.Method = WebRequestMethods.Http.Get;
-            request.ContentType = "application/json";
-            #region test in DL
-            using (var response = (HttpWebResponse)request.GetResponse())
+
+            if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    using (var stream = response.GetResponseStream())
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var temp = reader.ReadToEnd();
-                        JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
-                        jArr = ja;
-                        //處理最近開獎號碼
-                        string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+                DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
+                string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
+                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                jArr = ja;
 
-                        if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
-                            || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
-                        {
-                            if (lastWinPeriod.Substring(8, 3) == "120")
-                                lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
-                            else
-                                lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
-                            lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                            strHistoryNumberOpen = "?";
-                        }
-                        else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
-                        {
-                            lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
-                            lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                            strHistoryNumberOpen = "?";
-                        }
-                        else
-                        {
-                            lblCurrentPeriod.Text = lastWinPeriod; //當期
-                            lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
-                            lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 1);
-                            lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 1);
-                            lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 1);
-                            lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
-                            strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
-
-
-                            if (ja[0]["Number"].ToString() != checkIsnewIssue)
-                            {
-                                notifyIcon1.ShowBalloonTip(3000);
-                                string tipTitle = "提示";
-                                string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
-                                ToolTipIcon tipType = ToolTipIcon.Info;
-                                notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);                              
-                             }
-
-                            checkIsnewIssue = ja[0]["Number"].ToString();
-                        }
-                        //處理歷史開獎
-                        //strHistory = "";
-                        //strHistoryCount = ja.Count.ToString();
-                        //for (int i = 0; i < ja.Count; i++)
-                        //{
-                        //    if (i == 120) break; //寫120筆就好
-                        //    strHistory += ja[i]["Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
-                        //}
-                    }
-                }
-                else
-                { }
             }
-            #endregion
+            else
+            { 
+                //a.hywin888.net hyqa.azurewebsites.net/
+                DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
+                string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json";
+                #region test in DL
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (var stream = response.GetResponseStream())
+                        using (var reader = new StreamReader(stream))
+                        {
+                            var temp = reader.ReadToEnd();
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
+                            jArr = ja;
+                            //處理最近開獎號碼
+                            string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+
+                            if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
+                                || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
+                            {
+                                if (lastWinPeriod.Substring(8, 3) == "120")
+                                    lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
+                                else
+                                    lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
+                                lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                strHistoryNumberOpen = "?";
+                            }
+                            else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
+                            {
+                                lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
+                                lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                strHistoryNumberOpen = "?";
+                            }
+                            else
+                            {
+                                lblCurrentPeriod.Text = lastWinPeriod; //當期
+                                lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
+                                lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 1);
+                                lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 1);
+                                lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 1);
+                                lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
+                                strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+
+
+                                if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                                {
+                                    notifyIcon1.ShowBalloonTip(3000);
+                                    string tipTitle = "提示";
+                                    string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                                    ToolTipIcon tipType = ToolTipIcon.Info;
+                                    notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);                              
+                                 }
+
+                                checkIsnewIssue = ja[0]["Number"].ToString();
+                            }
+                            //處理歷史開獎
+                            //strHistory = "";
+                            //strHistoryCount = ja.Count.ToString();
+                            //for (int i = 0; i < ja.Count; i++)
+                            //{
+                            //    if (i == 120) break; //寫120筆就好
+                            //    strHistory += ja[i]["4Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                            //}
+                        }
+                    }
+                    //else
+                    //{ }
+                }
+                    #endregion
+            }
 
         }
+
+        private DataTable ConnectDbGetHistoryNumberForVR15()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            try
+            {
+                con.Open();
+                string Sqlstr = @"SELECT issue as Issue, number as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                con.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
 
         //顯示右下廣告
         private void ShowMessage()
@@ -685,7 +744,28 @@ WHERE NUM >40 AND NUM <80";
                 return;
             }
         }
-
+        private void DeleteGod()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            try
+            {
+                con.Open();
+                string Sqlstr = @"Delete GodListPlanCycle";
+                var cmd = new SqlCommand(Sqlstr, con);
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+        }
         private void bgwGodinsert_DoWork(object sender, DoWorkEventArgs e)
         {
             ConnectDbGetHistoryNumber();
@@ -701,12 +781,28 @@ WHERE NUM >40 AND NUM <80";
             {
                 switch (i)
                 {
-                    case 1:
+                    case 6:
                         GameKind = "四星";
                         break;
-                    case 0:
+                    case 5:
                         GameKind = "五星";
                         break;
+                    case 4:
+                        GameKind = "前三";
+                        break;
+                    case 3:
+                        GameKind = "中三";
+                        break;
+                    case 2:
+                        GameKind = "后三";
+                        break;
+                    case 1:
+                        GameKind = "前二";
+                        break;
+                    case 0:
+                        GameKind = "后二";
+                        break;
+
                 }
 
                 //玩法底下有分成各種數量的號碼
@@ -743,10 +839,89 @@ WHERE NUM >40 AND NUM <80";
                         }
                     }
 
+                       else if (GameKind == "前三")
+                    {
+                        switch (iPlus)
+                        {
+                            case 0:
+                                GameType = "300+";
+                                break;
+                            case 1:
+                                GameType = "400+";
+                                break;
+                            case 2:
+                                GameType = "500+";
+                                break;
+                        }
+                    }
+                    else if (GameKind == "中三")
+                    {
+                        switch (iPlus)
+                        {
+                            case 0:
+                                GameType = "300+";
+                                break;
+                            case 1:
+                                GameType = "400+";
+                                break;
+                            case 2:
+                                GameType = "500+";
+                                break;
+                        }
+                    }
+                    else if (GameKind == "后三")
+                    {
+                        switch (iPlus)
+                        {
+                            case 0:
+                                GameType = "300+";
+                                break;
+                            case 1:
+                                GameType = "400+";
+                                break;
+                            case 2:
+                                GameType = "500+";
+                                break;
+                        }
+                    }
+                    else if (GameKind == "前二")
+                    {
+                        switch (iPlus)
+                        {
+                            case 0:
+                                GameType = "30+";
+                                break;
+                            case 1:
+                                GameType = "40+";
+                                break;
+                            case 2:
+                                GameType = "50+";
+                                break;
+                        }
+                    }
+                    else if (GameKind == "后二")
+                    {
+                        switch (iPlus)
+                        {
+                            case 0:
+                                GameType = "30+";
+                                break;
+                            case 1:
+                                GameType = "40+";
+                                break;
+                            case 2:
+                                GameType = "50+";
+                                break;
+                        }
+                    }
+
                     //抓取計畫名稱
                     DataTable dtGamePlan = getPlanName(GameKind);
                     string GamePlanName = "";
                     string[] numHistory;
+
+                    //刪除舊有資料
+                    DeleteGod();
 
                     for (int iPlan = 0; iPlan < dtGamePlan.Rows.Count; iPlan++)
                     {
@@ -1007,6 +1182,546 @@ WHERE NUM >40 AND NUM <80";
 
                                     #region 計算
                                     string CurrentBetsCycle = (sumBets).ToString(); 
+                                    //中奖率
+                                    double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
+
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
+                                    InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
+                                    #endregion
+                                }
+                            }
+                            else if (GameKind == "前三") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
+                            {
+
+                                if (GameDirect == "复式")
+                                {
+
+                                }
+                                else if (GameDirect == "单式")
+                                {
+                                    #region 驗證是否中奖
+
+                                    bool isWin = false; //中了沒
+                                    int periodtWin = 0; //第幾期中
+                                    string[] temp = { "", "", "" }; //存放combobox的值
+
+                                    for (int iii = jArrHistoryNumberForGod.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    {
+                                        //reset
+                                        isWin = false;
+                                        periodtWin = 0;
+                                        temp[0] = "";
+                                        temp[1] = "";
+                                        temp[2] = "";
+
+                                        int NumberArrCount = numHistory.Count();
+
+                                        for (int j = 0; j < iGameCycle; j++)
+                                        {
+                                            if (iii < 0) break;
+
+                                            string strMatch = "";
+                                            switch (GameKind)
+                                            {
+                                                case "五星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "");
+                                                    break;
+                                                case "四星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    break;
+                                                case "前三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    break;
+                                                case "中三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    break;
+                                                case "后三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    break;
+                                                case "前二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    break;
+                                                case "后二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    break;
+                                            }
+                                            if (isWin == false) //還沒中
+                                            {
+                                                ///////////////cycle_2 - 1
+                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    isWin = true;
+
+                                                }
+                                                else //挂
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                }
+                                                sumBets++;
+                                                periodtWin = j + 1;
+                                            }
+                                            else //前面已中奖
+                                            {
+                                                temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                //cycle_2++;
+                                            }
+                                            iii--;
+                                        }
+
+                                        cycle_2++;
+                                        iii++;
+
+                                        ComboBox cb_1 = new ComboBox();
+                                        for (int k = 0; k < 3; k++)
+                                        {
+                                            if (temp[k] != "")
+                                                cb_1.Items.Add(temp[k]);
+                                        }
+
+
+                                        //lbl_3 = new Label();
+                                        if (isWin == true)
+                                        {
+                                            sumWin++;
+                                        }
+                                    }
+                                    #endregion
+
+                                    #region 計算
+                                    string CurrentBetsCycle = (sumBets).ToString();
+                                    //中奖率
+                                    double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
+
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
+                                    InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
+                                    #endregion
+                                }
+                            }
+                            else if (GameKind == "中三") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
+                            {
+
+                                if (GameDirect == "复式")
+                                {
+
+                                }
+                                else if (GameDirect == "单式")
+                                {
+                                    #region 驗證是否中奖
+
+                                    bool isWin = false; //中了沒
+                                    int periodtWin = 0; //第幾期中
+                                    string[] temp = { "", "", "" }; //存放combobox的值
+
+                                    for (int iii = jArrHistoryNumberForGod.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    {
+                                        //reset
+                                        isWin = false;
+                                        periodtWin = 0;
+                                        temp[0] = "";
+                                        temp[1] = "";
+                                        temp[2] = "";
+
+                                        int NumberArrCount = numHistory.Count();
+
+                                        for (int j = 0; j < iGameCycle; j++)
+                                        {
+                                            if (iii < 0) break;
+
+                                            string strMatch = "";
+                                            switch (GameKind)
+                                            {
+                                                case "五星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "");
+                                                    break;
+                                                case "四星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    break;
+                                                case "前三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    break;
+                                                case "中三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    break;
+                                                case "后三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    break;
+                                                case "前二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    break;
+                                                case "后二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    break;
+                                            }
+                                            if (isWin == false) //還沒中
+                                            {
+                                                ///////////////cycle_2 - 1
+                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    isWin = true;
+
+                                                }
+                                                else //挂
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                }
+                                                sumBets++;
+                                                periodtWin = j + 1;
+                                            }
+                                            else //前面已中奖
+                                            {
+                                                temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                //cycle_2++;
+                                            }
+                                            iii--;
+                                        }
+
+                                        cycle_2++;
+                                        iii++;
+
+                                        ComboBox cb_1 = new ComboBox();
+                                        for (int k = 0; k < 3; k++)
+                                        {
+                                            if (temp[k] != "")
+                                                cb_1.Items.Add(temp[k]);
+                                        }
+
+
+                                        //lbl_3 = new Label();
+                                        if (isWin == true)
+                                        {
+                                            sumWin++;
+                                        }
+                                    }
+                                    #endregion
+
+                                    #region 計算
+                                    string CurrentBetsCycle = (sumBets).ToString();
+                                    //中奖率
+                                    double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
+
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
+                                    InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
+                                    #endregion
+                                }
+                            }
+                            else if (GameKind == "后三") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
+                            {
+
+                                if (GameDirect == "复式")
+                                {
+
+                                }
+                                else if (GameDirect == "单式")
+                                {
+                                    #region 驗證是否中奖
+
+                                    bool isWin = false; //中了沒
+                                    int periodtWin = 0; //第幾期中
+                                    string[] temp = { "", "", "" }; //存放combobox的值
+
+                                    for (int iii = jArrHistoryNumberForGod.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    {
+                                        //reset
+                                        isWin = false;
+                                        periodtWin = 0;
+                                        temp[0] = "";
+                                        temp[1] = "";
+                                        temp[2] = "";
+
+                                        int NumberArrCount = numHistory.Count();
+
+                                        for (int j = 0; j < iGameCycle; j++)
+                                        {
+                                            if (iii < 0) break;
+
+                                            string strMatch = "";
+                                            switch (GameKind)
+                                            {
+                                                case "五星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "");
+                                                    break;
+                                                case "四星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    break;
+                                                case "前三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    break;
+                                                case "中三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    break;
+                                                case "后三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    break;
+                                                case "前二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    break;
+                                                case "后二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    break;
+                                            }
+                                            if (isWin == false) //還沒中
+                                            {
+                                                ///////////////cycle_2 - 1
+                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    isWin = true;
+
+                                                }
+                                                else //挂
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                }
+                                                sumBets++;
+                                                periodtWin = j + 1;
+                                            }
+                                            else //前面已中奖
+                                            {
+                                                temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                //cycle_2++;
+                                            }
+                                            iii--;
+                                        }
+
+                                        cycle_2++;
+                                        iii++;
+
+                                        ComboBox cb_1 = new ComboBox();
+                                        for (int k = 0; k < 3; k++)
+                                        {
+                                            if (temp[k] != "")
+                                                cb_1.Items.Add(temp[k]);
+                                        }
+
+
+                                        //lbl_3 = new Label();
+                                        if (isWin == true)
+                                        {
+                                            sumWin++;
+                                        }
+                                    }
+                                    #endregion
+
+                                    #region 計算
+                                    string CurrentBetsCycle = (sumBets).ToString();
+                                    //中奖率
+                                    double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
+
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
+                                    InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
+                                    #endregion
+                                }
+                            }
+                            else if (GameKind == "前二") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
+                            {
+
+                                if (GameDirect == "复式")
+                                {
+
+                                }
+                                else if (GameDirect == "单式")
+                                {
+                                    #region 驗證是否中奖
+
+                                    bool isWin = false; //中了沒
+                                    int periodtWin = 0; //第幾期中
+                                    string[] temp = { "", "", "" }; //存放combobox的值
+
+                                    for (int iii = jArrHistoryNumberForGod.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    {
+                                        //reset
+                                        isWin = false;
+                                        periodtWin = 0;
+                                        temp[0] = "";
+                                        temp[1] = "";
+                                        temp[2] = "";
+
+                                        int NumberArrCount = numHistory.Count();
+
+                                        for (int j = 0; j < iGameCycle; j++)
+                                        {
+                                            if (iii < 0) break;
+
+                                            string strMatch = "";
+                                            switch (GameKind)
+                                            {
+                                                case "五星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "");
+                                                    break;
+                                                case "四星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    break;
+                                                case "前三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    break;
+                                                case "中三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    break;
+                                                case "后三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    break;
+                                                case "前二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    break;
+                                                case "后二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    break;
+                                            }
+                                            if (isWin == false) //還沒中
+                                            {
+                                                ///////////////cycle_2 - 1
+                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    isWin = true;
+
+                                                }
+                                                else //挂
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                }
+                                                sumBets++;
+                                                periodtWin = j + 1;
+                                            }
+                                            else //前面已中奖
+                                            {
+                                                temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                //cycle_2++;
+                                            }
+                                            iii--;
+                                        }
+
+                                        cycle_2++;
+                                        iii++;
+
+                                        ComboBox cb_1 = new ComboBox();
+                                        for (int k = 0; k < 3; k++)
+                                        {
+                                            if (temp[k] != "")
+                                                cb_1.Items.Add(temp[k]);
+                                        }
+
+
+                                        //lbl_3 = new Label();
+                                        if (isWin == true)
+                                        {
+                                            sumWin++;
+                                        }
+                                    }
+                                    #endregion
+
+                                    #region 計算
+                                    string CurrentBetsCycle = (sumBets).ToString();
+                                    //中奖率
+                                    double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
+
+                                    string insertInfo = GameKind + "," + GameDirect + "," + GamePlanName + ", " + GameCycle + "," + GameType;
+                                    InsertIntoGod(insertInfo, WinOpp.ToString("0.00"));
+                                    #endregion
+                                }
+                            }
+                            else if (GameKind == "后二") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
+                            {
+
+                                if (GameDirect == "复式")
+                                {
+
+                                }
+                                else if (GameDirect == "单式")
+                                {
+                                    #region 驗證是否中奖
+
+                                    bool isWin = false; //中了沒
+                                    int periodtWin = 0; //第幾期中
+                                    string[] temp = { "", "", "" }; //存放combobox的值
+
+                                    for (int iii = jArrHistoryNumberForGod.Count() - 1; iii >= 0; iii--) //從歷史結果開始比
+                                    {
+                                        //reset
+                                        isWin = false;
+                                        periodtWin = 0;
+                                        temp[0] = "";
+                                        temp[1] = "";
+                                        temp[2] = "";
+
+                                        int NumberArrCount = numHistory.Count();
+
+                                        for (int j = 0; j < iGameCycle; j++)
+                                        {
+                                            if (iii < 0) break;
+
+                                            string strMatch = "";
+                                            switch (GameKind)
+                                            {
+                                                case "五星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "");
+                                                    break;
+                                                case "四星":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                                    break;
+                                                case "前三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 3);
+                                                    break;
+                                                case "中三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(1, 3);
+                                                    break;
+                                                case "后三":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(2, 3);
+                                                    break;
+                                                case "前二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                                    break;
+                                                case "后二":
+                                                    strMatch = jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                                                    break;
+                                            }
+                                            if (isWin == false) //還沒中
+                                            {
+                                                ///////////////cycle_2 - 1
+                                                if (numHistory[0].IndexOf(strMatch) > -1) //中
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 中";
+                                                    isWin = true;
+
+                                                }
+                                                else //挂
+                                                {
+                                                    temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 挂";
+                                                }
+                                                sumBets++;
+                                                periodtWin = j + 1;
+                                            }
+                                            else //前面已中奖
+                                            {
+                                                temp[j] = "  " + jArrHistoryNumberForGod[iii]["Number"].ToString().Replace(",", " ") + " 停";
+                                                //cycle_2++;
+                                            }
+                                            iii--;
+                                        }
+
+                                        cycle_2++;
+                                        iii++;
+
+                                        ComboBox cb_1 = new ComboBox();
+                                        for (int k = 0; k < 3; k++)
+                                        {
+                                            if (temp[k] != "")
+                                                cb_1.Items.Add(temp[k]);
+                                        }
+
+
+                                        //lbl_3 = new Label();
+                                        if (isWin == true)
+                                        {
+                                            sumWin++;
+                                        }
+                                    }
+                                    #endregion
+
+                                    #region 計算
+                                    string CurrentBetsCycle = (sumBets).ToString();
                                     //中奖率
                                     double WinOpp = (sumWin * 100 / Convert.ToDouble(CurrentBetsCycle));
 
