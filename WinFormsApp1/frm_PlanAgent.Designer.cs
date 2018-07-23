@@ -296,7 +296,7 @@
             this.label116.Location = new System.Drawing.Point(0, 0);
             this.label116.Name = "label116";
             this.label116.Padding = new System.Windows.Forms.Padding(5, 8, 5, 0);
-            this.label116.Size = new System.Drawing.Size(81, 20);
+            this.label116.Size = new System.Drawing.Size(79, 20);
             this.label116.TabIndex = 1;
             this.label116.Text = "代理-大神榜";
             // 
@@ -602,7 +602,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.Location = new System.Drawing.Point(3, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(263, 12);
+            this.label6.Size = new System.Drawing.Size(266, 12);
             this.label6.TabIndex = 0;
             this.label6.Text = "红色80~100% 蓝色70~80% 绿色50~70% 白色50%↓";
             // 
@@ -697,7 +697,7 @@
             this.txtSearchUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtSearchUser.Location = new System.Drawing.Point(3, 3);
             this.txtSearchUser.Name = "txtSearchUser";
-            this.txtSearchUser.Size = new System.Drawing.Size(244, 21);
+            this.txtSearchUser.Size = new System.Drawing.Size(244, 22);
             this.txtSearchUser.TabIndex = 0;
             // 
             // panel6

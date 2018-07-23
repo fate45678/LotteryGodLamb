@@ -387,12 +387,18 @@ namespace WinFormsApp1
         {
             if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
-
+                DateTime dt1 = DateTime.Now.AddSeconds(30).AddMinutes(1);
+                DateTime dt2 = DateTime.Now;
+                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                string hh = ts.Hours.ToString("00");
+                string mm = ts.Minutes.ToString("00");
+                string ss = ts.Seconds.ToString("00");
+                if (ss.IndexOf("-") > -1)
+                    ss = "00";
+                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
             }
             else
-            {
-
-            
+            {            
                 //a.hywin888.net  hyqa.azurewebsites.net
                 //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
@@ -447,8 +453,46 @@ namespace WinFormsApp1
                 DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
                 string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
                 JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                jArr = ja;
+                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
 
+                if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
+                    || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
+                {
+                    if (lastWinPeriod.Substring(8, 3) == "120")
+                        lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
+                    else
+                        lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
+                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                    strHistoryNumberOpen = "?";
+                }
+                else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
+                {
+                    lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
+                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                    strHistoryNumberOpen = "?";
+                }
+                else
+                {
+                    lblCurrentPeriod.Text = lastWinPeriod; //當期
+                    lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
+                    lblNumber2.Text = ja[0]["Number"].ToString().Substring(1, 1);
+                    lblNumber3.Text = ja[0]["Number"].ToString().Substring(2, 1);
+                    lblNumber4.Text = ja[0]["Number"].ToString().Substring(3, 1);
+                    lblNumber5.Text = ja[0]["Number"].ToString().Substring(4, 1);
+                    strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+
+
+                    if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                    {
+                        notifyIcon1.ShowBalloonTip(3000);
+                        string tipTitle = "提示";
+                        string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                        ToolTipIcon tipType = ToolTipIcon.Info;
+                        notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                    }
+
+                    checkIsnewIssue = ja[0]["Number"].ToString();
+                }
             }
             else
             { 
@@ -540,7 +584,7 @@ namespace WinFormsApp1
             try
             {
                 con.Open();
-                string Sqlstr = @"SELECT issue as Issue, number as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                string Sqlstr = @"SELECT issue as Issue, replace(number,',','') as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);

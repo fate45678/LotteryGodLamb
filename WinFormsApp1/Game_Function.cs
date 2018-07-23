@@ -27,6 +27,18 @@ namespace WinFormsApp1
                 case "新疆时时彩":
                     strCode = "XJSSC";
                     break;
+                case "广东":
+                    strCode = "GD115";
+                    break;
+                case "江西":
+                    strCode = "JX115";
+                    break;
+                case "上海":
+                    strCode = "SH115";
+                    break;
+                case "山东":
+                    strCode = "SD115";
+                    break;
                 default:
                     strCode = "CQSSC";
                     break;
