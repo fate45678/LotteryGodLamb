@@ -248,6 +248,56 @@ namespace WinFormsApp1
                     frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
+                case "广东":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_1.BackColor = HexColor("#df6600");
+                    lblGame3_1.ForeColor = Color.White;
+                    lblGame3_1.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
+                case "山东":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_2.BackColor = HexColor("#df6600");
+                    lblGame3_2.ForeColor = Color.White;
+                    lblGame3_2.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
+                case "江西":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_3.BackColor = HexColor("#df6600");
+                    lblGame3_3.ForeColor = Color.White;
+                    lblGame3_3.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
+                case "上海":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_4.BackColor = HexColor("#df6600");
+                    lblGame3_4.ForeColor = Color.White;
+                    lblGame3_4.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
+                case "江苏":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_5.BackColor = HexColor("#df6600");
+                    lblGame3_5.ForeColor = Color.White;
+                    lblGame3_5.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
                     break;

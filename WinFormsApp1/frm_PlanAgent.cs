@@ -856,6 +856,26 @@ namespace WinFormsApp1
             {
                 var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from VR15_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
             }
+            else if (frm_PlanCycle.GameLotteryName == "广东")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from GD115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "山东")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from SD115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "江西")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from JX115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "上海")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from SH115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
+            else if (frm_PlanCycle.GameLotteryName == "江苏")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from JS115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
+            }
 
             Dictionary<int, string> dic_Name = new Dictionary<int, string>();
             dic_Name.Add(0, "name");
@@ -2199,7 +2219,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             string[] nameArr = name.Split(',');
             long start = Int64.Parse(nameArr[0].Trim());
             long end = 0;
-            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")//VR金星1.5分彩
+            if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "新疆时时彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩" || frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "山东" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江苏")//VR金星1.5分彩
                 end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 end = Int64.Parse(nameArr[1].Substring(1, 12).Trim());
@@ -2345,6 +2365,36 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                     cbGameKind.Items.Add("四星");
                     cbGameKind.Items.Add("五星");
                 }
+                else if (frm_PlanCycle.GameLotteryName == "广东")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "山东")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "江西")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "上海")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                }
+                else if (frm_PlanCycle.GameLotteryName == "江苏")
+                {
+                    cbGameKind.Items.Clear();
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                }
                 //
                 cbGameKind.SelectedIndex = 0;
                 ischagneGameName = false;
@@ -2420,6 +2470,36 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 cbGameKind.Items.Add("后三");
                 cbGameKind.Items.Add("四星");
                 cbGameKind.Items.Add("五星");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "广东")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "山东")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "江西")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "上海")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+            }
+            else if (frm_PlanCycle.GameLotteryName == "江苏")
+            {
+                cbGameKind.Items.Clear();
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
             }
             //
             cbGameKind.SelectedIndex = 0;
