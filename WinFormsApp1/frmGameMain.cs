@@ -298,6 +298,16 @@ namespace WinFormsApp1
                     frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
+                case "河北":
+                    ResetAllGame(); //重設彩票
+                    lblGame3_6.BackColor = HexColor("#df6600");
+                    lblGame3_6.ForeColor = Color.White;
+                    lblGame3_6.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
                     break;
