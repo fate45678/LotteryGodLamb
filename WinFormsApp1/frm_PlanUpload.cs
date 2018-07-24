@@ -1393,11 +1393,13 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 840; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
                         else if (i > 9 && i < 100)
+                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                        else if (i > 100 && i < 1000)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
                         else
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
@@ -1405,7 +1407,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "广东")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1417,7 +1419,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "山东")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1429,7 +1431,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江西")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1441,7 +1443,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "上海")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1453,7 +1455,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江苏")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -1465,7 +1467,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "河北")
                 {
-                    for (int i = 1; i < 97; i++)
+                    for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
@@ -2916,6 +2918,7 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
             {
+                var aaaaa = frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3);
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
