@@ -254,9 +254,9 @@
             this.pnlUserRank.Controls.Add(this.tableLayoutPanel3);
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlUserRank.Location = new System.Drawing.Point(647, 0);
+            this.pnlUserRank.Location = new System.Drawing.Point(655, 0);
             this.pnlUserRank.Name = "pnlUserRank";
-            this.pnlUserRank.Size = new System.Drawing.Size(389, 406);
+            this.pnlUserRank.Size = new System.Drawing.Size(377, 406);
             this.pnlUserRank.TabIndex = 10;
             // 
             // tableLayoutPanel3
@@ -276,7 +276,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(384, 318);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 318);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // panel33
@@ -286,7 +286,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(387, 28);
+            this.panel33.Size = new System.Drawing.Size(375, 28);
             this.panel33.TabIndex = 3;
             // 
             // label116
@@ -303,7 +303,7 @@
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(637, 0);
+            this.panel14.Location = new System.Drawing.Point(645, 0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(10, 406);
             this.panel14.TabIndex = 11;
@@ -314,9 +314,9 @@
             this.pnlHistory.Controls.Add(this.rtxtHistory);
             this.pnlHistory.Controls.Add(this.panel32);
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlHistory.Location = new System.Drawing.Point(406, 0);
+            this.pnlHistory.Location = new System.Drawing.Point(394, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(231, 406);
+            this.pnlHistory.Size = new System.Drawing.Size(251, 406);
             this.pnlHistory.TabIndex = 9;
             // 
             // rtxtHistory
@@ -329,7 +329,7 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(223, 370);
+            this.rtxtHistory.Size = new System.Drawing.Size(244, 370);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -340,7 +340,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(229, 28);
+            this.panel32.Size = new System.Drawing.Size(249, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -357,7 +357,7 @@
             // panel10
             // 
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(396, 0);
+            this.panel10.Location = new System.Drawing.Point(384, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(10, 406);
             this.panel10.TabIndex = 8;
@@ -374,7 +374,7 @@
             this.pnlPlanNumber.Location = new System.Drawing.Point(0, 0);
             this.pnlPlanNumber.Name = "pnlPlanNumber";
             this.pnlPlanNumber.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlPlanNumber.Size = new System.Drawing.Size(396, 406);
+            this.pnlPlanNumber.Size = new System.Drawing.Size(384, 406);
             this.pnlPlanNumber.TabIndex = 1;
             // 
             // listBox2
@@ -383,14 +383,15 @@
             this.listBox2.ItemHeight = 12;
             this.listBox2.Location = new System.Drawing.Point(7, 250);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(382, 64);
+            this.listBox2.Size = new System.Drawing.Size(373, 64);
             this.listBox2.TabIndex = 3;
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(7, 319);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(382, 83);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(373, 83);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -400,7 +401,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(7, 49);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(382, 196);
+            this.listBox1.Size = new System.Drawing.Size(373, 196);
             this.listBox1.TabIndex = 1;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
             // 
@@ -415,7 +416,7 @@
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(384, 37);
+            this.panel4.Size = new System.Drawing.Size(372, 37);
             this.panel4.TabIndex = 0;
             // 
             // button3

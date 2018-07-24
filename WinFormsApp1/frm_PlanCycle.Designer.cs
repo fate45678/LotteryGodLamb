@@ -548,18 +548,17 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.pnlHistory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(875, 0);
+            this.panel5.Location = new System.Drawing.Point(849, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(514, 453);
+            this.panel5.Size = new System.Drawing.Size(543, 453);
             this.panel5.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.pnlUserRank);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(225, 0);
+            this.panel4.Location = new System.Drawing.Point(250, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(289, 453);
+            this.panel4.Size = new System.Drawing.Size(290, 453);
             this.panel4.TabIndex = 1;
             // 
             // pnlUserRank
@@ -570,7 +569,7 @@
             this.pnlUserRank.Controls.Add(this.panel33);
             this.pnlUserRank.Location = new System.Drawing.Point(0, 0);
             this.pnlUserRank.Name = "pnlUserRank";
-            this.pnlUserRank.Size = new System.Drawing.Size(286, 453);
+            this.pnlUserRank.Size = new System.Drawing.Size(291, 453);
             this.pnlUserRank.TabIndex = 1;
             this.pnlUserRank.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlUserRank_Paint);
             // 
@@ -603,7 +602,7 @@
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tblGod.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tblGod.Size = new System.Drawing.Size(281, 302);
+            this.tblGod.Size = new System.Drawing.Size(284, 302);
             this.tblGod.TabIndex = 9;
             // 
             // panel33
@@ -613,7 +612,7 @@
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 0);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(284, 28);
+            this.panel33.Size = new System.Drawing.Size(289, 28);
             this.panel33.TabIndex = 3;
             // 
             // label116
@@ -630,9 +629,9 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(204, 0);
+            this.panel6.Location = new System.Drawing.Point(238, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(21, 453);
+            this.panel6.Size = new System.Drawing.Size(29, 453);
             this.panel6.TabIndex = 5;
             // 
             // pnlHistory
@@ -643,7 +642,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(0, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(204, 453);
+            this.pnlHistory.Size = new System.Drawing.Size(238, 453);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -652,11 +651,11 @@
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(0, 28);
+            this.rtxtHistory.Location = new System.Drawing.Point(-1, 28);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(202, 423);
+            this.rtxtHistory.Size = new System.Drawing.Size(238, 423);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -667,7 +666,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(202, 28);
+            this.panel32.Size = new System.Drawing.Size(236, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -684,18 +683,18 @@
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(875, 453);
+            this.panel8.Location = new System.Drawing.Point(849, 453);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(642, 6);
+            this.panel8.Size = new System.Drawing.Size(668, 6);
             this.panel8.TabIndex = 7;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(853, 0);
+            this.panel3.Location = new System.Drawing.Point(839, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(22, 459);
+            this.panel3.Size = new System.Drawing.Size(10, 459);
             this.panel3.TabIndex = 4;
             // 
             // pnlCycleSelect
@@ -708,7 +707,7 @@
             this.pnlCycleSelect.Controls.Add(this.panel30);
             this.pnlCycleSelect.Controls.Add(this.panel29);
             this.pnlCycleSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlCycleSelect.Location = new System.Drawing.Point(429, 0);
+            this.pnlCycleSelect.Location = new System.Drawing.Point(415, 0);
             this.pnlCycleSelect.Name = "pnlCycleSelect";
             this.pnlCycleSelect.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.pnlCycleSelect.Size = new System.Drawing.Size(424, 459);
@@ -849,7 +848,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(391, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(38, 459);
+            this.panel1.Size = new System.Drawing.Size(24, 459);
             this.panel1.TabIndex = 0;
             // 
             // pnlCycle

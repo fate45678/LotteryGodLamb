@@ -400,7 +400,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(1095, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(227, 367);
+            this.pnlHistory.Size = new System.Drawing.Size(259, 367);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -409,11 +409,11 @@
             this.rtxtHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtHistory.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtxtHistory.HideSelection = false;
-            this.rtxtHistory.Location = new System.Drawing.Point(5, 31);
+            this.rtxtHistory.Location = new System.Drawing.Point(-1, 31);
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(217, 331);
+            this.rtxtHistory.Size = new System.Drawing.Size(255, 331);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -424,7 +424,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(225, 28);
+            this.panel32.Size = new System.Drawing.Size(257, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115

@@ -802,7 +802,7 @@
             this.lblNumber5.BackColor = System.Drawing.Color.White;
             this.lblNumber5.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumber5.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber5.Location = new System.Drawing.Point(256, 38);
+            this.lblNumber5.Location = new System.Drawing.Point(255, 38);
             this.lblNumber5.Name = "lblNumber5";
             this.lblNumber5.Size = new System.Drawing.Size(28, 29);
             this.lblNumber5.TabIndex = 11;
@@ -814,7 +814,7 @@
             this.lblNumber4.BackColor = System.Drawing.Color.White;
             this.lblNumber4.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumber4.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber4.Location = new System.Drawing.Point(205, 38);
+            this.lblNumber4.Location = new System.Drawing.Point(204, 38);
             this.lblNumber4.Name = "lblNumber4";
             this.lblNumber4.Size = new System.Drawing.Size(28, 29);
             this.lblNumber4.TabIndex = 10;
@@ -826,7 +826,7 @@
             this.lblNumber3.BackColor = System.Drawing.Color.White;
             this.lblNumber3.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumber3.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber3.Location = new System.Drawing.Point(153, 38);
+            this.lblNumber3.Location = new System.Drawing.Point(152, 38);
             this.lblNumber3.Name = "lblNumber3";
             this.lblNumber3.Size = new System.Drawing.Size(28, 29);
             this.lblNumber3.TabIndex = 9;
@@ -838,7 +838,7 @@
             this.lblNumber2.BackColor = System.Drawing.Color.White;
             this.lblNumber2.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumber2.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber2.Location = new System.Drawing.Point(102, 38);
+            this.lblNumber2.Location = new System.Drawing.Point(101, 38);
             this.lblNumber2.Name = "lblNumber2";
             this.lblNumber2.Size = new System.Drawing.Size(28, 29);
             this.lblNumber2.TabIndex = 8;
@@ -850,7 +850,7 @@
             this.lblNumber1.BackColor = System.Drawing.Color.White;
             this.lblNumber1.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumber1.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber1.Location = new System.Drawing.Point(51, 38);
+            this.lblNumber1.Location = new System.Drawing.Point(49, 38);
             this.lblNumber1.Name = "lblNumber1";
             this.lblNumber1.Size = new System.Drawing.Size(28, 29);
             this.lblNumber1.TabIndex = 7;
