@@ -291,15 +291,19 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicFavoriteBt_Click;
-                    this.tableLayoutPanel2.Controls.Add(control, x, y);
+                    this.tableLayoutPanel2.Controls.Add(control, 0, y);
+                   
+                    //刪除按鈕
+                    Control controlDelete = new Button();
+                    controlDelete.Name = dtFavorite.Rows[i]["f_id"].ToString();
+                    controlDelete.Text = "删除";
+                    controlDelete.Size = new System.Drawing.Size(140, 30);
 
-                    if (y < 3)
-                        y++;
-                    else
-                    {
-                        x++;
-                        y = 0;
-                    }
+                    controlDelete.Padding = new Padding(5);
+                    controlDelete.Dock = DockStyle.Fill;
+                    controlDelete.Click += dynamicDeleteFavoriteBt_Click;
+                    this.tableLayoutPanel2.Controls.Add(controlDelete, 1, y);
+                    y++;
                 }
             }
             //else
@@ -442,15 +446,19 @@ namespace WinFormsApp1
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
                     control.Click += dynamicFavoriteBt_Click;
-                    this.tableLayoutPanel2.Controls.Add(control, x, y);
+                    this.tableLayoutPanel2.Controls.Add(control, 0, y);
 
-                    if (y < 3)
-                        y++;
-                    else
-                    { 
-                        x++;
-                        y = 0;
-                    }
+                    //刪除按鈕
+                    Control controlDelete = new Button();
+                    controlDelete.Name = dtFavorite.Rows[i]["f_id"].ToString();
+                    controlDelete.Text = "删除";
+                    controlDelete.Size = new System.Drawing.Size(140, 30);
+
+                    controlDelete.Padding = new Padding(5);
+                    controlDelete.Dock = DockStyle.Fill;
+                    controlDelete.Click += dynamicDeleteFavoriteBt_Click;
+                    this.tableLayoutPanel2.Controls.Add(controlDelete, 1, y);
+                    y++;
                 }
             }
             else
@@ -477,6 +485,21 @@ namespace WinFormsApp1
             for (int i = 0; i < issueArr.Count(); i++)
             {
                 listBox1.Items.Add(issueArr[i]);
+            }
+        }
+
+        private void dynamicDeleteFavoriteBt_Click(object sender, EventArgs e)
+        {
+            string id = (sender as Button).Name;
+            try
+            {
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Delete favorite WHERE id = '" + id + "'");
+                System.Windows.Forms.MessageBox.Show("删除成功");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("删除失败" + ex );
+                return;
             }
         }
 

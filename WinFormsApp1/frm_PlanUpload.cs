@@ -1396,10 +1396,8 @@ namespace WinFormsApp1
                     for (int i = 1; i < 840; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
-                        else if (i > 9 && i < 100)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
-                        else if (i > 100 && i < 1000)
+                        else if (i > 9 && i < 100)
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
                         else
                             Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
