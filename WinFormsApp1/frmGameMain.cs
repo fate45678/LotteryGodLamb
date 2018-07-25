@@ -519,6 +519,7 @@ namespace WinFormsApp1
                 DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
                 string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
                 JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                jArr = ja;
                 string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
                 globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
                 if ((lastWinPeriod.Substring(8, 3) == "84" && lblNextPeriod.Text.Substring(8, 3) == "002")

@@ -2571,6 +2571,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 }
             }
             updateMyfavorite();
+            UpdateHistory();
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             richTextBox1.Text = "";

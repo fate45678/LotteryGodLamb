@@ -1441,6 +1441,10 @@ namespace WinFormsApp1
             numHistoryList.Add(threeNumber);
             numHistory = numHistoryList.ToArray();
             lblBets.Text = NowAnalyzeNumberArr[0].ToString().Split(',').Count().ToString();
+            if (GameLotteryName == "广东")
+            {
+                lblBets.Text = NowAnalyzeNumberArr[0].ToString().Split(';').Count().ToString();
+            }
             int hisArr = 0; //用來更換randomNumber的
 
             //要改到外層
