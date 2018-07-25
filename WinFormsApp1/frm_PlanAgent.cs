@@ -414,7 +414,7 @@ namespace WinFormsApp1
                 for (int i = 0; i < dtFavorite.Rows.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = dtFavorite.Rows[i]["f_name"].ToString() + "中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
+                    control.Text = dtFavorite.Rows[i]["f_name"].ToString() + " 中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = dtFavorite.Rows[i]["f_id"].ToString();
                     control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
@@ -493,7 +493,7 @@ namespace WinFormsApp1
             string id = (sender as Button).Name;
             try
             {
-                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Delete favorite WHERE id = '" + id + "'");
+                con.ExecSQL("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "Delete favorite WHERE f_id = '" + id + "'");
                 System.Windows.Forms.MessageBox.Show("删除成功");
             }
             catch (Exception ex)
