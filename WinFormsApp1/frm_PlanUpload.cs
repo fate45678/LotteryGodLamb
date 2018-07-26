@@ -3381,12 +3381,6 @@ namespace WinFormsApp1
                     //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
 
-
-                frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
-                frm_LoadingControl.Show();
-                Application.DoEvents();
-                frm_LoadingControl.Close();
-
                 UpdateHistory();
                 //refreshInterface();
 
@@ -3412,15 +3406,16 @@ namespace WinFormsApp1
                 //timer1.Interval = 500;
                 //isFirst = false;
 
-
                 cbGameKind.SelectedIndex = 0;
-
-                
                 isChangeLotteryName = false;
+
+                frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
+                frm_LoadingControl.Show();
+                Application.DoEvents();
+                frm_LoadingControl.Close();
+               
                 updatecheckboxlist1(0);
-
             }
-
         }
     }
 }
