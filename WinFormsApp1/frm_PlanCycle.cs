@@ -1558,6 +1558,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -1777,6 +1779,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -1997,6 +2001,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -2217,6 +2223,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -2433,6 +2441,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -2648,6 +2658,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -2864,6 +2876,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -3091,6 +3105,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -3310,6 +3326,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -3530,6 +3548,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -3750,6 +3770,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -3966,6 +3988,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -4181,6 +4205,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -4396,6 +4422,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -4623,6 +4651,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -4842,6 +4872,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -5062,6 +5094,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -5282,6 +5316,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -5498,6 +5534,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -5713,6 +5751,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -5928,6 +5968,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -6155,6 +6197,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -6374,6 +6418,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -6594,6 +6640,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -6814,6 +6862,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -7030,6 +7080,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -7245,6 +7297,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -7460,6 +7514,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -7687,6 +7743,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -7906,6 +7964,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -8126,6 +8186,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -8346,6 +8408,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -8562,6 +8626,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -8777,6 +8843,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -8992,6 +9060,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -9219,6 +9289,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -9438,6 +9510,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -9658,6 +9732,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -9878,6 +9954,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -10094,6 +10172,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -10309,6 +10389,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -10524,6 +10606,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -10735,6 +10819,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -10935,6 +11021,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -11162,6 +11250,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -11381,6 +11471,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -11601,6 +11693,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -11821,6 +11915,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -12037,6 +12133,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -12252,6 +12350,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -12467,6 +12567,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -12694,6 +12796,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -12913,6 +13017,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -13133,6 +13239,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -13353,6 +13461,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -13569,6 +13679,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -13784,6 +13896,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -13999,6 +14113,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -14226,6 +14342,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -14445,6 +14563,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -14665,6 +14785,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -14885,6 +15007,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -15101,6 +15225,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -15316,6 +15442,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -15531,6 +15659,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -15758,6 +15888,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -15977,6 +16109,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -16197,6 +16331,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -16417,6 +16553,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -16633,6 +16771,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -16848,6 +16988,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -17063,6 +17205,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -17290,6 +17434,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -17509,6 +17655,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -17729,6 +17877,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -17949,6 +18099,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -18165,6 +18317,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -18380,6 +18534,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
@@ -18595,6 +18751,8 @@ namespace WinFormsApp1
                                 if (isWin == false) //還沒中
                                 {
                                     ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
                                     if (NowAnalyzeNumberArr[hisArr].ToString().IndexOf(strMatch) > -1) //中
                                     {
                                         temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";

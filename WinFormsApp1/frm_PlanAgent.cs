@@ -259,7 +259,7 @@ namespace WinFormsApp1
                 for (int i = 0; i < dtFavorite.Rows.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = dtFavorite.Rows[i]["f_name"].ToString() + " 中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
+                    control.Text = dtFavorite.Rows[i]["f_date"].ToString().Substring(0,4) + "-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(4,2) +"-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(6,2) + " " + dtFavorite.Rows[i]["f_name"].ToString() + " 中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
                     control.Size = new System.Drawing.Size(140, 30);
                     control.Name = dtFavorite.Rows[i]["f_id"].ToString();
                     control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
