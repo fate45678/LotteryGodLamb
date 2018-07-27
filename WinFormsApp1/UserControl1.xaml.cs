@@ -238,8 +238,11 @@ namespace WinFormsApp1
             #region 產生Data
             //判斷資料數量
             int initCount = 0;
-            if (frmGameMain.jArr.Count < 120) initCount = frmGameMain.jArr.Count;
-            else initCount = 120;
+            //if (frmGameMain.jArr.Count < 120) initCount = frmGameMain.jArr.Count;
+            //else initCount = 120;
+
+            initCount = frmGameMain.jArr.Count;
+
             //一列一列加上去
             for (int rowData = initCount; rowData > 0; rowData--)
             {
@@ -261,11 +264,12 @@ namespace WinFormsApp1
                     x_Temp += col2Width - 1;
                 }
                 //step1 記開獎號碼
-                number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(0, 1));
-                number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(2, 1));
-                number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(4, 1));
-                number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(6, 1));
-                number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Substring(8, 1));
+                var iii = frmGameMain.jArr[rowData - 1]["Number"].ToString();
+                number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(0, 1));
+                number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(1, 1));
+                number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(2, 1));
+                number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(3, 1));
+                number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(4, 1));
                 //step2 判斷位數
                 for (int i = 0; i < 5; i++)
                 {
