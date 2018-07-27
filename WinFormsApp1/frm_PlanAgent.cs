@@ -502,6 +502,8 @@ namespace WinFormsApp1
                 System.Windows.Forms.MessageBox.Show("删除失败" + ex );
                 return;
             }
+
+            updateMyfavorite();
         }
 
         private void timer3_Tick(object sender, EventArgs e)
