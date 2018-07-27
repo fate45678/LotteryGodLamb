@@ -259,10 +259,9 @@ namespace WinFormsApp1
                 for (int i = 0; i < dtFavorite.Rows.Count; i++)
                 {
                     Control control = new Button();
-                    control.Text = dtFavorite.Rows[i]["f_date"].ToString().Substring(0,4) + "-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(4,2) +"-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(6,2) + " " + dtFavorite.Rows[i]["f_name"].ToString() + " 中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";
-                    control.Size = new System.Drawing.Size(140, 30);
+                    control.Text = dtFavorite.Rows[i]["f_date"].ToString().Substring(0,4) + "-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(4,2) +"-" + dtFavorite.Rows[i]["f_date"].ToString().Substring(6,2) + " " + dtFavorite.Rows[i]["f_name"].ToString() + " 中獎率" + dtFavorite.Rows[i]["f_hits"].ToString() + "%";                    
                     control.Name = dtFavorite.Rows[i]["f_id"].ToString();
-                    control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
+                    //control.Tag = dtFavorite.Rows[i]["f_id"].ToString();
 
                     winRate = double.Parse(dtFavorite.Rows[i]["f_hits"].ToString());
                     if (winRate >= 80)
@@ -290,6 +289,7 @@ namespace WinFormsApp1
 
                     control.Padding = new Padding(5);
                     control.Dock = DockStyle.Fill;
+                    //control.Size = new System.Drawing.Size(140, 30);
                     control.Click += dynamicFavoriteBt_Click;
                     this.tableLayoutPanel2.Controls.Add(control, 0, y);
                    
@@ -297,11 +297,12 @@ namespace WinFormsApp1
                     Control controlDelete = new Button();
                     controlDelete.Name = dtFavorite.Rows[i]["f_id"].ToString();
                     controlDelete.Text = "删除";
-                    controlDelete.Size = new System.Drawing.Size(140, 30);
+                    
 
                     controlDelete.Padding = new Padding(5);
                     controlDelete.Dock = DockStyle.Fill;
                     controlDelete.Click += dynamicDeleteFavoriteBt_Click;
+                    controlDelete.Size = new System.Drawing.Size(140, 30);
                     this.tableLayoutPanel2.Controls.Add(controlDelete, 1, y);
                     y++;
                 }
