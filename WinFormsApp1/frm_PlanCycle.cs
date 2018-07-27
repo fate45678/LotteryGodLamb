@@ -19256,8 +19256,8 @@ WHERE NUM >40 AND NUM <80";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
-                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{1} WHERE date = '20180720' AND type = '{0}' ";
+                            //string aaaa = string.Format(Sqlstr, date, type, GameDb);
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);

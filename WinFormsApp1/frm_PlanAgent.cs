@@ -150,8 +150,8 @@ namespace WinFormsApp1
                     cbGameDirect.Items.Add("单式");
                     //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("前三组合");
-                    cbGameDirect.Items.Add("和值");
-                    cbGameDirect.Items.Add("跨度");
+                    //cbGameDirect.Items.Add("和值");
+                    //cbGameDirect.Items.Add("跨度");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "中三":
@@ -159,8 +159,8 @@ namespace WinFormsApp1
                     cbGameDirect.Items.Add("单式");
                     //cbGameDirect.Items.Add("复式");
                     ///cbGameDirect.Items.Add("中三组合");
-                    cbGameDirect.Items.Add("和值");
-                    cbGameDirect.Items.Add("跨度");
+                    //cbGameDirect.Items.Add("和值");
+                    //cbGameDirect.Items.Add("跨度");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "后三":
@@ -168,11 +168,14 @@ namespace WinFormsApp1
                     cbGameDirect.Items.Add("单式");
                     //cbGameDirect.Items.Add("复式");
                     //cbGameDirect.Items.Add("后三组合");
-                    cbGameDirect.Items.Add("和值");
-                    cbGameDirect.Items.Add("跨度");
+                    //cbGameDirect.Items.Add("和值");
+                    //cbGameDirect.Items.Add("跨度");
                     cbGameDirect.SelectedIndex = 0;
                     break;
                 case "前二":
+                    cbGameDirect.Items.Clear();
+                    cbGameDirect.Items.Add("单式");
+                    break;
                 case "后二":
                     cbGameDirect.Items.Clear();
                     cbGameDirect.Items.Add("单式");
@@ -797,7 +800,7 @@ namespace WinFormsApp1
             if (hitTimes.Count > 0)
             {
                 string nowdate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
-               
+
                 for (int i = 0; i < hitTimes.Count; i++)
                 {
                     Control control = new Button();
@@ -807,11 +810,11 @@ namespace WinFormsApp1
                     {
                         control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
                     }
-                    
+
                     control.Size = new System.Drawing.Size(140, 130);
                     control.Name = hitTimesElementAt[0];
                     if (hitTimes.ElementAt(i).Value >= 80)
-                    { 
+                    {
                         control.BackColor = Color.Red;
                         control.ForeColor = Color.White;
                     }
@@ -839,6 +842,10 @@ namespace WinFormsApp1
                     this.tableLayoutPanel1.Controls.Add(control, 0, 0);
 
                 }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("查無資料");
             }
             updateMyfavorite();
             listBox1.Items.Clear();
