@@ -9186,6 +9186,11 @@ namespace WinFormsApp1
             {
                 #region VR金星1.5分彩
 
+                if (jArrHistoryNumber.Count == 0)
+                {
+                    ConnectDbGetHistoryNumberYesterDay(GameLotteryName);
+                }
+
                 if (cbGameKind.Text == "中三") //&& (cbGameCycle.Text == "三期一周" || cbGameCycle.Text == "二期一周")
                 {
 
@@ -18932,6 +18937,62 @@ namespace WinFormsApp1
             }
         }
 
+        private void ConnectDbGetHistoryNumberYesterDay(string LotteryName)
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.AddDays(-1).ToString("u").Substring(0, 10).Replace("-", "");
+            string Sqlstr = "";
+            try
+            {
+                con.Open();
+
+                if (LotteryName == "重庆时时彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "腾讯官方彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM QQFFC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "腾讯奇趣彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM TENCENTFFC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "天津时时彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM TJSSC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "新疆时时彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM XJSSC_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "VR金星1.5分彩")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "广东")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM GD115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "山东")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM SD115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "江西")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM JX115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "上海")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM SH115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "江苏")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM JS115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "河北")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM HEB115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                var str_json = JsonConvert.SerializeObject(ds.Tables[0], Formatting.Indented);
+                //MessageBox.Show("Connection Open ! ");
+                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                //string ii = ja[0]["issue"].ToString();
+                jArrHistoryNumber = ja;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+        }
+
         private void ConnectDbGetRandomNumber(string type, int PlanName,string GameCycle)
         {
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
@@ -20064,7 +20125,7 @@ WHERE NUM >65 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(420) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20087,7 +20148,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >420 AND NUM <841";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20105,7 +20166,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(420) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20130,7 +20191,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(280) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20153,7 +20214,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >280 AND NUM <561";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20177,7 +20238,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >561 AND NUM <841";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
