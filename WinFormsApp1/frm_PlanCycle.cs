@@ -19025,6 +19025,9 @@ namespace WinFormsApp1
                     case "广东":
                         GameDb = "ForGD115";
                         break;
+                    case "VR金星1.5分彩":
+                        GameDb = "ForVR15";
+                        break;
                     case "山东":
                         GameDb = "ForSD115";
                         break;
