@@ -1245,6 +1245,7 @@ namespace WinFormsApp1
         {
             timer1.Interval = 60000;
             UpdateHistory();
+            timer1.Dispose();
         }
 
         private void txtGameNum_KeyPress(object sender, KeyPressEventArgs e)
