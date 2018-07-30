@@ -1041,6 +1041,7 @@ namespace WinFormsApp1
 
             #endregion
             canvas1.Height = y_Temp;
+            //this.
         }
 
         //判斷應比對哪一個位數，回傳99表示比對中止
