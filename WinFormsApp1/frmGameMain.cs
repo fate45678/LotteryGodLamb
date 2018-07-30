@@ -517,6 +517,10 @@ namespace WinFormsApp1
             if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
                 DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
+                if (dtVR15 == null || dtVR15.Rows.Count == 0)
+                {
+                    dtVR15 = ConnectDbGetHistoryNumberForVR15YesterDay();
+                }
                 string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
                 JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
                 jArr = ja;
@@ -752,7 +756,32 @@ namespace WinFormsApp1
             }
         }
 
+        private DataTable ConnectDbGetHistoryNumberForVR15YesterDay()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
 
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.AddDays(-1).ToString("u").Substring(0, 10).Replace("-", "");
+            try
+            {
+                con.Open();
+                string Sqlstr = @"SELECT issue as Issue, replace(number,',','') as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                con.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
         //顯示右下廣告
         private void ShowMessage()
         {
@@ -773,6 +802,7 @@ namespace WinFormsApp1
         {
             ShowMessage();
             timer_ShowMessage.Interval = 300000;
+            timer_ShowMessage.Dispose();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
@@ -788,7 +818,7 @@ namespace WinFormsApp1
             }
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
-           
+            timer_GetGameInfo.Dispose();
 
         }
         private void lblMenuPlanUpload_Click(object sender, EventArgs e)
