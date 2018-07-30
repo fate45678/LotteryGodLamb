@@ -1804,6 +1804,8 @@ namespace WinFormsApp1
                 updatecheckboxlist1(0);
                 //backgroundWorker1.CancelAsync();
             }
+
+            //timer1.Dispose();
         }
 
         /// <summary>
@@ -2982,8 +2984,7 @@ namespace WinFormsApp1
             //修改一個視窗
             frm_editNumber edit = new frm_editNumber(richTextBox1.Text);
             edit.ShowDialog();
-            if (richBox1Number != "")
-                richTextBox1.Text = richBox1Number;
+            richTextBox1.Text = richBox1Number.Trim();
         }
 
         private void listBox1_MouseClick(object sender, MouseEventArgs e)
@@ -3185,6 +3186,7 @@ namespace WinFormsApp1
         private void timer2_Tick(object sender, EventArgs e)
         {
             UpdateHistory();
+            timer2.Dispose();
             //updatecheckboxlist1(updateLstbType);
         }
 
@@ -3415,6 +3417,7 @@ namespace WinFormsApp1
                 frm_LoadingControl.Close();
                
                 updatecheckboxlist1(0);
+                timeCheckChange.Dispose();
             }
         }
     }

@@ -802,6 +802,7 @@ namespace WinFormsApp1
         {
             ShowMessage();
             timer_ShowMessage.Interval = 300000;
+            timer_ShowMessage.Dispose();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
@@ -817,7 +818,7 @@ namespace WinFormsApp1
             }
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
-           
+            timer_GetGameInfo.Dispose();
 
         }
         private void lblMenuPlanUpload_Click(object sender, EventArgs e)
