@@ -12808,6 +12808,7 @@ namespace WinFormsApp1
                 #endregion
             }
             rtxtPlanCycle.ReadOnly = true;//this
+            
             GC.SuppressFinalize(this);
         }
 
