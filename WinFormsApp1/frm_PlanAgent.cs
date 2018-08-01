@@ -239,7 +239,7 @@ namespace WinFormsApp1
                 //updateMyfavorite();
                 timer1.Interval = 120000;
             }
-            timer1.Dispose();
+            //timer1.Dispose();
             //label10.Text = "欢迎: " + frmGameMain.globalUserName;
         }
 
@@ -518,7 +518,7 @@ namespace WinFormsApp1
                 updateMyfavorite();
                 timer3.Interval = 600000;
             }
-            timer3.Dispose();
+            //timer3.Dispose();
         }
         #endregion
 
