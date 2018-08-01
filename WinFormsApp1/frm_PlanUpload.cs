@@ -3186,7 +3186,7 @@ namespace WinFormsApp1
         private void timer2_Tick(object sender, EventArgs e)
         {
             UpdateHistory();
-            timer2.Dispose();
+            //timer2.Dispose();
             //updatecheckboxlist1(updateLstbType);
         }
 
@@ -3417,7 +3417,7 @@ namespace WinFormsApp1
                 frm_LoadingControl.Close();
                
                 updatecheckboxlist1(0);
-                timeCheckChange.Dispose();
+                //timeCheckChange.Dispose();
             }
         }
     }

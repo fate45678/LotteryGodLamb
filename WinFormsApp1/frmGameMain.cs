@@ -393,13 +393,16 @@ namespace WinFormsApp1
         }
 
         //取得下一期時間
+        DateTime dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
+       
         private void useHttpWebRequest_GetNextPeriod()
         {
             if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
-                DateTime dt1 = DateTime.Now.AddSeconds(30).AddMinutes(1);
-                DateTime dt2 = DateTime.Now;
-                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                DateTime dt2Vr = DateTime.Now;
+                if(dt1Vr< dt2Vr)
+                    dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
+                TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
                 string hh = ts.Hours.ToString("00");
                 string mm = ts.Minutes.ToString("00");
                 string ss = ts.Seconds.ToString("00");
@@ -802,7 +805,7 @@ namespace WinFormsApp1
         {
             ShowMessage();
             timer_ShowMessage.Interval = 300000;
-            timer_ShowMessage.Dispose();
+            //timer_ShowMessage.Dispose();
         }
 
         private void timer_GetGameInfo_Tick(object sender, EventArgs e)
@@ -818,7 +821,7 @@ namespace WinFormsApp1
             }
             useHttpWebRequest_GetNextPeriod(); //取得下一期時間       
             useHttpWebRequest_GetHistory(); //取得歷史開獎
-            timer_GetGameInfo.Dispose();
+            //timer_GetGameInfo.Dispose();
 
         }
         private void lblMenuPlanUpload_Click(object sender, EventArgs e)
