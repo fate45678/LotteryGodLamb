@@ -393,13 +393,16 @@ namespace WinFormsApp1
         }
 
         //取得下一期時間
+        DateTime dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
+       
         private void useHttpWebRequest_GetNextPeriod()
         {
             if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
-                DateTime dt1 = DateTime.Now.AddSeconds(30).AddMinutes(1);
-                DateTime dt2 = DateTime.Now;
-                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                DateTime dt2Vr = DateTime.Now;
+                if(dt1Vr< dt2Vr)
+                    dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
+                TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
                 string hh = ts.Hours.ToString("00");
                 string mm = ts.Minutes.ToString("00");
                 string ss = ts.Seconds.ToString("00");
