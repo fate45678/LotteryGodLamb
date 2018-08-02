@@ -2067,7 +2067,7 @@ namespace WinFormsApp1
                     {
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
-                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && tmp[0] != tmp[1])
+                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) != 0 && int.Parse(tmp[1]) != 0 && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && tmp[0] != tmp[1])
                         {
                             intoRichboxStr += "," + TmpStr;
                         }
@@ -2083,7 +2083,7 @@ namespace WinFormsApp1
                     {
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
-                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && int.Parse(tmp[2]) < 12 && tmp[0] != tmp[1] && tmp[0] != tmp[2] && tmp[1] != tmp[2])
+                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) != 0 && int.Parse(tmp[1]) != 0 && int.Parse(tmp[2]) != 0 && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && int.Parse(tmp[2]) < 12 && tmp[0] != tmp[1] && tmp[0] != tmp[2] && tmp[1] != tmp[2])
                         {
                             intoRichboxStr += "," + TmpStr;
                         }

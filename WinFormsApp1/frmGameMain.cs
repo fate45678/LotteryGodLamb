@@ -238,16 +238,16 @@ namespace WinFormsApp1
                     frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
-                case "VR金星1.5分彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_7.BackColor = HexColor("#df6600");
-                    lblGame1_7.ForeColor = Color.White;
-                    lblGame1_7.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
+                //case "VR金星1.5分彩":
+                //    ResetAllGame(); //重設彩票
+                //    lblGame1_7.BackColor = HexColor("#df6600");
+                //    lblGame1_7.ForeColor = Color.White;
+                //    lblGame1_7.Refresh();
+                //    HD_GameSelect.Text = ((Label)(sender)).Text;
+                //    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                //    frm_Chart.isChange = true;
+                //    MessageBox.Show("若是未更新请按下刷新按钮");
+                //    break;
                 case "广东":
                     ResetAllGame(); //重設彩票
                     lblGame3_1.BackColor = HexColor("#df6600");
