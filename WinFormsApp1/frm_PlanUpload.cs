@@ -136,16 +136,17 @@ namespace WinFormsApp1
                             for (int ii = 0; ii < oldamount; ii++)
                             {
                                 var oldshowIssue = showJa.Where(x => x["Issue"].ToString().Contains((oldstart + ii).ToString())).ToList();
-                                if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+
+                                //表示還沒開獎
+                                if (oldshowIssue.Count == 0)
                                 {
-                                    //表示還沒開獎
-                                    if (oldshowIssue.Count == 0)
-                                    {
-                                        listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
-                                        OldisAllOpen = false;
-                                        break;
-                                    }
-                                    else if (oldGameKind.Contains("五星"))
+                                    listBox1.Items.Add(oldstart + " 到 " + oldend + " 尚未开奖(" + (oldamount - oldtotalPlay) + ")");
+                                    OldisAllOpen = false;
+                                    break;
+                                }
+                                else if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+                                { 
+                                    if (oldGameKind.Contains("五星"))
                                     {
                                         oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "");
                                     }
@@ -175,18 +176,18 @@ namespace WinFormsApp1
                                         oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
                                     }
                                 }
-                                else if(frm_PlanCycle.GameLotteryName == "广东")
+                                else if (frm_PlanCycle.GameLotteryName == "广东")
                                 {
                                     if (oldGameKind.Contains("前二"))
                                     {
-                                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Substring(0, 5).Replace(","," ");
+                                        oldcheckNumber = oldshowIssue[0]["Number"].ToString().Substring(0, 5).Replace(",", " ");
                                     }
                                     else if (oldGameKind.Contains("前三"))
                                     {
                                         oldcheckNumber = oldshowIssue[0]["Number"].ToString().Substring(0, 8).Replace(",", " ");
                                     }
                                 }
-                                //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
+                                //checkNumber = showIssue[0]["Number"].ToString().Replace(",", "");
 
                                 //是否有中獎
                                 if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
@@ -2066,7 +2067,7 @@ namespace WinFormsApp1
                     {
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
-                        if (tmp.Count() == lenghCheck && tmp[0].Length == 2 && tmp[1].Length == 2 && tmp[0] != tmp[1])
+                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && tmp[0] != tmp[1])
                         {
                             intoRichboxStr += "," + TmpStr;
                         }
@@ -2082,7 +2083,7 @@ namespace WinFormsApp1
                     {
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
-                        if (tmp.Count() == lenghCheck && tmp[0].Length == 2 && tmp[1].Length == 2 && tmp[2].Length == 2 && tmp[0] != tmp[1] && tmp[0] != tmp[2] && tmp[1] != tmp[2])
+                        if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && int.Parse(tmp[2]) < 12 && tmp[0] != tmp[1] && tmp[0] != tmp[2] && tmp[1] != tmp[2])
                         {
                             intoRichboxStr += "," + TmpStr;
                         }
