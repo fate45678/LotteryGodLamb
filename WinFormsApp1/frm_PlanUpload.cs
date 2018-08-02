@@ -1884,6 +1884,18 @@ namespace WinFormsApp1
                 MessageBox.Show("上傳成功。");
                 updatecheckboxlist1(0);
                 frm_LoadingControl.Close();
+
+                //計算幾注
+                string Number = richTextBox2.Text.Replace(",", "");
+                var Tmp = Number.Split(' ');
+                label21.Text = "共" + Tmp.Count().ToString() + "注";
+
+                if (frm_PlanCycle.GameLotteryName == "广东") 
+                {
+                    Number = richTextBox2.Text;
+                    var checkTmpFirst = Number.Split(',');
+                    label21.Text = "共" + checkTmpFirst.Count().ToString() + "注";
+                }
             }
             allorwUpdate = true;
         }
@@ -2942,7 +2954,15 @@ namespace WinFormsApp1
 
 
                 //todo都要修正中奖幾期ˊ
-                label15.Text = "共" + item + "注 ";
+                string Number = richTextBox1.Text.Replace(",", "");
+                var Tmp = Number.Split(' ');
+                label15.Text = "共" + Tmp.Count() + "注 ";
+                if (frm_PlanCycle.GameLotteryName == "广东")
+                {
+                    Number = richTextBox1.Text;
+                    var checkTmpFirst = Number.Split(',');
+                    label15.Text = "共" + checkTmpFirst.Count().ToString() + "注";
+                }
             }
             else
             {
@@ -3180,6 +3200,11 @@ namespace WinFormsApp1
                     richTextBox1.Text = getData.ElementAt(i);
                     itemCount = richTextBox1.Text.Split(' ');
                     label15.Text = "共" + itemCount.Count().ToString() + "注";
+                    if (frm_PlanCycle.GameLotteryName == "广东")
+                    {
+                        itemCount = richTextBox1.Text.Split(',');
+                        label15.Text = "共" + itemCount.Count().ToString() + "注";
+                    }
                     break;
                 }
                 else if (i + 3 < getData.Count() && end < Int64.Parse(getData.ElementAt(i + 3)))
