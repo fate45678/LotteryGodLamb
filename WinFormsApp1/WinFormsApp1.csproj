@@ -95,6 +95,12 @@
     <Compile Include="frm_TrendAnalysis.Designer.cs">
       <DependentUpon>frm_TrendAnalysis.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_TrendAnalysisTrue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_TrendAnalysisTrue.Designer.cs">
+      <DependentUpon>frm_TrendAnalysisTrue.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_VersionCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TrendAnalysis.resx">
       <DependentUpon>frm_TrendAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_TrendAnalysisTrue.resx">
+      <DependentUpon>frm_TrendAnalysisTrue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TwoMessageShow.resx">
       <DependentUpon>frm_TwoMessageShow.cs</DependentUpon>
