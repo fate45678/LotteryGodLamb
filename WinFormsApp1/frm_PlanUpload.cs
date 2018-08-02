@@ -1931,84 +1931,146 @@ namespace WinFormsApp1
 
         private void checkdataTest(string type)
         {
-            //1.先確認玩法
-            string GameKind = "";
-            if (type == "A")
-                GameKind = cbGameKind.Text;
-            else
-                GameKind = label16.Text.Substring(label16.Text.Length - 4, 4);
-            //string GameKind = cbGameKind.Text;
-            int lenghCheck = 0;
+            //0.確認彩種
+            string PlayKind = frm_PlanCycle.GameLotteryName;
 
-            if (GameKind.Contains("二"))
+            if (PlayKind == "重庆时时彩" || PlayKind == "腾讯奇趣彩" || PlayKind == "腾讯官方彩" || PlayKind == "天津时时彩" || PlayKind == "新疆时时彩" || PlayKind == "VR金星1.5分彩")
             {
-                lenghCheck = 2;
-            }
-            else if (GameKind.Contains("三"))
-            {
-                lenghCheck = 3;
-            }
-            else if (GameKind.Contains("四"))
-            {
-                lenghCheck = 4;
-            }
-            else if (GameKind.Contains("五"))
-            {
-                lenghCheck = 5;
-            }
-
-
-            string checkNumber = "";
-            if(type == "A")
-                checkNumber = richTextBox2.Text.Replace(",", "");
-            else
-                checkNumber = richTextBox1.Text.Replace(",", "");
-
-            var checkTmp = checkNumber.Split(' ');
-
-            var checkTmpWhere = checkTmp.Where(x => x.Length == lenghCheck).Distinct().ToArray();
-            var checkTmpError = checkTmp.Where(x => x.Length != lenghCheck).Distinct().ToArray();
-
-            if (checkTmp.Count() == checkTmpWhere.Count())
-            {
-                label21.Text = "共" + checkTmp.Count().ToString() + "注";
-            }
-            else if (checkTmpWhere.Count() != 0)
-            {
-                string CompletNumber = "";
-                for (int i = 0; i < checkTmpWhere.Count(); i++)
-                {
-                    CompletNumber = CompletNumber + " " + checkTmpWhere[i];
-                }
-
-                if(type == "A")
-                    richTextBox2.Text = CompletNumber.Substring(1);
-                else
-                    richTextBox1.Text = CompletNumber.Substring(1);
-            }
-            else
-            {
+                #region 時時彩
+                //1.先確認玩法
+                string GameKind = "";
                 if (type == "A")
-                    richTextBox2.Text = "";
+                    GameKind = cbGameKind.Text;
                 else
-                    richTextBox1.Text = "";
-            }
-            label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
+                    GameKind = label16.Text.Substring(label16.Text.Length - 4, 4);
+                //string GameKind = cbGameKind.Text;
+                int lenghCheck = 0;
 
-            string errorList = "";
-            if (checkTmpError.Count() != 0)
-            {
-                for (int i = 0; i < checkTmpError.Count(); i++)
+                if (GameKind.Contains("二"))
                 {
-                    errorList = errorList + "," + checkTmpError[i];
+                    lenghCheck = 2;
                 }
-                MessageBox.Show("已清除重复及错误资料。\n" + errorList);
+                else if (GameKind.Contains("三"))
+                {
+                    lenghCheck = 3;
+                }
+                else if (GameKind.Contains("四"))
+                {
+                    lenghCheck = 4;
+                }
+                else if (GameKind.Contains("五"))
+                {
+                    lenghCheck = 5;
+                }
+
+
+                string checkNumber = "";
+                if (type == "A")
+                    checkNumber = richTextBox2.Text.Replace(",", "");
+                else
+                    checkNumber = richTextBox1.Text.Replace(",", "");
+
+                var checkTmp = checkNumber.Split(' ');
+
+                var checkTmpWhere = checkTmp.Where(x => x.Length == lenghCheck).Distinct().ToArray();
+                var checkTmpError = checkTmp.Where(x => x.Length != lenghCheck).Distinct().ToArray();
+
+                if (checkTmp.Count() == checkTmpWhere.Count())
+                {
+                    label21.Text = "共" + checkTmp.Count().ToString() + "注";
+                }
+                else if (checkTmpWhere.Count() != 0)
+                {
+                    string CompletNumber = "";
+                    for (int i = 0; i < checkTmpWhere.Count(); i++)
+                    {
+                        CompletNumber = CompletNumber + " " + checkTmpWhere[i];
+                    }
+
+                    if (type == "A")
+                        richTextBox2.Text = CompletNumber.Substring(1);
+                    else
+                        richTextBox1.Text = CompletNumber.Substring(1);
+                }
+                else
+                {
+                    if (type == "A")
+                        richTextBox2.Text = "";
+                    else
+                        richTextBox1.Text = "";
+                }
+                label21.Text = "共" + checkTmpWhere.Count().ToString() + "注";
+
+                string errorList = "";
+                if (checkTmpError.Count() != 0)
+                {
+                    for (int i = 0; i < checkTmpError.Count(); i++)
+                    {
+                        errorList = errorList + "," + checkTmpError[i];
+                    }
+                    MessageBox.Show("已清除重复及错误资料。\n" + errorList);
+                }
+                else
+                {
+                    MessageBox.Show("除错完成");
+                }
+
+                #endregion
             }
-            else
+            else if (PlayKind == "广东")
             {
-                MessageBox.Show("除错完成");
+                string GameKind = "";
+                if (type == "A")
+                    GameKind = cbGameKind.Text;
+                else
+                    GameKind = label16.Text.Substring(label16.Text.Length - 4, 4);
+
+                int lenghCheck = 0;
+
+                if (GameKind.Contains("二"))
+                {
+                    lenghCheck = 2;
+                }
+                else if (GameKind.Contains("三"))
+                {
+                    lenghCheck = 3;
+                }
+
+                string checkNumber = "";
+                if (type == "A")
+                    checkNumber = richTextBox2.Text;
+                else
+                    checkNumber = richTextBox1.Text;
+
+                var checkTmpFirst = checkNumber.Split(',');
+
+                //用來確認
+                string TmpStr = "";
+                string intoRichboxStr = "";
+                string error = "";
+                for (int i = 0; i < 2; i++)
+                {
+                    TmpStr = checkTmpFirst[i].ToString();
+                    var tmp = TmpStr.Split(' ');
+                    if (tmp.Count() == lenghCheck && tmp[0].Length == 2 && tmp[1].Length == 2)
+                    {
+                        intoRichboxStr += "," + TmpStr;
+                    }
+                    else
+                    {
+                        error += "," + TmpStr;
+                    }
+                }
+                intoRichboxStr = intoRichboxStr.Substring(1);
+
+                if (error.Trim() != "")
+                {
+                    MessageBox.Show("已清除重复及错误资料。\n" + error);
+                }
+                else
+                    MessageBox.Show("除错完成");
             }
-           
+
         }
 
         private void checkData(string type)

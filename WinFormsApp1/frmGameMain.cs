@@ -402,6 +402,7 @@ namespace WinFormsApp1
                 DateTime dt2Vr = DateTime.Now;
                 if(dt1Vr< dt2Vr)
                     dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
+
                 TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
                 string hh = ts.Hours.ToString("00");
                 string mm = ts.Minutes.ToString("00");
