@@ -2531,7 +2531,7 @@ namespace WinFormsApp1
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩" && comboBox1.Text.Substring(8) == "840")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
@@ -3017,7 +3017,7 @@ namespace WinFormsApp1
             frm_LoadingControl.Show();
             Application.DoEvents();
             UpdateHistory();
-            updatecheckboxlist1(0);
+            
 
             //順便更新combobox
             if (cbGameKind.SelectedIndex == -1)
@@ -3101,6 +3101,7 @@ namespace WinFormsApp1
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
+            updatecheckboxlist1(0);
             frm_LoadingControl.Close();
         }
 
@@ -3240,94 +3241,104 @@ namespace WinFormsApp1
         private void btnCopyUp_Click(object sender, EventArgs e)
         {
             string CopyOn = System.Windows.Clipboard.GetText().Trim();
-            int CopyCount = CopyOn.Replace(",", " ").Split(' ').Count();
-            string CopyKind = CopyOn.Replace(",", " ").Split(' ')[0];
 
-            if (CopyKind.Length == 2)
+            if (frm_PlanCycle.GameLotteryName == "广东")
             {
-                frm_TwoMessageShow frm_TwoMessageShow = new frm_TwoMessageShow();
-
-                frm_TwoMessageShow.Owner = this;
-
-                frm_TwoMessageShow.ShowDialog();
-
-                if (GameKindValue == "FrontTwo")
-                {
-                    //設定
-                    cbGameKind.Text = "前二";
-                    //cbGameKind.SelectedIndex = 5;
-                    richTextboxRule = 2;
-                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
-                }
-                else
-                {
-                    //設定
-                    cbGameKind.Text = "后二";
-                    //cbGameKind.SelectedIndex = 6;
-                    richTextboxRule = 2;
-                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
-                }
+                richTextBox2.Text = CopyOn;
+                int count = CopyOn.Split(',').Count();
+                label21.Text = "共" + count.ToString() + "注" ;
             }
-            else if (CopyKind.Length == 3)
-            {
-                frm_ThreeMessageShow frm_ThreeMessageShow = new frm_ThreeMessageShow();
+            else
+            { 
+                int CopyCount = CopyOn.Replace(",", " ").Split(' ').Count();
+                string CopyKind = CopyOn.Replace(",", " ").Split(' ')[0];
 
-                frm_ThreeMessageShow.Owner = this;
-
-                frm_ThreeMessageShow.ShowDialog();
-
-                if (GameKindValue == "FrontThree")
+                if (CopyKind.Length == 2)
                 {
-                    //設定
-                    cbGameKind.Text = "前三";
-                    cbGameKind.SelectedIndex = 2;
-                    richTextboxRule = 3;
+                    frm_TwoMessageShow frm_TwoMessageShow = new frm_TwoMessageShow();
+
+                    frm_TwoMessageShow.Owner = this;
+
+                    frm_TwoMessageShow.ShowDialog();
+
+                    if (GameKindValue == "FrontTwo")
+                    {
+                        //設定
+                        cbGameKind.Text = "前二";
+                        //cbGameKind.SelectedIndex = 5;
+                        richTextboxRule = 2;
+                        label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                    }
+                    else
+                    {
+                        //設定
+                        cbGameKind.Text = "后二";
+                        //cbGameKind.SelectedIndex = 6;
+                        richTextboxRule = 2;
+                        label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                    }
+                }
+                else if (CopyKind.Length == 3)
+                {
+                    frm_ThreeMessageShow frm_ThreeMessageShow = new frm_ThreeMessageShow();
+
+                    frm_ThreeMessageShow.Owner = this;
+
+                    frm_ThreeMessageShow.ShowDialog();
+
+                    if (GameKindValue == "FrontThree")
+                    {
+                        //設定
+                        cbGameKind.Text = "前三";
+                        cbGameKind.SelectedIndex = 2;
+                        richTextboxRule = 3;
+                        label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                    }
+                    else if (GameKindValue == "MidThree")
+                    {
+                        cbGameKind.Text = "中三";
+                        cbGameKind.SelectedIndex = 3;
+                        richTextboxRule = 3;
+                        label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                    }
+                    else
+                    {
+                        cbGameKind.Text = "后三";
+                        cbGameKind.SelectedIndex = 4;
+                        richTextboxRule = 3;
+                        label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                    }
+                }
+                else if (CopyKind.Length == 4)
+                {
+                    if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                    {
+                        MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有四星玩法，请重新贴上正确号码");
+                        return;
+                    }
+
+                    cbGameKind.Text = "四星";
+                    cbGameKind.SelectedIndex = 5;
+                    richTextboxRule = 4;
                     label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
-                else if (GameKindValue == "MidThree")
+                else if (CopyKind.Length == 5)
                 {
-                    cbGameKind.Text = "中三";
-                    cbGameKind.SelectedIndex = 3;
-                    richTextboxRule = 3;
+                    if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                    {
+                        MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有五星玩法，请重新贴上正确号码");
+                        return;
+                    }
+
+                    cbGameKind.Text = "五星";
+                    cbGameKind.SelectedIndex = 6;
+                    richTextboxRule = 5;
                     label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
                 }
-                else
-                {
-                    cbGameKind.Text = "后三";
-                    cbGameKind.SelectedIndex = 4;
-                    richTextboxRule = 3;
-                    label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
-                }
-            }
-            else if (CopyKind.Length == 4)
-            {
-                if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
-                {
-                    MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有四星玩法，请重新贴上正确号码");
-                    return;
-                }
 
-                cbGameKind.Text = "四星";
-                cbGameKind.SelectedIndex = 5;
-                richTextboxRule = 4;
-                label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
+                richTextBox2.Text = CopyOn.Replace(",", " ");
+                label21.Text = "共" + CopyCount + "注";
             }
-            else if (CopyKind.Length == 5)
-            {
-                if (frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
-                {
-                    MessageBox.Show(frm_PlanCycle.GameLotteryName + "没有五星玩法，请重新贴上正确号码");
-                    return;
-                }
-
-                cbGameKind.Text = "五星";
-                cbGameKind.SelectedIndex = 6;
-                richTextboxRule = 5;
-                label24.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
-            }
-
-            richTextBox2.Text = CopyOn.Replace(",", " ");
-            label21.Text = "共" + CopyCount + "注";
         }
 
         private void timer2_Tick(object sender, EventArgs e)

@@ -32,6 +32,12 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lbIssue = new System.Windows.Forms.Label();
+            this.lbPlayKind = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnStartTrend = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Issue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coldnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,12 +45,6 @@
             this.hotnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isWin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opennumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnStartTrend = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.lbPlayKind = new System.Windows.Forms.Label();
-            this.lbIssue = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,6 +65,65 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(814, 396);
             this.panel1.TabIndex = 0;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(690, 347);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "重庆时时彩"});
+            this.comboBox1.Location = new System.Drawing.Point(690, 321);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 5;
+            this.comboBox1.Text = "请选择彩种";
+            // 
+            // lbIssue
+            // 
+            this.lbIssue.AutoSize = true;
+            this.lbIssue.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbIssue.Location = new System.Drawing.Point(649, 349);
+            this.lbIssue.Name = "lbIssue";
+            this.lbIssue.Size = new System.Drawing.Size(35, 13);
+            this.lbIssue.TabIndex = 4;
+            this.lbIssue.Text = "期号";
+            // 
+            // lbPlayKind
+            // 
+            this.lbPlayKind.AutoSize = true;
+            this.lbPlayKind.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbPlayKind.Location = new System.Drawing.Point(649, 326);
+            this.lbPlayKind.Name = "lbPlayKind";
+            this.lbPlayKind.Size = new System.Drawing.Size(35, 13);
+            this.lbPlayKind.TabIndex = 3;
+            this.lbPlayKind.Text = "彩种";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Font = new System.Drawing.Font("新細明體", 12F);
+            this.btnRefresh.Location = new System.Drawing.Point(674, 213);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(117, 67);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.Text = "数据刷新";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
+            // btnStartTrend
+            // 
+            this.btnStartTrend.Font = new System.Drawing.Font("新細明體", 12F);
+            this.btnStartTrend.Location = new System.Drawing.Point(674, 140);
+            this.btnStartTrend.Name = "btnStartTrend";
+            this.btnStartTrend.Size = new System.Drawing.Size(117, 67);
+            this.btnStartTrend.TabIndex = 1;
+            this.btnStartTrend.Text = "趋势分析";
+            this.btnStartTrend.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -120,63 +179,6 @@
             this.opennumber.Name = "opennumber";
             this.opennumber.ReadOnly = true;
             // 
-            // btnStartTrend
-            // 
-            this.btnStartTrend.Font = new System.Drawing.Font("新細明體", 12F);
-            this.btnStartTrend.Location = new System.Drawing.Point(674, 140);
-            this.btnStartTrend.Name = "btnStartTrend";
-            this.btnStartTrend.Size = new System.Drawing.Size(117, 67);
-            this.btnStartTrend.TabIndex = 1;
-            this.btnStartTrend.Text = "趋势分析";
-            this.btnStartTrend.UseVisualStyleBackColor = true;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Font = new System.Drawing.Font("新細明體", 12F);
-            this.btnRefresh.Location = new System.Drawing.Point(674, 213);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(117, 67);
-            this.btnRefresh.TabIndex = 2;
-            this.btnRefresh.Text = "数据刷新";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            // 
-            // lbPlayKind
-            // 
-            this.lbPlayKind.AutoSize = true;
-            this.lbPlayKind.Font = new System.Drawing.Font("新細明體", 10F);
-            this.lbPlayKind.Location = new System.Drawing.Point(649, 326);
-            this.lbPlayKind.Name = "lbPlayKind";
-            this.lbPlayKind.Size = new System.Drawing.Size(35, 14);
-            this.lbPlayKind.TabIndex = 3;
-            this.lbPlayKind.Text = "彩种";
-            // 
-            // lbIssue
-            // 
-            this.lbIssue.AutoSize = true;
-            this.lbIssue.Font = new System.Drawing.Font("新細明體", 10F);
-            this.lbIssue.Location = new System.Drawing.Point(649, 349);
-            this.lbIssue.Name = "lbIssue";
-            this.lbIssue.Size = new System.Drawing.Size(35, 14);
-            this.lbIssue.TabIndex = 4;
-            this.lbIssue.Text = "期号";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(690, 321);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "请选择彩种";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(690, 347);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 6;
-            // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
@@ -187,7 +189,6 @@
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.YValuesPerPoint = 4;
