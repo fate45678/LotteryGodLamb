@@ -2573,6 +2573,7 @@ namespace WinFormsApp1
                     MessageBox.Show("號碼不得為空。");
                     return;
                 }
+
                 frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
                 frm_LoadingControl.Show();
                 Application.DoEvents();
