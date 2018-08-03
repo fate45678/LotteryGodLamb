@@ -291,9 +291,10 @@ namespace WinFormsApp1
                     else
                         control.BackColor = Color.Yellow;
 
+                    
                     control.Padding = new Padding(5);
-                    control.Dock = DockStyle.Fill;
-                    //control.Size = new System.Drawing.Size(140, 30);
+                    control.Dock = DockStyle.Top;
+                    control.Size = new System.Drawing.Size(140, 30);
                     control.Click += dynamicFavoriteBt_Click;
                     this.tableLayoutPanel2.Controls.Add(control, 0, y);
                    
@@ -304,7 +305,7 @@ namespace WinFormsApp1
                     
 
                     controlDelete.Padding = new Padding(5);
-                    controlDelete.Dock = DockStyle.Fill;
+                    controlDelete.Dock = DockStyle.Top;
                     controlDelete.Click += dynamicDeleteFavoriteBt_Click;
                     controlDelete.Size = new System.Drawing.Size(140, 30);
                     this.tableLayoutPanel2.Controls.Add(controlDelete, 1, y);
