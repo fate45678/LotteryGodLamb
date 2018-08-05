@@ -32,39 +32,90 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn30Issue = new System.Windows.Forms.Button();
+            this.btn10Issue = new System.Windows.Forms.Button();
+            this.btn50Issue = new System.Windows.Forms.Button();
+            this.cbplayNumber = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lbIssue = new System.Windows.Forms.Label();
             this.lbPlayKind = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnStartTrend = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgShowTrend = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Issue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coldnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wormnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hotnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isWin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opennumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.playNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgShowTrend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel1.Controls.Add(this.btn30Issue);
+            this.panel1.Controls.Add(this.btn10Issue);
+            this.panel1.Controls.Add(this.btn50Issue);
+            this.panel1.Controls.Add(this.cbplayNumber);
             this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.lbIssue);
             this.panel1.Controls.Add(this.lbPlayKind);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnStartTrend);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgShowTrend);
             this.panel1.Location = new System.Drawing.Point(1, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(814, 396);
             this.panel1.TabIndex = 0;
+            // 
+            // btn30Issue
+            // 
+            this.btn30Issue.Location = new System.Drawing.Point(219, 368);
+            this.btn30Issue.Name = "btn30Issue";
+            this.btn30Issue.Size = new System.Drawing.Size(75, 23);
+            this.btn30Issue.TabIndex = 10;
+            this.btn30Issue.Text = "最近30期";
+            this.btn30Issue.UseVisualStyleBackColor = true;
+            // 
+            // btn10Issue
+            // 
+            this.btn10Issue.BackColor = System.Drawing.Color.LightGray;
+            this.btn10Issue.ForeColor = System.Drawing.Color.Black;
+            this.btn10Issue.Location = new System.Drawing.Point(300, 368);
+            this.btn10Issue.Name = "btn10Issue";
+            this.btn10Issue.Size = new System.Drawing.Size(75, 23);
+            this.btn10Issue.TabIndex = 9;
+            this.btn10Issue.Text = "最近10期";
+            this.btn10Issue.UseVisualStyleBackColor = false;
+            // 
+            // btn50Issue
+            // 
+            this.btn50Issue.Location = new System.Drawing.Point(138, 368);
+            this.btn50Issue.Name = "btn50Issue";
+            this.btn50Issue.Size = new System.Drawing.Size(75, 23);
+            this.btn50Issue.TabIndex = 8;
+            this.btn50Issue.Text = "最近50期";
+            this.btn50Issue.UseVisualStyleBackColor = true;
+            // 
+            // cbplayNumber
+            // 
+            this.cbplayNumber.FormattingEnabled = true;
+            this.cbplayNumber.Items.AddRange(new object[] {
+            "前二",
+            "后二",
+            "前三",
+            "中三",
+            "后三"});
+            this.cbplayNumber.Location = new System.Drawing.Point(11, 369);
+            this.cbplayNumber.Name = "cbplayNumber";
+            this.cbplayNumber.Size = new System.Drawing.Size(121, 20);
+            this.cbplayNumber.TabIndex = 7;
             // 
             // comboBox2
             // 
@@ -125,59 +176,23 @@
             this.btnStartTrend.Text = "趋势分析";
             this.btnStartTrend.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgShowTrend
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgShowTrend.AllowUserToDeleteRows = false;
+            this.dgShowTrend.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgShowTrend.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Issue,
             this.coldnumber,
             this.wormnumber,
             this.hotnumber,
-            this.isWin,
-            this.opennumber});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(642, 360);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Issue
-            // 
-            this.Issue.HeaderText = "期号";
-            this.Issue.Name = "Issue";
-            this.Issue.ReadOnly = true;
-            // 
-            // coldnumber
-            // 
-            this.coldnumber.HeaderText = "冷码";
-            this.coldnumber.Name = "coldnumber";
-            this.coldnumber.ReadOnly = true;
-            // 
-            // wormnumber
-            // 
-            this.wormnumber.HeaderText = "温码";
-            this.wormnumber.Name = "wormnumber";
-            this.wormnumber.ReadOnly = true;
-            // 
-            // hotnumber
-            // 
-            this.hotnumber.HeaderText = "热码";
-            this.hotnumber.Name = "hotnumber";
-            this.hotnumber.ReadOnly = true;
-            // 
-            // isWin
-            // 
-            this.isWin.HeaderText = "中奖";
-            this.isWin.Name = "isWin";
-            this.isWin.ReadOnly = true;
-            // 
-            // opennumber
-            // 
-            this.opennumber.HeaderText = "开奖号";
-            this.opennumber.Name = "opennumber";
-            this.opennumber.ReadOnly = true;
+            this.playNumber,
+            this.number});
+            this.dgShowTrend.Location = new System.Drawing.Point(3, 3);
+            this.dgShowTrend.Name = "dgShowTrend";
+            this.dgShowTrend.ReadOnly = true;
+            this.dgShowTrend.RowTemplate.Height = 24;
+            this.dgShowTrend.Size = new System.Drawing.Size(642, 360);
+            this.dgShowTrend.TabIndex = 0;
             // 
             // chart1
             // 
@@ -197,6 +212,48 @@
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
+            // Issue
+            // 
+            this.Issue.DataPropertyName = "Issue";
+            this.Issue.HeaderText = "期号";
+            this.Issue.Name = "Issue";
+            this.Issue.ReadOnly = true;
+            // 
+            // coldnumber
+            // 
+            this.coldnumber.DataPropertyName = "coldnumber";
+            this.coldnumber.HeaderText = "冷码";
+            this.coldnumber.Name = "coldnumber";
+            this.coldnumber.ReadOnly = true;
+            // 
+            // wormnumber
+            // 
+            this.wormnumber.DataPropertyName = "wormnumber";
+            this.wormnumber.HeaderText = "温码";
+            this.wormnumber.Name = "wormnumber";
+            this.wormnumber.ReadOnly = true;
+            // 
+            // hotnumber
+            // 
+            this.hotnumber.DataPropertyName = "hotnumber";
+            this.hotnumber.HeaderText = "热码";
+            this.hotnumber.Name = "hotnumber";
+            this.hotnumber.ReadOnly = true;
+            // 
+            // playNumber
+            // 
+            this.playNumber.DataPropertyName = "playNumber";
+            this.playNumber.HeaderText = "中奖";
+            this.playNumber.Name = "playNumber";
+            this.playNumber.ReadOnly = true;
+            // 
+            // number
+            // 
+            this.number.DataPropertyName = "number";
+            this.number.HeaderText = "开奖号";
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            // 
             // frm_TrendAnalysisTrue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -209,7 +266,7 @@
             this.Text = "趨勢分析";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgShowTrend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
@@ -218,13 +275,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Issue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coldnumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wormnumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hotnumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isWin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opennumber;
+        private System.Windows.Forms.DataGridView dgShowTrend;
         private System.Windows.Forms.Button btnStartTrend;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -232,5 +283,15 @@
         private System.Windows.Forms.Label lbIssue;
         private System.Windows.Forms.Label lbPlayKind;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ComboBox cbplayNumber;
+        private System.Windows.Forms.Button btn30Issue;
+        private System.Windows.Forms.Button btn10Issue;
+        private System.Windows.Forms.Button btn50Issue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Issue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coldnumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wormnumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hotnumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
     }
 }
