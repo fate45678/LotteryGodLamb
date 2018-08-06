@@ -7,17 +7,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WinFormsApp1
 {
     public partial class frm_TrendAnalysisTrue : Form
     {
+        int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0, countSix = 0, countSeven = 0, countEight = 0, countNine = 0, countZero = 0;
+
+
         public frm_TrendAnalysisTrue()
         {
             InitializeComponent();
             cbplayNumber.SelectedIndex = 0;
             DataTable dt = connectDb(10);
             ColdHotNumber(dt);
+            DrawChart();
+
+            GC.SuppressFinalize(this);
         }
 
         private void ColdHotNumber(DataTable dt)
@@ -26,7 +33,7 @@ namespace WinFormsApp1
             
             //計算冷號熱號溫號用
             double baseCount = 0;
-            int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0, countSix = 0, countSeven = 0, countEight = 0, countNine = 0, countZero = 0;
+            countOne = 0; countTwo = 0; countThree = 0; countFour = 0; countFive = 0; countSix = 0; countSeven = 0; countEight = 0; countNine = 0; countZero = 0;
             double avergeOne = 0, avergeTwo = 0, avergeThree = 0, avergeFour = 0, avergeFive = 0, avergeSix = 0, avergeSeven = 0, avergeEight = 0, avergeNine = 0, avergeZero = 0;
             string coldNumber = "", hotNumber = "", WormNumber = "";
 
@@ -62,9 +69,7 @@ namespace WinFormsApp1
                 }
                 dr["playNumber"] = number;
 
-
-                //計算冷號 熱號 溫號
-                #region
+                #region 計算冷號 熱號 溫號
 
                 if (cbplayNumber.Text.Contains("二"))
                 {
@@ -398,6 +403,101 @@ namespace WinFormsApp1
             }
 
             dgShowTrend.DataSource = dt;
+        }
+
+        private void DrawChart()
+        {
+            //清空原本的
+            chart1.Series.Clear();
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+
+            Series series1 = new Series("1", 120);
+            Series series2 = new Series("2", 120);
+            Series series3 = new Series("3", 120);
+            Series series4 = new Series("4", 120);
+            Series series5 = new Series("5", 120);
+            Series series6 = new Series("6", 120);
+            Series series7 = new Series("7", 120);
+            Series series8 = new Series("8", 120);
+            Series series9 = new Series("9", 120);
+            Series series0 = new Series("0", 120);
+
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisX2.Enabled = AxisEnabled.False;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            chart1.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
+
+            //長條圖
+            series1.ChartType = series2.ChartType = series3.ChartType = series4.ChartType = series5.ChartType = series6.ChartType = series7.ChartType = series8.ChartType = series9.ChartType = series0.ChartType = SeriesChartType.Column;
+
+            //將數值顯示在線上
+            series1.IsValueShownAsLabel = series2.IsValueShownAsLabel = series3.IsValueShownAsLabel = series4.IsValueShownAsLabel = series5.IsValueShownAsLabel = series6.IsValueShownAsLabel = series7.IsValueShownAsLabel = series8.IsValueShownAsLabel = series9.IsValueShownAsLabel = series0.IsValueShownAsLabel = true;
+
+            //chart1.ChartAreas[0].AxisX.Maximum = 9;
+            //chart1.ChartAreas[0].AxisX.Minimum = 0;
+
+            //series1.Points.Add(countOne);
+            //series2.Points.Add(countTwo);
+            //series3.Points.Add(countThree);
+            //series4.Points.Add(countFour);
+            //series5.Points.Add(countFive);
+            //series6.Points.Add(countSix);
+            //series7.Points.Add(countSeven);
+            //series8.Points.Add(countEight);
+            //series9.Points.Add(countNine);
+            //series0.Points.Add(countZero);
+
+
+            chart1.ChartAreas[0].AxisX.IntervalOffset = 1.00D;
+            series1.Points.AddXY(1, countOne);
+            series2.Points.AddXY(2, countTwo);
+            series3.Points.AddXY(3, countThree);
+            series4.Points.AddXY(4, countFour);
+            series5.Points.AddXY(5, countFive);
+            series6.Points.AddXY(6, countSix);
+            series7.Points.AddXY(7, countSeven);
+            series8.Points.AddXY(8, countEight);
+            series9.Points.AddXY(9, countNine);
+            series0.Points.AddXY(0, countZero);
+
+            this.chart1.Series.Add(series0);
+            this.chart1.Series.Add(series1);          
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
+            this.chart1.Series.Add(series9);
+
+            chart1.Series[0]["PointWidth"] = "2";
+            chart1.Series[1]["PointWidth"] = "2";
+            chart1.Series[2]["PointWidth"] = "2";
+            chart1.Series[3]["PointWidth"] = "2";
+            chart1.Series[4]["PointWidth"] = "2";
+            chart1.Series[5]["PointWidth"] = "2";
+            chart1.Series[6]["PointWidth"] = "2";
+            chart1.Series[7]["PointWidth"] = "2";
+            chart1.Series[8]["PointWidth"] = "2";
+            chart1.Series[9]["PointWidth"] = "2";
+
+            //標題
+            this.chart1.Titles.Clear();
+            this.chart1.Titles.Add("");
+            this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = false;
+            this.chart1.ChartAreas[0].AxisX.IsMarginVisible = true;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            DataTable dt = connectDb(10);
+            ColdHotNumber(dt);
+            DrawChart();
+            GC.SuppressFinalize(this);
         }
 
         private DataTable connectDb(int topCount)
