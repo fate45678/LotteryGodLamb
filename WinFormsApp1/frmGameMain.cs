@@ -138,7 +138,7 @@ namespace WinFormsApp1
 
             if (((Label)(sender)).Text == "趋势分析")
             {
-                frm_TrendAnalysis f_Trend = new frm_TrendAnalysis();
+                frm_TrendAnalysisTrue f_Trend = new frm_TrendAnalysisTrue();
                 //MessageBox.Show("尚未开放");
                 //return;
                 f_Trend.Show();
