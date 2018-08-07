@@ -28,14 +28,15 @@ namespace WinFormsApp1
 
         Series series6 = new Series("遗漏", 120);
 
-        string issueCOunt = "";
+        string issueCOunt = "", playKind = "";
         int DrawCount = 0;
 
-        public frm_TrendAnalysis(string count)
+        public frm_TrendAnalysis(string count, string play)
         {
             InitializeComponent();
             issueCOunt = count;
             DrawCount = int.Parse(count);
+            playKind = play;
         }
 
         private void frm_TrendAnalysis_Load(object sender, EventArgs e)
@@ -121,6 +122,10 @@ namespace WinFormsApp1
             //將數值新增至序列
             double date = double.Parse(dt.Rows[0]["Issue"].ToString());
             string Number = "";
+
+            //遺漏用
+            string subsringNumer = "";
+            
             for (int index = 0; index < IssueCount; index++)
             {
                 if (index >= arr.Count())
@@ -132,6 +137,30 @@ namespace WinFormsApp1
                 series3.Points.AddXY(date - index, double.Parse(Number.Substring(2, 1)));
                 series4.Points.AddXY(date - index, double.Parse(Number.Substring(3, 1)));
                 series5.Points.AddXY(date - index, double.Parse(Number.Substring(4, 1)));
+
+                //遺漏
+                if (playKind.Contains("前二"))
+                {
+                    subsringNumer = Number.Substring(0, 2);
+                }
+                else if (playKind.Contains("后二"))
+                {
+                    subsringNumer = Number.Substring(2, 3);
+                }
+                else if (playKind.Contains("前三"))
+                {
+                    subsringNumer = Number.Substring(0, 3);
+                }
+                else if (playKind.Contains("中三"))
+                {
+                    subsringNumer = Number.Substring(1, 3);
+                }
+                else if (playKind.Contains("后三"))
+                {
+                    subsringNumer = Number.Substring(2, 3);
+                }
+
+
             }
 
             //將序列新增到圖上
@@ -142,26 +171,19 @@ namespace WinFormsApp1
             this.chart1.Series.Add(series4);
             this.chart1.Series.Add(series5);
 
-            //遺漏
-            int TopIssue = 0;
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (TopIssue >= arr.Count())
-                    break;
 
 
-
-
-                TopIssue++;
-            }
 
 
             //標題
             this.chart1.Titles.Clear();
             this.chart1.Titles.Add(frm_PlanCycle.GameLotteryName + "K線分析");
-
-            //this.chart1.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
             this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+
+            this.chart2.Titles.Clear();
+            this.chart2.Titles.Add(frm_PlanCycle.GameLotteryName + "遺漏分析");
+            this.chart2.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            //this.chart1.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
         }
 
         private DataTable getHistoryNumber()
