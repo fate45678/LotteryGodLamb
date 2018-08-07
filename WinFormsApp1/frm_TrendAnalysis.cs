@@ -26,15 +26,22 @@ namespace WinFormsApp1
         Series series4 = new Series("十位", 10);
         Series series5 = new Series("个位", 10);
 
-        public frm_TrendAnalysis()
+        Series series6 = new Series("遗漏", 120);
+
+        string issueCOunt = "";
+        int DrawCount = 0;
+
+        public frm_TrendAnalysis(string count)
         {
             InitializeComponent();
+            issueCOunt = count;
+            DrawCount = int.Parse(count);
         }
 
         private void frm_TrendAnalysis_Load(object sender, EventArgs e)
         {
-            setIssueInit("50");
-            DrawChart(50);
+            setIssueInit(issueCOunt);
+            DrawChart(DrawCount);
 
             btnFirst.BackColor = Color.Blue;
             btnFirst.ForeColor = Color.White;
@@ -129,12 +136,25 @@ namespace WinFormsApp1
 
             //將序列新增到圖上
 
-            this.chart1.Series.Add(series1);
-            //DataPoint dp1 = new DataPoint(series1);            
+            this.chart1.Series.Add(series1);         
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
             this.chart1.Series.Add(series5);
+
+            //遺漏
+            int TopIssue = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (TopIssue >= arr.Count())
+                    break;
+
+
+
+
+                TopIssue++;
+            }
+
 
             //標題
             this.chart1.Titles.Clear();

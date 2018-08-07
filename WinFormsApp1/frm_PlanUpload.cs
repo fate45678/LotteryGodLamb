@@ -3229,6 +3229,12 @@ namespace WinFormsApp1
             string Number = richTextBox2.Text.Replace(","," ") ;
             string[] NumberCount = Number.Split(' ');
             label21.Text = "共" + NumberCount.Count() + "注";
+            if (frm_PlanCycle.GameLotteryName == "广东")
+            {
+                Number = richTextBox2.Text;
+                NumberCount = Number.Split(',');
+                label21.Text = "共" + NumberCount.Count() + "注";
+            }          
         }
 
         private string GameKindValue;
