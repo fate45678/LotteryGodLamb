@@ -14,15 +14,65 @@ namespace WinFormsApp1
     public partial class frm_TrendAnalysisTrue : Form
     {
         int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0, countSix = 0, countSeven = 0, countEight = 0, countNine = 0, countZero = 0;
+        int IssueToTrendshow = 10;
 
+        private void btn50Issue_Click(object sender, EventArgs e)
+        {
+            IssueToTrendshow = 50;
+            DataTable dt = connectDb(IssueToTrendshow);
+            ColdHotNumber(dt);
+            DrawChart();
+
+            cbIssue.DataSource = dt;
+            cbIssue.DisplayMember = "Issue";
+            cbIssue.ValueMember = "Issue";
+            GC.SuppressFinalize(this);
+        }
+
+        private void btn30Issue_Click(object sender, EventArgs e)
+        {
+            IssueToTrendshow = 30;
+            DataTable dt = connectDb(IssueToTrendshow);
+            ColdHotNumber(dt);
+            DrawChart();
+
+            cbIssue.DataSource = dt;
+            cbIssue.DisplayMember = "Issue";
+            cbIssue.ValueMember = "Issue";
+            GC.SuppressFinalize(this);
+        }
+      
+        private void btn10Issue_Click(object sender, EventArgs e)
+        {
+            IssueToTrendshow = 10;
+            DataTable dt = connectDb(IssueToTrendshow);
+            ColdHotNumber(dt);
+            DrawChart();
+
+            cbIssue.DataSource = dt;
+            cbIssue.DisplayMember = "Issue";
+            cbIssue.ValueMember = "Issue";
+            GC.SuppressFinalize(this);
+        }
+
+        private void btnStartTrend_Click(object sender, EventArgs e)
+        {
+            frm_TrendAnalysis trend = new frm_TrendAnalysis(IssueToTrendshow.ToString());
+            trend.Show();
+        }
 
         public frm_TrendAnalysisTrue()
         {
             InitializeComponent();
             cbplayNumber.SelectedIndex = 0;
+            cbPlayKind.SelectedIndex = 0;
             DataTable dt = connectDb(10);
             ColdHotNumber(dt);
             DrawChart();
+
+            cbIssue.DataSource = dt;
+            cbIssue.DisplayMember = "Issue";
+            cbIssue.ValueMember = "Issue";
 
             GC.SuppressFinalize(this);
         }
@@ -403,6 +453,7 @@ namespace WinFormsApp1
             }
 
             dgShowTrend.DataSource = dt;
+            
         }
 
         private void DrawChart()
@@ -414,7 +465,7 @@ namespace WinFormsApp1
                 series.Points.Clear();
             }
 
-            Series series1 = new Series("1", 120);
+            Series series1 = new Series("开奖次数", 120);
             Series series2 = new Series("2", 120);
             Series series3 = new Series("3", 120);
             Series series4 = new Series("4", 120);
@@ -451,45 +502,50 @@ namespace WinFormsApp1
             //series0.Points.Add(countZero);
 
 
-            chart1.ChartAreas[0].AxisX.IntervalOffset = 1.00D;
+            //chart1.ChartAreas[0].AxisX.IntervalOffset = 1.00D;
             series1.Points.AddXY(1, countOne);
-            series2.Points.AddXY(2, countTwo);
-            series3.Points.AddXY(3, countThree);
-            series4.Points.AddXY(4, countFour);
-            series5.Points.AddXY(5, countFive);
-            series6.Points.AddXY(6, countSix);
-            series7.Points.AddXY(7, countSeven);
-            series8.Points.AddXY(8, countEight);
-            series9.Points.AddXY(9, countNine);
-            series0.Points.AddXY(0, countZero);
+            series1.Points.AddXY(2, countTwo);
+            series1.Points.AddXY(3, countThree);
+            series1.Points.AddXY(4, countFour);
+            series1.Points.AddXY(5, countFive);
+            series1.Points.AddXY(6, countSix);
+            series1.Points.AddXY(7, countSeven);
+            series1.Points.AddXY(8, countEight);
+            series1.Points.AddXY(9, countNine);
+            series1.Points.AddXY(0, countZero);
 
-            this.chart1.Series.Add(series0);
+            //this.chart1.Series.Add(series0);
             this.chart1.Series.Add(series1);          
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
-            this.chart1.Series.Add(series9);
+            //this.chart1.Series.Add(series2);
+            //this.chart1.Series.Add(series3);
+            //this.chart1.Series.Add(series4);
+            //this.chart1.Series.Add(series5);
+            //this.chart1.Series.Add(series6);
+            //this.chart1.Series.Add(series7);
+            //this.chart1.Series.Add(series8);
+            //this.chart1.Series.Add(series9);
 
-            chart1.Series[0]["PointWidth"] = "2";
-            chart1.Series[1]["PointWidth"] = "2";
-            chart1.Series[2]["PointWidth"] = "2";
-            chart1.Series[3]["PointWidth"] = "2";
-            chart1.Series[4]["PointWidth"] = "2";
-            chart1.Series[5]["PointWidth"] = "2";
-            chart1.Series[6]["PointWidth"] = "2";
-            chart1.Series[7]["PointWidth"] = "2";
-            chart1.Series[8]["PointWidth"] = "2";
-            chart1.Series[9]["PointWidth"] = "2";
+            chart1.Series[0]["PointWidth"] = "0.5";
+            //chart1.Series[1]["PointWidth"] = "2";
+            //chart1.Series[2]["PointWidth"] = "2";
+            //chart1.Series[3]["PointWidth"] = "2";
+            //chart1.Series[4]["PointWidth"] = "2";
+            //chart1.Series[5]["PointWidth"] = "2";
+            //chart1.Series[6]["PointWidth"] = "2";
+            //chart1.Series[7]["PointWidth"] = "2";
+            //chart1.Series[8]["PointWidth"] = "2";
+            //chart1.Series[9]["PointWidth"] = "2";
 
             //標題
             this.chart1.Titles.Clear();
             this.chart1.Titles.Add("");
+
+            //XY軸設定
             this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = false;
             this.chart1.ChartAreas[0].AxisX.IsMarginVisible = true;
+            chart1.ChartAreas[0].RecalculateAxesScale();//自動軸
+            chart1.ChartAreas[0].AxisY.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            chart1.ChartAreas[0].AxisY.Interval = 2; //間格
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

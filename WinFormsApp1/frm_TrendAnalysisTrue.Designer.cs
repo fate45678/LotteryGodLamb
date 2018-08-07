@@ -31,25 +31,27 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn30Issue = new System.Windows.Forms.Button();
             this.btn10Issue = new System.Windows.Forms.Button();
             this.btn50Issue = new System.Windows.Forms.Button();
             this.cbplayNumber = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbIssue = new System.Windows.Forms.ComboBox();
+            this.cbPlayKind = new System.Windows.Forms.ComboBox();
             this.lbIssue = new System.Windows.Forms.Label();
             this.lbPlayKind = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnStartTrend = new System.Windows.Forms.Button();
             this.dgShowTrend = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Issue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coldnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wormnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hotnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowTrend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -62,8 +64,8 @@
             this.panel1.Controls.Add(this.btn10Issue);
             this.panel1.Controls.Add(this.btn50Issue);
             this.panel1.Controls.Add(this.cbplayNumber);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cbIssue);
+            this.panel1.Controls.Add(this.cbPlayKind);
             this.panel1.Controls.Add(this.lbIssue);
             this.panel1.Controls.Add(this.lbPlayKind);
             this.panel1.Controls.Add(this.btnRefresh);
@@ -82,6 +84,7 @@
             this.btn30Issue.TabIndex = 10;
             this.btn30Issue.Text = "最近30期";
             this.btn30Issue.UseVisualStyleBackColor = true;
+            this.btn30Issue.Click += new System.EventHandler(this.btn30Issue_Click);
             // 
             // btn10Issue
             // 
@@ -93,6 +96,7 @@
             this.btn10Issue.TabIndex = 9;
             this.btn10Issue.Text = "最近10期";
             this.btn10Issue.UseVisualStyleBackColor = false;
+            this.btn10Issue.Click += new System.EventHandler(this.btn10Issue_Click);
             // 
             // btn50Issue
             // 
@@ -102,6 +106,7 @@
             this.btn50Issue.TabIndex = 8;
             this.btn50Issue.Text = "最近50期";
             this.btn50Issue.UseVisualStyleBackColor = true;
+            this.btn50Issue.Click += new System.EventHandler(this.btn50Issue_Click);
             // 
             // cbplayNumber
             // 
@@ -117,24 +122,24 @@
             this.cbplayNumber.Size = new System.Drawing.Size(121, 20);
             this.cbplayNumber.TabIndex = 7;
             // 
-            // comboBox2
+            // cbIssue
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(690, 347);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 6;
+            this.cbIssue.FormattingEnabled = true;
+            this.cbIssue.Location = new System.Drawing.Point(690, 347);
+            this.cbIssue.Name = "cbIssue";
+            this.cbIssue.Size = new System.Drawing.Size(121, 20);
+            this.cbIssue.TabIndex = 6;
             // 
-            // comboBox1
+            // cbPlayKind
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbPlayKind.FormattingEnabled = true;
+            this.cbPlayKind.Items.AddRange(new object[] {
             "重庆时时彩"});
-            this.comboBox1.Location = new System.Drawing.Point(690, 321);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "请选择彩种";
+            this.cbPlayKind.Location = new System.Drawing.Point(690, 321);
+            this.cbPlayKind.Name = "cbPlayKind";
+            this.cbPlayKind.Size = new System.Drawing.Size(121, 20);
+            this.cbPlayKind.TabIndex = 5;
+            this.cbPlayKind.Text = "请选择彩种";
             // 
             // lbIssue
             // 
@@ -176,6 +181,7 @@
             this.btnStartTrend.TabIndex = 1;
             this.btnStartTrend.Text = "趋势分析";
             this.btnStartTrend.UseVisualStyleBackColor = true;
+            this.btnStartTrend.Click += new System.EventHandler(this.btnStartTrend_Click);
             // 
             // dgShowTrend
             // 
@@ -195,6 +201,24 @@
             this.dgShowTrend.Size = new System.Drawing.Size(642, 360);
             this.dgShowTrend.TabIndex = 0;
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(4, 397);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(811, 234);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
             // Issue
             // 
             this.Issue.DataPropertyName = "Issue";
@@ -205,6 +229,8 @@
             // coldnumber
             // 
             this.coldnumber.DataPropertyName = "coldnumber";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.coldnumber.DefaultCellStyle = dataGridViewCellStyle1;
             this.coldnumber.HeaderText = "冷码";
             this.coldnumber.Name = "coldnumber";
             this.coldnumber.ReadOnly = true;
@@ -219,6 +245,8 @@
             // hotnumber
             // 
             this.hotnumber.DataPropertyName = "hotnumber";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            this.hotnumber.DefaultCellStyle = dataGridViewCellStyle2;
             this.hotnumber.HeaderText = "热码";
             this.hotnumber.Name = "hotnumber";
             this.hotnumber.ReadOnly = true;
@@ -237,29 +265,11 @@
             this.number.Name = "number";
             this.number.ReadOnly = true;
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1, 404);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(811, 199);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            // 
             // frm_TrendAnalysisTrue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 604);
+            this.ClientSize = new System.Drawing.Size(814, 628);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.panel1);
             this.Name = "frm_TrendAnalysisTrue";
@@ -279,8 +289,8 @@
         private System.Windows.Forms.DataGridView dgShowTrend;
         private System.Windows.Forms.Button btnStartTrend;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbIssue;
+        private System.Windows.Forms.ComboBox cbPlayKind;
         private System.Windows.Forms.Label lbIssue;
         private System.Windows.Forms.Label lbPlayKind;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
