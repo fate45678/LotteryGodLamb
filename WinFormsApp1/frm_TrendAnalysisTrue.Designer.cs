@@ -43,13 +43,13 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnStartTrend = new System.Windows.Forms.Button();
             this.dgShowTrend = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Issue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coldnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wormnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hotnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowTrend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -165,6 +165,7 @@
             this.btnRefresh.TabIndex = 2;
             this.btnRefresh.Text = "数据刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnStartTrend
             // 
@@ -193,24 +194,6 @@
             this.dgShowTrend.RowTemplate.Height = 24;
             this.dgShowTrend.Size = new System.Drawing.Size(642, 360);
             this.dgShowTrend.TabIndex = 0;
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1, 404);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(811, 199);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
             // 
             // Issue
             // 
@@ -253,6 +236,24 @@
             this.number.HeaderText = "开奖号";
             this.number.Name = "number";
             this.number.ReadOnly = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(1, 404);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(811, 199);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
             // 
             // frm_TrendAnalysisTrue
             // 
