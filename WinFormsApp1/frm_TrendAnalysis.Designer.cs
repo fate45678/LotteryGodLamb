@@ -44,9 +44,19 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnFourth = new System.Windows.Forms.Button();
             this.btnRefrash = new System.Windows.Forms.Button();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartKline = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnType1 = new System.Windows.Forms.Button();
+            this.btnType2 = new System.Windows.Forms.Button();
+            this.btnType3 = new System.Windows.Forms.Button();
+            this.btnType4 = new System.Windows.Forms.Button();
+            this.btnType5 = new System.Windows.Forms.Button();
+            this.btnType6 = new System.Windows.Forms.Button();
+            this.btnType7 = new System.Windows.Forms.Button();
+            this.btnType8 = new System.Windows.Forms.Button();
+            this.btnType0 = new System.Windows.Forms.Button();
+            this.btnType9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartKline)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -157,29 +167,132 @@
             this.btnRefrash.UseVisualStyleBackColor = true;
             this.btnRefrash.Click += new System.EventHandler(this.btnRefrash_Click);
             // 
-            // chart2
+            // chartKline
             // 
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.chartKline.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(4, 455);
-            this.chart2.Name = "chart2";
+            this.chartKline.Legends.Add(legend2);
+            this.chartKline.Location = new System.Drawing.Point(4, 520);
+            this.chartKline.Name = "chartKline";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Candlestick;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(1217, 356);
-            this.chart2.TabIndex = 10;
-            this.chart2.Text = "chart2";
+            series2.YValuesPerPoint = 4;
+            this.chartKline.Series.Add(series2);
+            this.chartKline.Size = new System.Drawing.Size(1217, 356);
+            this.chartKline.TabIndex = 10;
+            this.chartKline.Text = "chart2";
+            // 
+            // btnType1
+            // 
+            this.btnType1.Location = new System.Drawing.Point(93, 491);
+            this.btnType1.Name = "btnType1";
+            this.btnType1.Size = new System.Drawing.Size(29, 23);
+            this.btnType1.TabIndex = 11;
+            this.btnType1.Text = "1";
+            this.btnType1.UseVisualStyleBackColor = true;
+            // 
+            // btnType2
+            // 
+            this.btnType2.Location = new System.Drawing.Point(128, 491);
+            this.btnType2.Name = "btnType2";
+            this.btnType2.Size = new System.Drawing.Size(29, 23);
+            this.btnType2.TabIndex = 12;
+            this.btnType2.Text = "2";
+            this.btnType2.UseVisualStyleBackColor = true;
+            // 
+            // btnType3
+            // 
+            this.btnType3.Location = new System.Drawing.Point(163, 491);
+            this.btnType3.Name = "btnType3";
+            this.btnType3.Size = new System.Drawing.Size(28, 23);
+            this.btnType3.TabIndex = 13;
+            this.btnType3.Text = "3";
+            this.btnType3.UseVisualStyleBackColor = true;
+            // 
+            // btnType4
+            // 
+            this.btnType4.Location = new System.Drawing.Point(197, 491);
+            this.btnType4.Name = "btnType4";
+            this.btnType4.Size = new System.Drawing.Size(29, 23);
+            this.btnType4.TabIndex = 14;
+            this.btnType4.Text = "4";
+            this.btnType4.UseVisualStyleBackColor = true;
+            // 
+            // btnType5
+            // 
+            this.btnType5.Location = new System.Drawing.Point(232, 491);
+            this.btnType5.Name = "btnType5";
+            this.btnType5.Size = new System.Drawing.Size(28, 23);
+            this.btnType5.TabIndex = 15;
+            this.btnType5.Text = "5";
+            this.btnType5.UseVisualStyleBackColor = true;
+            // 
+            // btnType6
+            // 
+            this.btnType6.Location = new System.Drawing.Point(266, 491);
+            this.btnType6.Name = "btnType6";
+            this.btnType6.Size = new System.Drawing.Size(28, 23);
+            this.btnType6.TabIndex = 16;
+            this.btnType6.Text = "6";
+            this.btnType6.UseVisualStyleBackColor = true;
+            // 
+            // btnType7
+            // 
+            this.btnType7.Location = new System.Drawing.Point(300, 491);
+            this.btnType7.Name = "btnType7";
+            this.btnType7.Size = new System.Drawing.Size(28, 23);
+            this.btnType7.TabIndex = 17;
+            this.btnType7.Text = "7";
+            this.btnType7.UseVisualStyleBackColor = true;
+            // 
+            // btnType8
+            // 
+            this.btnType8.Location = new System.Drawing.Point(334, 491);
+            this.btnType8.Name = "btnType8";
+            this.btnType8.Size = new System.Drawing.Size(28, 23);
+            this.btnType8.TabIndex = 18;
+            this.btnType8.Text = "8";
+            this.btnType8.UseVisualStyleBackColor = true;
+            // 
+            // btnType0
+            // 
+            this.btnType0.Location = new System.Drawing.Point(59, 491);
+            this.btnType0.Name = "btnType0";
+            this.btnType0.Size = new System.Drawing.Size(28, 23);
+            this.btnType0.TabIndex = 19;
+            this.btnType0.Text = "0";
+            this.btnType0.UseVisualStyleBackColor = true;
+            this.btnType0.Click += new System.EventHandler(this.btnType0_Click);
+            // 
+            // btnType9
+            // 
+            this.btnType9.Location = new System.Drawing.Point(368, 491);
+            this.btnType9.Name = "btnType9";
+            this.btnType9.Size = new System.Drawing.Size(28, 23);
+            this.btnType9.TabIndex = 20;
+            this.btnType9.Text = "9";
+            this.btnType9.UseVisualStyleBackColor = true;
             // 
             // frm_TrendAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(1224, 823);
-            this.Controls.Add(this.chart2);
+            this.ClientSize = new System.Drawing.Size(1224, 888);
+            this.Controls.Add(this.btnType9);
+            this.Controls.Add(this.btnType0);
+            this.Controls.Add(this.btnType8);
+            this.Controls.Add(this.btnType7);
+            this.Controls.Add(this.btnType6);
+            this.Controls.Add(this.btnType5);
+            this.Controls.Add(this.btnType4);
+            this.Controls.Add(this.btnType3);
+            this.Controls.Add(this.btnType2);
+            this.Controls.Add(this.btnType1);
+            this.Controls.Add(this.chartKline);
             this.Controls.Add(this.btnRefrash);
             this.Controls.Add(this.btnFourth);
             this.Controls.Add(this.btnFive);
@@ -195,7 +308,7 @@
             this.Text = "趨勢分析";
             this.Load += new System.EventHandler(this.frm_TrendAnalysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartKline)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,6 +325,16 @@
         private System.Windows.Forms.Button btnFive;
         private System.Windows.Forms.Button btnFourth;
         private System.Windows.Forms.Button btnRefrash;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartKline;
+        private System.Windows.Forms.Button btnType1;
+        private System.Windows.Forms.Button btnType2;
+        private System.Windows.Forms.Button btnType3;
+        private System.Windows.Forms.Button btnType4;
+        private System.Windows.Forms.Button btnType5;
+        private System.Windows.Forms.Button btnType6;
+        private System.Windows.Forms.Button btnType7;
+        private System.Windows.Forms.Button btnType8;
+        private System.Windows.Forms.Button btnType0;
+        private System.Windows.Forms.Button btnType9;
     }
 }

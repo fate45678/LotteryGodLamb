@@ -28,20 +28,21 @@ namespace WinFormsApp1
 
         Series series6 = new Series("遗漏", 120);
 
-        string issueCOunt = "", playKind = "";
+        string issueCount = "", playKind = "";
         int DrawCount = 0;
+        DataTable dtHistoryNumber = new DataTable();
 
         public frm_TrendAnalysis(string count, string play)
         {
             InitializeComponent();
-            issueCOunt = count;
+            issueCount = count;
             DrawCount = int.Parse(count);
             playKind = play;
         }
 
         private void frm_TrendAnalysis_Load(object sender, EventArgs e)
         {
-            setIssueInit(issueCOunt);
+            setIssueInit(issueCount);
             DrawChart(DrawCount);
 
             btnFirst.BackColor = Color.Blue;
@@ -69,10 +70,10 @@ namespace WinFormsApp1
                 series.Points.Clear();
             }
             //chart1.Series[0].Points.Clear();
-            DataTable dt = getHistoryNumber();
+            dtHistoryNumber = getHistoryNumber();
 
             List<string> termsList = new List<string>();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dtHistoryNumber.Rows)
             {
                 termsList.Add(dr["number"].ToString());
             }
@@ -120,7 +121,7 @@ namespace WinFormsApp1
             series5.IsValueShownAsLabel = true;
 
             //將數值新增至序列
-            double date = double.Parse(dt.Rows[0]["Issue"].ToString());
+            double date = double.Parse(dtHistoryNumber.Rows[0]["Issue"].ToString());
             string Number = "";
 
             //遺漏用
@@ -153,7 +154,7 @@ namespace WinFormsApp1
                 }
                 else if (playKind.Contains("中三"))
                 {
-                    subsringNumer = Number.Substring(1, 3);
+                    subsringNumer = Number.Substring(1, 3); 
                 }
                 else if (playKind.Contains("后三"))
                 {
@@ -164,26 +165,105 @@ namespace WinFormsApp1
             }
 
             //將序列新增到圖上
-
             this.chart1.Series.Add(series1);         
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
             this.chart1.Series.Add(series5);
 
-
-
-
-
             //標題
             this.chart1.Titles.Clear();
             this.chart1.Titles.Add(frm_PlanCycle.GameLotteryName + "K線分析");
             this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
 
-            this.chart2.Titles.Clear();
-            this.chart2.Titles.Add(frm_PlanCycle.GameLotteryName + "遺漏分析");
-            this.chart2.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            this.chartKline.Titles.Clear();
+            this.chartKline.Titles.Add(frm_PlanCycle.GameLotteryName + "遺漏分析");
+            this.chartKline.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
             //this.chart1.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
+        }
+
+        private void DrawKline(string type)
+        {
+            Series seriesKhit = new Series("", 10);
+            Series seriesKfail = new Series("", 3);
+
+            DataTable dtShow = dtHistoryNumber.Copy();
+
+            dtShow.Columns.Add("isHit");
+            int withStart = 0;
+            int breakcount = int.Parse(issueCount);
+            string Number = "";
+            foreach (DataRow dr in dtShow.Rows)
+            {
+                if (breakcount == 0)
+                    break;
+
+                Number = dr["Number"].ToString();
+
+                if (playKind == "前二")
+                {
+                    Number = Number.Substring(0, 2);
+                }
+                else if (playKind == "后二")
+                {
+                    Number = Number.Substring(2, 3);
+                }
+                else if (playKind == "前三")
+                {
+                    Number = Number.Substring(0, 3);
+                }
+                else if (playKind == "中三")
+                {
+                    Number = Number.Substring(1, 3);
+                }
+                else if (playKind == "后三")
+                {
+                    Number = Number.Substring(2, 3);
+                }
+
+                if (Number.Contains(type))
+                {
+                    withStart += 10;
+                    dr["isHit"] = withStart;
+
+                    //seriesKhit.ChartType = SeriesChartType.Candlestick;
+                    //chartKline.Series[0]["PointWidth"] = "0.5";
+                    //seriesKhit.Points.Add(withStart+ isHit);
+                }
+                else
+                {
+                    withStart -= 3;
+                    dr["isHit"] = withStart;
+                    //seriesKhit.ChartType = SeriesChartType.Candlestick;
+                    //seriesKhit.Color = Color.Red;
+                    //seriesKhit.Points.Add(10);
+                    //chartKline.Series[0]["PointWidth"] = "8";
+                }
+
+                breakcount--;
+            }
+
+            DataView dv = new DataView(dtShow);
+            dv.Sort = "Issue";
+            //dv.RowFilter = "Order by Issue";
+            dtShow = dv.ToTable();
+
+            dtShow = dtShow.Rows.Cast<System.Data.DataRow>().Take(10).CopyToDataTable();
+
+            //clear
+            chartKline.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            chartKline.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+
+            //
+            chartKline.Series[0].XValueMember = "Issue";
+            chartKline.Series[0].YValueMembers = "isHit";
+            chartKline.Series[0].CustomProperties = "PriceDownColor=Red, PriceUpColor=Blue";
+
+            chartKline.Series[0]["OpenCloseStyle"] = "Triangle";
+            chartKline.Series[0]["ShowOpenClose"] = "Both";
+
+            chartKline.DataSource = dtShow;
+            //chartKline.Series.Add(seriesKhit);
         }
 
         private DataTable getHistoryNumber()
@@ -358,6 +438,13 @@ namespace WinFormsApp1
                 this.chart1.Series.Add(series5);
                 isFiveClick = true;
             }
+        }
+
+        private void btnType0_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+
         }
 
         private void btnRefrash_Click(object sender, EventArgs e)
