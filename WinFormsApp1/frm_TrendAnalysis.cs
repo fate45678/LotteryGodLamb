@@ -201,7 +201,7 @@ namespace WinFormsApp1
             int breakcount = int.Parse(issueCount);
             string Number = "";
 
-            dtShow = dtShow.Rows.Cast<System.Data.DataRow>().Take(10).OrderBy(x => x["Issue"]).CopyToDataTable();
+            dtShow = dtShow.Rows.Cast<System.Data.DataRow>().Take(issueCount).OrderBy(x => x["Issue"]).CopyToDataTable();
 
             foreach (DataRow dr in dtShow.Rows)
             {
