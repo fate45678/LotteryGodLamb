@@ -160,8 +160,6 @@ namespace WinFormsApp1
                 {
                     subsringNumer = Number.Substring(2, 3);
                 }
-
-
             }
 
             //將序列新增到圖上
@@ -176,30 +174,42 @@ namespace WinFormsApp1
             this.chart1.Titles.Add(frm_PlanCycle.GameLotteryName + "K線分析");
             this.chart1.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
 
-            this.chartKline.Titles.Clear();
-            this.chartKline.Titles.Add(frm_PlanCycle.GameLotteryName + "遺漏分析");
-            this.chartKline.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            this.lbChartKdesc.Titles.Clear();
+            this.lbChartKdesc.Titles.Add(frm_PlanCycle.GameLotteryName + playKind +"遺漏分析");
+            this.lbChartKdesc.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
             //this.chart1.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
         }
 
         private void DrawKline(string type)
         {
+
+            lbChartKdesc.Series.Clear();
+            foreach (var series in lbChartKdesc.Series)
+            {
+                series.Points.Clear();
+            }
             Series seriesKhit = new Series("", 10);
-            Series seriesKfail = new Series("", 3);
+            seriesKhit.ChartType = SeriesChartType.Candlestick;
+            lbChartKdesc.Series.Add(seriesKhit);
 
             DataTable dtShow = dtHistoryNumber.Copy();
 
             dtShow.Columns.Add("isHit");
-            int withStart = 0;
+            dtShow.Columns.Add("High");
+
+            int withStart = 0, High = 0;
             int breakcount = int.Parse(issueCount);
             string Number = "";
+
+            dtShow = dtShow.Rows.Cast<System.Data.DataRow>().Take(10).OrderBy(x => x["Issue"]).CopyToDataTable();
+
             foreach (DataRow dr in dtShow.Rows)
             {
                 if (breakcount == 0)
                     break;
 
                 Number = dr["Number"].ToString();
-
+                dr["High"] = High;
                 if (playKind == "前二")
                 {
                     Number = Number.Substring(0, 2);
@@ -224,6 +234,7 @@ namespace WinFormsApp1
                 if (Number.Contains(type))
                 {
                     withStart += 10;
+                    High = withStart;
                     dr["isHit"] = withStart;
 
                     //seriesKhit.ChartType = SeriesChartType.Candlestick;
@@ -233,6 +244,7 @@ namespace WinFormsApp1
                 else
                 {
                     withStart -= 3;
+                    High = withStart;
                     dr["isHit"] = withStart;
                     //seriesKhit.ChartType = SeriesChartType.Candlestick;
                     //seriesKhit.Color = Color.Red;
@@ -241,29 +253,59 @@ namespace WinFormsApp1
                 }
 
                 breakcount--;
-            }
 
-            DataView dv = new DataView(dtShow);
-            dv.Sort = "Issue";
-            //dv.RowFilter = "Order by Issue";
-            dtShow = dv.ToTable();
-
-            dtShow = dtShow.Rows.Cast<System.Data.DataRow>().Take(10).CopyToDataTable();
+            }          
 
             //clear
-            chartKline.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-            chartKline.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            lbChartKdesc.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            lbChartKdesc.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
-            //
-            chartKline.Series[0].XValueMember = "Issue";
-            chartKline.Series[0].YValueMembers = "isHit";
-            chartKline.Series[0].CustomProperties = "PriceDownColor=Red, PriceUpColor=Blue";
+            //設定圖樣
+            lbChartKdesc.Series[0].XValueMember = "Issue";
+            lbChartKdesc.Series[0].YValueMembers = "isHit,High,High,High";
+            lbChartKdesc.Series[0].CustomProperties = "PriceDownColor=Red, PriceUpColor=Blue";
 
-            chartKline.Series[0]["OpenCloseStyle"] = "Triangle";
-            chartKline.Series[0]["ShowOpenClose"] = "Both";
+            lbChartKdesc.Series[0]["OpenCloseStyle"] = "Triangle";
+            lbChartKdesc.Series[0]["ShowOpenClose"] = "Both";
+            lbChartKdesc.DataManipulator.IsStartFromFirst = true;
+            lbChartKdesc.DataSource = dtShow;
+            lbChartKdesc.DataBind();
 
-            chartKline.DataSource = dtShow;
-            //chartKline.Series.Add(seriesKhit);
+            //繪製折線圖
+            double Topcount = 0, Downcount = 0, Avcount = 0;
+            Series seriesKlinechartTop = new Series("", 3);
+            Series seriesKlinechartDown = new Series("", 3);
+            Series seriesKlinechartAvege = new Series("", 3);
+            seriesKlinechartTop.ChartType = seriesKlinechartDown.ChartType = seriesKlinechartAvege.ChartType = SeriesChartType.Spline;
+            int i = 0;
+            foreach (DataRow dr in dtShow.Rows)
+            {
+                //上界
+                Topcount = double.Parse(dr["High"].ToString());
+                if(i == 0)
+                    Topcount = double.Parse(dtShow.Rows[i]["isHit"].ToString());
+                seriesKlinechartTop.Points.Add(Topcount);
+
+                //下界
+                Downcount = double.Parse(dr["isHit"].ToString());
+                if (i == 0)
+                    Downcount = double.Parse(dtShow.Rows[i]["High"].ToString());
+                seriesKlinechartDown.Points.Add(Downcount);
+
+                //均線
+                if (i == 0)
+                    Avcount = double.Parse(dr["isHit"].ToString()) / 2;
+                else
+                    Avcount = (double.Parse(dtShow.Rows[i - 1]["isHit"].ToString())+ double.Parse(dr["isHit"].ToString())) / 2;
+               
+
+                seriesKlinechartAvege.Points.Add(Avcount);
+                i++;
+            }
+            lbChartKdesc.Series.Add(seriesKlinechartTop);
+            lbChartKdesc.Series.Add(seriesKlinechartDown);
+            lbChartKdesc.Series.Add(seriesKlinechartAvege);
+            lbChartKdesc.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
         }
 
         private DataTable getHistoryNumber()
@@ -444,7 +486,60 @@ namespace WinFormsApp1
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+        }
 
+        private void btnType1_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType2_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType3_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType4_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType5_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType6_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType7_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType8_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+        }
+
+        private void btnType9_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
         }
 
         private void btnRefrash_Click(object sender, EventArgs e)

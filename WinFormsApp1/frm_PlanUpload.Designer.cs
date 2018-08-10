@@ -888,9 +888,9 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(3, 22);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(209, 12);
+            this.label17.Size = new System.Drawing.Size(65, 12);
             this.label17.TabIndex = 7;
-            this.label17.Text = "已上传: 第20180407001~20180407003期";
+            this.label17.Text = "今日未上传";
             // 
             // label16
             // 
