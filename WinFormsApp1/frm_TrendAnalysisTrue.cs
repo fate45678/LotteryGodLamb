@@ -57,7 +57,7 @@ namespace WinFormsApp1
 
         private void btnStartTrend_Click(object sender, EventArgs e)
         {
-            frm_TrendAnalysis trend = new frm_TrendAnalysis(IssueToTrendshow.ToString());
+            frm_TrendAnalysis trend = new frm_TrendAnalysis(IssueToTrendshow.ToString(), cbplayNumber.Text);
             trend.Show();
         }
 
