@@ -937,6 +937,291 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
+            else if (GameLotteryName == "广东")
+            {
+                #region 山东
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.Items.Add("400+");
+                        cbGamePlus.Items.Add("500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
+            else if (GameLotteryName == "广东")
+            {
+                #region 江西
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.Items.Add("400+");
+                        cbGamePlus.Items.Add("500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
+            else if (GameLotteryName == "广东")
+            {
+                #region 上海
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.Items.Add("400+");
+                        cbGamePlus.Items.Add("500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
+            else if (GameLotteryName == "广东")
+            {
+                #region 江苏
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.Items.Add("400+");
+                        cbGamePlus.Items.Add("500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
+            else if (GameLotteryName == "广东")
+            {
+                #region 河北
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.Items.Add("400+");
+                        cbGamePlus.Items.Add("500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
 
             DataTable dtGamePlan = getPlanName(cbGameKind.SelectedItem.ToString());
             foreach (DataRow dr in dtGamePlan.Rows)
@@ -20540,7 +20825,7 @@ WHERE NUM >56 AND NUM <84";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20563,7 +20848,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >42 AND NUM <85";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20581,7 +20866,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20606,7 +20891,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20629,7 +20914,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >28 AND NUM <57";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20653,7 +20938,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >56 AND NUM <84";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20743,7 +21028,7 @@ WHERE NUM >65 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20766,7 +21051,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >42 AND NUM <85";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20784,7 +21069,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20809,7 +21094,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20832,7 +21117,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >28 AND NUM <57";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20856,7 +21141,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >56 AND NUM <84";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20946,7 +21231,7 @@ WHERE NUM >65 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -20969,7 +21254,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >42 AND NUM <85";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -20987,7 +21272,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21012,7 +21297,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -21035,7 +21320,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >28 AND NUM <57";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21059,7 +21344,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >56 AND NUM <84";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21149,7 +21434,7 @@ WHERE NUM >65 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -21172,7 +21457,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >42 AND NUM <85";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21190,7 +21475,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21215,7 +21500,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -21238,7 +21523,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >28 AND NUM <57";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21262,7 +21547,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >56 AND NUM <84";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21352,7 +21637,7 @@ WHERE NUM >65 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -21375,7 +21660,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >48 AND NUM <97";
+WHERE NUM >42 AND NUM <85";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21393,7 +21678,7 @@ WHERE NUM >48 AND NUM <97";
                         else
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(48) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            string Sqlstr = @"SELECT top(42) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21418,7 +21703,7 @@ WHERE NUM >48 AND NUM <97";
                         if (PlanName == 0)
                         {
                             con.Open();
-                            string Sqlstr = @"SELECT top(32) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string Sqlstr = @"SELECT top(28) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -21441,7 +21726,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >32 AND NUM <65";
+WHERE NUM >28 AND NUM <57";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();
@@ -21465,7 +21750,7 @@ SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
 * FROM [RandomNumber{2}]
 WHERE date = '20180720' AND type = '{1}'
 ) A
-WHERE NUM >65 AND NUM <97";
+WHERE NUM >56 AND NUM <84";
                             //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
                             SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
                             DataSet ds = new DataSet();

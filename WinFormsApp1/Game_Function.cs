@@ -39,6 +39,9 @@ namespace WinFormsApp1
                 case "山东":
                     strCode = "SD115";
                     break;
+                case "河北":
+                    strCode = "HEB115";
+                    break;
                 default:
                     strCode = "CQSSC";
                     break;

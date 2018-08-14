@@ -156,7 +156,7 @@
             this.lblNextPeriod.AutoSize = true;
             this.lblNextPeriod.BackColor = System.Drawing.Color.Transparent;
             this.lblNextPeriod.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblNextPeriod.Location = new System.Drawing.Point(118, 5);
+            this.lblNextPeriod.Location = new System.Drawing.Point(130, 5);
             this.lblNextPeriod.Name = "lblNextPeriod";
             this.lblNextPeriod.Size = new System.Drawing.Size(71, 12);
             this.lblNextPeriod.TabIndex = 5;
@@ -166,9 +166,9 @@
             // 
             this.HD_GameSelect.AutoSize = true;
             this.HD_GameSelect.Dock = System.Windows.Forms.DockStyle.Left;
-            this.HD_GameSelect.Location = new System.Drawing.Point(59, 5);
+            this.HD_GameSelect.Location = new System.Drawing.Point(65, 5);
             this.HD_GameSelect.Name = "HD_GameSelect";
-            this.HD_GameSelect.Size = new System.Drawing.Size(59, 12);
+            this.HD_GameSelect.Size = new System.Drawing.Size(65, 12);
             this.HD_GameSelect.TabIndex = 16;
             this.HD_GameSelect.Text = "GameSelect";
             // 
@@ -178,7 +178,7 @@
             this.HD_MenuSelect.Dock = System.Windows.Forms.DockStyle.Left;
             this.HD_MenuSelect.Location = new System.Drawing.Point(0, 5);
             this.HD_MenuSelect.Name = "HD_MenuSelect";
-            this.HD_MenuSelect.Size = new System.Drawing.Size(59, 12);
+            this.HD_MenuSelect.Size = new System.Drawing.Size(65, 12);
             this.HD_MenuSelect.TabIndex = 15;
             this.HD_MenuSelect.Text = "MenuSelect";
             // 
