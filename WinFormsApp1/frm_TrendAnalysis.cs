@@ -261,13 +261,17 @@ namespace WinFormsApp1
             lbChartKdesc.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
             //設定圖樣
+            lbChartKdesc.Series[0]["PixelPointWidth"] = "0.8";
             lbChartKdesc.Series[0].XValueMember = "Issue";
-            lbChartKdesc.Series[0].YValueMembers = "isHit,High,High,High";
+            lbChartKdesc.Series[0].YValueMembers = "isHit,High,isHit,High";
             lbChartKdesc.Series[0].CustomProperties = "PriceDownColor=Red, PriceUpColor=Blue";
 
             lbChartKdesc.Series[0]["OpenCloseStyle"] = "Triangle";
             lbChartKdesc.Series[0]["ShowOpenClose"] = "Both";
-            lbChartKdesc.DataManipulator.IsStartFromFirst = true;
+            lbChartKdesc.ChartAreas["ChartArea1"].AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            lbChartKdesc.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
+            //lbChartKdesc.DataManipulator.IsStartFromFirst = true;
+            lbChartKdesc.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
             lbChartKdesc.DataSource = dtShow;
             lbChartKdesc.DataBind();
 

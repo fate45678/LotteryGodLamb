@@ -3202,7 +3202,7 @@ namespace WinFormsApp1
                     richTextBox1.Text = getData.ElementAt(i);
                     itemCount = richTextBox1.Text.Split(' ');
                     label15.Text = "共" + itemCount.Count().ToString() + "注";
-                    if  if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
+                    if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                         {
                         itemCount = richTextBox1.Text.Split(',');
                         label15.Text = "共" + itemCount.Count().ToString() + "注";
