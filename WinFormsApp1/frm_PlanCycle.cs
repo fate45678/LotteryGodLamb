@@ -937,7 +937,7 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (GameLotteryName == "广东")
+            else if (GameLotteryName == "山东")
             {
                 #region 山东
                 switch (cbGameKind.SelectedItem.ToString())
@@ -994,7 +994,7 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (GameLotteryName == "广东")
+            else if (GameLotteryName == "江西")
             {
                 #region 江西
                 switch (cbGameKind.SelectedItem.ToString())
@@ -1051,7 +1051,7 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (GameLotteryName == "广东")
+            else if (GameLotteryName == "上海")
             {
                 #region 上海
                 switch (cbGameKind.SelectedItem.ToString())
@@ -1108,7 +1108,7 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (GameLotteryName == "广东")
+            else if (GameLotteryName == "江苏")
             {
                 #region 江苏
                 switch (cbGameKind.SelectedItem.ToString())
@@ -1165,7 +1165,7 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
-            else if (GameLotteryName == "广东")
+            else if (GameLotteryName == "河北")
             {
                 #region 河北
                 switch (cbGameKind.SelectedItem.ToString())

@@ -176,7 +176,7 @@ namespace WinFormsApp1
                                         oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
                                     }
                                 }
-                                else if (frm_PlanCycle.GameLotteryName == "广东")
+                                else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                                 {
                                     if (oldGameKind.Contains("前二"))
                                     {
@@ -1890,7 +1890,7 @@ namespace WinFormsApp1
                 var Tmp = Number.Split(' ');
                 label21.Text = "共" + Tmp.Count().ToString() + "注";
 
-                if (frm_PlanCycle.GameLotteryName == "广东") 
+                if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                 {
                     Number = richTextBox2.Text;
                     var checkTmpFirst = Number.Split(',');
@@ -2042,8 +2042,8 @@ namespace WinFormsApp1
 
                 #endregion
             }
-            else if (PlayKind == "广东")
-            {
+            else if (PlayKind == "广东" || PlayKind == "河北" || PlayKind == "江苏" || PlayKind == "上海" || PlayKind == "江西" || PlayKind == "山东")
+            {// if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                 string GameKind = "";
                 if (type == "A")
                     GameKind = cbGameKind.Text;
@@ -2536,32 +2536,32 @@ namespace WinFormsApp1
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "广东" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "广东" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "山东" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "山东" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "江西" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "江西" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "上海" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "上海" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "江苏" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "江苏" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
                 }
-                else if (frm_PlanCycle.GameLotteryName == "河北" && comboBox1.Text.Substring(8) == "1440")
+                else if (frm_PlanCycle.GameLotteryName == "河北" && comboBox1.Text.Substring(8) == "84")
                 {
                     MessageBox.Show("已经是最后一期了");
                     return;
@@ -2724,7 +2724,7 @@ namespace WinFormsApp1
                             oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
                         }
                     }
-                    else if (frm_PlanCycle.GameLotteryName == "广东")
+                    else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                     {
                         if (oldGameKind.Contains("前二"))
                         {
@@ -2865,7 +2865,7 @@ namespace WinFormsApp1
                             checkNumber = showIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
                         }
                     }
-                    else if (frm_PlanCycle.GameLotteryName == "广东")
+                    else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                     {
                         if (GameKind.Contains("前二"))
                         {
@@ -2958,7 +2958,7 @@ namespace WinFormsApp1
                 string Number = richTextBox1.Text.Replace(",", "");
                 var Tmp = Number.Split(' ');
                 label15.Text = "共" + Tmp.Count() + "注 ";
-                if (frm_PlanCycle.GameLotteryName == "广东")
+                if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
                 {
                     Number = richTextBox1.Text;
                     var checkTmpFirst = Number.Split(',');
@@ -3202,8 +3202,8 @@ namespace WinFormsApp1
                     richTextBox1.Text = getData.ElementAt(i);
                     itemCount = richTextBox1.Text.Split(' ');
                     label15.Text = "共" + itemCount.Count().ToString() + "注";
-                    if (frm_PlanCycle.GameLotteryName == "广东")
-                    {
+                    if  if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
+                        {
                         itemCount = richTextBox1.Text.Split(',');
                         label15.Text = "共" + itemCount.Count().ToString() + "注";
                     }
@@ -3229,7 +3229,7 @@ namespace WinFormsApp1
             string Number = richTextBox2.Text.Replace(","," ") ;
             string[] NumberCount = Number.Split(' ');
             label21.Text = "共" + NumberCount.Count() + "注";
-            if (frm_PlanCycle.GameLotteryName == "广东")
+            if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
             {
                 Number = richTextBox2.Text;
                 NumberCount = Number.Split(',');
@@ -3249,7 +3249,7 @@ namespace WinFormsApp1
         {
             string CopyOn = System.Windows.Clipboard.GetText().Trim();
 
-            if (frm_PlanCycle.GameLotteryName == "广东")
+            if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "山东" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "河北")
             {
                 richTextBox2.Text = CopyOn;
                 int count = CopyOn.Split(',').Count();

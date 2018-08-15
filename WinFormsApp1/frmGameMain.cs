@@ -411,7 +411,7 @@ namespace WinFormsApp1
                     ss = "00";
                 lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
             }
-            else if (HD_GameSelect.Text == "广东")
+            else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北")
             {
                 //a.hywin888.net  hyqa.azurewebsites.net
                 //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
@@ -569,7 +569,7 @@ namespace WinFormsApp1
                     checkIsnewIssue = ja[0]["Number"].ToString();
                 }
             }
-            else if (HD_GameSelect.Text == "广东")
+            else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北")
             {
                 lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
                 lblNumber1.Location = new Point(49, 43);
