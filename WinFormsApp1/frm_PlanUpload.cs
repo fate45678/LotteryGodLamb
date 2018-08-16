@@ -2043,7 +2043,7 @@ namespace WinFormsApp1
                 #endregion
             }
             else if (PlayKind == "广东" || PlayKind == "河北" || PlayKind == "江苏" || PlayKind == "上海" || PlayKind == "江西" || PlayKind == "山东")
-            {// if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东") //山东
+            {
                 string GameKind = "";
                 if (type == "A")
                     GameKind = cbGameKind.Text;
@@ -2067,16 +2067,26 @@ namespace WinFormsApp1
                 else
                     checkNumber = richTextBox1.Text;
 
-                var checkTmpFirst = checkNumber.Split(',');
+                var checkTmpFirst = checkNumber.Split(',').Select(x => x.Trim()).ToArray();
 
                 //用來確認
                 string TmpStr = "";
                 string intoRichboxStr = "";
                 string error = "";
+                bool isDistinct = false;
                 if (lenghCheck == 2)
                 {
                     for (int i = 0; i < checkTmpFirst.Count(); i++)
                     {
+                        var arr = checkTmpFirst.ToList().Distinct().ToArray();
+
+                        if (arr.Count() != checkTmpFirst.Count())
+                        {
+                            checkTmpFirst = arr;
+                            isDistinct = true;
+                        }
+                        
+
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
                         if (tmp.Count() == lenghCheck && int.Parse(tmp[0]) != 0 && int.Parse(tmp[1]) != 0 && int.Parse(tmp[0]) < 12 && int.Parse(tmp[1]) < 12 && tmp[0] != tmp[1])
@@ -2105,13 +2115,17 @@ namespace WinFormsApp1
                         }
                     }
                 }
-                if(intoRichboxStr.Trim() != "")
+
+                if (intoRichboxStr.Trim() != "")
                     intoRichboxStr = intoRichboxStr.Substring(1);
 
-                if (error.Trim() != "")
+                if (error.Trim() != "" || isDistinct)
                 {
                     richTextBox2.Text = intoRichboxStr;
-                    MessageBox.Show("已清除重复及错误资料。\n" + error.Substring(1));
+                    if(error != "")
+                        MessageBox.Show("已清除重复及错误资料。\n" + error.Substring(1));
+                    else
+                        MessageBox.Show("已清除重复及错误资料。\n");
                 }
                 else
                     MessageBox.Show("除错完成");

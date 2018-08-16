@@ -179,7 +179,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(879, 3);
+            this.button1.Location = new System.Drawing.Point(876, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 29);
             this.button1.TabIndex = 29;
@@ -194,7 +194,7 @@
             this.btnViewResult.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnViewResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewResult.ForeColor = System.Drawing.Color.White;
-            this.btnViewResult.Location = new System.Drawing.Point(798, 3);
+            this.btnViewResult.Location = new System.Drawing.Point(795, 3);
             this.btnViewResult.Name = "btnViewResult";
             this.btnViewResult.Size = new System.Drawing.Size(81, 29);
             this.btnViewResult.TabIndex = 28;
@@ -206,7 +206,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(758, 3);
+            this.label9.Location = new System.Drawing.Point(755, 3);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.label9.Size = new System.Drawing.Size(40, 12);
@@ -217,7 +217,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(758, 3);
+            this.label4.Location = new System.Drawing.Point(755, 3);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label4.Size = new System.Drawing.Size(0, 17);
@@ -231,7 +231,7 @@
             this.label3.Location = new System.Drawing.Point(723, 3);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label3.Size = new System.Drawing.Size(35, 17);
+            this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 26;
             this.label3.Text = "欢迎:";
             // 
@@ -626,7 +626,7 @@
             this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(3, 22);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(203, 12);
+            this.label23.Size = new System.Drawing.Size(197, 12);
             this.label23.TabIndex = 7;
             this.label23.Text = "20180407001~20180407003期  共99期";
             // 
@@ -704,12 +704,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
@@ -949,7 +949,7 @@
             this.checkedListBoxEx1.FormattingEnabled = true;
             this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
             this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 374);
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 346);
             this.checkedListBoxEx1.TabIndex = 7;
             this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
             // 

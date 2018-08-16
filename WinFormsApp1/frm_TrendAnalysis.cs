@@ -31,6 +31,7 @@ namespace WinFormsApp1
         string issueCount = "", playKind = "";
         int DrawCount = 0;
         DataTable dtHistoryNumber = new DataTable();
+        string IssueCountForTopButton = "";
 
         public frm_TrendAnalysis(string count, string play)
         {
@@ -374,26 +375,40 @@ namespace WinFormsApp1
                 btn10Issue.BackColor = Color.Blue;
                 btn10Issue.ForeColor = Color.White;
             }
-
-
         }
 
         private void btn50Issue_Click(object sender, EventArgs e)
         {
             setIssueInit("50");
             DrawChart(50);
+
+            if (IssueCountForTopButton != "")
+            {
+                issueCount = "50";
+                DrawKline(IssueCountForTopButton);
+            }
         }
 
         private void btn30Issue_Click(object sender, EventArgs e)
         {
             setIssueInit("30");
             DrawChart(30);
+            if (IssueCountForTopButton != "")
+            {
+                issueCount = "30";
+                DrawKline(IssueCountForTopButton);
+            }
         }
 
         private void btn10Issue_Click(object sender, EventArgs e)
         {
             setIssueInit("10");
             DrawChart(10);
+            if (IssueCountForTopButton != "")
+            {
+                issueCount = "10";
+                DrawKline(IssueCountForTopButton);
+            }
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -490,66 +505,78 @@ namespace WinFormsApp1
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "0";
         }
 
         private void btnType1_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "1";
         }
 
         private void btnType2_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "2";
         }
 
         private void btnType3_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "3";
         }
 
         private void btnType4_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "4";
         }
 
         private void btnType5_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "5";
         }
 
         private void btnType6_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "6";
         }
 
         private void btnType7_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "7";
         }
 
         private void btnType8_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "8";
         }
 
         private void btnType9_Click(object sender, EventArgs e)
         {
             string type = (sender as Button).Text;
             DrawKline(type);
+            IssueCountForTopButton = "9";
         }
 
         private void btnRefrash_Click(object sender, EventArgs e)
         {
             setIssueInit("50");
             DrawChart(50);
+            if(IssueCountForTopButton != "")
+                DrawKline(IssueCountForTopButton);
 
             btnFirst.BackColor = Color.Blue;
             btnFirst.ForeColor = Color.White;
