@@ -65,6 +65,8 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             cbplayNumber.SelectedIndex = 0;
+            cbPlayKind.Items.Clear();
+            cbPlayKind.Items.Add(frm_PlanCycle.GameLotteryName);
             cbPlayKind.SelectedIndex = 0;
             DataTable dt = connectDb(10);
             ColdHotNumber(dt);
@@ -565,11 +567,34 @@ namespace WinFormsApp1
             connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
             con = new SqlConnection(connetionString);
             string SelectNowDate = DateTime.Now.ToString("yyyyMMdd");
+            string db = "";
             try
             {
                 con.Open();
 
-                string Sqlstr = @"SELECT top (" + topCount + ") issue AS Issue,''coldnumber,''wormnumber, ''hotnumber,''playNumber, number AS Number FROM HistoryNumber where issue like '" + SelectNowDate + "%'order by issue desc";
+                switch(frm_PlanCycle.GameLotteryName)
+                {
+                    case "重庆时时彩":
+                        db = "HistoryNumber";
+                        break;
+                    case "天津时时彩":
+                        db = "TJSSC_HistoryNumber";
+                        break;
+                    case "腾讯官方彩":
+                        db = "QQFFC_HistoryNumber";
+                        break;
+                    case "腾讯奇趣彩":
+                        db = "TENCENTFFC_HistoryNumber";
+                        break;
+                    //case "VR金星1.5分彩":
+                    //    db = "";
+                    //    break;
+                    case "新疆时时彩":
+                        db = "XJSSC_HistoryNumber";
+                        break;
+                }
+
+                string Sqlstr = @"SELECT top (" + topCount + ") issue AS Issue,''coldnumber,''wormnumber, ''hotnumber,''playNumber, number AS Number FROM " + db + " where issue like '" + SelectNowDate + "%'order by issue desc";
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
