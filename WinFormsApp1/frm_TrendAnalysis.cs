@@ -261,8 +261,7 @@ namespace WinFormsApp1
             lbChartKdesc.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
             lbChartKdesc.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
-            //設定圖樣
-            lbChartKdesc.Series[0]["PixelPointWidth"] = "0.8";
+            //設定圖樣                     
             lbChartKdesc.Series[0].XValueMember = "Issue";
             lbChartKdesc.Series[0].YValueMembers = "isHit,High,isHit,High";
             lbChartKdesc.Series[0].CustomProperties = "PriceDownColor=Red, PriceUpColor=Blue";
@@ -273,6 +272,7 @@ namespace WinFormsApp1
             lbChartKdesc.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = false;
             //lbChartKdesc.DataManipulator.IsStartFromFirst = true;
             lbChartKdesc.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            lbChartKdesc.Series[0]["PointWidth"] = "0.2";
             lbChartKdesc.DataSource = dtShow;
             lbChartKdesc.DataBind();
 
@@ -311,6 +311,7 @@ namespace WinFormsApp1
             lbChartKdesc.Series.Add(seriesKlinechartDown);
             lbChartKdesc.Series.Add(seriesKlinechartAvege);
             lbChartKdesc.ChartAreas[0].AxisX.LabelStyle.IsStaggered = true;
+            
         }
 
         private DataTable getHistoryNumber()
