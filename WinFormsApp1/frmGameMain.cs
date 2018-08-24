@@ -308,6 +308,16 @@ namespace WinFormsApp1
                     frm_Chart.isChange = true;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
+                case "北京PK10":
+                    ResetAllGame(); //重設彩票
+                    lblGame2_1.BackColor = HexColor("#df6600");
+                    lblGame2_1.ForeColor = Color.White;
+                    lblGame2_1.Refresh();
+                    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    frm_Chart.isChange = true;
+                    MessageBox.Show("若是未更新请按下刷新按钮");
+                    break;
                 default:
                     MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
                     break;
@@ -394,13 +404,28 @@ namespace WinFormsApp1
 
         //取得下一期時間
         DateTime dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
-       
+        DateTime dt1PK10 = DateTime.Now.AddMinutes(5);
+
         private void useHttpWebRequest_GetNextPeriod()
         {
-            if (HD_GameSelect.Text == "VR金星1.5分彩")
+            if (HD_GameSelect.Text == "北京PK10")
+            {
+                DateTime dt2PK10 = DateTime.Now;
+                if (dt1PK10 < dt2PK10)
+                    dt1PK10 = DateTime.Now.AddMinutes(5);
+
+                TimeSpan ts = new TimeSpan(dt1PK10.Ticks - dt2PK10.Ticks);
+                string hh = ts.Hours.ToString("00");
+                string mm = ts.Minutes.ToString("00");
+                string ss = ts.Seconds.ToString("00");
+                if (ss.IndexOf("-") > -1)
+                    ss = "00";
+                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+            }
+            else if (HD_GameSelect.Text == "VR金星1.5分彩")
             {
                 DateTime dt2Vr = DateTime.Now;
-                if(dt1Vr< dt2Vr)
+                if (dt1Vr < dt2Vr)
                     dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
 
                 TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
@@ -506,20 +531,133 @@ namespace WinFormsApp1
         //取得歷史開獎
         private void useHttpWebRequest_GetHistory()
         {
-
-            lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
-            lblNumber1.Location = new Point(49, 38);
-            lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
-            lblNumber2.Location = new Point(101, 38);
-            lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
-            lblNumber3.Location = new Point(152, 38);
-            lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
-            lblNumber4.Location = new Point(204, 38);
-            lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
-            lblNumber5.Location = new Point(255, 38);
-
-            if (HD_GameSelect.Text == "VR金星1.5分彩")
+            if (HD_GameSelect.Text == "北京PK10")
             {
+                pnlGameLastNumber.Size = new Size(500, 82);
+                //設定右上方的號碼圖樣
+                lblNumber1.Visible = true;
+                lblNumber6.Visible = true;
+                lblNumber7.Visible = true;
+                lblNumber8.Visible = true;
+                lblNumber9.Visible = true;
+                lblNumber10.Visible = true;
+                picNumber6.Visible = true;
+                picNumber7.Visible = true;
+                picNumber8.Visible = true;
+                picNumber9.Visible = true;
+                picNumber10.Visible = true;
+
+                lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber1.Location = new Point(9, 43);
+                picNumber1.Location = new Point(0, 30);
+
+                lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber2.Location = new Point(59, 43);
+                picNumber2.Location = new Point(51, 30);
+
+                lblNumber3.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber3.Location = new Point(109, 43);
+                picNumber3.Location = new Point(101, 30);
+
+                lblNumber4.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber4.Location = new Point(159, 43);
+                picNumber4.Location = new Point(151, 30);
+
+                lblNumber5.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber5.Location = new Point(209, 43);
+                picNumber5.Location = new Point(201, 30);
+
+                lblNumber6.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber6.Location = new Point(259, 43);
+                picNumber6.Location = new Point(251, 30);
+
+                lblNumber7.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber7.Location = new Point(309, 43);
+                picNumber7.Location = new Point(301, 30);
+
+                lblNumber8.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber8.Location = new Point(360, 43);
+                picNumber8.Location = new Point(351, 30);
+
+                lblNumber9.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber9.Location = new Point(410, 43);
+                picNumber9.Location = new Point(401, 30);
+
+                lblNumber10.Font = new Font("Verdana", 12, FontStyle.Bold);
+                lblNumber10.Location = new Point(460, 43);
+                picNumber10.Location = new Point(451, 30);
+
+
+                DataTable dtPK10 = ConnectDbGetHistoryNumberForPK10();
+                string str_json = JsonConvert.SerializeObject(dtPK10, Formatting.Indented);
+                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                jArr = ja;
+                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+                globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
+
+                lblCurrentPeriod.Text = lastWinPeriod; //當期
+                string Number = ja[0]["Number"].ToString().Replace(",", "");
+                lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 2);
+                lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 2);
+                lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 2);
+                lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 2);
+                lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 2);
+                lblNumber6.Text = ja[0]["Number"].ToString().Substring(10, 2);
+                lblNumber7.Text = ja[0]["Number"].ToString().Substring(12, 2);
+                lblNumber8.Text = ja[0]["Number"].ToString().Substring(14, 2);
+                lblNumber9.Text = ja[0]["Number"].ToString().Substring(16, 2);
+                lblNumber10.Text = ja[0]["Number"].ToString().Substring(18, 2);
+                strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 2);
+
+
+                if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                {
+                    notifyIcon1.ShowBalloonTip(3000);
+                    string tipTitle = "提示";
+                    string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                    ToolTipIcon tipType = ToolTipIcon.Info;
+                    notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                }
+
+                checkIsnewIssue = ja[0]["Number"].ToString();
+
+            }
+            else if (HD_GameSelect.Text == "VR金星1.5分彩")
+            {          
+                pnlGameLastNumber.Size = new Size(358, 82);
+
+                lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber1.Location = new Point(49, 38);
+                picNumber1.Location = new Point(40, 30);
+
+                lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber2.Location = new Point(101, 38);
+                picNumber2.Location = new Point(91, 30);
+
+                lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber3.Location = new Point(152, 38);
+                picNumber3.Location = new Point(142, 30);
+
+                lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber4.Location = new Point(204, 38);
+                picNumber4.Location = new Point(194, 30);
+
+                lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber5.Location = new Point(255, 38);
+                picNumber5.Location = new Point(245, 30);
+
+                //PK10專用
+                lblNumber6.Visible = false;
+                lblNumber7.Visible = false;
+                lblNumber8.Visible = false;
+                lblNumber9.Visible = false;
+                lblNumber10.Visible = false;
+                picNumber6.Visible = false;
+                picNumber7.Visible = false;
+                picNumber8.Visible = false;
+                picNumber9.Visible = false;
+                picNumber10.Visible = false;
+
                 DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
                 if (dtVR15 == null || dtVR15.Rows.Count == 0)
                 {
@@ -571,6 +709,19 @@ namespace WinFormsApp1
             }
             else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北" || HD_GameSelect.Text == "江苏")//江苏
             {
+                pnlGameLastNumber.Size = new Size(358, 82);
+                //PK10專用
+                lblNumber6.Visible = false;
+                lblNumber7.Visible = false;
+                lblNumber8.Visible = false;
+                lblNumber9.Visible = false;
+                lblNumber10.Visible = false;
+                picNumber6.Visible = false;
+                picNumber7.Visible = false;
+                picNumber8.Visible = false;
+                picNumber9.Visible = false;
+                picNumber10.Visible = false;
+
                 lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
                 lblNumber1.Location = new Point(49, 43);
                 lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
@@ -657,6 +808,40 @@ namespace WinFormsApp1
             }
             else
             {
+                pnlGameLastNumber.Size = new Size(358, 82);
+                //PK10專用
+                lblNumber6.Visible = false;
+                lblNumber7.Visible = false;
+                lblNumber8.Visible = false;
+                lblNumber9.Visible = false;
+                lblNumber10.Visible = false;
+                picNumber6.Visible = false;
+                picNumber7.Visible = false;
+                picNumber8.Visible = false;
+                picNumber9.Visible = false;
+                picNumber10.Visible = false;
+
+
+                lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber1.Location = new Point(49, 38);
+                picNumber1.Location = new Point(40, 30);
+
+                lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber2.Location = new Point(101, 38);
+                picNumber2.Location = new Point(91, 30);
+
+                lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber3.Location = new Point(152, 38);
+                picNumber3.Location = new Point(142, 30);
+
+                lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber4.Location = new Point(204, 38);
+                picNumber4.Location = new Point(194, 30);
+
+                lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
+                lblNumber5.Location = new Point(255, 38);
+                picNumber5.Location = new Point(245, 30);
+
                 //a.hywin888.net hyqa.azurewebsites.net/
                 DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
                 string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
@@ -746,6 +931,33 @@ namespace WinFormsApp1
             {
                 con.Open();
                 string Sqlstr = @"SELECT issue as Issue, replace(number,',','') as Number FROM VR15_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                con.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        private DataTable ConnectDbGetHistoryNumberForPK10()
+        {
+            string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
+
+            string connetionString = null;
+            SqlConnection con;
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            con = new SqlConnection(connetionString);
+            string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
+            try
+            {
+                con.Open();
+                string Sqlstr = @"SELECT issue as Issue, replace(number,',','') as Number FROM PK10_HistoryNumber ORDER BY issue DESC";//WHERE issue LIKE '" + date + "%'
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);

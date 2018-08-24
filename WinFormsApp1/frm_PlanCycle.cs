@@ -163,6 +163,14 @@ namespace WinFormsApp1
                 cbGameKind.Items.Add("前二");
                 cbGameKind.Items.Add("前三");
             }
+            else if (GameLotteryName == "北京PK10")
+            {
+                //cbGameKind.Items.Add("前一");
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("前四");
+                cbGameKind.Items.Add("前五");               
+            }
             cbGameKind.SelectedIndex = 0;
         }
 
@@ -1222,6 +1230,113 @@ namespace WinFormsApp1
                 }
                 #endregion
             }
+            else if (GameLotteryName == "北京PK10")
+            {
+                #region 北京PK10
+                switch (cbGameKind.SelectedItem.ToString())
+                {
+                    case "前一":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前二":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("30+");
+                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前三":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("200+");
+                        cbGamePlus.Items.Add("300+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前四":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("1500+");
+                        cbGamePlus.Items.Add("2500+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "前五":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("单式");
+                        //cbGameDirect.Items.Add("复式");
+                        //cbGameDirect.Items.Add("和值");
+                        //cbGameDirect.Items.Add("跨度");
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        cbGamePlus.Items.Add("10000+");
+                        cbGamePlus.Items.Add("15000+");
+                        cbGamePlus.SelectedIndex = 0;
+                        cbGamePlan.Items.Clear();
+                        //cbGamePlan.Items.Add("神通计划");
+                        //cbGamePlan.Items.Add("玉佛计划");
+                        //cbGamePlan.Items.Add("大帝计划");
+                        //cbGamePlan.SelectedIndex = 0;
+                        break;
+                    case "定位胆":
+                        cbGameDirect.Items.Clear();
+                        cbGameDirect.Items.Add("万");
+                        cbGameDirect.Items.Add("千");
+                        cbGameDirect.Items.Add("百");
+                        cbGameDirect.Items.Add("十");
+                        cbGameDirect.Items.Add("个");
+                        //todo: 定位胆的處理
+                        cbGameDirect.SelectedIndex = 0;
+                        cbGamePlus.Items.Clear();
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+            }
 
             DataTable dtGamePlan = getPlanName(cbGameKind.SelectedItem.ToString());
             foreach (DataRow dr in dtGamePlan.Rows)
@@ -1462,10 +1577,14 @@ namespace WinFormsApp1
             int cbPlanCycleSelectCount = cbPlanCycleSelect.Items.Count;
             var arr = NowAnalyzeNumberArr.ToArray();
             rtxtPlanCycle.Text = NowAnalyzeNumberArr[Index]["Number"].ToString().Replace(",",", ");
-            if (GameLotteryName == "广东" || GameLotteryName == "山东" || GameLotteryName == "江西" || GameLotteryName == "上海" || GameLotteryName == "江苏" || GameLotteryName == "河北")
+            if (GameLotteryName == "北京PK10" || GameLotteryName == "广东" || GameLotteryName == "山东" || GameLotteryName == "江西" || GameLotteryName == "上海" || GameLotteryName == "江苏" || GameLotteryName == "河北")
             {
                 rtxtPlanCycle.Text = NowAnalyzeNumberArr[Index]["Number"].ToString().Replace(",", " ").Replace(";", ", ");
             }
+            //else if (GameLotteryName == "北京PK10")
+            //{
+            //    rtxtPlanCycle.Text = NowAnalyzeNumberArr[Index]["Number"].ToString().Replace(",", " ").Replace(";", ", ");
+            //}
         }
 
         private void cbCycleResult1_DrawItem(object sender, DrawItemEventArgs e)
@@ -13513,6 +13632,868 @@ namespace WinFormsApp1
 
                 #endregion
             }
+            else if (GameLotteryName == "北京PK10")
+            {
+                #region 北京PK10
+                if (cbGameKind.Text == "前二")
+                {
+                    if (cbGameDirect.Text == "复式")
+                    {
+
+                    }
+                    else if (cbGameDirect.Text == "单式")
+                    {
+
+                        #region 顯示可看的週期
+                        cbPlanCycleSelect.Items.Clear();
+                        var checkcycle_1 = jArrHistoryNumber.Count % Convert.ToInt16(item.Value);
+                        if (checkcycle_1 == 0)
+                            cycle_1 = jArrHistoryNumber.Count / Convert.ToInt16(item.Value);
+                        else
+                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value)) + 1;
+
+                        string cycleName = "";
+                        for (int i = 0; i < jArrHistoryNumber.Count; i++)
+                        {
+                            cycleName = "第" + cycle_1.ToString("00") + "周期";
+                            string cycleDetail = "";
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= jArrHistoryNumber.Count)
+                                    break;
+                                cycleDetail += "" + jArrHistoryNumber[i]["Issue"].ToString() + "期 ． ";
+                                if (j != Convert.ToInt16(item.Value) - 1)
+                                    i++;
+                            }
+                            cbPlanCycleSelect.Items.Add(new ComboboxItem(cycleDetail, cycleName));
+                            cycle_1--;
+                            //i++;
+                        }
+                        cbPlanCycleSelect.SelectedIndex = 0;
+                        #endregion
+
+                        #region 驗證是否中奖
+                        Label lbl_1;
+                        ComboBox cb_1;
+                        Label lbl_2;
+                        Label lbl_3;
+                        flowLayoutPanel1.Controls.Clear();
+
+                        bool isWin = false; //中了沒
+                        int periodtWin = 0; //第幾期中
+                        string[] temp = { "", "", "" }; //存放combobox的值
+
+                        var checkcycle_2 = 178 % Convert.ToInt16(item.Value);
+                        if (checkcycle_2 == 0)
+                            cycle_2 = 178 / Convert.ToInt16(item.Value);
+                        else
+                            cycle_2 = (178 / Convert.ToInt16(item.Value)) + 1;
+
+                        for (int i = 0; i < 178 / Convert.ToInt16(item.Value) + 1; i++) //從歷史結果開始比
+                        {
+                            //reset
+                            isWin = false;
+                            periodtWin = 0;
+                            temp[0] = "";
+                            temp[1] = "";
+                            temp[2] = "";
+
+                            lbl_1 = new Label();
+                            lbl_1.Text = "第" + cycle_2.ToString("00") + "周期";
+                            lbl_1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                            lbl_1.Size = new System.Drawing.Size(72, 25);
+
+                            int NumberArrCount = numHistory.Count();
+
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= 178 / Convert.ToInt16(item.Value) + 1) break;
+
+                                string strMatch = "";
+                                switch (cbGameKind.Text)
+                                {
+                                    case "前一":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                        break;
+                                    case "前二":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                        break;
+                                    case "前三":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 6);
+                                        break;
+                                    case "前四":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 8);
+                                        break;
+                                    case "前五":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 10);
+                                        break;
+                                }
+                                if (isWin == false) //還沒中
+                                {
+                                    ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
+                                    string iii = NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",");
+                                    if (NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",").IndexOf(strMatch) > -1) //中
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
+                                        isWin = true;
+
+                                        if (ckWinToNextCycle.Checked == true) //中奖即进入下一周期                                    
+                                        {
+                                            i++;
+                                            sumBets++;
+                                            periodtWin = j + 1;
+                                            break;
+                                        }
+                                    }
+                                    else //挂
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 挂";
+                                    }
+                                    sumBets++;
+                                    periodtWin = j + 1;
+
+                                }
+                                else //前面已中奖
+                                {
+                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 停";
+                                    //cycle_2++;
+                                }
+                                i++;
+                            }
+
+                            cycle_2--;
+                            i--;
+                            cycle_3++;
+                            hisArr++;
+
+                            cb_1 = new ComboBox();
+                            for (int k = 0; k < 3; k++)
+                            {
+                                if (temp[k] != "")
+                                    cb_1.Items.Add(temp[k]);
+                            }
+                            cb_1.Cursor = System.Windows.Forms.Cursors.Hand;
+                            cb_1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+                            cb_1.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            cb_1.ForeColor = System.Drawing.Color.Black;
+                            cb_1.FormattingEnabled = true;
+                            cb_1.Margin = new System.Windows.Forms.Padding(0);
+                            cb_1.Size = new System.Drawing.Size(128, 26);
+                            cb_1.SelectedIndex = 0;
+                            cb_1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbCycleResult1_DrawItem);
+                            cb_1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                            lbl_2 = new Label();
+                            lbl_2.Text = periodtWin.ToString();
+                            lbl_2.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_2.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_2.Size = new System.Drawing.Size(53, 25);
+                            lbl_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            lbl_3 = new Label();
+                            if (isWin == true)
+                            {
+                                lbl_3.Text = "中";
+                                lbl_3.ForeColor = System.Drawing.Color.Red;
+                                sumWin++;
+                            }
+                            else
+                            {
+                                lbl_3.Text = "挂";
+                                lbl_3.ForeColor = System.Drawing.Color.Black;
+                            }
+                            lbl_3.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_3.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_3.Size = new System.Drawing.Size(60, 25);
+                            lbl_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            flowLayoutPanel1.Controls.Add(lbl_1);
+                            flowLayoutPanel1.Controls.Add(cb_1);
+                            flowLayoutPanel1.Controls.Add(lbl_2);
+                            flowLayoutPanel1.Controls.Add(lbl_3);
+                            LastBets += Convert.ToInt32(lbl_2.Text);
+                        }
+
+
+                        if (ckRegularCycle.Checked == true) //规律周期
+                        {
+
+
+                        }
+                        else //中奖即进入下一周期
+                        {
+
+                        }
+                        #endregion
+
+                        #region 計算
+                        //每期注數 共?元
+                        lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.0");
+                        //目前下注?周期
+                        lblCurrentBetsCycle.Text = (cycle_3 - 1).ToString();
+                        //共下注?期
+                        lblSumBetsCycle.Text = LastBets.ToString();
+                        //總投注額?元
+                        lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString("0.0");
+                        //獎金?元
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(txtTimes.Text)))).ToString("0.0");
+                        //盈虧?元
+                        lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString("0.0");
+                        //中奖率
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
+                        lblPlanWinOpp.Text = WinOpp.ToString("0.00");
+                        #endregion
+                    }
+                }
+                else if (cbGameKind.Text == "前三")
+                {
+                    if (cbGameDirect.Text == "复式")
+                    {
+
+                    }
+                    else if (cbGameDirect.Text == "单式")
+                    {
+
+                        #region 顯示可看的週期
+                        cbPlanCycleSelect.Items.Clear();
+                        var checkcycle_1 = jArrHistoryNumber.Count % Convert.ToInt16(item.Value);
+                        if (checkcycle_1 == 0)
+                            cycle_1 = jArrHistoryNumber.Count / Convert.ToInt16(item.Value);
+                        else
+                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value)) + 1;
+
+                        string cycleName = "";
+                        for (int i = 0; i < jArrHistoryNumber.Count; i++)
+                        {
+                            cycleName = "第" + cycle_1.ToString("00") + "周期";
+                            string cycleDetail = "";
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= jArrHistoryNumber.Count)
+                                    break;
+                                cycleDetail += "" + jArrHistoryNumber[i]["Issue"].ToString() + "期 ． ";
+                                if (j != Convert.ToInt16(item.Value) - 1)
+                                    i++;
+                            }
+                            cbPlanCycleSelect.Items.Add(new ComboboxItem(cycleDetail, cycleName));
+                            cycle_1--;
+                            //i++;
+                        }
+                        cbPlanCycleSelect.SelectedIndex = 0;
+                        #endregion
+
+                        #region 驗證是否中奖
+                        Label lbl_1;
+                        ComboBox cb_1;
+                        Label lbl_2;
+                        Label lbl_3;
+                        flowLayoutPanel1.Controls.Clear();
+
+                        bool isWin = false; //中了沒
+                        int periodtWin = 0; //第幾期中
+                        string[] temp = { "", "", "" }; //存放combobox的值
+
+                        var checkcycle_2 = 178 % Convert.ToInt16(item.Value);
+                        if (checkcycle_2 == 0)
+                            cycle_2 = 178 / Convert.ToInt16(item.Value);
+                        else
+                            cycle_2 = (178 / Convert.ToInt16(item.Value)) + 1;
+
+                        for (int i = 0; i < 178 / Convert.ToInt16(item.Value) + 1; i++) //從歷史結果開始比
+                        {
+                            //reset
+                            isWin = false;
+                            periodtWin = 0;
+                            temp[0] = "";
+                            temp[1] = "";
+                            temp[2] = "";
+
+                            lbl_1 = new Label();
+                            lbl_1.Text = "第" + cycle_2.ToString("00") + "周期";
+                            lbl_1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                            lbl_1.Size = new System.Drawing.Size(72, 25);
+
+                            int NumberArrCount = numHistory.Count();
+
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= 178 / Convert.ToInt16(item.Value) + 1) break;
+
+                                string strMatch = "";
+                                switch (cbGameKind.Text)
+                                {
+                                    case "前一":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                        break;
+                                    case "前二":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                        break;
+                                    case "前三":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 6);
+                                        break;
+                                    case "前四":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 8);
+                                        break;
+                                    case "前五":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 10);
+                                        break;
+                                }
+                                if (isWin == false) //還沒中
+                                {
+                                    ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
+                                    string iii = NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",");
+                                    if (NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",").IndexOf(strMatch) > -1) //中
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
+                                        isWin = true;
+
+                                        if (ckWinToNextCycle.Checked == true) //中奖即进入下一周期                                    
+                                        {
+                                            i++;
+                                            sumBets++;
+                                            periodtWin = j + 1;
+                                            break;
+                                        }
+                                    }
+                                    else //挂
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 挂";
+                                    }
+                                    sumBets++;
+                                    periodtWin = j + 1;
+
+                                }
+                                else //前面已中奖
+                                {
+                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 停";
+                                    //cycle_2++;
+                                }
+                                i++;
+                            }
+
+                            cycle_2--;
+                            i--;
+                            cycle_3++;
+                            hisArr++;
+
+                            cb_1 = new ComboBox();
+                            for (int k = 0; k < 3; k++)
+                            {
+                                if (temp[k] != "")
+                                    cb_1.Items.Add(temp[k]);
+                            }
+                            cb_1.Cursor = System.Windows.Forms.Cursors.Hand;
+                            cb_1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+                            cb_1.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            cb_1.ForeColor = System.Drawing.Color.Black;
+                            cb_1.FormattingEnabled = true;
+                            cb_1.Margin = new System.Windows.Forms.Padding(0);
+                            cb_1.Size = new System.Drawing.Size(128, 26);
+                            cb_1.SelectedIndex = 0;
+                            cb_1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbCycleResult1_DrawItem);
+                            cb_1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                            lbl_2 = new Label();
+                            lbl_2.Text = periodtWin.ToString();
+                            lbl_2.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_2.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_2.Size = new System.Drawing.Size(53, 25);
+                            lbl_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            lbl_3 = new Label();
+                            if (isWin == true)
+                            {
+                                lbl_3.Text = "中";
+                                lbl_3.ForeColor = System.Drawing.Color.Red;
+                                sumWin++;
+                            }
+                            else
+                            {
+                                lbl_3.Text = "挂";
+                                lbl_3.ForeColor = System.Drawing.Color.Black;
+                            }
+                            lbl_3.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_3.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_3.Size = new System.Drawing.Size(60, 25);
+                            lbl_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            flowLayoutPanel1.Controls.Add(lbl_1);
+                            flowLayoutPanel1.Controls.Add(cb_1);
+                            flowLayoutPanel1.Controls.Add(lbl_2);
+                            flowLayoutPanel1.Controls.Add(lbl_3);
+                            LastBets += Convert.ToInt32(lbl_2.Text);
+                        }
+
+
+                        if (ckRegularCycle.Checked == true) //规律周期
+                        {
+
+
+                        }
+                        else //中奖即进入下一周期
+                        {
+
+                        }
+                        #endregion
+
+                        #region 計算
+                        //每期注數 共?元
+                        lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.0");
+                        //目前下注?周期
+                        lblCurrentBetsCycle.Text = (cycle_3 - 1).ToString();
+                        //共下注?期
+                        lblSumBetsCycle.Text = LastBets.ToString();
+                        //總投注額?元
+                        lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString("0.0");
+                        //獎金?元
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(txtTimes.Text)))).ToString("0.0");
+                        //盈虧?元
+                        lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString("0.0");
+                        //中奖率
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
+                        lblPlanWinOpp.Text = WinOpp.ToString("0.00");
+                        #endregion
+                    }
+                }
+                else if (cbGameKind.Text == "前四")
+                {
+                    if (cbGameDirect.Text == "复式")
+                    {
+
+                    }
+                    else if (cbGameDirect.Text == "单式")
+                    {
+
+                        #region 顯示可看的週期
+                        cbPlanCycleSelect.Items.Clear();
+                        var checkcycle_1 = jArrHistoryNumber.Count % Convert.ToInt16(item.Value);
+                        if (checkcycle_1 == 0)
+                            cycle_1 = jArrHistoryNumber.Count / Convert.ToInt16(item.Value);
+                        else
+                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value)) + 1;
+
+                        string cycleName = "";
+                        for (int i = 0; i < jArrHistoryNumber.Count; i++)
+                        {
+                            cycleName = "第" + cycle_1.ToString("00") + "周期";
+                            string cycleDetail = "";
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= jArrHistoryNumber.Count)
+                                    break;
+                                cycleDetail += "" + jArrHistoryNumber[i]["Issue"].ToString() + "期 ． ";
+                                if (j != Convert.ToInt16(item.Value) - 1)
+                                    i++;
+                            }
+                            cbPlanCycleSelect.Items.Add(new ComboboxItem(cycleDetail, cycleName));
+                            cycle_1--;
+                            //i++;
+                        }
+                        cbPlanCycleSelect.SelectedIndex = 0;
+                        #endregion
+
+                        #region 驗證是否中奖
+                        Label lbl_1;
+                        ComboBox cb_1;
+                        Label lbl_2;
+                        Label lbl_3;
+                        flowLayoutPanel1.Controls.Clear();
+
+                        bool isWin = false; //中了沒
+                        int periodtWin = 0; //第幾期中
+                        string[] temp = { "", "", "" }; //存放combobox的值
+
+                        var checkcycle_2 = 178 % Convert.ToInt16(item.Value);
+                        if (checkcycle_2 == 0)
+                            cycle_2 = 178 / Convert.ToInt16(item.Value);
+                        else
+                            cycle_2 = (178 / Convert.ToInt16(item.Value)) + 1;
+
+                        for (int i = 0; i < 178 / Convert.ToInt16(item.Value) + 1; i++) //從歷史結果開始比
+                        {
+                            //reset
+                            isWin = false;
+                            periodtWin = 0;
+                            temp[0] = "";
+                            temp[1] = "";
+                            temp[2] = "";
+
+                            lbl_1 = new Label();
+                            lbl_1.Text = "第" + cycle_2.ToString("00") + "周期";
+                            lbl_1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                            lbl_1.Size = new System.Drawing.Size(72, 25);
+
+                            int NumberArrCount = numHistory.Count();
+
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= 178 / Convert.ToInt16(item.Value) + 1) break;
+
+                                string strMatch = "";
+                                switch (cbGameKind.Text)
+                                {
+                                    case "前一":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                        break;
+                                    case "前二":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                        break;
+                                    case "前三":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 6);
+                                        break;
+                                    case "前四":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 8);
+                                        break;
+                                    case "前五":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 10);
+                                        break;
+                                }
+                                if (isWin == false) //還沒中
+                                {
+                                    ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
+                                    string iii = NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",");
+                                    if (NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",").IndexOf(strMatch) > -1) //中
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
+                                        isWin = true;
+
+                                        if (ckWinToNextCycle.Checked == true) //中奖即进入下一周期                                    
+                                        {
+                                            i++;
+                                            sumBets++;
+                                            periodtWin = j + 1;
+                                            break;
+                                        }
+                                    }
+                                    else //挂
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 挂";
+                                    }
+                                    sumBets++;
+                                    periodtWin = j + 1;
+
+                                }
+                                else //前面已中奖
+                                {
+                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 停";
+                                    //cycle_2++;
+                                }
+                                i++;
+                            }
+
+                            cycle_2--;
+                            i--;
+                            cycle_3++;
+                            hisArr++;
+
+                            cb_1 = new ComboBox();
+                            for (int k = 0; k < 3; k++)
+                            {
+                                if (temp[k] != "")
+                                    cb_1.Items.Add(temp[k]);
+                            }
+                            cb_1.Cursor = System.Windows.Forms.Cursors.Hand;
+                            cb_1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+                            cb_1.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            cb_1.ForeColor = System.Drawing.Color.Black;
+                            cb_1.FormattingEnabled = true;
+                            cb_1.Margin = new System.Windows.Forms.Padding(0);
+                            cb_1.Size = new System.Drawing.Size(128, 26);
+                            cb_1.SelectedIndex = 0;
+                            cb_1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbCycleResult1_DrawItem);
+                            cb_1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                            lbl_2 = new Label();
+                            lbl_2.Text = periodtWin.ToString();
+                            lbl_2.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_2.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_2.Size = new System.Drawing.Size(53, 25);
+                            lbl_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            lbl_3 = new Label();
+                            if (isWin == true)
+                            {
+                                lbl_3.Text = "中";
+                                lbl_3.ForeColor = System.Drawing.Color.Red;
+                                sumWin++;
+                            }
+                            else
+                            {
+                                lbl_3.Text = "挂";
+                                lbl_3.ForeColor = System.Drawing.Color.Black;
+                            }
+                            lbl_3.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_3.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_3.Size = new System.Drawing.Size(60, 25);
+                            lbl_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            flowLayoutPanel1.Controls.Add(lbl_1);
+                            flowLayoutPanel1.Controls.Add(cb_1);
+                            flowLayoutPanel1.Controls.Add(lbl_2);
+                            flowLayoutPanel1.Controls.Add(lbl_3);
+                            LastBets += Convert.ToInt32(lbl_2.Text);
+                        }
+
+
+                        if (ckRegularCycle.Checked == true) //规律周期
+                        {
+
+
+                        }
+                        else //中奖即进入下一周期
+                        {
+
+                        }
+                        #endregion
+
+                        #region 計算
+                        //每期注數 共?元
+                        lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.0");
+                        //目前下注?周期
+                        lblCurrentBetsCycle.Text = (cycle_3 - 1).ToString();
+                        //共下注?期
+                        lblSumBetsCycle.Text = LastBets.ToString();
+                        //總投注額?元
+                        lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString("0.0");
+                        //獎金?元
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(txtTimes.Text)))).ToString("0.0");
+                        //盈虧?元
+                        lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString("0.0");
+                        //中奖率
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
+                        lblPlanWinOpp.Text = WinOpp.ToString("0.00");
+                        #endregion
+                    }
+                }
+                else if (cbGameKind.Text == "前五")
+                {
+                    if (cbGameDirect.Text == "复式")
+                    {
+
+                    }
+                    else if (cbGameDirect.Text == "单式")
+                    {
+
+                        #region 顯示可看的週期
+                        cbPlanCycleSelect.Items.Clear();
+                        var checkcycle_1 = jArrHistoryNumber.Count % Convert.ToInt16(item.Value);
+                        if (checkcycle_1 == 0)
+                            cycle_1 = jArrHistoryNumber.Count / Convert.ToInt16(item.Value);
+                        else
+                            cycle_1 = (jArrHistoryNumber.Count / Convert.ToInt16(item.Value)) + 1;
+
+                        string cycleName = "";
+                        for (int i = 0; i < jArrHistoryNumber.Count; i++)
+                        {
+                            cycleName = "第" + cycle_1.ToString("00") + "周期";
+                            string cycleDetail = "";
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= jArrHistoryNumber.Count)
+                                    break;
+                                cycleDetail += "" + jArrHistoryNumber[i]["Issue"].ToString() + "期 ． ";
+                                if (j != Convert.ToInt16(item.Value) - 1)
+                                    i++;
+                            }
+                            cbPlanCycleSelect.Items.Add(new ComboboxItem(cycleDetail, cycleName));
+                            cycle_1--;
+                            //i++;
+                        }
+                        cbPlanCycleSelect.SelectedIndex = 0;
+                        #endregion
+
+                        #region 驗證是否中奖
+                        Label lbl_1;
+                        ComboBox cb_1;
+                        Label lbl_2;
+                        Label lbl_3;
+                        flowLayoutPanel1.Controls.Clear();
+
+                        bool isWin = false; //中了沒
+                        int periodtWin = 0; //第幾期中
+                        string[] temp = { "", "", "" }; //存放combobox的值
+
+                        var checkcycle_2 = 178 % Convert.ToInt16(item.Value);
+                        if (checkcycle_2 == 0)
+                            cycle_2 = 178 / Convert.ToInt16(item.Value);
+                        else
+                            cycle_2 = (178 / Convert.ToInt16(item.Value)) + 1;
+
+                        for (int i = 0; i < 178 / Convert.ToInt16(item.Value) + 1; i++) //從歷史結果開始比
+                        {
+                            //reset
+                            isWin = false;
+                            periodtWin = 0;
+                            temp[0] = "";
+                            temp[1] = "";
+                            temp[2] = "";
+
+                            lbl_1 = new Label();
+                            lbl_1.Text = "第" + cycle_2.ToString("00") + "周期";
+                            lbl_1.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+                            lbl_1.Size = new System.Drawing.Size(72, 25);
+
+                            int NumberArrCount = numHistory.Count();
+
+                            for (int j = 0; j < Convert.ToInt16(item.Value); j++)
+                            {
+                                if (i >= 178 / Convert.ToInt16(item.Value) + 1) break;
+
+                                string strMatch = "";
+                                switch (cbGameKind.Text)
+                                {
+                                    case "前一":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                                        break;
+                                    case "前二":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 4);
+                                        break;
+                                    case "前三":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 6);
+                                        break;
+                                    case "前四":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 8);
+                                        break;
+                                    case "前五":
+                                        strMatch = jArrHistoryNumber[i]["Number"].ToString().Replace(",", "").Substring(0, 10);
+                                        break;
+                                }
+                                if (isWin == false) //還沒中
+                                {
+                                    ///////////////cycle_2 - 1
+                                    if (ckWinToNextCycle.Checked == true && hisArr == NowAnalyzeNumberArr.Count)
+                                        hisArr = 0;
+                                    string iii = NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",");
+                                    if (NowAnalyzeNumberArr[hisArr].ToString().Replace(",", "").Replace(";", ",").IndexOf(strMatch) > -1) //中
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 中";
+                                        isWin = true;
+
+                                        if (ckWinToNextCycle.Checked == true) //中奖即进入下一周期                                    
+                                        {
+                                            i++;
+                                            sumBets++;
+                                            periodtWin = j + 1;
+                                            break;
+                                        }
+                                    }
+                                    else //挂
+                                    {
+                                        temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 挂";
+                                    }
+                                    sumBets++;
+                                    periodtWin = j + 1;
+
+                                }
+                                else //前面已中奖
+                                {
+                                    temp[j] = "  " + jArrHistoryNumber[i]["Number"].ToString().Replace(",", " ") + " 停";
+                                    //cycle_2++;
+                                }
+                                i++;
+                            }
+
+                            cycle_2--;
+                            i--;
+                            cycle_3++;
+                            hisArr++;
+
+                            cb_1 = new ComboBox();
+                            for (int k = 0; k < 3; k++)
+                            {
+                                if (temp[k] != "")
+                                    cb_1.Items.Add(temp[k]);
+                            }
+                            cb_1.Cursor = System.Windows.Forms.Cursors.Hand;
+                            cb_1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+                            cb_1.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            cb_1.ForeColor = System.Drawing.Color.Black;
+                            cb_1.FormattingEnabled = true;
+                            cb_1.Margin = new System.Windows.Forms.Padding(0);
+                            cb_1.Size = new System.Drawing.Size(128, 26);
+                            cb_1.SelectedIndex = 0;
+                            cb_1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbCycleResult1_DrawItem);
+                            cb_1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                            lbl_2 = new Label();
+                            lbl_2.Text = periodtWin.ToString();
+                            lbl_2.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_2.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_2.Size = new System.Drawing.Size(53, 25);
+                            lbl_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            lbl_3 = new Label();
+                            if (isWin == true)
+                            {
+                                lbl_3.Text = "中";
+                                lbl_3.ForeColor = System.Drawing.Color.Red;
+                                sumWin++;
+                            }
+                            else
+                            {
+                                lbl_3.Text = "挂";
+                                lbl_3.ForeColor = System.Drawing.Color.Black;
+                            }
+                            lbl_3.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+                            lbl_3.Padding = new System.Windows.Forms.Padding(20, 6, 20, 6);
+                            lbl_3.Size = new System.Drawing.Size(60, 25);
+                            lbl_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+                            flowLayoutPanel1.Controls.Add(lbl_1);
+                            flowLayoutPanel1.Controls.Add(cb_1);
+                            flowLayoutPanel1.Controls.Add(lbl_2);
+                            flowLayoutPanel1.Controls.Add(lbl_3);
+                            LastBets += Convert.ToInt32(lbl_2.Text);
+                        }
+
+
+                        if (ckRegularCycle.Checked == true) //规律周期
+                        {
+
+
+                        }
+                        else //中奖即进入下一周期
+                        {
+
+                        }
+                        #endregion
+
+                        #region 計算
+                        //每期注數 共?元
+                        lblBetsMoney.Text = (Convert.ToDecimal(lblBets.Text) * Convert.ToDecimal(cbMoney.SelectedItem.ToString().Replace("2元", "2").Replace("2角", "0.2").Replace("2分", "0.02").Replace("2厘", "0.002")) * Convert.ToDecimal(txtTimes.Text)).ToString("0.0");
+                        //目前下注?周期
+                        lblCurrentBetsCycle.Text = (cycle_3 - 1).ToString();
+                        //共下注?期
+                        lblSumBetsCycle.Text = LastBets.ToString();
+                        //總投注額?元
+                        lblSumBetsMoney.Text = (Convert.ToDecimal(lblBetsMoney.Text) * Convert.ToDecimal(lblSumBetsCycle.Text)).ToString("0.0");
+                        //獎金?元
+                        lblWinMoney.Text = ((Convert.ToDouble(sumWin) * (Convert.ToDouble(txtGameNum.Text) * Convert.ToDouble(txtTimes.Text)))).ToString("0.0");
+                        //盈虧?元
+                        lblProfit.Text = (Convert.ToDecimal(lblWinMoney.Text) - Convert.ToDecimal(lblSumBetsMoney.Text)).ToString("0.0");
+                        //中奖率
+                        double WinOpp = (sumWin * 100 / Convert.ToDouble(lblSumBetsCycle.Text));
+                        lblPlanWinOpp.Text = WinOpp.ToString("0.00");
+                        #endregion
+                    }
+                }
+                else if (cbGameKind.Text == "定位胆")
+                {
+
+                }
+
+                #endregion
+            }
             rtxtPlanCycle.ReadOnly = true;//this
             GC.SuppressFinalize(this);
         }
@@ -13555,6 +14536,8 @@ namespace WinFormsApp1
                     Sqlstr = @"SELECT issue as Issue, number as Number FROM JS115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
                 else if (LotteryName == "河北")
                     Sqlstr = @"SELECT issue as Issue, number as Number FROM HEB115_HistoryNumber WHERE issue LIKE '" + date + "%' ORDER BY issue DESC";
+                else if (LotteryName == "北京PK10")
+                    Sqlstr = @"SELECT issue as Issue, number as Number FROM PK10_HistoryNumber ORDER BY issue DESC";
 
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
@@ -13677,6 +14660,9 @@ namespace WinFormsApp1
                         break;
                     case "河北":
                         GameDb = "ForHEB115";
+                        break;
+                    case "北京PK10":
+                        GameDb = "ForPK10";
                         break;
                 }
 
@@ -16116,6 +17102,209 @@ WHERE NUM >56 AND NUM <84";
                     }
                     #endregion
                 }
+                else if (GameLotteryName == "北京PK10")
+                {
+                    #region 北京PK10
+                    if (GameCycle == "一期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            string aaaa = string.Format(Sqlstr, date, type, GameDb);
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+
+                    }
+                    else if (GameCycle == "二期一周")
+                    {
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(89) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180720' AND type = '{1}'
+) A
+WHERE NUM >89 AND NUM <179";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(89) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}'";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    else //三期一周
+                    {
+                        //todo 修改每種不同的號碼
+                        if (PlanName == 0)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT top(58) number AS Number FROM RandomNumber{2} WHERE date = '20180720' AND type = '{1}' ";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else if (PlanName == 1)
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180720' AND type = '{1}'
+) A
+WHERE NUM >58 AND NUM <118";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        else
+                        {
+                            con.Open();
+                            string Sqlstr = @"SELECT [number] AS Number FROM 
+(
+SELECT ROW_NUMBER() OVER(ORDER BY [number]) NUM,
+* FROM [RandomNumber{2}]
+WHERE date = '20180720' AND type = '{1}'
+) A
+WHERE NUM >118 AND NUM <177";
+                            //string Sqlstr = @"SELECT top(40) number AS Number FROM RandomNumber WHERE date = '{0}' AND type = '{1}' order by NewID()";
+                            SqlDataAdapter da = new SqlDataAdapter(string.Format(Sqlstr, date, type, GameDb), con);
+                            DataSet ds = new DataSet();
+                            da.Fill(ds);
+                            NowAnalyzeNumber = ds.Tables[0].Rows[2]["Number"].ToString();
+                            da.Fill(ds);
+                            //NowAnalyzeNumber = ds.Tables[0].Rows[0]["Number"].ToString();
+                            DataTable dt = ds.Tables[0];
+
+                            NowAnalyzeNumber = dt.Rows[0]["Number"].ToString();
+                            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                            //MessageBox.Show("Connection Open ! ");
+                            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                            //string ii = ja[0]["issue"].ToString();
+                            NowAnalyzeNumberArr = ja;
+                        }
+                        con.Close();
+                    }
+                    #endregion
+                }
             }
             catch (Exception ex)
             {
@@ -16462,9 +17651,6 @@ WHERE NUM >56 AND NUM <84";
                 else if (id.Contains("一期一周"))
                     cbGameCycle.SelectedIndex = 1;
             }
-
-
-
 
             CountAndShow();
 

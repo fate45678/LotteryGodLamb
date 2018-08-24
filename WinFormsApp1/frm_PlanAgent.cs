@@ -917,6 +917,10 @@ namespace WinFormsApp1
             {
                 var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from HEB115_HistoryNumber where issue LIKE '" + dateNow + "'", dic_history);
             }
+            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                var getHistory = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "select * from PK10_HistoryNumber", dic_history);
+            }
             Dictionary<int, string> dic_Name = new Dictionary<int, string>();
             dic_Name.Add(0, "name");
             var getUser = con.ConSQLtoLT("43.252.208.201, 1433\\SQLEXPRESS", "lottery", "  select userData.name from Upplan inner join userData on  Upplan.p_account = userData.account where p_name like '%" + frm_PlanCycle.GameLotteryName + (string)cbGameKind.SelectedItem + (string)cbGameDirect.SelectedItem + "%' AND [p_isoldplan] = 1 and p_uploadDate LIKE '%" + SelectNowDate + "%' group by userData.name", dic_Name);
@@ -1033,6 +1037,18 @@ namespace WinFormsApp1
                         else if (oldGameKind.Contains("后二"))
                         {
                             oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(3, 2);
+                        }
+                        else if (oldGameKind.Contains("前一"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                        }
+                        else if (oldGameKind.Contains("前四"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 8);
+                        }
+                        else if (oldGameKind.Contains("前五"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", "").Substring(0, 10);
                         }
 
                         //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
@@ -2263,6 +2279,8 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 end = Int64.Parse(nameArr[1].Substring(1, 12).Trim());
+            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                end = Int64.Parse(nameArr[1]);
 
             //long end = Int64.Parse(nameArr[1].Substring(1, 11).Trim());
             string GameKind = choosePlanName;
@@ -2441,6 +2459,15 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                     cbGameKind.Items.Add("前二");
                     cbGameKind.Items.Add("前三");
                 }
+                else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                {
+                    cbGameKind.Items.Clear();
+                    //cbGameKind.Items.Add("前一");
+                    cbGameKind.Items.Add("前二");
+                    cbGameKind.Items.Add("前三");
+                    cbGameKind.Items.Add("前四");
+                    cbGameKind.Items.Add("前五");
+                }
                 //
                 cbGameKind.SelectedIndex = 0;
                 ischagneGameName = false;
@@ -2553,6 +2580,15 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                 cbGameKind.Items.Add("前二");
                 cbGameKind.Items.Add("前三");
             }
+            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                cbGameKind.Items.Clear();
+                //cbGameKind.Items.Add("前一");
+                cbGameKind.Items.Add("前二");
+                cbGameKind.Items.Add("前三");
+                cbGameKind.Items.Add("前四");
+                cbGameKind.Items.Add("前五");
+            }
             //
             cbGameKind.SelectedIndex = 0;
             updateGod();
@@ -2655,7 +2691,5 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             }
 
         }
-
-
     }
 }
