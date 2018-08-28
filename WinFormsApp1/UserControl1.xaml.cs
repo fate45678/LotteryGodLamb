@@ -88,6 +88,27 @@ namespace WinFormsApp1
             int[,] rec_Start = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //矩形起點
             int[,] rec_Len = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //矩形長度
 
+            int PlayCount = 10;
+            int PlayStart = 0;
+            if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东")
+            {
+                PlayStart = 1;
+                PlayCount = 11;
+                number_count = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; //出現總次數 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
+                number_miss = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; //遺漏值 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
+                number_missMax = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; //最大遺漏值 0:萬 1:千 2:百 3:十 4:個 5:號碼分布          
+                number_streak = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //連擊數 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
+                number_streakMax = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //最大連擊數 0:萬 1:千 2:百 3:十 4:個 5:號碼分布
+
+                rec_Start = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //矩形起點
+                rec_Len = new int[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }; ; //矩形長度
+            }
+            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                PlayStart = 1;
+                PlayCount = 11;
+            }
+
             #region 產生Header
             //欄位:期号
             lbl = new Label(); lbl.Content = "期号"; lbl.Width = col1Width; lbl.Height = rowHeight * 2; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
@@ -136,9 +157,9 @@ namespace WinFormsApp1
                 x_Temp += digitWidth * 10;
 
                 //產生0~9
-                for (int headerDig1 = 0; headerDig1 < 10; headerDig1++)
+                for (int headerDig1 = PlayStart; headerDig1 < PlayCount; headerDig1++)
                 {
-                    lbl = new Label(); lbl.Content = headerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (headerDig1 == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0);
+                    lbl = new Label(); lbl.Content = headerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (headerDig1 == PlayCount - 1) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0);
                     this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight); Canvas.SetLeft(lbl, x_TempDig);
                     x_TempDig += digitWidth;
                 }
@@ -147,7 +168,7 @@ namespace WinFormsApp1
             lbl = new Label(); lbl.Content = "号码分布"; lbl.Width = digitWidth * 10 + 2; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(1, 1, 1, 1);
             this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, 0); Canvas.SetLeft(lbl, x_Temp);
             x_Temp += digitWidth * 10;
-            for (int headerDig2 = 0; headerDig2 < 10; headerDig2++)
+            for (int headerDig2 = PlayStart; headerDig2 < PlayCount; headerDig2++)
             {
                 lbl = new Label(); lbl.Content = headerDig2.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0);
                 this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight); Canvas.SetLeft(lbl, x_TempDig);
@@ -264,12 +285,28 @@ namespace WinFormsApp1
                     x_Temp += col2Width - 1;
                 }
                 //step1 記開獎號碼
-                var iii = frmGameMain.jArr[rowData - 1]["Number"].ToString();
-                number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(0, 1));
-                number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(1, 1));
-                number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(2, 1));
-                number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(3, 1));
-                number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(4, 1));
+                var iii = frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(0, 2);
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                {
+
+                }
+                else if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+                {
+                    number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(0, 1));
+                    number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(1, 1));
+                    number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(2, 1));
+                    number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(3, 1));
+                    number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(4, 1));
+                }
+                else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东")
+                {
+                    number[0] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(0, 2));
+                    number[1] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(2, 2));
+                    number[2] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(4, 2));
+                    number[3] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(6, 2));
+                    number[4] = Convert.ToInt16(frmGameMain.jArr[rowData - 1]["Number"].ToString().Replace(",", "").Substring(8, 2));
+                }
+              
                 //step2 判斷位數
                 for (int i = 0; i < 5; i++)
                 {
@@ -277,7 +314,7 @@ namespace WinFormsApp1
                     {
                         matchDig = GetWhichDigit(gamekind, i);
                         //遺漏累加
-                        for (int dig = 0; dig < 10; dig++)
+                        for (int dig = PlayStart; dig < PlayCount; dig++)
                         {
                             if (dig == number[matchDig]) //符合
                                 number_miss[matchDig, dig] = 0;
@@ -287,7 +324,7 @@ namespace WinFormsApp1
                         //已進入近30/50/100筆的範圍，開始呈現資料(比對開獎號碼 產生圓形&標籤&遺漏)
                         if (rowData <= period)
                         {
-                            for (int dig = 0; dig < 10; dig++)
+                            for (int dig = PlayStart; dig < PlayCount; dig++)
                             {
                                 lbl = new Label();
                                 if (dig == number[matchDig]) //符合
@@ -305,7 +342,7 @@ namespace WinFormsApp1
                                     //this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig); Canvas.SetZIndex(elli, 2);
                                     this.canvas1.Children.Add(elli); Canvas.SetTop(elli, y_Temp + 4); Canvas.SetLeft(elli, x_TempDig); Canvas.SetZIndex(elli, 2);
 
-                                    lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
+                                    lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == PlayCount -1) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
                                     //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 3);
                                     this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig); Canvas.SetZIndex(lbl, 3);
                                     x_TempDig += digitWidth;
@@ -315,7 +352,7 @@ namespace WinFormsApp1
                                 }
                                 else //不符合
                                 {
-                                    lbl = new Label(); lbl.Content = ""; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
+                                    lbl = new Label(); lbl.Content = ""; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.Black; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == PlayCount -1) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
 
                                     if (strMissSelect != "") //要顯示遺漏
                                     {
@@ -362,7 +399,7 @@ namespace WinFormsApp1
                     else if (gamekind == "b2") numberTotal = number[3].ToString() + number[4].ToString();
 
                     //欄位:號碼分布
-                    for (int dig = 0; dig < 10; dig++)
+                    for (int dig = PlayStart; dig < PlayCount; dig++)
                     {
                         if (numberTotal.IndexOf(dig.ToString()) > -1) //符合
                         {
@@ -372,7 +409,7 @@ namespace WinFormsApp1
                             //this.canvas1.Children.Add(elli); Canvas.SetTop(elli, rowHeight * (2 + (period - rowData)) + 4); Canvas.SetLeft(elli, x_TempDig);
                             this.canvas1.Children.Add(elli); Canvas.SetTop(elli, y_Temp + 4); Canvas.SetLeft(elli, x_TempDig);
 
-                            lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
+                            lbl = new Label(); lbl.Content = dig.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == PlayCount -1) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
                             //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
                             this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_TempDig);
                             //最大遺漏
@@ -385,7 +422,7 @@ namespace WinFormsApp1
                         }
                         else //不符合
                         {
-                            lbl = new Label(); lbl.Content = ""; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
+                            lbl = new Label(); lbl.Content = ""; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Transparent; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == PlayCount -1) lbl.BorderThickness = new Thickness(0, 0, 1, 0); else lbl.BorderThickness = new Thickness(0, 0, 0, 0); lbl.Padding = new Thickness(0);
                             //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, rowHeight * (2 + (period - rowData))); Canvas.SetLeft(lbl, x_TempDig);
                             this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_TempDig);
                             //最大遺漏
@@ -563,7 +600,7 @@ namespace WinFormsApp1
                 {
                     if (GetWhichDigit(gamekind, i) != 99)
                     {
-                        for (int dig = 0; dig < 10; dig++)
+                        for (int dig = 0; dig < PlayCount; dig++)
                         {
                             if (rec_Start[GetWhichDigit(gamekind, i), dig] != 0) //紀錄遺漏條長度
                             {
@@ -593,7 +630,7 @@ namespace WinFormsApp1
             {
                 if (GetWhichDigit(gamekind, i) != 99)
                 {
-                    for (int dig = 0; dig < 10; dig++)
+                    for (int dig = 0; dig < PlayCount; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_count[GetWhichDigit(gamekind, i), dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                         //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
@@ -603,7 +640,7 @@ namespace WinFormsApp1
                 }
             }
             //欄位:號碼分布
-            for (int dig = 0; dig < 10; dig++)
+            for (int dig = 0; dig < PlayCount; dig++)
             {
                 lbl = new Label(); lbl.Content = number_count[5, dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                 //this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, (period + 2) * rowHeight - 1); Canvas.SetLeft(lbl, x_Temp);
@@ -671,7 +708,7 @@ namespace WinFormsApp1
             {
                 if (GetWhichDigit(gamekind, i) != 99)
                 {
-                    for (int dig = 0; dig < 10; dig++)
+                    for (int dig = 0; dig < PlayCount; dig++)
                     {
                         lbl = new Label(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                         if (number_count[GetWhichDigit(gamekind, i), dig] == 0)
@@ -684,7 +721,7 @@ namespace WinFormsApp1
                 }
             }
             //欄位:號碼分布
-            for (int dig = 0; dig < 10; dig++)
+            for (int dig = 0; dig < PlayCount; dig++)
             {
                 lbl = new Label(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                 if (number_count[5, dig] == 0)
@@ -754,7 +791,7 @@ namespace WinFormsApp1
             {
                 if (GetWhichDigit(gamekind, i) != 99)
                 {
-                    for (int dig = 0; dig < 10; dig++)
+                    for (int dig = 0; dig < PlayCount; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_missMax[GetWhichDigit(gamekind, i), dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                         this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
@@ -763,7 +800,7 @@ namespace WinFormsApp1
                 }
             }
             //欄位:號碼分布
-            for (int dig = 0; dig < 10; dig++)
+            for (int dig = 0; dig < PlayCount; dig++)
             {
                 lbl = new Label(); lbl.Content = number_missMax[5, dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                 this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
@@ -829,7 +866,7 @@ namespace WinFormsApp1
             {
                 if (GetWhichDigit(gamekind, i) != 99)
                 {
-                    for (int dig = 0; dig < 10; dig++)
+                    for (int dig = 0; dig < PlayCount; dig++)
                     {
                         lbl = new Label(); lbl.Content = number_streakMax[GetWhichDigit(gamekind, i), dig].ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                         this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
@@ -838,7 +875,7 @@ namespace WinFormsApp1
                 }
             }
             //欄位:號碼分布
-            for (int dig = 0; dig < 10; dig++)
+            for (int dig = 0; dig < PlayCount; dig++)
             {
                 lbl = new Label(); lbl.Content = number_streakMax[5, dig]; lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize - 1; lbl.Padding = new Thickness(0); lbl.Foreground = Brushes.White; lbl.Background = Brushes.DimGray; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (dig == 0) lbl.BorderThickness = new Thickness(1, 1, 0, 1); else lbl.BorderThickness = new Thickness(0, 1, 0, 1);
                 this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp); Canvas.SetLeft(lbl, x_Temp);
@@ -942,15 +979,15 @@ namespace WinFormsApp1
                 x_Temp += digitWidth * 10;
 
                 //產生0~9
-                for (int footerDig1 = 0; footerDig1 < 10; footerDig1++)
+                for (int footerDig1 = PlayStart;  footerDig1 < PlayCount; footerDig1++)
                 {
-                    lbl = new Label(); lbl.Content = footerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (footerDig1 == 9) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
+                    lbl = new Label(); lbl.Content = footerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; if (footerDig1 == PlayCount -1) lbl.BorderThickness = new Thickness(0, 0, 1, 1); else lbl.BorderThickness = new Thickness(0, 0, 0, 1); lbl.Padding = new Thickness(0); ;
                     this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig);
                     x_TempDig += digitWidth;
                 }
             }
             //欄位:號碼分布
-            for (int footerDig1 = 0; footerDig1 < 10; footerDig1++)
+            for (int footerDig1 = 0;  footerDig1 < PlayCount; footerDig1++)
             {
                 lbl = new Label(); lbl.Content = footerDig1.ToString(); lbl.Width = digitWidth; lbl.Height = rowHeight; lbl.FontSize = fontSize; lbl.Foreground = Brushes.White; lbl.Background = Brushes.Black; lbl.HorizontalContentAlignment = HorizontalAlignment.Center; lbl.VerticalContentAlignment = VerticalAlignment.Center; lbl.BorderBrush = Brushes.Silver; lbl.BorderThickness = new Thickness(0, 0, 0, 1);
                 this.canvas1.Children.Add(lbl); Canvas.SetTop(lbl, y_Temp + 1); Canvas.SetLeft(lbl, x_TempDig);
@@ -1115,7 +1152,7 @@ namespace WinFormsApp1
             //lbl.HorizontalContentAlignment = HorizontalAlignment.Center; 
             //lbl.VerticalContentAlignment = VerticalAlignment.Center; 
             //lbl.BorderBrush = Brushes.Silver; 
-            //if (dig2 == 9) 
+            //if (dig2 == PlayCount -1) 
             //    lbl.BorderThickness = new Thickness(0, 0, 1, 0); 
             //else 
             //    lbl.BorderThickness = new Thickness(0, 0, 0, 0); 

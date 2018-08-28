@@ -72,6 +72,14 @@
             this.lblGame1_1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlGameLastNumber = new System.Windows.Forms.Panel();
+            this.lblNumber10 = new System.Windows.Forms.Label();
+            this.picNumber10 = new System.Windows.Forms.PictureBox();
+            this.lblNumber9 = new System.Windows.Forms.Label();
+            this.picNumber9 = new System.Windows.Forms.PictureBox();
+            this.lblNumber8 = new System.Windows.Forms.Label();
+            this.picNumber8 = new System.Windows.Forms.PictureBox();
+            this.lblNumber7 = new System.Windows.Forms.Label();
+            this.picNumber7 = new System.Windows.Forms.PictureBox();
             this.lblNumber6 = new System.Windows.Forms.Label();
             this.picNumber6 = new System.Windows.Forms.PictureBox();
             this.panel38 = new System.Windows.Forms.Panel();
@@ -99,14 +107,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
             this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
-            this.lblNumber7 = new System.Windows.Forms.Label();
-            this.picNumber7 = new System.Windows.Forms.PictureBox();
-            this.lblNumber8 = new System.Windows.Forms.Label();
-            this.picNumber8 = new System.Windows.Forms.PictureBox();
-            this.lblNumber9 = new System.Windows.Forms.Label();
-            this.picNumber9 = new System.Windows.Forms.PictureBox();
-            this.lblNumber10 = new System.Windows.Forms.Label();
-            this.picNumber10 = new System.Windows.Forms.PictureBox();
             this.pnlGameMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlGameSelect.SuspendLayout();
@@ -115,6 +115,10 @@
             this.pnlGameRow2.SuspendLayout();
             this.pnlGameRow1.SuspendLayout();
             this.pnlGameLastNumber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNumber6)).BeginInit();
             this.panel38.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picNumber5)).BeginInit();
@@ -123,10 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picNumber2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNumber1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber10)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlGameMenu
@@ -743,6 +743,102 @@
             this.pnlGameLastNumber.Size = new System.Drawing.Size(358, 82);
             this.pnlGameLastNumber.TabIndex = 1;
             // 
+            // lblNumber10
+            // 
+            this.lblNumber10.AutoSize = true;
+            this.lblNumber10.BackColor = System.Drawing.Color.White;
+            this.lblNumber10.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumber10.ForeColor = System.Drawing.Color.Crimson;
+            this.lblNumber10.Location = new System.Drawing.Point(228, 46);
+            this.lblNumber10.Name = "lblNumber10";
+            this.lblNumber10.Size = new System.Drawing.Size(28, 29);
+            this.lblNumber10.TabIndex = 21;
+            this.lblNumber10.Text = "0";
+            this.lblNumber10.Visible = false;
+            // 
+            // picNumber10
+            // 
+            this.picNumber10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber10.BackgroundImage")));
+            this.picNumber10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picNumber10.Location = new System.Drawing.Point(218, 38);
+            this.picNumber10.Name = "picNumber10";
+            this.picNumber10.Size = new System.Drawing.Size(45, 45);
+            this.picNumber10.TabIndex = 20;
+            this.picNumber10.TabStop = false;
+            this.picNumber10.Visible = false;
+            // 
+            // lblNumber9
+            // 
+            this.lblNumber9.AutoSize = true;
+            this.lblNumber9.BackColor = System.Drawing.Color.White;
+            this.lblNumber9.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumber9.ForeColor = System.Drawing.Color.Crimson;
+            this.lblNumber9.Location = new System.Drawing.Point(209, 46);
+            this.lblNumber9.Name = "lblNumber9";
+            this.lblNumber9.Size = new System.Drawing.Size(28, 29);
+            this.lblNumber9.TabIndex = 19;
+            this.lblNumber9.Text = "0";
+            this.lblNumber9.Visible = false;
+            // 
+            // picNumber9
+            // 
+            this.picNumber9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber9.BackgroundImage")));
+            this.picNumber9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picNumber9.Location = new System.Drawing.Point(199, 38);
+            this.picNumber9.Name = "picNumber9";
+            this.picNumber9.Size = new System.Drawing.Size(45, 45);
+            this.picNumber9.TabIndex = 18;
+            this.picNumber9.TabStop = false;
+            this.picNumber9.Visible = false;
+            // 
+            // lblNumber8
+            // 
+            this.lblNumber8.AutoSize = true;
+            this.lblNumber8.BackColor = System.Drawing.Color.White;
+            this.lblNumber8.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumber8.ForeColor = System.Drawing.Color.Crimson;
+            this.lblNumber8.Location = new System.Drawing.Point(194, 42);
+            this.lblNumber8.Name = "lblNumber8";
+            this.lblNumber8.Size = new System.Drawing.Size(28, 29);
+            this.lblNumber8.TabIndex = 17;
+            this.lblNumber8.Text = "0";
+            this.lblNumber8.Visible = false;
+            // 
+            // picNumber8
+            // 
+            this.picNumber8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber8.BackgroundImage")));
+            this.picNumber8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picNumber8.Location = new System.Drawing.Point(184, 34);
+            this.picNumber8.Name = "picNumber8";
+            this.picNumber8.Size = new System.Drawing.Size(45, 45);
+            this.picNumber8.TabIndex = 16;
+            this.picNumber8.TabStop = false;
+            this.picNumber8.Visible = false;
+            // 
+            // lblNumber7
+            // 
+            this.lblNumber7.AutoSize = true;
+            this.lblNumber7.BackColor = System.Drawing.Color.White;
+            this.lblNumber7.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumber7.ForeColor = System.Drawing.Color.Crimson;
+            this.lblNumber7.Location = new System.Drawing.Point(179, 34);
+            this.lblNumber7.Name = "lblNumber7";
+            this.lblNumber7.Size = new System.Drawing.Size(28, 29);
+            this.lblNumber7.TabIndex = 15;
+            this.lblNumber7.Text = "0";
+            this.lblNumber7.Visible = false;
+            // 
+            // picNumber7
+            // 
+            this.picNumber7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber7.BackgroundImage")));
+            this.picNumber7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picNumber7.Location = new System.Drawing.Point(169, 26);
+            this.picNumber7.Name = "picNumber7";
+            this.picNumber7.Size = new System.Drawing.Size(45, 45);
+            this.picNumber7.TabIndex = 14;
+            this.picNumber7.TabStop = false;
+            this.picNumber7.Visible = false;
+            // 
             // lblNumber6
             // 
             this.lblNumber6.AutoSize = true;
@@ -1034,102 +1130,6 @@
             // 
             this.bgwGodinsert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwGodinsert_DoWork);
             // 
-            // lblNumber7
-            // 
-            this.lblNumber7.AutoSize = true;
-            this.lblNumber7.BackColor = System.Drawing.Color.White;
-            this.lblNumber7.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumber7.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber7.Location = new System.Drawing.Point(179, 34);
-            this.lblNumber7.Name = "lblNumber7";
-            this.lblNumber7.Size = new System.Drawing.Size(28, 29);
-            this.lblNumber7.TabIndex = 15;
-            this.lblNumber7.Text = "0";
-            this.lblNumber7.Visible = false;
-            // 
-            // picNumber7
-            // 
-            this.picNumber7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber7.BackgroundImage")));
-            this.picNumber7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picNumber7.Location = new System.Drawing.Point(169, 26);
-            this.picNumber7.Name = "picNumber7";
-            this.picNumber7.Size = new System.Drawing.Size(45, 45);
-            this.picNumber7.TabIndex = 14;
-            this.picNumber7.TabStop = false;
-            this.picNumber7.Visible = false;
-            // 
-            // lblNumber8
-            // 
-            this.lblNumber8.AutoSize = true;
-            this.lblNumber8.BackColor = System.Drawing.Color.White;
-            this.lblNumber8.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumber8.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber8.Location = new System.Drawing.Point(194, 42);
-            this.lblNumber8.Name = "lblNumber8";
-            this.lblNumber8.Size = new System.Drawing.Size(28, 29);
-            this.lblNumber8.TabIndex = 17;
-            this.lblNumber8.Text = "0";
-            this.lblNumber8.Visible = false;
-            // 
-            // picNumber8
-            // 
-            this.picNumber8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber8.BackgroundImage")));
-            this.picNumber8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picNumber8.Location = new System.Drawing.Point(184, 34);
-            this.picNumber8.Name = "picNumber8";
-            this.picNumber8.Size = new System.Drawing.Size(45, 45);
-            this.picNumber8.TabIndex = 16;
-            this.picNumber8.TabStop = false;
-            this.picNumber8.Visible = false;
-            // 
-            // lblNumber9
-            // 
-            this.lblNumber9.AutoSize = true;
-            this.lblNumber9.BackColor = System.Drawing.Color.White;
-            this.lblNumber9.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumber9.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber9.Location = new System.Drawing.Point(209, 46);
-            this.lblNumber9.Name = "lblNumber9";
-            this.lblNumber9.Size = new System.Drawing.Size(28, 29);
-            this.lblNumber9.TabIndex = 19;
-            this.lblNumber9.Text = "0";
-            this.lblNumber9.Visible = false;
-            // 
-            // picNumber9
-            // 
-            this.picNumber9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber9.BackgroundImage")));
-            this.picNumber9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picNumber9.Location = new System.Drawing.Point(199, 38);
-            this.picNumber9.Name = "picNumber9";
-            this.picNumber9.Size = new System.Drawing.Size(45, 45);
-            this.picNumber9.TabIndex = 18;
-            this.picNumber9.TabStop = false;
-            this.picNumber9.Visible = false;
-            // 
-            // lblNumber10
-            // 
-            this.lblNumber10.AutoSize = true;
-            this.lblNumber10.BackColor = System.Drawing.Color.White;
-            this.lblNumber10.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumber10.ForeColor = System.Drawing.Color.Crimson;
-            this.lblNumber10.Location = new System.Drawing.Point(228, 46);
-            this.lblNumber10.Name = "lblNumber10";
-            this.lblNumber10.Size = new System.Drawing.Size(28, 29);
-            this.lblNumber10.TabIndex = 21;
-            this.lblNumber10.Text = "0";
-            this.lblNumber10.Visible = false;
-            // 
-            // picNumber10
-            // 
-            this.picNumber10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picNumber10.BackgroundImage")));
-            this.picNumber10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picNumber10.Location = new System.Drawing.Point(218, 38);
-            this.picNumber10.Name = "picNumber10";
-            this.picNumber10.Size = new System.Drawing.Size(45, 45);
-            this.picNumber10.TabIndex = 20;
-            this.picNumber10.TabStop = false;
-            this.picNumber10.Visible = false;
-            // 
             // frmGameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1160,6 +1160,10 @@
             this.pnlGameRow1.PerformLayout();
             this.pnlGameLastNumber.ResumeLayout(false);
             this.pnlGameLastNumber.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNumber7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNumber6)).EndInit();
             this.panel38.ResumeLayout(false);
             this.panel38.PerformLayout();
@@ -1170,10 +1174,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picNumber1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNumber10)).EndInit();
             this.ResumeLayout(false);
 
         }

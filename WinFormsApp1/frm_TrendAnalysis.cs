@@ -39,6 +39,22 @@ namespace WinFormsApp1
             issueCount = count;
             DrawCount = int.Parse(count);
             playKind = play;
+
+            //設定起始按鈕
+            if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                btnType0.Visible = false;
+                btnType10.Visible = true;
+            }
+            else if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+            {
+                btnType11.Visible = btnType10.Visible = false;
+            }
+            else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东")
+            {
+                btnType0.Visible = false;
+                btnType11.Visible = btnType10.Visible = true;
+            }
         }
 
         private void frm_TrendAnalysis_Load(object sender, EventArgs e)
@@ -132,35 +148,85 @@ namespace WinFormsApp1
             {
                 if (index >= arr.Count())
                     break;
-                Number = arr[index].ToString();
-                              
-                series1.Points.AddXY(date - index, double.Parse(Number.Substring(0, 1)));
-                series2.Points.AddXY(date - index, double.Parse(Number.Substring(1, 1)));
-                series3.Points.AddXY(date - index, double.Parse(Number.Substring(2, 1)));
-                series4.Points.AddXY(date - index, double.Parse(Number.Substring(3, 1)));
-                series5.Points.AddXY(date - index, double.Parse(Number.Substring(4, 1)));
+                Number = arr[index].ToString();                             
 
                 //遺漏
-                if (playKind.Contains("前二"))
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
-                    subsringNumer = Number.Substring(0, 2);
+                    series1.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(0, 2)));
+                    series2.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(2, 2)));
+                    series3.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(4, 2)));
+                    series4.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(6, 2)));
+                    series5.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(8, 2)));
+
+                    if (playKind.Contains("前一"))
+                    {
+                        subsringNumer = Number.Substring(0, 2);
+                    }
+                    else if (playKind.Contains("前二"))
+                    {
+                        subsringNumer = Number.Substring(0, 5);
+                    }
+                    else if (playKind.Contains("前三"))
+                    {
+                        subsringNumer = Number.Substring(0, 8);
+                    }
+                    else if (playKind.Contains("前四"))
+                    {
+                        subsringNumer = Number.Substring(0, 11);
+                    }
+                    else if (playKind.Contains("前五"))
+                    {
+                        subsringNumer = Number.Substring(0, 14);
+                    }
                 }
-                else if (playKind.Contains("后二"))
+                else if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
                 {
-                    subsringNumer = Number.Substring(2, 3);
+                    series1.Points.AddXY(date - index, double.Parse(Number.Substring(0, 1)));
+                    series2.Points.AddXY(date - index, double.Parse(Number.Substring(1, 1)));
+                    series3.Points.AddXY(date - index, double.Parse(Number.Substring(2, 1)));
+                    series4.Points.AddXY(date - index, double.Parse(Number.Substring(3, 1)));
+                    series5.Points.AddXY(date - index, double.Parse(Number.Substring(4, 1)));
+
+                    if (playKind.Contains("前二"))
+                    {
+                        subsringNumer = Number.Substring(0, 2);
+                    }
+                    else if (playKind.Contains("后二"))
+                    {
+                        subsringNumer = Number.Substring(2, 3);
+                    }
+                    else if (playKind.Contains("前三"))
+                    {
+                        subsringNumer = Number.Substring(0, 3);
+                    }
+                    else if (playKind.Contains("中三"))
+                    {
+                        subsringNumer = Number.Substring(1, 3);
+                    }
+                    else if (playKind.Contains("后三"))
+                    {
+                        subsringNumer = Number.Substring(2, 3);
+                    }
                 }
-                else if (playKind.Contains("前三"))
+                else if(frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东")
                 {
-                    subsringNumer = Number.Substring(0, 3);
+                    series1.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(0, 2)));
+                    series2.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(2, 2)));
+                    series3.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(4, 2)));
+                    series4.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(6, 2)));
+                    series5.Points.AddXY(date - index, double.Parse(Number.Replace(",", "").Substring(8, 2)));
+
+                    if (playKind.Contains("前二"))
+                    {
+                        subsringNumer = Number.Substring(0, 5);
+                    }
+                    else if (playKind.Contains("前三"))
+                    {
+                        subsringNumer = Number.Substring(0, 8);
+                    }
                 }
-                else if (playKind.Contains("中三"))
-                {
-                    subsringNumer = Number.Substring(1, 3); 
-                }
-                else if (playKind.Contains("后三"))
-                {
-                    subsringNumer = Number.Substring(2, 3);
-                }
+              
             }
 
             //將序列新增到圖上
@@ -211,50 +277,81 @@ namespace WinFormsApp1
 
                 Number = dr["Number"].ToString();
                 dr["High"] = High;
-                if (playKind == "前二")
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
-                    Number = Number.Substring(0, 2);
+                    type = int.Parse(type).ToString("d2");
+                    if (playKind == "前一")
+                    {
+                        Number = Number.Substring(0, 2);
+                    }
+                    else if (playKind == "前二")
+                    {
+                        Number = Number.Substring(0, 5);
+                    }
+                    else if (playKind == "前三")
+                    {
+                        Number = Number.Substring(0, 8);
+                    }
+                    else if (playKind == "前四")
+                    {
+                        Number = Number.Substring(0, 11);
+                    }
+                    else if (playKind == "前五")
+                    {
+                        Number = Number.Substring(0, 14);
+                    }
                 }
-                else if (playKind == "后二")
+                else if (frm_PlanCycle.GameLotteryName == "重庆时时彩" || frm_PlanCycle.GameLotteryName == "天津时时彩" || frm_PlanCycle.GameLotteryName == "腾讯奇趣彩" || frm_PlanCycle.GameLotteryName == "腾讯官方彩" || frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
                 {
-                    Number = Number.Substring(2, 3);
+                    if (playKind == "前二")
+                    {
+                        Number = Number.Substring(0, 2);
+                    }
+                    else if (playKind == "后二")
+                    {
+                        Number = Number.Substring(2, 3);
+                    }
+                    else if (playKind == "前三")
+                    {
+                        Number = Number.Substring(0, 3);
+                    }
+                    else if (playKind == "中三")
+                    {
+                        Number = Number.Substring(1, 3);
+                    }
+                    else if (playKind == "后三")
+                    {
+                        Number = Number.Substring(2, 3);
+                    }
                 }
-                else if (playKind == "前三")
+                else if (frm_PlanCycle.GameLotteryName == "广东" || frm_PlanCycle.GameLotteryName == "河北" || frm_PlanCycle.GameLotteryName == "江苏" || frm_PlanCycle.GameLotteryName == "上海" || frm_PlanCycle.GameLotteryName == "江西" || frm_PlanCycle.GameLotteryName == "山东")
                 {
-                    Number = Number.Substring(0, 3);
+                    type = int.Parse(type).ToString("d2");
+                    if (playKind == "前二")
+                    {
+                        Number = Number.Substring(0, 5);
+                    }
+                    else if (playKind == "前三")
+                    {
+                        Number = Number.Substring(0, 8);
+                    }
                 }
-                else if (playKind == "中三")
-                {
-                    Number = Number.Substring(1, 3);
-                }
-                else if (playKind == "后三")
-                {
-                    Number = Number.Substring(2, 3);
-                }
+              
 
                 if (Number.Contains(type))
                 {
                     withStart += 10;
                     High = withStart;
                     dr["isHit"] = withStart;
-
-                    //seriesKhit.ChartType = SeriesChartType.Candlestick;
-                    //chartKline.Series[0]["PointWidth"] = "0.5";
-                    //seriesKhit.Points.Add(withStart+ isHit);
                 }
                 else
                 {
                     withStart -= 3;
                     High = withStart;
                     dr["isHit"] = withStart;
-                    //seriesKhit.ChartType = SeriesChartType.Candlestick;
-                    //seriesKhit.Color = Color.Red;
-                    //seriesKhit.Points.Add(10);
-                    //chartKline.Series[0]["PointWidth"] = "8";
                 }
 
                 breakcount--;
-
             }          
 
             //clear
@@ -324,10 +421,43 @@ namespace WinFormsApp1
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             string Sqlstr = "";
+            string db = "";
             try
             {
+                switch (frm_PlanCycle.GameLotteryName)
+                {
+                    case "重庆时时彩":
+                        db = "HistoryNumber";
+                        break;
+                    case "天津时时彩":
+                        db = "TJSSC_HistoryNumber";
+                        break;
+                    case "腾讯官方彩":
+                        db = "QQFFC_HistoryNumber";
+                        break;
+                    case "腾讯奇趣彩":
+                        db = "TENCENTFFC_HistoryNumber";
+                        break;
+                    case "新疆时时彩":
+                        db = "XJSSC_HistoryNumber";
+                        break;
+                    case "广东":
+                        db = "GD115_HistoryNumber";
+                        break;
+                    case "北京PK10":
+                        db = "PK10_HistoryNumber";
+                        break;
+                }
+
                 con.Open();
-                Sqlstr = "SELECT * FROM HistoryNumber WHERE ISSUE LIKE '"+ date + "%' ORDER BY ISSUE DESC";
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                {
+                    Sqlstr = "SELECT * FROM " + db +" ORDER BY ISSUE DESC";
+                }
+                else
+                { 
+                    Sqlstr = "SELECT * FROM "+ db + " WHERE ISSUE LIKE '"+ date + "%' ORDER BY ISSUE DESC";
+                }
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -570,6 +700,20 @@ namespace WinFormsApp1
             string type = (sender as Button).Text;
             DrawKline(type);
             IssueCountForTopButton = "9";
+        }
+
+        private void btnType10_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+            IssueCountForTopButton = "10";
+        }
+
+        private void btnType11_Click(object sender, EventArgs e)
+        {
+            string type = (sender as Button).Text;
+            DrawKline(type);
+            IssueCountForTopButton = "11";
         }
 
         private void btnRefrash_Click(object sender, EventArgs e)
