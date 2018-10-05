@@ -1612,16 +1612,39 @@ namespace WinFormsApp1
         {
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             if (rtxtHistory.Text == "") //無資料就全寫入
-            {
-                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+            {          
+                if (GameLotteryName == "北京PK10")
                 {
-                    //if (i == 120) break; //寫120筆就好
-                    if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    var HisTmp = frmGameMain.jArr.Take(120).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+                        
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+                else
+                { 
+                    for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                    {
+                        //if (i == 120) break; //寫120筆就好
+                        if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
+                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
                 }
             }
             else //有資料先判斷
             {
+                if (GameLotteryName == "北京PK10")
+                {
+                    rtxtHistory.Text = "";
+                    var HisTmp = frmGameMain.jArr.Take(1000).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+                else
+                { 
                 if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
                 {
                     rtxtHistory.Text = "";
@@ -1631,6 +1654,7 @@ namespace WinFormsApp1
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
                             rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期" + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
                     }
+                }
                 }
             }
         }

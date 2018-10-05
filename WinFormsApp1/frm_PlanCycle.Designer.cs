@@ -548,7 +548,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.pnlHistory);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(849, 0);
+            this.panel5.Location = new System.Drawing.Point(856, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(543, 453);
             this.panel5.TabIndex = 2;
@@ -629,7 +629,7 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(238, 0);
+            this.panel6.Location = new System.Drawing.Point(244, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(29, 453);
             this.panel6.TabIndex = 5;
@@ -642,7 +642,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlHistory.Location = new System.Drawing.Point(0, 0);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(238, 453);
+            this.pnlHistory.Size = new System.Drawing.Size(244, 453);
             this.pnlHistory.TabIndex = 0;
             // 
             // rtxtHistory
@@ -655,7 +655,7 @@
             this.rtxtHistory.Name = "rtxtHistory";
             this.rtxtHistory.ReadOnly = true;
             this.rtxtHistory.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtxtHistory.Size = new System.Drawing.Size(238, 423);
+            this.rtxtHistory.Size = new System.Drawing.Size(243, 423);
             this.rtxtHistory.TabIndex = 3;
             this.rtxtHistory.Text = "";
             // 
@@ -666,7 +666,7 @@
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(236, 28);
+            this.panel32.Size = new System.Drawing.Size(242, 28);
             this.panel32.TabIndex = 2;
             // 
             // label115
@@ -683,9 +683,9 @@
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(849, 453);
+            this.panel8.Location = new System.Drawing.Point(856, 453);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(668, 6);
+            this.panel8.Size = new System.Drawing.Size(661, 6);
             this.panel8.TabIndex = 7;
             // 
             // panel3
@@ -694,7 +694,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(839, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 459);
+            this.panel3.Size = new System.Drawing.Size(17, 459);
             this.panel3.TabIndex = 4;
             // 
             // pnlCycleSelect

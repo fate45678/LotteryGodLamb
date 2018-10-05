@@ -410,6 +410,49 @@ namespace WinFormsApp1
         {
             if (HD_GameSelect.Text == "北京PK10")
             {
+                //a.hywin888.net  hyqa.azurewebsites.net
+                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json";
+
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (var stream = response.GetResponseStream())
+                        using (var reader = new StreamReader(stream))
+                        {
+                            var temp = reader.ReadToEnd();
+                            string json = JsonConvert.SerializeObject(temp);
+                            NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+
+                            if (NextPeriod.SerialNumber == null)
+                            {
+                                lblNextPeriod.Text = "00000000000";
+                                frmGameMain.globalGetCurrentPeriod = "00000000000";
+                                lblNextPeriodTime.Text = "-- : -- : --";
+                            }
+                            else
+                            {
+                                lblNextPeriod.Text = NextPeriod.SerialNumber;
+                                frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
+                                DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
+                                DateTime dt2 = DateTime.Now;
+                                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                                string hh = ts.Hours.ToString("00");
+                                string mm = ts.Minutes.ToString("00");
+                                string ss = ts.Seconds.ToString("00");
+                                if (ss.IndexOf("-") > -1)
+                                    ss = "00";
+                                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                            }
+                        }
+                    }
+                    else
+                    { }
+                }
+                /*
                 DateTime dt2PK10 = DateTime.Now;
                 if (dt1PK10 < dt2PK10)
                     dt1PK10 = DateTime.Now.AddMinutes(5);
@@ -421,6 +464,7 @@ namespace WinFormsApp1
                 if (ss.IndexOf("-") > -1)
                     ss = "00";
                 lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                */
             }
             else if (HD_GameSelect.Text == "VR金星1.5分彩")
             {

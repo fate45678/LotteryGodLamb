@@ -44,23 +44,47 @@ namespace WinFormsApp1
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             if (rtxtHistory.Text == "") //無資料就全寫入
             {
-                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                if(frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
-                    //if (i == 120) break; //寫120筆就好
-                    if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    var HisTmp = frmGameMain.jArr.Take(120).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
                 }
-            }
-            else //有資料先判斷
-            {
-                if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
-                {
-                    rtxtHistory.Text = "";
+                else
+                { 
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
                         //if (i == 120) break; //寫120筆就好
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
                             rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+            }
+            else //有資料先判斷
+            {
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                {
+                    rtxtHistory.Text = "";
+                    var HisTmp = frmGameMain.jArr.Take(120).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+                else
+                { 
+                    if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
+                    {
+                        rtxtHistory.Text = "";
+                        for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                        {
+                            //if (i == 120) break; //寫120筆就好
+                            if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
+                                rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        }
                     }
                 }
             }
@@ -74,6 +98,10 @@ namespace WinFormsApp1
             //找今天開獎的
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
+            if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                showJa = frmGameMain.jArr.ToList();
+            }
             int oldtotalWin = 0, oldtotalFail = 0, oldtotalPlay = 0, countWin = 0, countPlay = 0;
 
             //sql查詢欄位
@@ -213,7 +241,7 @@ namespace WinFormsApp1
                                 //checkNumber = showIssue[0]["Number"].ToString().Replace(",", "");
 
                                 //是否有中獎
-                                if (dt.ElementAt(i + 4).Contains(oldcheckNumber))
+                                if (dt.ElementAt(i + 4).Replace(" ","").Contains(oldcheckNumber))
                                 {
                                     oldtotalWin++;
                                     oldtotalPlay++;
@@ -1466,7 +1494,7 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
-                    for (int i = 1; i < 179; i++)
+                    for (int i = 0; i < 179; i++)
                     {
                         int PK10item = int.Parse(frmGameMain.globalGetCurrentPeriod.ToString()) + i;
                         Items.Add(PK10item, PK10item.ToString());
@@ -2038,6 +2066,7 @@ namespace WinFormsApp1
             }
             else if (PlayKind == "广东" || PlayKind == "河北" || PlayKind == "江苏" || PlayKind == "上海" || PlayKind == "江西" || PlayKind == "山东")
             {
+                #region 11選5
                 string GameKind = "";
                 if (type == "A")
                     GameKind = cbGameKind.Text;
@@ -2079,7 +2108,7 @@ namespace WinFormsApp1
                             checkTmpFirst = arr;
                             isDistinct = true;
                         }
-                        
+
 
                         TmpStr = checkTmpFirst[i].ToString().Trim();
                         var tmp = TmpStr.Split(' ');
@@ -2116,15 +2145,115 @@ namespace WinFormsApp1
                 if (error.Trim() != "" || isDistinct)
                 {
                     richTextBox2.Text = intoRichboxStr;
-                    if(error != "")
+                    if (error != "")
                         MessageBox.Show("已清除重复及错误资料。\n" + error.Substring(1));
                     else
                         MessageBox.Show("已清除重复及错误资料。\n");
                 }
                 else
                     MessageBox.Show("除错完成");
+                #endregion
             }
+            else if (PlayKind == "北京PK10")
+            {
+                #region 北京PK10
+                string GameKind = "";
+                if (type == "A")
+                    GameKind = cbGameKind.Text;
+                else
+                    GameKind = label16.Text.Substring(label16.Text.Length - 4, 4);
 
+                int lenghCheck = 0;
+
+                if (GameKind.Contains("二"))
+                {
+                    lenghCheck = 2;
+                }
+                else if (GameKind.Contains("三"))
+                {
+                    lenghCheck = 3;
+                }
+                else if (GameKind.Contains("四"))
+                {
+                    lenghCheck = 4;
+                }
+                else if (GameKind.Contains("五"))
+                {
+                    lenghCheck = 5;
+                }
+
+                string checkNumber = "";
+                if (type == "A")
+                    checkNumber = richTextBox2.Text;
+                else
+                    checkNumber = richTextBox1.Text;
+
+                var checkTmpFirst = checkNumber.Split(',').Select(x => x.Trim()).ToArray();
+
+                //用來確認
+                string TmpStr = "";
+                string intoRichboxStr = "";
+                string error = "";
+                bool isDistinct = false;
+                if (lenghCheck == 2)
+                {
+                    var arr = checkTmpFirst.ToList().Distinct().ToArray();
+
+                    for (int i = 0; i < arr.Count(); i++)
+                    {
+                        TmpStr = arr[i].ToString().Trim();
+                        var tmp = TmpStr.Split(' ');
+                        if (tmp.Count() != lenghCheck || tmp[0].ToString() == tmp[1].ToString()) //不能重複 要兩個號碼
+                        {
+                            error += "," + TmpStr;
+                        }
+                        else if (0 >= int.Parse(tmp[0]) || 0 >= int.Parse(tmp[1]) || int.Parse(tmp[0]) > 11 || int.Parse(tmp[1]) > 11)
+                        {
+                            error += "," + TmpStr;
+                        }
+                        else
+                        {
+                            intoRichboxStr += "," + TmpStr;
+                        }                        
+                    }
+                }
+                else 
+                {
+                    var arr = checkTmpFirst.ToList().Distinct().ToArray();
+                    for (int i = 0; i < arr.Count(); i++)
+                    {                      
+                        TmpStr = arr[i].ToString().Trim();
+                        var tmp = TmpStr.Split(' ');
+                        var tmpDist = tmp.ToList().Distinct().ToArray();
+                        var tmpThan10 = tmp.ToList().Where(s => int.Parse(s) < 11 && int.Parse(s) > 0).ToArray();
+
+                        if (tmp.Count() != lenghCheck || tmpDist.Count() != lenghCheck || tmpThan10.Count() != lenghCheck) //不能重複 要兩個號碼
+                        {
+                            error += "," + TmpStr;
+                        }
+                        else
+                        {
+                            intoRichboxStr += "," + TmpStr;
+                        }
+                    }
+                }
+
+                if (intoRichboxStr.Trim() != "")
+                    intoRichboxStr = intoRichboxStr.Substring(1);
+
+                if (error.Trim() != "" || isDistinct)
+                {                    
+                    if (error != "")
+                        MessageBox.Show("已清除重复及错误资料。\n" + error.Substring(1));
+                    else
+                        MessageBox.Show("已清除重复及错误资料。\n");
+                }
+                else
+                    MessageBox.Show("除错完成");
+
+                richTextBox2.Text = intoRichboxStr;
+                #endregion
+            }
         }
 
         private void checkData(string type)
@@ -2639,6 +2768,10 @@ namespace WinFormsApp1
             string NowDate = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             var showJa = frmGameMain.jArr.Where(x => x["Issue"].ToString().Contains(NowDate)).ToList();
 
+            if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                showJa = frmGameMain.jArr.ToList();
+            }
             if (checkedListBoxEx1.DataSource == null) { return; }
             Dictionary<int, string> dic = new Dictionary<int, string>();
 
@@ -2743,6 +2876,29 @@ namespace WinFormsApp1
                             oldcheckNumber = oldshowIssue[0]["Number"].ToString().Substring(0, 8).Replace(",", " ");
                         }
                     }
+                    else if (frm_PlanCycle.GameLotteryName == "北京PK10") 
+                    {
+                        if (oldGameKind.Contains("前一"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 2);
+                        }
+                        else if (oldGameKind.Contains("前二"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 4);
+                        }
+                        else if (oldGameKind.Contains("前三"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 6);
+                        }
+                        else if (oldGameKind.Contains("前四"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 8);
+                        }
+                        else if (oldGameKind.Contains("前五"))
+                        {
+                            oldcheckNumber = oldshowIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 10);
+                        }
+                    }
                     //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
 
                     //是否有中獎
@@ -2806,7 +2962,7 @@ namespace WinFormsApp1
                 {
                     richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
                     string strReplace = getData.ElementAt(i).Replace(",", "");
-                    int times = (Convert.ToInt32(getData.ElementAt(3).Substring(8, 3)) - Convert.ToInt32(getData.ElementAt(2).Substring(8, 3)));
+                    int times = (Convert.ToInt32(getData.ElementAt(3)) - Convert.ToInt32(getData.ElementAt(2))) +1;
                     label15.Text = "共" + times + "注";
                 }
             }
@@ -2884,6 +3040,29 @@ namespace WinFormsApp1
                             checkNumber = showIssue[0]["Number"].ToString().Substring(0, 8).Replace(",", " ");
                         }
                     }
+                    else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                    {
+                        if (GameKind.Contains("前一"))
+                        {
+                            checkNumber = showIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 2);
+                        }
+                        else if (GameKind.Contains("前二"))
+                        {
+                            checkNumber = showIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 4);
+                        }
+                        else if (GameKind.Contains("前三"))
+                        {
+                            checkNumber = showIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 6);
+                        }
+                        else if (GameKind.Contains("前四"))
+                        {
+                            checkNumber = showIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 8);
+                        }
+                        else if (GameKind.Contains("前五"))
+                        {
+                            checkNumber = showIssue[0]["Number"].ToString().Replace(",", " ").Substring(0, 10);
+                        }
+                    }
                     //checkNumber = showIssue[0]["Number"].ToString().Replace(",","");
 
                     //是否有中獎
@@ -2914,9 +3093,12 @@ namespace WinFormsApp1
 
                 //note補上敘述
                 listBox2.Items.Clear();
-                if (getData.ElementAt(3).Substring(0, 8) != NowDate)
-                {
-                    amount = 0;
+                if(frm_PlanCycle.GameLotteryName != "北京PK10")
+                { 
+                    if (getData.ElementAt(3).Substring(0, 8) != NowDate)
+                    {
+                        amount = 0;
+                    }
                 }
                 string WinRate = "";
                 listBox2.Items.Add(getData.ElementAt(5));
@@ -2983,21 +3165,41 @@ namespace WinFormsApp1
             var showNowIssue = getData.ElementAt(3).ToString();
 
 
-
-            if (int.Parse(showNowIssue.Substring(8)) < int.Parse(showNowIssueAPI.Substring(8)))
+            if (frm_PlanCycle.GameLotteryName != "北京PK10")
             {
-                comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssueAPI.Substring(8))), null);
-                comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssueAPI.Substring(8)))), null);
-            }
-            else if (showNowIssue.Substring(8) == "120" || showNowIssue.Substring(8) == "084" || showNowIssue.Substring(8) == "96" || showNowIssue.Substring(8) == "1440")
-            {
-                comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8)) - 1), null);
-                comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8))) - 1), null);
+                if (int.Parse(showNowIssue.Substring(8)) < int.Parse(showNowIssueAPI.Substring(8)))
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssueAPI.Substring(8))), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssueAPI.Substring(8)))), null);
+                }
+                else if (showNowIssue.Substring(8) == "120" || showNowIssue.Substring(8) == "084" || showNowIssue.Substring(8) == "96" || showNowIssue.Substring(8) == "1440")
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8)) - 1), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8))) - 1), null);
+                }
+                else
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8))), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8)))), null);
+                }
             }
             else
             {
-                comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8))), null);
-                comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8)))), null);
+                if (int.Parse(showNowIssue) < int.Parse(showNowIssueAPI))
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssueAPI)), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssueAPI))), null);
+                }
+                else if (showNowIssue == "120" || showNowIssue == "084" || showNowIssue == "96" || showNowIssue == "1440")
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue.Substring(8)) - 1), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue.Substring(8))) - 1), null);
+                }
+                else
+                {
+                    comboBox1.DataSource = new BindingSource(Items.Where(x => x.Key > int.Parse(showNowIssue)), null);
+                    comboBox2.DataSource = new BindingSource(Items.Where(x => x.Key > (int.Parse(showNowIssue))), null);
+                }
             }
         }
 
@@ -3015,7 +3217,7 @@ namespace WinFormsApp1
 
         public void button12_Click(object sender, EventArgs e)
         {
-
+            isChangeLotteryName = true;
             label16.Text = frm_PlanCycle.GameLotteryName + cbGameKind.Text + cbGameDirect.Text;
             label24.Text = label16.Text;
             richTextBox1.Text = "";
@@ -3557,10 +3759,12 @@ namespace WinFormsApp1
                 }
                 else if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
+
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
+                    cbGameKind.Text = "";
                     cbGameKind.Items.Clear();
                     //cbGameKind.Items.Add("前一");
                     cbGameKind.Items.Add("前二");

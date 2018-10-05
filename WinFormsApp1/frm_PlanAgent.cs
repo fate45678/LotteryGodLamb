@@ -203,25 +203,47 @@ namespace WinFormsApp1
 
             if (rtxtHistory.Text == "") //無資料就全寫入
             {
-                for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
-                    //if (i == 120) break; //寫120筆就好
-                    if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                        rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期 " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    var HisTmp = frmGameMain.jArr.Take(1000).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
                 }
-            }
-            else //有資料先判斷
-            {
-
-                if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
-                {
-                    //cnd.Start();
-                    rtxtHistory.Text = "";
+                else
+                { 
                     for (int i = 0; i < frmGameMain.jArr.Count; i++)
                     {
                         //if (i == 120) break; //寫120筆就好
                         if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
-                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                            rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期 " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+            }
+            else //有資料先判斷
+            {
+                if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                {
+                    rtxtHistory.Text = "";
+                    var HisTmp = frmGameMain.jArr.Take(120).ToList();
+                    for (int i = 0; i < HisTmp.Count(); i++)
+                    {
+                        rtxtHistory.Text += "第 " + HisTmp[i]["Issue"].ToString() + " 期" + HisTmp[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                    }
+                }
+                else
+                {                
+                    if ((rtxtHistory.Text.Substring(0, 11) != frmGameMain.jArr[0]["Issue"].ToString()) && (frmGameMain.strHistoryNumberOpen != "?")) //有新資料了
+                    {
+                        //cnd.Start();
+                        rtxtHistory.Text = "";                 
+                        for (int i = 0; i < frmGameMain.jArr.Count; i++)
+                        {
+                            //if (i == 120) break; //寫120筆就好
+                            if (frmGameMain.jArr[i]["Issue"].ToString().Contains(date))
+                                rtxtHistory.Text += "第 " + frmGameMain.jArr[i]["Issue"].ToString() + " 期  " + frmGameMain.jArr[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                        }
                     }
                 }
             }
@@ -737,9 +759,12 @@ namespace WinFormsApp1
                 listBox2.Items.Clear();
                 richTextBox1.Text = "";
                 richTextBox1.Text = getData.ElementAt(4);
-                if (getData.ElementAt(3).Substring(0, 8) != NowDate)
-                {
-                    amount = 0;
+                if (frm_PlanCycle.GameLotteryName != "北京PK10")
+                { 
+                    if (getData.ElementAt(3).Substring(0, 8) != NowDate)
+                    {
+                        amount = 0;
+                    }
                 }
                 string WinRate = "";
                 listBox2.Items.Add(getData.ElementAt(5));
@@ -751,11 +776,11 @@ namespace WinFormsApp1
                 listBox2.Items.Add(WinRate);
 
                 int item = 0;
-                if (getData.ElementAt(0).Contains("五星"))//五星
+                if (getData.ElementAt(0).Contains("五星") || getData.ElementAt(0).Contains("前五"))//五星
                 {
                     item = richTextBox1.Text.Replace(" ", "").Length / 5;
                 }
-                else if (getData.ElementAt(0).Contains("四星"))//四星
+                else if (getData.ElementAt(0).Contains("四星") || getData.ElementAt(0).Contains("前四"))//四星
                 {
                     item = richTextBox1.Text.Replace(" ", "").Length / 4;
 
@@ -809,9 +834,16 @@ namespace WinFormsApp1
                     Control control = new Button();
                     hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
                     control.Text = hitTimesElementAt[1] + "\r\n 中奖率" + hitTimes.ElementAt(i).Value.ToString("0.00") + "%  \r\n" + hitTimesElementAt[3];
-                    if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                    if (frm_PlanCycle.GameLotteryName == "北京PK10")
                     {
-                        control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+
+                    }
+                    else
+                    {
+                        if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                        {
+                            control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+                        }
                     }
 
                     control.Size = new System.Drawing.Size(140, 130);
