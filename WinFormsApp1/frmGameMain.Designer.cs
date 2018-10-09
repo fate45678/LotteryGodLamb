@@ -104,6 +104,7 @@
             this.pnlMenuShrink = new System.Windows.Forms.Panel();
             this.pnlMenuPlanUpload = new System.Windows.Forms.Panel();
             this.pnlMenuPlanAgent = new System.Windows.Forms.Panel();
+            this.pnlPk10Shrink = new System.Windows.Forms.Panel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
             this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
@@ -1067,6 +1068,7 @@
             this.panel2.Controls.Add(this.pnlMenuPlanAgent);
             this.panel2.Controls.Add(this.pnlMenuPlanCycle);
             this.panel2.Controls.Add(this.pnlGameSelect);
+            this.panel2.Controls.Add(this.pnlPk10Shrink);
             this.panel2.Location = new System.Drawing.Point(8, 38);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1468, 642);
@@ -1079,7 +1081,7 @@
             this.pnlMenuChart.BackColor = System.Drawing.Color.White;
             this.pnlMenuChart.Location = new System.Drawing.Point(3, 92);
             this.pnlMenuChart.Name = "pnlMenuChart";
-            this.pnlMenuChart.Size = new System.Drawing.Size(1460, 545);
+            this.pnlMenuChart.Size = new System.Drawing.Size(1460, 548);
             this.pnlMenuChart.TabIndex = 10;
             // 
             // pnlMenuShrink
@@ -1111,6 +1113,16 @@
             this.pnlMenuPlanAgent.Name = "pnlMenuPlanAgent";
             this.pnlMenuPlanAgent.Size = new System.Drawing.Size(1460, 545);
             this.pnlMenuPlanAgent.TabIndex = 7;
+            // 
+            // pnlPk10Shrink
+            // 
+            this.pnlPk10Shrink.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlPk10Shrink.AutoSize = true;
+            this.pnlPk10Shrink.BackColor = System.Drawing.Color.White;
+            this.pnlPk10Shrink.Location = new System.Drawing.Point(0, 0);
+            this.pnlPk10Shrink.Name = "pnlPk10Shrink";
+            this.pnlPk10Shrink.Size = new System.Drawing.Size(1484, 600);
+            this.pnlPk10Shrink.TabIndex = 11;
             // 
             // notifyIcon1
             // 
@@ -1257,6 +1269,7 @@
         private System.Windows.Forms.PictureBox picNumber10;
         private System.Windows.Forms.Label lblNumber9;
         private System.Windows.Forms.PictureBox picNumber9;
+        private System.Windows.Forms.Panel pnlPk10Shrink;
     }
 }
 

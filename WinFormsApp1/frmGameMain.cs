@@ -112,11 +112,18 @@ namespace WinFormsApp1
             this.pnlMenuShrink.Controls.Add(f_Shrink);
             f_Shrink.Show();
 
+            frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
+            f_ShrinkPK10.TopLevel = false;
+            f_ShrinkPK10.Size = this.Size;
+            this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
+            f_ShrinkPK10.Show();
+
             frm_Chart f_Chart = new frm_Chart();
             f_Chart.TopLevel = false;
             f_Chart.Size = this.Size;
             this.pnlMenuChart.Controls.Add(f_Chart);
             f_Chart.Show();
+
             #region 進入時預設停在哪一分頁 哪一彩種
             HD_MenuSelect.Text = "神灯周期计划";
             lblMenuPlanCycle.BackColor = HexColor("#bd3100");
@@ -124,6 +131,7 @@ namespace WinFormsApp1
             pnlMenuPlanAgent.Visible = false;
             pnlMenuPlanUpload.Visible = false;
             pnlMenuShrink.Visible = false;
+            pnlPk10Shrink.Visible = false;
             pnlMenuChart.Visible = false;
             HD_GameSelect.Text = "重庆时时彩";
             #endregion
@@ -167,10 +175,13 @@ namespace WinFormsApp1
                     lblMenuPlanUpload.Refresh();
                     pnlMenuPlanUpload.Visible = true;
                     break;
-                case "缩水工具":
+                case "缩水工具":                   
                     lblMenuShrink.BackColor = HexColor("#bd3100");
                     lblMenuShrink.Refresh();
-                    pnlMenuShrink.Visible = true;
+                    if (HD_GameSelect.Text == "北京PK10")
+                        pnlPk10Shrink.Visible = true;
+                    else
+                        pnlMenuShrink.Visible = true;
                     break;
                 case "走势图":
                     lblMenuChart.BackColor = HexColor("#bd3100");
@@ -381,6 +392,7 @@ namespace WinFormsApp1
             pnlMenuPlanUpload.Visible = false;
             pnlMenuShrink.Visible = false;
             pnlMenuChart.Visible = false;
+            pnlPk10Shrink.Visible = false;
         }
 
         //重設彩票
