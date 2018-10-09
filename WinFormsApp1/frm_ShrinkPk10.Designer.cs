@@ -452,6 +452,7 @@
             this.lbKillTwoSumDesc = new System.Windows.Forms.Label();
             this.lbKillTwoSum = new System.Windows.Forms.Label();
             this.pnKillTwoCombine = new System.Windows.Forms.Panel();
+            this.btnKillTwoCombine1 = new System.Windows.Forms.Button();
             this.btnKillTwoCombineSec10 = new System.Windows.Forms.Button();
             this.btnKillTwoCombineSec9 = new System.Windows.Forms.Button();
             this.btnKillTwoCombineSec8 = new System.Windows.Forms.Button();
@@ -472,7 +473,6 @@
             this.btnKillTwoCombine4 = new System.Windows.Forms.Button();
             this.btnKillTwoCombine3 = new System.Windows.Forms.Button();
             this.btnKillTwoCombine2 = new System.Windows.Forms.Button();
-            this.btnKillTwoCombine1 = new System.Windows.Forms.Button();
             this.lbKillTwoCombineFirstDesc = new System.Windows.Forms.Label();
             this.lbKillTwoCombineFirst = new System.Windows.Forms.Label();
             this.tabMakeNumber = new System.Windows.Forms.TabControl();
@@ -529,13 +529,13 @@
             this.MakeTwo.Location = new System.Drawing.Point(4, 22);
             this.MakeTwo.Name = "MakeTwo";
             this.MakeTwo.Padding = new System.Windows.Forms.Padding(3);
-            this.MakeTwo.Size = new System.Drawing.Size(1464, 574);
+            this.MakeTwo.Size = new System.Drawing.Size(1464, 527);
             this.MakeTwo.TabIndex = 1;
             this.MakeTwo.Text = "二星作号";
             // 
             // btnTwoCopy
             // 
-            this.btnTwoCopy.Location = new System.Drawing.Point(735, 526);
+            this.btnTwoCopy.Location = new System.Drawing.Point(735, 451);
             this.btnTwoCopy.Name = "btnTwoCopy";
             this.btnTwoCopy.Size = new System.Drawing.Size(523, 23);
             this.btnTwoCopy.TabIndex = 30;
@@ -544,7 +544,7 @@
             // 
             // btnTwoClear
             // 
-            this.btnTwoClear.Location = new System.Drawing.Point(735, 548);
+            this.btnTwoClear.Location = new System.Drawing.Point(735, 473);
             this.btnTwoClear.Name = "btnTwoClear";
             this.btnTwoClear.Size = new System.Drawing.Size(523, 23);
             this.btnTwoClear.TabIndex = 29;
@@ -553,7 +553,7 @@
             // 
             // lbTwoStartWork
             // 
-            this.lbTwoStartWork.Location = new System.Drawing.Point(735, 504);
+            this.lbTwoStartWork.Location = new System.Drawing.Point(735, 429);
             this.lbTwoStartWork.Name = "lbTwoStartWork";
             this.lbTwoStartWork.Size = new System.Drawing.Size(523, 23);
             this.lbTwoStartWork.TabIndex = 28;
@@ -564,12 +564,13 @@
             // 
             this.rtbTwoResult.Location = new System.Drawing.Point(735, 6);
             this.rtbTwoResult.Name = "rtbTwoResult";
-            this.rtbTwoResult.Size = new System.Drawing.Size(523, 500);
+            this.rtbTwoResult.Size = new System.Drawing.Size(523, 417);
             this.rtbTwoResult.TabIndex = 27;
             this.rtbTwoResult.Text = "";
             // 
             // pnTwoChooseMode
             // 
+            this.pnTwoChooseMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnTwoChooseMode.Controls.Add(this.btnTwoChooseModeEven);
             this.pnTwoChooseMode.Controls.Add(this.btnTwoChooseModeOdd);
             this.pnTwoChooseMode.Controls.Add(this.btnTwoChooseModeSmall);
@@ -868,6 +869,7 @@
             // 
             // panel22
             // 
+            this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel22.Controls.Add(this.btnTwoKillCross1);
             this.panel22.Controls.Add(this.btnTwoKillCrossClear);
             this.panel22.Controls.Add(this.btnTwoKillCrossAll);
@@ -1006,6 +1008,7 @@
             // 
             // panel21
             // 
+            this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel21.Controls.Add(this.btnTwoLocalNumberClear);
             this.panel21.Controls.Add(this.btnTwoLocalNumberAll);
             this.panel21.Controls.Add(this.btnTwoLocalNumber2Local);
@@ -1194,6 +1197,7 @@
             // 
             // panel20
             // 
+            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel20.Controls.Add(this.btnTwoKill012RoadClear);
             this.panel20.Controls.Add(this.btnTwoKill012RoadAll);
             this.panel20.Controls.Add(this.btnTwoKill012Road22);
@@ -1332,6 +1336,7 @@
             // 
             // panel19
             // 
+            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel19.Controls.Add(this.btnTwoKillOddEvenClear);
             this.panel19.Controls.Add(this.btnTwoKillOddEvenAll);
             this.panel19.Controls.Add(this.btnTwoKillOddEven4);
@@ -1420,6 +1425,7 @@
             // 
             // panel17
             // 
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.btnTwoKillBigSmall4);
             this.panel17.Controls.Add(this.btnTwoKillBigSmall3);
             this.panel17.Controls.Add(this.btnTwoKillBigSmall2);
@@ -1488,6 +1494,7 @@
             // 
             // panel16
             // 
+            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel16.Controls.Add(this.btnTwoKillSum12);
             this.panel16.Controls.Add(this.btnTwoKillSum11);
             this.panel16.Controls.Add(this.btnTwoKillSum20);
@@ -1751,12 +1758,13 @@
             this.MakeThree.Location = new System.Drawing.Point(4, 22);
             this.MakeThree.Name = "MakeThree";
             this.MakeThree.Padding = new System.Windows.Forms.Padding(3);
-            this.MakeThree.Size = new System.Drawing.Size(1464, 574);
+            this.MakeThree.Size = new System.Drawing.Size(1464, 527);
             this.MakeThree.TabIndex = 0;
             this.MakeThree.Text = "三星作号";
             // 
             // panel18
             // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel18.Controls.Add(this.btnKillOddEvenClear);
             this.panel18.Controls.Add(this.btnKillOddEvenAll);
             this.panel18.Controls.Add(this.btnKillOddEven8);
@@ -1769,9 +1777,9 @@
             this.panel18.Controls.Add(this.btnKillOddEven1);
             this.panel18.Controls.Add(this.lbKillOddEvenDesc);
             this.panel18.Controls.Add(this.lbKillOddEven);
-            this.panel18.Location = new System.Drawing.Point(6, 441);
+            this.panel18.Location = new System.Drawing.Point(6, 411);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(372, 125);
+            this.panel18.Size = new System.Drawing.Size(372, 111);
             this.panel18.TabIndex = 21;
             // 
             // btnKillOddEvenClear
@@ -1885,7 +1893,7 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(1097, 526);
+            this.btnCopy.Location = new System.Drawing.Point(1097, 476);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(364, 23);
             this.btnCopy.TabIndex = 20;
@@ -1894,7 +1902,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1097, 548);
+            this.btnClear.Location = new System.Drawing.Point(1097, 498);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(364, 23);
             this.btnClear.TabIndex = 19;
@@ -1903,23 +1911,25 @@
             // 
             // btnStartWork
             // 
-            this.btnStartWork.Location = new System.Drawing.Point(1097, 504);
+            this.btnStartWork.Location = new System.Drawing.Point(1097, 454);
             this.btnStartWork.Name = "btnStartWork";
             this.btnStartWork.Size = new System.Drawing.Size(364, 23);
             this.btnStartWork.TabIndex = 18;
             this.btnStartWork.Text = "作号";
             this.btnStartWork.UseVisualStyleBackColor = true;
+            this.btnStartWork.Click += new System.EventHandler(this.btnStartWork_Click);
             // 
             // rtbResultNumber
             // 
-            this.rtbResultNumber.Location = new System.Drawing.Point(1097, 172);
+            this.rtbResultNumber.Location = new System.Drawing.Point(1097, 149);
             this.rtbResultNumber.Name = "rtbResultNumber";
-            this.rtbResultNumber.Size = new System.Drawing.Size(364, 330);
+            this.rtbResultNumber.Size = new System.Drawing.Size(364, 304);
             this.rtbResultNumber.TabIndex = 17;
             this.rtbResultNumber.Text = "";
             // 
             // panel15
             // 
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel15.Controls.Add(this.btnChooseModeOneEven);
             this.panel15.Controls.Add(this.btnChooseModeOneOdd);
             this.panel15.Controls.Add(this.btnChooseModeOneSmall);
@@ -1962,12 +1972,12 @@
             this.panel15.Controls.Add(this.lbChooseMode);
             this.panel15.Location = new System.Drawing.Point(1097, 6);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(361, 156);
+            this.panel15.Size = new System.Drawing.Size(361, 140);
             this.panel15.TabIndex = 16;
             // 
             // btnChooseModeOneEven
             // 
-            this.btnChooseModeOneEven.Location = new System.Drawing.Point(241, 127);
+            this.btnChooseModeOneEven.Location = new System.Drawing.Point(241, 113);
             this.btnChooseModeOneEven.Name = "btnChooseModeOneEven";
             this.btnChooseModeOneEven.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeOneEven.TabIndex = 63;
@@ -1976,7 +1986,7 @@
             // 
             // btnChooseModeOneOdd
             // 
-            this.btnChooseModeOneOdd.Location = new System.Drawing.Point(191, 127);
+            this.btnChooseModeOneOdd.Location = new System.Drawing.Point(191, 113);
             this.btnChooseModeOneOdd.Name = "btnChooseModeOneOdd";
             this.btnChooseModeOneOdd.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeOneOdd.TabIndex = 62;
@@ -1985,7 +1995,7 @@
             // 
             // btnChooseModeOneSmall
             // 
-            this.btnChooseModeOneSmall.Location = new System.Drawing.Point(141, 127);
+            this.btnChooseModeOneSmall.Location = new System.Drawing.Point(141, 113);
             this.btnChooseModeOneSmall.Name = "btnChooseModeOneSmall";
             this.btnChooseModeOneSmall.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeOneSmall.TabIndex = 61;
@@ -1994,7 +2004,7 @@
             // 
             // btnChooseModeOneBig
             // 
-            this.btnChooseModeOneBig.Location = new System.Drawing.Point(91, 127);
+            this.btnChooseModeOneBig.Location = new System.Drawing.Point(91, 113);
             this.btnChooseModeOneBig.Name = "btnChooseModeOneBig";
             this.btnChooseModeOneBig.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeOneBig.TabIndex = 60;
@@ -2003,7 +2013,7 @@
             // 
             // btnChooseModeOne09
             // 
-            this.btnChooseModeOne09.Location = new System.Drawing.Point(285, 95);
+            this.btnChooseModeOne09.Location = new System.Drawing.Point(285, 85);
             this.btnChooseModeOne09.Name = "btnChooseModeOne09";
             this.btnChooseModeOne09.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne09.TabIndex = 59;
@@ -2012,7 +2022,7 @@
             // 
             // btnChooseModeOne10
             // 
-            this.btnChooseModeOne10.Location = new System.Drawing.Point(318, 95);
+            this.btnChooseModeOne10.Location = new System.Drawing.Point(318, 85);
             this.btnChooseModeOne10.Name = "btnChooseModeOne10";
             this.btnChooseModeOne10.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne10.TabIndex = 58;
@@ -2021,7 +2031,7 @@
             // 
             // btnChooseModeOne08
             // 
-            this.btnChooseModeOne08.Location = new System.Drawing.Point(253, 95);
+            this.btnChooseModeOne08.Location = new System.Drawing.Point(253, 85);
             this.btnChooseModeOne08.Name = "btnChooseModeOne08";
             this.btnChooseModeOne08.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne08.TabIndex = 57;
@@ -2030,7 +2040,7 @@
             // 
             // btnChooseModeOne07
             // 
-            this.btnChooseModeOne07.Location = new System.Drawing.Point(223, 95);
+            this.btnChooseModeOne07.Location = new System.Drawing.Point(223, 85);
             this.btnChooseModeOne07.Name = "btnChooseModeOne07";
             this.btnChooseModeOne07.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne07.TabIndex = 56;
@@ -2039,7 +2049,7 @@
             // 
             // btnChooseModeOne06
             // 
-            this.btnChooseModeOne06.Location = new System.Drawing.Point(191, 95);
+            this.btnChooseModeOne06.Location = new System.Drawing.Point(191, 85);
             this.btnChooseModeOne06.Name = "btnChooseModeOne06";
             this.btnChooseModeOne06.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne06.TabIndex = 55;
@@ -2048,7 +2058,7 @@
             // 
             // btnChooseModeOne05
             // 
-            this.btnChooseModeOne05.Location = new System.Drawing.Point(161, 95);
+            this.btnChooseModeOne05.Location = new System.Drawing.Point(161, 85);
             this.btnChooseModeOne05.Name = "btnChooseModeOne05";
             this.btnChooseModeOne05.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne05.TabIndex = 54;
@@ -2057,7 +2067,7 @@
             // 
             // btnChooseModeOne04
             // 
-            this.btnChooseModeOne04.Location = new System.Drawing.Point(131, 95);
+            this.btnChooseModeOne04.Location = new System.Drawing.Point(131, 85);
             this.btnChooseModeOne04.Name = "btnChooseModeOne04";
             this.btnChooseModeOne04.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne04.TabIndex = 53;
@@ -2066,7 +2076,7 @@
             // 
             // btnChooseModeOne03
             // 
-            this.btnChooseModeOne03.Location = new System.Drawing.Point(101, 95);
+            this.btnChooseModeOne03.Location = new System.Drawing.Point(101, 85);
             this.btnChooseModeOne03.Name = "btnChooseModeOne03";
             this.btnChooseModeOne03.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne03.TabIndex = 52;
@@ -2075,7 +2085,7 @@
             // 
             // btnChooseModeOne02
             // 
-            this.btnChooseModeOne02.Location = new System.Drawing.Point(71, 95);
+            this.btnChooseModeOne02.Location = new System.Drawing.Point(71, 85);
             this.btnChooseModeOne02.Name = "btnChooseModeOne02";
             this.btnChooseModeOne02.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne02.TabIndex = 51;
@@ -2084,7 +2094,7 @@
             // 
             // btnChooseModeOne01
             // 
-            this.btnChooseModeOne01.Location = new System.Drawing.Point(41, 95);
+            this.btnChooseModeOne01.Location = new System.Drawing.Point(41, 85);
             this.btnChooseModeOne01.Name = "btnChooseModeOne01";
             this.btnChooseModeOne01.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeOne01.TabIndex = 50;
@@ -2094,7 +2104,7 @@
             // lbChooseModeOne
             // 
             this.lbChooseModeOne.AutoSize = true;
-            this.lbChooseModeOne.Location = new System.Drawing.Point(5, 100);
+            this.lbChooseModeOne.Location = new System.Drawing.Point(5, 90);
             this.lbChooseModeOne.Name = "lbChooseModeOne";
             this.lbChooseModeOne.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeOne.TabIndex = 49;
@@ -2102,7 +2112,7 @@
             // 
             // btnChooseModeTen09
             // 
-            this.btnChooseModeTen09.Location = new System.Drawing.Point(285, 66);
+            this.btnChooseModeTen09.Location = new System.Drawing.Point(285, 56);
             this.btnChooseModeTen09.Name = "btnChooseModeTen09";
             this.btnChooseModeTen09.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen09.TabIndex = 48;
@@ -2111,7 +2121,7 @@
             // 
             // btnChooseModeTen10
             // 
-            this.btnChooseModeTen10.Location = new System.Drawing.Point(318, 66);
+            this.btnChooseModeTen10.Location = new System.Drawing.Point(318, 56);
             this.btnChooseModeTen10.Name = "btnChooseModeTen10";
             this.btnChooseModeTen10.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen10.TabIndex = 47;
@@ -2120,7 +2130,7 @@
             // 
             // btnChooseModeTen08
             // 
-            this.btnChooseModeTen08.Location = new System.Drawing.Point(253, 66);
+            this.btnChooseModeTen08.Location = new System.Drawing.Point(253, 56);
             this.btnChooseModeTen08.Name = "btnChooseModeTen08";
             this.btnChooseModeTen08.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen08.TabIndex = 46;
@@ -2129,7 +2139,7 @@
             // 
             // btnChooseModeTen07
             // 
-            this.btnChooseModeTen07.Location = new System.Drawing.Point(223, 66);
+            this.btnChooseModeTen07.Location = new System.Drawing.Point(223, 56);
             this.btnChooseModeTen07.Name = "btnChooseModeTen07";
             this.btnChooseModeTen07.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen07.TabIndex = 45;
@@ -2138,7 +2148,7 @@
             // 
             // btnChooseModeTen06
             // 
-            this.btnChooseModeTen06.Location = new System.Drawing.Point(191, 66);
+            this.btnChooseModeTen06.Location = new System.Drawing.Point(191, 56);
             this.btnChooseModeTen06.Name = "btnChooseModeTen06";
             this.btnChooseModeTen06.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen06.TabIndex = 44;
@@ -2147,7 +2157,7 @@
             // 
             // btnChooseModeTen05
             // 
-            this.btnChooseModeTen05.Location = new System.Drawing.Point(161, 66);
+            this.btnChooseModeTen05.Location = new System.Drawing.Point(161, 56);
             this.btnChooseModeTen05.Name = "btnChooseModeTen05";
             this.btnChooseModeTen05.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen05.TabIndex = 43;
@@ -2156,7 +2166,7 @@
             // 
             // btnChooseModeTen04
             // 
-            this.btnChooseModeTen04.Location = new System.Drawing.Point(131, 66);
+            this.btnChooseModeTen04.Location = new System.Drawing.Point(131, 56);
             this.btnChooseModeTen04.Name = "btnChooseModeTen04";
             this.btnChooseModeTen04.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen04.TabIndex = 42;
@@ -2165,7 +2175,7 @@
             // 
             // btnChooseModeTen03
             // 
-            this.btnChooseModeTen03.Location = new System.Drawing.Point(101, 66);
+            this.btnChooseModeTen03.Location = new System.Drawing.Point(101, 56);
             this.btnChooseModeTen03.Name = "btnChooseModeTen03";
             this.btnChooseModeTen03.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen03.TabIndex = 41;
@@ -2174,7 +2184,7 @@
             // 
             // btnChooseModeTen02
             // 
-            this.btnChooseModeTen02.Location = new System.Drawing.Point(71, 66);
+            this.btnChooseModeTen02.Location = new System.Drawing.Point(71, 56);
             this.btnChooseModeTen02.Name = "btnChooseModeTen02";
             this.btnChooseModeTen02.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen02.TabIndex = 40;
@@ -2183,7 +2193,7 @@
             // 
             // btnChooseModeTen01
             // 
-            this.btnChooseModeTen01.Location = new System.Drawing.Point(41, 66);
+            this.btnChooseModeTen01.Location = new System.Drawing.Point(41, 56);
             this.btnChooseModeTen01.Name = "btnChooseModeTen01";
             this.btnChooseModeTen01.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeTen01.TabIndex = 39;
@@ -2193,7 +2203,7 @@
             // lbChooseModeTen
             // 
             this.lbChooseModeTen.AutoSize = true;
-            this.lbChooseModeTen.Location = new System.Drawing.Point(5, 71);
+            this.lbChooseModeTen.Location = new System.Drawing.Point(5, 61);
             this.lbChooseModeTen.Name = "lbChooseModeTen";
             this.lbChooseModeTen.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeTen.TabIndex = 38;
@@ -2201,7 +2211,7 @@
             // 
             // btnChooseModeHundred09
             // 
-            this.btnChooseModeHundred09.Location = new System.Drawing.Point(285, 35);
+            this.btnChooseModeHundred09.Location = new System.Drawing.Point(285, 25);
             this.btnChooseModeHundred09.Name = "btnChooseModeHundred09";
             this.btnChooseModeHundred09.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred09.TabIndex = 37;
@@ -2210,7 +2220,7 @@
             // 
             // btnChooseModeHundred10
             // 
-            this.btnChooseModeHundred10.Location = new System.Drawing.Point(318, 35);
+            this.btnChooseModeHundred10.Location = new System.Drawing.Point(318, 25);
             this.btnChooseModeHundred10.Name = "btnChooseModeHundred10";
             this.btnChooseModeHundred10.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred10.TabIndex = 36;
@@ -2219,7 +2229,7 @@
             // 
             // btnChooseModeOneClear
             // 
-            this.btnChooseModeOneClear.Location = new System.Drawing.Point(291, 127);
+            this.btnChooseModeOneClear.Location = new System.Drawing.Point(291, 113);
             this.btnChooseModeOneClear.Name = "btnChooseModeOneClear";
             this.btnChooseModeOneClear.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeOneClear.TabIndex = 35;
@@ -2228,7 +2238,7 @@
             // 
             // btnChooseModeAll
             // 
-            this.btnChooseModeAll.Location = new System.Drawing.Point(41, 127);
+            this.btnChooseModeAll.Location = new System.Drawing.Point(41, 113);
             this.btnChooseModeAll.Name = "btnChooseModeAll";
             this.btnChooseModeAll.Size = new System.Drawing.Size(44, 23);
             this.btnChooseModeAll.TabIndex = 34;
@@ -2237,7 +2247,7 @@
             // 
             // btnChooseModeHundred08
             // 
-            this.btnChooseModeHundred08.Location = new System.Drawing.Point(253, 35);
+            this.btnChooseModeHundred08.Location = new System.Drawing.Point(253, 25);
             this.btnChooseModeHundred08.Name = "btnChooseModeHundred08";
             this.btnChooseModeHundred08.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred08.TabIndex = 14;
@@ -2246,7 +2256,7 @@
             // 
             // btnChooseModeHundred07
             // 
-            this.btnChooseModeHundred07.Location = new System.Drawing.Point(223, 35);
+            this.btnChooseModeHundred07.Location = new System.Drawing.Point(223, 25);
             this.btnChooseModeHundred07.Name = "btnChooseModeHundred07";
             this.btnChooseModeHundred07.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred07.TabIndex = 13;
@@ -2255,7 +2265,7 @@
             // 
             // btnChooseModeHundred06
             // 
-            this.btnChooseModeHundred06.Location = new System.Drawing.Point(191, 35);
+            this.btnChooseModeHundred06.Location = new System.Drawing.Point(191, 25);
             this.btnChooseModeHundred06.Name = "btnChooseModeHundred06";
             this.btnChooseModeHundred06.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred06.TabIndex = 11;
@@ -2264,7 +2274,7 @@
             // 
             // btnChooseModeHundred05
             // 
-            this.btnChooseModeHundred05.Location = new System.Drawing.Point(161, 35);
+            this.btnChooseModeHundred05.Location = new System.Drawing.Point(161, 25);
             this.btnChooseModeHundred05.Name = "btnChooseModeHundred05";
             this.btnChooseModeHundred05.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred05.TabIndex = 10;
@@ -2273,7 +2283,7 @@
             // 
             // btnChooseModeHundred04
             // 
-            this.btnChooseModeHundred04.Location = new System.Drawing.Point(131, 35);
+            this.btnChooseModeHundred04.Location = new System.Drawing.Point(131, 25);
             this.btnChooseModeHundred04.Name = "btnChooseModeHundred04";
             this.btnChooseModeHundred04.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred04.TabIndex = 9;
@@ -2282,7 +2292,7 @@
             // 
             // btnChooseModeHundred03
             // 
-            this.btnChooseModeHundred03.Location = new System.Drawing.Point(101, 35);
+            this.btnChooseModeHundred03.Location = new System.Drawing.Point(101, 25);
             this.btnChooseModeHundred03.Name = "btnChooseModeHundred03";
             this.btnChooseModeHundred03.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred03.TabIndex = 8;
@@ -2291,7 +2301,7 @@
             // 
             // btnChooseModeHundred02
             // 
-            this.btnChooseModeHundred02.Location = new System.Drawing.Point(71, 35);
+            this.btnChooseModeHundred02.Location = new System.Drawing.Point(71, 25);
             this.btnChooseModeHundred02.Name = "btnChooseModeHundred02";
             this.btnChooseModeHundred02.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred02.TabIndex = 7;
@@ -2300,7 +2310,7 @@
             // 
             // btnChooseModeHundred01
             // 
-            this.btnChooseModeHundred01.Location = new System.Drawing.Point(41, 35);
+            this.btnChooseModeHundred01.Location = new System.Drawing.Point(41, 25);
             this.btnChooseModeHundred01.Name = "btnChooseModeHundred01";
             this.btnChooseModeHundred01.Size = new System.Drawing.Size(27, 23);
             this.btnChooseModeHundred01.TabIndex = 6;
@@ -2310,7 +2320,7 @@
             // lbChooseModeHundred
             // 
             this.lbChooseModeHundred.AutoSize = true;
-            this.lbChooseModeHundred.Location = new System.Drawing.Point(5, 40);
+            this.lbChooseModeHundred.Location = new System.Drawing.Point(5, 30);
             this.lbChooseModeHundred.Name = "lbChooseModeHundred";
             this.lbChooseModeHundred.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeHundred.TabIndex = 1;
@@ -2328,6 +2338,7 @@
             // 
             // panel14
             // 
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel14.Controls.Add(this.btnKillSum27);
             this.panel14.Controls.Add(this.btnKillSum26);
             this.panel14.Controls.Add(this.btnKillSum25);
@@ -2356,7 +2367,7 @@
             this.panel14.Controls.Add(this.lbKillSum);
             this.panel14.Location = new System.Drawing.Point(735, 371);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(356, 123);
+            this.panel14.Size = new System.Drawing.Size(356, 150);
             this.panel14.TabIndex = 15;
             // 
             // btnKillSum27
@@ -2596,6 +2607,7 @@
             // 
             // panel13
             // 
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel13.Controls.Add(this.btnKillCrossClear);
             this.panel13.Controls.Add(this.btnKillCrossAll);
             this.panel13.Controls.Add(this.btnKillCross9);
@@ -2724,6 +2736,7 @@
             // 
             // panel12
             // 
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Controls.Add(this.button15);
             this.panel12.Controls.Add(this.button16);
             this.panel12.Controls.Add(this.btnLocalNumber3Local);
@@ -2922,6 +2935,7 @@
             // 
             // panel10
             // 
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.btnKill12Sum12);
             this.panel10.Controls.Add(this.btnKill12Sum19);
             this.panel10.Controls.Add(this.btnKill12Sum18);
@@ -2957,7 +2971,7 @@
             // 
             // btnKill12Sum19
             // 
-            this.btnKill12Sum19.Location = new System.Drawing.Point(222, 58);
+            this.btnKill12Sum19.Location = new System.Drawing.Point(222, 54);
             this.btnKill12Sum19.Name = "btnKill12Sum19";
             this.btnKill12Sum19.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum19.TabIndex = 60;
@@ -2966,7 +2980,7 @@
             // 
             // btnKill12Sum18
             // 
-            this.btnKill12Sum18.Location = new System.Drawing.Point(192, 58);
+            this.btnKill12Sum18.Location = new System.Drawing.Point(192, 54);
             this.btnKill12Sum18.Name = "btnKill12Sum18";
             this.btnKill12Sum18.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum18.TabIndex = 59;
@@ -2975,7 +2989,7 @@
             // 
             // btnKill12Sum17
             // 
-            this.btnKill12Sum17.Location = new System.Drawing.Point(162, 58);
+            this.btnKill12Sum17.Location = new System.Drawing.Point(162, 54);
             this.btnKill12Sum17.Name = "btnKill12Sum17";
             this.btnKill12Sum17.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum17.TabIndex = 58;
@@ -2984,7 +2998,7 @@
             // 
             // btnKill12Sum16
             // 
-            this.btnKill12Sum16.Location = new System.Drawing.Point(132, 58);
+            this.btnKill12Sum16.Location = new System.Drawing.Point(132, 54);
             this.btnKill12Sum16.Name = "btnKill12Sum16";
             this.btnKill12Sum16.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum16.TabIndex = 57;
@@ -2993,7 +3007,7 @@
             // 
             // btnKill12Sum15
             // 
-            this.btnKill12Sum15.Location = new System.Drawing.Point(102, 58);
+            this.btnKill12Sum15.Location = new System.Drawing.Point(102, 54);
             this.btnKill12Sum15.Name = "btnKill12Sum15";
             this.btnKill12Sum15.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum15.TabIndex = 56;
@@ -3002,7 +3016,7 @@
             // 
             // btnKill12Sum14
             // 
-            this.btnKill12Sum14.Location = new System.Drawing.Point(72, 58);
+            this.btnKill12Sum14.Location = new System.Drawing.Point(72, 54);
             this.btnKill12Sum14.Name = "btnKill12Sum14";
             this.btnKill12Sum14.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum14.TabIndex = 55;
@@ -3011,7 +3025,7 @@
             // 
             // btnKill12Sum13
             // 
-            this.btnKill12Sum13.Location = new System.Drawing.Point(41, 57);
+            this.btnKill12Sum13.Location = new System.Drawing.Point(41, 53);
             this.btnKill12Sum13.Name = "btnKill12Sum13";
             this.btnKill12Sum13.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Sum13.TabIndex = 54;
@@ -3120,6 +3134,7 @@
             // 
             // panel9
             // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.btnKill23Sum12);
             this.panel9.Controls.Add(this.btnKill23Sum19);
             this.panel9.Controls.Add(this.btnKill23Sum18);
@@ -3155,7 +3170,7 @@
             // 
             // btnKill23Sum19
             // 
-            this.btnKill23Sum19.Location = new System.Drawing.Point(223, 58);
+            this.btnKill23Sum19.Location = new System.Drawing.Point(223, 54);
             this.btnKill23Sum19.Name = "btnKill23Sum19";
             this.btnKill23Sum19.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum19.TabIndex = 44;
@@ -3164,7 +3179,7 @@
             // 
             // btnKill23Sum18
             // 
-            this.btnKill23Sum18.Location = new System.Drawing.Point(193, 58);
+            this.btnKill23Sum18.Location = new System.Drawing.Point(193, 54);
             this.btnKill23Sum18.Name = "btnKill23Sum18";
             this.btnKill23Sum18.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum18.TabIndex = 43;
@@ -3173,7 +3188,7 @@
             // 
             // btnKill23Sum17
             // 
-            this.btnKill23Sum17.Location = new System.Drawing.Point(162, 58);
+            this.btnKill23Sum17.Location = new System.Drawing.Point(162, 54);
             this.btnKill23Sum17.Name = "btnKill23Sum17";
             this.btnKill23Sum17.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum17.TabIndex = 42;
@@ -3182,7 +3197,7 @@
             // 
             // btnKill23Sum16
             // 
-            this.btnKill23Sum16.Location = new System.Drawing.Point(132, 58);
+            this.btnKill23Sum16.Location = new System.Drawing.Point(132, 54);
             this.btnKill23Sum16.Name = "btnKill23Sum16";
             this.btnKill23Sum16.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum16.TabIndex = 41;
@@ -3191,7 +3206,7 @@
             // 
             // btnKill23Sum15
             // 
-            this.btnKill23Sum15.Location = new System.Drawing.Point(102, 58);
+            this.btnKill23Sum15.Location = new System.Drawing.Point(102, 54);
             this.btnKill23Sum15.Name = "btnKill23Sum15";
             this.btnKill23Sum15.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum15.TabIndex = 40;
@@ -3200,7 +3215,7 @@
             // 
             // btnKill23Sum14
             // 
-            this.btnKill23Sum14.Location = new System.Drawing.Point(72, 58);
+            this.btnKill23Sum14.Location = new System.Drawing.Point(72, 54);
             this.btnKill23Sum14.Name = "btnKill23Sum14";
             this.btnKill23Sum14.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum14.TabIndex = 39;
@@ -3209,7 +3224,7 @@
             // 
             // btnKill23Sum13
             // 
-            this.btnKill23Sum13.Location = new System.Drawing.Point(41, 57);
+            this.btnKill23Sum13.Location = new System.Drawing.Point(41, 53);
             this.btnKill23Sum13.Name = "btnKill23Sum13";
             this.btnKill23Sum13.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Sum13.TabIndex = 38;
@@ -3318,6 +3333,7 @@
             // 
             // panel11
             // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.btnKill13Sum19);
             this.panel11.Controls.Add(this.btnKill13Sum18);
             this.panel11.Controls.Add(this.btnKill13Sum17);
@@ -3337,9 +3353,9 @@
             this.panel11.Controls.Add(this.btnKill13Sum3);
             this.panel11.Controls.Add(this.lbKill13SumDesc);
             this.panel11.Controls.Add(this.lbKill13Sum);
-            this.panel11.Location = new System.Drawing.Point(384, 370);
+            this.panel11.Location = new System.Drawing.Point(384, 343);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(345, 100);
+            this.panel11.Size = new System.Drawing.Size(345, 84);
             this.panel11.TabIndex = 10;
             // 
             // btnKill13Sum19
@@ -3516,6 +3532,7 @@
             // 
             // panel8
             // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.btnKill12Less9);
             this.panel8.Controls.Add(this.btnKill12Less8);
             this.panel8.Controls.Add(this.btnKill12Less7);
@@ -3527,14 +3544,14 @@
             this.panel8.Controls.Add(this.btnKill12Less1);
             this.panel8.Controls.Add(this.lbKill12LessDesc);
             this.panel8.Controls.Add(this.lbKill12Less);
-            this.panel8.Location = new System.Drawing.Point(384, 293);
+            this.panel8.Location = new System.Drawing.Point(384, 267);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(345, 72);
             this.panel8.TabIndex = 9;
             // 
             // btnKill12Less9
             // 
-            this.btnKill12Less9.Location = new System.Drawing.Point(283, 37);
+            this.btnKill12Less9.Location = new System.Drawing.Point(283, 29);
             this.btnKill12Less9.Name = "btnKill12Less9";
             this.btnKill12Less9.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less9.TabIndex = 14;
@@ -3543,7 +3560,7 @@
             // 
             // btnKill12Less8
             // 
-            this.btnKill12Less8.Location = new System.Drawing.Point(253, 37);
+            this.btnKill12Less8.Location = new System.Drawing.Point(253, 29);
             this.btnKill12Less8.Name = "btnKill12Less8";
             this.btnKill12Less8.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less8.TabIndex = 13;
@@ -3552,7 +3569,7 @@
             // 
             // btnKill12Less7
             // 
-            this.btnKill12Less7.Location = new System.Drawing.Point(221, 37);
+            this.btnKill12Less7.Location = new System.Drawing.Point(221, 29);
             this.btnKill12Less7.Name = "btnKill12Less7";
             this.btnKill12Less7.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less7.TabIndex = 11;
@@ -3561,7 +3578,7 @@
             // 
             // btnKill12Less6
             // 
-            this.btnKill12Less6.Location = new System.Drawing.Point(191, 37);
+            this.btnKill12Less6.Location = new System.Drawing.Point(191, 29);
             this.btnKill12Less6.Name = "btnKill12Less6";
             this.btnKill12Less6.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less6.TabIndex = 10;
@@ -3570,7 +3587,7 @@
             // 
             // btnKill12Less5
             // 
-            this.btnKill12Less5.Location = new System.Drawing.Point(161, 37);
+            this.btnKill12Less5.Location = new System.Drawing.Point(161, 29);
             this.btnKill12Less5.Name = "btnKill12Less5";
             this.btnKill12Less5.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less5.TabIndex = 9;
@@ -3579,7 +3596,7 @@
             // 
             // btnKill12Less4
             // 
-            this.btnKill12Less4.Location = new System.Drawing.Point(131, 37);
+            this.btnKill12Less4.Location = new System.Drawing.Point(131, 29);
             this.btnKill12Less4.Name = "btnKill12Less4";
             this.btnKill12Less4.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less4.TabIndex = 8;
@@ -3588,7 +3605,7 @@
             // 
             // btnKill12Less3
             // 
-            this.btnKill12Less3.Location = new System.Drawing.Point(101, 37);
+            this.btnKill12Less3.Location = new System.Drawing.Point(101, 29);
             this.btnKill12Less3.Name = "btnKill12Less3";
             this.btnKill12Less3.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less3.TabIndex = 7;
@@ -3597,7 +3614,7 @@
             // 
             // btnKill12Less2
             // 
-            this.btnKill12Less2.Location = new System.Drawing.Point(71, 37);
+            this.btnKill12Less2.Location = new System.Drawing.Point(71, 29);
             this.btnKill12Less2.Name = "btnKill12Less2";
             this.btnKill12Less2.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less2.TabIndex = 6;
@@ -3606,7 +3623,7 @@
             // 
             // btnKill12Less1
             // 
-            this.btnKill12Less1.Location = new System.Drawing.Point(41, 37);
+            this.btnKill12Less1.Location = new System.Drawing.Point(41, 29);
             this.btnKill12Less1.Name = "btnKill12Less1";
             this.btnKill12Less1.Size = new System.Drawing.Size(27, 23);
             this.btnKill12Less1.TabIndex = 5;
@@ -3616,7 +3633,7 @@
             // lbKill12LessDesc
             // 
             this.lbKill12LessDesc.AutoSize = true;
-            this.lbKill12LessDesc.Location = new System.Drawing.Point(5, 42);
+            this.lbKill12LessDesc.Location = new System.Drawing.Point(5, 34);
             this.lbKill12LessDesc.Name = "lbKill12LessDesc";
             this.lbKill12LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill12LessDesc.TabIndex = 1;
@@ -3634,6 +3651,7 @@
             // 
             // panel7
             // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.btnKill23Less9);
             this.panel7.Controls.Add(this.btnKill23Less8);
             this.panel7.Controls.Add(this.btnKill23Less7);
@@ -3647,12 +3665,12 @@
             this.panel7.Controls.Add(this.lbKill23Less);
             this.panel7.Location = new System.Drawing.Point(384, 197);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(345, 90);
+            this.panel7.Size = new System.Drawing.Size(345, 64);
             this.panel7.TabIndex = 8;
             // 
             // btnKill23Less9
             // 
-            this.btnKill23Less9.Location = new System.Drawing.Point(283, 44);
+            this.btnKill23Less9.Location = new System.Drawing.Point(283, 36);
             this.btnKill23Less9.Name = "btnKill23Less9";
             this.btnKill23Less9.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less9.TabIndex = 14;
@@ -3661,7 +3679,7 @@
             // 
             // btnKill23Less8
             // 
-            this.btnKill23Less8.Location = new System.Drawing.Point(253, 44);
+            this.btnKill23Less8.Location = new System.Drawing.Point(253, 36);
             this.btnKill23Less8.Name = "btnKill23Less8";
             this.btnKill23Less8.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less8.TabIndex = 13;
@@ -3670,7 +3688,7 @@
             // 
             // btnKill23Less7
             // 
-            this.btnKill23Less7.Location = new System.Drawing.Point(221, 44);
+            this.btnKill23Less7.Location = new System.Drawing.Point(221, 36);
             this.btnKill23Less7.Name = "btnKill23Less7";
             this.btnKill23Less7.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less7.TabIndex = 11;
@@ -3679,7 +3697,7 @@
             // 
             // btnKill23Less6
             // 
-            this.btnKill23Less6.Location = new System.Drawing.Point(191, 44);
+            this.btnKill23Less6.Location = new System.Drawing.Point(191, 36);
             this.btnKill23Less6.Name = "btnKill23Less6";
             this.btnKill23Less6.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less6.TabIndex = 10;
@@ -3688,7 +3706,7 @@
             // 
             // btnKill23Less5
             // 
-            this.btnKill23Less5.Location = new System.Drawing.Point(161, 44);
+            this.btnKill23Less5.Location = new System.Drawing.Point(161, 36);
             this.btnKill23Less5.Name = "btnKill23Less5";
             this.btnKill23Less5.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less5.TabIndex = 9;
@@ -3697,7 +3715,7 @@
             // 
             // btnKill23Less4
             // 
-            this.btnKill23Less4.Location = new System.Drawing.Point(131, 44);
+            this.btnKill23Less4.Location = new System.Drawing.Point(131, 36);
             this.btnKill23Less4.Name = "btnKill23Less4";
             this.btnKill23Less4.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less4.TabIndex = 8;
@@ -3706,7 +3724,7 @@
             // 
             // btnKill23Less3
             // 
-            this.btnKill23Less3.Location = new System.Drawing.Point(101, 44);
+            this.btnKill23Less3.Location = new System.Drawing.Point(101, 36);
             this.btnKill23Less3.Name = "btnKill23Less3";
             this.btnKill23Less3.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less3.TabIndex = 7;
@@ -3715,7 +3733,7 @@
             // 
             // btnKill23Less2
             // 
-            this.btnKill23Less2.Location = new System.Drawing.Point(71, 44);
+            this.btnKill23Less2.Location = new System.Drawing.Point(71, 36);
             this.btnKill23Less2.Name = "btnKill23Less2";
             this.btnKill23Less2.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less2.TabIndex = 6;
@@ -3724,7 +3742,7 @@
             // 
             // btnKill23Less1
             // 
-            this.btnKill23Less1.Location = new System.Drawing.Point(41, 44);
+            this.btnKill23Less1.Location = new System.Drawing.Point(41, 36);
             this.btnKill23Less1.Name = "btnKill23Less1";
             this.btnKill23Less1.Size = new System.Drawing.Size(27, 23);
             this.btnKill23Less1.TabIndex = 5;
@@ -3734,7 +3752,7 @@
             // lbKill23LessDesc
             // 
             this.lbKill23LessDesc.AutoSize = true;
-            this.lbKill23LessDesc.Location = new System.Drawing.Point(5, 49);
+            this.lbKill23LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill23LessDesc.Name = "lbKill23LessDesc";
             this.lbKill23LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill23LessDesc.TabIndex = 1;
@@ -3752,6 +3770,7 @@
             // 
             // panel6
             // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.btnKill13Less9);
             this.panel6.Controls.Add(this.btnKill13Less8);
             this.panel6.Controls.Add(this.btnKill13Less7);
@@ -3770,7 +3789,7 @@
             // 
             // btnKill13Less9
             // 
-            this.btnKill13Less9.Location = new System.Drawing.Point(283, 44);
+            this.btnKill13Less9.Location = new System.Drawing.Point(283, 36);
             this.btnKill13Less9.Name = "btnKill13Less9";
             this.btnKill13Less9.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less9.TabIndex = 14;
@@ -3779,7 +3798,7 @@
             // 
             // btnKill13Less8
             // 
-            this.btnKill13Less8.Location = new System.Drawing.Point(253, 44);
+            this.btnKill13Less8.Location = new System.Drawing.Point(253, 36);
             this.btnKill13Less8.Name = "btnKill13Less8";
             this.btnKill13Less8.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less8.TabIndex = 13;
@@ -3788,7 +3807,7 @@
             // 
             // btnKill13Less7
             // 
-            this.btnKill13Less7.Location = new System.Drawing.Point(221, 44);
+            this.btnKill13Less7.Location = new System.Drawing.Point(221, 36);
             this.btnKill13Less7.Name = "btnKill13Less7";
             this.btnKill13Less7.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less7.TabIndex = 11;
@@ -3797,7 +3816,7 @@
             // 
             // btnKill13Less6
             // 
-            this.btnKill13Less6.Location = new System.Drawing.Point(191, 44);
+            this.btnKill13Less6.Location = new System.Drawing.Point(191, 36);
             this.btnKill13Less6.Name = "btnKill13Less6";
             this.btnKill13Less6.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less6.TabIndex = 10;
@@ -3806,7 +3825,7 @@
             // 
             // btnKill13Less5
             // 
-            this.btnKill13Less5.Location = new System.Drawing.Point(161, 44);
+            this.btnKill13Less5.Location = new System.Drawing.Point(161, 36);
             this.btnKill13Less5.Name = "btnKill13Less5";
             this.btnKill13Less5.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less5.TabIndex = 9;
@@ -3815,7 +3834,7 @@
             // 
             // btnKill13Less4
             // 
-            this.btnKill13Less4.Location = new System.Drawing.Point(131, 44);
+            this.btnKill13Less4.Location = new System.Drawing.Point(131, 36);
             this.btnKill13Less4.Name = "btnKill13Less4";
             this.btnKill13Less4.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less4.TabIndex = 8;
@@ -3824,7 +3843,7 @@
             // 
             // btnKill13Less3
             // 
-            this.btnKill13Less3.Location = new System.Drawing.Point(101, 44);
+            this.btnKill13Less3.Location = new System.Drawing.Point(101, 36);
             this.btnKill13Less3.Name = "btnKill13Less3";
             this.btnKill13Less3.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less3.TabIndex = 7;
@@ -3833,7 +3852,7 @@
             // 
             // btnKill13Less2
             // 
-            this.btnKill13Less2.Location = new System.Drawing.Point(71, 44);
+            this.btnKill13Less2.Location = new System.Drawing.Point(71, 36);
             this.btnKill13Less2.Name = "btnKill13Less2";
             this.btnKill13Less2.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less2.TabIndex = 6;
@@ -3842,7 +3861,7 @@
             // 
             // btnKill13Less1
             // 
-            this.btnKill13Less1.Location = new System.Drawing.Point(41, 44);
+            this.btnKill13Less1.Location = new System.Drawing.Point(41, 36);
             this.btnKill13Less1.Name = "btnKill13Less1";
             this.btnKill13Less1.Size = new System.Drawing.Size(27, 23);
             this.btnKill13Less1.TabIndex = 5;
@@ -3852,7 +3871,7 @@
             // lbKill13LessDesc
             // 
             this.lbKill13LessDesc.AutoSize = true;
-            this.lbKill13LessDesc.Location = new System.Drawing.Point(5, 49);
+            this.lbKill13LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill13LessDesc.Name = "lbKill13LessDesc";
             this.lbKill13LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill13LessDesc.TabIndex = 1;
@@ -3870,6 +3889,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.KillBigSmall8);
             this.panel5.Controls.Add(this.KillBigSmall4);
             this.panel5.Controls.Add(this.KillBigSmall6);
@@ -3887,7 +3907,7 @@
             // 
             // KillBigSmall8
             // 
-            this.KillBigSmall8.Location = new System.Drawing.Point(256, 58);
+            this.KillBigSmall8.Location = new System.Drawing.Point(256, 54);
             this.KillBigSmall8.Name = "KillBigSmall8";
             this.KillBigSmall8.Size = new System.Drawing.Size(67, 23);
             this.KillBigSmall8.TabIndex = 9;
@@ -3905,7 +3925,7 @@
             // 
             // KillBigSmall6
             // 
-            this.KillBigSmall6.Location = new System.Drawing.Point(110, 58);
+            this.KillBigSmall6.Location = new System.Drawing.Point(110, 54);
             this.KillBigSmall6.Name = "KillBigSmall6";
             this.KillBigSmall6.Size = new System.Drawing.Size(67, 23);
             this.KillBigSmall6.TabIndex = 7;
@@ -3914,7 +3934,7 @@
             // 
             // KillBigSmall5
             // 
-            this.KillBigSmall5.Location = new System.Drawing.Point(37, 58);
+            this.KillBigSmall5.Location = new System.Drawing.Point(37, 54);
             this.KillBigSmall5.Name = "KillBigSmall5";
             this.KillBigSmall5.Size = new System.Drawing.Size(67, 23);
             this.KillBigSmall5.TabIndex = 6;
@@ -3923,7 +3943,7 @@
             // 
             // KillBigSmall7
             // 
-            this.KillBigSmall7.Location = new System.Drawing.Point(183, 58);
+            this.KillBigSmall7.Location = new System.Drawing.Point(183, 54);
             this.KillBigSmall7.Name = "KillBigSmall7";
             this.KillBigSmall7.Size = new System.Drawing.Size(67, 23);
             this.KillBigSmall7.TabIndex = 5;
@@ -3978,6 +3998,7 @@
             // 
             // panel4
             // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.btnKillTypeNumber4);
             this.panel4.Controls.Add(this.btnKillTypeNumber2);
             this.panel4.Controls.Add(this.btnKillTypeNumber6);
@@ -3986,7 +4007,7 @@
             this.panel4.Controls.Add(this.btnKillTypeNumber1);
             this.panel4.Controls.Add(this.lbKillTypeNumberDesc);
             this.panel4.Controls.Add(this.lbKillTypeNumber);
-            this.panel4.Location = new System.Drawing.Point(384, 474);
+            this.panel4.Location = new System.Drawing.Point(384, 430);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(345, 92);
             this.panel4.TabIndex = 5;
@@ -4066,6 +4087,7 @@
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnKill02Road222);
             this.panel3.Controls.Add(this.btnKill02Road221);
             this.panel3.Controls.Add(this.btnKill02Road220);
@@ -4097,14 +4119,14 @@
             this.panel3.Controls.Add(this.btnKill02Road000);
             this.panel3.Controls.Add(this.lbKill02RoadDesc);
             this.panel3.Controls.Add(this.lbKill02Road);
-            this.panel3.Location = new System.Drawing.Point(6, 293);
+            this.panel3.Location = new System.Drawing.Point(6, 265);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(372, 142);
             this.panel3.TabIndex = 4;
             // 
             // btnKill02Road222
             // 
-            this.btnKill02Road222.Location = new System.Drawing.Point(255, 115);
+            this.btnKill02Road222.Location = new System.Drawing.Point(256, 115);
             this.btnKill02Road222.Name = "btnKill02Road222";
             this.btnKill02Road222.Size = new System.Drawing.Size(37, 23);
             this.btnKill02Road222.TabIndex = 32;
@@ -4113,7 +4135,7 @@
             // 
             // btnKill02Road221
             // 
-            this.btnKill02Road221.Location = new System.Drawing.Point(212, 115);
+            this.btnKill02Road221.Location = new System.Drawing.Point(215, 115);
             this.btnKill02Road221.Name = "btnKill02Road221";
             this.btnKill02Road221.Size = new System.Drawing.Size(37, 23);
             this.btnKill02Road221.TabIndex = 31;
@@ -4384,6 +4406,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.KillTwoLess9);
             this.panel2.Controls.Add(this.KillTwoLess8);
             this.panel2.Controls.Add(this.KillTwoLess7);
@@ -4398,12 +4421,12 @@
             this.panel2.Controls.Add(this.lbKillTwoLess);
             this.panel2.Location = new System.Drawing.Point(6, 197);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 90);
+            this.panel2.Size = new System.Drawing.Size(372, 64);
             this.panel2.TabIndex = 3;
             // 
             // KillTwoLess9
             // 
-            this.KillTwoLess9.Location = new System.Drawing.Point(328, 44);
+            this.KillTwoLess9.Location = new System.Drawing.Point(328, 36);
             this.KillTwoLess9.Name = "KillTwoLess9";
             this.KillTwoLess9.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess9.TabIndex = 14;
@@ -4412,7 +4435,7 @@
             // 
             // KillTwoLess8
             // 
-            this.KillTwoLess8.Location = new System.Drawing.Point(298, 44);
+            this.KillTwoLess8.Location = new System.Drawing.Point(298, 36);
             this.KillTwoLess8.Name = "KillTwoLess8";
             this.KillTwoLess8.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess8.TabIndex = 13;
@@ -4421,7 +4444,7 @@
             // 
             // KillTwoLess7
             // 
-            this.KillTwoLess7.Location = new System.Drawing.Point(266, 44);
+            this.KillTwoLess7.Location = new System.Drawing.Point(266, 36);
             this.KillTwoLess7.Name = "KillTwoLess7";
             this.KillTwoLess7.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess7.TabIndex = 11;
@@ -4430,7 +4453,7 @@
             // 
             // KillTwoLess6
             // 
-            this.KillTwoLess6.Location = new System.Drawing.Point(236, 44);
+            this.KillTwoLess6.Location = new System.Drawing.Point(236, 36);
             this.KillTwoLess6.Name = "KillTwoLess6";
             this.KillTwoLess6.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess6.TabIndex = 10;
@@ -4439,7 +4462,7 @@
             // 
             // KillTwoLess5
             // 
-            this.KillTwoLess5.Location = new System.Drawing.Point(206, 44);
+            this.KillTwoLess5.Location = new System.Drawing.Point(206, 36);
             this.KillTwoLess5.Name = "KillTwoLess5";
             this.KillTwoLess5.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess5.TabIndex = 9;
@@ -4448,7 +4471,7 @@
             // 
             // KillTwoLess4
             // 
-            this.KillTwoLess4.Location = new System.Drawing.Point(176, 44);
+            this.KillTwoLess4.Location = new System.Drawing.Point(176, 36);
             this.KillTwoLess4.Name = "KillTwoLess4";
             this.KillTwoLess4.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess4.TabIndex = 8;
@@ -4457,7 +4480,7 @@
             // 
             // KillTwoLess3
             // 
-            this.KillTwoLess3.Location = new System.Drawing.Point(146, 44);
+            this.KillTwoLess3.Location = new System.Drawing.Point(146, 36);
             this.KillTwoLess3.Name = "KillTwoLess3";
             this.KillTwoLess3.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess3.TabIndex = 7;
@@ -4466,7 +4489,7 @@
             // 
             // KillTwoLess2
             // 
-            this.KillTwoLess2.Location = new System.Drawing.Point(116, 44);
+            this.KillTwoLess2.Location = new System.Drawing.Point(116, 36);
             this.KillTwoLess2.Name = "KillTwoLess2";
             this.KillTwoLess2.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess2.TabIndex = 6;
@@ -4475,7 +4498,7 @@
             // 
             // KillTwoLess1
             // 
-            this.KillTwoLess1.Location = new System.Drawing.Point(86, 44);
+            this.KillTwoLess1.Location = new System.Drawing.Point(86, 36);
             this.KillTwoLess1.Name = "KillTwoLess1";
             this.KillTwoLess1.Size = new System.Drawing.Size(27, 23);
             this.KillTwoLess1.TabIndex = 5;
@@ -4484,7 +4507,7 @@
             // 
             // btnKillTwoLess0
             // 
-            this.btnKillTwoLess0.Location = new System.Drawing.Point(56, 44);
+            this.btnKillTwoLess0.Location = new System.Drawing.Point(56, 36);
             this.btnKillTwoLess0.Name = "btnKillTwoLess0";
             this.btnKillTwoLess0.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoLess0.TabIndex = 4;
@@ -4494,7 +4517,7 @@
             // lbKillTwoLessDesc
             // 
             this.lbKillTwoLessDesc.AutoSize = true;
-            this.lbKillTwoLessDesc.Location = new System.Drawing.Point(5, 49);
+            this.lbKillTwoLessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKillTwoLessDesc.Name = "lbKillTwoLessDesc";
             this.lbKillTwoLessDesc.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoLessDesc.TabIndex = 1;
@@ -4512,6 +4535,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnKillTwoSum19);
             this.panel1.Controls.Add(this.btnKillTwoSum18);
             this.panel1.Controls.Add(this.btnKillTwoSum17);
@@ -4538,66 +4562,73 @@
             // 
             // btnKillTwoSum19
             // 
-            this.btnKillTwoSum19.Location = new System.Drawing.Point(237, 58);
+            this.btnKillTwoSum19.Location = new System.Drawing.Point(237, 54);
             this.btnKillTwoSum19.Name = "btnKillTwoSum19";
             this.btnKillTwoSum19.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum19.TabIndex = 21;
             this.btnKillTwoSum19.Text = "19";
             this.btnKillTwoSum19.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum19.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum18
             // 
-            this.btnKillTwoSum18.Location = new System.Drawing.Point(207, 58);
+            this.btnKillTwoSum18.Location = new System.Drawing.Point(207, 54);
             this.btnKillTwoSum18.Name = "btnKillTwoSum18";
             this.btnKillTwoSum18.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum18.TabIndex = 20;
             this.btnKillTwoSum18.Text = "18";
             this.btnKillTwoSum18.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum18.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum17
             // 
-            this.btnKillTwoSum17.Location = new System.Drawing.Point(177, 58);
+            this.btnKillTwoSum17.Location = new System.Drawing.Point(177, 54);
             this.btnKillTwoSum17.Name = "btnKillTwoSum17";
             this.btnKillTwoSum17.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum17.TabIndex = 19;
             this.btnKillTwoSum17.Text = "17";
             this.btnKillTwoSum17.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum17.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum16
             // 
-            this.btnKillTwoSum16.Location = new System.Drawing.Point(147, 58);
+            this.btnKillTwoSum16.Location = new System.Drawing.Point(147, 54);
             this.btnKillTwoSum16.Name = "btnKillTwoSum16";
             this.btnKillTwoSum16.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum16.TabIndex = 18;
             this.btnKillTwoSum16.Text = "16";
             this.btnKillTwoSum16.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum16.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum15
             // 
-            this.btnKillTwoSum15.Location = new System.Drawing.Point(117, 58);
+            this.btnKillTwoSum15.Location = new System.Drawing.Point(117, 54);
             this.btnKillTwoSum15.Name = "btnKillTwoSum15";
             this.btnKillTwoSum15.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum15.TabIndex = 17;
             this.btnKillTwoSum15.Text = "15";
             this.btnKillTwoSum15.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum15.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum14
             // 
-            this.btnKillTwoSum14.Location = new System.Drawing.Point(87, 58);
+            this.btnKillTwoSum14.Location = new System.Drawing.Point(87, 54);
             this.btnKillTwoSum14.Name = "btnKillTwoSum14";
             this.btnKillTwoSum14.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum14.TabIndex = 16;
             this.btnKillTwoSum14.Text = "14";
             this.btnKillTwoSum14.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum14.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum13
             // 
-            this.btnKillTwoSum13.Location = new System.Drawing.Point(56, 57);
+            this.btnKillTwoSum13.Location = new System.Drawing.Point(56, 53);
             this.btnKillTwoSum13.Name = "btnKillTwoSum13";
             this.btnKillTwoSum13.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoSum13.TabIndex = 15;
             this.btnKillTwoSum13.Text = "13";
             this.btnKillTwoSum13.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum13.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum12
             // 
@@ -4607,6 +4638,7 @@
             this.btnKillTwoSum12.TabIndex = 14;
             this.btnKillTwoSum12.Text = "12";
             this.btnKillTwoSum12.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum12.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum11
             // 
@@ -4616,6 +4648,7 @@
             this.btnKillTwoSum11.TabIndex = 13;
             this.btnKillTwoSum11.Text = "11";
             this.btnKillTwoSum11.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum11.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum10
             // 
@@ -4625,6 +4658,7 @@
             this.btnKillTwoSum10.TabIndex = 11;
             this.btnKillTwoSum10.Text = "10";
             this.btnKillTwoSum10.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum10.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum9
             // 
@@ -4634,6 +4668,7 @@
             this.btnKillTwoSum9.TabIndex = 10;
             this.btnKillTwoSum9.Text = "9";
             this.btnKillTwoSum9.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum9.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum8
             // 
@@ -4643,6 +4678,7 @@
             this.btnKillTwoSum8.TabIndex = 9;
             this.btnKillTwoSum8.Text = "8";
             this.btnKillTwoSum8.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum8.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum7
             // 
@@ -4652,6 +4688,7 @@
             this.btnKillTwoSum7.TabIndex = 8;
             this.btnKillTwoSum7.Text = "7";
             this.btnKillTwoSum7.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum7.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum6
             // 
@@ -4661,6 +4698,7 @@
             this.btnKillTwoSum6.TabIndex = 7;
             this.btnKillTwoSum6.Text = "6";
             this.btnKillTwoSum6.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum6.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum5
             // 
@@ -4670,6 +4708,7 @@
             this.btnKillTwoSum5.TabIndex = 6;
             this.btnKillTwoSum5.Text = "5";
             this.btnKillTwoSum5.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum5.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum4
             // 
@@ -4679,6 +4718,7 @@
             this.btnKillTwoSum4.TabIndex = 5;
             this.btnKillTwoSum4.Text = "4";
             this.btnKillTwoSum4.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum4.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // btnKillTwoSum3
             // 
@@ -4688,6 +4728,7 @@
             this.btnKillTwoSum3.TabIndex = 4;
             this.btnKillTwoSum3.Text = "3";
             this.btnKillTwoSum3.UseVisualStyleBackColor = true;
+            this.btnKillTwoSum3.Click += new System.EventHandler(this.KillTwoSum_ButtomClick);
             // 
             // lbKillTwoSumDesc
             // 
@@ -4710,6 +4751,8 @@
             // 
             // pnKillTwoCombine
             // 
+            this.pnKillTwoCombine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombine1);
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombineSec10);
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombineSec9);
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombineSec8);
@@ -4730,7 +4773,6 @@
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombine4);
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombine3);
             this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombine2);
-            this.pnKillTwoCombine.Controls.Add(this.btnKillTwoCombine1);
             this.pnKillTwoCombine.Controls.Add(this.lbKillTwoCombineFirstDesc);
             this.pnKillTwoCombine.Controls.Add(this.lbKillTwoCombineFirst);
             this.pnKillTwoCombine.Location = new System.Drawing.Point(6, 6);
@@ -4738,100 +4780,120 @@
             this.pnKillTwoCombine.Size = new System.Drawing.Size(372, 89);
             this.pnKillTwoCombine.TabIndex = 1;
             // 
+            // btnKillTwoCombine1
+            // 
+            this.btnKillTwoCombine1.Location = new System.Drawing.Point(56, 27);
+            this.btnKillTwoCombine1.Name = "btnKillTwoCombine1";
+            this.btnKillTwoCombine1.Size = new System.Drawing.Size(27, 23);
+            this.btnKillTwoCombine1.TabIndex = 23;
+            this.btnKillTwoCombine1.Text = "1";
+            this.btnKillTwoCombine1.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine1.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
+            // 
             // btnKillTwoCombineSec10
             // 
-            this.btnKillTwoCombineSec10.Location = new System.Drawing.Point(328, 58);
+            this.btnKillTwoCombineSec10.Location = new System.Drawing.Point(328, 54);
             this.btnKillTwoCombineSec10.Name = "btnKillTwoCombineSec10";
             this.btnKillTwoCombineSec10.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec10.TabIndex = 22;
             this.btnKillTwoCombineSec10.Text = "10";
             this.btnKillTwoCombineSec10.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec10.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec9
             // 
-            this.btnKillTwoCombineSec9.Location = new System.Drawing.Point(298, 58);
+            this.btnKillTwoCombineSec9.Location = new System.Drawing.Point(298, 54);
             this.btnKillTwoCombineSec9.Name = "btnKillTwoCombineSec9";
             this.btnKillTwoCombineSec9.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec9.TabIndex = 21;
             this.btnKillTwoCombineSec9.Text = "9";
             this.btnKillTwoCombineSec9.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec9.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec8
             // 
-            this.btnKillTwoCombineSec8.Location = new System.Drawing.Point(268, 58);
+            this.btnKillTwoCombineSec8.Location = new System.Drawing.Point(268, 54);
             this.btnKillTwoCombineSec8.Name = "btnKillTwoCombineSec8";
             this.btnKillTwoCombineSec8.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec8.TabIndex = 20;
             this.btnKillTwoCombineSec8.Text = "8";
             this.btnKillTwoCombineSec8.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec8.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec7
             // 
-            this.btnKillTwoCombineSec7.Location = new System.Drawing.Point(238, 58);
+            this.btnKillTwoCombineSec7.Location = new System.Drawing.Point(238, 54);
             this.btnKillTwoCombineSec7.Name = "btnKillTwoCombineSec7";
             this.btnKillTwoCombineSec7.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec7.TabIndex = 19;
             this.btnKillTwoCombineSec7.Text = "7";
             this.btnKillTwoCombineSec7.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec7.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec6
             // 
-            this.btnKillTwoCombineSec6.Location = new System.Drawing.Point(208, 58);
+            this.btnKillTwoCombineSec6.Location = new System.Drawing.Point(208, 54);
             this.btnKillTwoCombineSec6.Name = "btnKillTwoCombineSec6";
             this.btnKillTwoCombineSec6.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec6.TabIndex = 18;
             this.btnKillTwoCombineSec6.Text = "6";
             this.btnKillTwoCombineSec6.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec6.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec5
             // 
-            this.btnKillTwoCombineSec5.Location = new System.Drawing.Point(178, 58);
+            this.btnKillTwoCombineSec5.Location = new System.Drawing.Point(178, 54);
             this.btnKillTwoCombineSec5.Name = "btnKillTwoCombineSec5";
             this.btnKillTwoCombineSec5.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec5.TabIndex = 17;
             this.btnKillTwoCombineSec5.Text = "5";
             this.btnKillTwoCombineSec5.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec5.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec4
             // 
-            this.btnKillTwoCombineSec4.Location = new System.Drawing.Point(148, 58);
+            this.btnKillTwoCombineSec4.Location = new System.Drawing.Point(148, 54);
             this.btnKillTwoCombineSec4.Name = "btnKillTwoCombineSec4";
             this.btnKillTwoCombineSec4.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec4.TabIndex = 16;
             this.btnKillTwoCombineSec4.Text = "4";
             this.btnKillTwoCombineSec4.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec4.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec3
             // 
-            this.btnKillTwoCombineSec3.Location = new System.Drawing.Point(118, 58);
+            this.btnKillTwoCombineSec3.Location = new System.Drawing.Point(118, 54);
             this.btnKillTwoCombineSec3.Name = "btnKillTwoCombineSec3";
             this.btnKillTwoCombineSec3.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec3.TabIndex = 15;
             this.btnKillTwoCombineSec3.Text = "3";
             this.btnKillTwoCombineSec3.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec3.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec2
             // 
-            this.btnKillTwoCombineSec2.Location = new System.Drawing.Point(88, 58);
+            this.btnKillTwoCombineSec2.Location = new System.Drawing.Point(88, 54);
             this.btnKillTwoCombineSec2.Name = "btnKillTwoCombineSec2";
             this.btnKillTwoCombineSec2.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec2.TabIndex = 14;
             this.btnKillTwoCombineSec2.Text = "2";
             this.btnKillTwoCombineSec2.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec2.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // btnKillTwoCombineSec1
             // 
-            this.btnKillTwoCombineSec1.Location = new System.Drawing.Point(56, 58);
+            this.btnKillTwoCombineSec1.Location = new System.Drawing.Point(56, 54);
             this.btnKillTwoCombineSec1.Name = "btnKillTwoCombineSec1";
             this.btnKillTwoCombineSec1.Size = new System.Drawing.Size(27, 23);
             this.btnKillTwoCombineSec1.TabIndex = 13;
             this.btnKillTwoCombineSec1.Text = "1";
             this.btnKillTwoCombineSec1.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombineSec1.Click += new System.EventHandler(this.KillTwoCombineSec_ButtomClick);
             // 
             // lbKillTwoCombineSec
             // 
             this.lbKillTwoCombineSec.AutoSize = true;
-            this.lbKillTwoCombineSec.Location = new System.Drawing.Point(5, 64);
+            this.lbKillTwoCombineSec.Location = new System.Drawing.Point(5, 60);
             this.lbKillTwoCombineSec.Name = "lbKillTwoCombineSec";
             this.lbKillTwoCombineSec.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoCombineSec.TabIndex = 12;
@@ -4845,6 +4907,7 @@
             this.btnKillTwoCombine10.TabIndex = 11;
             this.btnKillTwoCombine10.Text = "10";
             this.btnKillTwoCombine10.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine10.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine9
             // 
@@ -4854,6 +4917,7 @@
             this.btnKillTwoCombine9.TabIndex = 10;
             this.btnKillTwoCombine9.Text = "9";
             this.btnKillTwoCombine9.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine9.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine8
             // 
@@ -4863,6 +4927,7 @@
             this.btnKillTwoCombine8.TabIndex = 9;
             this.btnKillTwoCombine8.Text = "8";
             this.btnKillTwoCombine8.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine8.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine7
             // 
@@ -4872,6 +4937,7 @@
             this.btnKillTwoCombine7.TabIndex = 8;
             this.btnKillTwoCombine7.Text = "7";
             this.btnKillTwoCombine7.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine7.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine6
             // 
@@ -4881,6 +4947,7 @@
             this.btnKillTwoCombine6.TabIndex = 7;
             this.btnKillTwoCombine6.Text = "6";
             this.btnKillTwoCombine6.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine6.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine5
             // 
@@ -4890,6 +4957,7 @@
             this.btnKillTwoCombine5.TabIndex = 6;
             this.btnKillTwoCombine5.Text = "5";
             this.btnKillTwoCombine5.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine5.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine4
             // 
@@ -4899,6 +4967,7 @@
             this.btnKillTwoCombine4.TabIndex = 5;
             this.btnKillTwoCombine4.Text = "4";
             this.btnKillTwoCombine4.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine4.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine3
             // 
@@ -4908,6 +4977,7 @@
             this.btnKillTwoCombine3.TabIndex = 4;
             this.btnKillTwoCombine3.Text = "3";
             this.btnKillTwoCombine3.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine3.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // btnKillTwoCombine2
             // 
@@ -4917,15 +4987,7 @@
             this.btnKillTwoCombine2.TabIndex = 3;
             this.btnKillTwoCombine2.Text = "2";
             this.btnKillTwoCombine2.UseVisualStyleBackColor = true;
-            // 
-            // btnKillTwoCombine1
-            // 
-            this.btnKillTwoCombine1.Location = new System.Drawing.Point(56, 27);
-            this.btnKillTwoCombine1.Name = "btnKillTwoCombine1";
-            this.btnKillTwoCombine1.Size = new System.Drawing.Size(27, 23);
-            this.btnKillTwoCombine1.TabIndex = 2;
-            this.btnKillTwoCombine1.Text = "1";
-            this.btnKillTwoCombine1.UseVisualStyleBackColor = true;
+            this.btnKillTwoCombine2.Click += new System.EventHandler(this.KillTwoCombineFisrt_ButtomClick);
             // 
             // lbKillTwoCombineFirstDesc
             // 
@@ -4953,7 +5015,7 @@
             this.tabMakeNumber.Location = new System.Drawing.Point(6, 6);
             this.tabMakeNumber.Name = "tabMakeNumber";
             this.tabMakeNumber.SelectedIndex = 0;
-            this.tabMakeNumber.Size = new System.Drawing.Size(1472, 600);
+            this.tabMakeNumber.Size = new System.Drawing.Size(1472, 553);
             this.tabMakeNumber.TabIndex = 0;
             // 
             // frm_ShrinkPk10
@@ -4961,7 +5023,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
-            this.ClientSize = new System.Drawing.Size(1484, 600);
+            this.ClientSize = new System.Drawing.Size(1500, 560);
             this.Controls.Add(this.tabMakeNumber);
             this.Controls.Add(this.pnMakeNumber);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -5040,7 +5102,6 @@
         private System.Windows.Forms.Button btnKillTwoCombine4;
         private System.Windows.Forms.Button btnKillTwoCombine3;
         private System.Windows.Forms.Button btnKillTwoCombine2;
-        private System.Windows.Forms.Button btnKillTwoCombine1;
         private System.Windows.Forms.Button btnKillTwoCombine10;
         private System.Windows.Forms.Button btnKillTwoCombineSec10;
         private System.Windows.Forms.Button btnKillTwoCombineSec9;
@@ -5473,5 +5534,6 @@
         private System.Windows.Forms.Button lbTwoStartWork;
         private System.Windows.Forms.Button btnTwoKillSum11;
         private System.Windows.Forms.Button btnTwoKillSum12;
+        private System.Windows.Forms.Button btnKillTwoCombine1;
     }
 }

@@ -1119,9 +1119,9 @@
             this.pnlPk10Shrink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlPk10Shrink.AutoSize = true;
             this.pnlPk10Shrink.BackColor = System.Drawing.Color.White;
-            this.pnlPk10Shrink.Location = new System.Drawing.Point(0, 0);
+            this.pnlPk10Shrink.Location = new System.Drawing.Point(3, 90);
             this.pnlPk10Shrink.Name = "pnlPk10Shrink";
-            this.pnlPk10Shrink.Size = new System.Drawing.Size(1484, 600);
+            this.pnlPk10Shrink.Size = new System.Drawing.Size(1464, 553);
             this.pnlPk10Shrink.TabIndex = 11;
             // 
             // notifyIcon1
