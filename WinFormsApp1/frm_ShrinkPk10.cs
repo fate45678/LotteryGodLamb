@@ -15,9 +15,11 @@ namespace WinFormsApp1
     public partial class frm_ShrinkPk10 : Form
     {
         JArray ja = null;
+        Color color = new Color();
         public frm_ShrinkPk10()
         {
             InitializeComponent();
+            color = btnChooseModeAll.BackColor;
         }
 
         private void changeButtomColor()
@@ -487,7 +489,7 @@ namespace WinFormsApp1
             //全部打開
             btnKillTwoCombineSec1.Enabled = btnKillTwoCombineSec2.Enabled = btnKillTwoCombineSec3.Enabled = btnKillTwoCombineSec4.Enabled = btnKillTwoCombineSec5.Enabled = btnKillTwoCombineSec6.Enabled = btnKillTwoCombineSec7.Enabled = btnKillTwoCombineSec8.Enabled = btnKillTwoCombineSec9.Enabled = btnKillTwoCombineSec10.Enabled = true;
 
-            if (Buttom.ForeColor == Control.DefaultBackColor)
+            if (Buttom.ForeColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -496,7 +498,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
             }
         }
@@ -509,7 +511,7 @@ namespace WinFormsApp1
             //全部打開
             btnKillTwoCombine1.Enabled = btnKillTwoCombine2.Enabled = btnKillTwoCombine3.Enabled = btnKillTwoCombine4.Enabled = btnKillTwoCombine5.Enabled = btnKillTwoCombine6.Enabled = btnKillTwoCombine7.Enabled = btnKillTwoCombine8.Enabled = btnKillTwoCombine9.Enabled = btnKillTwoCombine10.Enabled = true;
 
-            if (Buttom.ForeColor == Control.DefaultBackColor)
+            if (Buttom.ForeColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -519,7 +521,7 @@ namespace WinFormsApp1
             {
                 Buttom.Refresh();
                 //Buttom.BackColor = HexColor("#E3DDCA");
-                //Buttom.ForeColor = Control.DefaultBackColor;
+                //Buttom.ForeColor = color;
             }            
         }
 
@@ -535,7 +537,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("btnKillTwoSum", "");
 
-            if(Buttom.BackColor == Control.DefaultBackColor)
+            if(Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;               
@@ -544,7 +546,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 KillTwoSumPara = KillTwoSumPara.Replace("," + Click, "");
             }
@@ -561,7 +563,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("btnKillTwoLess", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -570,7 +572,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 KillTwoSumPara = KillTwoSumPara.Replace("," + Click, "");
             }
@@ -612,10 +614,10 @@ namespace WinFormsApp1
         {
             btnChooseModeAll.BackColor = Color.OrangeRed;
             //把這框內的選擇都恢復
-            btnChooseModeOneBig.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneSmall.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneOdd.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneEven.BackColor = Control.DefaultBackColor;
+            btnChooseModeOneBig.BackColor = color;
+            btnChooseModeOneSmall.BackColor = color;
+            btnChooseModeOneOdd.BackColor = color;
+            btnChooseModeOneEven.BackColor = color;
 
             //百位
             btnChooseModeHundred01.BackColor = Color.OrangeRed;
@@ -661,10 +663,10 @@ namespace WinFormsApp1
         {
             btnChooseModeOneBig.BackColor = Color.OrangeRed;
             //把這框內的選擇都恢復
-            btnChooseModeAll.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneSmall.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneOdd.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneEven.BackColor = Control.DefaultBackColor;
+            btnChooseModeAll.BackColor = color;
+            btnChooseModeOneSmall.BackColor = color;
+            btnChooseModeOneOdd.BackColor = color;
+            btnChooseModeOneEven.BackColor = color;
 
             //百位
             btnChooseModeHundred06.BackColor = Color.OrangeRed;
@@ -696,10 +698,10 @@ namespace WinFormsApp1
         {
             btnChooseModeOneSmall.BackColor = Color.OrangeRed;
             //把這框內的選擇都恢復
-            btnChooseModeOneBig.BackColor = Control.DefaultBackColor;
-            btnChooseModeAll.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneOdd.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneEven.BackColor = Control.DefaultBackColor;
+            btnChooseModeOneBig.BackColor = color;
+            btnChooseModeAll.BackColor = color;
+            btnChooseModeOneOdd.BackColor = color;
+            btnChooseModeOneEven.BackColor = color;
 
             //百位
             btnChooseModeHundred01.BackColor = Color.OrangeRed;
@@ -730,10 +732,10 @@ namespace WinFormsApp1
         {
             btnChooseModeOneOdd.BackColor = Color.OrangeRed;
             //把這框內的選擇都恢復
-            btnChooseModeOneBig.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneSmall.BackColor = Control.DefaultBackColor;
-            btnChooseModeAll.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneEven.BackColor = Control.DefaultBackColor;
+            btnChooseModeOneBig.BackColor = color;
+            btnChooseModeOneSmall.BackColor = color;
+            btnChooseModeAll.BackColor = color;
+            btnChooseModeOneEven.BackColor = color;
 
             //百位
             btnChooseModeHundred01.BackColor = Color.OrangeRed;
@@ -764,10 +766,10 @@ namespace WinFormsApp1
         {
             btnChooseModeOneEven.BackColor = Color.OrangeRed;
             //把這框內的選擇都恢復
-            btnChooseModeOneBig.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneSmall.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneOdd.BackColor = Control.DefaultBackColor;
-            btnChooseModeAll.BackColor = Control.DefaultBackColor;
+            btnChooseModeOneBig.BackColor = color;
+            btnChooseModeOneSmall.BackColor = color;
+            btnChooseModeOneOdd.BackColor = color;
+            btnChooseModeAll.BackColor = color;
 
             //百位
             btnChooseModeHundred02.BackColor = Color.OrangeRed;
@@ -796,47 +798,47 @@ namespace WinFormsApp1
         private void btnChooseModeOneClear_Click(object sender, EventArgs e)
         {
             //把這框內的選擇都恢復
-            btnChooseModeAll.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneBig.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneSmall.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneOdd.BackColor = Control.DefaultBackColor;
-            btnChooseModeOneEven.BackColor = Control.DefaultBackColor;
+            btnChooseModeAll.BackColor = color;
+            btnChooseModeOneBig.BackColor = color;
+            btnChooseModeOneSmall.BackColor = color;
+            btnChooseModeOneOdd.BackColor = color;
+            btnChooseModeOneEven.BackColor = color;
 
             //百位
-            btnChooseModeHundred01.BackColor = Control.DefaultBackColor;
-            btnChooseModeHundred02.BackColor = Control.DefaultBackColor;
-            btnChooseModeHundred03.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred04.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred05.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred06.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred07.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred08.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred09.BackColor = Control.DefaultBackColor;;
-            btnChooseModeHundred10.BackColor = Control.DefaultBackColor;;
+            btnChooseModeHundred01.BackColor = color;
+            btnChooseModeHundred02.BackColor = color;
+            btnChooseModeHundred03.BackColor = color;;
+            btnChooseModeHundred04.BackColor = color;;
+            btnChooseModeHundred05.BackColor = color;;
+            btnChooseModeHundred06.BackColor = color;;
+            btnChooseModeHundred07.BackColor = color;;
+            btnChooseModeHundred08.BackColor = color;;
+            btnChooseModeHundred09.BackColor = color;;
+            btnChooseModeHundred10.BackColor = color;;
 
             //十位
-            btnChooseModeTen01.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen02.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen03.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen04.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen05.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen06.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen07.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen08.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen09.BackColor = Control.DefaultBackColor;;
-            btnChooseModeTen10.BackColor = Control.DefaultBackColor;;
+            btnChooseModeTen01.BackColor = color;;
+            btnChooseModeTen02.BackColor = color;;
+            btnChooseModeTen03.BackColor = color;;
+            btnChooseModeTen04.BackColor = color;;
+            btnChooseModeTen05.BackColor = color;;
+            btnChooseModeTen06.BackColor = color;;
+            btnChooseModeTen07.BackColor = color;;
+            btnChooseModeTen08.BackColor = color;;
+            btnChooseModeTen09.BackColor = color;;
+            btnChooseModeTen10.BackColor = color;;
 
             //個位
-            btnChooseModeOne01.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne02.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne03.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne04.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne05.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne06.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne07.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne08.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne09.BackColor = Control.DefaultBackColor;;
-            btnChooseModeOne10.BackColor = Control.DefaultBackColor;;
+            btnChooseModeOne01.BackColor = color;;
+            btnChooseModeOne02.BackColor = color;;
+            btnChooseModeOne03.BackColor = color;;
+            btnChooseModeOne04.BackColor = color;;
+            btnChooseModeOne05.BackColor = color;;
+            btnChooseModeOne06.BackColor = color;;
+            btnChooseModeOne07.BackColor = color;;
+            btnChooseModeOne08.BackColor = color;;
+            btnChooseModeOne09.BackColor = color;;
+            btnChooseModeOne10.BackColor = color;;
 
             ChooseModePara = "All";
 
@@ -852,7 +854,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill02Road", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -861,7 +863,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill012RoadPara = Kill012RoadPara.Replace("," + Click, "");
             }
@@ -878,7 +880,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillOddEven", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -887,7 +889,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill012RoadPara = Kill012RoadPara.Replace("," + Click, "");
             }
@@ -904,7 +906,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillBigSmall", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -913,7 +915,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill13LessPara = KillBigSmallPara.Replace("," + Click, "");
             }
@@ -927,9 +929,9 @@ namespace WinFormsApp1
             if (Kill13LessPara == "0")
                 Kill13LessPara = "";
             var Buttom = (sender as Button);
-            string Click = Buttom.Name.Replace("Kill13Less", "");
+            string Click = Buttom.Name.Replace("btnKill13Less", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -938,7 +940,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill13LessPara = Kill13LessPara.Replace("," + Click, "");
             }
@@ -954,7 +956,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill23Less", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -963,7 +965,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill23LessPara = Kill23LessPara.Replace("," + Click, "");
             }
@@ -979,7 +981,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill12Less", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -988,7 +990,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill12LessPara = Kill12LessPara.Replace("," + Click, "");
             }
@@ -1004,7 +1006,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill13Sum", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1013,7 +1015,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill13SumPara = Kill13SumPara.Replace("," + Click, "");
             }
@@ -1029,7 +1031,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill23Sum", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1038,7 +1040,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill23SumPara = Kill23SumPara.Replace("," + Click, "");
             }
@@ -1054,7 +1056,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("Kill12Sum", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1063,7 +1065,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 Kill12SumPara = Kill12SumPara.Replace("," + Click, "");
             }
@@ -1079,7 +1081,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillTypeNumber", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1088,7 +1090,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 KillTypeNumberPara = KillTypeNumberPara.Replace("," + Click, "");
             }
@@ -1104,7 +1106,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillSum", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1113,7 +1115,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 KillSumPara = KillSumPara.Replace("," + Click, "");
             }
@@ -1129,7 +1131,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillCross", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1138,7 +1140,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 KillCrossPara = KillCrossPara.Replace("," + Click, "");
             }
@@ -1156,7 +1158,7 @@ namespace WinFormsApp1
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("KillCross", "");
 
-            if (Buttom.BackColor == Control.DefaultBackColor)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1165,7 +1167,7 @@ namespace WinFormsApp1
             else
             {
                 //Buttom.Refresh();
-                Buttom.BackColor = Control.DefaultBackColor;
+                Buttom.BackColor = color;
                 Buttom.ForeColor = Color.Black;
                 LocalNumber0LocalPara = LocalNumber0LocalPara.Replace("," + Click, "");
             }
@@ -1176,13 +1178,13 @@ namespace WinFormsApp1
         {
             isKillPara = "Kill";
             btnLocalNumber0Local.BackColor = Color.OrangeRed;
-            btnLocalNumber1Local.BackColor = Control.DefaultBackColor;
+            btnLocalNumber1Local.BackColor = color;
         }
         private void btnLocalNumber1Local_Click(object sender, EventArgs e)
         {
             isKillPara = "";
             btnLocalNumber1Local.BackColor = Color.OrangeRed;
-            btnLocalNumber0Local.BackColor = Control.DefaultBackColor;
+            btnLocalNumber0Local.BackColor = color;
         }
 
         #endregion
@@ -1227,33 +1229,33 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    btnKill02Road000.BackColor = Control.DefaultBackColor;
-                    btnKill02Road001.BackColor = Control.DefaultBackColor;
-                    btnKill02Road002.BackColor = Control.DefaultBackColor;
-                    btnKill02Road010.BackColor = Control.DefaultBackColor;
-                    btnKill02Road011.BackColor = Control.DefaultBackColor;
-                    btnKill02Road012.BackColor = Control.DefaultBackColor;
-                    btnKill02Road020.BackColor = Control.DefaultBackColor;
-                    btnKill02Road021.BackColor = Control.DefaultBackColor;
-                    btnKill02Road022.BackColor = Control.DefaultBackColor;
-                    btnKill02Road100.BackColor = Control.DefaultBackColor;
-                    btnKill02Road101.BackColor = Control.DefaultBackColor;
-                    btnKill02Road102.BackColor = Control.DefaultBackColor;
-                    btnKill02Road110.BackColor = Control.DefaultBackColor;
-                    btnKill02Road111.BackColor = Control.DefaultBackColor;
-                    btnKill02Road112.BackColor = Control.DefaultBackColor;
-                    btnKill02Road120.BackColor = Control.DefaultBackColor;
-                    btnKill02Road121.BackColor = Control.DefaultBackColor;
-                    btnKill02Road122.BackColor = Control.DefaultBackColor;
-                    btnKill02Road200.BackColor = Control.DefaultBackColor;
-                    btnKill02Road201.BackColor = Control.DefaultBackColor;
-                    btnKill02Road202.BackColor = Control.DefaultBackColor;
-                    btnKill02Road210.BackColor = Control.DefaultBackColor;
-                    btnKill02Road211.BackColor = Control.DefaultBackColor;
-                    btnKill02Road212.BackColor = Control.DefaultBackColor;
-                    btnKill02Road220.BackColor = Control.DefaultBackColor;
-                    btnKill02Road221.BackColor = Control.DefaultBackColor;
-                    btnKill02Road222.BackColor = Control.DefaultBackColor;
+                    btnKill02Road000.BackColor = color;
+                    btnKill02Road001.BackColor = color;
+                    btnKill02Road002.BackColor = color;
+                    btnKill02Road010.BackColor = color;
+                    btnKill02Road011.BackColor = color;
+                    btnKill02Road012.BackColor = color;
+                    btnKill02Road020.BackColor = color;
+                    btnKill02Road021.BackColor = color;
+                    btnKill02Road022.BackColor = color;
+                    btnKill02Road100.BackColor = color;
+                    btnKill02Road101.BackColor = color;
+                    btnKill02Road102.BackColor = color;
+                    btnKill02Road110.BackColor = color;
+                    btnKill02Road111.BackColor = color;
+                    btnKill02Road112.BackColor = color;
+                    btnKill02Road120.BackColor = color;
+                    btnKill02Road121.BackColor = color;
+                    btnKill02Road122.BackColor = color;
+                    btnKill02Road200.BackColor = color;
+                    btnKill02Road201.BackColor = color;
+                    btnKill02Road202.BackColor = color;
+                    btnKill02Road210.BackColor = color;
+                    btnKill02Road211.BackColor = color;
+                    btnKill02Road212.BackColor = color;
+                    btnKill02Road220.BackColor = color;
+                    btnKill02Road221.BackColor = color;
+                    btnKill02Road222.BackColor = color;
                 }
             }
             else if (Click.Contains("OddEven"))
@@ -1271,14 +1273,14 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    btnKillOddEven111.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven110.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven101.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven100.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven000.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven001.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven011.BackColor = Control.DefaultBackColor;
-                    btnKillOddEven010.BackColor = Control.DefaultBackColor;
+                    btnKillOddEven111.BackColor = color;
+                    btnKillOddEven110.BackColor = color;
+                    btnKillOddEven101.BackColor = color;
+                    btnKillOddEven100.BackColor = color;
+                    btnKillOddEven000.BackColor = color;
+                    btnKillOddEven001.BackColor = color;
+                    btnKillOddEven011.BackColor = color;
+                    btnKillOddEven010.BackColor = color;
                 }
             }
             else if (Click.Contains("KillCross"))
@@ -1296,14 +1298,14 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    btnKillCross2.BackColor = Control.DefaultBackColor;
-                    btnKillCross3.BackColor = Control.DefaultBackColor;
-                    btnKillCross4.BackColor = Control.DefaultBackColor;
-                    btnKillCross5.BackColor = Control.DefaultBackColor;
-                    btnKillCross6.BackColor = Control.DefaultBackColor;
-                    btnKillCross7.BackColor = Control.DefaultBackColor;
-                    btnKillCross8.BackColor = Control.DefaultBackColor;
-                    btnKillCross9.BackColor = Control.DefaultBackColor;
+                    btnKillCross2.BackColor = color;
+                    btnKillCross3.BackColor = color;
+                    btnKillCross4.BackColor = color;
+                    btnKillCross5.BackColor = color;
+                    btnKillCross6.BackColor = color;
+                    btnKillCross7.BackColor = color;
+                    btnKillCross8.BackColor = color;
+                    btnKillCross9.BackColor = color;
                 }
             }
             else if (Click.Contains("KillSum"))
@@ -1335,28 +1337,28 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    btnKillSum6.BackColor = Control.DefaultBackColor;
-                    btnKillSum7.BackColor = Control.DefaultBackColor;
-                    btnKillSum8.BackColor = Control.DefaultBackColor;
-                    btnKillSum9.BackColor = Control.DefaultBackColor;
-                    btnKillSum10.BackColor = Control.DefaultBackColor;
-                    btnKillSum11.BackColor = Control.DefaultBackColor;
-                    btnKillSum12.BackColor = Control.DefaultBackColor;
-                    btnKillSum13.BackColor = Control.DefaultBackColor;
-                    btnKillSum14.BackColor = Control.DefaultBackColor;
-                    btnKillSum15.BackColor = Control.DefaultBackColor;
-                    btnKillSum16.BackColor = Control.DefaultBackColor;
-                    btnKillSum17.BackColor = Control.DefaultBackColor;
-                    btnKillSum18.BackColor = Control.DefaultBackColor;
-                    btnKillSum19.BackColor = Control.DefaultBackColor;
-                    btnKillSum20.BackColor = Control.DefaultBackColor;
-                    btnKillSum21.BackColor = Control.DefaultBackColor;
-                    btnKillSum22.BackColor = Control.DefaultBackColor;
-                    btnKillSum23.BackColor = Control.DefaultBackColor;
-                    btnKillSum24.BackColor = Control.DefaultBackColor;
-                    btnKillSum25.BackColor = Control.DefaultBackColor;
-                    btnKillSum26.BackColor = Control.DefaultBackColor;
-                    btnKillSum27.BackColor = Control.DefaultBackColor;
+                    btnKillSum6.BackColor = color;
+                    btnKillSum7.BackColor = color;
+                    btnKillSum8.BackColor = color;
+                    btnKillSum9.BackColor = color;
+                    btnKillSum10.BackColor = color;
+                    btnKillSum11.BackColor = color;
+                    btnKillSum12.BackColor = color;
+                    btnKillSum13.BackColor = color;
+                    btnKillSum14.BackColor = color;
+                    btnKillSum15.BackColor = color;
+                    btnKillSum16.BackColor = color;
+                    btnKillSum17.BackColor = color;
+                    btnKillSum18.BackColor = color;
+                    btnKillSum19.BackColor = color;
+                    btnKillSum20.BackColor = color;
+                    btnKillSum21.BackColor = color;
+                    btnKillSum22.BackColor = color;
+                    btnKillSum23.BackColor = color;
+                    btnKillSum24.BackColor = color;
+                    btnKillSum25.BackColor = color;
+                    btnKillSum26.BackColor = color;
+                    btnKillSum27.BackColor = color;
                 }
             }
         }
