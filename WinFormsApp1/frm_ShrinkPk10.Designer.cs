@@ -155,14 +155,14 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.btnKillOddEvenClear = new System.Windows.Forms.Button();
             this.btnKillOddEvenAll = new System.Windows.Forms.Button();
-            this.btnKillOddEven8 = new System.Windows.Forms.Button();
-            this.btnKillOddEven4 = new System.Windows.Forms.Button();
-            this.btnKillOddEven6 = new System.Windows.Forms.Button();
-            this.btnKillOddEven5 = new System.Windows.Forms.Button();
-            this.btnKillOddEven7 = new System.Windows.Forms.Button();
-            this.btnKillOddEven3 = new System.Windows.Forms.Button();
-            this.btnKillOddEven2 = new System.Windows.Forms.Button();
-            this.btnKillOddEven1 = new System.Windows.Forms.Button();
+            this.btnKillOddEven011 = new System.Windows.Forms.Button();
+            this.btnKillOddEven100 = new System.Windows.Forms.Button();
+            this.btnKillOddEven001 = new System.Windows.Forms.Button();
+            this.btnKillOddEven000 = new System.Windows.Forms.Button();
+            this.btnKillOddEven010 = new System.Windows.Forms.Button();
+            this.btnKillOddEven101 = new System.Windows.Forms.Button();
+            this.btnKillOddEven110 = new System.Windows.Forms.Button();
+            this.btnKillOddEven111 = new System.Windows.Forms.Button();
             this.lbKillOddEvenDesc = new System.Windows.Forms.Label();
             this.lbKillOddEven = new System.Windows.Forms.Label();
             this.btnCopy = new System.Windows.Forms.Button();
@@ -253,8 +253,6 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.btnLocalNumber3Local = new System.Windows.Forms.Button();
-            this.btnLocalNumber2Local = new System.Windows.Forms.Button();
             this.btnLocalNumber1Local = new System.Windows.Forms.Button();
             this.btnLocalNumber0Local = new System.Windows.Forms.Button();
             this.lbLocalNumberDesc2 = new System.Windows.Forms.Label();
@@ -367,14 +365,14 @@
             this.lbKill13LessDesc = new System.Windows.Forms.Label();
             this.lbKill13Less = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.KillBigSmall8 = new System.Windows.Forms.Button();
-            this.KillBigSmall4 = new System.Windows.Forms.Button();
-            this.KillBigSmall6 = new System.Windows.Forms.Button();
-            this.KillBigSmall5 = new System.Windows.Forms.Button();
-            this.KillBigSmall7 = new System.Windows.Forms.Button();
-            this.KillBigSmall3 = new System.Windows.Forms.Button();
-            this.KillBigSmall2 = new System.Windows.Forms.Button();
-            this.KillBigSmall1 = new System.Windows.Forms.Button();
+            this.KillBigSmall566 = new System.Windows.Forms.Button();
+            this.KillBigSmall655 = new System.Windows.Forms.Button();
+            this.KillBigSmall556 = new System.Windows.Forms.Button();
+            this.KillBigSmall555 = new System.Windows.Forms.Button();
+            this.KillBigSmall565 = new System.Windows.Forms.Button();
+            this.KillBigSmall656 = new System.Windows.Forms.Button();
+            this.KillBigSmall665 = new System.Windows.Forms.Button();
+            this.KillBigSmall666 = new System.Windows.Forms.Button();
             this.lbKillBigSmallDesc = new System.Windows.Forms.Label();
             this.lbKillBigSmall = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -736,7 +734,7 @@
             this.lbTwoChooseModeOne.AutoSize = true;
             this.lbTwoChooseModeOne.Location = new System.Drawing.Point(5, 81);
             this.lbTwoChooseModeOne.Name = "lbTwoChooseModeOne";
-            this.lbTwoChooseModeOne.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoChooseModeOne.Size = new System.Drawing.Size(41, 12);
             this.lbTwoChooseModeOne.TabIndex = 49;
             this.lbTwoChooseModeOne.Text = "个位: ";
             // 
@@ -835,7 +833,7 @@
             this.lbTwoChooseModeTen.AutoSize = true;
             this.lbTwoChooseModeTen.Location = new System.Drawing.Point(5, 37);
             this.lbTwoChooseModeTen.Name = "lbTwoChooseModeTen";
-            this.lbTwoChooseModeTen.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoChooseModeTen.Size = new System.Drawing.Size(41, 12);
             this.lbTwoChooseModeTen.TabIndex = 38;
             this.lbTwoChooseModeTen.Text = "十位: ";
             // 
@@ -992,7 +990,7 @@
             this.lbTwoKillCrossDesc.AutoSize = true;
             this.lbTwoKillCrossDesc.Location = new System.Drawing.Point(5, 40);
             this.lbTwoKillCrossDesc.Name = "lbTwoKillCrossDesc";
-            this.lbTwoKillCrossDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoKillCrossDesc.Size = new System.Drawing.Size(41, 12);
             this.lbTwoKillCrossDesc.TabIndex = 1;
             this.lbTwoKillCrossDesc.Text = "跨度: ";
             // 
@@ -1082,7 +1080,7 @@
             this.lbTwoLocalNumberDesc2.AutoSize = true;
             this.lbTwoLocalNumberDesc2.Location = new System.Drawing.Point(3, 64);
             this.lbTwoLocalNumberDesc2.Name = "lbTwoLocalNumberDesc2";
-            this.lbTwoLocalNumberDesc2.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoLocalNumberDesc2.Size = new System.Drawing.Size(41, 12);
             this.lbTwoLocalNumberDesc2.TabIndex = 25;
             this.lbTwoLocalNumberDesc2.Text = "中出: ";
             // 
@@ -1181,7 +1179,7 @@
             this.lbTwoLocalNumberDesc1.AutoSize = true;
             this.lbTwoLocalNumberDesc1.Location = new System.Drawing.Point(3, 36);
             this.lbTwoLocalNumberDesc1.Name = "lbTwoLocalNumberDesc1";
-            this.lbTwoLocalNumberDesc1.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoLocalNumberDesc1.Size = new System.Drawing.Size(41, 12);
             this.lbTwoLocalNumberDesc1.TabIndex = 1;
             this.lbTwoLocalNumberDesc1.Text = "胆码: ";
             // 
@@ -1320,7 +1318,7 @@
             this.lbTwoKill012RoadDesc.AutoSize = true;
             this.lbTwoKill012RoadDesc.Location = new System.Drawing.Point(5, 33);
             this.lbTwoKill012RoadDesc.Name = "lbTwoKill012RoadDesc";
-            this.lbTwoKill012RoadDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoKill012RoadDesc.Size = new System.Drawing.Size(41, 12);
             this.lbTwoKill012RoadDesc.TabIndex = 1;
             this.lbTwoKill012RoadDesc.Text = "路数: ";
             // 
@@ -1409,7 +1407,7 @@
             this.lbTwoKillOddEvenDesc.AutoSize = true;
             this.lbTwoKillOddEvenDesc.Location = new System.Drawing.Point(5, 41);
             this.lbTwoKillOddEvenDesc.Name = "lbTwoKillOddEvenDesc";
-            this.lbTwoKillOddEvenDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoKillOddEvenDesc.Size = new System.Drawing.Size(41, 12);
             this.lbTwoKillOddEvenDesc.TabIndex = 1;
             this.lbTwoKillOddEvenDesc.Text = "奇偶: ";
             // 
@@ -1478,7 +1476,7 @@
             this.lbTwoKillBigSmallDesc.AutoSize = true;
             this.lbTwoKillBigSmallDesc.Location = new System.Drawing.Point(5, 44);
             this.lbTwoKillBigSmallDesc.Name = "lbTwoKillBigSmallDesc";
-            this.lbTwoKillBigSmallDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoKillBigSmallDesc.Size = new System.Drawing.Size(41, 12);
             this.lbTwoKillBigSmallDesc.TabIndex = 1;
             this.lbTwoKillBigSmallDesc.Text = "大小: ";
             // 
@@ -1717,7 +1715,7 @@
             this.lbTwoKillSumDesc.AutoSize = true;
             this.lbTwoKillSumDesc.Location = new System.Drawing.Point(5, 36);
             this.lbTwoKillSumDesc.Name = "lbTwoKillSumDesc";
-            this.lbTwoKillSumDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbTwoKillSumDesc.Size = new System.Drawing.Size(41, 12);
             this.lbTwoKillSumDesc.TabIndex = 1;
             this.lbTwoKillSumDesc.Text = "和值: ";
             // 
@@ -1767,14 +1765,14 @@
             this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel18.Controls.Add(this.btnKillOddEvenClear);
             this.panel18.Controls.Add(this.btnKillOddEvenAll);
-            this.panel18.Controls.Add(this.btnKillOddEven8);
-            this.panel18.Controls.Add(this.btnKillOddEven4);
-            this.panel18.Controls.Add(this.btnKillOddEven6);
-            this.panel18.Controls.Add(this.btnKillOddEven5);
-            this.panel18.Controls.Add(this.btnKillOddEven7);
-            this.panel18.Controls.Add(this.btnKillOddEven3);
-            this.panel18.Controls.Add(this.btnKillOddEven2);
-            this.panel18.Controls.Add(this.btnKillOddEven1);
+            this.panel18.Controls.Add(this.btnKillOddEven011);
+            this.panel18.Controls.Add(this.btnKillOddEven100);
+            this.panel18.Controls.Add(this.btnKillOddEven001);
+            this.panel18.Controls.Add(this.btnKillOddEven000);
+            this.panel18.Controls.Add(this.btnKillOddEven010);
+            this.panel18.Controls.Add(this.btnKillOddEven101);
+            this.panel18.Controls.Add(this.btnKillOddEven110);
+            this.panel18.Controls.Add(this.btnKillOddEven111);
             this.panel18.Controls.Add(this.lbKillOddEvenDesc);
             this.panel18.Controls.Add(this.lbKillOddEven);
             this.panel18.Location = new System.Drawing.Point(6, 411);
@@ -1800,84 +1798,92 @@
             this.btnKillOddEvenAll.Text = "全選";
             this.btnKillOddEvenAll.UseVisualStyleBackColor = true;
             // 
-            // btnKillOddEven8
+            // btnKillOddEven011
             // 
-            this.btnKillOddEven8.Location = new System.Drawing.Point(262, 66);
-            this.btnKillOddEven8.Name = "btnKillOddEven8";
-            this.btnKillOddEven8.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven8.TabIndex = 17;
-            this.btnKillOddEven8.Text = "偶奇奇";
-            this.btnKillOddEven8.UseVisualStyleBackColor = true;
+            this.btnKillOddEven011.Location = new System.Drawing.Point(262, 66);
+            this.btnKillOddEven011.Name = "btnKillOddEven011";
+            this.btnKillOddEven011.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven011.TabIndex = 17;
+            this.btnKillOddEven011.Text = "偶奇奇";
+            this.btnKillOddEven011.UseVisualStyleBackColor = true;
+            this.btnKillOddEven011.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven4
+            // btnKillOddEven100
             // 
-            this.btnKillOddEven4.Location = new System.Drawing.Point(262, 37);
-            this.btnKillOddEven4.Name = "btnKillOddEven4";
-            this.btnKillOddEven4.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven4.TabIndex = 16;
-            this.btnKillOddEven4.Text = "奇偶偶";
-            this.btnKillOddEven4.UseVisualStyleBackColor = true;
+            this.btnKillOddEven100.Location = new System.Drawing.Point(262, 37);
+            this.btnKillOddEven100.Name = "btnKillOddEven100";
+            this.btnKillOddEven100.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven100.TabIndex = 16;
+            this.btnKillOddEven100.Text = "奇偶偶";
+            this.btnKillOddEven100.UseVisualStyleBackColor = true;
+            this.btnKillOddEven100.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven6
+            // btnKillOddEven001
             // 
-            this.btnKillOddEven6.Location = new System.Drawing.Point(116, 66);
-            this.btnKillOddEven6.Name = "btnKillOddEven6";
-            this.btnKillOddEven6.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven6.TabIndex = 15;
-            this.btnKillOddEven6.Text = "偶偶奇";
-            this.btnKillOddEven6.UseVisualStyleBackColor = true;
+            this.btnKillOddEven001.Location = new System.Drawing.Point(116, 66);
+            this.btnKillOddEven001.Name = "btnKillOddEven001";
+            this.btnKillOddEven001.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven001.TabIndex = 15;
+            this.btnKillOddEven001.Text = "偶偶奇";
+            this.btnKillOddEven001.UseVisualStyleBackColor = true;
+            this.btnKillOddEven001.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven5
+            // btnKillOddEven000
             // 
-            this.btnKillOddEven5.Location = new System.Drawing.Point(43, 66);
-            this.btnKillOddEven5.Name = "btnKillOddEven5";
-            this.btnKillOddEven5.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven5.TabIndex = 14;
-            this.btnKillOddEven5.Text = "偶偶偶";
-            this.btnKillOddEven5.UseVisualStyleBackColor = true;
+            this.btnKillOddEven000.Location = new System.Drawing.Point(43, 66);
+            this.btnKillOddEven000.Name = "btnKillOddEven000";
+            this.btnKillOddEven000.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven000.TabIndex = 14;
+            this.btnKillOddEven000.Text = "偶偶偶";
+            this.btnKillOddEven000.UseVisualStyleBackColor = true;
+            this.btnKillOddEven000.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven7
+            // btnKillOddEven010
             // 
-            this.btnKillOddEven7.Location = new System.Drawing.Point(189, 66);
-            this.btnKillOddEven7.Name = "btnKillOddEven7";
-            this.btnKillOddEven7.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven7.TabIndex = 13;
-            this.btnKillOddEven7.Text = "偶奇偶";
-            this.btnKillOddEven7.UseVisualStyleBackColor = true;
+            this.btnKillOddEven010.Location = new System.Drawing.Point(189, 66);
+            this.btnKillOddEven010.Name = "btnKillOddEven010";
+            this.btnKillOddEven010.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven010.TabIndex = 13;
+            this.btnKillOddEven010.Text = "偶奇偶";
+            this.btnKillOddEven010.UseVisualStyleBackColor = true;
+            this.btnKillOddEven010.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven3
+            // btnKillOddEven101
             // 
-            this.btnKillOddEven3.Location = new System.Drawing.Point(189, 37);
-            this.btnKillOddEven3.Name = "btnKillOddEven3";
-            this.btnKillOddEven3.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven3.TabIndex = 12;
-            this.btnKillOddEven3.Text = "奇偶奇";
-            this.btnKillOddEven3.UseVisualStyleBackColor = true;
+            this.btnKillOddEven101.Location = new System.Drawing.Point(189, 37);
+            this.btnKillOddEven101.Name = "btnKillOddEven101";
+            this.btnKillOddEven101.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven101.TabIndex = 12;
+            this.btnKillOddEven101.Text = "奇偶奇";
+            this.btnKillOddEven101.UseVisualStyleBackColor = true;
+            this.btnKillOddEven101.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven2
+            // btnKillOddEven110
             // 
-            this.btnKillOddEven2.Location = new System.Drawing.Point(116, 37);
-            this.btnKillOddEven2.Name = "btnKillOddEven2";
-            this.btnKillOddEven2.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven2.TabIndex = 11;
-            this.btnKillOddEven2.Text = "奇奇偶";
-            this.btnKillOddEven2.UseVisualStyleBackColor = true;
+            this.btnKillOddEven110.Location = new System.Drawing.Point(116, 37);
+            this.btnKillOddEven110.Name = "btnKillOddEven110";
+            this.btnKillOddEven110.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven110.TabIndex = 11;
+            this.btnKillOddEven110.Text = "奇奇偶";
+            this.btnKillOddEven110.UseVisualStyleBackColor = true;
+            this.btnKillOddEven110.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnKillOddEven1
+            // btnKillOddEven111
             // 
-            this.btnKillOddEven1.Location = new System.Drawing.Point(43, 37);
-            this.btnKillOddEven1.Name = "btnKillOddEven1";
-            this.btnKillOddEven1.Size = new System.Drawing.Size(67, 23);
-            this.btnKillOddEven1.TabIndex = 10;
-            this.btnKillOddEven1.Text = "奇奇奇";
-            this.btnKillOddEven1.UseVisualStyleBackColor = true;
+            this.btnKillOddEven111.Location = new System.Drawing.Point(43, 37);
+            this.btnKillOddEven111.Name = "btnKillOddEven111";
+            this.btnKillOddEven111.Size = new System.Drawing.Size(67, 23);
+            this.btnKillOddEven111.TabIndex = 10;
+            this.btnKillOddEven111.Text = "奇奇奇";
+            this.btnKillOddEven111.UseVisualStyleBackColor = true;
+            this.btnKillOddEven111.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
             // lbKillOddEvenDesc
             // 
             this.lbKillOddEvenDesc.AutoSize = true;
             this.lbKillOddEvenDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKillOddEvenDesc.Name = "lbKillOddEvenDesc";
-            this.lbKillOddEvenDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKillOddEvenDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKillOddEvenDesc.TabIndex = 1;
             this.lbKillOddEvenDesc.Text = "奇偶: ";
             // 
@@ -1983,6 +1989,7 @@
             this.btnChooseModeOneEven.TabIndex = 63;
             this.btnChooseModeOneEven.Text = "偶";
             this.btnChooseModeOneEven.UseVisualStyleBackColor = true;
+            this.btnChooseModeOneEven.Click += new System.EventHandler(this.btnChooseModeOneEven_Click);
             // 
             // btnChooseModeOneOdd
             // 
@@ -1992,6 +1999,7 @@
             this.btnChooseModeOneOdd.TabIndex = 62;
             this.btnChooseModeOneOdd.Text = "奇";
             this.btnChooseModeOneOdd.UseVisualStyleBackColor = true;
+            this.btnChooseModeOneOdd.Click += new System.EventHandler(this.btnChooseModeOneOdd_Click);
             // 
             // btnChooseModeOneSmall
             // 
@@ -2001,6 +2009,7 @@
             this.btnChooseModeOneSmall.TabIndex = 61;
             this.btnChooseModeOneSmall.Text = "小";
             this.btnChooseModeOneSmall.UseVisualStyleBackColor = true;
+            this.btnChooseModeOneSmall.Click += new System.EventHandler(this.btnChooseModeOneSmall_Click);
             // 
             // btnChooseModeOneBig
             // 
@@ -2010,6 +2019,7 @@
             this.btnChooseModeOneBig.TabIndex = 60;
             this.btnChooseModeOneBig.Text = "大";
             this.btnChooseModeOneBig.UseVisualStyleBackColor = true;
+            this.btnChooseModeOneBig.Click += new System.EventHandler(this.btnChooseModeOneBig_Click);
             // 
             // btnChooseModeOne09
             // 
@@ -2106,7 +2116,7 @@
             this.lbChooseModeOne.AutoSize = true;
             this.lbChooseModeOne.Location = new System.Drawing.Point(5, 90);
             this.lbChooseModeOne.Name = "lbChooseModeOne";
-            this.lbChooseModeOne.Size = new System.Drawing.Size(35, 12);
+            this.lbChooseModeOne.Size = new System.Drawing.Size(41, 12);
             this.lbChooseModeOne.TabIndex = 49;
             this.lbChooseModeOne.Text = "个位: ";
             // 
@@ -2205,7 +2215,7 @@
             this.lbChooseModeTen.AutoSize = true;
             this.lbChooseModeTen.Location = new System.Drawing.Point(5, 61);
             this.lbChooseModeTen.Name = "lbChooseModeTen";
-            this.lbChooseModeTen.Size = new System.Drawing.Size(35, 12);
+            this.lbChooseModeTen.Size = new System.Drawing.Size(41, 12);
             this.lbChooseModeTen.TabIndex = 38;
             this.lbChooseModeTen.Text = "十位: ";
             // 
@@ -2235,6 +2245,7 @@
             this.btnChooseModeOneClear.TabIndex = 35;
             this.btnChooseModeOneClear.Text = "全清";
             this.btnChooseModeOneClear.UseVisualStyleBackColor = true;
+            this.btnChooseModeOneClear.Click += new System.EventHandler(this.btnChooseModeOneClear_Click);
             // 
             // btnChooseModeAll
             // 
@@ -2244,6 +2255,7 @@
             this.btnChooseModeAll.TabIndex = 34;
             this.btnChooseModeAll.Text = "全選";
             this.btnChooseModeAll.UseVisualStyleBackColor = true;
+            this.btnChooseModeAll.Click += new System.EventHandler(this.btnChooseModeAll_Click);
             // 
             // btnChooseModeHundred08
             // 
@@ -2322,7 +2334,7 @@
             this.lbChooseModeHundred.AutoSize = true;
             this.lbChooseModeHundred.Location = new System.Drawing.Point(5, 30);
             this.lbChooseModeHundred.Name = "lbChooseModeHundred";
-            this.lbChooseModeHundred.Size = new System.Drawing.Size(35, 12);
+            this.lbChooseModeHundred.Size = new System.Drawing.Size(41, 12);
             this.lbChooseModeHundred.TabIndex = 1;
             this.lbChooseModeHundred.Text = "百位: ";
             // 
@@ -2378,6 +2390,7 @@
             this.btnKillSum27.TabIndex = 67;
             this.btnKillSum27.Text = "27";
             this.btnKillSum27.UseVisualStyleBackColor = true;
+            this.btnKillSum27.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum26
             // 
@@ -2387,6 +2400,7 @@
             this.btnKillSum26.TabIndex = 66;
             this.btnKillSum26.Text = "26";
             this.btnKillSum26.UseVisualStyleBackColor = true;
+            this.btnKillSum26.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum25
             // 
@@ -2396,6 +2410,7 @@
             this.btnKillSum25.TabIndex = 65;
             this.btnKillSum25.Text = "25";
             this.btnKillSum25.UseVisualStyleBackColor = true;
+            this.btnKillSum25.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum24
             // 
@@ -2405,6 +2420,7 @@
             this.btnKillSum24.TabIndex = 64;
             this.btnKillSum24.Text = "24";
             this.btnKillSum24.UseVisualStyleBackColor = true;
+            this.btnKillSum24.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum23
             // 
@@ -2414,6 +2430,7 @@
             this.btnKillSum23.TabIndex = 63;
             this.btnKillSum23.Text = "23";
             this.btnKillSum23.UseVisualStyleBackColor = true;
+            this.btnKillSum23.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum22
             // 
@@ -2423,6 +2440,7 @@
             this.btnKillSum22.TabIndex = 62;
             this.btnKillSum22.Text = "22";
             this.btnKillSum22.UseVisualStyleBackColor = true;
+            this.btnKillSum22.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum20
             // 
@@ -2432,6 +2450,7 @@
             this.btnKillSum20.TabIndex = 61;
             this.btnKillSum20.Text = "20";
             this.btnKillSum20.UseVisualStyleBackColor = true;
+            this.btnKillSum20.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum21
             // 
@@ -2441,6 +2460,7 @@
             this.btnKillSum21.TabIndex = 60;
             this.btnKillSum21.Text = "21";
             this.btnKillSum21.UseVisualStyleBackColor = true;
+            this.btnKillSum21.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum12
             // 
@@ -2450,6 +2470,7 @@
             this.btnKillSum12.TabIndex = 59;
             this.btnKillSum12.Text = "12";
             this.btnKillSum12.UseVisualStyleBackColor = true;
+            this.btnKillSum12.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum19
             // 
@@ -2459,6 +2480,7 @@
             this.btnKillSum19.TabIndex = 58;
             this.btnKillSum19.Text = "19";
             this.btnKillSum19.UseVisualStyleBackColor = true;
+            this.btnKillSum19.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum18
             // 
@@ -2468,6 +2490,7 @@
             this.btnKillSum18.TabIndex = 57;
             this.btnKillSum18.Text = "18";
             this.btnKillSum18.UseVisualStyleBackColor = true;
+            this.btnKillSum18.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum17
             // 
@@ -2477,6 +2500,7 @@
             this.btnKillSum17.TabIndex = 56;
             this.btnKillSum17.Text = "17";
             this.btnKillSum17.UseVisualStyleBackColor = true;
+            this.btnKillSum17.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum16
             // 
@@ -2486,6 +2510,7 @@
             this.btnKillSum16.TabIndex = 55;
             this.btnKillSum16.Text = "16";
             this.btnKillSum16.UseVisualStyleBackColor = true;
+            this.btnKillSum16.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum15
             // 
@@ -2495,6 +2520,7 @@
             this.btnKillSum15.TabIndex = 54;
             this.btnKillSum15.Text = "15";
             this.btnKillSum15.UseVisualStyleBackColor = true;
+            this.btnKillSum15.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum14
             // 
@@ -2504,6 +2530,7 @@
             this.btnKillSum14.TabIndex = 53;
             this.btnKillSum14.Text = "14";
             this.btnKillSum14.UseVisualStyleBackColor = true;
+            this.btnKillSum14.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum13
             // 
@@ -2513,6 +2540,7 @@
             this.btnKillSum13.TabIndex = 52;
             this.btnKillSum13.Text = "13";
             this.btnKillSum13.UseVisualStyleBackColor = true;
+            this.btnKillSum13.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum11
             // 
@@ -2522,6 +2550,7 @@
             this.btnKillSum11.TabIndex = 51;
             this.btnKillSum11.Text = "11";
             this.btnKillSum11.UseVisualStyleBackColor = true;
+            this.btnKillSum11.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum10
             // 
@@ -2531,6 +2560,7 @@
             this.btnKillSum10.TabIndex = 50;
             this.btnKillSum10.Text = "10";
             this.btnKillSum10.UseVisualStyleBackColor = true;
+            this.btnKillSum10.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum9
             // 
@@ -2540,6 +2570,7 @@
             this.btnKillSum9.TabIndex = 49;
             this.btnKillSum9.Text = "9";
             this.btnKillSum9.UseVisualStyleBackColor = true;
+            this.btnKillSum9.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum8
             // 
@@ -2549,6 +2580,7 @@
             this.btnKillSum8.TabIndex = 48;
             this.btnKillSum8.Text = "8";
             this.btnKillSum8.UseVisualStyleBackColor = true;
+            this.btnKillSum8.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum7
             // 
@@ -2558,6 +2590,7 @@
             this.btnKillSum7.TabIndex = 47;
             this.btnKillSum7.Text = "7";
             this.btnKillSum7.UseVisualStyleBackColor = true;
+            this.btnKillSum7.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSum6
             // 
@@ -2567,6 +2600,7 @@
             this.btnKillSum6.TabIndex = 46;
             this.btnKillSum6.Text = "6";
             this.btnKillSum6.UseVisualStyleBackColor = true;
+            this.btnKillSum6.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnKillSumClear
             // 
@@ -2591,7 +2625,7 @@
             this.lbKillSumDesc.AutoSize = true;
             this.lbKillSumDesc.Location = new System.Drawing.Point(5, 36);
             this.lbKillSumDesc.Name = "lbKillSumDesc";
-            this.lbKillSumDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKillSumDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKillSumDesc.TabIndex = 1;
             this.lbKillSumDesc.Text = "和值: ";
             // 
@@ -2651,6 +2685,7 @@
             this.btnKillCross9.TabIndex = 14;
             this.btnKillCross9.Text = "9";
             this.btnKillCross9.UseVisualStyleBackColor = true;
+            this.btnKillCross9.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross8
             // 
@@ -2660,6 +2695,7 @@
             this.btnKillCross8.TabIndex = 13;
             this.btnKillCross8.Text = "8";
             this.btnKillCross8.UseVisualStyleBackColor = true;
+            this.btnKillCross8.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross7
             // 
@@ -2669,6 +2705,7 @@
             this.btnKillCross7.TabIndex = 11;
             this.btnKillCross7.Text = "7";
             this.btnKillCross7.UseVisualStyleBackColor = true;
+            this.btnKillCross7.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross6
             // 
@@ -2678,6 +2715,7 @@
             this.btnKillCross6.TabIndex = 10;
             this.btnKillCross6.Text = "6";
             this.btnKillCross6.UseVisualStyleBackColor = true;
+            this.btnKillCross6.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross5
             // 
@@ -2687,6 +2725,7 @@
             this.btnKillCross5.TabIndex = 9;
             this.btnKillCross5.Text = "5";
             this.btnKillCross5.UseVisualStyleBackColor = true;
+            this.btnKillCross5.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross4
             // 
@@ -2696,6 +2735,7 @@
             this.btnKillCross4.TabIndex = 8;
             this.btnKillCross4.Text = "4";
             this.btnKillCross4.UseVisualStyleBackColor = true;
+            this.btnKillCross4.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross3
             // 
@@ -2705,6 +2745,7 @@
             this.btnKillCross3.TabIndex = 7;
             this.btnKillCross3.Text = "3";
             this.btnKillCross3.UseVisualStyleBackColor = true;
+            this.btnKillCross3.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnKillCross2
             // 
@@ -2714,13 +2755,14 @@
             this.btnKillCross2.TabIndex = 6;
             this.btnKillCross2.Text = "2";
             this.btnKillCross2.UseVisualStyleBackColor = true;
+            this.btnKillCross2.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // lbKillCrossDesc
             // 
             this.lbKillCrossDesc.AutoSize = true;
             this.lbKillCrossDesc.Location = new System.Drawing.Point(5, 40);
             this.lbKillCrossDesc.Name = "lbKillCrossDesc";
-            this.lbKillCrossDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKillCrossDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKillCrossDesc.TabIndex = 1;
             this.lbKillCrossDesc.Text = "跨度: ";
             // 
@@ -2739,8 +2781,6 @@
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Controls.Add(this.button15);
             this.panel12.Controls.Add(this.button16);
-            this.panel12.Controls.Add(this.btnLocalNumber3Local);
-            this.panel12.Controls.Add(this.btnLocalNumber2Local);
             this.panel12.Controls.Add(this.btnLocalNumber1Local);
             this.panel12.Controls.Add(this.btnLocalNumber0Local);
             this.panel12.Controls.Add(this.lbLocalNumberDesc2);
@@ -2779,24 +2819,6 @@
             this.button16.Text = "全選";
             this.button16.UseVisualStyleBackColor = true;
             // 
-            // btnLocalNumber3Local
-            // 
-            this.btnLocalNumber3Local.Location = new System.Drawing.Point(193, 58);
-            this.btnLocalNumber3Local.Name = "btnLocalNumber3Local";
-            this.btnLocalNumber3Local.Size = new System.Drawing.Size(49, 23);
-            this.btnLocalNumber3Local.TabIndex = 29;
-            this.btnLocalNumber3Local.Text = "3胆";
-            this.btnLocalNumber3Local.UseVisualStyleBackColor = true;
-            // 
-            // btnLocalNumber2Local
-            // 
-            this.btnLocalNumber2Local.Location = new System.Drawing.Point(143, 58);
-            this.btnLocalNumber2Local.Name = "btnLocalNumber2Local";
-            this.btnLocalNumber2Local.Size = new System.Drawing.Size(49, 23);
-            this.btnLocalNumber2Local.TabIndex = 28;
-            this.btnLocalNumber2Local.Text = "2胆";
-            this.btnLocalNumber2Local.UseVisualStyleBackColor = true;
-            // 
             // btnLocalNumber1Local
             // 
             this.btnLocalNumber1Local.Location = new System.Drawing.Point(92, 58);
@@ -2805,6 +2827,7 @@
             this.btnLocalNumber1Local.TabIndex = 27;
             this.btnLocalNumber1Local.Text = "1胆";
             this.btnLocalNumber1Local.UseVisualStyleBackColor = true;
+            this.btnLocalNumber1Local.Click += new System.EventHandler(this.btnLocalNumber1Local_Click);
             // 
             // btnLocalNumber0Local
             // 
@@ -2814,13 +2837,14 @@
             this.btnLocalNumber0Local.TabIndex = 26;
             this.btnLocalNumber0Local.Text = "0胆";
             this.btnLocalNumber0Local.UseVisualStyleBackColor = true;
+            this.btnLocalNumber0Local.Click += new System.EventHandler(this.btnLocalNumber0Local_Click);
             // 
             // lbLocalNumberDesc2
             // 
             this.lbLocalNumberDesc2.AutoSize = true;
             this.lbLocalNumberDesc2.Location = new System.Drawing.Point(3, 64);
             this.lbLocalNumberDesc2.Name = "lbLocalNumberDesc2";
-            this.lbLocalNumberDesc2.Size = new System.Drawing.Size(35, 12);
+            this.lbLocalNumberDesc2.Size = new System.Drawing.Size(41, 12);
             this.lbLocalNumberDesc2.TabIndex = 25;
             this.lbLocalNumberDesc2.Text = "中出: ";
             // 
@@ -2919,7 +2943,7 @@
             this.lbLocalNumberDesc1.AutoSize = true;
             this.lbLocalNumberDesc1.Location = new System.Drawing.Point(3, 36);
             this.lbLocalNumberDesc1.Name = "lbLocalNumberDesc1";
-            this.lbLocalNumberDesc1.Size = new System.Drawing.Size(35, 12);
+            this.lbLocalNumberDesc1.Size = new System.Drawing.Size(41, 12);
             this.lbLocalNumberDesc1.TabIndex = 1;
             this.lbLocalNumberDesc1.Text = "胆码: ";
             // 
@@ -2968,6 +2992,7 @@
             this.btnKill12Sum12.TabIndex = 61;
             this.btnKill12Sum12.Text = "12";
             this.btnKill12Sum12.UseVisualStyleBackColor = true;
+            this.btnKill12Sum12.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum19
             // 
@@ -2977,6 +3002,7 @@
             this.btnKill12Sum19.TabIndex = 60;
             this.btnKill12Sum19.Text = "19";
             this.btnKill12Sum19.UseVisualStyleBackColor = true;
+            this.btnKill12Sum19.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum18
             // 
@@ -2986,6 +3012,7 @@
             this.btnKill12Sum18.TabIndex = 59;
             this.btnKill12Sum18.Text = "18";
             this.btnKill12Sum18.UseVisualStyleBackColor = true;
+            this.btnKill12Sum18.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum17
             // 
@@ -2995,6 +3022,7 @@
             this.btnKill12Sum17.TabIndex = 58;
             this.btnKill12Sum17.Text = "17";
             this.btnKill12Sum17.UseVisualStyleBackColor = true;
+            this.btnKill12Sum17.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum16
             // 
@@ -3004,6 +3032,7 @@
             this.btnKill12Sum16.TabIndex = 57;
             this.btnKill12Sum16.Text = "16";
             this.btnKill12Sum16.UseVisualStyleBackColor = true;
+            this.btnKill12Sum16.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum15
             // 
@@ -3013,6 +3042,7 @@
             this.btnKill12Sum15.TabIndex = 56;
             this.btnKill12Sum15.Text = "15";
             this.btnKill12Sum15.UseVisualStyleBackColor = true;
+            this.btnKill12Sum15.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum14
             // 
@@ -3022,6 +3052,7 @@
             this.btnKill12Sum14.TabIndex = 55;
             this.btnKill12Sum14.Text = "14";
             this.btnKill12Sum14.UseVisualStyleBackColor = true;
+            this.btnKill12Sum14.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum13
             // 
@@ -3031,6 +3062,7 @@
             this.btnKill12Sum13.TabIndex = 54;
             this.btnKill12Sum13.Text = "13";
             this.btnKill12Sum13.UseVisualStyleBackColor = true;
+            this.btnKill12Sum13.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum11
             // 
@@ -3040,6 +3072,7 @@
             this.btnKill12Sum11.TabIndex = 53;
             this.btnKill12Sum11.Text = "11";
             this.btnKill12Sum11.UseVisualStyleBackColor = true;
+            this.btnKill12Sum11.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum10
             // 
@@ -3049,6 +3082,7 @@
             this.btnKill12Sum10.TabIndex = 52;
             this.btnKill12Sum10.Text = "10";
             this.btnKill12Sum10.UseVisualStyleBackColor = true;
+            this.btnKill12Sum10.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum9
             // 
@@ -3058,6 +3092,7 @@
             this.btnKill12Sum9.TabIndex = 51;
             this.btnKill12Sum9.Text = "9";
             this.btnKill12Sum9.UseVisualStyleBackColor = true;
+            this.btnKill12Sum9.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum8
             // 
@@ -3067,6 +3102,7 @@
             this.btnKill12Sum8.TabIndex = 50;
             this.btnKill12Sum8.Text = "8";
             this.btnKill12Sum8.UseVisualStyleBackColor = true;
+            this.btnKill12Sum8.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum7
             // 
@@ -3076,6 +3112,7 @@
             this.btnKill12Sum7.TabIndex = 49;
             this.btnKill12Sum7.Text = "7";
             this.btnKill12Sum7.UseVisualStyleBackColor = true;
+            this.btnKill12Sum7.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum6
             // 
@@ -3085,6 +3122,7 @@
             this.btnKill12Sum6.TabIndex = 48;
             this.btnKill12Sum6.Text = "6";
             this.btnKill12Sum6.UseVisualStyleBackColor = true;
+            this.btnKill12Sum6.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum5
             // 
@@ -3094,6 +3132,7 @@
             this.btnKill12Sum5.TabIndex = 47;
             this.btnKill12Sum5.Text = "5";
             this.btnKill12Sum5.UseVisualStyleBackColor = true;
+            this.btnKill12Sum5.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum4
             // 
@@ -3103,6 +3142,7 @@
             this.btnKill12Sum4.TabIndex = 46;
             this.btnKill12Sum4.Text = "4";
             this.btnKill12Sum4.UseVisualStyleBackColor = true;
+            this.btnKill12Sum4.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // btnKill12Sum3
             // 
@@ -3112,13 +3152,14 @@
             this.btnKill12Sum3.TabIndex = 45;
             this.btnKill12Sum3.Text = "3";
             this.btnKill12Sum3.UseVisualStyleBackColor = true;
+            this.btnKill12Sum3.Click += new System.EventHandler(this.Kill12Sum_ButtomClick);
             // 
             // lbKill12SumDesc
             // 
             this.lbKill12SumDesc.AutoSize = true;
             this.lbKill12SumDesc.Location = new System.Drawing.Point(3, 33);
             this.lbKill12SumDesc.Name = "lbKill12SumDesc";
-            this.lbKill12SumDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill12SumDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill12SumDesc.TabIndex = 1;
             this.lbKill12SumDesc.Text = "12和: ";
             // 
@@ -3167,6 +3208,7 @@
             this.btnKill23Sum12.TabIndex = 45;
             this.btnKill23Sum12.Text = "12";
             this.btnKill23Sum12.UseVisualStyleBackColor = true;
+            this.btnKill23Sum12.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum19
             // 
@@ -3176,6 +3218,7 @@
             this.btnKill23Sum19.TabIndex = 44;
             this.btnKill23Sum19.Text = "19";
             this.btnKill23Sum19.UseVisualStyleBackColor = true;
+            this.btnKill23Sum19.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum18
             // 
@@ -3185,6 +3228,7 @@
             this.btnKill23Sum18.TabIndex = 43;
             this.btnKill23Sum18.Text = "18";
             this.btnKill23Sum18.UseVisualStyleBackColor = true;
+            this.btnKill23Sum18.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum17
             // 
@@ -3194,6 +3238,7 @@
             this.btnKill23Sum17.TabIndex = 42;
             this.btnKill23Sum17.Text = "17";
             this.btnKill23Sum17.UseVisualStyleBackColor = true;
+            this.btnKill23Sum17.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum16
             // 
@@ -3203,6 +3248,7 @@
             this.btnKill23Sum16.TabIndex = 41;
             this.btnKill23Sum16.Text = "16";
             this.btnKill23Sum16.UseVisualStyleBackColor = true;
+            this.btnKill23Sum16.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum15
             // 
@@ -3212,6 +3258,7 @@
             this.btnKill23Sum15.TabIndex = 40;
             this.btnKill23Sum15.Text = "15";
             this.btnKill23Sum15.UseVisualStyleBackColor = true;
+            this.btnKill23Sum15.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum14
             // 
@@ -3221,6 +3268,7 @@
             this.btnKill23Sum14.TabIndex = 39;
             this.btnKill23Sum14.Text = "14";
             this.btnKill23Sum14.UseVisualStyleBackColor = true;
+            this.btnKill23Sum14.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum13
             // 
@@ -3230,6 +3278,7 @@
             this.btnKill23Sum13.TabIndex = 38;
             this.btnKill23Sum13.Text = "13";
             this.btnKill23Sum13.UseVisualStyleBackColor = true;
+            this.btnKill23Sum13.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum11
             // 
@@ -3239,6 +3288,7 @@
             this.btnKill23Sum11.TabIndex = 37;
             this.btnKill23Sum11.Text = "11";
             this.btnKill23Sum11.UseVisualStyleBackColor = true;
+            this.btnKill23Sum11.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum10
             // 
@@ -3248,6 +3298,7 @@
             this.btnKill23Sum10.TabIndex = 36;
             this.btnKill23Sum10.Text = "10";
             this.btnKill23Sum10.UseVisualStyleBackColor = true;
+            this.btnKill23Sum10.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum9
             // 
@@ -3257,6 +3308,7 @@
             this.btnKill23Sum9.TabIndex = 35;
             this.btnKill23Sum9.Text = "9";
             this.btnKill23Sum9.UseVisualStyleBackColor = true;
+            this.btnKill23Sum9.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum8
             // 
@@ -3266,6 +3318,7 @@
             this.btnKill23Sum8.TabIndex = 34;
             this.btnKill23Sum8.Text = "8";
             this.btnKill23Sum8.UseVisualStyleBackColor = true;
+            this.btnKill23Sum8.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum7
             // 
@@ -3275,6 +3328,7 @@
             this.btnKill23Sum7.TabIndex = 33;
             this.btnKill23Sum7.Text = "7";
             this.btnKill23Sum7.UseVisualStyleBackColor = true;
+            this.btnKill23Sum7.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum6
             // 
@@ -3284,6 +3338,7 @@
             this.btnKill23Sum6.TabIndex = 32;
             this.btnKill23Sum6.Text = "6";
             this.btnKill23Sum6.UseVisualStyleBackColor = true;
+            this.btnKill23Sum6.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum5
             // 
@@ -3293,6 +3348,7 @@
             this.btnKill23Sum5.TabIndex = 31;
             this.btnKill23Sum5.Text = "5";
             this.btnKill23Sum5.UseVisualStyleBackColor = true;
+            this.btnKill23Sum5.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum4
             // 
@@ -3302,6 +3358,7 @@
             this.btnKill23Sum4.TabIndex = 30;
             this.btnKill23Sum4.Text = "4";
             this.btnKill23Sum4.UseVisualStyleBackColor = true;
+            this.btnKill23Sum4.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // btnKill23Sum3
             // 
@@ -3311,13 +3368,14 @@
             this.btnKill23Sum3.TabIndex = 29;
             this.btnKill23Sum3.Text = "3";
             this.btnKill23Sum3.UseVisualStyleBackColor = true;
+            this.btnKill23Sum3.Click += new System.EventHandler(this.Kill23Sum_ButtomClick);
             // 
             // lbKill23SumDesc
             // 
             this.lbKill23SumDesc.AutoSize = true;
             this.lbKill23SumDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKill23SumDesc.Name = "lbKill23SumDesc";
-            this.lbKill23SumDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill23SumDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill23SumDesc.TabIndex = 1;
             this.lbKill23SumDesc.Text = "13差: ";
             // 
@@ -3366,6 +3424,7 @@
             this.btnKill13Sum19.TabIndex = 28;
             this.btnKill13Sum19.Text = "19";
             this.btnKill13Sum19.UseVisualStyleBackColor = true;
+            this.btnKill13Sum19.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum18
             // 
@@ -3375,6 +3434,7 @@
             this.btnKill13Sum18.TabIndex = 27;
             this.btnKill13Sum18.Text = "18";
             this.btnKill13Sum18.UseVisualStyleBackColor = true;
+            this.btnKill13Sum18.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum17
             // 
@@ -3384,6 +3444,7 @@
             this.btnKill13Sum17.TabIndex = 26;
             this.btnKill13Sum17.Text = "17";
             this.btnKill13Sum17.UseVisualStyleBackColor = true;
+            this.btnKill13Sum17.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum16
             // 
@@ -3393,6 +3454,7 @@
             this.btnKill13Sum16.TabIndex = 25;
             this.btnKill13Sum16.Text = "16";
             this.btnKill13Sum16.UseVisualStyleBackColor = true;
+            this.btnKill13Sum16.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum15
             // 
@@ -3402,6 +3464,7 @@
             this.btnKill13Sum15.TabIndex = 24;
             this.btnKill13Sum15.Text = "15";
             this.btnKill13Sum15.UseVisualStyleBackColor = true;
+            this.btnKill13Sum15.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum14
             // 
@@ -3411,6 +3474,7 @@
             this.btnKill13Sum14.TabIndex = 23;
             this.btnKill13Sum14.Text = "14";
             this.btnKill13Sum14.UseVisualStyleBackColor = true;
+            this.btnKill13Sum14.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum13
             // 
@@ -3420,6 +3484,7 @@
             this.btnKill13Sum13.TabIndex = 22;
             this.btnKill13Sum13.Text = "13";
             this.btnKill13Sum13.UseVisualStyleBackColor = true;
+            this.btnKill13Sum13.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum12
             // 
@@ -3429,6 +3494,7 @@
             this.btnKill13Sum12.TabIndex = 17;
             this.btnKill13Sum12.Text = "12";
             this.btnKill13Sum12.UseVisualStyleBackColor = true;
+            this.btnKill13Sum12.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum11
             // 
@@ -3438,6 +3504,7 @@
             this.btnKill13Sum11.TabIndex = 16;
             this.btnKill13Sum11.Text = "11";
             this.btnKill13Sum11.UseVisualStyleBackColor = true;
+            this.btnKill13Sum11.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum10
             // 
@@ -3447,6 +3514,7 @@
             this.btnKill13Sum10.TabIndex = 15;
             this.btnKill13Sum10.Text = "10";
             this.btnKill13Sum10.UseVisualStyleBackColor = true;
+            this.btnKill13Sum10.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum9
             // 
@@ -3456,6 +3524,7 @@
             this.btnKill13Sum9.TabIndex = 14;
             this.btnKill13Sum9.Text = "9";
             this.btnKill13Sum9.UseVisualStyleBackColor = true;
+            this.btnKill13Sum9.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum8
             // 
@@ -3465,6 +3534,7 @@
             this.btnKill13Sum8.TabIndex = 13;
             this.btnKill13Sum8.Text = "8";
             this.btnKill13Sum8.UseVisualStyleBackColor = true;
+            this.btnKill13Sum8.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum7
             // 
@@ -3474,6 +3544,7 @@
             this.btnKill13Sum7.TabIndex = 11;
             this.btnKill13Sum7.Text = "7";
             this.btnKill13Sum7.UseVisualStyleBackColor = true;
+            this.btnKill13Sum7.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum6
             // 
@@ -3483,6 +3554,7 @@
             this.btnKill13Sum6.TabIndex = 10;
             this.btnKill13Sum6.Text = "6";
             this.btnKill13Sum6.UseVisualStyleBackColor = true;
+            this.btnKill13Sum6.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum5
             // 
@@ -3492,6 +3564,7 @@
             this.btnKill13Sum5.TabIndex = 9;
             this.btnKill13Sum5.Text = "5";
             this.btnKill13Sum5.UseVisualStyleBackColor = true;
+            this.btnKill13Sum5.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum4
             // 
@@ -3501,6 +3574,7 @@
             this.btnKill13Sum4.TabIndex = 8;
             this.btnKill13Sum4.Text = "4";
             this.btnKill13Sum4.UseVisualStyleBackColor = true;
+            this.btnKill13Sum4.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // btnKill13Sum3
             // 
@@ -3510,13 +3584,14 @@
             this.btnKill13Sum3.TabIndex = 7;
             this.btnKill13Sum3.Text = "3";
             this.btnKill13Sum3.UseVisualStyleBackColor = true;
+            this.btnKill13Sum3.Click += new System.EventHandler(this.Kill13Sum_ButtomClick);
             // 
             // lbKill13SumDesc
             // 
             this.lbKill13SumDesc.AutoSize = true;
             this.lbKill13SumDesc.Location = new System.Drawing.Point(5, 32);
             this.lbKill13SumDesc.Name = "lbKill13SumDesc";
-            this.lbKill13SumDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill13SumDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill13SumDesc.TabIndex = 1;
             this.lbKill13SumDesc.Text = "13和: ";
             // 
@@ -3557,6 +3632,7 @@
             this.btnKill12Less9.TabIndex = 14;
             this.btnKill12Less9.Text = "9";
             this.btnKill12Less9.UseVisualStyleBackColor = true;
+            this.btnKill12Less9.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less8
             // 
@@ -3566,6 +3642,7 @@
             this.btnKill12Less8.TabIndex = 13;
             this.btnKill12Less8.Text = "8";
             this.btnKill12Less8.UseVisualStyleBackColor = true;
+            this.btnKill12Less8.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less7
             // 
@@ -3575,6 +3652,7 @@
             this.btnKill12Less7.TabIndex = 11;
             this.btnKill12Less7.Text = "7";
             this.btnKill12Less7.UseVisualStyleBackColor = true;
+            this.btnKill12Less7.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less6
             // 
@@ -3584,6 +3662,7 @@
             this.btnKill12Less6.TabIndex = 10;
             this.btnKill12Less6.Text = "6";
             this.btnKill12Less6.UseVisualStyleBackColor = true;
+            this.btnKill12Less6.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less5
             // 
@@ -3593,6 +3672,7 @@
             this.btnKill12Less5.TabIndex = 9;
             this.btnKill12Less5.Text = "5";
             this.btnKill12Less5.UseVisualStyleBackColor = true;
+            this.btnKill12Less5.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less4
             // 
@@ -3602,6 +3682,7 @@
             this.btnKill12Less4.TabIndex = 8;
             this.btnKill12Less4.Text = "4";
             this.btnKill12Less4.UseVisualStyleBackColor = true;
+            this.btnKill12Less4.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less3
             // 
@@ -3611,6 +3692,7 @@
             this.btnKill12Less3.TabIndex = 7;
             this.btnKill12Less3.Text = "3";
             this.btnKill12Less3.UseVisualStyleBackColor = true;
+            this.btnKill12Less3.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less2
             // 
@@ -3620,6 +3702,7 @@
             this.btnKill12Less2.TabIndex = 6;
             this.btnKill12Less2.Text = "2";
             this.btnKill12Less2.UseVisualStyleBackColor = true;
+            this.btnKill12Less2.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // btnKill12Less1
             // 
@@ -3629,13 +3712,14 @@
             this.btnKill12Less1.TabIndex = 5;
             this.btnKill12Less1.Text = "1";
             this.btnKill12Less1.UseVisualStyleBackColor = true;
+            this.btnKill12Less1.Click += new System.EventHandler(this.Kill12Less_ButtomClick);
             // 
             // lbKill12LessDesc
             // 
             this.lbKill12LessDesc.AutoSize = true;
             this.lbKill12LessDesc.Location = new System.Drawing.Point(5, 34);
             this.lbKill12LessDesc.Name = "lbKill12LessDesc";
-            this.lbKill12LessDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill12LessDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill12LessDesc.TabIndex = 1;
             this.lbKill12LessDesc.Text = "12差: ";
             // 
@@ -3676,6 +3760,7 @@
             this.btnKill23Less9.TabIndex = 14;
             this.btnKill23Less9.Text = "9";
             this.btnKill23Less9.UseVisualStyleBackColor = true;
+            this.btnKill23Less9.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less8
             // 
@@ -3685,6 +3770,7 @@
             this.btnKill23Less8.TabIndex = 13;
             this.btnKill23Less8.Text = "8";
             this.btnKill23Less8.UseVisualStyleBackColor = true;
+            this.btnKill23Less8.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less7
             // 
@@ -3694,6 +3780,7 @@
             this.btnKill23Less7.TabIndex = 11;
             this.btnKill23Less7.Text = "7";
             this.btnKill23Less7.UseVisualStyleBackColor = true;
+            this.btnKill23Less7.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less6
             // 
@@ -3703,6 +3790,7 @@
             this.btnKill23Less6.TabIndex = 10;
             this.btnKill23Less6.Text = "6";
             this.btnKill23Less6.UseVisualStyleBackColor = true;
+            this.btnKill23Less6.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less5
             // 
@@ -3712,6 +3800,7 @@
             this.btnKill23Less5.TabIndex = 9;
             this.btnKill23Less5.Text = "5";
             this.btnKill23Less5.UseVisualStyleBackColor = true;
+            this.btnKill23Less5.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less4
             // 
@@ -3721,6 +3810,7 @@
             this.btnKill23Less4.TabIndex = 8;
             this.btnKill23Less4.Text = "4";
             this.btnKill23Less4.UseVisualStyleBackColor = true;
+            this.btnKill23Less4.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less3
             // 
@@ -3730,6 +3820,7 @@
             this.btnKill23Less3.TabIndex = 7;
             this.btnKill23Less3.Text = "3";
             this.btnKill23Less3.UseVisualStyleBackColor = true;
+            this.btnKill23Less3.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less2
             // 
@@ -3739,6 +3830,7 @@
             this.btnKill23Less2.TabIndex = 6;
             this.btnKill23Less2.Text = "2";
             this.btnKill23Less2.UseVisualStyleBackColor = true;
+            this.btnKill23Less2.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // btnKill23Less1
             // 
@@ -3748,13 +3840,14 @@
             this.btnKill23Less1.TabIndex = 5;
             this.btnKill23Less1.Text = "1";
             this.btnKill23Less1.UseVisualStyleBackColor = true;
+            this.btnKill23Less1.Click += new System.EventHandler(this.Kill23Less_ButtomClick);
             // 
             // lbKill23LessDesc
             // 
             this.lbKill23LessDesc.AutoSize = true;
             this.lbKill23LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill23LessDesc.Name = "lbKill23LessDesc";
-            this.lbKill23LessDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill23LessDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill23LessDesc.TabIndex = 1;
             this.lbKill23LessDesc.Text = "23差: ";
             // 
@@ -3795,6 +3888,7 @@
             this.btnKill13Less9.TabIndex = 14;
             this.btnKill13Less9.Text = "9";
             this.btnKill13Less9.UseVisualStyleBackColor = true;
+            this.btnKill13Less9.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less8
             // 
@@ -3804,6 +3898,7 @@
             this.btnKill13Less8.TabIndex = 13;
             this.btnKill13Less8.Text = "8";
             this.btnKill13Less8.UseVisualStyleBackColor = true;
+            this.btnKill13Less8.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less7
             // 
@@ -3813,6 +3908,7 @@
             this.btnKill13Less7.TabIndex = 11;
             this.btnKill13Less7.Text = "7";
             this.btnKill13Less7.UseVisualStyleBackColor = true;
+            this.btnKill13Less7.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less6
             // 
@@ -3822,6 +3918,7 @@
             this.btnKill13Less6.TabIndex = 10;
             this.btnKill13Less6.Text = "6";
             this.btnKill13Less6.UseVisualStyleBackColor = true;
+            this.btnKill13Less6.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less5
             // 
@@ -3831,6 +3928,7 @@
             this.btnKill13Less5.TabIndex = 9;
             this.btnKill13Less5.Text = "5";
             this.btnKill13Less5.UseVisualStyleBackColor = true;
+            this.btnKill13Less5.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less4
             // 
@@ -3840,6 +3938,7 @@
             this.btnKill13Less4.TabIndex = 8;
             this.btnKill13Less4.Text = "4";
             this.btnKill13Less4.UseVisualStyleBackColor = true;
+            this.btnKill13Less4.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less3
             // 
@@ -3849,6 +3948,7 @@
             this.btnKill13Less3.TabIndex = 7;
             this.btnKill13Less3.Text = "3";
             this.btnKill13Less3.UseVisualStyleBackColor = true;
+            this.btnKill13Less3.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less2
             // 
@@ -3858,6 +3958,7 @@
             this.btnKill13Less2.TabIndex = 6;
             this.btnKill13Less2.Text = "2";
             this.btnKill13Less2.UseVisualStyleBackColor = true;
+            this.btnKill13Less2.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // btnKill13Less1
             // 
@@ -3867,13 +3968,14 @@
             this.btnKill13Less1.TabIndex = 5;
             this.btnKill13Less1.Text = "1";
             this.btnKill13Less1.UseVisualStyleBackColor = true;
+            this.btnKill13Less1.Click += new System.EventHandler(this.Kill13Less_ButtomClick);
             // 
             // lbKill13LessDesc
             // 
             this.lbKill13LessDesc.AutoSize = true;
             this.lbKill13LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill13LessDesc.Name = "lbKill13LessDesc";
-            this.lbKill13LessDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill13LessDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill13LessDesc.TabIndex = 1;
             this.lbKill13LessDesc.Text = "13差: ";
             // 
@@ -3890,14 +3992,14 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.KillBigSmall8);
-            this.panel5.Controls.Add(this.KillBigSmall4);
-            this.panel5.Controls.Add(this.KillBigSmall6);
-            this.panel5.Controls.Add(this.KillBigSmall5);
-            this.panel5.Controls.Add(this.KillBigSmall7);
-            this.panel5.Controls.Add(this.KillBigSmall3);
-            this.panel5.Controls.Add(this.KillBigSmall2);
-            this.panel5.Controls.Add(this.KillBigSmall1);
+            this.panel5.Controls.Add(this.KillBigSmall566);
+            this.panel5.Controls.Add(this.KillBigSmall655);
+            this.panel5.Controls.Add(this.KillBigSmall556);
+            this.panel5.Controls.Add(this.KillBigSmall555);
+            this.panel5.Controls.Add(this.KillBigSmall565);
+            this.panel5.Controls.Add(this.KillBigSmall656);
+            this.panel5.Controls.Add(this.KillBigSmall665);
+            this.panel5.Controls.Add(this.KillBigSmall666);
             this.panel5.Controls.Add(this.lbKillBigSmallDesc);
             this.panel5.Controls.Add(this.lbKillBigSmall);
             this.panel5.Location = new System.Drawing.Point(384, 6);
@@ -3905,84 +4007,92 @@
             this.panel5.Size = new System.Drawing.Size(345, 89);
             this.panel5.TabIndex = 6;
             // 
-            // KillBigSmall8
+            // KillBigSmall566
             // 
-            this.KillBigSmall8.Location = new System.Drawing.Point(256, 54);
-            this.KillBigSmall8.Name = "KillBigSmall8";
-            this.KillBigSmall8.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall8.TabIndex = 9;
-            this.KillBigSmall8.Text = "小大大";
-            this.KillBigSmall8.UseVisualStyleBackColor = true;
+            this.KillBigSmall566.Location = new System.Drawing.Point(256, 54);
+            this.KillBigSmall566.Name = "KillBigSmall566";
+            this.KillBigSmall566.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall566.TabIndex = 9;
+            this.KillBigSmall566.Text = "小大大";
+            this.KillBigSmall566.UseVisualStyleBackColor = true;
+            this.KillBigSmall566.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall4
+            // KillBigSmall655
             // 
-            this.KillBigSmall4.Location = new System.Drawing.Point(256, 29);
-            this.KillBigSmall4.Name = "KillBigSmall4";
-            this.KillBigSmall4.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall4.TabIndex = 8;
-            this.KillBigSmall4.Text = "大小小";
-            this.KillBigSmall4.UseVisualStyleBackColor = true;
+            this.KillBigSmall655.Location = new System.Drawing.Point(256, 29);
+            this.KillBigSmall655.Name = "KillBigSmall655";
+            this.KillBigSmall655.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall655.TabIndex = 8;
+            this.KillBigSmall655.Text = "大小小";
+            this.KillBigSmall655.UseVisualStyleBackColor = true;
+            this.KillBigSmall655.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall6
+            // KillBigSmall556
             // 
-            this.KillBigSmall6.Location = new System.Drawing.Point(110, 54);
-            this.KillBigSmall6.Name = "KillBigSmall6";
-            this.KillBigSmall6.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall6.TabIndex = 7;
-            this.KillBigSmall6.Text = "小小大";
-            this.KillBigSmall6.UseVisualStyleBackColor = true;
+            this.KillBigSmall556.Location = new System.Drawing.Point(110, 54);
+            this.KillBigSmall556.Name = "KillBigSmall556";
+            this.KillBigSmall556.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall556.TabIndex = 7;
+            this.KillBigSmall556.Text = "小小大";
+            this.KillBigSmall556.UseVisualStyleBackColor = true;
+            this.KillBigSmall556.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall5
+            // KillBigSmall555
             // 
-            this.KillBigSmall5.Location = new System.Drawing.Point(37, 54);
-            this.KillBigSmall5.Name = "KillBigSmall5";
-            this.KillBigSmall5.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall5.TabIndex = 6;
-            this.KillBigSmall5.Text = "小小大";
-            this.KillBigSmall5.UseVisualStyleBackColor = true;
+            this.KillBigSmall555.Location = new System.Drawing.Point(37, 54);
+            this.KillBigSmall555.Name = "KillBigSmall555";
+            this.KillBigSmall555.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall555.TabIndex = 6;
+            this.KillBigSmall555.Text = "小小小";
+            this.KillBigSmall555.UseVisualStyleBackColor = true;
+            this.KillBigSmall555.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall7
+            // KillBigSmall565
             // 
-            this.KillBigSmall7.Location = new System.Drawing.Point(183, 54);
-            this.KillBigSmall7.Name = "KillBigSmall7";
-            this.KillBigSmall7.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall7.TabIndex = 5;
-            this.KillBigSmall7.Text = "小大小";
-            this.KillBigSmall7.UseVisualStyleBackColor = true;
+            this.KillBigSmall565.Location = new System.Drawing.Point(183, 54);
+            this.KillBigSmall565.Name = "KillBigSmall565";
+            this.KillBigSmall565.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall565.TabIndex = 5;
+            this.KillBigSmall565.Text = "小大小";
+            this.KillBigSmall565.UseVisualStyleBackColor = true;
+            this.KillBigSmall565.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall3
+            // KillBigSmall656
             // 
-            this.KillBigSmall3.Location = new System.Drawing.Point(183, 29);
-            this.KillBigSmall3.Name = "KillBigSmall3";
-            this.KillBigSmall3.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall3.TabIndex = 4;
-            this.KillBigSmall3.Text = "大小大";
-            this.KillBigSmall3.UseVisualStyleBackColor = true;
+            this.KillBigSmall656.Location = new System.Drawing.Point(183, 29);
+            this.KillBigSmall656.Name = "KillBigSmall656";
+            this.KillBigSmall656.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall656.TabIndex = 4;
+            this.KillBigSmall656.Text = "大小大";
+            this.KillBigSmall656.UseVisualStyleBackColor = true;
+            this.KillBigSmall656.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall2
+            // KillBigSmall665
             // 
-            this.KillBigSmall2.Location = new System.Drawing.Point(110, 29);
-            this.KillBigSmall2.Name = "KillBigSmall2";
-            this.KillBigSmall2.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall2.TabIndex = 3;
-            this.KillBigSmall2.Text = "大大小";
-            this.KillBigSmall2.UseVisualStyleBackColor = true;
+            this.KillBigSmall665.Location = new System.Drawing.Point(110, 29);
+            this.KillBigSmall665.Name = "KillBigSmall665";
+            this.KillBigSmall665.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall665.TabIndex = 3;
+            this.KillBigSmall665.Text = "大大小";
+            this.KillBigSmall665.UseVisualStyleBackColor = true;
+            this.KillBigSmall665.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // KillBigSmall1
+            // KillBigSmall666
             // 
-            this.KillBigSmall1.Location = new System.Drawing.Point(37, 29);
-            this.KillBigSmall1.Name = "KillBigSmall1";
-            this.KillBigSmall1.Size = new System.Drawing.Size(67, 23);
-            this.KillBigSmall1.TabIndex = 2;
-            this.KillBigSmall1.Text = "大大大";
-            this.KillBigSmall1.UseVisualStyleBackColor = true;
+            this.KillBigSmall666.Location = new System.Drawing.Point(37, 29);
+            this.KillBigSmall666.Name = "KillBigSmall666";
+            this.KillBigSmall666.Size = new System.Drawing.Size(67, 23);
+            this.KillBigSmall666.TabIndex = 2;
+            this.KillBigSmall666.Text = "大大大";
+            this.KillBigSmall666.UseVisualStyleBackColor = true;
+            this.KillBigSmall666.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
             // lbKillBigSmallDesc
             // 
             this.lbKillBigSmallDesc.AutoSize = true;
             this.lbKillBigSmallDesc.Location = new System.Drawing.Point(5, 35);
             this.lbKillBigSmallDesc.Name = "lbKillBigSmallDesc";
-            this.lbKillBigSmallDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKillBigSmallDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKillBigSmallDesc.TabIndex = 1;
             this.lbKillBigSmallDesc.Text = "大小: ";
             // 
@@ -4020,6 +4130,7 @@
             this.btnKillTypeNumber4.TabIndex = 7;
             this.btnKillTypeNumber4.Text = "杀凹型号";
             this.btnKillTypeNumber4.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber4.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // btnKillTypeNumber2
             // 
@@ -4029,6 +4140,7 @@
             this.btnKillTypeNumber2.TabIndex = 6;
             this.btnKillTypeNumber2.Text = "杀下阶梯";
             this.btnKillTypeNumber2.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber2.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // btnKillTypeNumber6
             // 
@@ -4038,6 +4150,7 @@
             this.btnKillTypeNumber6.TabIndex = 5;
             this.btnKillTypeNumber6.Text = "杀两连号";
             this.btnKillTypeNumber6.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber6.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // btnKillTypeNumber5
             // 
@@ -4047,6 +4160,7 @@
             this.btnKillTypeNumber5.TabIndex = 4;
             this.btnKillTypeNumber5.Text = "杀三连号";
             this.btnKillTypeNumber5.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber5.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // btnKillTypeNumber3
             // 
@@ -4056,6 +4170,7 @@
             this.btnKillTypeNumber3.TabIndex = 3;
             this.btnKillTypeNumber3.Text = "杀凸型号";
             this.btnKillTypeNumber3.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber3.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // btnKillTypeNumber1
             // 
@@ -4065,13 +4180,14 @@
             this.btnKillTypeNumber1.TabIndex = 2;
             this.btnKillTypeNumber1.Text = "杀上阶梯";
             this.btnKillTypeNumber1.UseVisualStyleBackColor = true;
+            this.btnKillTypeNumber1.Click += new System.EventHandler(this.KillTypeNumber_ButtomClick);
             // 
             // lbKillTypeNumberDesc
             // 
             this.lbKillTypeNumberDesc.AutoSize = true;
             this.lbKillTypeNumberDesc.Location = new System.Drawing.Point(5, 35);
             this.lbKillTypeNumberDesc.Name = "lbKillTypeNumberDesc";
-            this.lbKillTypeNumberDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKillTypeNumberDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKillTypeNumberDesc.TabIndex = 1;
             this.lbKillTypeNumberDesc.Text = "型态: ";
             // 
@@ -4132,6 +4248,7 @@
             this.btnKill02Road222.TabIndex = 32;
             this.btnKill02Road222.Text = "222";
             this.btnKill02Road222.UseVisualStyleBackColor = true;
+            this.btnKill02Road222.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road221
             // 
@@ -4141,6 +4258,7 @@
             this.btnKill02Road221.TabIndex = 31;
             this.btnKill02Road221.Text = "221";
             this.btnKill02Road221.UseVisualStyleBackColor = true;
+            this.btnKill02Road221.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road220
             // 
@@ -4150,6 +4268,7 @@
             this.btnKill02Road220.TabIndex = 30;
             this.btnKill02Road220.Text = "220";
             this.btnKill02Road220.UseVisualStyleBackColor = true;
+            this.btnKill02Road220.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02RoadClear
             // 
@@ -4177,6 +4296,7 @@
             this.btnKill02Road212.TabIndex = 27;
             this.btnKill02Road212.Text = "212";
             this.btnKill02Road212.UseVisualStyleBackColor = true;
+            this.btnKill02Road212.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road211
             // 
@@ -4186,6 +4306,7 @@
             this.btnKill02Road211.TabIndex = 26;
             this.btnKill02Road211.Text = "211";
             this.btnKill02Road211.UseVisualStyleBackColor = true;
+            this.btnKill02Road211.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road210
             // 
@@ -4195,6 +4316,7 @@
             this.btnKill02Road210.TabIndex = 25;
             this.btnKill02Road210.Text = "210";
             this.btnKill02Road210.UseVisualStyleBackColor = true;
+            this.btnKill02Road210.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road202
             // 
@@ -4204,6 +4326,7 @@
             this.btnKill02Road202.TabIndex = 24;
             this.btnKill02Road202.Text = "202";
             this.btnKill02Road202.UseVisualStyleBackColor = true;
+            this.btnKill02Road202.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road201
             // 
@@ -4213,6 +4336,7 @@
             this.btnKill02Road201.TabIndex = 23;
             this.btnKill02Road201.Text = "201";
             this.btnKill02Road201.UseVisualStyleBackColor = true;
+            this.btnKill02Road201.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road200
             // 
@@ -4222,6 +4346,7 @@
             this.btnKill02Road200.TabIndex = 22;
             this.btnKill02Road200.Text = "200";
             this.btnKill02Road200.UseVisualStyleBackColor = true;
+            this.btnKill02Road200.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road122
             // 
@@ -4231,6 +4356,7 @@
             this.btnKill02Road122.TabIndex = 21;
             this.btnKill02Road122.Text = "122";
             this.btnKill02Road122.UseVisualStyleBackColor = true;
+            this.btnKill02Road122.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road121
             // 
@@ -4240,6 +4366,7 @@
             this.btnKill02Road121.TabIndex = 20;
             this.btnKill02Road121.Text = "121";
             this.btnKill02Road121.UseVisualStyleBackColor = true;
+            this.btnKill02Road121.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road120
             // 
@@ -4249,6 +4376,7 @@
             this.btnKill02Road120.TabIndex = 19;
             this.btnKill02Road120.Text = "120";
             this.btnKill02Road120.UseVisualStyleBackColor = true;
+            this.btnKill02Road120.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road112
             // 
@@ -4258,6 +4386,7 @@
             this.btnKill02Road112.TabIndex = 18;
             this.btnKill02Road112.Text = "112";
             this.btnKill02Road112.UseVisualStyleBackColor = true;
+            this.btnKill02Road112.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road111
             // 
@@ -4267,6 +4396,7 @@
             this.btnKill02Road111.TabIndex = 17;
             this.btnKill02Road111.Text = "111";
             this.btnKill02Road111.UseVisualStyleBackColor = true;
+            this.btnKill02Road111.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road110
             // 
@@ -4276,6 +4406,7 @@
             this.btnKill02Road110.TabIndex = 16;
             this.btnKill02Road110.Text = "110";
             this.btnKill02Road110.UseVisualStyleBackColor = true;
+            this.btnKill02Road110.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road102
             // 
@@ -4285,6 +4416,7 @@
             this.btnKill02Road102.TabIndex = 15;
             this.btnKill02Road102.Text = "102";
             this.btnKill02Road102.UseVisualStyleBackColor = true;
+            this.btnKill02Road102.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road101
             // 
@@ -4294,6 +4426,7 @@
             this.btnKill02Road101.TabIndex = 14;
             this.btnKill02Road101.Text = "101";
             this.btnKill02Road101.UseVisualStyleBackColor = true;
+            this.btnKill02Road101.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road100
             // 
@@ -4303,6 +4436,7 @@
             this.btnKill02Road100.TabIndex = 13;
             this.btnKill02Road100.Text = "100";
             this.btnKill02Road100.UseVisualStyleBackColor = true;
+            this.btnKill02Road100.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road022
             // 
@@ -4312,6 +4446,7 @@
             this.btnKill02Road022.TabIndex = 12;
             this.btnKill02Road022.Text = "022";
             this.btnKill02Road022.UseVisualStyleBackColor = true;
+            this.btnKill02Road022.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road021
             // 
@@ -4321,6 +4456,7 @@
             this.btnKill02Road021.TabIndex = 11;
             this.btnKill02Road021.Text = "021";
             this.btnKill02Road021.UseVisualStyleBackColor = true;
+            this.btnKill02Road021.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road020
             // 
@@ -4330,6 +4466,7 @@
             this.btnKill02Road020.TabIndex = 10;
             this.btnKill02Road020.Text = "020";
             this.btnKill02Road020.UseVisualStyleBackColor = true;
+            this.btnKill02Road020.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road012
             // 
@@ -4339,6 +4476,7 @@
             this.btnKill02Road012.TabIndex = 9;
             this.btnKill02Road012.Text = "012";
             this.btnKill02Road012.UseVisualStyleBackColor = true;
+            this.btnKill02Road012.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road011
             // 
@@ -4348,6 +4486,7 @@
             this.btnKill02Road011.TabIndex = 8;
             this.btnKill02Road011.Text = "011";
             this.btnKill02Road011.UseVisualStyleBackColor = true;
+            this.btnKill02Road011.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road010
             // 
@@ -4357,6 +4496,7 @@
             this.btnKill02Road010.TabIndex = 7;
             this.btnKill02Road010.Text = "010";
             this.btnKill02Road010.UseVisualStyleBackColor = true;
+            this.btnKill02Road010.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road002
             // 
@@ -4366,6 +4506,7 @@
             this.btnKill02Road002.TabIndex = 6;
             this.btnKill02Road002.Text = "002";
             this.btnKill02Road002.UseVisualStyleBackColor = true;
+            this.btnKill02Road002.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road001
             // 
@@ -4375,6 +4516,7 @@
             this.btnKill02Road001.TabIndex = 5;
             this.btnKill02Road001.Text = "001";
             this.btnKill02Road001.UseVisualStyleBackColor = true;
+            this.btnKill02Road001.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnKill02Road000
             // 
@@ -4384,13 +4526,14 @@
             this.btnKill02Road000.TabIndex = 4;
             this.btnKill02Road000.Text = "000";
             this.btnKill02Road000.UseVisualStyleBackColor = true;
+            this.btnKill02Road000.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // lbKill02RoadDesc
             // 
             this.lbKill02RoadDesc.AutoSize = true;
             this.lbKill02RoadDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKill02RoadDesc.Name = "lbKill02RoadDesc";
-            this.lbKill02RoadDesc.Size = new System.Drawing.Size(35, 12);
+            this.lbKill02RoadDesc.Size = new System.Drawing.Size(41, 12);
             this.lbKill02RoadDesc.TabIndex = 1;
             this.lbKill02RoadDesc.Text = "路数: ";
             // 
@@ -4432,6 +4575,7 @@
             this.KillTwoLess9.TabIndex = 14;
             this.KillTwoLess9.Text = "9";
             this.KillTwoLess9.UseVisualStyleBackColor = true;
+            this.KillTwoLess9.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess8
             // 
@@ -4441,6 +4585,7 @@
             this.KillTwoLess8.TabIndex = 13;
             this.KillTwoLess8.Text = "8";
             this.KillTwoLess8.UseVisualStyleBackColor = true;
+            this.KillTwoLess8.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess7
             // 
@@ -4450,6 +4595,7 @@
             this.KillTwoLess7.TabIndex = 11;
             this.KillTwoLess7.Text = "7";
             this.KillTwoLess7.UseVisualStyleBackColor = true;
+            this.KillTwoLess7.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess6
             // 
@@ -4459,6 +4605,7 @@
             this.KillTwoLess6.TabIndex = 10;
             this.KillTwoLess6.Text = "6";
             this.KillTwoLess6.UseVisualStyleBackColor = true;
+            this.KillTwoLess6.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess5
             // 
@@ -4468,6 +4615,7 @@
             this.KillTwoLess5.TabIndex = 9;
             this.KillTwoLess5.Text = "5";
             this.KillTwoLess5.UseVisualStyleBackColor = true;
+            this.KillTwoLess5.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess4
             // 
@@ -4477,6 +4625,7 @@
             this.KillTwoLess4.TabIndex = 8;
             this.KillTwoLess4.Text = "4";
             this.KillTwoLess4.UseVisualStyleBackColor = true;
+            this.KillTwoLess4.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess3
             // 
@@ -4486,6 +4635,7 @@
             this.KillTwoLess3.TabIndex = 7;
             this.KillTwoLess3.Text = "3";
             this.KillTwoLess3.UseVisualStyleBackColor = true;
+            this.KillTwoLess3.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess2
             // 
@@ -4495,6 +4645,7 @@
             this.KillTwoLess2.TabIndex = 6;
             this.KillTwoLess2.Text = "2";
             this.KillTwoLess2.UseVisualStyleBackColor = true;
+            this.KillTwoLess2.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // KillTwoLess1
             // 
@@ -4504,6 +4655,7 @@
             this.KillTwoLess1.TabIndex = 5;
             this.KillTwoLess1.Text = "1";
             this.KillTwoLess1.UseVisualStyleBackColor = true;
+            this.KillTwoLess1.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // btnKillTwoLess0
             // 
@@ -4513,13 +4665,14 @@
             this.btnKillTwoLess0.TabIndex = 4;
             this.btnKillTwoLess0.Text = "0";
             this.btnKillTwoLess0.UseVisualStyleBackColor = true;
+            this.btnKillTwoLess0.Click += new System.EventHandler(this.KillTwoLess_ButtomClick);
             // 
             // lbKillTwoLessDesc
             // 
             this.lbKillTwoLessDesc.AutoSize = true;
             this.lbKillTwoLessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKillTwoLessDesc.Name = "lbKillTwoLessDesc";
-            this.lbKillTwoLessDesc.Size = new System.Drawing.Size(47, 12);
+            this.lbKillTwoLessDesc.Size = new System.Drawing.Size(53, 12);
             this.lbKillTwoLessDesc.TabIndex = 1;
             this.lbKillTwoLessDesc.Text = "二码差: ";
             // 
@@ -4735,7 +4888,7 @@
             this.lbKillTwoSumDesc.AutoSize = true;
             this.lbKillTwoSumDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKillTwoSumDesc.Name = "lbKillTwoSumDesc";
-            this.lbKillTwoSumDesc.Size = new System.Drawing.Size(47, 12);
+            this.lbKillTwoSumDesc.Size = new System.Drawing.Size(53, 12);
             this.lbKillTwoSumDesc.TabIndex = 1;
             this.lbKillTwoSumDesc.Text = "二码和: ";
             // 
@@ -4895,7 +5048,7 @@
             this.lbKillTwoCombineSec.AutoSize = true;
             this.lbKillTwoCombineSec.Location = new System.Drawing.Point(5, 60);
             this.lbKillTwoCombineSec.Name = "lbKillTwoCombineSec";
-            this.lbKillTwoCombineSec.Size = new System.Drawing.Size(47, 12);
+            this.lbKillTwoCombineSec.Size = new System.Drawing.Size(53, 12);
             this.lbKillTwoCombineSec.TabIndex = 12;
             this.lbKillTwoCombineSec.Text = "第二码: ";
             // 
@@ -4994,7 +5147,7 @@
             this.lbKillTwoCombineFirstDesc.AutoSize = true;
             this.lbKillTwoCombineFirstDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKillTwoCombineFirstDesc.Name = "lbKillTwoCombineFirstDesc";
-            this.lbKillTwoCombineFirstDesc.Size = new System.Drawing.Size(47, 12);
+            this.lbKillTwoCombineFirstDesc.Size = new System.Drawing.Size(53, 12);
             this.lbKillTwoCombineFirstDesc.TabIndex = 1;
             this.lbKillTwoCombineFirstDesc.Text = "第一码: ";
             // 
@@ -5189,16 +5342,16 @@
         private System.Windows.Forms.Label lbKillTypeNumberDesc;
         private System.Windows.Forms.Label lbKillTypeNumber;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button KillBigSmall6;
-        private System.Windows.Forms.Button KillBigSmall5;
-        private System.Windows.Forms.Button KillBigSmall7;
-        private System.Windows.Forms.Button KillBigSmall3;
-        private System.Windows.Forms.Button KillBigSmall2;
-        private System.Windows.Forms.Button KillBigSmall1;
+        private System.Windows.Forms.Button KillBigSmall556;
+        private System.Windows.Forms.Button KillBigSmall555;
+        private System.Windows.Forms.Button KillBigSmall565;
+        private System.Windows.Forms.Button KillBigSmall656;
+        private System.Windows.Forms.Button KillBigSmall665;
+        private System.Windows.Forms.Button KillBigSmall666;
         private System.Windows.Forms.Label lbKillBigSmallDesc;
         private System.Windows.Forms.Label lbKillBigSmall;
-        private System.Windows.Forms.Button KillBigSmall8;
-        private System.Windows.Forms.Button KillBigSmall4;
+        private System.Windows.Forms.Button KillBigSmall566;
+        private System.Windows.Forms.Button KillBigSmall655;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnKill13Less9;
         private System.Windows.Forms.Button btnKill13Less8;
@@ -5308,7 +5461,6 @@
         private System.Windows.Forms.Button btnLocalNumber1;
         private System.Windows.Forms.Label lbLocalNumberDesc1;
         private System.Windows.Forms.Label lbLocalNumber;
-        private System.Windows.Forms.Button btnLocalNumber2Local;
         private System.Windows.Forms.Button btnLocalNumber1Local;
         private System.Windows.Forms.Button btnLocalNumber0Local;
         private System.Windows.Forms.Label lbLocalNumberDesc2;
@@ -5414,14 +5566,14 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label lbKillOddEvenDesc;
         private System.Windows.Forms.Label lbKillOddEven;
-        private System.Windows.Forms.Button btnKillOddEven8;
-        private System.Windows.Forms.Button btnKillOddEven4;
-        private System.Windows.Forms.Button btnKillOddEven6;
-        private System.Windows.Forms.Button btnKillOddEven5;
-        private System.Windows.Forms.Button btnKillOddEven7;
-        private System.Windows.Forms.Button btnKillOddEven3;
-        private System.Windows.Forms.Button btnKillOddEven2;
-        private System.Windows.Forms.Button btnKillOddEven1;
+        private System.Windows.Forms.Button btnKillOddEven011;
+        private System.Windows.Forms.Button btnKillOddEven100;
+        private System.Windows.Forms.Button btnKillOddEven001;
+        private System.Windows.Forms.Button btnKillOddEven000;
+        private System.Windows.Forms.Button btnKillOddEven010;
+        private System.Windows.Forms.Button btnKillOddEven101;
+        private System.Windows.Forms.Button btnKillOddEven110;
+        private System.Windows.Forms.Button btnKillOddEven111;
         private System.Windows.Forms.Button btnKillOddEvenClear;
         private System.Windows.Forms.Button btnKillOddEvenAll;
         private System.Windows.Forms.Panel panel19;
@@ -5466,7 +5618,6 @@
         private System.Windows.Forms.Button btnTwoLocalNumber01;
         private System.Windows.Forms.Label lbTwoLocalNumberDesc1;
         private System.Windows.Forms.Label lbTwoLocalNumber;
-        private System.Windows.Forms.Button btnLocalNumber3Local;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Button btnTwoKillCrossClear;
         private System.Windows.Forms.Button btnTwoKillCrossAll;
