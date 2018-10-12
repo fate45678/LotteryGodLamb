@@ -41,6 +41,13 @@ namespace WinFormsApp1
 
         public static JArray jArrHistoryNumber;
 
+        //是否為第一次開啟表單
+        bool isFirstf_PlanCycle = true;
+        bool isFirstf_PlanAgent = true;
+        bool isFirstf_PlanUpload = true;
+        bool isFirstf_Shrink = true;
+        bool isFirstf_ShrinkPK10 = true;
+        bool isFirstf_Chart = true;
         public class NextPeriod
         {
             public string CloseTime { get; set; }
@@ -94,35 +101,35 @@ namespace WinFormsApp1
             this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
             f_PlanCycle.Show();
 
-            frm_PlanAgent f_PlanAgent = new frm_PlanAgent();
-            f_PlanAgent.TopLevel = false;
-            f_PlanAgent.Size = this.Size;
-            this.pnlMenuPlanAgent.Controls.Add(f_PlanAgent);
-            f_PlanAgent.Show();
+            //frm_PlanAgent f_PlanAgent = new frm_PlanAgent();
+            //f_PlanAgent.TopLevel = false;
+            //f_PlanAgent.Size = this.Size;
+            //this.pnlMenuPlanAgent.Controls.Add(f_PlanAgent);
+            //f_PlanAgent.Show();
 
-            frm_PlanUpload f_PlanUpload = new frm_PlanUpload();
-            f_PlanUpload.TopLevel = false;
-            f_PlanUpload.Size = this.Size;
-            this.pnlMenuPlanUpload.Controls.Add(f_PlanUpload);
-            f_PlanUpload.Show();
+            //frm_PlanUpload f_PlanUpload = new frm_PlanUpload();
+            //f_PlanUpload.TopLevel = false;
+            //f_PlanUpload.Size = this.Size;
+            //this.pnlMenuPlanUpload.Controls.Add(f_PlanUpload);
+            //f_PlanUpload.Show();
 
-            frm_Shrink f_Shrink = new frm_Shrink();
-            f_Shrink.TopLevel = false;
-            f_Shrink.Size = this.Size;
-            this.pnlMenuShrink.Controls.Add(f_Shrink);
-            f_Shrink.Show();
+            //frm_Shrink f_Shrink = new frm_Shrink();
+            //f_Shrink.TopLevel = false;
+            //f_Shrink.Size = this.Size;
+            //this.pnlMenuShrink.Controls.Add(f_Shrink);
+            //f_Shrink.Show();
 
-            frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
-            f_ShrinkPK10.TopLevel = false;
-            f_ShrinkPK10.Size = this.Size;
-            this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
-            f_ShrinkPK10.Show();
+            //frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
+            //f_ShrinkPK10.TopLevel = false;
+            //f_ShrinkPK10.Size = this.Size;
+            //this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
+            //f_ShrinkPK10.Show();
 
-            frm_Chart f_Chart = new frm_Chart();
-            f_Chart.TopLevel = false;
-            f_Chart.Size = this.Size;
-            this.pnlMenuChart.Controls.Add(f_Chart);
-            f_Chart.Show();
+            //frm_Chart f_Chart = new frm_Chart();
+            //f_Chart.TopLevel = false;
+            //f_Chart.Size = this.Size;
+            //this.pnlMenuChart.Controls.Add(f_Chart);
+            //f_Chart.Show();
 
             #region 進入時預設停在哪一分頁 哪一彩種
             HD_MenuSelect.Text = "神灯周期计划";
@@ -161,16 +168,43 @@ namespace WinFormsApp1
             switch (HD_MenuSelect.Text)
             {
                 case "神灯周期计划":
+                    if(isFirstf_PlanCycle)
+                    { 
+                        frm_PlanCycle f_PlanCycle = new frm_PlanCycle();
+                        f_PlanCycle.TopLevel = false;
+                        f_PlanCycle.Size = this.Size;
+                        this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
+                        f_PlanCycle.Show();
+                        isFirstf_PlanCycle = false;
+                    }
                     lblMenuPlanCycle.BackColor = HexColor("#bd3100");
                     lblMenuPlanCycle.Refresh();
                     pnlMenuPlanCycle.Visible = true;
                     break;
                 case "代理计划":
+                    if(isFirstf_PlanAgent)
+                    { 
+                        frm_PlanAgent f_PlanAgent = new frm_PlanAgent();
+                        f_PlanAgent.TopLevel = false;
+                        f_PlanAgent.Size = this.Size;
+                        this.pnlMenuPlanAgent.Controls.Add(f_PlanAgent);
+                        f_PlanAgent.Show();
+                        isFirstf_PlanAgent = false;
+                    }
                     lblMenuPlanAgent.BackColor = HexColor("#bd3100");
                     lblMenuPlanAgent.Refresh();
                     pnlMenuPlanAgent.Visible = true;
                     break;
                 case "计划上传":
+                    if (isFirstf_PlanUpload)
+                    { 
+                        frm_PlanUpload f_PlanUpload = new frm_PlanUpload();
+                        f_PlanUpload.TopLevel = false;
+                        f_PlanUpload.Size = this.Size;
+                        this.pnlMenuPlanUpload.Controls.Add(f_PlanUpload);
+                        f_PlanUpload.Show();
+                        isFirstf_PlanUpload = false;
+                    }
                     lblMenuPlanUpload.BackColor = HexColor("#bd3100");
                     lblMenuPlanUpload.Refresh();
                     pnlMenuPlanUpload.Visible = true;
@@ -179,11 +213,40 @@ namespace WinFormsApp1
                     lblMenuShrink.BackColor = HexColor("#bd3100");
                     lblMenuShrink.Refresh();
                     if (HD_GameSelect.Text == "北京PK10")
+                    {
+                        if(isFirstf_ShrinkPK10)
+                        { 
+                            frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
+                            f_ShrinkPK10.TopLevel = false;
+                            f_ShrinkPK10.Size = this.Size;
+                            this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
+                            f_ShrinkPK10.Show();
+                        }
                         pnlPk10Shrink.Visible = true;
+                    }                        
                     else
+                    {
+                        if(isFirstf_Chart)
+                        { 
+                            frm_Shrink f_Shrink = new frm_Shrink();
+                            f_Shrink.TopLevel = false;
+                            f_Shrink.Size = this.Size;
+                            this.pnlMenuShrink.Controls.Add(f_Shrink);
+                            f_Shrink.Show();
+                        }
                         pnlMenuShrink.Visible = true;
+                    }
                     break;
                 case "走势图":
+                    if(isFirstf_Chart)
+                    { 
+                        frm_Chart f_Chart = new frm_Chart();
+                        f_Chart.TopLevel = false;
+                        f_Chart.Size = this.Size;
+                        this.pnlMenuChart.Controls.Add(f_Chart);
+                        f_Chart.Show();
+                        isFirstf_Chart = false;
+                    }
                     lblMenuChart.BackColor = HexColor("#bd3100");
                     lblMenuChart.Refresh();
                     pnlMenuChart.Visible = true;

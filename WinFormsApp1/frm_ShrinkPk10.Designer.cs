@@ -81,7 +81,6 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnTwoLocalNumberClear = new System.Windows.Forms.Button();
             this.btnTwoLocalNumberAll = new System.Windows.Forms.Button();
-            this.btnTwoLocalNumber2Local = new System.Windows.Forms.Button();
             this.btnTwoLocalNumber1Local = new System.Windows.Forms.Button();
             this.btnTwoLocalNumber0Local = new System.Windows.Forms.Button();
             this.lbTwoLocalNumberDesc2 = new System.Windows.Forms.Label();
@@ -114,17 +113,17 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnTwoKillOddEvenClear = new System.Windows.Forms.Button();
             this.btnTwoKillOddEvenAll = new System.Windows.Forms.Button();
-            this.btnTwoKillOddEven4 = new System.Windows.Forms.Button();
-            this.btnTwoKillOddEven3 = new System.Windows.Forms.Button();
-            this.btnTwoKillOddEven2 = new System.Windows.Forms.Button();
-            this.btnTwoKillOddEven1 = new System.Windows.Forms.Button();
+            this.btnTwoKillOddEven00 = new System.Windows.Forms.Button();
+            this.btnTwoKillOddEven01 = new System.Windows.Forms.Button();
+            this.btnTwoKillOddEven10 = new System.Windows.Forms.Button();
+            this.btnTwoKillOddEven11 = new System.Windows.Forms.Button();
             this.lbTwoKillOddEvenDesc = new System.Windows.Forms.Label();
             this.lbTwoKillOddEven = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.btnTwoKillBigSmall4 = new System.Windows.Forms.Button();
-            this.btnTwoKillBigSmall3 = new System.Windows.Forms.Button();
-            this.btnTwoKillBigSmall2 = new System.Windows.Forms.Button();
-            this.btnTwoKillBigSmall1 = new System.Windows.Forms.Button();
+            this.btnTwoKillBigSmall55 = new System.Windows.Forms.Button();
+            this.btnTwoKillBigSmall56 = new System.Windows.Forms.Button();
+            this.btnTwoKillBigSmall65 = new System.Windows.Forms.Button();
+            this.btnTwoKillBigSmall66 = new System.Windows.Forms.Button();
             this.lbTwoKillBigSmallDesc = new System.Windows.Forms.Label();
             this.lbTwoKillBigSmall = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -251,8 +250,8 @@
             this.lbKillCrossDesc = new System.Windows.Forms.Label();
             this.lbKillCross = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btnLocalNumberAll = new System.Windows.Forms.Button();
+            this.btnLocalNumberClear = new System.Windows.Forms.Button();
             this.btnLocalNumber1Local = new System.Windows.Forms.Button();
             this.btnLocalNumber0Local = new System.Windows.Forms.Button();
             this.lbLocalNumberDesc2 = new System.Windows.Forms.Label();
@@ -548,6 +547,7 @@
             this.btnTwoClear.TabIndex = 29;
             this.btnTwoClear.Text = "清除";
             this.btnTwoClear.UseVisualStyleBackColor = true;
+            this.btnTwoClear.Click += new System.EventHandler(this.btnTwoClear_Click);
             // 
             // lbTwoStartWork
             // 
@@ -557,6 +557,7 @@
             this.lbTwoStartWork.TabIndex = 28;
             this.lbTwoStartWork.Text = "作号";
             this.lbTwoStartWork.UseVisualStyleBackColor = true;
+            this.lbTwoStartWork.Click += new System.EventHandler(this.btnStartWork_Click);
             // 
             // rtbTwoResult
             // 
@@ -611,6 +612,7 @@
             this.btnTwoChooseModeEven.TabIndex = 63;
             this.btnTwoChooseModeEven.Text = "偶";
             this.btnTwoChooseModeEven.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeEven.Click += new System.EventHandler(this.btnTwoChooseModeOneEven_Click);
             // 
             // btnTwoChooseModeOdd
             // 
@@ -620,6 +622,7 @@
             this.btnTwoChooseModeOdd.TabIndex = 62;
             this.btnTwoChooseModeOdd.Text = "奇";
             this.btnTwoChooseModeOdd.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOdd.Click += new System.EventHandler(this.btnTwoChooseModeOneOdd_Click);
             // 
             // btnTwoChooseModeSmall
             // 
@@ -629,6 +632,7 @@
             this.btnTwoChooseModeSmall.TabIndex = 61;
             this.btnTwoChooseModeSmall.Text = "小";
             this.btnTwoChooseModeSmall.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeSmall.Click += new System.EventHandler(this.btnTwoChooseModeOneSmall_Click);
             // 
             // btnTwoChooseModeBig
             // 
@@ -638,6 +642,7 @@
             this.btnTwoChooseModeBig.TabIndex = 60;
             this.btnTwoChooseModeBig.Text = "大";
             this.btnTwoChooseModeBig.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeBig.Click += new System.EventHandler(this.btnTwoChooseModeOneBig_Click);
             // 
             // btnTwoChooseModeOne09
             // 
@@ -647,6 +652,7 @@
             this.btnTwoChooseModeOne09.TabIndex = 59;
             this.btnTwoChooseModeOne09.Text = "09";
             this.btnTwoChooseModeOne09.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne09.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne10
             // 
@@ -656,6 +662,7 @@
             this.btnTwoChooseModeOne10.TabIndex = 58;
             this.btnTwoChooseModeOne10.Text = "10";
             this.btnTwoChooseModeOne10.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne10.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne08
             // 
@@ -665,6 +672,7 @@
             this.btnTwoChooseModeOne08.TabIndex = 57;
             this.btnTwoChooseModeOne08.Text = "08";
             this.btnTwoChooseModeOne08.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne08.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne07
             // 
@@ -674,6 +682,7 @@
             this.btnTwoChooseModeOne07.TabIndex = 56;
             this.btnTwoChooseModeOne07.Text = "07";
             this.btnTwoChooseModeOne07.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne07.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne06
             // 
@@ -683,6 +692,7 @@
             this.btnTwoChooseModeOne06.TabIndex = 55;
             this.btnTwoChooseModeOne06.Text = "06";
             this.btnTwoChooseModeOne06.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne06.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne05
             // 
@@ -692,6 +702,7 @@
             this.btnTwoChooseModeOne05.TabIndex = 54;
             this.btnTwoChooseModeOne05.Text = "05";
             this.btnTwoChooseModeOne05.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne05.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne04
             // 
@@ -701,6 +712,7 @@
             this.btnTwoChooseModeOne04.TabIndex = 53;
             this.btnTwoChooseModeOne04.Text = "04";
             this.btnTwoChooseModeOne04.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne04.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne03
             // 
@@ -710,6 +722,7 @@
             this.btnTwoChooseModeOne03.TabIndex = 52;
             this.btnTwoChooseModeOne03.Text = "03";
             this.btnTwoChooseModeOne03.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne03.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne02
             // 
@@ -719,6 +732,7 @@
             this.btnTwoChooseModeOne02.TabIndex = 51;
             this.btnTwoChooseModeOne02.Text = "02";
             this.btnTwoChooseModeOne02.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne02.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnTwoChooseModeOne01
             // 
@@ -728,13 +742,14 @@
             this.btnTwoChooseModeOne01.TabIndex = 50;
             this.btnTwoChooseModeOne01.Text = "01";
             this.btnTwoChooseModeOne01.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeOne01.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // lbTwoChooseModeOne
             // 
             this.lbTwoChooseModeOne.AutoSize = true;
             this.lbTwoChooseModeOne.Location = new System.Drawing.Point(5, 81);
             this.lbTwoChooseModeOne.Name = "lbTwoChooseModeOne";
-            this.lbTwoChooseModeOne.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoChooseModeOne.Size = new System.Drawing.Size(35, 12);
             this.lbTwoChooseModeOne.TabIndex = 49;
             this.lbTwoChooseModeOne.Text = "个位: ";
             // 
@@ -746,6 +761,7 @@
             this.btnTwoChooseModeTen09.TabIndex = 48;
             this.btnTwoChooseModeTen09.Text = "09";
             this.btnTwoChooseModeTen09.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen09.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen10
             // 
@@ -755,6 +771,7 @@
             this.btnTwoChooseModeTen10.TabIndex = 47;
             this.btnTwoChooseModeTen10.Text = "10";
             this.btnTwoChooseModeTen10.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen10.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen08
             // 
@@ -764,6 +781,7 @@
             this.btnTwoChooseModeTen08.TabIndex = 46;
             this.btnTwoChooseModeTen08.Text = "08";
             this.btnTwoChooseModeTen08.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen08.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen07
             // 
@@ -773,6 +791,7 @@
             this.btnTwoChooseModeTen07.TabIndex = 45;
             this.btnTwoChooseModeTen07.Text = "07";
             this.btnTwoChooseModeTen07.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen07.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen06
             // 
@@ -782,6 +801,7 @@
             this.btnTwoChooseModeTen06.TabIndex = 44;
             this.btnTwoChooseModeTen06.Text = "06";
             this.btnTwoChooseModeTen06.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen06.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen05
             // 
@@ -791,6 +811,7 @@
             this.btnTwoChooseModeTen05.TabIndex = 43;
             this.btnTwoChooseModeTen05.Text = "05";
             this.btnTwoChooseModeTen05.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen05.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen04
             // 
@@ -800,6 +821,7 @@
             this.btnTwoChooseModeTen04.TabIndex = 42;
             this.btnTwoChooseModeTen04.Text = "04";
             this.btnTwoChooseModeTen04.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen04.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen03
             // 
@@ -809,6 +831,7 @@
             this.btnTwoChooseModeTen03.TabIndex = 41;
             this.btnTwoChooseModeTen03.Text = "03";
             this.btnTwoChooseModeTen03.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen03.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen02
             // 
@@ -818,6 +841,7 @@
             this.btnTwoChooseModeTen02.TabIndex = 40;
             this.btnTwoChooseModeTen02.Text = "02";
             this.btnTwoChooseModeTen02.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen02.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnTwoChooseModeTen01
             // 
@@ -827,13 +851,14 @@
             this.btnTwoChooseModeTen01.TabIndex = 39;
             this.btnTwoChooseModeTen01.Text = "01";
             this.btnTwoChooseModeTen01.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeTen01.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // lbTwoChooseModeTen
             // 
             this.lbTwoChooseModeTen.AutoSize = true;
             this.lbTwoChooseModeTen.Location = new System.Drawing.Point(5, 37);
             this.lbTwoChooseModeTen.Name = "lbTwoChooseModeTen";
-            this.lbTwoChooseModeTen.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoChooseModeTen.Size = new System.Drawing.Size(35, 12);
             this.lbTwoChooseModeTen.TabIndex = 38;
             this.lbTwoChooseModeTen.Text = "十位: ";
             // 
@@ -845,6 +870,7 @@
             this.btnTwoChooseModeClear.TabIndex = 35;
             this.btnTwoChooseModeClear.Text = "全清";
             this.btnTwoChooseModeClear.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeClear.Click += new System.EventHandler(this.btnTwoChooseModeClear_Click);
             // 
             // btnTwoChooseModeAll
             // 
@@ -854,6 +880,7 @@
             this.btnTwoChooseModeAll.TabIndex = 34;
             this.btnTwoChooseModeAll.Text = "全選";
             this.btnTwoChooseModeAll.UseVisualStyleBackColor = true;
+            this.btnTwoChooseModeAll.Click += new System.EventHandler(this.btnTwoLocalNumberAll_Click);
             // 
             // lbTwoChooseMode
             // 
@@ -894,6 +921,7 @@
             this.btnTwoKillCross1.TabIndex = 36;
             this.btnTwoKillCross1.Text = "1";
             this.btnTwoKillCross1.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross1.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCrossClear
             // 
@@ -903,6 +931,7 @@
             this.btnTwoKillCrossClear.TabIndex = 35;
             this.btnTwoKillCrossClear.Text = "全清";
             this.btnTwoKillCrossClear.UseVisualStyleBackColor = true;
+            this.btnTwoKillCrossClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKillCrossAll
             // 
@@ -912,6 +941,7 @@
             this.btnTwoKillCrossAll.TabIndex = 34;
             this.btnTwoKillCrossAll.Text = "全選";
             this.btnTwoKillCrossAll.UseVisualStyleBackColor = true;
+            this.btnTwoKillCrossAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKillCross9
             // 
@@ -921,6 +951,7 @@
             this.btnTwoKillCross9.TabIndex = 14;
             this.btnTwoKillCross9.Text = "9";
             this.btnTwoKillCross9.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross9.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross8
             // 
@@ -930,6 +961,7 @@
             this.btnTwoKillCross8.TabIndex = 13;
             this.btnTwoKillCross8.Text = "8";
             this.btnTwoKillCross8.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross8.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross7
             // 
@@ -939,6 +971,7 @@
             this.btnTwoKillCross7.TabIndex = 11;
             this.btnTwoKillCross7.Text = "7";
             this.btnTwoKillCross7.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross7.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross6
             // 
@@ -948,6 +981,7 @@
             this.btnTwoKillCross6.TabIndex = 10;
             this.btnTwoKillCross6.Text = "6";
             this.btnTwoKillCross6.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross6.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross5
             // 
@@ -957,6 +991,7 @@
             this.btnTwoKillCross5.TabIndex = 9;
             this.btnTwoKillCross5.Text = "5";
             this.btnTwoKillCross5.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross5.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross4
             // 
@@ -966,6 +1001,7 @@
             this.btnTwoKillCross4.TabIndex = 8;
             this.btnTwoKillCross4.Text = "4";
             this.btnTwoKillCross4.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross4.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross3
             // 
@@ -975,6 +1011,7 @@
             this.btnTwoKillCross3.TabIndex = 7;
             this.btnTwoKillCross3.Text = "3";
             this.btnTwoKillCross3.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross3.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // btnTwoKillCross2
             // 
@@ -984,13 +1021,14 @@
             this.btnTwoKillCross2.TabIndex = 6;
             this.btnTwoKillCross2.Text = "2";
             this.btnTwoKillCross2.UseVisualStyleBackColor = true;
+            this.btnTwoKillCross2.Click += new System.EventHandler(this.KillCross_ButtomClick);
             // 
             // lbTwoKillCrossDesc
             // 
             this.lbTwoKillCrossDesc.AutoSize = true;
             this.lbTwoKillCrossDesc.Location = new System.Drawing.Point(5, 40);
             this.lbTwoKillCrossDesc.Name = "lbTwoKillCrossDesc";
-            this.lbTwoKillCrossDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoKillCrossDesc.Size = new System.Drawing.Size(35, 12);
             this.lbTwoKillCrossDesc.TabIndex = 1;
             this.lbTwoKillCrossDesc.Text = "跨度: ";
             // 
@@ -1009,7 +1047,6 @@
             this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel21.Controls.Add(this.btnTwoLocalNumberClear);
             this.panel21.Controls.Add(this.btnTwoLocalNumberAll);
-            this.panel21.Controls.Add(this.btnTwoLocalNumber2Local);
             this.panel21.Controls.Add(this.btnTwoLocalNumber1Local);
             this.panel21.Controls.Add(this.btnTwoLocalNumber0Local);
             this.panel21.Controls.Add(this.lbTwoLocalNumberDesc2);
@@ -1047,15 +1084,7 @@
             this.btnTwoLocalNumberAll.TabIndex = 32;
             this.btnTwoLocalNumberAll.Text = "全選";
             this.btnTwoLocalNumberAll.UseVisualStyleBackColor = true;
-            // 
-            // btnTwoLocalNumber2Local
-            // 
-            this.btnTwoLocalNumber2Local.Location = new System.Drawing.Point(151, 58);
-            this.btnTwoLocalNumber2Local.Name = "btnTwoLocalNumber2Local";
-            this.btnTwoLocalNumber2Local.Size = new System.Drawing.Size(49, 23);
-            this.btnTwoLocalNumber2Local.TabIndex = 28;
-            this.btnTwoLocalNumber2Local.Text = "2胆";
-            this.btnTwoLocalNumber2Local.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumberAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoLocalNumber1Local
             // 
@@ -1065,6 +1094,7 @@
             this.btnTwoLocalNumber1Local.TabIndex = 27;
             this.btnTwoLocalNumber1Local.Text = "1胆";
             this.btnTwoLocalNumber1Local.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber1Local.Click += new System.EventHandler(this.btnLocalNumber1Local_Click);
             // 
             // btnTwoLocalNumber0Local
             // 
@@ -1074,13 +1104,14 @@
             this.btnTwoLocalNumber0Local.TabIndex = 26;
             this.btnTwoLocalNumber0Local.Text = "0胆";
             this.btnTwoLocalNumber0Local.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber0Local.Click += new System.EventHandler(this.btnLocalNumber0Local_Click);
             // 
             // lbTwoLocalNumberDesc2
             // 
             this.lbTwoLocalNumberDesc2.AutoSize = true;
             this.lbTwoLocalNumberDesc2.Location = new System.Drawing.Point(3, 64);
             this.lbTwoLocalNumberDesc2.Name = "lbTwoLocalNumberDesc2";
-            this.lbTwoLocalNumberDesc2.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoLocalNumberDesc2.Size = new System.Drawing.Size(35, 12);
             this.lbTwoLocalNumberDesc2.TabIndex = 25;
             this.lbTwoLocalNumberDesc2.Text = "中出: ";
             // 
@@ -1092,6 +1123,7 @@
             this.btnTwoLocalNumber10.TabIndex = 24;
             this.btnTwoLocalNumber10.Text = "10";
             this.btnTwoLocalNumber10.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber10.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber09
             // 
@@ -1101,6 +1133,7 @@
             this.btnTwoLocalNumber09.TabIndex = 23;
             this.btnTwoLocalNumber09.Text = "09";
             this.btnTwoLocalNumber09.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber09.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber08
             // 
@@ -1110,6 +1143,7 @@
             this.btnTwoLocalNumber08.TabIndex = 22;
             this.btnTwoLocalNumber08.Text = "08";
             this.btnTwoLocalNumber08.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber08.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber07
             // 
@@ -1119,6 +1153,7 @@
             this.btnTwoLocalNumber07.TabIndex = 21;
             this.btnTwoLocalNumber07.Text = "07";
             this.btnTwoLocalNumber07.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber07.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber06
             // 
@@ -1128,6 +1163,7 @@
             this.btnTwoLocalNumber06.TabIndex = 20;
             this.btnTwoLocalNumber06.Text = "06";
             this.btnTwoLocalNumber06.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber06.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber05
             // 
@@ -1137,6 +1173,7 @@
             this.btnTwoLocalNumber05.TabIndex = 19;
             this.btnTwoLocalNumber05.Text = "05";
             this.btnTwoLocalNumber05.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber05.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber04
             // 
@@ -1146,6 +1183,7 @@
             this.btnTwoLocalNumber04.TabIndex = 18;
             this.btnTwoLocalNumber04.Text = "04";
             this.btnTwoLocalNumber04.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber04.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber03
             // 
@@ -1155,6 +1193,7 @@
             this.btnTwoLocalNumber03.TabIndex = 17;
             this.btnTwoLocalNumber03.Text = "03";
             this.btnTwoLocalNumber03.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber03.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber02
             // 
@@ -1164,6 +1203,7 @@
             this.btnTwoLocalNumber02.TabIndex = 16;
             this.btnTwoLocalNumber02.Text = "02";
             this.btnTwoLocalNumber02.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber02.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnTwoLocalNumber01
             // 
@@ -1173,13 +1213,14 @@
             this.btnTwoLocalNumber01.TabIndex = 15;
             this.btnTwoLocalNumber01.Text = "01";
             this.btnTwoLocalNumber01.UseVisualStyleBackColor = true;
+            this.btnTwoLocalNumber01.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // lbTwoLocalNumberDesc1
             // 
             this.lbTwoLocalNumberDesc1.AutoSize = true;
             this.lbTwoLocalNumberDesc1.Location = new System.Drawing.Point(3, 36);
             this.lbTwoLocalNumberDesc1.Name = "lbTwoLocalNumberDesc1";
-            this.lbTwoLocalNumberDesc1.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoLocalNumberDesc1.Size = new System.Drawing.Size(35, 12);
             this.lbTwoLocalNumberDesc1.TabIndex = 1;
             this.lbTwoLocalNumberDesc1.Text = "胆码: ";
             // 
@@ -1222,6 +1263,7 @@
             this.btnTwoKill012RoadClear.TabIndex = 29;
             this.btnTwoKill012RoadClear.Text = "全清";
             this.btnTwoKill012RoadClear.UseVisualStyleBackColor = true;
+            this.btnTwoKill012RoadClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKill012RoadAll
             // 
@@ -1231,6 +1273,7 @@
             this.btnTwoKill012RoadAll.TabIndex = 28;
             this.btnTwoKill012RoadAll.Text = "全選";
             this.btnTwoKill012RoadAll.UseVisualStyleBackColor = true;
+            this.btnTwoKill012RoadAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKill012Road22
             // 
@@ -1240,6 +1283,7 @@
             this.btnTwoKill012Road22.TabIndex = 12;
             this.btnTwoKill012Road22.Text = "22";
             this.btnTwoKill012Road22.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road22.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road21
             // 
@@ -1249,6 +1293,7 @@
             this.btnTwoKill012Road21.TabIndex = 11;
             this.btnTwoKill012Road21.Text = "21";
             this.btnTwoKill012Road21.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road21.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road20
             // 
@@ -1258,6 +1303,7 @@
             this.btnTwoKill012Road20.TabIndex = 10;
             this.btnTwoKill012Road20.Text = "20";
             this.btnTwoKill012Road20.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road20.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road12
             // 
@@ -1267,6 +1313,7 @@
             this.btnTwoKill012Road12.TabIndex = 9;
             this.btnTwoKill012Road12.Text = "12";
             this.btnTwoKill012Road12.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road12.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road11
             // 
@@ -1276,6 +1323,7 @@
             this.btnTwoKill012Road11.TabIndex = 8;
             this.btnTwoKill012Road11.Text = "11";
             this.btnTwoKill012Road11.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road11.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road10
             // 
@@ -1285,6 +1333,7 @@
             this.btnTwoKill012Road10.TabIndex = 7;
             this.btnTwoKill012Road10.Text = "10";
             this.btnTwoKill012Road10.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road10.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road02
             // 
@@ -1294,6 +1343,7 @@
             this.btnTwoKill012Road02.TabIndex = 6;
             this.btnTwoKill012Road02.Text = "02";
             this.btnTwoKill012Road02.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road02.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road01
             // 
@@ -1303,6 +1353,7 @@
             this.btnTwoKill012Road01.TabIndex = 5;
             this.btnTwoKill012Road01.Text = "01";
             this.btnTwoKill012Road01.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road01.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // btnTwoKill012Road00
             // 
@@ -1312,13 +1363,14 @@
             this.btnTwoKill012Road00.TabIndex = 4;
             this.btnTwoKill012Road00.Text = "00";
             this.btnTwoKill012Road00.UseVisualStyleBackColor = true;
+            this.btnTwoKill012Road00.Click += new System.EventHandler(this.Kill012Road_ButtomClick);
             // 
             // lbTwoKill012RoadDesc
             // 
             this.lbTwoKill012RoadDesc.AutoSize = true;
             this.lbTwoKill012RoadDesc.Location = new System.Drawing.Point(5, 33);
             this.lbTwoKill012RoadDesc.Name = "lbTwoKill012RoadDesc";
-            this.lbTwoKill012RoadDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoKill012RoadDesc.Size = new System.Drawing.Size(35, 12);
             this.lbTwoKill012RoadDesc.TabIndex = 1;
             this.lbTwoKill012RoadDesc.Text = "路数: ";
             // 
@@ -1337,10 +1389,10 @@
             this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel19.Controls.Add(this.btnTwoKillOddEvenClear);
             this.panel19.Controls.Add(this.btnTwoKillOddEvenAll);
-            this.panel19.Controls.Add(this.btnTwoKillOddEven4);
-            this.panel19.Controls.Add(this.btnTwoKillOddEven3);
-            this.panel19.Controls.Add(this.btnTwoKillOddEven2);
-            this.panel19.Controls.Add(this.btnTwoKillOddEven1);
+            this.panel19.Controls.Add(this.btnTwoKillOddEven00);
+            this.panel19.Controls.Add(this.btnTwoKillOddEven01);
+            this.panel19.Controls.Add(this.btnTwoKillOddEven10);
+            this.panel19.Controls.Add(this.btnTwoKillOddEven11);
             this.panel19.Controls.Add(this.lbTwoKillOddEvenDesc);
             this.panel19.Controls.Add(this.lbTwoKillOddEven);
             this.panel19.Location = new System.Drawing.Point(6, 241);
@@ -1356,6 +1408,7 @@
             this.btnTwoKillOddEvenClear.TabIndex = 31;
             this.btnTwoKillOddEvenClear.Text = "全清";
             this.btnTwoKillOddEvenClear.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEvenClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKillOddEvenAll
             // 
@@ -1365,49 +1418,54 @@
             this.btnTwoKillOddEvenAll.TabIndex = 30;
             this.btnTwoKillOddEvenAll.Text = "全選";
             this.btnTwoKillOddEvenAll.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEvenAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
-            // btnTwoKillOddEven4
+            // btnTwoKillOddEven00
             // 
-            this.btnTwoKillOddEven4.Location = new System.Drawing.Point(262, 37);
-            this.btnTwoKillOddEven4.Name = "btnTwoKillOddEven4";
-            this.btnTwoKillOddEven4.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillOddEven4.TabIndex = 16;
-            this.btnTwoKillOddEven4.Text = "偶偶";
-            this.btnTwoKillOddEven4.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven00.Location = new System.Drawing.Point(262, 37);
+            this.btnTwoKillOddEven00.Name = "btnTwoKillOddEven00";
+            this.btnTwoKillOddEven00.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillOddEven00.TabIndex = 16;
+            this.btnTwoKillOddEven00.Text = "偶偶";
+            this.btnTwoKillOddEven00.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven00.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnTwoKillOddEven3
+            // btnTwoKillOddEven01
             // 
-            this.btnTwoKillOddEven3.Location = new System.Drawing.Point(189, 37);
-            this.btnTwoKillOddEven3.Name = "btnTwoKillOddEven3";
-            this.btnTwoKillOddEven3.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillOddEven3.TabIndex = 12;
-            this.btnTwoKillOddEven3.Text = "偶奇";
-            this.btnTwoKillOddEven3.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven01.Location = new System.Drawing.Point(189, 37);
+            this.btnTwoKillOddEven01.Name = "btnTwoKillOddEven01";
+            this.btnTwoKillOddEven01.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillOddEven01.TabIndex = 12;
+            this.btnTwoKillOddEven01.Text = "偶奇";
+            this.btnTwoKillOddEven01.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven01.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnTwoKillOddEven2
+            // btnTwoKillOddEven10
             // 
-            this.btnTwoKillOddEven2.Location = new System.Drawing.Point(116, 37);
-            this.btnTwoKillOddEven2.Name = "btnTwoKillOddEven2";
-            this.btnTwoKillOddEven2.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillOddEven2.TabIndex = 11;
-            this.btnTwoKillOddEven2.Text = "奇偶";
-            this.btnTwoKillOddEven2.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven10.Location = new System.Drawing.Point(116, 37);
+            this.btnTwoKillOddEven10.Name = "btnTwoKillOddEven10";
+            this.btnTwoKillOddEven10.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillOddEven10.TabIndex = 11;
+            this.btnTwoKillOddEven10.Text = "奇偶";
+            this.btnTwoKillOddEven10.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven10.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
-            // btnTwoKillOddEven1
+            // btnTwoKillOddEven11
             // 
-            this.btnTwoKillOddEven1.Location = new System.Drawing.Point(43, 37);
-            this.btnTwoKillOddEven1.Name = "btnTwoKillOddEven1";
-            this.btnTwoKillOddEven1.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillOddEven1.TabIndex = 10;
-            this.btnTwoKillOddEven1.Text = "奇奇";
-            this.btnTwoKillOddEven1.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven11.Location = new System.Drawing.Point(43, 37);
+            this.btnTwoKillOddEven11.Name = "btnTwoKillOddEven11";
+            this.btnTwoKillOddEven11.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillOddEven11.TabIndex = 10;
+            this.btnTwoKillOddEven11.Text = "奇奇";
+            this.btnTwoKillOddEven11.UseVisualStyleBackColor = true;
+            this.btnTwoKillOddEven11.Click += new System.EventHandler(this.KillOddEven_ButtomClick);
             // 
             // lbTwoKillOddEvenDesc
             // 
             this.lbTwoKillOddEvenDesc.AutoSize = true;
             this.lbTwoKillOddEvenDesc.Location = new System.Drawing.Point(5, 41);
             this.lbTwoKillOddEvenDesc.Name = "lbTwoKillOddEvenDesc";
-            this.lbTwoKillOddEvenDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoKillOddEvenDesc.Size = new System.Drawing.Size(35, 12);
             this.lbTwoKillOddEvenDesc.TabIndex = 1;
             this.lbTwoKillOddEvenDesc.Text = "奇偶: ";
             // 
@@ -1424,10 +1482,10 @@
             // panel17
             // 
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.btnTwoKillBigSmall4);
-            this.panel17.Controls.Add(this.btnTwoKillBigSmall3);
-            this.panel17.Controls.Add(this.btnTwoKillBigSmall2);
-            this.panel17.Controls.Add(this.btnTwoKillBigSmall1);
+            this.panel17.Controls.Add(this.btnTwoKillBigSmall55);
+            this.panel17.Controls.Add(this.btnTwoKillBigSmall56);
+            this.panel17.Controls.Add(this.btnTwoKillBigSmall65);
+            this.panel17.Controls.Add(this.btnTwoKillBigSmall66);
             this.panel17.Controls.Add(this.lbTwoKillBigSmallDesc);
             this.panel17.Controls.Add(this.lbTwoKillBigSmall);
             this.panel17.Location = new System.Drawing.Point(6, 135);
@@ -1435,48 +1493,52 @@
             this.panel17.Size = new System.Drawing.Size(356, 100);
             this.panel17.TabIndex = 17;
             // 
-            // btnTwoKillBigSmall4
+            // btnTwoKillBigSmall55
             // 
-            this.btnTwoKillBigSmall4.Location = new System.Drawing.Point(256, 38);
-            this.btnTwoKillBigSmall4.Name = "btnTwoKillBigSmall4";
-            this.btnTwoKillBigSmall4.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillBigSmall4.TabIndex = 8;
-            this.btnTwoKillBigSmall4.Text = "小小";
-            this.btnTwoKillBigSmall4.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall55.Location = new System.Drawing.Point(256, 38);
+            this.btnTwoKillBigSmall55.Name = "btnTwoKillBigSmall55";
+            this.btnTwoKillBigSmall55.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillBigSmall55.TabIndex = 8;
+            this.btnTwoKillBigSmall55.Text = "小小";
+            this.btnTwoKillBigSmall55.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall55.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // btnTwoKillBigSmall3
+            // btnTwoKillBigSmall56
             // 
-            this.btnTwoKillBigSmall3.Location = new System.Drawing.Point(183, 38);
-            this.btnTwoKillBigSmall3.Name = "btnTwoKillBigSmall3";
-            this.btnTwoKillBigSmall3.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillBigSmall3.TabIndex = 4;
-            this.btnTwoKillBigSmall3.Text = "小大";
-            this.btnTwoKillBigSmall3.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall56.Location = new System.Drawing.Point(183, 38);
+            this.btnTwoKillBigSmall56.Name = "btnTwoKillBigSmall56";
+            this.btnTwoKillBigSmall56.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillBigSmall56.TabIndex = 4;
+            this.btnTwoKillBigSmall56.Text = "小大";
+            this.btnTwoKillBigSmall56.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall56.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // btnTwoKillBigSmall2
+            // btnTwoKillBigSmall65
             // 
-            this.btnTwoKillBigSmall2.Location = new System.Drawing.Point(110, 38);
-            this.btnTwoKillBigSmall2.Name = "btnTwoKillBigSmall2";
-            this.btnTwoKillBigSmall2.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillBigSmall2.TabIndex = 3;
-            this.btnTwoKillBigSmall2.Text = "大小";
-            this.btnTwoKillBigSmall2.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall65.Location = new System.Drawing.Point(110, 38);
+            this.btnTwoKillBigSmall65.Name = "btnTwoKillBigSmall65";
+            this.btnTwoKillBigSmall65.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillBigSmall65.TabIndex = 3;
+            this.btnTwoKillBigSmall65.Text = "大小";
+            this.btnTwoKillBigSmall65.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall65.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
-            // btnTwoKillBigSmall1
+            // btnTwoKillBigSmall66
             // 
-            this.btnTwoKillBigSmall1.Location = new System.Drawing.Point(37, 38);
-            this.btnTwoKillBigSmall1.Name = "btnTwoKillBigSmall1";
-            this.btnTwoKillBigSmall1.Size = new System.Drawing.Size(67, 23);
-            this.btnTwoKillBigSmall1.TabIndex = 2;
-            this.btnTwoKillBigSmall1.Text = "大大";
-            this.btnTwoKillBigSmall1.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall66.Location = new System.Drawing.Point(37, 38);
+            this.btnTwoKillBigSmall66.Name = "btnTwoKillBigSmall66";
+            this.btnTwoKillBigSmall66.Size = new System.Drawing.Size(67, 23);
+            this.btnTwoKillBigSmall66.TabIndex = 2;
+            this.btnTwoKillBigSmall66.Text = "大大";
+            this.btnTwoKillBigSmall66.UseVisualStyleBackColor = true;
+            this.btnTwoKillBigSmall66.Click += new System.EventHandler(this.KillBigSmall_ButtomClick);
             // 
             // lbTwoKillBigSmallDesc
             // 
             this.lbTwoKillBigSmallDesc.AutoSize = true;
             this.lbTwoKillBigSmallDesc.Location = new System.Drawing.Point(5, 44);
             this.lbTwoKillBigSmallDesc.Name = "lbTwoKillBigSmallDesc";
-            this.lbTwoKillBigSmallDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoKillBigSmallDesc.Size = new System.Drawing.Size(35, 12);
             this.lbTwoKillBigSmallDesc.TabIndex = 1;
             this.lbTwoKillBigSmallDesc.Text = "大小: ";
             // 
@@ -1529,6 +1591,7 @@
             this.btnTwoKillSum12.TabIndex = 54;
             this.btnTwoKillSum12.Text = "12";
             this.btnTwoKillSum12.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum12.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum11
             // 
@@ -1538,6 +1601,7 @@
             this.btnTwoKillSum11.TabIndex = 53;
             this.btnTwoKillSum11.Text = "11";
             this.btnTwoKillSum11.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum11.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum20
             // 
@@ -1547,6 +1611,7 @@
             this.btnTwoKillSum20.TabIndex = 52;
             this.btnTwoKillSum20.Text = "20";
             this.btnTwoKillSum20.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum20.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum2
             // 
@@ -1556,6 +1621,7 @@
             this.btnTwoKillSum2.TabIndex = 51;
             this.btnTwoKillSum2.Text = "2";
             this.btnTwoKillSum2.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum2.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum19
             // 
@@ -1565,6 +1631,7 @@
             this.btnTwoKillSum19.TabIndex = 50;
             this.btnTwoKillSum19.Text = "19";
             this.btnTwoKillSum19.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum19.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum18
             // 
@@ -1574,6 +1641,7 @@
             this.btnTwoKillSum18.TabIndex = 49;
             this.btnTwoKillSum18.Text = "18";
             this.btnTwoKillSum18.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum18.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum17
             // 
@@ -1583,6 +1651,7 @@
             this.btnTwoKillSum17.TabIndex = 48;
             this.btnTwoKillSum17.Text = "17";
             this.btnTwoKillSum17.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum17.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum16
             // 
@@ -1592,6 +1661,7 @@
             this.btnTwoKillSum16.TabIndex = 47;
             this.btnTwoKillSum16.Text = "16";
             this.btnTwoKillSum16.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum16.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum15
             // 
@@ -1601,6 +1671,7 @@
             this.btnTwoKillSum15.TabIndex = 46;
             this.btnTwoKillSum15.Text = "15";
             this.btnTwoKillSum15.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum15.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum14
             // 
@@ -1610,6 +1681,7 @@
             this.btnTwoKillSum14.TabIndex = 45;
             this.btnTwoKillSum14.Text = "14";
             this.btnTwoKillSum14.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum14.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum13
             // 
@@ -1619,6 +1691,7 @@
             this.btnTwoKillSum13.TabIndex = 44;
             this.btnTwoKillSum13.Text = "13";
             this.btnTwoKillSum13.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum13.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum10
             // 
@@ -1628,6 +1701,7 @@
             this.btnTwoKillSum10.TabIndex = 43;
             this.btnTwoKillSum10.Text = "10";
             this.btnTwoKillSum10.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum10.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum9
             // 
@@ -1637,6 +1711,7 @@
             this.btnTwoKillSum9.TabIndex = 42;
             this.btnTwoKillSum9.Text = "9";
             this.btnTwoKillSum9.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum9.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum8
             // 
@@ -1646,6 +1721,7 @@
             this.btnTwoKillSum8.TabIndex = 41;
             this.btnTwoKillSum8.Text = "8";
             this.btnTwoKillSum8.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum8.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum7
             // 
@@ -1655,6 +1731,7 @@
             this.btnTwoKillSum7.TabIndex = 40;
             this.btnTwoKillSum7.Text = "7";
             this.btnTwoKillSum7.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum7.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum6
             // 
@@ -1664,6 +1741,7 @@
             this.btnTwoKillSum6.TabIndex = 39;
             this.btnTwoKillSum6.Text = "6";
             this.btnTwoKillSum6.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum6.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum5
             // 
@@ -1673,6 +1751,7 @@
             this.btnTwoKillSum5.TabIndex = 38;
             this.btnTwoKillSum5.Text = "5";
             this.btnTwoKillSum5.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum5.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum4
             // 
@@ -1682,6 +1761,7 @@
             this.btnTwoKillSum4.TabIndex = 37;
             this.btnTwoKillSum4.Text = "4";
             this.btnTwoKillSum4.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum4.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSum3
             // 
@@ -1691,6 +1771,7 @@
             this.btnTwoKillSum3.TabIndex = 36;
             this.btnTwoKillSum3.Text = "3";
             this.btnTwoKillSum3.UseVisualStyleBackColor = true;
+            this.btnTwoKillSum3.Click += new System.EventHandler(this.KillSum_ButtomClick);
             // 
             // btnTwoKillSumClear
             // 
@@ -1700,6 +1781,7 @@
             this.btnTwoKillSumClear.TabIndex = 35;
             this.btnTwoKillSumClear.Text = "全清";
             this.btnTwoKillSumClear.UseVisualStyleBackColor = true;
+            this.btnTwoKillSumClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnTwoKillSumAll
             // 
@@ -1709,13 +1791,14 @@
             this.btnTwoKillSumAll.TabIndex = 34;
             this.btnTwoKillSumAll.Text = "全選";
             this.btnTwoKillSumAll.UseVisualStyleBackColor = true;
+            this.btnTwoKillSumAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // lbTwoKillSumDesc
             // 
             this.lbTwoKillSumDesc.AutoSize = true;
             this.lbTwoKillSumDesc.Location = new System.Drawing.Point(5, 36);
             this.lbTwoKillSumDesc.Name = "lbTwoKillSumDesc";
-            this.lbTwoKillSumDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbTwoKillSumDesc.Size = new System.Drawing.Size(35, 12);
             this.lbTwoKillSumDesc.TabIndex = 1;
             this.lbTwoKillSumDesc.Text = "和值: ";
             // 
@@ -1788,6 +1871,7 @@
             this.btnKillOddEvenClear.TabIndex = 31;
             this.btnKillOddEvenClear.Text = "全清";
             this.btnKillOddEvenClear.UseVisualStyleBackColor = true;
+            this.btnKillOddEvenClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKillOddEvenAll
             // 
@@ -1797,6 +1881,7 @@
             this.btnKillOddEvenAll.TabIndex = 30;
             this.btnKillOddEvenAll.Text = "全選";
             this.btnKillOddEvenAll.UseVisualStyleBackColor = true;
+            this.btnKillOddEvenAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKillOddEven011
             // 
@@ -1883,7 +1968,7 @@
             this.lbKillOddEvenDesc.AutoSize = true;
             this.lbKillOddEvenDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKillOddEvenDesc.Name = "lbKillOddEvenDesc";
-            this.lbKillOddEvenDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKillOddEvenDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKillOddEvenDesc.TabIndex = 1;
             this.lbKillOddEvenDesc.Text = "奇偶: ";
             // 
@@ -1914,6 +1999,7 @@
             this.btnClear.TabIndex = 19;
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnStartWork
             // 
@@ -2029,6 +2115,7 @@
             this.btnChooseModeOne09.TabIndex = 59;
             this.btnChooseModeOne09.Text = "09";
             this.btnChooseModeOne09.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne09.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne10
             // 
@@ -2038,6 +2125,7 @@
             this.btnChooseModeOne10.TabIndex = 58;
             this.btnChooseModeOne10.Text = "10";
             this.btnChooseModeOne10.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne10.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne08
             // 
@@ -2047,6 +2135,7 @@
             this.btnChooseModeOne08.TabIndex = 57;
             this.btnChooseModeOne08.Text = "08";
             this.btnChooseModeOne08.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne08.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne07
             // 
@@ -2056,6 +2145,7 @@
             this.btnChooseModeOne07.TabIndex = 56;
             this.btnChooseModeOne07.Text = "07";
             this.btnChooseModeOne07.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne07.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne06
             // 
@@ -2065,6 +2155,7 @@
             this.btnChooseModeOne06.TabIndex = 55;
             this.btnChooseModeOne06.Text = "06";
             this.btnChooseModeOne06.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne06.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne05
             // 
@@ -2074,6 +2165,7 @@
             this.btnChooseModeOne05.TabIndex = 54;
             this.btnChooseModeOne05.Text = "05";
             this.btnChooseModeOne05.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne05.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne04
             // 
@@ -2083,6 +2175,7 @@
             this.btnChooseModeOne04.TabIndex = 53;
             this.btnChooseModeOne04.Text = "04";
             this.btnChooseModeOne04.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne04.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne03
             // 
@@ -2092,6 +2185,7 @@
             this.btnChooseModeOne03.TabIndex = 52;
             this.btnChooseModeOne03.Text = "03";
             this.btnChooseModeOne03.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne03.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne02
             // 
@@ -2101,6 +2195,7 @@
             this.btnChooseModeOne02.TabIndex = 51;
             this.btnChooseModeOne02.Text = "02";
             this.btnChooseModeOne02.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne02.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // btnChooseModeOne01
             // 
@@ -2110,13 +2205,14 @@
             this.btnChooseModeOne01.TabIndex = 50;
             this.btnChooseModeOne01.Text = "01";
             this.btnChooseModeOne01.UseVisualStyleBackColor = true;
+            this.btnChooseModeOne01.Click += new System.EventHandler(this.btnChooseModeOne_Click);
             // 
             // lbChooseModeOne
             // 
             this.lbChooseModeOne.AutoSize = true;
             this.lbChooseModeOne.Location = new System.Drawing.Point(5, 90);
             this.lbChooseModeOne.Name = "lbChooseModeOne";
-            this.lbChooseModeOne.Size = new System.Drawing.Size(41, 12);
+            this.lbChooseModeOne.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeOne.TabIndex = 49;
             this.lbChooseModeOne.Text = "个位: ";
             // 
@@ -2128,6 +2224,7 @@
             this.btnChooseModeTen09.TabIndex = 48;
             this.btnChooseModeTen09.Text = "09";
             this.btnChooseModeTen09.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen09.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen10
             // 
@@ -2137,6 +2234,7 @@
             this.btnChooseModeTen10.TabIndex = 47;
             this.btnChooseModeTen10.Text = "10";
             this.btnChooseModeTen10.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen10.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen08
             // 
@@ -2146,6 +2244,7 @@
             this.btnChooseModeTen08.TabIndex = 46;
             this.btnChooseModeTen08.Text = "08";
             this.btnChooseModeTen08.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen08.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen07
             // 
@@ -2155,6 +2254,7 @@
             this.btnChooseModeTen07.TabIndex = 45;
             this.btnChooseModeTen07.Text = "07";
             this.btnChooseModeTen07.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen07.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen06
             // 
@@ -2164,6 +2264,7 @@
             this.btnChooseModeTen06.TabIndex = 44;
             this.btnChooseModeTen06.Text = "06";
             this.btnChooseModeTen06.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen06.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen05
             // 
@@ -2173,6 +2274,7 @@
             this.btnChooseModeTen05.TabIndex = 43;
             this.btnChooseModeTen05.Text = "05";
             this.btnChooseModeTen05.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen05.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen04
             // 
@@ -2182,6 +2284,7 @@
             this.btnChooseModeTen04.TabIndex = 42;
             this.btnChooseModeTen04.Text = "04";
             this.btnChooseModeTen04.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen04.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen03
             // 
@@ -2191,6 +2294,7 @@
             this.btnChooseModeTen03.TabIndex = 41;
             this.btnChooseModeTen03.Text = "03";
             this.btnChooseModeTen03.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen03.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen02
             // 
@@ -2200,6 +2304,7 @@
             this.btnChooseModeTen02.TabIndex = 40;
             this.btnChooseModeTen02.Text = "02";
             this.btnChooseModeTen02.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen02.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // btnChooseModeTen01
             // 
@@ -2209,13 +2314,14 @@
             this.btnChooseModeTen01.TabIndex = 39;
             this.btnChooseModeTen01.Text = "01";
             this.btnChooseModeTen01.UseVisualStyleBackColor = true;
+            this.btnChooseModeTen01.Click += new System.EventHandler(this.btnChooseModeTen_Click);
             // 
             // lbChooseModeTen
             // 
             this.lbChooseModeTen.AutoSize = true;
             this.lbChooseModeTen.Location = new System.Drawing.Point(5, 61);
             this.lbChooseModeTen.Name = "lbChooseModeTen";
-            this.lbChooseModeTen.Size = new System.Drawing.Size(41, 12);
+            this.lbChooseModeTen.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeTen.TabIndex = 38;
             this.lbChooseModeTen.Text = "十位: ";
             // 
@@ -2227,6 +2333,7 @@
             this.btnChooseModeHundred09.TabIndex = 37;
             this.btnChooseModeHundred09.Text = "09";
             this.btnChooseModeHundred09.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred09.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred10
             // 
@@ -2236,6 +2343,7 @@
             this.btnChooseModeHundred10.TabIndex = 36;
             this.btnChooseModeHundred10.Text = "10";
             this.btnChooseModeHundred10.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred10.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeOneClear
             // 
@@ -2265,6 +2373,7 @@
             this.btnChooseModeHundred08.TabIndex = 14;
             this.btnChooseModeHundred08.Text = "08";
             this.btnChooseModeHundred08.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred08.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred07
             // 
@@ -2274,6 +2383,7 @@
             this.btnChooseModeHundred07.TabIndex = 13;
             this.btnChooseModeHundred07.Text = "07";
             this.btnChooseModeHundred07.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred07.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred06
             // 
@@ -2283,6 +2393,7 @@
             this.btnChooseModeHundred06.TabIndex = 11;
             this.btnChooseModeHundred06.Text = "06";
             this.btnChooseModeHundred06.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred06.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred05
             // 
@@ -2292,6 +2403,7 @@
             this.btnChooseModeHundred05.TabIndex = 10;
             this.btnChooseModeHundred05.Text = "05";
             this.btnChooseModeHundred05.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred05.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred04
             // 
@@ -2301,6 +2413,7 @@
             this.btnChooseModeHundred04.TabIndex = 9;
             this.btnChooseModeHundred04.Text = "04";
             this.btnChooseModeHundred04.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred04.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred03
             // 
@@ -2310,6 +2423,7 @@
             this.btnChooseModeHundred03.TabIndex = 8;
             this.btnChooseModeHundred03.Text = "03";
             this.btnChooseModeHundred03.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred03.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred02
             // 
@@ -2319,6 +2433,7 @@
             this.btnChooseModeHundred02.TabIndex = 7;
             this.btnChooseModeHundred02.Text = "02";
             this.btnChooseModeHundred02.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred02.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // btnChooseModeHundred01
             // 
@@ -2328,13 +2443,14 @@
             this.btnChooseModeHundred01.TabIndex = 6;
             this.btnChooseModeHundred01.Text = "01";
             this.btnChooseModeHundred01.UseVisualStyleBackColor = true;
+            this.btnChooseModeHundred01.Click += new System.EventHandler(this.btnChooseModeHundred_Click);
             // 
             // lbChooseModeHundred
             // 
             this.lbChooseModeHundred.AutoSize = true;
             this.lbChooseModeHundred.Location = new System.Drawing.Point(5, 30);
             this.lbChooseModeHundred.Name = "lbChooseModeHundred";
-            this.lbChooseModeHundred.Size = new System.Drawing.Size(41, 12);
+            this.lbChooseModeHundred.Size = new System.Drawing.Size(35, 12);
             this.lbChooseModeHundred.TabIndex = 1;
             this.lbChooseModeHundred.Text = "百位: ";
             // 
@@ -2610,6 +2726,7 @@
             this.btnKillSumClear.TabIndex = 35;
             this.btnKillSumClear.Text = "全清";
             this.btnKillSumClear.UseVisualStyleBackColor = true;
+            this.btnKillSumClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKillSumAll
             // 
@@ -2619,13 +2736,14 @@
             this.btnKillSumAll.TabIndex = 34;
             this.btnKillSumAll.Text = "全選";
             this.btnKillSumAll.UseVisualStyleBackColor = true;
+            this.btnKillSumAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // lbKillSumDesc
             // 
             this.lbKillSumDesc.AutoSize = true;
             this.lbKillSumDesc.Location = new System.Drawing.Point(5, 36);
             this.lbKillSumDesc.Name = "lbKillSumDesc";
-            this.lbKillSumDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKillSumDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKillSumDesc.TabIndex = 1;
             this.lbKillSumDesc.Text = "和值: ";
             // 
@@ -2667,6 +2785,7 @@
             this.btnKillCrossClear.TabIndex = 35;
             this.btnKillCrossClear.Text = "全清";
             this.btnKillCrossClear.UseVisualStyleBackColor = true;
+            this.btnKillCrossClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKillCrossAll
             // 
@@ -2676,6 +2795,7 @@
             this.btnKillCrossAll.TabIndex = 34;
             this.btnKillCrossAll.Text = "全選";
             this.btnKillCrossAll.UseVisualStyleBackColor = true;
+            this.btnKillCrossAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKillCross9
             // 
@@ -2762,7 +2882,7 @@
             this.lbKillCrossDesc.AutoSize = true;
             this.lbKillCrossDesc.Location = new System.Drawing.Point(5, 40);
             this.lbKillCrossDesc.Name = "lbKillCrossDesc";
-            this.lbKillCrossDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKillCrossDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKillCrossDesc.TabIndex = 1;
             this.lbKillCrossDesc.Text = "跨度: ";
             // 
@@ -2779,8 +2899,8 @@
             // panel12
             // 
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.button15);
-            this.panel12.Controls.Add(this.button16);
+            this.panel12.Controls.Add(this.btnLocalNumberAll);
+            this.panel12.Controls.Add(this.btnLocalNumberClear);
             this.panel12.Controls.Add(this.btnLocalNumber1Local);
             this.panel12.Controls.Add(this.btnLocalNumber0Local);
             this.panel12.Controls.Add(this.lbLocalNumberDesc2);
@@ -2801,23 +2921,25 @@
             this.panel12.Size = new System.Drawing.Size(356, 89);
             this.panel12.TabIndex = 13;
             // 
-            // button15
+            // btnLocalNumberAll
             // 
-            this.button15.Location = new System.Drawing.Point(302, 58);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(52, 23);
-            this.button15.TabIndex = 33;
-            this.button15.Text = "全清";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnLocalNumberAll.Location = new System.Drawing.Point(302, 58);
+            this.btnLocalNumberAll.Name = "btnLocalNumberAll";
+            this.btnLocalNumberAll.Size = new System.Drawing.Size(52, 23);
+            this.btnLocalNumberAll.TabIndex = 33;
+            this.btnLocalNumberAll.Text = "全清";
+            this.btnLocalNumberAll.UseVisualStyleBackColor = true;
+            this.btnLocalNumberAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
-            // button16
+            // btnLocalNumberClear
             // 
-            this.button16.Location = new System.Drawing.Point(249, 58);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(52, 23);
-            this.button16.TabIndex = 32;
-            this.button16.Text = "全選";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnLocalNumberClear.Location = new System.Drawing.Point(249, 58);
+            this.btnLocalNumberClear.Name = "btnLocalNumberClear";
+            this.btnLocalNumberClear.Size = new System.Drawing.Size(52, 23);
+            this.btnLocalNumberClear.TabIndex = 32;
+            this.btnLocalNumberClear.Text = "全選";
+            this.btnLocalNumberClear.UseVisualStyleBackColor = true;
+            this.btnLocalNumberClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnLocalNumber1Local
             // 
@@ -2844,7 +2966,7 @@
             this.lbLocalNumberDesc2.AutoSize = true;
             this.lbLocalNumberDesc2.Location = new System.Drawing.Point(3, 64);
             this.lbLocalNumberDesc2.Name = "lbLocalNumberDesc2";
-            this.lbLocalNumberDesc2.Size = new System.Drawing.Size(41, 12);
+            this.lbLocalNumberDesc2.Size = new System.Drawing.Size(35, 12);
             this.lbLocalNumberDesc2.TabIndex = 25;
             this.lbLocalNumberDesc2.Text = "中出: ";
             // 
@@ -2856,6 +2978,7 @@
             this.btnLocalNumber10.TabIndex = 24;
             this.btnLocalNumber10.Text = "10";
             this.btnLocalNumber10.UseVisualStyleBackColor = true;
+            this.btnLocalNumber10.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber9
             // 
@@ -2865,6 +2988,7 @@
             this.btnLocalNumber9.TabIndex = 23;
             this.btnLocalNumber9.Text = "09";
             this.btnLocalNumber9.UseVisualStyleBackColor = true;
+            this.btnLocalNumber9.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber8
             // 
@@ -2874,6 +2998,7 @@
             this.btnLocalNumber8.TabIndex = 22;
             this.btnLocalNumber8.Text = "08";
             this.btnLocalNumber8.UseVisualStyleBackColor = true;
+            this.btnLocalNumber8.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber7
             // 
@@ -2883,6 +3008,7 @@
             this.btnLocalNumber7.TabIndex = 21;
             this.btnLocalNumber7.Text = "07";
             this.btnLocalNumber7.UseVisualStyleBackColor = true;
+            this.btnLocalNumber7.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber6
             // 
@@ -2892,6 +3018,7 @@
             this.btnLocalNumber6.TabIndex = 20;
             this.btnLocalNumber6.Text = "06";
             this.btnLocalNumber6.UseVisualStyleBackColor = true;
+            this.btnLocalNumber6.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber5
             // 
@@ -2901,6 +3028,7 @@
             this.btnLocalNumber5.TabIndex = 19;
             this.btnLocalNumber5.Text = "05";
             this.btnLocalNumber5.UseVisualStyleBackColor = true;
+            this.btnLocalNumber5.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber4
             // 
@@ -2910,6 +3038,7 @@
             this.btnLocalNumber4.TabIndex = 18;
             this.btnLocalNumber4.Text = "04";
             this.btnLocalNumber4.UseVisualStyleBackColor = true;
+            this.btnLocalNumber4.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber3
             // 
@@ -2919,6 +3048,7 @@
             this.btnLocalNumber3.TabIndex = 17;
             this.btnLocalNumber3.Text = "03";
             this.btnLocalNumber3.UseVisualStyleBackColor = true;
+            this.btnLocalNumber3.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber2
             // 
@@ -2928,6 +3058,7 @@
             this.btnLocalNumber2.TabIndex = 16;
             this.btnLocalNumber2.Text = "02";
             this.btnLocalNumber2.UseVisualStyleBackColor = true;
+            this.btnLocalNumber2.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // btnLocalNumber1
             // 
@@ -2937,13 +3068,14 @@
             this.btnLocalNumber1.TabIndex = 15;
             this.btnLocalNumber1.Text = "01";
             this.btnLocalNumber1.UseVisualStyleBackColor = true;
+            this.btnLocalNumber1.Click += new System.EventHandler(this.LocalNumber0LocalPara_ButtomClick);
             // 
             // lbLocalNumberDesc1
             // 
             this.lbLocalNumberDesc1.AutoSize = true;
             this.lbLocalNumberDesc1.Location = new System.Drawing.Point(3, 36);
             this.lbLocalNumberDesc1.Name = "lbLocalNumberDesc1";
-            this.lbLocalNumberDesc1.Size = new System.Drawing.Size(41, 12);
+            this.lbLocalNumberDesc1.Size = new System.Drawing.Size(35, 12);
             this.lbLocalNumberDesc1.TabIndex = 1;
             this.lbLocalNumberDesc1.Text = "胆码: ";
             // 
@@ -3159,7 +3291,7 @@
             this.lbKill12SumDesc.AutoSize = true;
             this.lbKill12SumDesc.Location = new System.Drawing.Point(3, 33);
             this.lbKill12SumDesc.Name = "lbKill12SumDesc";
-            this.lbKill12SumDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill12SumDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill12SumDesc.TabIndex = 1;
             this.lbKill12SumDesc.Text = "12和: ";
             // 
@@ -3375,7 +3507,7 @@
             this.lbKill23SumDesc.AutoSize = true;
             this.lbKill23SumDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKill23SumDesc.Name = "lbKill23SumDesc";
-            this.lbKill23SumDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill23SumDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill23SumDesc.TabIndex = 1;
             this.lbKill23SumDesc.Text = "13差: ";
             // 
@@ -3591,7 +3723,7 @@
             this.lbKill13SumDesc.AutoSize = true;
             this.lbKill13SumDesc.Location = new System.Drawing.Point(5, 32);
             this.lbKill13SumDesc.Name = "lbKill13SumDesc";
-            this.lbKill13SumDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill13SumDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill13SumDesc.TabIndex = 1;
             this.lbKill13SumDesc.Text = "13和: ";
             // 
@@ -3719,7 +3851,7 @@
             this.lbKill12LessDesc.AutoSize = true;
             this.lbKill12LessDesc.Location = new System.Drawing.Point(5, 34);
             this.lbKill12LessDesc.Name = "lbKill12LessDesc";
-            this.lbKill12LessDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill12LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill12LessDesc.TabIndex = 1;
             this.lbKill12LessDesc.Text = "12差: ";
             // 
@@ -3847,7 +3979,7 @@
             this.lbKill23LessDesc.AutoSize = true;
             this.lbKill23LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill23LessDesc.Name = "lbKill23LessDesc";
-            this.lbKill23LessDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill23LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill23LessDesc.TabIndex = 1;
             this.lbKill23LessDesc.Text = "23差: ";
             // 
@@ -3975,7 +4107,7 @@
             this.lbKill13LessDesc.AutoSize = true;
             this.lbKill13LessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKill13LessDesc.Name = "lbKill13LessDesc";
-            this.lbKill13LessDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill13LessDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill13LessDesc.TabIndex = 1;
             this.lbKill13LessDesc.Text = "13差: ";
             // 
@@ -4092,7 +4224,7 @@
             this.lbKillBigSmallDesc.AutoSize = true;
             this.lbKillBigSmallDesc.Location = new System.Drawing.Point(5, 35);
             this.lbKillBigSmallDesc.Name = "lbKillBigSmallDesc";
-            this.lbKillBigSmallDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKillBigSmallDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKillBigSmallDesc.TabIndex = 1;
             this.lbKillBigSmallDesc.Text = "大小: ";
             // 
@@ -4187,7 +4319,7 @@
             this.lbKillTypeNumberDesc.AutoSize = true;
             this.lbKillTypeNumberDesc.Location = new System.Drawing.Point(5, 35);
             this.lbKillTypeNumberDesc.Name = "lbKillTypeNumberDesc";
-            this.lbKillTypeNumberDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKillTypeNumberDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKillTypeNumberDesc.TabIndex = 1;
             this.lbKillTypeNumberDesc.Text = "型态: ";
             // 
@@ -4278,6 +4410,7 @@
             this.btnKill02RoadClear.TabIndex = 29;
             this.btnKill02RoadClear.Text = "全清";
             this.btnKill02RoadClear.UseVisualStyleBackColor = true;
+            this.btnKill02RoadClear.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // brnKill02RoadAll
             // 
@@ -4287,6 +4420,7 @@
             this.brnKill02RoadAll.TabIndex = 28;
             this.brnKill02RoadAll.Text = "全選";
             this.brnKill02RoadAll.UseVisualStyleBackColor = true;
+            this.brnKill02RoadAll.Click += new System.EventHandler(this.ALLCheckClear_ButtomClick);
             // 
             // btnKill02Road212
             // 
@@ -4533,7 +4667,7 @@
             this.lbKill02RoadDesc.AutoSize = true;
             this.lbKill02RoadDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKill02RoadDesc.Name = "lbKill02RoadDesc";
-            this.lbKill02RoadDesc.Size = new System.Drawing.Size(41, 12);
+            this.lbKill02RoadDesc.Size = new System.Drawing.Size(35, 12);
             this.lbKill02RoadDesc.TabIndex = 1;
             this.lbKill02RoadDesc.Text = "路数: ";
             // 
@@ -4672,7 +4806,7 @@
             this.lbKillTwoLessDesc.AutoSize = true;
             this.lbKillTwoLessDesc.Location = new System.Drawing.Point(5, 41);
             this.lbKillTwoLessDesc.Name = "lbKillTwoLessDesc";
-            this.lbKillTwoLessDesc.Size = new System.Drawing.Size(53, 12);
+            this.lbKillTwoLessDesc.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoLessDesc.TabIndex = 1;
             this.lbKillTwoLessDesc.Text = "二码差: ";
             // 
@@ -4888,7 +5022,7 @@
             this.lbKillTwoSumDesc.AutoSize = true;
             this.lbKillTwoSumDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKillTwoSumDesc.Name = "lbKillTwoSumDesc";
-            this.lbKillTwoSumDesc.Size = new System.Drawing.Size(53, 12);
+            this.lbKillTwoSumDesc.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoSumDesc.TabIndex = 1;
             this.lbKillTwoSumDesc.Text = "二码和: ";
             // 
@@ -5048,7 +5182,7 @@
             this.lbKillTwoCombineSec.AutoSize = true;
             this.lbKillTwoCombineSec.Location = new System.Drawing.Point(5, 60);
             this.lbKillTwoCombineSec.Name = "lbKillTwoCombineSec";
-            this.lbKillTwoCombineSec.Size = new System.Drawing.Size(53, 12);
+            this.lbKillTwoCombineSec.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoCombineSec.TabIndex = 12;
             this.lbKillTwoCombineSec.Text = "第二码: ";
             // 
@@ -5147,7 +5281,7 @@
             this.lbKillTwoCombineFirstDesc.AutoSize = true;
             this.lbKillTwoCombineFirstDesc.Location = new System.Drawing.Point(5, 33);
             this.lbKillTwoCombineFirstDesc.Name = "lbKillTwoCombineFirstDesc";
-            this.lbKillTwoCombineFirstDesc.Size = new System.Drawing.Size(53, 12);
+            this.lbKillTwoCombineFirstDesc.Size = new System.Drawing.Size(47, 12);
             this.lbKillTwoCombineFirstDesc.TabIndex = 1;
             this.lbKillTwoCombineFirstDesc.Text = "第一码: ";
             // 
@@ -5464,8 +5598,8 @@
         private System.Windows.Forms.Button btnLocalNumber1Local;
         private System.Windows.Forms.Button btnLocalNumber0Local;
         private System.Windows.Forms.Label lbLocalNumberDesc2;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnLocalNumberAll;
+        private System.Windows.Forms.Button btnLocalNumberClear;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Button btnKillCross9;
         private System.Windows.Forms.Button btnKillCross8;
@@ -5557,10 +5691,10 @@
         private System.Windows.Forms.Label lbTwoKillSumDesc;
         private System.Windows.Forms.Label lbTwoKillSum;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Button btnTwoKillBigSmall4;
-        private System.Windows.Forms.Button btnTwoKillBigSmall3;
-        private System.Windows.Forms.Button btnTwoKillBigSmall2;
-        private System.Windows.Forms.Button btnTwoKillBigSmall1;
+        private System.Windows.Forms.Button btnTwoKillBigSmall55;
+        private System.Windows.Forms.Button btnTwoKillBigSmall56;
+        private System.Windows.Forms.Button btnTwoKillBigSmall65;
+        private System.Windows.Forms.Button btnTwoKillBigSmall66;
         private System.Windows.Forms.Label lbTwoKillBigSmallDesc;
         private System.Windows.Forms.Label lbTwoKillBigSmall;
         private System.Windows.Forms.Panel panel18;
@@ -5579,10 +5713,10 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btnTwoKillOddEvenClear;
         private System.Windows.Forms.Button btnTwoKillOddEvenAll;
-        private System.Windows.Forms.Button btnTwoKillOddEven4;
-        private System.Windows.Forms.Button btnTwoKillOddEven3;
-        private System.Windows.Forms.Button btnTwoKillOddEven2;
-        private System.Windows.Forms.Button btnTwoKillOddEven1;
+        private System.Windows.Forms.Button btnTwoKillOddEven00;
+        private System.Windows.Forms.Button btnTwoKillOddEven01;
+        private System.Windows.Forms.Button btnTwoKillOddEven10;
+        private System.Windows.Forms.Button btnTwoKillOddEven11;
         private System.Windows.Forms.Label lbTwoKillOddEvenDesc;
         private System.Windows.Forms.Label lbTwoKillOddEven;
         private System.Windows.Forms.Panel panel20;
@@ -5602,7 +5736,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnTwoLocalNumberClear;
         private System.Windows.Forms.Button btnTwoLocalNumberAll;
-        private System.Windows.Forms.Button btnTwoLocalNumber2Local;
         private System.Windows.Forms.Button btnTwoLocalNumber1Local;
         private System.Windows.Forms.Button btnTwoLocalNumber0Local;
         private System.Windows.Forms.Label lbTwoLocalNumberDesc2;
