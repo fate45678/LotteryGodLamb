@@ -226,7 +226,7 @@ namespace WinFormsApp1
                     }                        
                     else
                     {
-                        if(isFirstf_Chart)
+                        if(isFirstf_Shrink)
                         { 
                             frm_Shrink f_Shrink = new frm_Shrink();
                             f_Shrink.TopLevel = false;

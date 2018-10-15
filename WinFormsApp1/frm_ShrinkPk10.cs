@@ -24,44 +24,56 @@ namespace WinFormsApp1
 
         private void btnStartWork_Click(object sender, EventArgs e)
         {
-            string TableNmae = tabMakeNumber.SelectedTab.Name;
-            DataTable dt = SelectDB(TableNmae);
-            var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
-            JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+            try{
+                string TableNmae = tabMakeNumber.SelectedTab.Name;
+                DataTable dt = SelectDB(TableNmae);
+                var str_json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
 
-            //組選號碼
-            var ResultChooseModePara = ja.ToList();
-            if (isTwoChoose)
-            {
-                if (ChooseModePara == "Big")
+                //組選號碼
+                var ResultChooseModePara = ja.ToList();
+                var ResultChooseModeParaTmp = ja.ToList();
+                if (isTwoChoose)
                 {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
-                }
-                else if (ChooseModePara == "Small")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) < 6 && int.Parse(x["TEN"].ToString()) < 6).ToList();
-                }
-                else if (ChooseModePara == "Odd")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 1 && (int.Parse(x["TEN"].ToString()) % 2) == 1).ToList();
-                }
-                else if (ChooseModePara == "Even")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 0 && (int.Parse(x["TEN"].ToString()) % 2) == 0).ToList();
-                }
-                else
-                {
-                    //ResultChooseModePara = ja;
-                    if (ChooseModeTenPara != "" && ChooseModeTenPara != "0") //&& ChooseModeOnePara != "" && ChooseModeOnePara != "0" && ChooseModeTenPara != "" && ChooseModeTenPara != "0")
+                    if (ChooseModePara == "Big")
                     {
-                        var ParaChooseModeTenPara = ChooseModeTenPara.Substring(1).Split(',');
-                        for (int i = 0; i < ParaChooseModeTenPara.Count(); i++)
+                        ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
+                    }
+                    else if (ChooseModePara == "Small")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) < 6 && int.Parse(x["TEN"].ToString()) < 6).ToList();
+                    }
+                    else if (ChooseModePara == "Odd")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 1 && (int.Parse(x["TEN"].ToString()) % 2) == 1).ToList();
+                    }
+                    else if (ChooseModePara == "Even")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 0 && (int.Parse(x["TEN"].ToString()) % 2) == 0).ToList();
+                    }
+                    else
+                    {
+                        //ResultChooseModePara = ja;
+                        if (ChooseModeTenPara != "" && ChooseModeTenPara != "0") //&& ChooseModeOnePara != "" && ChooseModeOnePara != "0" && ChooseModeTenPara != "" && ChooseModeTenPara != "0")
                         {
-                            ResultChooseModePara = ResultChooseModePara
-                                .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaChooseModeTenPara[i])).ToList();
-                        }
+                            var ParaChooseModeTenPara = ChooseModeTenPara.Substring(1).Split(',');
+                            for (int i = 0; i < ParaChooseModeTenPara.Count(); i++)
+                            {
+                                ResultChooseModePara = ResultChooseModePara
+                                    .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaChooseModeTenPara[i])).ToList();
+                            }
 
-                        if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                            if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                            {
+                                var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
+                                for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
+                                {
+                                    ResultChooseModePara = ResultChooseModePara
+                                        .Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                }
+                            }
+                        }
+                        else if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
                         {
                             var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
                             for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
@@ -69,511 +81,561 @@ namespace WinFormsApp1
                                 ResultChooseModePara = ResultChooseModePara
                                     .Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
                             }
-                        }                      
-                    }
-                    else if(ChooseModeOnePara != "" && ChooseModeOnePara != "0")
-                    {
-                        var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
-                        for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
-                        {
-                            ResultChooseModePara = ResultChooseModePara
-                                .Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
                         }
                     }
                 }
-            }
-            else
-            {
-                if (ChooseModePara == "Big")
+                else
                 {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
-                }
-                else if (ChooseModePara == "Small")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) < 6 && int.Parse(x["TEN"].ToString()) < 6 && int.Parse(x["ONE"].ToString()) < 6).ToList();
-                }
-                else if (ChooseModePara == "Odd")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 1 && (int.Parse(x["TEN"].ToString()) % 2) == 1 && (int.Parse(x["ONE"].ToString()) % 2) == 1).ToList();
-                }
-                else if (ChooseModePara == "Even")
-                {
-                    ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 0 && (int.Parse(x["TEN"].ToString()) % 2) == 0 && (int.Parse(x["ONE"].ToString()) % 2) == 0).ToList();
-                }
-                else 
-                {
-                    if (ChooseModeHunPara != "" && ChooseModeHunPara != "0") //&& ChooseModeOnePara != "" && ChooseModeOnePara != "0" && ChooseModeTenPara != "" && ChooseModeTenPara != "0")
+                    if (ChooseModePara == "Big")
                     {
-                        var ParaChooseModeHunPara = ChooseModeHunPara.Substring(1).Split(',');
-                        for (int i = 0; i < ParaChooseModeHunPara.Count(); i++)
+                        ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
+                    }
+                    else if (ChooseModePara == "Small")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => int.Parse(x["HUN"].ToString()) < 6 && int.Parse(x["TEN"].ToString()) < 6 && int.Parse(x["ONE"].ToString()) < 6).ToList();
+                    }
+                    else if (ChooseModePara == "Odd")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 1 && (int.Parse(x["TEN"].ToString()) % 2) == 1 && (int.Parse(x["ONE"].ToString()) % 2) == 1).ToList();
+                    }
+                    else if (ChooseModePara == "Even")
+                    {
+                        ResultChooseModePara = ResultChooseModePara.Where(x => (int.Parse(x["HUN"].ToString()) % 2) == 0 && (int.Parse(x["TEN"].ToString()) % 2) == 0 && (int.Parse(x["ONE"].ToString()) % 2) == 0).ToList();
+                    }
+                    else
+                    {
+                        if (ChooseModeHunPara != "" && ChooseModeHunPara != "0") //&& ChooseModeOnePara != "" && ChooseModeOnePara != "0" && ChooseModeTenPara != "" && ChooseModeTenPara != "0")
                         {
-                            ResultChooseModePara = ResultChooseModePara
-                                .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaChooseModeHunPara[i])).ToList();
-                        }
+                            var ParaChooseModeHunPara = ChooseModeHunPara.Substring(1).Split(',');
+                            for (int i = 0; i < ParaChooseModeHunPara.Count(); i++)
+                            {
+                                if (i == 0)
+                                {
+                                    ResultChooseModePara = ja
+                                        .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaChooseModeHunPara[i])).ToList();
+                                }
+                                else
+                                {
+                                    ResultChooseModeParaTmp = ja
+                                      .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaChooseModeHunPara[i])).ToList();
 
-                        if (ChooseModeTenPara != "" && ChooseModeTenPara != "0")
+                                    ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
+                                }
+                                //var ResultChooseModeParaTMp = ResultChooseModePara.Concat(ResultChooseModePara).ToList();
+                            }
+
+                            if (ChooseModeTenPara != "" && ChooseModeTenPara != "0")
+                            {
+                                var ParaChooseModeTenPara_in = ChooseModeTenPara.Substring(1).Split(',');
+                                var SelectList = ResultChooseModePara;
+                                ResultChooseModePara = new List<JToken>();
+                                for (int i = 0; i < ParaChooseModeTenPara_in.Count(); i++)
+                                {
+                                    ResultChooseModeParaTmp = SelectList
+                                                                .Where(x => int.Parse(x["TEN"].ToString()) == int.Parse(ParaChooseModeTenPara_in[i])).ToList();
+                                    ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
+                                }
+
+                                if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                                {
+                                    var SelectList2 = ResultChooseModePara;
+                                    ResultChooseModePara = new List<JToken>();
+
+                                    var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
+                                    for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
+                                    {
+                                        ResultChooseModeParaTmp = SelectList2
+                                            .Where(x => int.Parse(x["ONE"].ToString()) == int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                        ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                                {
+                                    var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
+                                    var SelectList = ResultChooseModePara;
+                                    ResultChooseModePara = new List<JToken>();
+
+                                    for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
+                                    {
+                                        ResultChooseModeParaTmp = SelectList
+                                            .Where(x => int.Parse(x["ONE"].ToString()) == int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                        ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
+                                    }
+                                }
+                            }
+                        }
+                        else if (ChooseModeTenPara != "" && ChooseModeTenPara != "0")
                         {
                             var ParaChooseModeTenPara_in = ChooseModeTenPara.Substring(1).Split(',');
                             for (int i = 0; i < ParaChooseModeTenPara_in.Count(); i++)
                             {
-                                ResultChooseModePara = ResultChooseModePara
-                                    .Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaChooseModeTenPara_in[i])).ToList();
+                                if (i == 0)
+                                {
+                                    ResultChooseModePara = ja
+                                        .Where(x => int.Parse(x["TEN"].ToString()) == int.Parse(ParaChooseModeTenPara_in[i])).ToList();
+                                }
+                                else
+                                {
+                                    ResultChooseModeParaTmp = ja
+                                       .Where(x => int.Parse(x["TEN"].ToString()) == int.Parse(ParaChooseModeTenPara_in[i])).ToList();
+                                    ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
+                                }
                             }
 
                             if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
                             {
                                 var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
+                                var SelectList = ResultChooseModePara;
+                                ResultChooseModePara = new List<JToken>();
                                 for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
                                 {
-                                    ResultChooseModePara = ResultChooseModePara
-                                        .Where(x => int.Parse(x["ONE"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                    ResultChooseModeParaTmp = SelectList
+                                        .Where(x => int.Parse(x["ONE"].ToString()) == int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                    ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
                                 }
                             }
                         }
-                        else
+                        else if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
                         {
-                            if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                            var ParaChooseModeOnePara = ChooseModeOnePara.Substring(1).Split(',');
+                            for (int i = 0; i < ParaChooseModeOnePara.Count(); i++)
                             {
-                                var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
-                                for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
+                                if (i == 0)
                                 {
-                                    ResultChooseModePara = ResultChooseModePara
-                                        .Where(x => int.Parse(x["ONE"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                    ResultChooseModePara = ja
+                                        .Where(x => int.Parse(x["ONE"].ToString()) == int.Parse(ParaChooseModeOnePara[i])).ToList();
+                                }
+                                else
+                                {
+                                    ResultChooseModeParaTmp = ResultChooseModePara
+                                        .Where(x => int.Parse(x["ONE"].ToString()) == int.Parse(ParaChooseModeOnePara[i])).ToList();
+                                    ResultChooseModePara = ResultChooseModePara.Concat(ResultChooseModeParaTmp).ToList();
                                 }
                             }
                         }
                     }
-                    else if (ChooseModeTenPara != "" && ChooseModeTenPara != "0")
-                    {
-                        var ParaChooseModeTenPara_in = ChooseModeTenPara.Substring(1).Split(',');
-                        for (int i = 0; i < ParaChooseModeTenPara_in.Count(); i++)
-                        {
-                            ResultChooseModePara = ResultChooseModePara
-                                .Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaChooseModeTenPara_in[i])).ToList();
-                        }
+                }
 
-                        if (ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+
+                //殺二碼組合
+                var ResultKillTwoCombineFirst = ResultChooseModePara;
+                if (selectKillTwoCombineFirstPara != "0" && selectKillTwoCombineFirstPara != "" && selectKillTwoCombineSecPara != "0" && selectKillTwoCombineSecPara != "")
+                {
+                    var ParaselectKillTwoCombineFirstPara = selectKillTwoCombineFirstPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaselectKillTwoCombineFirstPara.Count(); i++)
+                    {
+                        ResultKillTwoCombineFirst = ResultKillTwoCombineFirst.Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaselectKillTwoCombineFirstPara[i])).ToList();
+                    }
+
+                    var ParaselectKillTwoCombineSecPara = selectKillTwoCombineSecPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaselectKillTwoCombineSecPara.Count(); i++)
+                    {
+                        ResultKillTwoCombineFirst = ResultKillTwoCombineFirst.Where(x => int.Parse(x["TEN"].ToString()) != int.Parse(ParaselectKillTwoCombineSecPara[i])).ToList();
+                    }
+                    //.Where(x => x["TEN"].ToString() != selectKillTwoCombineSecPara)
+                }
+                //var ResultKillTwoCombineSec = ResultKillTwoCombineFirst.Where(x => x["TEN"].ToString() != selectKillTwoCombineSecPara).ToList();
+
+                //殺二碼和
+                var ResultKillTwoSum = ResultKillTwoCombineFirst;
+                if (KillTwoSumPara != "0" && KillTwoSumPara != "")
+                {
+                    var ParaKillTwoSumPara = KillTwoSumPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKillTwoSumPara.Count(); i++)
+                    {
+                        ResultKillTwoSum = ResultKillTwoSum
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKillTwoSumPara[i]))
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKillTwoSumPara[i]))
+                                                    .Where(x => int.Parse(x["ONE"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKillTwoSumPara[i])).ToList();
+                    }
+                }
+
+                //殺二碼差
+                var ResultKillTwoLess = ResultKillTwoSum;
+                if (KillTwoLessPara != "0" && KillTwoLessPara != "")
+                {
+                    var ParaKillTwoLessPara = KillTwoLessPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKillTwoLessPara.Count(); i++)
+                    {
+                        ResultKillTwoLess = ResultKillTwoLess
+                                                    .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillTwoLessPara[i]))
+                                                    .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillTwoLessPara[i]))
+                                                    .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillTwoLessPara[i])).ToList();
+                    }
+                }
+
+                //殺012路
+                var ResultKill012Road = ResultKillTwoLess;
+                if (Kill012RoadPara != "0" && Kill012RoadPara != "")
+                {
+                    if (isTwoRoad)
+                    {
+                        var ParaKill012RoadPara = Kill012RoadPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKill012RoadPara.Count(); i++)
                         {
-                            var ParaChooseModeOnePara_in = ChooseModeOnePara.Substring(1).Split(',');
-                            for (int i = 0; i < ParaChooseModeOnePara_in.Count(); i++)
+                            ResultKill012Road = ResultKill012Road
+                                                       .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
+                                                                || Convert.ToInt32(x["Number"].ToString().Substring(3, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))).ToList();
+                        }
+                    }
+                    else
+                    {
+                        var ParaKill012RoadPara = Kill012RoadPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKill012RoadPara.Count(); i++)
+                        {
+                            //var iii = int.Parse(ParaKill012RoadPara[i].Substring(0, 1));
+                            ResultKill012Road = ResultKill012Road
+                                                       .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
+                                                               || Convert.ToInt32(x["Number"].ToString().Substring(3, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))
+                                                               || Convert.ToInt32(x["Number"].ToString().Substring(6, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(2, 1))).ToList();
+                        }
+                    }
+                }
+
+                //殺奇偶
+                var ResultKillOddEven = ResultKill012Road;
+                if (KillOddEvenPara != "0" && KillOddEvenPara != "")
+                {
+                    if (isTwoOddEven)
+                    {
+                        var ParaKillOddEven = KillOddEvenPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillOddEven.Count(); i++)
+                        {
+                            ResultKillOddEven = ResultKillOddEven
+                                                       .Where(x => Convert.ToInt32(x["HUN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(0, 1)))
+                                                       .Where(y => Convert.ToInt32(y["TEN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(1, 1))).ToList();
+                        }
+                    }
+                    else
+                    {
+                        var ParaKillOddEven = KillOddEvenPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillOddEven.Count(); i++)
+                        {
+                            ResultKillOddEven = ResultKillOddEven
+                                                       .Where(x => Convert.ToInt32(x["HUN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(0, 1)))
+                                                       .Where(y => Convert.ToInt32(y["TEN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(1, 1)))
+                                                       .Where(z => Convert.ToInt32(z["ONE"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(2, 1))).ToList();
+                        }
+                    }
+                }
+
+                //殺大小
+                var ResultKillBigSmall = ResultKillOddEven;
+                if (KillBigSmallPara != "0" && KillBigSmallPara != "")
+                {
+                    var ParaKillBigSmallPara = KillBigSmallPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKillBigSmallPara.Count(); i++)
+                    {
+                        switch (ParaKillBigSmallPara[i].ToString())
+                        {
+                            case "555":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
+                                break;
+                            case "556":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
+                                break;
+                            case "565":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
+                                break;
+                            case "566":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
+                                break;
+                            case "666":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
+                                break;
+                            case "655":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) <= 5).ToList();
+                                break;
+                            case "656":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) < 5 && int.Parse(x["TEN"].ToString()) < 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
+                                break;
+                            case "665":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
+                                break;
+                            case "66":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5).ToList();
+                                break;
+                            case "65":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
+                                break;
+                            case "56":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5).ToList();
+                                break;
+                            case "55":
+                                ResultKillBigSmall = ResultKillBigSmall
+                                .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
+                                break;
+                        }
+                    }
+                }
+
+                //殺13位差
+                var ResultKill13Less = ResultKillBigSmall;
+                if (Kill13LessPara != "0" && Kill13LessPara != "")
+                {
+                    var ParaKill13LessPara = Kill13LessPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill13LessPara.Count(); i++)
+                    {
+                        ResultKill13Less = ResultKill13Less
+                                               .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKill13LessPara[i])).ToList();
+                    }
+                }
+
+                //殺23位差
+                var ResultKill23Less = ResultKill13Less;
+                if (Kill23LessPara != "0" && Kill23LessPara != "")
+                {
+                    var ParaKill23LessPara = Kill23LessPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill23LessPara.Count(); i++)
+                    {
+                        ResultKill23Less = ResultKill23Less
+                                               .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKill23LessPara[i])).ToList();
+                    }
+                }
+
+                //殺12位差
+                var ResultKill12Less = ResultKill23Less;
+                if (Kill12LessPara != "0" && Kill12LessPara != "")
+                {
+                    var ParaKill12LessPara = Kill12LessPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill12LessPara.Count(); i++)
+                    {
+                        ResultKill12Less = ResultKill12Less
+                                               .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKill12LessPara[i])).ToList();
+                    }
+                }
+
+                //殺13碼和
+                var ResultKill13Sum = ResultKill12Less;
+                if (Kill13SumPara != "0" && Kill13SumPara != "")
+                {
+                    var ParaKill13SumPara = Kill13SumPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill13SumPara.Count(); i++)
+                    {
+                        ResultKill13Sum = ResultKill13Sum
+                                                   .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKill13SumPara[i])).ToList();
+                    }
+                }
+
+                //殺23碼和
+                var ResultKill23Sum = ResultKill13Sum;
+                if (Kill23SumPara != "0" && Kill23SumPara != "")
+                {
+                    var ParaKill23SumPara = Kill23SumPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill23SumPara.Count(); i++)
+                    {
+                        ResultKill23Sum = ResultKill23Sum
+                                                   .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKill23SumPara[i])).ToList();
+                    }
+                }
+
+                //殺12碼和
+                var ResultKill12Sum = ResultKill23Sum;
+                if (Kill12SumPara != "0" && Kill12SumPara != "")
+                {
+                    var ParaKill12SumPara = Kill12SumPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKill12SumPara.Count(); i++)
+                    {
+                        ResultKill12Sum = ResultKill12Sum
+                                                   .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKill12SumPara[i])).ToList();
+                    }
+                }
+
+                //殺型態號
+                var ResultKillType = ResultKill12Sum;
+                if (KillTypeNumberPara != "0" && KillTypeNumberPara != "")
+                {
+                    var ParaKillTypeNumberPara = KillTypeNumberPara.Substring(1).Split(',');
+                    for (int i = 0; i < ParaKillTypeNumberPara.Count(); i++)
+                    {
+                        switch (ParaKillTypeNumberPara[i].ToString())
+                        {
+                            case "1": //上階梯 021,03  01,02,03
+                                ResultKillType = ResultKillType
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) > int.Parse(x["TEN"].ToString())
+                                                    || int.Parse(x["TEN"].ToString()) > int.Parse(x["ONE"].ToString())
+                                                    || int.Parse(x["HUN"].ToString()) > int.Parse(x["ONE"].ToString()))
+                                                    .ToList();
+
+                                break;
+                            case "2": //下階梯
+                                ResultKillType = ResultKillType
+                                                   .Where(x => int.Parse(x["HUN"].ToString()) < int.Parse(x["TEN"].ToString())
+                                                    || int.Parse(x["TEN"].ToString()) < int.Parse(x["ONE"].ToString())
+                                                    || int.Parse(x["HUN"].ToString()) < int.Parse(x["ONE"].ToString()))
+                                                    .ToList();
+                                break;
+                            case "3": //凸型
+                                ResultKillType = ResultKillType
+                                                   .Where(x => int.Parse(x["TEN"].ToString()) < int.Parse(x["HUN"].ToString())
+                                                    || int.Parse(x["TEN"].ToString()) < int.Parse(x["ONE"].ToString()))
+                                                   .ToList();
+                                break;
+                            case "4": //凹型
+                                ResultKillType = ResultKillType
+                                                    .Where(x => int.Parse(x["TEN"].ToString()) > int.Parse(x["HUN"].ToString())
+                                                    || int.Parse(x["TEN"].ToString()) > int.Parse(x["ONE"].ToString()))
+                                                   .ToList();
+                                break;
+                            case "5": //三連號 01 02 03 , 02 03 04
+                                ResultKillType = ResultKillType
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) + 2 != int.Parse(x["TEN"].ToString()) + 1 && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["ONE"].ToString()))
+                                                    .Where(x => int.Parse(x["ONE"].ToString()) + 2 != int.Parse(x["HUN"].ToString()) + 1 && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["HUN"].ToString())).ToList();
+                                break;
+                            case "6": //二連號01 02 04 , 04 02 01 
+                                ResultKillType = ResultKillType
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) + 1 != int.Parse(x["TEN"].ToString())
+                                                             && int.Parse(x["HUN"].ToString()) - 1 != int.Parse(x["TEN"].ToString())
+                                                             && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["ONE"].ToString())
+                                                             && int.Parse(x["TEN"].ToString()) - 1 != int.Parse(x["ONE"].ToString())).ToList();
+                                break;
+                        }
+                    }
+                }
+
+                //殺和值
+                var ResultKillSum = ResultKillType;
+                if (KillSumPara != "0" && KillSumPara != "")
+                {
+                    if (isTwoSum)
+                    {
+                        var ParaKillSumPara = KillSumPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillSumPara.Count(); i++)
+                        {
+                            ResultKillSum = ResultKillSum
+                                                .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKillSumPara[i])).ToList();
+                        }
+                    }
+                    else
+                    {
+                        var ParaKillSumPara = KillSumPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillSumPara.Count(); i++)
+                        {
+                            ResultKillSum = ResultKillSum
+                                                .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKillSumPara[i])).ToList();
+                        }
+                    }
+                }
+
+                //殺跨度
+                var ResultKillCross = ResultKillSum;
+                if (KillCrossPara != "0" && KillCrossPara != "")
+                {
+                    if (isTwoCross)
+                    {
+                        var ParaKillCrossPara = KillCrossPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillCrossPara.Count(); i++)
+                        {
+                            ResultKillCross = ResultKillCross
+                                                .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .ToList();
+                        }
+                    }
+                    else
+                    {
+                        var ParaKillCrossPara = KillCrossPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaKillCrossPara.Count(); i++)
+                        {
+
+                            ResultKillCross = ResultKillCross
+                                                .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["HUN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["HUN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
+                                                .ToList();
+                        }
+                    }
+
+                }
+
+                //膽碼
+                var ResultLocal = ResultKillType;
+                if ((isKillPara != "0" && LocalNumber0LocalPara != "0") && (isKillPara != "" && LocalNumber0LocalPara != ""))
+                {
+                    if (isTwoLocalNumber)
+                    {
+                        var ParaLocalNumber0LocalPara = LocalNumber0LocalPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaLocalNumber0LocalPara.Count(); i++)
+                        {
+                            if (isKillPara == "Kill")
                             {
-                                ResultChooseModePara = ResultChooseModePara
-                                    .Where(x => int.Parse(x["ONE"].ToString()) != int.Parse(ParaChooseModeOnePara_in[i])).ToList();
+                                ResultKillCross = ResultKillCross
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
+                                                             || int.Parse(x["TEN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
+                            }
+                            else
+                            {
+                                ResultKillCross = ResultKillCross
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
+                                                             || int.Parse(x["TEN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
                             }
                         }
                     }
-                    else if(ChooseModeOnePara != "" && ChooseModeOnePara != "0")
+                    else
                     {
-                        var ParaChooseModeOnePara = ChooseModeOnePara.Substring(1).Split(',');
-                        for (int i = 0; i < ParaChooseModeOnePara.Count(); i++)
+                        var ParaLocalNumber0LocalPara = LocalNumber0LocalPara.Substring(1).Split(',');
+                        for (int i = 0; i < ParaLocalNumber0LocalPara.Count(); i++)
                         {
-                            ResultChooseModePara = ResultChooseModePara
-                                .Where(x => int.Parse(x["ONE"].ToString()) != int.Parse(ParaChooseModeOnePara[i])).ToList();
-                        }
-                    }                    
-                }
-            }
 
-
-            //殺二碼組合
-            var ResultKillTwoCombineFirst = ResultChooseModePara;
-            if(selectKillTwoCombineFirstPara != "0" && selectKillTwoCombineFirstPara != "" && selectKillTwoCombineFirstPara != "0" && selectKillTwoCombineFirstPara != "")
-            { 
-                ResultChooseModePara.Where(x => x["HUN"].ToString() != selectKillTwoCombineFirstPara)
-                                           .Where(x => x["TEN"].ToString() != selectKillTwoCombineSecPara).ToList();
-            }
-            //var ResultKillTwoCombineSec = ResultKillTwoCombineFirst.Where(x => x["TEN"].ToString() != selectKillTwoCombineSecPara).ToList();
-
-            //殺二碼和
-            var ResultKillTwoSum = ResultKillTwoCombineFirst;
-            if (KillTwoSumPara != "0" && KillTwoSumPara != "")
-            {
-                var ParaKill012RoadPara = Kill012RoadPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill012RoadPara.Count(); i++)
-                {
-                    ResultKillTwoSum = ResultKillTwoSum
-                                                .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKill012RoadPara[i]))
-                                                .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKill012RoadPara[i]))
-                                                .Where(x => int.Parse(x["ONE"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKill012RoadPara[i])).ToList();
-                }
-            }
-
-            //殺二碼差
-            var ResultKillTwoLess = ResultKillTwoSum;
-            if (KillTwoLessPara != "0" && KillTwoLessPara != "")
-            {
-                var ParaKillTwoLessPara = KillTwoLessPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKillTwoLessPara.Count(); i++)
-                {
-                    ResultKillTwoLess = ResultKillTwoLess
-                                                .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillTwoLessPara[i]))
-                                                .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillTwoLessPara[i]))
-                                                .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillTwoLessPara[i])).ToList();
-                }
-            }
-
-            //殺012路
-            var ResultKill012Road = ResultKillTwoLess;
-            if (Kill012RoadPara != "0" && Kill012RoadPara != "")
-            {
-                if (isTwoRoad)
-                {
-                    var ParaKill012RoadPara = Kill012RoadPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKill012RoadPara.Count(); i++)
-                    {
-                        ResultKill012Road = ResultKill012Road
-                                                   .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
-                                                            || Convert.ToInt32(x["Number"].ToString().Substring(3, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))).ToList();
-                    }
-                }
-                else
-                { 
-                    var ParaKill012RoadPara = Kill012RoadPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKill012RoadPara.Count(); i++)
-                    {
-                        //var iii = int.Parse(ParaKill012RoadPara[i].Substring(0, 1));
-                        ResultKill012Road = ResultKill012Road
-                                                   .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
-                                                           || Convert.ToInt32(x["Number"].ToString().Substring(3, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))
-                                                           || Convert.ToInt32(x["Number"].ToString().Substring(6, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(2, 1))).ToList();
-                    }
-                }
-            }
-
-            //殺奇偶
-            var ResultKillOddEven = ResultKill012Road;
-            if (KillOddEvenPara != "0" && KillOddEvenPara != "")
-            {
-                if(isTwoOddEven)
-                {
-                    var ParaKillOddEven = KillOddEvenPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillOddEven.Count(); i++)
-                    {
-                        ResultKillOddEven = ResultKillOddEven
-                                                   .Where(x => Convert.ToInt32(x["HUN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(0, 1)))
-                                                   .Where(y => Convert.ToInt32(y["TEN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(1, 1))).ToList();
-                    }
-                }
-                else
-                { 
-                    var ParaKillOddEven = KillOddEvenPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillOddEven.Count(); i++)
-                    {
-                        ResultKillOddEven = ResultKillOddEven
-                                                   .Where(x => Convert.ToInt32(x["HUN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(0, 1)))
-                                                   .Where(y => Convert.ToInt32(y["TEN"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(1, 1)))
-                                                   .Where(z => Convert.ToInt32(z["ONE"]) % 2 != int.Parse(ParaKillOddEven[i].Substring(2, 1))).ToList();
-                    }
-                }
-            }
-
-            //殺大小
-            var ResultKillBigSmall = ResultKillOddEven;
-            if (KillBigSmallPara != "0" && KillBigSmallPara != "")
-            {
-                var ParaKillBigSmallPara = KillBigSmallPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKillBigSmallPara.Count(); i++)
-                {
-                    switch (ParaKillBigSmallPara[i].ToString())
-                    {
-                        case "555":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
-                            break;
-                        case "556":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
-                            break;
-                        case "565":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
-                            break;
-                        case "566":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
-                            break;
-                        case "666":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
-                            break;
-                        case "655":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) <= 5).ToList();
-                            break;
-                        case "656":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) < 5 && int.Parse(x["TEN"].ToString()) < 5 && int.Parse(x["ONE"].ToString()) < 5).ToList();
-                            break;
-                        case "665":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5 && int.Parse(x["ONE"].ToString()) > 5).ToList();
-                            break;
-                        case "66":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) <= 5).ToList();
-                            break;
-                        case "65":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) <= 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
-                            break;
-                        case "56":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) <= 5).ToList();
-                            break;
-                        case "55":
-                            ResultKillBigSmall = ResultKillBigSmall
-                            .Where(x => int.Parse(x["HUN"].ToString()) > 5 && int.Parse(x["TEN"].ToString()) > 5).ToList();
-                            break;
-                    }
-                }
-            }
-
-            //殺13位差
-            var ResultKill13Less = ResultKillBigSmall;
-            if (Kill13LessPara != "0" && Kill13LessPara != "")
-            {
-                var ParaKill13LessPara = Kill13LessPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill13LessPara.Count(); i++)
-                {
-                    ResultKill13Less = ResultKill13Less
-                                           .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKill13LessPara[i])).ToList();
-                }
-            }
-
-            //殺23位差
-            var ResultKill23Less = ResultKill13Less;
-            if (Kill23LessPara != "0" && Kill23LessPara != "")
-            {
-                var ParaKill23LessPara = Kill23LessPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill23LessPara.Count(); i++)
-                {
-                    ResultKill23Less = ResultKill23Less
-                                           .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKill23LessPara[i])).ToList();
-                }
-            }
-
-            //殺12位差
-            var ResultKill12Less = ResultKill23Less;
-            if (Kill12LessPara != "0" && Kill12LessPara != "")
-            {
-                var ParaKill12LessPara = Kill12LessPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill12LessPara.Count(); i++)
-                {
-                    ResultKill12Less = ResultKill12Less
-                                           .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKill12LessPara[i])).ToList();
-                }
-            }
-
-            //殺13碼和
-            var ResultKill13Sum = ResultKill12Less;
-            if (Kill13SumPara != "0" && Kill13SumPara != "")
-            {
-                var ParaKill13SumPara = Kill13SumPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill13SumPara.Count(); i++)
-                {
-                    ResultKill13Sum = ResultKill13Sum
-                                               .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKill13SumPara[i])).ToList();
-                }
-            }
-
-            //殺23碼和
-            var ResultKill23Sum = ResultKill13Sum;
-            if (Kill23SumPara != "0" && Kill23SumPara != "")
-            {
-                var ParaKill23SumPara = Kill23SumPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill23SumPara.Count(); i++)
-                {
-                    ResultKill23Sum = ResultKill23Sum
-                                               .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKill23SumPara[i])).ToList();
-                }
-            }
-
-            //殺12碼和
-            var ResultKill12Sum = ResultKill23Sum;
-            if (Kill12SumPara != "0" && Kill12SumPara != "")
-            {
-                var ParaKill12SumPara = Kill12SumPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKill12SumPara.Count(); i++)
-                {
-                    ResultKill12Sum = ResultKill12Sum
-                                               .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKill12SumPara[i])).ToList();
-                }
-            }
-
-            //殺型態號
-            var ResultKillType = ResultKill12Sum;
-            if (KillTypeNumberPara != "0" && KillTypeNumberPara != "")
-            {
-                var ParaKillTypeNumberPara = KillTypeNumberPara.Substring(1).Split(',');
-                for (int i = 0; i < ParaKillTypeNumberPara.Count(); i++)
-                {
-                    switch (ParaKillTypeNumberPara[i].ToString())
-                    {
-                        case "1": //上階梯 021,03  01,02,03
-                            ResultKillType = ResultKillType
-                                                .Where(x => int.Parse(x["HUN"].ToString()) > int.Parse(x["TEN"].ToString())
-                                                || int.Parse(x["TEN"].ToString()) > int.Parse(x["ONE"].ToString())
-                                                || int.Parse(x["HUN"].ToString()) > int.Parse(x["ONE"].ToString()))
-                                                .ToList();
-
-                            break;
-                        case "2": //下階梯
-                            ResultKillType = ResultKillType
-                                               .Where(x => int.Parse(x["HUN"].ToString()) < int.Parse(x["TEN"].ToString())
-                                                || int.Parse(x["TEN"].ToString()) < int.Parse(x["ONE"].ToString())
-                                                || int.Parse(x["HUN"].ToString()) < int.Parse(x["ONE"].ToString()))
-                                                .ToList();
-                            break;
-                        case "3": //凸型
-                            ResultKillType = ResultKillType
-                                               .Where(x => int.Parse(x["TEN"].ToString()) < int.Parse(x["HUN"].ToString())
-                                                || int.Parse(x["TEN"].ToString()) < int.Parse(x["ONE"].ToString()))
-                                               .ToList();
-                            break;
-                        case "4": //凹型
-                            ResultKillType = ResultKillType
-                                                .Where(x => int.Parse(x["TEN"].ToString()) > int.Parse(x["HUN"].ToString())
-                                                || int.Parse(x["TEN"].ToString()) > int.Parse(x["ONE"].ToString()))
-                                               .ToList();
-                            break;
-                        case "5": //三連號 01 02 03 , 02 03 04
-                            ResultKillType = ResultKillType
-                                                .Where(x => int.Parse(x["HUN"].ToString()) + 2 != int.Parse(x["TEN"].ToString()) + 1 && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["ONE"].ToString()))
-                                                .Where(x => int.Parse(x["ONE"].ToString()) + 2 != int.Parse(x["HUN"].ToString()) + 1 && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["HUN"].ToString())).ToList();
-                            break;
-                        case "6": //二連號01 02 04 , 04 02 01 
-                            ResultKillType = ResultKillType
-                                                .Where(x => int.Parse(x["HUN"].ToString()) + 1 != int.Parse(x["TEN"].ToString())
-                                                         && int.Parse(x["HUN"].ToString()) - 1 != int.Parse(x["TEN"].ToString())
-                                                         && int.Parse(x["TEN"].ToString()) + 1 != int.Parse(x["ONE"].ToString())
-                                                         && int.Parse(x["TEN"].ToString()) - 1 != int.Parse(x["ONE"].ToString())).ToList();
-                            break;
-                    }
-                }
-            }
-
-            //殺和值
-            var ResultKillSum = ResultKillType;
-            if (KillSumPara != "0" && KillSumPara != "")
-            {
-                if (isTwoSum)
-                {
-                    var ParaKillSumPara = KillSumPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillSumPara.Count(); i++)
-                    {
-                        ResultKillSum = ResultKillSum
-                                            .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) != int.Parse(ParaKillSumPara[i])).ToList();
-                    }
-                }
-                else
-                { 
-                    var ParaKillSumPara = KillSumPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillSumPara.Count(); i++)
-                    {
-                        ResultKillSum = ResultKillSum
-                                            .Where(x => int.Parse(x["HUN"].ToString()) + int.Parse(x["TEN"].ToString()) + int.Parse(x["ONE"].ToString()) != int.Parse(ParaKillSumPara[i])).ToList();
-                    }
-                }
-            }
-
-            //殺跨度
-            var ResultKillCross = ResultKillSum;
-            if (KillCrossPara != "0" && KillCrossPara != "")
-            {
-                if (isTwoCross)
-                {
-                    var ParaKillCrossPara = KillCrossPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillCrossPara.Count(); i++)
-                    {
-                        ResultKillCross = ResultKillCross
-                                            .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .ToList();
-                    }
-                }
-                else
-                {
-                    var ParaKillCrossPara = KillCrossPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaKillCrossPara.Count(); i++)
-                    {
-
-                        ResultKillCross = ResultKillCross
-                                            .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .Where(x => Math.Abs(int.Parse(x["HUN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["HUN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .Where(x => Math.Abs(int.Parse(x["TEN"].ToString()) - int.Parse(x["ONE"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["TEN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .Where(x => Math.Abs(int.Parse(x["ONE"].ToString()) - int.Parse(x["HUN"].ToString())) != int.Parse(ParaKillCrossPara[i]))
-                                            .ToList();
-                    }
-                }
-                
-            }
-
-            //膽碼
-            var ResultLocal = ResultKillType;
-            if ((isKillPara != "0" && LocalNumber0LocalPara != "0") && (isKillPara != "" && LocalNumber0LocalPara != ""))
-            {
-                if (isTwoLocalNumber)
-                {
-                    var ParaLocalNumber0LocalPara = LocalNumber0LocalPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaLocalNumber0LocalPara.Count(); i++)
-                    {
-                        if (isKillPara == "Kill")
-                        {
-                            ResultKillCross = ResultKillCross
-                                                .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
-                                                         || int.Parse(x["TEN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
-                        }
-                        else
-                        {
-                            ResultKillCross = ResultKillCross
-                                                .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
-                                                         || int.Parse(x["TEN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
+                            if (isKillPara == "Kill")
+                            {
+                                ResultKillCross = ResultKillCross
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
+                                                             || int.Parse(x["TEN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
+                                                             || int.Parse(x["ONE"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
+                            }
+                            else
+                            {
+                                ResultKillCross = ResultKillCross
+                                                    .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
+                                    || int.Parse(x["TEN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
+                                    || int.Parse(x["ONE"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
+                            }
                         }
                     }
                 }
-                else
-                { 
-                    var ParaLocalNumber0LocalPara = LocalNumber0LocalPara.Substring(1).Split(',');
-                    for (int i = 0; i < ParaLocalNumber0LocalPara.Count(); i++)
-                    {
 
-                        if (isKillPara == "Kill")
-                        {
-                            ResultKillCross = ResultKillCross
-                                                .Where(x => int.Parse(x["HUN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
-                                                         || int.Parse(x["TEN"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])
-                                                         || int.Parse(x["ONE"].ToString()) != int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
-                        }
-                        else
-                        {
-                            ResultKillCross = ResultKillCross
-                                                .Where(x => int.Parse(x["HUN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
-                                || int.Parse(x["TEN"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])
-                                || int.Parse(x["ONE"].ToString()) == int.Parse(ParaLocalNumber0LocalPara[i])).ToList();
-                        }
-                    }
+
+
+                //最後處理得再補上
+                string Result = "";
+                foreach (var item in ResultKillCross)
+                {
+                    Result += " ," + item["Number"];
                 }
+                Result = " " + Result.Substring(2);
+
+                if (TableNmae.Contains("MakeTwo"))
+                {
+                    rtbTwoResult.Text = Result;
+                }
+                else
+                {
+                    rtbResultNumber.Text = Result;
+                }
+                //var iii = ResultKillTwoCombineSec.ToString();
             }
-
-
-            //最後處理得再補上
-            string Result = "";
-            foreach (var item in ResultKillCross)
+            catch (Exception ex)
             {
-                Result += " ," + item["Number"];
-            }
-            Result = " " + Result.Substring(2);
-            if(TableNmae.Contains("MakeTwo"))
-            {
-                rtbTwoResult.Text = Result;
-            }
-            else
-            { 
-                rtbResultNumber.Text = Result;
-            }
-            //var iii = ResultKillTwoCombineSec.ToString();
-
+                MessageBox.Show(ex.ToString());
+                return;
+            }   
         }
 
         private DataTable SelectDB(string tableName)
@@ -620,10 +682,12 @@ namespace WinFormsApp1
 
         private void KillTwoCombineFisrt_ButtomClick(object sender, EventArgs e)
         {
+            if (selectKillTwoCombineFirstPara == "0")
+                selectKillTwoCombineFirstPara = "";
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("btnKillTwoCombine", "");
 
-            if (Buttom.ForeColor == color)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -639,10 +703,12 @@ namespace WinFormsApp1
 
         private void KillTwoCombineSec_ButtomClick(object sender, EventArgs e)
         {
+            if (selectKillTwoCombineSecPara == "0")
+                selectKillTwoCombineSecPara = "";
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("btnKillTwoCombineSec", "");
 
-            if (Buttom.ForeColor == color)
+            if (Buttom.BackColor == color)
             {
                 Buttom.BackColor = Color.OrangeRed;
                 //Buttom.ForeColor = Color.White;
@@ -1980,6 +2046,18 @@ namespace WinFormsApp1
         private void btnClear_Click(object sender, EventArgs e)
         {
             rtbResultNumber.Text = "";
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Text, rtbResultNumber.Text);
+            MessageBox.Show("複製成功");
+        }
+
+        private void btnTwoCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Text, rtbTwoResult.Text);
+            MessageBox.Show("複製成功");
         }
     }
 }

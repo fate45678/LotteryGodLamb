@@ -538,6 +538,7 @@
             this.btnTwoCopy.TabIndex = 30;
             this.btnTwoCopy.Text = "缩水复製";
             this.btnTwoCopy.UseVisualStyleBackColor = true;
+            this.btnTwoCopy.Click += new System.EventHandler(this.btnTwoCopy_Click);
             // 
             // btnTwoClear
             // 
@@ -1990,6 +1991,7 @@
             this.btnCopy.TabIndex = 20;
             this.btnCopy.Text = "缩水复製";
             this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnClear
             // 
