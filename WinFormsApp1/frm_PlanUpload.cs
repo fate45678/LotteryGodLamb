@@ -2962,7 +2962,7 @@ namespace WinFormsApp1
                 {
                     richTextBox1.Text = getData.ElementAt(i).Substring(0, getData.ElementAt(i).Length);
                     string strReplace = getData.ElementAt(i).Replace(",", "");
-                    int times = (Convert.ToInt32(getData.ElementAt(3)) - Convert.ToInt32(getData.ElementAt(2))) +1;
+                    double times = (double.Parse(getData.ElementAt(3).ToString()) - double.Parse(getData.ElementAt(2))) +1;
                     label15.Text = "共" + times + "注";
                 }
             }

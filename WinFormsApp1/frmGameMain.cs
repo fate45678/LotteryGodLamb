@@ -259,7 +259,10 @@ namespace WinFormsApp1
         {
             if (HD_GameSelect.Text == ((Label)(sender)).Text)
                 return;
-            
+
+            pnlPk10Shrink.Visible = false;
+            pnlMenuShrink.Visible = true;
+
             switch (((Label)(sender)).Text)
             {
                 case "重庆时时彩":
@@ -390,6 +393,17 @@ namespace WinFormsApp1
                     HD_GameSelect.Text = ((Label)(sender)).Text;
                     frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
                     frm_Chart.isChange = true;
+                    pnlPk10Shrink.Visible = true;
+                    pnlMenuShrink.Visible = false;
+                    if (isFirstf_ShrinkPK10)
+                    {
+                        frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
+                        f_ShrinkPK10.TopLevel = false;
+                        f_ShrinkPK10.Size = this.Size;
+                        this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
+                        f_ShrinkPK10.Show();
+                    }
+                    isFirstf_ShrinkPK10 = false;
                     MessageBox.Show("若是未更新请按下刷新按钮");
                     break;
                 default:
