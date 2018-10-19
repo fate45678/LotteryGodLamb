@@ -1347,11 +1347,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 121; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                       
                     }
                 }
@@ -1360,13 +1360,13 @@ namespace WinFormsApp1
                     for (int i = 1; i < 1441; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "000" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 100 && i < 1000)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
 
                     }
                 }
@@ -1375,13 +1375,13 @@ namespace WinFormsApp1
                     for (int i = 1; i < 1441; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "000" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "000" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 100 && i < 1000)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }   
                 }
                 else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
@@ -1389,11 +1389,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if(frm_PlanCycle.GameLotteryName == "新疆时时彩")
@@ -1401,11 +1401,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 97; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
@@ -1413,11 +1413,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 840; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "广东")
@@ -1425,11 +1425,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "山东")
@@ -1437,11 +1437,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江西")
@@ -1449,11 +1449,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "上海")
@@ -1461,11 +1461,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江苏")
@@ -1473,11 +1473,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "河北")
@@ -1485,11 +1485,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.globalGetCurrentPeriod.Substring(0, 8) + i.ToString());
+                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "北京PK10")

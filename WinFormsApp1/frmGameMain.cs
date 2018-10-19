@@ -101,6 +101,12 @@ namespace WinFormsApp1
             this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
             f_PlanCycle.Show();
 
+            frm_Shrink f_Shrink = new frm_Shrink();
+            f_Shrink.TopLevel = false;
+            f_Shrink.Size = this.Size;
+            this.pnlMenuShrink.Controls.Add(f_Shrink);
+            f_Shrink.Show();
+
             //frm_PlanAgent f_PlanAgent = new frm_PlanAgent();
             //f_PlanAgent.TopLevel = false;
             //f_PlanAgent.Size = this.Size;
@@ -226,14 +232,6 @@ namespace WinFormsApp1
                     }                        
                     else
                     {
-                        if(isFirstf_Shrink)
-                        { 
-                            frm_Shrink f_Shrink = new frm_Shrink();
-                            f_Shrink.TopLevel = false;
-                            f_Shrink.Size = this.Size;
-                            this.pnlMenuShrink.Controls.Add(f_Shrink);
-                            f_Shrink.Show();
-                        }
                         pnlMenuShrink.Visible = true;
                     }
                     break;
@@ -260,8 +258,8 @@ namespace WinFormsApp1
             if (HD_GameSelect.Text == ((Label)(sender)).Text)
                 return;
 
-            //pnlPk10Shrink.Visible = false;
-            //pnlMenuShrink.Visible = true;
+            pnlPk10Shrink.Visible = false;
+            pnlMenuShrink.Visible = true;
 
             switch (((Label)(sender)).Text)
             {
