@@ -1313,7 +1313,7 @@ namespace WinFormsApp1
         }
 
         int temp = 0;
-        private void filtercbItem(int current)
+        private void filtercbItem(double current)
         {
             //string iiii = Items[current - 1].ToString();
             var dt_plantest = Items.Where(x => x.Key > current - 1).ToList();
@@ -1820,7 +1820,7 @@ namespace WinFormsApp1
             else if (frm_PlanCycle.GameLotteryName == "北京PK10")
             {
                 //frmGameMain.jArr.First()["Issue"].ToString()
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod));
+                filtercbItem(double.Parse(frmGameMain.globalGetCurrentPeriod));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
