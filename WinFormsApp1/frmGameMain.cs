@@ -992,6 +992,7 @@ namespace WinFormsApp1
                             var temp = reader.ReadToEnd();
                             JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
                             jArr = ja;
+                            globalGetCurrentPeriod = (double.Parse(jArr.First()["Issue"].ToString()) + 1).ToString();
                             //處理最近開獎號碼
                             string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
 

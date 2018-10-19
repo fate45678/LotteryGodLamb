@@ -615,19 +615,22 @@ namespace WinFormsApp1
 
                 //最後處理得再補上
                 string Result = "";
-                foreach (var item in ResultKillCross)
-                {
-                    Result += " ," + item["Number"];
-                }
-                Result = " " + Result.Substring(2);
+                if (ResultKillCross.Count() != 0)
+                { 
+                    foreach (var item in ResultKillCross)
+                    {
+                        Result += " ," + item["Number"];
+                    }
+                    Result = " " + Result.Substring(2);
 
-                if (TableNmae.Contains("MakeTwo"))
-                {
-                    rtbTwoResult.Text = Result;
-                }
-                else
-                {
-                    rtbResultNumber.Text = Result;
+                    if (TableNmae.Contains("MakeTwo"))
+                    {
+                        rtbTwoResult.Text = Result;
+                    }
+                    else
+                    {
+                        rtbResultNumber.Text = Result;
+                    }
                 }
                 //var iii = ResultKillTwoCombineSec.ToString();
             }

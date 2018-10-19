@@ -3463,10 +3463,16 @@ namespace WinFormsApp1
             {
                 richTextBox2.Text = CopyOn;
                 int count = CopyOn.Split(',').Count();
-                label21.Text = "共" + count.ToString() + "注" ;
+                label21.Text = "共" + count.ToString() + "注";
+            }
+            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            {
+                richTextBox2.Text = CopyOn;
+                int count = CopyOn.Split(',').Count();
+                label21.Text = "共" + count.ToString() + "注";
             }
             else
-            { 
+            {
                 int CopyCount = CopyOn.Replace(",", " ").Split(' ').Count();
                 string CopyKind = CopyOn.Replace(",", " ").Split(' ')[0];
 
