@@ -258,8 +258,8 @@ namespace WinFormsApp1
             if (HD_GameSelect.Text == ((Label)(sender)).Text)
                 return;
 
-            pnlPk10Shrink.Visible = false;
-            pnlMenuShrink.Visible = true;
+            //pnlPk10Shrink.Visible = false;
+            //pnlMenuShrink.Visible = true;
 
             switch (((Label)(sender)).Text)
             {
