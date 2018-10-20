@@ -1316,13 +1316,22 @@ namespace WinFormsApp1
         private void filtercbItem(double current)
         {
             //string iiii = Items[current - 1].ToString();
-            var dt_plantest = Items.Where(x => x.Key > current - 1).ToList();
-            var dt_plan = Items.Where(x => x.Key > current - 1).ToList();
-            var dt_cycle = Items.Where(x => x.Key > current - 1).ToList();
-            cbGamePlan.DataSource = new BindingSource(dt_plan, null);
-            comboBox1.DataSource = new BindingSource(dt_plan, null);
-            cbGameCycle.DataSource = new BindingSource(dt_cycle, null);
-            comboBox2.DataSource = new BindingSource(dt_cycle, null);
+            //;
+            if(Items.Count() != 0)
+            { 
+                var dt_plantestList = Items.Where(x => x.Key > current - 1).ToList();
+                var dt_planList = Items.Where(x => x.Key > current - 1).ToList();
+                var dt_cycleList = Items.Where(x => x.Key > current - 1).ToList();
+
+                DataTable dt_plantest = ConvertToDataTable(dt_plantestList);
+                DataTable dt_plan = ConvertToDataTable(dt_planList);
+                DataTable dt_cycle = ConvertToDataTable(dt_cycleList);
+
+                cbGamePlan.DataSource = dt_planList;//new BindingSource(dt_plan, null);
+                comboBox1.DataSource = dt_planList;//new BindingSource(dt_plan, null);
+                cbGameCycle.DataSource = dt_cycleList;//new BindingSource(dt_cycle, null);
+                comboBox2.DataSource = dt_cycleList;//new BindingSource(dt_cycle, null);
+            }
         }
         Dictionary<int, string> Items = new Dictionary<int, string>();
         /// <summary>
@@ -1330,7 +1339,7 @@ namespace WinFormsApp1
         /// </summary>
         private void InitcbItem()
         {
-            if (!string.IsNullOrEmpty(frmGameMain.globalGetCurrentPeriod) || isFirstTime)
+            if (!string.IsNullOrEmpty(frmGameMain.jArr.First()["Issue"].ToString()) || isFirstTime)
             {
                 Items = new Dictionary<int, string>();
                 cbGameCycle.DataSource = null;
@@ -1342,16 +1351,36 @@ namespace WinFormsApp1
                 comboBox2.DataSource = null;
                 comboBox2.Items.Clear();
 
+                JArray JaItem = new JArray();
+                DataTable dtItem = new DataTable();
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(frm_PlanCycle.GameLotteryName) + "");
+                request.Method = WebRequestMethods.Http.Get;
+                request.ContentType = "application/json";
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    { 
+                        using (var stream = response.GetResponseStream())
+                        using (var reader = new StreamReader(stream))
+                        {
+                            var temp = reader.ReadToEnd();
+                            dtItem = JsonConvert.DeserializeObject<DataTable>("[" + temp + "]");
+                            JaItem = (JArray)JsonConvert.DeserializeObject("[" + temp + "]");
+                        }
+                    }
+                }
+
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 { 
                     for (int i = 1; i < 121; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                       
                     }
                 }
@@ -1360,13 +1389,13 @@ namespace WinFormsApp1
                     for (int i = 1; i < 1441; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "000" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "000" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 100 && i < 1000)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
 
                     }
                 }
@@ -1375,13 +1404,13 @@ namespace WinFormsApp1
                     for (int i = 1; i < 1441; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "000" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "000" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 100 && i < 1000)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }   
                 }
                 else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
@@ -1389,11 +1418,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if(frm_PlanCycle.GameLotteryName == "新疆时时彩")
@@ -1401,11 +1430,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 97; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
@@ -1413,11 +1442,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 840; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "广东")
@@ -1425,11 +1454,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "山东")
@@ -1437,11 +1466,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江西")
@@ -1449,11 +1478,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "上海")
@@ -1461,11 +1490,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江苏")
@@ -1473,11 +1502,11 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "河北")
@@ -1485,23 +1514,23 @@ namespace WinFormsApp1
                     for (int i = 1; i < 85; i++)
                     {
                         if (i < 10)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "00" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "00" + i.ToString());
                         else if (i > 9 && i < 100)
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + "0" + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + "0" + i.ToString());
                         else
-                            Items.Add(i, frmGameMain.jArr.First()["Issue"].ToString().Substring(0, 8) + i.ToString());
+                            Items.Add(i, JaItem.First()["SerialNumber"].ToString().Substring(0, 8) + i.ToString());
                     }
                 }
                 else if (frm_PlanCycle.GameLotteryName == "北京PK10")
                 {
                     for (int i = 0; i < 179; i++)
                     {
-                        int PK10item = int.Parse(frmGameMain.globalGetCurrentPeriod.ToString()) + i;
+                        int PK10item = int.Parse(JaItem.First()["SerialNumber"].ToString()) + i;
                         Items.Add(PK10item, PK10item.ToString());
                     }
                 }
 
-                var test = Items.ToList();
+                var test = Items.Where(x => double.Parse(x.Value) > double.Parse(JaItem.First()["SerialNumber"].ToString())).ToList();
                 DataTable dt = ConvertToDataTable(test);
 
                 cbGamePlan.DisplayMember = "Value";
@@ -1518,6 +1547,8 @@ namespace WinFormsApp1
                 comboBox2.DataSource = dt;
 
                 isFirstTime = false;
+
+                //MessageBox.Show(cbGamePlan.Text);
             }
         }
         public DataTable ConvertToDataTable<T>(IList<T> data)
@@ -1741,8 +1772,19 @@ namespace WinFormsApp1
             if (loginButtonType == 0)
                 return;
 
-            frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
-            //string iiii = frmGameMain.globalGetCurrentPeriod;
+            if (!isChangeLotteryName)
+                return;
+
+            isChangeLotteryName = false;
+            UpdateHistory();
+
+
+            //順便更新combobox
+            if (cbGameKind.SelectedIndex == -1)
+                cbGameKind.SelectedIndex = 0;
+            if (cbGameDirect.SelectedIndex == -1)
+                cbGameDirect.SelectedIndex = 0;
+            InitcbItem();
             if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
             {
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
@@ -1753,7 +1795,7 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
             {
-                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));            
+                filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
@@ -1765,6 +1807,7 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
             {
+                //var iii = int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3));
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
@@ -1777,6 +1820,7 @@ namespace WinFormsApp1
             }
             else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
             {
+                var aaaaa = frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3);
                 filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
@@ -1817,28 +1861,105 @@ namespace WinFormsApp1
                 label2.Text = "共" + 1 + "期";
                 label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
             }
-            else if (frm_PlanCycle.GameLotteryName == "北京PK10")
-            {
-                //frmGameMain.jArr.First()["Issue"].ToString()
-                filtercbItem(double.Parse(frmGameMain.globalGetCurrentPeriod));
-                label2.Text = "共" + 1 + "期";
-                label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-            }
+            updatecheckboxlist1(0);
+            //frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
+            //string iiii = frmGameMain.globalGetCurrentPeriod;
+            //if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //    label2.Text = "共" + calPeriod() + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));            
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "广东")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "山东")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "江西")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "上海")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "江苏")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "河北")
+            //{
+            //    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
+            //else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+            //{
+            //    frmGameMain.jArr.First()["Issue"].ToString()
+            //    filtercbItem(double.Parse(frmGameMain.globalGetCurrentPeriod));
+            //    label2.Text = "共" + 1 + "期";
+            //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+            //}
             //if (updateCount % 3 == 0 )//&& allorwUpdate
             //{
             //    updatecheckboxlist1(updateLstbType);
             //    //isFirst = true;
             //}
 
-            updateCount++;
+            //updateCount++;
 
-            if(!isFirst)
-            {
-                UpdateHistory();
-                timer1.Interval = TimeCount;
-                updatecheckboxlist1(0);
-                //backgroundWorker1.CancelAsync();
-            }
+            //if(!isFirst)
+            //{
+            //    UpdateHistory();
+            //    timer1.Interval = TimeCount;
+            //    updatecheckboxlist1(0);
+            //    backgroundWorker1.CancelAsync();
+            //}
 
             //timer1.Dispose();
         }
@@ -3596,21 +3717,19 @@ namespace WinFormsApp1
 
             if (isChangeLotteryName && loginButtonType == 1)
             {
-                ////調整combobox
+                UpdateHistory();
+
+                //順便更新combobox
+                if (cbGameKind.SelectedIndex == -1)
+                    cbGameKind.SelectedIndex = 0;
+                if (cbGameDirect.SelectedIndex == -1)
+                    cbGameDirect.SelectedIndex = 0;
+                InitcbItem();
                 if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
-                    cbGameKind.Items.Add("四星");
-                    cbGameKind.Items.Add("五星");
                     //label2.Text = "共" + calPeriod() + "期";
                     //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
@@ -3619,202 +3738,291 @@ namespace WinFormsApp1
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
                 }
                 else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
                 }
                 else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
                 {
+                    //var iii = int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3));
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
-                    cbGameKind.Items.Add("四星");
-                    cbGameKind.Items.Add("五星");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
-                    cbGameKind.Items.Add("四星");
-                    cbGameKind.Items.Add("五星");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
                 {
+                    var aaaaa = frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3);
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("后二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("中三");
-                    cbGameKind.Items.Add("后三");
-                    cbGameKind.Items.Add("四星");
-                    cbGameKind.Items.Add("五星");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "广东")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "山东")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江西")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "上海")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "江苏")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
                 else if (frm_PlanCycle.GameLotteryName == "河北")
                 {
                     filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod.Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
                     label2.Text = "共" + 1 + "期";
                     label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
-
-                    cbGameKind.Items.Clear();
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
                 }
-                else if (frm_PlanCycle.GameLotteryName == "北京PK10")
-                {
+                updatecheckboxlist1(0);
+                isChangeLotteryName = false;
+                //
+                //調整combobox
+                //if (frm_PlanCycle.GameLotteryName == "重庆时时彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
-                    filtercbItem(int.Parse(frmGameMain.globalGetCurrentPeriod));
-                    label2.Text = "共" + 1 + "期";
-                    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //    cbGameKind.Items.Add("四星");
+                //    cbGameKind.Items.Add("五星");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "腾讯奇趣彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
-                    cbGameKind.Text = "";
-                    cbGameKind.Items.Clear();
-                    //cbGameKind.Items.Add("前一");
-                    cbGameKind.Items.Add("前二");
-                    cbGameKind.Items.Add("前三");
-                    cbGameKind.Items.Add("前四");
-                    cbGameKind.Items.Add("前五");
-                    //label2.Text = "共" + calPeriod() + "期";
-                    //label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
-                }
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "腾讯官方彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 4, 4)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
 
-                UpdateHistory();
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "天津时时彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //    cbGameKind.Items.Add("四星");
+                //    cbGameKind.Items.Add("五星");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "新疆时时彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //    cbGameKind.Items.Add("四星");
+                //    cbGameKind.Items.Add("五星");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "VR金星1.5分彩")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("后二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("中三");
+                //    cbGameKind.Items.Add("后三");
+                //    cbGameKind.Items.Add("四星");
+                //    cbGameKind.Items.Add("五星");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "广东")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "山东")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "江西")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "上海")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "江苏")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "河北")
+                //{
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString().Substring(frmGameMain.globalGetCurrentPeriod.Length - 3, 3)));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+                //else if (frm_PlanCycle.GameLotteryName == "北京PK10")
+                //{
+
+                //    filtercbItem(int.Parse(frmGameMain.jArr.First()["Issue"].ToString()));
+                //    label2.Text = "共" + 1 + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + 1 + "期";
+
+                //    cbGameKind.Text = "";
+                //    cbGameKind.Items.Clear();
+                //    cbGameKind.Items.Add("前一");
+                //    cbGameKind.Items.Add("前二");
+                //    cbGameKind.Items.Add("前三");
+                //    cbGameKind.Items.Add("前四");
+                //    cbGameKind.Items.Add("前五");
+                //    label2.Text = "共" + calPeriod() + "期";
+                //    label23.Text = cbGamePlan.Text + "~" + cbGameCycle.Text + " 共" + calPeriod() + "期";
+                //}
+
+                //UpdateHistory();
                 //refreshInterface();
 
-                richTextBox2.Text = "";
+                //richTextBox2.Text = "";
 
-                if (cbGameKind.SelectedIndex == -1)
-                    cbGameKind.SelectedIndex = 0;
-                if (cbGameDirect.SelectedIndex == -1)
-                    cbGameDirect.SelectedIndex = 0;
-                InitcbItem();//初始化combobox
+                //if (cbGameKind.SelectedIndex == -1)
+                //    cbGameKind.SelectedIndex = 0;
+                //if (cbGameDirect.SelectedIndex == -1)
+                //    cbGameDirect.SelectedIndex = 0;
+                //InitcbItem();//初始化combobox
 
                 //frm_PlanCycle frm_PlanCycle = new frm_PlanCycle();
 
-                label16.Text = frm_PlanCycle.GameLotteryName + "前二" + cbGameDirect.Text;
-                label24.Text = label16.Text;
+                //label16.Text = frm_PlanCycle.GameLotteryName + "前二" + cbGameDirect.Text;
+                //label24.Text = label16.Text;
 
-                updateCount++;                             
+                //updateCount++;                             
 
-                richTextBox1.Text = "";
-                listBox1.Items.Clear();
-                listBox2.Items.Clear();
+                //richTextBox1.Text = "";
+                //listBox1.Items.Clear();
+                //listBox2.Items.Clear();
 
                 //timer1.Interval = 500;
                 //isFirst = false;
 
-                cbGameKind.SelectedIndex = 0;
-                isChangeLotteryName = false;
+                //cbGameKind.SelectedIndex = 0;
+                //isChangeLotteryName = false;
 
-                frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
-                frm_LoadingControl.Show();
-                Application.DoEvents();
-                frm_LoadingControl.Close();
+                //frm_LoadingControl frm_LoadingControl = new frm_LoadingControl();
+                //frm_LoadingControl.Show();
+                //Application.DoEvents();
+                //frm_LoadingControl.Close();
                
-                updatecheckboxlist1(0);
+                //updatecheckboxlist1(0);
                 //timeCheckChange.Dispose();
             }
         }

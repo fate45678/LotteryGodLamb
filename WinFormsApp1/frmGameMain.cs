@@ -54,6 +54,9 @@ namespace WinFormsApp1
             public string SerialNumber { get; set; }
         }
 
+        //判斷是否為PK10的縮水
+        bool isShrinkPk10_Open = false;
+
         public frmGameMain()
         {
             frm_VersionCheck frm_VersionCheck = new frm_VersionCheck();
@@ -89,7 +92,7 @@ namespace WinFormsApp1
             timer_GetGameInfo.Enabled = true;
 
             string ProVersion = this.GetType().Assembly.GetName().Version.ToString();
-            this.Text = this.Text + "【" + PlanProxyUser + "】" + ProVersion; 
+            this.Text = this.Text + "【" + PlanProxyUser + "】" + ProVersion + " 提示: 如果沒有更新到最新期號，請按刷新"; 
         }
 
         private void frmGameMain_Load(object sender, EventArgs e)
@@ -258,8 +261,8 @@ namespace WinFormsApp1
             if (HD_GameSelect.Text == ((Label)(sender)).Text)
                 return;
 
-            //pnlPk10Shrink.Visible = false;
-            //pnlMenuShrink.Visible = true;
+            pnlPk10Shrink.Visible = false;
+            pnlMenuShrink.Visible = true;
 
             switch (((Label)(sender)).Text)
             {

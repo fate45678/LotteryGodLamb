@@ -101,10 +101,10 @@
             this.timer_GetGameInfo = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlMenuChart = new System.Windows.Forms.Panel();
-            this.pnlMenuShrink = new System.Windows.Forms.Panel();
             this.pnlMenuPlanUpload = new System.Windows.Forms.Panel();
             this.pnlMenuPlanAgent = new System.Windows.Forms.Panel();
             this.pnlPk10Shrink = new System.Windows.Forms.Panel();
+            this.pnlMenuShrink = new System.Windows.Forms.Panel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
             this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
@@ -1054,7 +1054,7 @@
             // 
             // timer_GetGameInfo
             // 
-            this.timer_GetGameInfo.Interval = 1000;
+            this.timer_GetGameInfo.Interval = 500;
             this.timer_GetGameInfo.Tick += new System.EventHandler(this.timer_GetGameInfo_Tick);
             // 
             // panel2
@@ -1063,12 +1063,12 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.pnlMenuChart);
-            this.panel2.Controls.Add(this.pnlMenuShrink);
             this.panel2.Controls.Add(this.pnlMenuPlanUpload);
             this.panel2.Controls.Add(this.pnlMenuPlanAgent);
             this.panel2.Controls.Add(this.pnlMenuPlanCycle);
             this.panel2.Controls.Add(this.pnlGameSelect);
             this.panel2.Controls.Add(this.pnlPk10Shrink);
+            this.panel2.Controls.Add(this.pnlMenuShrink);
             this.panel2.Location = new System.Drawing.Point(8, 38);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1468, 642);
@@ -1083,16 +1083,6 @@
             this.pnlMenuChart.Name = "pnlMenuChart";
             this.pnlMenuChart.Size = new System.Drawing.Size(1460, 548);
             this.pnlMenuChart.TabIndex = 10;
-            // 
-            // pnlMenuShrink
-            // 
-            this.pnlMenuShrink.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnlMenuShrink.AutoSize = true;
-            this.pnlMenuShrink.BackColor = System.Drawing.Color.White;
-            this.pnlMenuShrink.Location = new System.Drawing.Point(3, 92);
-            this.pnlMenuShrink.Name = "pnlMenuShrink";
-            this.pnlMenuShrink.Size = new System.Drawing.Size(1460, 545);
-            this.pnlMenuShrink.TabIndex = 9;
             // 
             // pnlMenuPlanUpload
             // 
@@ -1123,6 +1113,16 @@
             this.pnlPk10Shrink.Name = "pnlPk10Shrink";
             this.pnlPk10Shrink.Size = new System.Drawing.Size(1464, 553);
             this.pnlPk10Shrink.TabIndex = 11;
+            // 
+            // pnlMenuShrink
+            // 
+            this.pnlMenuShrink.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlMenuShrink.AutoSize = true;
+            this.pnlMenuShrink.BackColor = System.Drawing.Color.White;
+            this.pnlMenuShrink.Location = new System.Drawing.Point(3, 92);
+            this.pnlMenuShrink.Name = "pnlMenuShrink";
+            this.pnlMenuShrink.Size = new System.Drawing.Size(1460, 545);
+            this.pnlMenuShrink.TabIndex = 9;
             // 
             // notifyIcon1
             // 
