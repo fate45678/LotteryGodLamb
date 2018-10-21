@@ -49,9 +49,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbGameKind = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
             this.pnlHistory = new System.Windows.Forms.Panel();
             this.rtxtHistory = new System.Windows.Forms.RichTextBox();
             this.panel32 = new System.Windows.Forms.Panel();
+            this.btnUpdateHistory = new System.Windows.Forms.Button();
             this.label115 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pnlAD4 = new System.Windows.Forms.Panel();
@@ -97,6 +100,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSent = new System.Windows.Forms.Panel();
+            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -105,16 +109,16 @@
             this.button11 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button12 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timeCheckChange = new System.Windows.Forms.Timer(this.components);
-            this.checkedListBoxEx1 = new WinFormsApp1.Model.CheckedListBoxEx();
+            this.btnRefersh = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             this.panel32.SuspendLayout();
             this.pnlAD4.SuspendLayout();
@@ -375,6 +379,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.panel2.Controls.Add(this.panel16);
             this.panel2.Controls.Add(this.pnlHistory);
             this.panel2.Controls.Add(this.panel9);
             this.panel2.Controls.Add(this.pnlAD4);
@@ -390,6 +395,34 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel2.Size = new System.Drawing.Size(1446, 510);
             this.panel2.TabIndex = 1;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.White;
+            this.panel16.Controls.Add(this.button12);
+            this.panel16.Location = new System.Drawing.Point(0, 0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(1445, 510);
+            this.panel16.TabIndex = 33;
+            this.panel16.Visible = false;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Gray;
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("新細明體", 18F);
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button12.Location = new System.Drawing.Point(685, 234);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(142, 62);
+            this.button12.TabIndex = 9;
+            this.button12.Text = "刷新";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // pnlHistory
             // 
@@ -420,12 +453,28 @@
             // panel32
             // 
             this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(221)))), ((int)(((byte)(202)))));
+            this.panel32.Controls.Add(this.btnUpdateHistory);
             this.panel32.Controls.Add(this.label115);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(257, 28);
             this.panel32.TabIndex = 2;
+            // 
+            // btnUpdateHistory
+            // 
+            this.btnUpdateHistory.BackColor = System.Drawing.Color.Gray;
+            this.btnUpdateHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateHistory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnUpdateHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateHistory.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateHistory.Location = new System.Drawing.Point(182, 0);
+            this.btnUpdateHistory.Name = "btnUpdateHistory";
+            this.btnUpdateHistory.Size = new System.Drawing.Size(75, 28);
+            this.btnUpdateHistory.TabIndex = 2;
+            this.btnUpdateHistory.Text = "刷新历史开奖";
+            this.btnUpdateHistory.UseVisualStyleBackColor = false;
+            this.btnUpdateHistory.Click += new System.EventHandler(this.btnUpdateHistory_Click);
             // 
             // label115
             // 
@@ -944,6 +993,15 @@
             this.pnlSent.Size = new System.Drawing.Size(341, 510);
             this.pnlSent.TabIndex = 4;
             // 
+            // checkedListBoxEx1
+            // 
+            this.checkedListBoxEx1.FormattingEnabled = true;
+            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
+            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
+            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 346);
+            this.checkedListBoxEx1.TabIndex = 7;
+            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button5);
@@ -1029,30 +1087,13 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.button12);
+            this.panel10.Controls.Add(this.btnRefersh);
             this.panel10.Controls.Add(this.label10);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(331, 39);
             this.panel10.TabIndex = 7;
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Gray;
-            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(206, 9);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(89, 21);
-            this.button12.TabIndex = 9;
-            this.button12.Text = "刷新";
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // label10
             // 
@@ -1075,7 +1116,7 @@
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 60000;
+            this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // backgroundWorker1
@@ -1088,14 +1129,23 @@
             this.timeCheckChange.Interval = 1000;
             this.timeCheckChange.Tick += new System.EventHandler(this.timeCheckChange_Tick);
             // 
-            // checkedListBoxEx1
+            // btnRefersh
             // 
-            this.checkedListBoxEx1.FormattingEnabled = true;
-            this.checkedListBoxEx1.Location = new System.Drawing.Point(5, 74);
-            this.checkedListBoxEx1.Name = "checkedListBoxEx1";
-            this.checkedListBoxEx1.Size = new System.Drawing.Size(331, 346);
-            this.checkedListBoxEx1.TabIndex = 7;
-            this.checkedListBoxEx1.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxEx1_SelectedIndexChanged);
+            this.btnRefersh.BackColor = System.Drawing.Color.Gray;
+            this.btnRefersh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefersh.FlatAppearance.BorderSize = 0;
+            this.btnRefersh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefersh.Font = new System.Drawing.Font("新細明體", 9F);
+            this.btnRefersh.ForeColor = System.Drawing.Color.White;
+            this.btnRefersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefersh.Location = new System.Drawing.Point(242, 5);
+            this.btnRefersh.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRefersh.Name = "btnRefersh";
+            this.btnRefersh.Size = new System.Drawing.Size(81, 29);
+            this.btnRefersh.TabIndex = 10;
+            this.btnRefersh.Text = "刷新";
+            this.btnRefersh.UseVisualStyleBackColor = false;
+            this.btnRefersh.Click += new System.EventHandler(this.btnRefersh_Click);
             // 
             // frm_PlanUpload
             // 
@@ -1114,6 +1164,7 @@
             this.pnlUserSetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
             this.pnlHistory.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
@@ -1168,8 +1219,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pnlHistory;
         private System.Windows.Forms.RichTextBox rtxtHistory;
-        private System.Windows.Forms.Panel panel32;
-        private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Panel pnlAD4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlSentConti;
@@ -1230,5 +1279,10 @@
         private System.Windows.Forms.Timer timer2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Timer timeCheckChange;
+        private System.Windows.Forms.Panel panel32;
+        private System.Windows.Forms.Button btnUpdateHistory;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Button btnRefersh;
     }
 }

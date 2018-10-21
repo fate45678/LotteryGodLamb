@@ -288,9 +288,8 @@ namespace WinFormsApp1
                         {
                             //var iii = int.Parse(ParaKill012RoadPara[i].Substring(0, 1));
                             ResultKill012Road = ResultKill012Road
-                                                       .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
-                                                               || Convert.ToInt32(x["Number"].ToString().Substring(3, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))
-                                                               || Convert.ToInt32(x["Number"].ToString().Substring(6, 2)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(2, 1))).ToList();
+                                                       .Where(x => Convert.ToInt32(x["Number"].ToString().Substring(0, 1)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(0, 1))
+                                                                || Convert.ToInt32(x["Number"].ToString().Substring(1, 1)) % 3 != int.Parse(ParaKill012RoadPara[i].Substring(1, 1))).ToList();
                         }
                     }
                 }
@@ -1159,10 +1158,10 @@ namespace WinFormsApp1
                 Kill012RoadPara = "";
             var Buttom = (sender as Button);
             string Click = Buttom.Name.Replace("btnKill02Road", "");
-            if (Click.Contains("TwoChooseModeOne"))
+            if (Click.Contains("TwoKill012Road"))
             {
                 isTwoChoose = true;
-                Click = Buttom.Name.Replace("btnTwoChooseModeOne", "");
+                Click = Buttom.Name.Replace("btnTwoKill012Road", "");
             }
 
             if (Buttom.BackColor == color)

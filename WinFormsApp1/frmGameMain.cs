@@ -264,6 +264,8 @@ namespace WinFormsApp1
             pnlPk10Shrink.Visible = false;
             pnlMenuShrink.Visible = true;
 
+            //frm_PlanUpload up = new frm_PlanUpload();          
+
             switch (((Label)(sender)).Text)
             {
                 case "重庆时时彩":
@@ -422,9 +424,13 @@ namespace WinFormsApp1
             this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
             f_PlanCycle.Show();
 
-            frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();
+            frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();         
+            frm_PlanUpload.InitcbItem();
+            frm_PlanUpload.Funtest();
+            frm_PlanUpload.isNeedRefresh = true;
             frm_PlanUpload.isFirstTime = true;
             frm_PlanUpload.isChangeLotteryName = true;
+
 
             frm_PlanAgent frm_PlanAgent = new frm_PlanAgent();
             frm_PlanAgent.ischagneGameName = true;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{A75EF098-8072-44DB-86C5-791AC63BA341}"
 EndProject
@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckUpdateVersion", "Check
 	EndProjectSection
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ShengDnengSetup", "ShengDnnSetup\ShengDnengSetup.isproj", "{29CA9282-A1D3-4836-AED0-C2CB603682C0}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ShengDneng", "ShengDneng\ShengDneng.vdproj", "{AC10A010-0C57-40F4-B9EB-577A1611CBA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,21 @@ Global
 		{29CA9282-A1D3-4836-AED0-C2CB603682C0}.SingleImage|Mixed Platforms.Build.0 = SingleImage
 		{29CA9282-A1D3-4836-AED0-C2CB603682C0}.SingleImage|x86.ActiveCfg = SingleImage
 		{29CA9282-A1D3-4836-AED0-C2CB603682C0}.SingleImage|x86.Build.0 = SingleImage
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.CD_ROM|Any CPU.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.CD_ROM|Mixed Platforms.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.CD_ROM|x86.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Debug|Any CPU.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Debug|x86.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.DVD-5|Any CPU.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.DVD-5|Mixed Platforms.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.DVD-5|x86.ActiveCfg = Debug
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Release|Any CPU.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Release|Mixed Platforms.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.Release|x86.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.SingleImage|Any CPU.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.SingleImage|Mixed Platforms.ActiveCfg = Release
+		{AC10A010-0C57-40F4-B9EB-577A1611CBA1}.SingleImage|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

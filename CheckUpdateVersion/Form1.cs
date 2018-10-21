@@ -113,13 +113,13 @@ namespace CheckUpdateVersion
                 }
 
                 //複製檔案且覆蓋
-                CopyFiles(LoaclPath + @"/Debug", LoaclPath);
+                CopyFiles(LoaclPath + @"/ShengDneng", LoaclPath);
 
                 //删除下载的档案
                 bkgCheckVersion.ReportProgress(iCheckProcess);
                 iCheckProcess++;
                 File.Delete(LoaclPath + @"/" + FileName);
-                Directory.Delete(LoaclPath + @"/Debug",true);
+                Directory.Delete(LoaclPath + @"/ShengDneng", true);
 
                 //更新完畢開始啟動程式
                 Process.Start(
