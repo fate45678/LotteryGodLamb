@@ -2638,9 +2638,16 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
                     Control control = new Button();
                     hitTimesElementAt = hitTimes.ElementAt(i).Key.ToString().Split(',');
                     control.Text = hitTimesElementAt[1] + "\r\n 中奖率" + hitTimes.ElementAt(i).Value.ToString("0.00") + "%  \r\n" + hitTimesElementAt[3];
-                    if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                    if(frm_PlanCycle.GameLotteryName == "北京PK10")
                     {
                         control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+                    }
+                    else
+                    { 
+                        if (hitTimesElementAt[4].Substring(0, 8) != nowdate)
+                        {
+                            control.Text = hitTimesElementAt[1] + "\r\n 中奖率0%  \r\n" + hitTimesElementAt[3];
+                        }
                     }
 
                     control.Size = new System.Drawing.Size(140, 130);

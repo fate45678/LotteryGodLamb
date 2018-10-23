@@ -109,12 +109,12 @@
             this.button11 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.btnRefersh = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timeCheckChange = new System.Windows.Forms.Timer(this.components);
-            this.btnRefersh = new System.Windows.Forms.Button();
             this.pnlUserSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -753,12 +753,12 @@
             this.編輯});
             this.contextmenu.Name = "contextMenuStrip1";
             this.contextmenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextmenu.Size = new System.Drawing.Size(101, 26);
+            this.contextmenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 編輯
             // 
             this.編輯.Name = "編輯";
-            this.編輯.Size = new System.Drawing.Size(100, 22);
+            this.編輯.Size = new System.Drawing.Size(98, 22);
             this.編輯.Text = "編輯";
             // 
             // listBox1
@@ -1095,6 +1095,24 @@
             this.panel10.Size = new System.Drawing.Size(331, 39);
             this.panel10.TabIndex = 7;
             // 
+            // btnRefersh
+            // 
+            this.btnRefersh.BackColor = System.Drawing.Color.Gray;
+            this.btnRefersh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefersh.FlatAppearance.BorderSize = 0;
+            this.btnRefersh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefersh.Font = new System.Drawing.Font("新細明體", 9F);
+            this.btnRefersh.ForeColor = System.Drawing.Color.White;
+            this.btnRefersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefersh.Location = new System.Drawing.Point(242, 5);
+            this.btnRefersh.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRefersh.Name = "btnRefersh";
+            this.btnRefersh.Size = new System.Drawing.Size(81, 29);
+            this.btnRefersh.TabIndex = 10;
+            this.btnRefersh.Text = "刷新";
+            this.btnRefersh.UseVisualStyleBackColor = false;
+            this.btnRefersh.Click += new System.EventHandler(this.btnRefersh_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1128,24 +1146,6 @@
             // 
             this.timeCheckChange.Interval = 1000;
             this.timeCheckChange.Tick += new System.EventHandler(this.timeCheckChange_Tick);
-            // 
-            // btnRefersh
-            // 
-            this.btnRefersh.BackColor = System.Drawing.Color.Gray;
-            this.btnRefersh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefersh.FlatAppearance.BorderSize = 0;
-            this.btnRefersh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefersh.Font = new System.Drawing.Font("新細明體", 9F);
-            this.btnRefersh.ForeColor = System.Drawing.Color.White;
-            this.btnRefersh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefersh.Location = new System.Drawing.Point(242, 5);
-            this.btnRefersh.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRefersh.Name = "btnRefersh";
-            this.btnRefersh.Size = new System.Drawing.Size(81, 29);
-            this.btnRefersh.TabIndex = 10;
-            this.btnRefersh.Text = "刷新";
-            this.btnRefersh.UseVisualStyleBackColor = false;
-            this.btnRefersh.Click += new System.EventHandler(this.btnRefersh_Click);
             // 
             // frm_PlanUpload
             // 

@@ -162,10 +162,11 @@ namespace WinFormsApp1
 
             if (((Label)(sender)).Text == "趋势分析")
             {
-                frm_TrendAnalysisTrue f_Trend = new frm_TrendAnalysisTrue();
-                //MessageBox.Show("尚未开放");
-                //return;
-                f_Trend.Show();
+                System.Diagnostics.Process.Start("http://cimoch.com/fenxitu/index.html");
+                //frm_TrendAnalysisTrue f_Trend = new frm_TrendAnalysisTrue();
+                ////MessageBox.Show("尚未开放");
+                ////return;
+                //f_Trend.Show();
                 return;
             }
 
@@ -258,208 +259,217 @@ namespace WinFormsApp1
         //按下彩票種類
         private void btnGame_Click(object sender, EventArgs e)
         {
-            if (HD_GameSelect.Text == ((Label)(sender)).Text)
-                return;
-
-            pnlPk10Shrink.Visible = false;
-            pnlMenuShrink.Visible = true;
-
-            //frm_PlanUpload up = new frm_PlanUpload();          
-
-            switch (((Label)(sender)).Text)
+            try
             {
-                case "重庆时时彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_1.BackColor = HexColor("#df6600");
-                    lblGame1_1.ForeColor = Color.White;
-                    lblGame1_1.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "天津时时彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_5.BackColor = HexColor("#df6600");
-                    lblGame1_5.ForeColor = Color.White;
-                    lblGame1_5.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "腾讯官方彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_2.BackColor = HexColor("#df6600");
-                    lblGame1_2.ForeColor = Color.White;
-                    lblGame1_2.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "腾讯奇趣彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_3.BackColor = HexColor("#df6600");
-                    lblGame1_3.ForeColor = Color.White;
-                    lblGame1_3.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "新疆时时彩":
-                    ResetAllGame(); //重設彩票
-                    lblGame1_6.BackColor = HexColor("#df6600");
-                    lblGame1_6.ForeColor = Color.White;
-                    lblGame1_6.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                //case "VR金星1.5分彩":
-                //    ResetAllGame(); //重設彩票
-                //    lblGame1_7.BackColor = HexColor("#df6600");
-                //    lblGame1_7.ForeColor = Color.White;
-                //    lblGame1_7.Refresh();
-                //    HD_GameSelect.Text = ((Label)(sender)).Text;
-                //    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                //    frm_Chart.isChange = true;
-                //    MessageBox.Show("若是未更新请按下刷新按钮");
-                //    break;
-                case "广东":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_1.BackColor = HexColor("#df6600");
-                    lblGame3_1.ForeColor = Color.White;
-                    lblGame3_1.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "山东":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_2.BackColor = HexColor("#df6600");
-                    lblGame3_2.ForeColor = Color.White;
-                    lblGame3_2.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "江西":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_3.BackColor = HexColor("#df6600");
-                    lblGame3_3.ForeColor = Color.White;
-                    lblGame3_3.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "上海":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_4.BackColor = HexColor("#df6600");
-                    lblGame3_4.ForeColor = Color.White;
-                    lblGame3_4.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "江苏":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_5.BackColor = HexColor("#df6600");
-                    lblGame3_5.ForeColor = Color.White;
-                    lblGame3_5.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "河北":
-                    ResetAllGame(); //重設彩票
-                    lblGame3_6.BackColor = HexColor("#df6600");
-                    lblGame3_6.ForeColor = Color.White;
-                    lblGame3_6.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                case "北京PK10":
-                    ResetAllGame(); //重設彩票
-                    lblGame2_1.BackColor = HexColor("#df6600");
-                    lblGame2_1.ForeColor = Color.White;
-                    lblGame2_1.Refresh();
-                    HD_GameSelect.Text = ((Label)(sender)).Text;
-                    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
-                    frm_Chart.isChange = true;
-                    pnlPk10Shrink.Visible = true;
-                    pnlMenuShrink.Visible = false;
-                    if (isFirstf_ShrinkPK10)
-                    {
-                        frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
-                        f_ShrinkPK10.TopLevel = false;
-                        f_ShrinkPK10.Size = this.Size;
-                        this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
-                        f_ShrinkPK10.Show();
-                    }
-                    isFirstf_ShrinkPK10 = false;
-                    MessageBox.Show("若是未更新请按下刷新按钮");
-                    break;
-                default:
-                    MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
-                    break;
+                if (HD_GameSelect.Text == ((Label)(sender)).Text)
+                    return;
+
+                pnlPk10Shrink.Visible = false;
+                pnlMenuShrink.Visible = true;
+
+                //frm_PlanUpload up = new frm_PlanUpload();          
+
+                switch (((Label)(sender)).Text)
+                {
+                    case "重庆时时彩":
+                        ResetAllGame(); //重設彩票
+                        lblGame1_1.BackColor = HexColor("#df6600");
+                        lblGame1_1.ForeColor = Color.White;
+                        lblGame1_1.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "天津时时彩":
+                        ResetAllGame(); //重設彩票
+                        lblGame1_5.BackColor = HexColor("#df6600");
+                        lblGame1_5.ForeColor = Color.White;
+                        lblGame1_5.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "腾讯官方彩":
+                        ResetAllGame(); //重設彩票
+                        lblGame1_2.BackColor = HexColor("#df6600");
+                        lblGame1_2.ForeColor = Color.White;
+                        lblGame1_2.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "腾讯奇趣彩":
+                        ResetAllGame(); //重設彩票
+                        lblGame1_3.BackColor = HexColor("#df6600");
+                        lblGame1_3.ForeColor = Color.White;
+                        lblGame1_3.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "新疆时时彩":
+                        ResetAllGame(); //重設彩票
+                        lblGame1_6.BackColor = HexColor("#df6600");
+                        lblGame1_6.ForeColor = Color.White;
+                        lblGame1_6.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    //case "VR金星1.5分彩":
+                    //    ResetAllGame(); //重設彩票
+                    //    lblGame1_7.BackColor = HexColor("#df6600");
+                    //    lblGame1_7.ForeColor = Color.White;
+                    //    lblGame1_7.Refresh();
+                    //    HD_GameSelect.Text = ((Label)(sender)).Text;
+                    //    frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                    //    frm_Chart.isChange = true;
+                    //    MessageBox.Show("若是未更新请按下刷新按钮");
+                    //    break;
+                    case "广东":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_1.BackColor = HexColor("#df6600");
+                        lblGame3_1.ForeColor = Color.White;
+                        lblGame3_1.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "山东":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_2.BackColor = HexColor("#df6600");
+                        lblGame3_2.ForeColor = Color.White;
+                        lblGame3_2.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "江西":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_3.BackColor = HexColor("#df6600");
+                        lblGame3_3.ForeColor = Color.White;
+                        lblGame3_3.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "上海":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_4.BackColor = HexColor("#df6600");
+                        lblGame3_4.ForeColor = Color.White;
+                        lblGame3_4.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "江苏":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_5.BackColor = HexColor("#df6600");
+                        lblGame3_5.ForeColor = Color.White;
+                        lblGame3_5.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "河北":
+                        ResetAllGame(); //重設彩票
+                        lblGame3_6.BackColor = HexColor("#df6600");
+                        lblGame3_6.ForeColor = Color.White;
+                        lblGame3_6.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    case "北京PK10":
+                        ResetAllGame(); //重設彩票
+                        lblGame2_1.BackColor = HexColor("#df6600");
+                        lblGame2_1.ForeColor = Color.White;
+                        lblGame2_1.Refresh();
+                        HD_GameSelect.Text = ((Label)(sender)).Text;
+                        frm_PlanCycle.GameLotteryName = ((Label)(sender)).Text;
+                        frm_Chart.isChange = true;
+                        pnlPk10Shrink.Visible = true;
+                        pnlMenuShrink.Visible = false;
+                        if (isFirstf_ShrinkPK10)
+                        {
+                            frm_ShrinkPk10 f_ShrinkPK10 = new frm_ShrinkPk10();
+                            f_ShrinkPK10.TopLevel = false;
+                            f_ShrinkPK10.Size = this.Size;
+                            this.pnlPk10Shrink.Controls.Add(f_ShrinkPK10);
+                            f_ShrinkPK10.Show();
+                        }
+                        isFirstf_ShrinkPK10 = false;
+                        MessageBox.Show("若是未更新请按下刷新按钮");
+                        break;
+                    default:
+                        MessageBox.Show(((Label)(sender)).Text + " 尚未開放");
+                        break;
+                }
+                useHttpWebRequest_GetNextPeriod();
+                useHttpWebRequest_GetHistory();
+
+                //重新放置新的物件
+                frm_PlanCycle f_PlanCycle = new frm_PlanCycle();
+                pnlMenuPlanCycle.Controls.Clear();
+                f_PlanCycle.TopLevel = false;
+                f_PlanCycle.Size = this.Size;
+                this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
+                f_PlanCycle.Show();
+
+                frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();
+                frm_PlanUpload.InitcbItem();
+                frm_PlanUpload.Funtest();
+                frm_PlanUpload.isNeedRefresh = true;
+                frm_PlanUpload.isFirstTime = true;
+                frm_PlanUpload.isChangeLotteryName = true;
+
+
+                frm_PlanAgent frm_PlanAgent = new frm_PlanAgent();
+                frm_PlanAgent.ischagneGameName = true;
             }
-            useHttpWebRequest_GetNextPeriod();
-            useHttpWebRequest_GetHistory();
-
-            //重新放置新的物件
-            frm_PlanCycle f_PlanCycle = new frm_PlanCycle();
-            pnlMenuPlanCycle.Controls.Clear();
-            f_PlanCycle.TopLevel = false;
-            f_PlanCycle.Size = this.Size;
-            this.pnlMenuPlanCycle.Controls.Add(f_PlanCycle);
-            f_PlanCycle.Show();
-
-            frm_PlanUpload frm_PlanUpload = new frm_PlanUpload();         
-            frm_PlanUpload.InitcbItem();
-            frm_PlanUpload.Funtest();
-            frm_PlanUpload.isNeedRefresh = true;
-            frm_PlanUpload.isFirstTime = true;
-            frm_PlanUpload.isChangeLotteryName = true;
-
-
-            frm_PlanAgent frm_PlanAgent = new frm_PlanAgent();
-            frm_PlanAgent.ischagneGameName = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }           
         }
 
         //色碼修改
         public Color HexColor(String hex)
         {
-           //將井字號移除
+          
+            //將井字號移除
             hex = hex.Replace("#", "");
- 
+
             byte a = 255;
             byte r = 255;
             byte g = 255;
-            byte b = 255; 
+            byte b = 255;
             int start = 0;
- 
+
             //處理ARGB字串 
             if (hex.Length == 8)
             {
                 a = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
                 start = 2;
             }
- 
+
             // 將RGB文字轉成byte
             r = byte.Parse(hex.Substring(start, 2), System.Globalization.NumberStyles.HexNumber);
             g = byte.Parse(hex.Substring(start + 2, 2), System.Globalization.NumberStyles.HexNumber);
             b = byte.Parse(hex.Substring(start + 4, 2), System.Globalization.NumberStyles.HexNumber);
- 
+
             return Color.FromArgb(a, r, g, b);
         }
 
@@ -504,335 +514,259 @@ namespace WinFormsApp1
 
         private void useHttpWebRequest_GetNextPeriod()
         {
-            if (HD_GameSelect.Text == "北京PK10")
+            try
             {
-                //a.hywin888.net  hyqa.azurewebsites.net
-                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                request.Method = WebRequestMethods.Http.Get;
-                request.ContentType = "application/json";
-
-                using (var response = (HttpWebResponse)request.GetResponse())
+                if (HD_GameSelect.Text == "北京PK10")
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        using (var stream = response.GetResponseStream())
-                        using (var reader = new StreamReader(stream))
-                        {
-                            var temp = reader.ReadToEnd();
-                            string json = JsonConvert.SerializeObject(temp);
-                            NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+                    //a.hywin888.net  hyqa.azurewebsites.net
+                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.ContentType = "application/json";
 
-                            if (NextPeriod.SerialNumber == null)
+                    using (var response = (HttpWebResponse)request.GetResponse())
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
                             {
-                                lblNextPeriod.Text = "00000000000";
-                                frmGameMain.globalGetCurrentPeriod = "00000000000";
-                                lblNextPeriodTime.Text = "-- : -- : --";
-                            }
-                            else
-                            {
-                                lblNextPeriod.Text = NextPeriod.SerialNumber;
-                                frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
-                                DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
-                                DateTime dt2 = DateTime.Now;
-                                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
-                                string hh = ts.Hours.ToString("00");
-                                string mm = ts.Minutes.ToString("00");
-                                string ss = ts.Seconds.ToString("00");
-                                if (ss.IndexOf("-") > -1)
-                                    ss = "00";
-                                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                var temp = reader.ReadToEnd();
+                                string json = JsonConvert.SerializeObject(temp);
+                                NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+
+                                if (NextPeriod.SerialNumber == null)
+                                {
+                                    lblNextPeriod.Text = "00000000000";
+                                    frmGameMain.globalGetCurrentPeriod = "00000000000";
+                                    lblNextPeriodTime.Text = "-- : -- : --";
+                                }
+                                else
+                                {
+                                    lblNextPeriod.Text = NextPeriod.SerialNumber;
+                                    frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
+                                    DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
+                                    DateTime dt2 = DateTime.Now;
+                                    TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                                    string hh = ts.Hours.ToString("00");
+                                    string mm = ts.Minutes.ToString("00");
+                                    string ss = ts.Seconds.ToString("00");
+                                    if (ss.IndexOf("-") > -1)
+                                        ss = "00";
+                                    lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                }
                             }
                         }
+                        else
+                        { }
                     }
-                    else
-                    { }
+                    /*
+                    DateTime dt2PK10 = DateTime.Now;
+                    if (dt1PK10 < dt2PK10)
+                        dt1PK10 = DateTime.Now.AddMinutes(5);
+
+                    TimeSpan ts = new TimeSpan(dt1PK10.Ticks - dt2PK10.Ticks);
+                    string hh = ts.Hours.ToString("00");
+                    string mm = ts.Minutes.ToString("00");
+                    string ss = ts.Seconds.ToString("00");
+                    if (ss.IndexOf("-") > -1)
+                        ss = "00";
+                    lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                    */
                 }
-                /*
-                DateTime dt2PK10 = DateTime.Now;
-                if (dt1PK10 < dt2PK10)
-                    dt1PK10 = DateTime.Now.AddMinutes(5);
-
-                TimeSpan ts = new TimeSpan(dt1PK10.Ticks - dt2PK10.Ticks);
-                string hh = ts.Hours.ToString("00");
-                string mm = ts.Minutes.ToString("00");
-                string ss = ts.Seconds.ToString("00");
-                if (ss.IndexOf("-") > -1)
-                    ss = "00";
-                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
-                */
-            }
-            else if (HD_GameSelect.Text == "VR金星1.5分彩")
-            {
-                DateTime dt2Vr = DateTime.Now;
-                if (dt1Vr < dt2Vr)
-                    dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
-
-                TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
-                string hh = ts.Hours.ToString("00");
-                string mm = ts.Minutes.ToString("00");
-                string ss = ts.Seconds.ToString("00");
-                if (ss.IndexOf("-") > -1)
-                    ss = "00";
-                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
-            }
-            else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北" || HD_GameSelect.Text == "江苏")
-            {
-                //a.hywin888.net  hyqa.azurewebsites.net
-                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                request.Method = WebRequestMethods.Http.Get;
-                request.ContentType = "application/json";
-
-                using (var response = (HttpWebResponse)request.GetResponse())
+                else if (HD_GameSelect.Text == "VR金星1.5分彩")
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        using (var stream = response.GetResponseStream())
-                        using (var reader = new StreamReader(stream))
-                        {
-                            var temp = reader.ReadToEnd();
-                            string json = JsonConvert.SerializeObject(temp);
-                            NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+                    DateTime dt2Vr = DateTime.Now;
+                    if (dt1Vr < dt2Vr)
+                        dt1Vr = DateTime.Now.AddSeconds(30).AddMinutes(1);
 
-                            if (NextPeriod.SerialNumber == null)
+                    TimeSpan ts = new TimeSpan(dt1Vr.Ticks - dt2Vr.Ticks);
+                    string hh = ts.Hours.ToString("00");
+                    string mm = ts.Minutes.ToString("00");
+                    string ss = ts.Seconds.ToString("00");
+                    if (ss.IndexOf("-") > -1)
+                        ss = "00";
+                    lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                }
+                else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北" || HD_GameSelect.Text == "江苏")
+                {
+                    //a.hywin888.net  hyqa.azurewebsites.net
+                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.ContentType = "application/json";
+
+                    using (var response = (HttpWebResponse)request.GetResponse())
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
                             {
-                                lblNextPeriod.Text = "00000000000";
-                                frmGameMain.globalGetCurrentPeriod = "00000000000";
-                                lblNextPeriodTime.Text = "-- : -- : --";
-                            }
-                            else
-                            {
-                                lblNextPeriod.Text = NextPeriod.SerialNumber;
-                                frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
-                                DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
-                                DateTime dt2 = DateTime.Now;
-                                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
-                                string hh = ts.Hours.ToString("00");
-                                string mm = ts.Minutes.ToString("00");
-                                string ss = ts.Seconds.ToString("00");
-                                if (ss.IndexOf("-") > -1)
-                                    ss = "00";
-                                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                var temp = reader.ReadToEnd();
+                                string json = JsonConvert.SerializeObject(temp);
+                                NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+
+                                if (NextPeriod.SerialNumber == null)
+                                {
+                                    lblNextPeriod.Text = "00000000000";
+                                    frmGameMain.globalGetCurrentPeriod = "00000000000";
+                                    lblNextPeriodTime.Text = "-- : -- : --";
+                                }
+                                else
+                                {
+                                    lblNextPeriod.Text = NextPeriod.SerialNumber;
+                                    frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
+                                    DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
+                                    DateTime dt2 = DateTime.Now;
+                                    TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                                    string hh = ts.Hours.ToString("00");
+                                    string mm = ts.Minutes.ToString("00");
+                                    string ss = ts.Seconds.ToString("00");
+                                    if (ss.IndexOf("-") > -1)
+                                        ss = "00";
+                                    lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                }
                             }
                         }
+                        else
+                        { }
                     }
-                    else
-                    { }
                 }
-            }
-            else
-            {
-                //a.hywin888.net  hyqa.azurewebsites.net
-                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
-                request.Method = WebRequestMethods.Http.Get;
-                request.ContentType = "application/json";
-
-                using (var response = (HttpWebResponse)request.GetResponse())
+                else
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        using (var stream = response.GetResponseStream())
-                        using (var reader = new StreamReader(stream))
-                        {
-                            var temp = reader.ReadToEnd();
-                            string json = JsonConvert.SerializeObject(temp);
-                            NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+                    //a.hywin888.net  hyqa.azurewebsites.net
+                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://a.hywin888.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/Bet/GetCurrentIssueByGameName?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "");
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.ContentType = "application/json";
 
-                            if (NextPeriod.SerialNumber == null)
+                    using (var response = (HttpWebResponse)request.GetResponse())
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
                             {
-                                lblNextPeriod.Text = "00000000000";
-                                frmGameMain.globalGetCurrentPeriod = "00000000000";
-                                lblNextPeriodTime.Text = "-- : -- : --";
-                            }
-                            else
-                            {
-                                lblNextPeriod.Text = NextPeriod.SerialNumber;
-                                frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
-                                DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
-                                DateTime dt2 = DateTime.Now;
-                                TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
-                                string hh = ts.Hours.ToString("00");
-                                string mm = ts.Minutes.ToString("00");
-                                string ss = ts.Seconds.ToString("00");
-                                if (ss.IndexOf("-") > -1)
-                                    ss = "00";
-                                lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                var temp = reader.ReadToEnd();
+                                string json = JsonConvert.SerializeObject(temp);
+                                NextPeriod NextPeriod = JsonConvert.DeserializeObject<NextPeriod>(temp);
+
+                                if (NextPeriod.SerialNumber == null)
+                                {
+                                    lblNextPeriod.Text = "00000000000";
+                                    frmGameMain.globalGetCurrentPeriod = "00000000000";
+                                    lblNextPeriodTime.Text = "-- : -- : --";
+                                }
+                                else
+                                {
+                                    lblNextPeriod.Text = NextPeriod.SerialNumber;
+                                    frmGameMain.globalGetCurrentPeriod = NextPeriod.SerialNumber;
+                                    DateTime dt1 = Convert.ToDateTime(NextPeriod.CloseTime);
+                                    DateTime dt2 = DateTime.Now;
+                                    TimeSpan ts = new TimeSpan(dt1.Ticks - dt2.Ticks);
+                                    string hh = ts.Hours.ToString("00");
+                                    string mm = ts.Minutes.ToString("00");
+                                    string ss = ts.Seconds.ToString("00");
+                                    if (ss.IndexOf("-") > -1)
+                                        ss = "00";
+                                    lblNextPeriodTime.Text = hh + " : " + mm + " : " + ss;
+                                }
                             }
                         }
+                        else
+                        { }
                     }
-                    else
-                    { }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }            
         }
 
         //取得歷史開獎
         private void useHttpWebRequest_GetHistory()
         {
-            if (HD_GameSelect.Text == "北京PK10")
+            try
             {
-                pnlGameLastNumber.Size = new Size(500, 82);
-                //設定右上方的號碼圖樣
-                lblNumber1.Visible = true;
-                lblNumber6.Visible = true;
-                lblNumber7.Visible = true;
-                lblNumber8.Visible = true;
-                lblNumber9.Visible = true;
-                lblNumber10.Visible = true;
-                picNumber6.Visible = true;
-                picNumber7.Visible = true;
-                picNumber8.Visible = true;
-                picNumber9.Visible = true;
-                picNumber10.Visible = true;
-
-                lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber1.Location = new Point(9, 43);
-                picNumber1.Location = new Point(0, 30);
-
-                lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber2.Location = new Point(59, 43);
-                picNumber2.Location = new Point(51, 30);
-
-                lblNumber3.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber3.Location = new Point(109, 43);
-                picNumber3.Location = new Point(101, 30);
-
-                lblNumber4.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber4.Location = new Point(159, 43);
-                picNumber4.Location = new Point(151, 30);
-
-                lblNumber5.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber5.Location = new Point(209, 43);
-                picNumber5.Location = new Point(201, 30);
-
-                lblNumber6.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber6.Location = new Point(259, 43);
-                picNumber6.Location = new Point(251, 30);
-
-                lblNumber7.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber7.Location = new Point(309, 43);
-                picNumber7.Location = new Point(301, 30);
-
-                lblNumber8.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber8.Location = new Point(360, 43);
-                picNumber8.Location = new Point(351, 30);
-
-                lblNumber9.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber9.Location = new Point(410, 43);
-                picNumber9.Location = new Point(401, 30);
-
-                lblNumber10.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber10.Location = new Point(460, 43);
-                picNumber10.Location = new Point(451, 30);
-
-
-                DataTable dtPK10 = ConnectDbGetHistoryNumberForPK10();
-                string str_json = JsonConvert.SerializeObject(dtPK10, Formatting.Indented);
-                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                jArr = ja;
-                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
-                globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
-
-                lblCurrentPeriod.Text = lastWinPeriod; //當期
-                string Number = ja[0]["Number"].ToString().Replace(",", "");
-                lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 2);
-                lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 2);
-                lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 2);
-                lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 2);
-                lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 2);
-                lblNumber6.Text = ja[0]["Number"].ToString().Substring(10, 2);
-                lblNumber7.Text = ja[0]["Number"].ToString().Substring(12, 2);
-                lblNumber8.Text = ja[0]["Number"].ToString().Substring(14, 2);
-                lblNumber9.Text = ja[0]["Number"].ToString().Substring(16, 2);
-                lblNumber10.Text = ja[0]["Number"].ToString().Substring(18, 2);
-                strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 2);
-
-
-                if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                if (HD_GameSelect.Text == "北京PK10")
                 {
-                    notifyIcon1.ShowBalloonTip(3000);
-                    string tipTitle = "提示";
-                    string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
-                    ToolTipIcon tipType = ToolTipIcon.Info;
-                    notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
-                }
+                    pnlGameLastNumber.Size = new Size(500, 82);
+                    //設定右上方的號碼圖樣
+                    lblNumber1.Visible = true;
+                    lblNumber6.Visible = true;
+                    lblNumber7.Visible = true;
+                    lblNumber8.Visible = true;
+                    lblNumber9.Visible = true;
+                    lblNumber10.Visible = true;
+                    picNumber6.Visible = true;
+                    picNumber7.Visible = true;
+                    picNumber8.Visible = true;
+                    picNumber9.Visible = true;
+                    picNumber10.Visible = true;
 
-                checkIsnewIssue = ja[0]["Number"].ToString();
+                    lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber1.Location = new Point(9, 43);
+                    picNumber1.Location = new Point(0, 30);
 
-            }
-            else if (HD_GameSelect.Text == "VR金星1.5分彩")
-            {          
-                pnlGameLastNumber.Size = new Size(358, 82);
+                    lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber2.Location = new Point(59, 43);
+                    picNumber2.Location = new Point(51, 30);
 
-                lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber1.Location = new Point(49, 38);
-                picNumber1.Location = new Point(40, 30);
+                    lblNumber3.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber3.Location = new Point(109, 43);
+                    picNumber3.Location = new Point(101, 30);
 
-                lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber2.Location = new Point(101, 38);
-                picNumber2.Location = new Point(91, 30);
+                    lblNumber4.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber4.Location = new Point(159, 43);
+                    picNumber4.Location = new Point(151, 30);
 
-                lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber3.Location = new Point(152, 38);
-                picNumber3.Location = new Point(142, 30);
+                    lblNumber5.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber5.Location = new Point(209, 43);
+                    picNumber5.Location = new Point(201, 30);
 
-                lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber4.Location = new Point(204, 38);
-                picNumber4.Location = new Point(194, 30);
+                    lblNumber6.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber6.Location = new Point(259, 43);
+                    picNumber6.Location = new Point(251, 30);
 
-                lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber5.Location = new Point(255, 38);
-                picNumber5.Location = new Point(245, 30);
+                    lblNumber7.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber7.Location = new Point(309, 43);
+                    picNumber7.Location = new Point(301, 30);
 
-                //PK10專用
-                lblNumber6.Visible = false;
-                lblNumber7.Visible = false;
-                lblNumber8.Visible = false;
-                lblNumber9.Visible = false;
-                lblNumber10.Visible = false;
-                picNumber6.Visible = false;
-                picNumber7.Visible = false;
-                picNumber8.Visible = false;
-                picNumber9.Visible = false;
-                picNumber10.Visible = false;
+                    lblNumber8.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber8.Location = new Point(360, 43);
+                    picNumber8.Location = new Point(351, 30);
 
-                DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
-                if (dtVR15 == null || dtVR15.Rows.Count == 0)
-                {
-                    dtVR15 = ConnectDbGetHistoryNumberForVR15YesterDay();
-                }
-                string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
-                JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
-                jArr = ja;
-                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
-                globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
-                if ((lastWinPeriod.Substring(8, 3) == "84" && lblNextPeriod.Text.Substring(8, 3) == "002")
-                    || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
-                {
-                    if (lastWinPeriod.Substring(8, 3) == "84")
-                        lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
-                    else
-                        lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "84"; //當期
-                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                    strHistoryNumberOpen = "?";
-                }
-                else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
-                {
-                    lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
-                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                    strHistoryNumberOpen = "?";
-                }
-                else
-                {
+                    lblNumber9.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber9.Location = new Point(410, 43);
+                    picNumber9.Location = new Point(401, 30);
+
+                    lblNumber10.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber10.Location = new Point(460, 43);
+                    picNumber10.Location = new Point(451, 30);
+
+
+                    DataTable dtPK10 = ConnectDbGetHistoryNumberForPK10();
+                    string str_json = JsonConvert.SerializeObject(dtPK10, Formatting.Indented);
+                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                    jArr = ja;
+                    string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+                    globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
+
                     lblCurrentPeriod.Text = lastWinPeriod; //當期
-                    lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
-                    lblNumber2.Text = ja[0]["Number"].ToString().Substring(1, 1);
-                    lblNumber3.Text = ja[0]["Number"].ToString().Substring(2, 1);
-                    lblNumber4.Text = ja[0]["Number"].ToString().Substring(3, 1);
-                    lblNumber5.Text = ja[0]["Number"].ToString().Substring(4, 1);
-                    strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+                    string Number = ja[0]["Number"].ToString().Replace(",", "");
+                    lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 2);
+                    lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 2);
+                    lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 2);
+                    lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 2);
+                    lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 2);
+                    lblNumber6.Text = ja[0]["Number"].ToString().Substring(10, 2);
+                    lblNumber7.Text = ja[0]["Number"].ToString().Substring(12, 2);
+                    lblNumber8.Text = ja[0]["Number"].ToString().Substring(14, 2);
+                    lblNumber9.Text = ja[0]["Number"].ToString().Substring(16, 2);
+                    lblNumber10.Text = ja[0]["Number"].ToString().Substring(18, 2);
+                    strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 2);
 
 
                     if (ja[0]["Number"].ToString() != checkIsnewIssue)
@@ -845,218 +779,308 @@ namespace WinFormsApp1
                     }
 
                     checkIsnewIssue = ja[0]["Number"].ToString();
+
                 }
-            }
-            else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北" || HD_GameSelect.Text == "江苏")//江苏
-            {
-                pnlGameLastNumber.Size = new Size(358, 82);
-                //PK10專用
-                lblNumber6.Visible = false;
-                lblNumber7.Visible = false;
-                lblNumber8.Visible = false;
-                lblNumber9.Visible = false;
-                lblNumber10.Visible = false;
-                picNumber6.Visible = false;
-                picNumber7.Visible = false;
-                picNumber8.Visible = false;
-                picNumber9.Visible = false;
-                picNumber10.Visible = false;
-
-                lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber1.Location = new Point(49, 43);
-                lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber2.Location = new Point(101, 43);
-                lblNumber3.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber3.Location = new Point(152, 43);
-                lblNumber4.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber4.Location = new Point(204, 43);
-                lblNumber5.Font = new Font("Verdana", 12, FontStyle.Bold);
-                lblNumber5.Location = new Point(255, 43);
-
-                //a.hywin888.net hyqa.azurewebsites.net/
-                DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
-                string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
-                request.Method = WebRequestMethods.Http.Get;
-                request.ContentType = "application/json";
-                #region test in DL
-                using (var response = (HttpWebResponse)request.GetResponse())
+                else if (HD_GameSelect.Text == "VR金星1.5分彩")
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    pnlGameLastNumber.Size = new Size(358, 82);
+
+                    lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber1.Location = new Point(49, 38);
+                    picNumber1.Location = new Point(40, 30);
+
+                    lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber2.Location = new Point(101, 38);
+                    picNumber2.Location = new Point(91, 30);
+
+                    lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber3.Location = new Point(152, 38);
+                    picNumber3.Location = new Point(142, 30);
+
+                    lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber4.Location = new Point(204, 38);
+                    picNumber4.Location = new Point(194, 30);
+
+                    lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber5.Location = new Point(255, 38);
+                    picNumber5.Location = new Point(245, 30);
+
+                    //PK10專用
+                    lblNumber6.Visible = false;
+                    lblNumber7.Visible = false;
+                    lblNumber8.Visible = false;
+                    lblNumber9.Visible = false;
+                    lblNumber10.Visible = false;
+                    picNumber6.Visible = false;
+                    picNumber7.Visible = false;
+                    picNumber8.Visible = false;
+                    picNumber9.Visible = false;
+                    picNumber10.Visible = false;
+
+                    DataTable dtVR15 = ConnectDbGetHistoryNumberForVR15();
+                    if (dtVR15 == null || dtVR15.Rows.Count == 0)
                     {
-                        using (var stream = response.GetResponseStream())
-                        using (var reader = new StreamReader(stream))
-                        {
-                            var temp = reader.ReadToEnd();
-                            JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
-                            jArr = ja;
-                            //處理最近開獎號碼
-                            string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
-
-                            if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
-                                || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
-                            {
-                                if (lastWinPeriod.Substring(8, 3) == "120")
-                                    lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
-                                else
-                                    lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
-                                lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                                strHistoryNumberOpen = "?";
-                            }
-                            //else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
-                            //{
-                            //    lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
-                            //    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                            //    strHistoryNumberOpen = "?";
-                            //}
-                            else
-                            {
-                                lblCurrentPeriod.Text = lastWinPeriod; //當期
-                                lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 2);
-                                lblNumber2.Text = ja[0]["Number"].ToString().Substring(3, 2);
-                                lblNumber3.Text = ja[0]["Number"].ToString().Substring(6, 2);
-                                lblNumber4.Text = ja[0]["Number"].ToString().Substring(9, 2);
-                                lblNumber5.Text = ja[0]["Number"].ToString().Substring(12, 2);
-                                strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 2);
-
-
-                                if (ja[0]["Number"].ToString() != checkIsnewIssue)
-                                {
-                                    notifyIcon1.ShowBalloonTip(3000);
-                                    string tipTitle = "提示";
-                                    string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
-                                    ToolTipIcon tipType = ToolTipIcon.Info;
-                                    notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
-                                }
-
-                                checkIsnewIssue = ja[0]["Number"].ToString();
-                            }
-                            //處理歷史開獎
-                            //strHistory = "";
-                            //strHistoryCount = ja.Count.ToString();
-                            //for (int i = 0; i < ja.Count; i++)
-                            //{
-                            //    if (i == 120) break; //寫120筆就好
-                            //    strHistory += ja[i]["4Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
-                            //}
-                        }
+                        dtVR15 = ConnectDbGetHistoryNumberForVR15YesterDay();
                     }
-                    //else
-                    //{ }
+                    string str_json = JsonConvert.SerializeObject(dtVR15, Formatting.Indented);
+                    JArray ja = (JArray)JsonConvert.DeserializeObject(str_json);
+                    jArr = ja;
+                    string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+                    globalGetCurrentPeriod = (double.Parse(lastWinPeriod) + 1).ToString();
+                    if ((lastWinPeriod.Substring(8, 3) == "84" && lblNextPeriod.Text.Substring(8, 3) == "002")
+                        || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
+                    {
+                        if (lastWinPeriod.Substring(8, 3) == "84")
+                            lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
+                        else
+                            lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "84"; //當期
+                        lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                        strHistoryNumberOpen = "?";
+                    }
+                    else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
+                    {
+                        lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
+                        lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                        strHistoryNumberOpen = "?";
+                    }
+                    else
+                    {
+                        lblCurrentPeriod.Text = lastWinPeriod; //當期
+                        lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
+                        lblNumber2.Text = ja[0]["Number"].ToString().Substring(1, 1);
+                        lblNumber3.Text = ja[0]["Number"].ToString().Substring(2, 1);
+                        lblNumber4.Text = ja[0]["Number"].ToString().Substring(3, 1);
+                        lblNumber5.Text = ja[0]["Number"].ToString().Substring(4, 1);
+                        strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+
+
+                        if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                        {
+                            notifyIcon1.ShowBalloonTip(3000);
+                            string tipTitle = "提示";
+                            string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                            ToolTipIcon tipType = ToolTipIcon.Info;
+                            notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                        }
+
+                        checkIsnewIssue = ja[0]["Number"].ToString();
+                    }
                 }
-                #endregion
-            }
-            else
-            {
-                pnlGameLastNumber.Size = new Size(358, 82);
-                //PK10專用
-                lblNumber6.Visible = false;
-                lblNumber7.Visible = false;
-                lblNumber8.Visible = false;
-                lblNumber9.Visible = false;
-                lblNumber10.Visible = false;
-                picNumber6.Visible = false;
-                picNumber7.Visible = false;
-                picNumber8.Visible = false;
-                picNumber9.Visible = false;
-                picNumber10.Visible = false;
-
-
-                lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber1.Location = new Point(49, 38);
-                picNumber1.Location = new Point(40, 30);
-
-                lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber2.Location = new Point(101, 38);
-                picNumber2.Location = new Point(91, 30);
-
-                lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber3.Location = new Point(152, 38);
-                picNumber3.Location = new Point(142, 30);
-
-                lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber4.Location = new Point(204, 38);
-                picNumber4.Location = new Point(194, 30);
-
-                lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
-                lblNumber5.Location = new Point(255, 38);
-                picNumber5.Location = new Point(245, 30);
-
-                //a.hywin888.net hyqa.azurewebsites.net/
-                DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
-                string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
-                request.Method = WebRequestMethods.Http.Get;
-                request.ContentType = "application/json";
-                #region test in DL
-                using (var response = (HttpWebResponse)request.GetResponse())
+                else if (HD_GameSelect.Text == "广东" || HD_GameSelect.Text == "江西" || HD_GameSelect.Text == "上海" || HD_GameSelect.Text == "山东" || HD_GameSelect.Text == "河北" || HD_GameSelect.Text == "江苏")//江苏
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    pnlGameLastNumber.Size = new Size(358, 82);
+                    //PK10專用
+                    lblNumber6.Visible = false;
+                    lblNumber7.Visible = false;
+                    lblNumber8.Visible = false;
+                    lblNumber9.Visible = false;
+                    lblNumber10.Visible = false;
+                    picNumber6.Visible = false;
+                    picNumber7.Visible = false;
+                    picNumber8.Visible = false;
+                    picNumber9.Visible = false;
+                    picNumber10.Visible = false;
+
+                    lblNumber1.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber1.Location = new Point(49, 43);
+                    lblNumber2.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber2.Location = new Point(101, 43);
+                    lblNumber3.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber3.Location = new Point(152, 43);
+                    lblNumber4.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber4.Location = new Point(204, 43);
+                    lblNumber5.Font = new Font("Verdana", 12, FontStyle.Bold);
+                    lblNumber5.Location = new Point(255, 43);
+
+                    //a.hywin888.net hyqa.azurewebsites.net/
+                    DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
+                    string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.ContentType = "application/json";
+                    #region test in DL
+                    using (var response = (HttpWebResponse)request.GetResponse())
                     {
-                        using (var stream = response.GetResponseStream())
-                        using (var reader = new StreamReader(stream))
+                        if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            var temp = reader.ReadToEnd();
-                            JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
-                            jArr = ja;
-                            globalGetCurrentPeriod = (double.Parse(jArr.First()["Issue"].ToString()) + 1).ToString();
-                            //處理最近開獎號碼
-                            string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
-
-                            if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
-                                || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
                             {
-                                if (lastWinPeriod.Substring(8, 3) == "120")
-                                    lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
-                                else
-                                    lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
-                                lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                                strHistoryNumberOpen = "?";
-                            }
-                            else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
-                            {
-                                lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
-                                lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
-                                strHistoryNumberOpen = "?";
-                            }
-                            else
-                            {
-                                lblCurrentPeriod.Text = lastWinPeriod; //當期
-                                lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
-                                lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 1);
-                                lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 1);
-                                lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 1);
-                                lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
-                                strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+                                var temp = reader.ReadToEnd();
+                                JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
+                                jArr = ja;
+                                //處理最近開獎號碼
+                                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
 
-
-                                if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                                if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
+                                    || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
                                 {
-                                    notifyIcon1.ShowBalloonTip(3000);
-                                    string tipTitle = "提示";
-                                    string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
-                                    ToolTipIcon tipType = ToolTipIcon.Info;
-                                    notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                                    if (lastWinPeriod.Substring(8, 3) == "120")
+                                        lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
+                                    else
+                                        lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
+                                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                    strHistoryNumberOpen = "?";
                                 }
+                                //else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
+                                //{
+                                //    lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
+                                //    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                //    strHistoryNumberOpen = "?";
+                                //}
+                                else
+                                {
+                                    lblCurrentPeriod.Text = lastWinPeriod; //當期
+                                    lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 2);
+                                    lblNumber2.Text = ja[0]["Number"].ToString().Substring(3, 2);
+                                    lblNumber3.Text = ja[0]["Number"].ToString().Substring(6, 2);
+                                    lblNumber4.Text = ja[0]["Number"].ToString().Substring(9, 2);
+                                    lblNumber5.Text = ja[0]["Number"].ToString().Substring(12, 2);
+                                    strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 2);
 
-                                checkIsnewIssue = ja[0]["Number"].ToString();
+
+                                    if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                                    {
+                                        notifyIcon1.ShowBalloonTip(3000);
+                                        string tipTitle = "提示";
+                                        string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                                        ToolTipIcon tipType = ToolTipIcon.Info;
+                                        notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                                    }
+
+                                    checkIsnewIssue = ja[0]["Number"].ToString();
+                                }
+                                //處理歷史開獎
+                                //strHistory = "";
+                                //strHistoryCount = ja.Count.ToString();
+                                //for (int i = 0; i < ja.Count; i++)
+                                //{
+                                //    if (i == 120) break; //寫120筆就好
+                                //    strHistory += ja[i]["4Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                                //}
                             }
-                            //處理歷史開獎
-                            //strHistory = "";
-                            //strHistoryCount = ja.Count.ToString();
-                            //for (int i = 0; i < ja.Count; i++)
-                            //{
-                            //    if (i == 120) break; //寫120筆就好
-                            //    strHistory += ja[i]["4Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
-                            //}
                         }
+                        //else
+                        //{ }
                     }
-                    //else
-                    //{ }
+                    #endregion
                 }
-                #endregion
-            }
+                else
+                {
+                    pnlGameLastNumber.Size = new Size(358, 82);
+                    //PK10專用
+                    lblNumber6.Visible = false;
+                    lblNumber7.Visible = false;
+                    lblNumber8.Visible = false;
+                    lblNumber9.Visible = false;
+                    lblNumber10.Visible = false;
+                    picNumber6.Visible = false;
+                    picNumber7.Visible = false;
+                    picNumber8.Visible = false;
+                    picNumber9.Visible = false;
+                    picNumber10.Visible = false;
 
+
+                    lblNumber1.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber1.Location = new Point(49, 38);
+                    picNumber1.Location = new Point(40, 30);
+
+                    lblNumber2.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber2.Location = new Point(101, 38);
+                    picNumber2.Location = new Point(91, 30);
+
+                    lblNumber3.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber3.Location = new Point(152, 38);
+                    picNumber3.Location = new Point(142, 30);
+
+                    lblNumber4.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber4.Location = new Point(204, 38);
+                    picNumber4.Location = new Point(194, 30);
+
+                    lblNumber5.Font = new Font("Verdana", 18, FontStyle.Bold);
+                    lblNumber5.Location = new Point(255, 38);
+                    picNumber5.Location = new Point(245, 30);
+
+                    //a.hywin888.net hyqa.azurewebsites.net/
+                    DateTime dt = DateTime.Now.AddDays(0); //最早取前2天
+                    string dt1 = dt.Year + dt.Month.ToString("00") + dt.Day.ToString("00");
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://hyqa.azurewebsites.net/DrawHistory/GetBySerialNumber?name=" + Game_Function.GameNameToCode(HD_GameSelect.Text) + "&startSerialNumber=" + dt1 + "&endSerialNumber=" + dt1 + "120");
+                    request.Method = WebRequestMethods.Http.Get;
+                    request.ContentType = "application/json";
+                    #region test in DL
+                    using (var response = (HttpWebResponse)request.GetResponse())
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            using (var stream = response.GetResponseStream())
+                            using (var reader = new StreamReader(stream))
+                            {
+                                var temp = reader.ReadToEnd();
+                                JArray ja = (JArray)JsonConvert.DeserializeObject(temp);
+                                jArr = ja;
+                                globalGetCurrentPeriod = (double.Parse(jArr.First()["Issue"].ToString()) + 1).ToString();
+                                //處理最近開獎號碼
+                                string lastWinPeriod = ja[0]["Issue"].ToString(); //最近開獎的期數
+
+                                if ((lastWinPeriod.Substring(8, 3) == "120" && lblNextPeriod.Text.Substring(8, 3) == "002")
+                                    || (lastWinPeriod.Substring(8, 3) == "119" && lblNextPeriod.Text.Substring(8, 3) == "001")) //倒數結束後到完成開獎的空檔 針對跨日( 0404120期>0405002期 或 0404119期>0405001期 )
+                                {
+                                    if (lastWinPeriod.Substring(8, 3) == "120")
+                                        lblCurrentPeriod.Text = lblNextPeriod.Text.Substring(0, 8) + "" + "001"; //當期
+                                    else
+                                        lblCurrentPeriod.Text = lastWinPeriod.Substring(0, 8) + "" + "120"; //當期
+                                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                    strHistoryNumberOpen = "?";
+                                }
+                                else if (Int16.Parse(lblNextPeriod.Text.Substring(8, 3)) - Int16.Parse(lastWinPeriod.Substring(8, 3)) == 2)//倒數結束後到完成開獎的空檔 針對同一日( 0404100期>0404098期 )
+                                {
+                                    lblCurrentPeriod.Text = (Convert.ToInt64(lastWinPeriod) + 1).ToString(); //當期
+                                    lblNumber1.Text = lblNumber2.Text = lblNumber3.Text = lblNumber4.Text = lblNumber5.Text = "?";
+                                    strHistoryNumberOpen = "?";
+                                }
+                                else
+                                {
+                                    lblCurrentPeriod.Text = lastWinPeriod; //當期
+                                    lblNumber1.Text = ja[0]["Number"].ToString().Substring(0, 1);
+                                    lblNumber2.Text = ja[0]["Number"].ToString().Substring(2, 1);
+                                    lblNumber3.Text = ja[0]["Number"].ToString().Substring(4, 1);
+                                    lblNumber4.Text = ja[0]["Number"].ToString().Substring(6, 1);
+                                    lblNumber5.Text = ja[0]["Number"].ToString().Substring(8, 1);
+                                    strHistoryNumberOpen = ja[0]["Number"].ToString().Substring(0, 1);
+
+
+                                    if (ja[0]["Number"].ToString() != checkIsnewIssue)
+                                    {
+                                        notifyIcon1.ShowBalloonTip(3000);
+                                        string tipTitle = "提示";
+                                        string tipContent = "第 " + ja[0]["Issue"].ToString() + " 期 " + ja[0]["Number"].ToString() + " 已開獎";
+                                        ToolTipIcon tipType = ToolTipIcon.Info;
+                                        notifyIcon1.ShowBalloonTip(3000, tipTitle, tipContent, tipType);
+                                    }
+
+                                    checkIsnewIssue = ja[0]["Number"].ToString();
+                                }
+                                //處理歷史開獎
+                                //strHistory = "";
+                                //strHistoryCount = ja.Count.ToString();
+                                //for (int i = 0; i < ja.Count; i++)
+                                //{
+                                //    if (i == 120) break; //寫120筆就好
+                                //    strHistory += ja[i]["4Issue"].ToString() + "  " + ja[i]["Number"].ToString().Replace(",", " ") + "\r\n";
+                                //}
+                            }
+                        }
+                        //else
+                        //{ }
+                    }
+                    #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+          
         }
 
         private DataTable ConnectDbGetHistoryNumberForVR15()

@@ -70,7 +70,6 @@
             this.lblGame1_3 = new System.Windows.Forms.Label();
             this.lblGame1_2 = new System.Windows.Forms.Label();
             this.lblGame1_1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.pnlGameLastNumber = new System.Windows.Forms.Panel();
             this.lblNumber10 = new System.Windows.Forms.Label();
             this.picNumber10 = new System.Windows.Forms.PictureBox();
@@ -108,6 +107,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
             this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
+            this.label9 = new System.Windows.Forms.Label();
             this.pnlGameMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlGameSelect.SuspendLayout();
@@ -379,6 +379,7 @@
             // 
             // timer_ShowMessage
             // 
+            this.timer_ShowMessage.Enabled = true;
             this.timer_ShowMessage.Interval = 10000;
             this.timer_ShowMessage.Tick += new System.EventHandler(this.timer_ShowMessage_Tick);
             // 
@@ -698,19 +699,6 @@
             this.lblGame1_1.TabIndex = 0;
             this.lblGame1_1.Text = "重庆时时彩";
             this.lblGame1_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(75)))), ((int)(((byte)(55)))));
-            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(0, 1);
-            this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(2, 7, 2, 7);
-            this.label9.Size = new System.Drawing.Size(57, 25);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "时时彩";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlGameLastNumber
             // 
@@ -1054,6 +1042,7 @@
             // 
             // timer_GetGameInfo
             // 
+            this.timer_GetGameInfo.Enabled = true;
             this.timer_GetGameInfo.Interval = 500;
             this.timer_GetGameInfo.Tick += new System.EventHandler(this.timer_GetGameInfo_Tick);
             // 
@@ -1134,13 +1123,25 @@
             // 
             // timerFourFiveGodinsert
             // 
-            this.timerFourFiveGodinsert.Enabled = true;
             this.timerFourFiveGodinsert.Interval = 60000;
             this.timerFourFiveGodinsert.Tick += new System.EventHandler(this.timerFourFiveGodinsert_Tick);
             // 
             // bgwGodinsert
             // 
             this.bgwGodinsert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwGodinsert_DoWork);
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(75)))), ((int)(((byte)(55)))));
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(0, 1);
+            this.label9.Name = "label9";
+            this.label9.Padding = new System.Windows.Forms.Padding(2, 7, 2, 7);
+            this.label9.Size = new System.Drawing.Size(57, 25);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "时时彩";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmGameMain
             // 
@@ -1257,7 +1258,6 @@
         private System.Windows.Forms.Panel pnlMenuPlanAgent;
         private System.Windows.Forms.Timer timerFourFiveGodinsert;
         private System.ComponentModel.BackgroundWorker bgwGodinsert;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblMenuPlanCycle;
         private System.Windows.Forms.Label lblNumber6;
         private System.Windows.Forms.PictureBox picNumber6;
@@ -1270,6 +1270,7 @@
         private System.Windows.Forms.Label lblNumber9;
         private System.Windows.Forms.PictureBox picNumber9;
         private System.Windows.Forms.Panel pnlPk10Shrink;
+        private System.Windows.Forms.Label label9;
     }
 }
 
