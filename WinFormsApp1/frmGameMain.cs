@@ -162,11 +162,11 @@ namespace WinFormsApp1
 
             if (((Label)(sender)).Text == "趋势分析")
             {
-                System.Diagnostics.Process.Start("http://cimoch.com/fenxitu/index.html");
-                //frm_TrendAnalysisTrue f_Trend = new frm_TrendAnalysisTrue();
-                ////MessageBox.Show("尚未开放");
-                ////return;
-                //f_Trend.Show();
+                //System.Diagnostics.Process.Start("http://cimoch.com/fenxitu/index.html");
+                frm_TrendAnalysisTrue f_Trend = new frm_TrendAnalysisTrue();
+                //MessageBox.Show("尚未开放");
+                //return;
+                f_Trend.Show();
                 return;
             }
 

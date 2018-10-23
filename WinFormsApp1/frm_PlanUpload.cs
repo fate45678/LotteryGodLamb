@@ -1768,7 +1768,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+
             refreshInterface();
 
             if (loginButtonType == 1)
@@ -1783,8 +1783,7 @@ namespace WinFormsApp1
                 InitcbItem();//初始化combobox
                 //UpdateHistory();
             }
-
-           
+            //timer1.Interval = 1000;
         }
 
         /// <summary>
@@ -1811,16 +1810,16 @@ namespace WinFormsApp1
 
             try
             {
-                checkdataTest("A");
-                if (string.IsNullOrEmpty(label4.Text))
-                    MessageBox.Show("尚未登入。");
+                if (richTextBox2.Text.Trim() == "")
+                {
+                    MessageBox.Show("请输入号码。");
+                    return;
+                }
                 else
                 {
-                    if (richTextBox2.Text.Trim() == "")
-                    {
-                        MessageBox.Show("请输入号码。");
-                        return;
-                    }
+                    checkdataTest("A");
+                    if (string.IsNullOrEmpty(label4.Text))
+                        MessageBox.Show("尚未登入。");
 
                     string NowIssue = frmGameMain.jArr.First()["Issue"].ToString();
                     if (double.Parse(NowIssue) >= double.Parse(cbGamePlan.Text))
