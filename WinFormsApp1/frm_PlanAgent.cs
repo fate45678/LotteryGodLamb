@@ -2615,7 +2615,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
             else if (frm_PlanCycle.GameLotteryName == "北京PK10")
             {
                 cbGameKind.Items.Clear();
-                //cbGameKind.Items.Add("前一");
+                cbGameKind.Items.Add("前一");
                 cbGameKind.Items.Add("前二");
                 cbGameKind.Items.Add("前三");
                 cbGameKind.Items.Add("前四");

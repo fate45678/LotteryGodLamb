@@ -165,7 +165,7 @@ namespace WinFormsApp1
             }
             else if (GameLotteryName == "北京PK10")
             {
-                //cbGameKind.Items.Add("前一");
+                cbGameKind.Items.Add("前一");
                 cbGameKind.Items.Add("前二");
                 cbGameKind.Items.Add("前三");
                 cbGameKind.Items.Add("前四");
