@@ -1363,7 +1363,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string SelectNowDate = DateTime.Now.ToString("yyyyMMdd");
             string db = "";

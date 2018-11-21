@@ -83,7 +83,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             string Sqlstr = "";
@@ -344,7 +344,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             //string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             try
@@ -370,7 +370,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             //string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss").Substring(0, 10);
             try
@@ -1702,7 +1702,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             string GameKind = cbGameKind.Text;
@@ -1939,7 +1939,7 @@ where p_isoldplan = '1' AND p_name like '"+ user + frm_PlanCycle.GameLotteryName
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string SelectNowDate = DateTime.Now.ToString("yyyy/MM/dd   HH:mm:ss").Substring(0, 10);
             try

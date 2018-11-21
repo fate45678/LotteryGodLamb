@@ -1351,7 +1351,7 @@ namespace WinFormsApp1
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
 
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
@@ -1499,7 +1499,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             string Sqlstr = "";
@@ -1540,7 +1540,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             try
@@ -14545,7 +14545,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             string Sqlstr = "";
@@ -14603,7 +14603,7 @@ namespace WinFormsApp1
 
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.AddDays(-1).ToString("u").Substring(0, 10).Replace("-", "");
             string Sqlstr = "";
@@ -14658,7 +14658,7 @@ namespace WinFormsApp1
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
             string date = DateTime.Now.ToString("u").Substring(0, 10).Replace("-", "");
             try

@@ -654,7 +654,7 @@ namespace WinFormsApp1
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
             string connetionString = null;
             SqlConnection con;
-            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa";
+            connetionString = "Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456";
             con = new SqlConnection(connetionString);
 
             try

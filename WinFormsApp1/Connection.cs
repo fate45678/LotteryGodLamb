@@ -31,7 +31,7 @@ namespace WinFormsApp1
             //return icn;
             string ConnStr;
             ConnStr = "Data Source = 43.229.154.156;Initial catalog = lottery;" +
-            "User id = sa; Password = sa";
+            "User id = abc; Password = 123456";
             SqlConnection conn = new SqlConnection(ConnStr);
             conn.Open();
             return conn;
@@ -105,19 +105,20 @@ namespace WinFormsApp1
 
         public string ExecSQL(string serverIP, string DB, string Query)
         {
-            using (var con = new SqlConnection("Data Source="+serverIP+";Initial Catalog = "+DB+ "; USER ID = 4winform; Password=sasa"))
+            using (var con = new SqlConnection("Data Source="+serverIP+";Initial Catalog = "+DB+ "; USER ID = abc; Password=123456"))
             {
                 var cmd = new SqlCommand(Query, con);
                 cmd.CommandType = System.Data.CommandType.Text;
                 con.Open();
                 cmd.ExecuteReader();
+                con.Close();
                 return "done";
             }
         }
         public List<Item> ConSQLtoList4cb(string serverIP, string DB, string Query)
         {
             List<Item> temp = new List<Item>();
-            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa"))
+            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456"))
             {
                 int count = 0;
                 var cmd = new SqlCommand(Query, con);
@@ -144,7 +145,7 @@ namespace WinFormsApp1
         public List<string> ConSQLtoLT(string serverIP, string DB, string Query, Dictionary<int, string> GetFieldName)
         {
             List<string> temp = new List<string>();
-            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = 4winform; Password=sasa"))
+            using (var con = new SqlConnection("Data Source=" + serverIP + ";Initial Catalog = " + DB + "; USER ID = abc; Password=123456"))
             {
                 int count = 0;
                 var cmd = new SqlCommand(Query, con);
