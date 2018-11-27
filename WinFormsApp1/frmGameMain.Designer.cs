@@ -106,8 +106,6 @@
             this.pnlPk10Shrink = new System.Windows.Forms.Panel();
             this.pnlMenuShrink = new System.Windows.Forms.Panel();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.timerFourFiveGodinsert = new System.Windows.Forms.Timer(this.components);
-            this.bgwGodinsert = new System.ComponentModel.BackgroundWorker();
             this.pnlGameMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlGameSelect.SuspendLayout();
@@ -1134,15 +1132,6 @@
             this.notifyIcon1.Text = "神灯计划";
             this.notifyIcon1.Visible = true;
             // 
-            // timerFourFiveGodinsert
-            // 
-            this.timerFourFiveGodinsert.Interval = 60000;
-            this.timerFourFiveGodinsert.Tick += new System.EventHandler(this.timerFourFiveGodinsert_Tick);
-            // 
-            // bgwGodinsert
-            // 
-            this.bgwGodinsert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwGodinsert_DoWork);
-            // 
             // frmGameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1256,8 +1245,6 @@
         private System.Windows.Forms.Panel pnlMenuShrink;
         private System.Windows.Forms.Panel pnlMenuPlanUpload;
         private System.Windows.Forms.Panel pnlMenuPlanAgent;
-        private System.Windows.Forms.Timer timerFourFiveGodinsert;
-        private System.ComponentModel.BackgroundWorker bgwGodinsert;
         private System.Windows.Forms.Label lblMenuPlanCycle;
         private System.Windows.Forms.Label lblNumber6;
         private System.Windows.Forms.PictureBox picNumber6;
