@@ -1243,9 +1243,7 @@ namespace WinFormsApp1
                         //cbGameDirect.Items.Add("跨度");
                         cbGameDirect.SelectedIndex = 0;
                         cbGamePlus.Items.Clear();
-                        cbGamePlus.Items.Add("30+");
-                        cbGamePlus.Items.Add("40+");
-                        cbGamePlus.Items.Add("50+");
+                        cbGamePlus.Items.Add("3+");
                         cbGamePlus.SelectedIndex = 0;
                         cbGamePlan.Items.Clear();
                         //cbGamePlan.Items.Add("神通计划");
@@ -1262,7 +1260,7 @@ namespace WinFormsApp1
                         cbGameDirect.SelectedIndex = 0;
                         cbGamePlus.Items.Clear();
                         cbGamePlus.Items.Add("30+");
-                        cbGamePlus.Items.Add("40+");
+                        cbGamePlus.Items.Add("45+");
                         cbGamePlus.SelectedIndex = 0;
                         cbGamePlan.Items.Clear();
                         //cbGamePlan.Items.Add("神通计划");
@@ -1442,7 +1440,7 @@ namespace WinFormsApp1
                     CountAndShow();
 
                     //放到背景
-                    DataTable dtGodList = getDbGodList();
+                    DataTable dtGodList = getDbGodList(GameLotteryName);
 
                     string[] buttomNameArr;
                     int row = 0;
@@ -1469,7 +1467,7 @@ namespace WinFormsApp1
                     CountAndShow();
 
                     //放到背景
-                    DataTable dtGodList = getDbGodList();
+                    DataTable dtGodList = getDbGodList(GameLotteryName);
 
                     string[] buttomNameArr;
                     int row = 0;
@@ -1564,8 +1562,51 @@ namespace WinFormsApp1
             System.Diagnostics.Process.Start(clickUrl);
         }
 
-        private DataTable getDbGodList()
+        private DataTable getDbGodList(string LotteryName)
         {
+            string DbName = "";
+            switch (LotteryName)
+            {
+                case "重庆时时彩":
+                    DbName = "GodListPlanCycle";
+                    break;
+                case "腾讯奇趣彩":
+                    DbName = "GodListPlanCycleTENCENTFFC";
+                    break;
+                case "腾讯官方彩":
+                    DbName = "GodListPlanCycleQQFFC";
+                    break;
+                case "天津时时彩":
+                    DbName = "GodListPlanCycleTJSSC";
+                    break;
+                case "新疆时时彩":
+                    DbName = "GodListPlanCycleXJSSC";
+                    break;
+                case "VR金星1.5分彩":
+                    DbName = "GodListPlanCycleVR15";
+                    break;
+                case "广东":
+                    DbName = "GodListPlanCycleGD115";
+                    break;
+                case "山东":
+                    DbName = "GodListPlanCycleSD115";
+                    break;
+                case "江西":
+                    DbName = "GodListPlanCycleJS115";
+                    break;
+                case "上海":
+                    DbName = "GodListPlanCycleSH115";
+                    break;
+                case "江苏":
+                    DbName = "GodListPlanCycleJX115";
+                    break;
+                case "河北":
+                    DbName = "GodListPlanCycleHEB115";
+                    break;
+                case "北京PK10":
+                    DbName = "GodListPlanCyclePK10";
+                    break;
+            }
             string serverIP = "43.252.208.201, 1433\\SQLEXPRESS", DB = "lottery";
 
             string connetionString = null;
@@ -1576,7 +1617,7 @@ namespace WinFormsApp1
             try
             {
                 con.Open();
-                string Sqlstr = @"SELECT * from GodListPlanCycle where [g_buttomRate] > '30' order by [g_buttomRate] desc";
+                string Sqlstr = @"SELECT * from " + DbName + " where [g_buttomRate] > '30' order by [g_buttomRate] desc";
                 SqlDataAdapter da = new SqlDataAdapter(Sqlstr, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -17991,7 +18032,7 @@ WHERE NUM >118 AND NUM <177";
                 CountAndShow();
 
                 //放到背景
-                DataTable dtGodList = getDbGodList();
+                DataTable dtGodList = getDbGodList(GameLotteryName);
 
                 string[] buttomNameArr;
                 int row = 0;
